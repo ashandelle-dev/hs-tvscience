@@ -1,0 +1,120 @@
+[
+  {
+   "type": "group",
+   "id": "4853f90b-55c8-6db0-8f85-6f8417b06dd2",
+   "label": "Hero Text",
+   "children": [
+    {
+     "allow_new_line": false,
+     "default": "Case Study",
+     "display_width": null,
+     "id": "863e25c4-c3ae-74b4-4162-d5f11580203b",
+     "label": "Label",
+     "locked": false,
+     "name": "label_text",
+     "required": false,
+     "show_emoji_picker": false,
+     "type": "text",
+     "validation_regex": ""
+    },
+    {
+     "allow_new_line": false,
+     "default": "How tvScientific's CTV campaigns surpassed Wisp performance KPIs",
+     "display_width": null,
+     "id": "f5423a14-f23f-34e9-59ee-9102eebe6a03",
+     "label": "h1",
+     "locked": false,
+     "name": "h1",
+     "required": false,
+     "show_emoji_picker": false,
+     "type": "text",
+     "validation_regex": ""
+    },
+    {
+     "type": "richtext",
+     "id": "7074156e-7514-8bf1-a17d-1c1804208456",
+     "label": "Rich text",
+     "name": "richtext",
+     "default": ""
+    },
+    {
+     "type": "group",
+     "id": "7a4f0546-4ec2-c2bb-69a1-bcc56e677e25",
+     "label": "List Items",
+     "children": [
+      {
+       "type": "image",
+       "id": "d3b095e8-315c-0d6a-b884-2cf8c4b813e9",
+       "default": {
+        "size_type": "auto",
+        "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/audience-icon.png",
+        "alt": "audience-icon",
+        "loading": "lazy",
+        "width": 32,
+        "height": 30,
+        "max_width": 32,
+        "max_height": 30
+       },
+       "resizable": true,
+       "responsive": true,
+       "show_loading": false,
+       "label": "Icon",
+       "name": "icon"
+      },
+      {
+       "type": "text",
+       "id": "b5f14ac6-1fb1-d7b7-e387-9b950960e00e",
+       "validation_regex": "",
+       "label": "Item",
+       "name": "item",
+       "default": "Reach and engage a larger audience"
+      }
+     ],
+     "name": "list_items",
+     "default": {
+      "icon": {
+       "size_type": "auto",
+       "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/audience-icon.png",
+       "alt": "audience-icon",
+       "loading": "lazy",
+       "width": 32,
+       "height": 30,
+       "max_width": 32,
+       "max_height": 30
+      },
+      "item": "Reach and engage a larger audience"
+     },
+     "occurrence": {}
+    }
+   ],
+   "name": "hero_text",
+   "default": {
+    "label_text": "Case Study",
+    "h1": "How tvScientific's CTV campaigns surpassed Wisp performance KPIs",
+    "richtext": "",
+    "list_items": {
+     "icon": {
+      "size_type": "auto",
+      "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/audience-icon.png",
+      "alt": "audience-icon",
+      "loading": "lazy",
+      "width": 32,
+      "height": 30,
+      "max_width": 32,
+      "max_height": 30
+     },
+     "item": "Reach and engage a larger audience"
+    }
+   }
+  },
+  {
+   "type": "form",
+   "id": "dd4d3c46-4790-cbd6-ac0c-f970b63c1a18",
+   "default": {
+    "response_type": "inline",
+    "message": "Thanks for submitting the form."
+   },
+   "label": "Form",
+   "name": "form"
+  }
+ ]

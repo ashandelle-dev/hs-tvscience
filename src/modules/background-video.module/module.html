@@ -1,0 +1,26 @@
+<div class="w-full h-full inset-0">
+  
+      {% if module.hero_video_player.player_id %}
+        {% set max_width = module.hero_video_player.size_type == 'auto_custom_max' ? module.hero_video_player.max_width : module.hero_video_player.width %}
+        {% set max_height = module.hero_video_player.size_type == 'auto_custom_max' ? module.hero_video_player.max_height : module.hero_video_player.height %}
+        {% video_player "embed_player"
+        player_id={{ module.hero_video_player.player_id }} type={{ module.hero_video_player.player_type || 'scriptV4' }} full_width={{ module.hero_video_player.size_type == 'auto_full_width' }}, conversion_asset={{ module.hero_video_player.conversion_asset|tojson|safe }} autoplay={{ module.hero_video_player.autoplay }} hidden_controls={{ module.hero_video_player.hide_controls }}
+        loop={{ module.hero_video_player.loop_video }}
+        muted={{ module.hero_video_player.mute_by_default }}
+        %}
+      {% else %}
+
+        {% if module.hero_image.src %}
+          {% set sizeAttrs = 'width="{{ module.hero_image.width }}" height="{{ module.hero_image.height }}"' %}
+          {% if module.hero_image.size_type == 'auto' %}
+            {% set sizeAttrs = 'width="{{ module.hero_image.width }}" height="{{ module.hero_image.height }}" style="max-width: 100%; height: auto;"' %}
+          {% elif module.image.size_type == 'auto_custom_max' %}
+            {% set sizeAttrs = 'width="{{ module.hero_image.max_width }}" height="{{ module.hero_image.max_height }}" style="max-width: 100%; height: auto;"' %}
+          {% endif %}
+
+          {% set loadingAttr = module.hero_image.loading != 'disabled' ? 'loading="{{ module.hero_image.loading }}"' : '' %}
+          <img src="{{ module.hero_image.src }}" alt="{{ module.hero_image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+        {% endif %}
+      {% endif %}
+
+  </div>

@@ -1,0 +1,62 @@
+<!-- module html  -->
+<div class="flex items-center flex-wrap -mx-6">
+  <div class="w-full lg:w-6/12 mb-[40px] lg:mb-0 px-6">
+    <div class="px-5">
+      <div class="flex items-center pl-[24px] lg:pl-[40px] mb-6">
+        <div class="py-2">
+          <a class="m-0 text-[#0FBF84] text-[14px] uppercase tracking-widest font-bold">{{ module.hero_text.label_text }}</a>
+        </div>
+      
+        
+      </div>
+      <div class="border-l-4 border-[#0FBF84] pl-[24px] lg:pl-[40px]">
+        <h1 class="text-white lg:!text-[50px]">
+          {{ module.hero_text.h1 }}
+        </h1>
+        
+      </div>
+      <div class="pl-[24px] lg:pl-[40px]">
+        {{ module.hero_text.richtext }}
+
+        {% for item in module.hero_text.list_items %}
+          <div class="flex items-center mb-1">
+            <div class="w-[16px]">
+          {% if item.icon.src %}
+            
+            {% set sizeAttrs = 'width="{{ item.icon.width }}" height="{{ item.icon.height }}"' %}
+            {% if item.icon.size_type == 'auto' %}
+              {% set sizeAttrs = 'width="{{ item.icon.width }}" height="{{ item.icon.height }}" style="max-width: 100%; height: auto;"' %}
+            {% elif item.icon.size_type == 'auto_custom_max' %}
+              {% set sizeAttrs = 'width="{{ item.icon.max_width }}" height="{{ item.icon.max_height }}" style="max-width: 100%; height: auto;"' %}
+            {% endif %}
+            {% set loadingAttr = item.icon.loading != 'disabled' ? 'loading="{{ item.icon.loading }}"' : '' %}
+            <img src="{{ item.icon.src }}" alt="{{ item.icon.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+         
+          {% endif %}
+        </div>
+          <div class="px-3">
+            <p class="text-white text-[16px] leading-[28px] m-0">
+              {{ item.item }}
+            </p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="w-full lg:w-6/12 px-6">
+    <div class="lp-hero-form bg-white rounded-[8px] p-6">
+    {% form
+      form_to_use="{{ module.form.form_id }}"
+      response_response_type="{{ module.form.response_type }}"
+      response_message="{{ module.form.message }}"
+      response_redirect_id="{{ module.form.redirect_id }}"
+      response_redirect_url="{{module.form.redirect_url}}"
+      gotowebinar_webinar_key="{{ module.form.gotowebinar_webinar_key }}"
+    %}
+    </div>
+  </div>
+
+</div>
+
+</div>

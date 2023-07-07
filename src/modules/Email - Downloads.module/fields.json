@@ -1,0 +1,84 @@
+[ {
+  "id" : "4b5da1d6-5a5a-0e30-e54e-ea15882ec455",
+  "name" : "card_header_image",
+  "display_width" : null,
+  "label" : "Card Header Image",
+  "required" : false,
+  "locked" : false,
+  "responsive" : true,
+  "resizable" : true,
+  "show_loading" : false,
+  "type" : "image",
+  "default" : {
+    "src" : "",
+    "alt" : null,
+    "loading" : "lazy"
+  }
+}, {
+  "id" : "b50d5c94-fc92-3495-c02e-10e7d6d32c31",
+  "name" : "card_content_text",
+  "display_width" : null,
+  "label" : "Card Content Text",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext"
+}, {
+  "id" : "3a484556-279f-f6c1-2eb3-fb3c9d2a3692",
+  "name" : "list",
+  "display_width" : null,
+  "label" : "List Items",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : null
+  },
+  "children" : [ {
+    "id" : "1f661b29-9e3a-1cd7-a1e0-68065e64842e",
+    "name" : "list_icon",
+    "display_width" : null,
+    "label" : "List Icon",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "default" : {
+      "src" : "",
+      "alt" : null,
+      "loading" : "lazy"
+    }
+  }, {
+    "id" : "ce47c40a-d000-26b7-b96e-c7deb36c2f34",
+    "name" : "list_link",
+    "display_width" : null,
+    "label" : "List Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION", "PHONE_NUMBER", "WHATSAPP_NUMBER", "PAYMENT" ],
+    "type" : "url",
+    "default" : {
+      "content_id" : null,
+      "href" : "",
+      "type" : "EXTERNAL"
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "list_icon" : {
+      "src" : "",
+      "alt" : null,
+      "loading" : "lazy"
+    },
+    "list_link" : {
+      "content_id" : null,
+      "href" : "",
+      "type" : "EXTERNAL"
+    }
+  }
+} ]

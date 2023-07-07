@@ -17,6 +17,10 @@
 
 }
 
+.cs-hero-bg .hs-video-widget .hs-video-container {
+  background-image: none!important;
+}
+
 @media only screen and (min-width: 768px)  {
 
 .cs-hero-bg .hs-video-wrapper,
