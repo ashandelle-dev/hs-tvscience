@@ -4,9 +4,13 @@
   }
 }
 
-/* html,body {
+html,body {
   @apply overflow-x-hidden;
-} */
+
+  @screen lg {
+   overflow:revert;
+  }
+}
 
 body.mobile-open {
   @apply overflow-hidden lg:overflow-auto;
@@ -27,8 +31,7 @@ body.mobile-open {
     }
   @screen lg {
 
-  
-    &:hover,&.active {
+    &:hover,&.active.current {
       &:before {
         @apply visible scale-x-100 bg-[#009061]
       }

@@ -2,6 +2,10 @@
   @apply relative overflow-hidden;
 }
 
+.dnd-section.sticky-section {
+  overflow:revert;
+}
+
 @media only screen and (max-width: 908px) {
   .dnd-section {
     &.remove-bg-on-mobile {

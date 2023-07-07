@@ -4,23 +4,29 @@ const mainNavMenu = document.getElementById("main-nav-menu");
 
 const menuItems = Array.prototype.slice.call( document.querySelectorAll(".menu-item") );
 
-const mobileNavClose = document.getElementById("mobile-nav-close");
-const mobileNavOpen = document.getElementById("mobile-nav-open");
-const mobileNavDropdownOpen = document.getElementById("mobile-nav-dropdown-open");
+const mobileNavOpen = document.getElementById("mobile-nav-open") || null;
 
-mobileNavOpen.addEventListener("click", function() {
-  mobileNavClose.classList.remove("hidden");
-  mobileNavOpen.classList.add("hidden");
-  mainNavMenu.classList.add("active");
-  document.body.classList.add("mobile-open");
-});
+const mobileNavClose = document.getElementById("mobile-nav-close") || null;
 
-mobileNavClose.addEventListener("click", function() {
-  mobileNavClose.classList.add("hidden");
-  mobileNavOpen.classList.remove("hidden");
-  mainNavMenu.classList.remove("active");
-  document.body.classList.remove("mobile-open");
-});
+const mobileNavDropdownOpen = document.getElementById("mobile-nav-dropdown-open") || null;
+
+if( mobileNavOpen  ) {
+  mobileNavOpen.addEventListener("click", function() {
+    mobileNavClose.classList.remove("hidden");
+    mobileNavOpen.classList.add("hidden");
+    mainNavMenu.classList.add("active");
+    document.body.classList.add("mobile-open");
+  });
+}
+
+if( mobileNavClose ) {
+  mobileNavClose.addEventListener("click", function() {
+    mobileNavClose.classList.add("hidden");
+    mobileNavOpen.classList.remove("hidden");
+    mainNavMenu.classList.remove("active");
+    document.body.classList.remove("mobile-open");
+  });
+}
 
 
 menuItems.forEach(item => {
@@ -37,6 +43,8 @@ menuItems.forEach(item => {
   });
   
 });
+
+if( mobileNavDropdownOpen ) {
 
 
 mobileNavDropdownOpen.addEventListener("click", function(e) {
@@ -57,3 +65,5 @@ mobileNavDropdownOpen.addEventListener("click", function(e) {
   mobileNavOpen.classList.add("hidden");
 
 });
+
+}

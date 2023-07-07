@@ -1,0 +1,26 @@
+<!--
+    templateType: page
+    label: DND Nav / Footerless
+    isAvailableForNewContent: true
+-->
+{% extends "../layouts/base.html" %}
+
+
+{% block header %}
+  {% global_partial path='../partials/min-header.html' %}
+{% endblock header %}
+
+
+{% block body %}
+<main>
+  {% dnd_area "dnd_area" class='dnd-empty', label='Drag and Drop Area' %}
+
+
+  {% end_dnd_area %}
+
+  </main>
+{% endblock body %}
+
+{% block footer %}
+  
+{% endblock footer %}
