@@ -1,0 +1,122 @@
+<!-- module html  -->
+{{ require_css("https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css") }}
+{{ require_js("https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js", "head") }}
+
+<div class="flex flex-wrap items-stretch lg-card-swiper relative h-full">
+
+  <div class="swiper-wrapper h-full border-[#C0E7D8]  flex items-stretch">
+  {% if module.blog_tag.slug %}
+    {% set cta_text = "watch now" %}
+    
+    {% if (module.blog_tag.slug == "reports") %}
+      {% set cta_text = "read more" %}
+    {% endif %}
+
+    {% set blog_tags = blog_recent_tag_posts("default", module.blog_tag.name, 6) %}
+
+    {% for blog_tag in blog_tags %}
+      {% set href=blog_tag.absolute_url %}
+      <div class="border-t py-6 swiper-slide border-[#C0E7D8] w-full ">
+        <div class="rounded-lg w-11/12 border border-[#009061] h-full overflow-hidden relative group">
+          <a href="{{ href }}" class="absolute top-0 left-0 w-full h-full z-10"></a>
+          <div class="h-[310px]">
+            {% if blog_tag.featured_image %}
+            
+              <img class="w-full h-full object-cover" src="{{ blog_tag.featured_image }}" alt="{{ blog_tag.featured_image_alt_text }}" >
+            {% endif %}
+            
+          </div>
+          <div class=" p-6">
+            <p class="mb-1 uppercase">{{ blog_tag.publish_date | datetimeformat('%b %e, %Y') }}</p>
+            <h2 class="!text-[28px] !leading-[38px] ">{{ blog_tag.name }}</h2>
+          
+            <a href="{{ href }}"
+            class="flex relative items-center hover:no-underline">
+              <div>
+                <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-[#009061]">{{cta_text}}</p>
+              </div>
+              <div class="w-4 text-center group-hover:translate-x-0.5 duration-200 transition-transform">
+                <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7 5L10 8L7 11" stroke="#009061" stroke-width="1.5"></path></svg>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+
+  {% else %}
+
+    {% for card in module.lg_cards %}
+
+      {% set href = card.cta.link.url.href %}
+      {% if card.cta.link.url.type is equalto "EMAIL_ADDRESS" %}
+        {% set href = "mailto:" + href %}
+      {% endif %}
+  <div class="border-t py-6 swiper-slide border-[#C0E7D8] w-full">
+    <div class="rounded-lg w-11/12 border border-[#009061]">
+      <div>
+        {% if card.thumbnail.src %}
+          {% set sizeAttrs = 'width="{{ card.thumbnail.width }}" height="{{ card.thumbnail.height }}"' %}
+        
+          {% set loadingAttr = card.thumbnail.loading != 'disabled' ? 'loading="{{ card.thumbnail.loading }}"' : '' %}
+         
+          <img class="w-full" src="{{ card.thumbnail.src }}" alt="{{ card.thumbnail.alt }}" {{ loadingAttr }} >
+        {% endif %}
+        
+      </div>
+      <div class=" p-6">
+        <p class="mb-1 uppercase">{{ card.date }}</p>
+        <h2 class="!text-[28px] !leading-[38px] ">{{ card.title }}</h2>
+      
+        <a href="{{ href }}"
+        {% if card.cta.link.open_in_new_tab %}target="_blank"{% endif %}
+        {% if card.cta.link.rel %}rel="{{ card.cta.link.rel }}"{% endif %} class="flex relative items-center group hover:no-underline">
+          <div>
+            <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-[#009061]">{{ card.cta.text }}</p>
+          </div>
+          <div class="w-4 text-center group-hover:translate-x-0.5 duration-200 transition-transform">
+            <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7 5L10 8L7 11" stroke="#009061" stroke-width="1.5"></path></svg>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+{% endif %}
+{% if module.final_card.show_final_card %}
+    
+  
+  <div class="border-t py-6 swiper-slide border-[#C0E7D8] w-full">
+    <div class="rounded-lg w-11/12 h-full" style="background-color: {% if module.final_card.bg_color.color %} {{ module.final_card.bg_color.color }} {% else %} #1C4633 {% endif %}">
+        <div class="mb-6">
+        {% if module.final_card.texture.src %}
+          {% set sizeAttrs = 'width="{{ module.final_card.texture.width }}" height="{{ module.final_card.texture.height }}"' %}
+          {% if module.final_card.texture.size_type == 'auto' %}
+            {% set sizeAttrs = 'width="{{ module.final_card.texture.width }}" height="{{ module.final_card.texture.height }}" style="max-width: 100%; height: auto;"' %}
+          {% elif module.final_card.texture.size_type == 'auto_custom_max' %}
+            {% set sizeAttrs = 'width="{{ module.final_card.texture.max_width }}" height="{{ module.final_card.texture.max_height }}" style="max-width: 100%; height: auto;"' %}
+          {% endif %}
+           {% set loadingAttr = module.final_card.texture.loading != 'disabled' ? 'loading="{{ module.final_card.texture.loading }}"' : '' %}
+          <img class="w-full" src="{{ module.final_card.texture.src }}" alt="{{ module.final_card.texture.alt }}" {{ loadingAttr }}>
+        {% endif %}
+     
+        </div>
+        <div class="px-6 pb-6">
+          <h2 class="!text-[22px] !leading-[32px] text-white">{% if module.final_card.header  %} {{ module.final_card.header }} {% else %} See All {{ module.blog_tag.name }} {% endif %}</h2>
+        <a href="{% if module.final_card.link.url.href %} {{module.final_card.link.url.href}} {% else %} {{ blog_tag_url("default", module.blog_tag.slug) }} {%endif%}"
+        class="flex relative items-center group hover:no-underline">
+            <div>
+              <p class="m-0 font-plex-mono tracking-widest text-[#009061] uppercase text-[14px]">{% if module.final_card.text %} {{ module.final_card.text }} {% else %} {{ cta_text }} {% endif %}</p>
+            </div>
+            <div class="w-4 text-center group-hover:translate-x-0.5 duration-200 transition-transform">
+              <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7 5L10 8L7 11" stroke="#009061" stroke-width="1.5"></path></svg>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  </div>
+</div>

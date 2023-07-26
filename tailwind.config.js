@@ -19,12 +19,6 @@ module.exports = {
             "plex-mono": ["'IBM Plex Mono'", "monospace"],
         },
         extend: {
-            colors: {
-                pk: {
-                    // grey: "#232323",
-                    // blue: "#0060ff",
-                },
-            },
             animation: {
                 "slide-down": "slide-down .1s ease-out both",
             },

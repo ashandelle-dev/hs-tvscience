@@ -1,0 +1,16 @@
+<!-- module html  -->
+
+<div class="flex flex-wrap md:-mx-6">
+  {% for item in module.nav_items %}
+  <a class="block w-1/2 sm:w-1/3 lg:w-4/12 xl:w-1/5" href="{{ item.anchor }}">
+    <div class="px-6 rounded-full flex items-center hover:bg-[#0FBF84] py-2 group md:justify-center resource-nav-item">
+      <div class="resource-nav-icon">
+        {{ item.icon_svg }}
+      </div>
+      <div class="px-3">
+        <p class="m-0 font-semibold text-[#1C4633] group-hover:text-white whitespace-nowrap">{{ item.text }}</p>
+      </div>
+    </div>
+  </a>
+  {% endfor %}
+</div>

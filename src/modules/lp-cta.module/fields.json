@@ -1,0 +1,109 @@
+[
+  {
+   "type": "choice",
+   "id": "a49ea5c6-fe96-0fda-124f-cee9907b7a08",
+   "display": "radio",
+   "choices": [
+    [
+     "green",
+     "Green"
+    ],
+    [
+     "light_green",
+     "Light Green"
+    ],
+    [
+     "dark_blue",
+     "Dark Blue"
+    ]
+   ],
+   "label": "Background Color",
+   "name": "background_color",
+   "default": "green"
+  },
+  {
+   "type": "image",
+   "id": "1f152aab-20a2-b11d-4124-5075277db81e",
+   "default": {
+    "size_type": "auto",
+    "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/adversiting-playbook-trimmed.png",
+    "alt": "adversiting-playbook-trimmed",
+    "loading": "lazy",
+    "width": 479,
+    "height": 538,
+    "max_width": 479,
+    "max_height": 538
+   },
+   "resizable": true,
+   "responsive": true,
+   "show_loading": false,
+   "label": "Thumbnail",
+   "name": "thumbnail"
+  },
+  {
+   "type": "text",
+   "id": "cfb1d07f-6bea-2f50-147a-282f6ae68ac9",
+   "validation_regex": "",
+   "label": "Label",
+   "name": "main_label"
+  },
+  {
+   "type": "text",
+   "id": "619ac55c-49be-819b-cf99-02a8a60fecfe",
+   "validation_regex": "",
+   "label": "Header",
+   "name": "header"
+  },
+  {
+   "type": "group",
+   "id": "e64cf678-c55c-2847-39f0-4f4914bf5f45",
+   "label": "CTA Button",
+   "children": [
+    {
+     "type": "link",
+     "id": "012c0f11-a080-05bd-b6cd-357b3b3ca310",
+     "default": {
+      "url": {
+       "content_id": null,
+       "type": "EXTERNAL",
+       "href": ""
+      },
+      "open_in_new_tab": false,
+      "no_follow": false
+     },
+     "supported_types": [
+      "EXTERNAL",
+      "CONTENT",
+      "FILE",
+      "EMAIL_ADDRESS",
+      "BLOG",
+      "CALL_TO_ACTION",
+      "PHONE_NUMBER",
+      "WHATSAPP_NUMBER",
+      "PAYMENT"
+     ],
+     "label": "Link",
+     "name": "link"
+    },
+    {
+     "type": "text",
+     "id": "6d80be6f-737c-ae76-bb43-fae73ecd3857",
+     "validation_regex": "",
+     "label": "Text",
+     "name": "text"
+    }
+   ],
+   "name": "cta_button",
+   "default": {
+    "link": {
+     "url": {
+      "content_id": null,
+      "type": "EXTERNAL",
+      "href": ""
+     },
+     "open_in_new_tab": false,
+     "no_follow": false
+    }
+   }
+  }
+ ]

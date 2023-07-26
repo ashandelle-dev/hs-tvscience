@@ -1,0 +1,29 @@
+[
+  {
+   "type": "image",
+   "id": "bd31475a-51b6-2e58-8302-9765a187f135",
+   "default": {
+    "size_type": "auto",
+    "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/jason-HS.jpg",
+    "alt": "jason-HS",
+    "loading": "lazy",
+    "width": 326,
+    "height": 326,
+    "max_width": 326,
+    "max_height": 326
+   },
+   "resizable": true,
+   "responsive": true,
+   "show_loading": false,
+   "label": "Speaker Headshot",
+   "name": "image",
+   "help_text": "Must be a 1:1 ratio for dimensions (square)"
+  },
+  {
+   "type": "richtext",
+   "id": "966ba7bf-60b0-b843-6777-15573a2e9b0f",
+   "label": "Name, title, company",
+   "name": "name_title_company",
+   "default": "<p style=\"font-size: 22px;\">Jason Fairchild</p>\n<p>Co-founder and CEO, tvScientific</p>"
+  }
+ ]

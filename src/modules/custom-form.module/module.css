@@ -1,0 +1,56 @@
+.lp-hero-form .hs-form-field.field .input {
+    /* margin:0 auto; */
+}
+
+
+
+.lp-hero-form .hs-form-field {
+  margin-bottom: 5px;
+}
+
+.lp-hero-form .hs-submit {
+  margin-top: 10px;
+}
+
+select {
+  padding: 15px;
+  border-radius: 3px;
+  height: 50px;
+  padding-right: 30px;
+  font-size: 14px;
+  border-color: blue;
+  position: relative;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background: white url("data:image/svg+xml;utf8,<svg viewBox='0 0 140 140' width='13' height='13' xmlns='http://www.w3.org/2000/svg'><g><path d='m121.3,34.6c-1.6-1.6-4.2-1.6-5.8,0l-51,51.1-51.1-51.1c-1.6-1.6-4.2-1.6-5.8,0-1.6,1.6-1.6,4.2 0,5.8l53.9,53.9c0.8,0.8 1.8,1.2 2.9,1.2 1,0 2.1-0.4 2.9-1.2l53.9-53.9c1.7-1.6 1.7-4.2 0.1-5.8z' fill='black'/></g></svg>") no-repeat;
+  background-position: right 10px top 50%;
+}
+.lp-hero-form .hs-richtext {
+  margin-bottom: 0;
+}
+
+.lp-hero-form .actions .hs-button {
+    --tw-border-opacity: 1;
+    --tw-bg-opacity: 1;
+    --tw-text-opacity: 1;
+    --tw-shadow: 0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px -1px rgba(0,0,0,.1);
+    --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color),0 1px 2px -1px var(--tw-shadow-color);
+    background-color: rgb(15 191 132/var(--tw-bg-opacity));
+    border-color: rgb(15 191 132/var(--tw-border-opacity));
+    border-radius: .25rem;
+    border-width: 2px;
+    box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow);
+    color: rgb(255 255 255/var(--tw-text-opacity));
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    padding: .5rem 1.5rem;
+    text-align: center;
+    text-transform: uppercase;
+    transition-duration: .2s;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(.4,0,.2,1);
+
+}

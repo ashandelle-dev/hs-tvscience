@@ -1,0 +1,39 @@
+[
+  {
+   "type": "group",
+   "id": "55e6c98c-634f-f656-a015-339ef231dbbc",
+   "label": "Nav Items",
+   "children": [
+    {
+     "type": "text",
+     "id": "07724988-c383-80eb-38fd-12dfa4bfd036",
+     "validation_regex": "",
+     "label": "Icon SVG",
+     "name": "icon_svg",
+     "help_text": "Insert SVG Code for icon"
+    },
+    {
+     "type": "text",
+     "id": "c3cd30b7-69b4-4ab6-539d-7b78ecd6e260",
+     "validation_regex": "",
+     "label": "Text",
+     "name": "text"
+    },
+    {
+     "type": "text",
+     "id": "82bf3f47-7d7a-e69e-6c60-e968b6e5336a",
+     "validation_regex": "",
+     "label": "Anchor",
+     "name": "anchor",
+     "default": "#blog"
+    }
+   ],
+   "name": "nav_items",
+   "default": {
+    "anchor": "#blog-section"
+   },
+   "occurrence": {
+    "sorting_label_field": "c3cd30b7-69b4-4ab6-539d-7b78ecd6e260"
+   }
+  }
+ ]

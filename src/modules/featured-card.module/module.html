@@ -1,0 +1,33 @@
+<!-- module html  -->
+{% set href = module.link.url.url.href %}
+{% if module.link.url.url.type is equalto "EMAIL_ADDRESS" %}
+	{% set href = "mailto:" + href %}
+{% endif %}
+<div class="relative overflow-hidden rounded-[8px] py-[100px] group border border-[#0FBF84]">
+  <a href="{{ href }}"
+	{% if module.link.url.open_in_new_tab %}target="_blank"{% endif %}
+	{% if module.link.url.rel %}rel="{{ module.link.url.rel }}"{% endif %} class="absolute w-full h-full inset-0 z-10" ></a>
+  <div class="absolute w-full h-full inset-0">
+
+    {% if module.background_image.src %}
+    
+      {% set loadingAttr = module.background_image.loading != 'disabled' ? 'loading="{{ module.background_image.loading }}"' : '' %}
+      <img class="w-full h-full object-cover" src="{{ module.background_image.src }}" alt="{{ module.background_image.alt }}" {{ loadingAttr }} >
+    {% endif %}
+
+  </div>
+  <div class="relative ">
+    <div class="flex md:justify-end">
+      <div class="w-full  lg:w-8/12 px-[40px]">
+        <p style="font-size: 14px; font-weight: medium;" class="font-plex-mono tracking-widest text-white">{{ module.date }}</p>
+        <h2 class="font-bold text-[30px] text-white" >{{ module.title }}</h2>
+        <a class="flex relative items-center hover:no-underline">
+          <div>
+          <p class="m-0 font-plex-mono tracking-widest uppercase text-white text-[14px]">{{ module.link.text }}</p>
+          </div>
+          <div class="w-4 text-center group-hover:translate-x-0.5 duration-200 transition-transform"><svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7 5L10 8L7 11" stroke="#ffffff" stroke-width="1.5"></path> </svg></div>
+          </a>
+      </div>
+    </div>
+  </div>
+</div>

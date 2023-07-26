@@ -44,6 +44,13 @@
      "type": "link"
     },
     {
+     "type": "text",
+     "id": "1f3b8cac-38ec-089f-85ec-1881b6a2193b",
+     "validation_regex": "",
+     "label": "Dropdown Label",
+     "name": "dropdown_label"
+    },
+    {
      "default": false,
      "display": "toggle",
      "display_width": null,

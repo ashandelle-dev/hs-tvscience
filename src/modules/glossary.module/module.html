@@ -1,0 +1,81 @@
+<!-- module html  -->
+{% set glossary_terms_sort = module.terms|sort(attribute='title') %}
+<div class="alphabet-filter mb-12 flex items-center ">
+
+</div>
+
+<div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 grid-flow-row-dense">
+{% for term in glossary_terms_sort %}
+  <div class="border rounded-lg border-[#009061] py-3 px-3 group hover:bg-[#0FBF84] cursor-pointer glossary-item w-full max-h-[56px] flex items-center">
+    <div>
+      <h3 class="text-[20px] font-medium m-0 text-[#31373D] group-hover:text-white glossary-item-title">{{term.title}}</h3>
+      <div class="glossary-item-description mt-2">
+        <p class="text-lg text-white m-0">{{term.description}}</p>
+      </div>
+    </div>
+   
+  </div>
+
+{% endfor %}
+</div>
+
+
+{% require_js %}  
+<script>
+  var alphabet = [];
+  const glossary_terms = {{ glossary_terms_sort|tojson }};
+
+  for (let i = 0; i < glossary_terms.length; i++) {
+    const term = glossary_terms[i];
+    const firstLetter = term.title.charAt(0).toUpperCase();
+    if (!alphabet.includes(firstLetter)) {
+      alphabet.push(firstLetter);
+    }
+  }
+  
+  // Add alphabet filter to the page
+  const alphabetFilter = document.querySelector('.alphabet-filter');
+  for (let i = 0; i < alphabet.length; i++) {
+    const letter = alphabet[i];
+    alphabetFilter.innerHTML += `<div data-letter="${letter}" class="w-[24px] h-[24px] text-[#1C4633] text-[14px] rounded-full font-semibold m-0 mr-4 hover:text-[#0FBF84] hover:bg-[#0FBF84] hover:text-white alphabet-filter-item cursor-pointer flex items-center justify-center">${letter}</div>`
+  }
+
+  const alphabetFilterItems = document.querySelectorAll('.alphabet-filter-item');
+
+  const glossaryItems = document.querySelectorAll('.glossary-item');
+
+  alphabetFilterItems[0].classList.add('active');
+
+  const firstFilterLetter = alphabetFilterItems[0].dataset.letter;
+
+  filterGlossaryItems(glossaryItems, firstFilterLetter);
+
+  alphabetFilterItems.forEach((item, i, all) => {
+    item.addEventListener('click', (e) => {
+
+      all.forEach(item => {
+        item.classList.remove('active');
+      });
+
+      item.classList.add('active');
+      const letter = e.target.dataset.letter;
+
+      filterGlossaryItems(glossaryItems, letter)
+
+    })
+  });
+
+  function filterGlossaryItems(items, letter) {
+    items.forEach(item => {
+      item.classList.add('hidden');
+      const title = item.querySelector('.glossary-item-title').innerText;
+
+      if (title.charAt(0).toUpperCase() === letter) {
+        item.classList.remove('hidden');
+        }
+    })
+  }
+
+
+</script>
+{% end_require_js %}

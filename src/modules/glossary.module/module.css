@@ -1,0 +1,23 @@
+.glossary-item .glossary-item-description {
+    display: none;
+}
+
+.glossary-item.active {
+    background-color: #0FBF84;
+    border-color: #0FBF84;
+    max-height: 100%;
+}
+
+.glossary-item.active .glossary-item-description {
+    display: block;
+}
+
+.glossary-item.active .glossary-item-title {
+    color:#ffffff;
+}
+
+.alphabet-filter-item.active {
+    background-color: #0FBF84;
+    border-color: #0FBF84;
+    color: #ffffff;
+}
