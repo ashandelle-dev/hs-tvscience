@@ -10,7 +10,6 @@ module.exports = {
         "./src/templates/**/*.html",
         "./src/sections/**/*.html",
         "./src/system/**/*.html",
-
     ],
     theme: {
    
@@ -36,9 +35,8 @@ module.exports = {
             },
             padding: {
                 "DEFAULT": '1rem',
-                lg: "0"
-                
-              },
+                lg: "0"    
+            },
         },
     },
     plugins: [
