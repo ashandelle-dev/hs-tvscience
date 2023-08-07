@@ -10,6 +10,8 @@ module.exports = {
         "./src/templates/**/*.html",
         "./src/sections/**/*.html",
         "./src/system/**/*.html",
+        "./src/macros/**/*.html",
+
     ],
     theme: {
    

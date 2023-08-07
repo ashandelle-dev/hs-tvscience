@@ -35,18 +35,14 @@ module.exports = ({ account, autoupload }) => ({
         }),
         new CopyWebpackPlugin({
             patterns: [
-                // { from: "src/css/main.css", to: "css" },
-                // { from: "src/css/theme-overrides.css", to: "css" },
-                // { from: "src/css/legacy", to: "css/legacy" },
+          
                 { from: "src/images", to: "images" },
-
-                // { from: "src/js", to: "js" },
                 { from: "src/modules", to: "modules" },
                 { from: "src/templates", to: "templates" },
                 { from: "src/layouts", to: "layouts" },
                 { from: "src/partials", to: "partials" },
                 { from: "src/sections", to: "sections" },
-                // { from: "src/system", to: "system" },
+                // { from: "src/macros", to: "macros" },
             ],
         }),
         new MiniCssExtractPlugin({
