@@ -1,102 +1,193 @@
-[
-  {
-   "type": "image",
-   "id": "15c0be10-3235-651d-d1f8-95376f590044",
-   "default": {
-    "size_type": "auto",
-    "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/cta-section-background-texture.png",
-    "alt": "cta-section-background-texture",
-    "loading": "lazy",
-    "width": 1293,
-    "height": 683,
-    "max_width": 1293,
-    "max_height": 683
-   },
-   "resizable": true,
-   "responsive": true,
-   "show_loading": false,
-   "label": "Background Texture",
-   "name": "background_texture"
-  },
-  {
-   "type": "text",
-   "id": "81a35560-0fdd-2d2a-98e3-5ddf13fbe366",
-   "validation_regex": "",
-   "label": "Label",
-   "name": "cta_section_label",
-   "default": "Lorem Ipsum"
-  },
-  {
-   "allow_new_line": false,
-   "default": "Streamline operations and make bigger sales with Prokeep",
-   "display_width": null,
-   "id": "4223c266-d8aa-aa80-09fd-9e5013d1c2c7",
-   "label": "Header",
-   "locked": false,
-   "name": "cta_section_header",
-   "required": false,
-   "show_emoji_picker": false,
-   "type": "text",
-   "validation_regex": ""
-  },
-  {
-   "type": "group",
-   "id": "06b134e1-8321-b8ec-0cc0-5e571816bc0f",
-   "label": "Button",
-   "children": [
-    {
-     "default": {
-      "url": {
-       "content_id": null,
-       "type": "EXTERNAL",
-       "href": ""
-      },
-      "open_in_new_tab": false,
-      "no_follow": false
-     },
-     "display_width": null,
-     "id": "d4ab65ab-2c0a-7f23-62c2-319da2c1b181",
-     "label": "Link",
-     "locked": false,
-     "name": "link",
-     "required": false,
-     "show_advanced_rel_options": false,
-     "supported_types": [
-      "EXTERNAL",
-      "CONTENT",
-      "FILE",
-      "EMAIL_ADDRESS",
-      "BLOG",
-      "CALL_TO_ACTION"
-     ],
-     "type": "link"
-    },
-    {
-     "allow_new_line": false,
-     "default": "Request a Demo",
-     "display_width": null,
-     "id": "8b21961b-6e44-dbc6-f855-a63f1cba837e",
-     "label": "Button Text",
-     "locked": false,
-     "name": "text",
-     "required": false,
-     "show_emoji_picker": false,
-     "type": "text",
-     "validation_regex": ""
-    }
-   ],
-   "name": "cta_section_button",
-   "default": {
-    "link": {
-     "url": {
-      "content_id": null,
-      "type": "EXTERNAL",
-      "href": ""
-     },
-     "open_in_new_tab": false,
-     "no_follow": false
-    },
-    "text": "Request a Demo"
-   }
+[ {
+  "id" : "15c0be10-3235-651d-d1f8-95376f590044",
+  "name" : "background_texture",
+  "display_width" : null,
+  "label" : "Background Texture",
+  "required" : false,
+  "locked" : false,
+  "responsive" : true,
+  "resizable" : true,
+  "show_loading" : false,
+  "type" : "image",
+  "default" : {
+    "size_type" : "auto",
+    "src" : "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/cta-section-background-texture.png",
+    "alt" : "cta-section-background-texture",
+    "loading" : "lazy",
+    "width" : 1293,
+    "height" : 683,
+    "max_width" : 1293,
+    "max_height" : 683
   }
- ]
+}, {
+  "id" : "81a35560-0fdd-2d2a-98e3-5ddf13fbe366",
+  "name" : "cta_section_label",
+  "display_width" : null,
+  "label" : "Label",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Lorem Ipsum"
+}, {
+  "id" : "4223c266-d8aa-aa80-09fd-9e5013d1c2c7",
+  "name" : "cta_section_header",
+  "display_width" : null,
+  "label" : "Header",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Streamline operations and make bigger sales with Prokeep"
+}, {
+  "id" : "f4720ce5-80ce-66ea-a418-d4fee6305526",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "43572f2f-1b3d-61bb-3e17-e6970cfa10af",
+    "name" : "background_color",
+    "display_width" : null,
+    "label" : "Background Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : "#1c4633",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "f94d070e-66b4-89a9-49f7-5ef028424014",
+    "name" : "label_text_color",
+    "display_width" : null,
+    "label" : "Label Text Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : "#C0E7D8",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "f00d3244-c43c-3a50-6840-749d17dd1dd9",
+    "name" : "header_text_color",
+    "display_width" : null,
+    "label" : "Header Text Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : "#ffffff",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "bba2d082-e6e5-407f-99ff-19d5552c6f1e",
+    "name" : "button_color",
+    "display_width" : null,
+    "label" : "Button Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : "#0fbf84",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "8a66d663-7bad-c54c-f4f9-69280b3b7a34",
+    "name" : "button_text_color",
+    "display_width" : null,
+    "label" : "Button Text Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : "#ffffff",
+      "opacity" : 100
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "background_color" : {
+      "color" : "#1c4633",
+      "opacity" : 100
+    },
+    "label_text_color" : {
+      "color" : "#C0E7D8",
+      "opacity" : 100
+    },
+    "header_text_color" : {
+      "color" : "#ffffff",
+      "opacity" : 100
+    },
+    "button_color" : {
+      "color" : "#0fbf84",
+      "opacity" : 100
+    },
+    "button_text_color" : {
+      "color" : "#ffffff",
+      "opacity" : 100
+    }
+  }
+}, {
+  "id" : "06b134e1-8321-b8ec-0cc0-5e571816bc0f",
+  "name" : "cta_section_button",
+  "display_width" : null,
+  "label" : "Button",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "d4ab65ab-2c0a-7f23-62c2-319da2c1b181",
+    "name" : "link",
+    "display_width" : null,
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "default" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }, {
+    "id" : "8b21961b-6e44-dbc6-f855-a63f1cba837e",
+    "name" : "text",
+    "display_width" : null,
+    "label" : "Button Text",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Request a Demo"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "link" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    },
+    "text" : "Request a Demo"
+  }
+} ]
