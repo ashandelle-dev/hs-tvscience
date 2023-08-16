@@ -1,10 +1,9 @@
 {
   "name": "tvscientific-theme",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack --watch --mode development --env autoupload"
+    "start": "webpack --watch --mode development"
   },
   "author": "",
   "license": "ISC",
@@ -31,5 +30,15 @@
     "ajv": "^8.11.0",
     "flickity": "^3.0.0",
     "tailwindcss-scoped-groups": "^2.0.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chat-clussman/hs-tvscience.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/chat-clussman/hs-tvscience/issues"
+  },
+  "homepage": "https://github.com/chat-clussman/hs-tvscience#readme",
+  "description": ""
 }

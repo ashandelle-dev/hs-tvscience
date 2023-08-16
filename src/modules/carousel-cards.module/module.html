@@ -10,12 +10,16 @@
     {% if (module.card_tag.slug == "reports") %}
       {% set cta_text = "read more" %}
     {% endif %}
+    {% if (module.card_tag.slug == "news") %}
+      {% set cta_text = "read more" %}
+    {% endif %}
     {% set card_tags = blog_recent_tag_posts("default", module.card_tag.name, 6) %}
     {% for card_tag in card_tags %}
     
       {% set card_bg_color = module.card_theme.odd_card_background_color.color %}
     
       {% set card_texture = module.card_theme.odd_card_texture.src %}
+      {% set card_text_color = module.card_theme.card_text_color.color %}
   
       {% if loop.index % 2 == 0 %}
 
@@ -27,22 +31,24 @@
       {% set href=card_tag.absolute_url %}
 
     <div class="border-t py-6 swiper-slide border-[#C0E7D8] w-full" >
-      <div style="background-color: {{card_bg_color}}" class="rounded-lg w-11/12 h-full relative group">
+      <div style="background-color: {{card_bg_color}};" class="rounded-lg w-11/12 h-full relative group">
         <a href="{{ href }}" class="absolute top-0 left-0 w-full h-full z-10"></a>
         <div>
           {% if card_texture %}
             <img class="w-full" src="{{ card_texture }}" alt="{{ card_tag.featured_image_alt_text }}" >
+          {% else %}
+            <img class="w-full" src="{{ card_tag.featured_image }}" alt="" {{ loadingAttr }} >
           {% endif %}
           
         </div>
         <div class="px-6 pb-6">
-          <h2 class="!text-[22px] !leading-[32px] text-white">{{ card_tag.name }}</h2>
+          <h2 class="!text-[22px] !leading-[32px]" style="color: {{card_text_color}};">{{ card_tag.name }}</h2>
         
           <a href="{{ href }}"
           {% if card.cta.link.open_in_new_tab %}target="_blank"{% endif %}
           {% if card.cta.link.rel %}rel="{{ card.cta.link.rel }}"{% endif %} class="flex relative items-center hover:no-underline">
             <div>
-              <p class="m-0 font-plex-mono tracking-widest text-white uppercase text-[14px]">{{ cta_text }}</p>
+              <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px]" style="color: {{card_text_color}};">{{ cta_text }}</p>
             </div>
             <div class="w-4 text-center group-hover:translate-x-0.5 duration-200 transition-transform">
               <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7 5L10 8L7 11" stroke="#ffffff" stroke-width="1.5"></path></svg>

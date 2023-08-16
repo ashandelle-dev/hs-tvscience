@@ -5,7 +5,8 @@
   screenshotPath: ../images/template-previews/blog-post.png
 -->
 {% extends "./../layouts/base.html" %}
-
+{% text "title_link" label='Title Link', export_to_template_context=True %}
+{% image "publication_logo" label='Publication Logo', export_to_template_context=True%}
 {% block body %}
 <main class="body-container-wrapper container">
   <div class="body-container body-container--blog-post">

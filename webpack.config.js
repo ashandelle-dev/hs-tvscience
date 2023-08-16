@@ -27,12 +27,12 @@ module.exports = ({ account, autoupload }) => ({
     },
 
     plugins: [
-        new HubSpotAutoUploadPlugin({
-            account,
-            autoupload,
-            src: "dist",
-            dest: "tvScientific\ 2022\ Atlas\ Pro/cli-build",
-        }),
+        //new HubSpotAutoUploadPlugin({
+         //   account,
+        //    autoupload,
+         //   src: "dist",
+        //    dest: "tvScientific\ 2022\ Atlas\ Pro/cli-build",
+        //}),
         new CopyWebpackPlugin({
             patterns: [
           

@@ -112,6 +112,13 @@
         {% set tag_id = "Ebooks" %}
       {% endif %}
 
+      {% if tag == "news" %}
+        {% set tag_id = "News" %}
+      {% endif %}
+      {% if tag == "press-release" %}
+        {% set tag_id = "Press Releases" %}
+      {% endif %}
+
     {# Blog tag listing #}
     <div class=" pt-20">
       <div class="mb-12">
@@ -172,31 +179,63 @@
       </div>
     </div>
     {# End blog header #}
-    {% endif %}
+    {% endif %} 
+
+    {% if tag == "press-release" %}
+      <section class="w-full flex flex-wrap gap-x-16 gap-y-10">
+
+        {% for content in contents %}
+        <div class="flex-1">
+          <div class="border-t border-[#009061] relative h-full py-6">
+            <p class="mb-1 uppercase text-[#1E4D83]">{{ content.publish_date | datetimeformat('%b %e, %Y') }}</p>
+            <a href="{{ content.absolute_url }}">
+              <h2 class="!text-[22px] !leading-[32px] tracking[.22px] font-medium">{{ content.name }}</h2>
+            </a>
+          </div>
+        </div>
+        {% endfor %}
+      </section>
+    {% else %}
 
       <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-2 gap-y-4 md:gap-x-4 md:gap-y-8 mb-12">
 
         {# Blog listing #}
         {% for content in contents %}
+        {# the following picks up information from news posts #}
+        {% set pub_logo = content.widgets.publication_logo.body.src %}
+        {% set out_link = content.widgets.title_link.body.value %}
         {# On the blog listing page, the first post will be featured above older posts #}
 
         <article class="h-full">
           <div class="rounded-lg border h-full border-[#009061] overflow-hidden relative group">
+            {% unless out_link %}
             <a href="{{ content.absolute_url }}" class="absolute top-0 left-0 w-full h-full z-10"></a>
+            {% else %}
+            <a href="{{out_link}}" target="_blank" class="absolute top-0 left-0 w-full h-full z-10"></a>
+            {% endunless %}
+            {% unless pub_logo %}
             <div class="h-[170px]">
               {% if content.featured_image %}
               <img alt="{{ content.name }} thumbnail graphic" class="w-full h-full object-cover" src="{{ content.featured_image }}" alt="" {{ loadingAttr }} >
               {% endif %}
             </div>
+            {% else %}
+            <div class="h-[170px] flex">
+              <img alt="{{ content.name }} thumbnail graphic" class="p-6" src="{{ pub_logo }}" alt="" {{ loadingAttr }} >
+            </div>
+            {% endunless %}
+            
             <div class=" p-6">
     
               {% if tag != "reports"  %}
               <p class="mb-3 uppercase text-[#009061] font-medium ">{{ content.publish_date | datetimeformat('%b %e, %Y') }}</p>
               {% endif  %}
               <h2 class="!text-[22px] !leading-[28px] mb-6 font-medium text-[#31373D]">{{ content.name }}</h2>
-            
-              <a href="{{ content.absolute_url }}"
-              class="flex absolute bottom-3 left-0 px-6 items-center hover:no-underline">
+              {% unless out_link %}
+              <a href="{{ content.absolute_url }}" class="flex absolute bottom-3 left-0 px-6 items-center hover:no-underline">
+              {% else %}
+              <a href="{{ out_link }}" class="flex absolute bottom-3 left-0 px-6 items-center hover:no-underline" target="_blank">
+              {% endunless %}
                 <div>
                   <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-[#009061]">Read now</p>
                 </div>
@@ -212,7 +251,7 @@
         {# End blog listing #}
 
       </section>
-
+    {% endif %}
       {# Blog pagination #}
       {% if contents.total_page_count > 1 %}
       {% set page_index = current_page_num > 0 ? current_page_num : 1 %}
