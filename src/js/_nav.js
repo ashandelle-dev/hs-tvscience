@@ -67,3 +67,22 @@ mobileNavDropdownOpen.addEventListener("click", function(e) {
 });
 
 }
+function getCookie (name) {
+  let value = `; ${document.cookie}`;
+  let parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
+document.addEventListener("DOMContentLoaded", (event) => {
+  document.addEventListener('click', function (event) {
+    if (!event.target.matches('svg')) return;
+    event.preventDefault();
+    document.querySelector('.header-banner').style.display = 'none';
+    document.cookie = 'banner=closed;max-age=${60 * 60 * 24 * 14};';
+
+  }, false);
+  let bannerVis = getCookie('banner');
+  if(bannerVis == 'closed') {
+    document.querySelector('.header-banner').classList.add('hidden');
+  }
+});
