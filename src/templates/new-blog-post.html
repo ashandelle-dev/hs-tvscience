@@ -33,48 +33,60 @@
         <p class="blog-post__summary">{{ content.meta_description|striptags  }}</p>
         {% endif %}
 
-		<div class="blog-post__meta">
-			<div class="blog-post__bio">
-				{% if content.blog_post_author.avatar %}
-				<div class="blog-post__avatar" 
-					 style="background-image: url('{{ content.blog_post_author.avatar }}');">
-				</div>
-				{% endif %}
+    <div class="blog-post__meta">
+      <div class="blog-post__bio">
+        {% if content.blog_post_author.avatar %}
+        <div class="blog-post__avatar" 
+           style="background-image: url('{{ content.blog_post_author.avatar }}');">
+        </div>
+        {% endif %}
 
-				<div class="blog-post__author">
-					<a href="{{ blog_author_url(group.id, content.blog_post_author.slug) }}">
-						{{ content.blog_post_author.display_name }}
-					</a>
-					<div class="blog-post__timestamp">
-						{{ content.publish_date | datetimeformat('%b %e, %Y') }}
-					</div>
-				</div>
-			</div>
-		   <div class="blog-post__social-sharing">
-			    {% module "Social Sharing" path="../modules/Social Sharing.module" 
-					facebook={
-						"enabled": true
-					}
-					linkedin={
-						"enabled": true
-					}
-					twitter={
-						"enabled": true
-					}
-					email={
-						"enabled": true
-					}
-					%}
-		   </div>
-		</div>
+        <div class="blog-post__author">
+          <a href="{{ blog_author_url(group.id, content.blog_post_author.slug) }}">
+            {{ content.blog_post_author.display_name }}
+          </a>
+          <div class="blog-post__timestamp">
+            {{ content.publish_date | datetimeformat('%b %e, %Y') }}
+          </div>
+        </div>
+      </div>
+       <div class="blog-post__social-sharing">
+          {% module "Social Sharing" path="../modules/Social Sharing.module" 
+          facebook={
+            "enabled": true
+          }
+          linkedin={
+            "enabled": true
+          }
+          twitter={
+            "enabled": true
+          }
+          email={
+            "enabled": true
+          }
+          %}
+       </div>
+    </div>
 
         <hr class="blog-post__divider" />
-
-        <div class="blog-post__body-wrapper">
-
-          <div class="blog-post__body">
-            {{ content.post_body }}
-          </div>
+        {% if group.public_title == "Ebooks" %}
+        <div class="blog-post__body-wrapper w-full" style="max-width: max-content;">
+          
+            <div class="blog-post__body flex">
+              <div class="pr-4 w-full md:w-1/2">
+                {{ content.post_body }}
+              </div>
+              <div class="w-full md:w-1/2">
+                {% module "gated_form" path="@hubspot/form", label="form.module" %}
+              </div>
+            </div>
+        
+          {% else %}
+         <div class="blog-post__body-wrapper">
+            <div class="blog-post__body">
+              {{ content.post_body }}
+            </div>
+          {% endif %}
 
           {% if content.tag_list %}
           <div class="blog-post__tags">

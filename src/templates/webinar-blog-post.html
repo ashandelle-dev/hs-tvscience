@@ -1,0 +1,175 @@
+<!--
+  templateType: blog_post
+  isAvailableForNewContent: true
+  label: Webinar blog post
+  screenshotPath: ../images/template-previews/blog-post.png
+-->
+{% extends "./../layouts/base.html" %}
+<link href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+
+{% block body %}
+
+{% choice "layout" label='Layout', choices=[["layout-a","Layout A"],["layout-b","Layout B"]], multiple='False', display='radio',export_to_template_context=True %}
+{% text "webinar_date" label='Date', export_to_template_context=True %}
+{% text "webinar_time" label='Time', export_to_template_context=True %}
+{% if content.widgets.layout.body.value %}
+  {% set page_layout = content.widgets.layout.body.value %}
+{% endif %}
+<style>
+  .sticky-section .cta-container {
+    position: sticky;
+    top: 20px;
+    height: 100%;
+  }
+  hr {
+    border: 0 none;
+    border-bottom: 1px solid rgba(192,231,216,1.0);
+    margin: 0 auto 20px auto;
+    width: 100%;
+  }
+  .content-wrapper {
+    padding: 4.5rem 20px;
+  }
+  .blog-post {
+    padding: 0;
+  }
+  .blog-post_title {
+    color: #1c4633;
+  }
+</style>
+{% if page_layout == "layout-a" %}
+{# Layout A #}
+{# Blog header #}
+<div class="webinar-header py-20 text-white bg-cover bg-no-repeat" style="background-image: url('{{ content.featured_image }}');">
+  <div class="flex container gap-8 items-center">
+    <div class="w-full md:w-2/3">
+      <a href="https://www.tvscientific.com/insight/tag/webinar?hsLang=en" class="flex relative items-center group hover:no-underline mb-10">
+        <div class="w-4 text-center group-hover:-translate-x-0.5 duration-200 transition-transform"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M9 5L6 8L9 11" stroke="white" stroke-width="1.5"></path> </svg></div>
+        <div class="px-3">
+        <p class="m-0 font-plex-mono tracking-widest uppercase" style="font-size: 14px;"><span style="color: #ffffff;">Back to all webinars</span></p>
+        </div>
+      </a>
+      <div class="flex flex-row text-sm font-bold">
+        <p>{{content.widgets.webinar_date.body.value}}</p><span class="text-[#1dafff] px-3">•</span><p>{{content.widgets.webinar_time.body.value}}</p>
+      </div>
+      <h1 class="blog-post__title text-white">{{ content.name }}</h1>
+      {% if theme.blog.show_summary %}
+        <p class="blog-post__summary">{{ content.meta_description|striptags }}</p>
+      {% endif %}
+      <hr />
+      {% module "module_16929251484572" path="/tvScientific 2022 Atlas Pro/cli-build/modules/speaker-info", label="speaker-info" %}
+    </div>
+    <div class="w-full md:w-1/3">
+      {% module "gated_form" path="../modules/custom-form.module", label="Webinar form", form_background_color={"color"="#FFFFFF"}, form_input_background_color={"color":"#E5E7EB"} %}
+    </div>
+  </div>
+</div>
+{# End blog header #}
+{% endif %}
+<main class="body-container-wrapper container">
+  <div class="body-container body-container--blog-post">
+
+    
+    {# Blog post #}
+    <div class="py-16 gap-8 flex sticky-section relative">
+      
+      <div class="w-full md:w-2/3">
+      
+        <article class="blog-post">
+          {% if page_layout != "layout-a" %}
+          <h1 class="blog-post__title">{{ content.name }}</h1>
+          {% if theme.blog.show_summary %}
+            <p class="blog-post__summary">{{ content.meta_description|striptags }}</p>
+          {% endif %}
+          <hr />
+          <div class="blog-post__meta flex">
+            <div class="w-2/3">
+            </div>
+             <div class="blog-post__social-sharing w-full md:w-1/3">
+
+                {% module "Social Sharing" path="/tvScientific 2022 Atlas Pro/modules/Social Sharing.module" 
+                facebook={
+                  "enabled": true
+                }
+                linkedin={
+                  "enabled": true
+                }
+                twitter={
+                  "enabled": true
+                }
+                email={
+                  "enabled": true
+                }
+                %}
+             </div>
+          </div>
+
+          {% endif %}
+          {{ content.post_body }}
+
+          
+
+        </article>
+
+        {% if group.allow_comments %}
+        <div class="blog-comments">
+          {% module 'blog_comments' path='@hubspot/blog_comments', label="Blog comments" %}
+        </div>
+        {% endif %}
+      </div>
+      
+      <div class="w-full md:w-1/3 cta-container">
+        {% if page_layout != "layout-a" %}
+          {% module "gated_form" path="../modules/custom-form.module", label="Webinar form", form_background_color={"color"="#E5E7EB"}, form_input_background_color={"color":"#FFFFFF"} %}
+        {% else %}
+          <a class="hs-button w-full " href="#webinar-form" rel="noopener"> rsvp today </a>
+          <hr class="my-5 border-b-[#1e4d83]">
+          <div class="flex flex-row">
+            <div class="w-1/3">
+              <p class="tracking-widest m-0 uppercase" style="color: #9aa0a6; font-size: 14px;"><strong>Share</strong></p>
+            </div>
+            <div class="w-2/3">
+              {% module "Social Sharing" path="/tvScientific 2022 Atlas Pro/modules/Social Sharing.module" 
+                    facebook={
+                      "enabled": true
+                    }
+                    linkedin={
+                      "enabled": true
+                    }
+                    twitter={
+                      "enabled": true
+                    }
+                    email={
+                      "enabled": true
+                    }
+                %}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+      
+    </div>
+    {# End blog post #}
+
+    
+  </div>
+</main>
+<div class="container pb-20">
+  <div id="webinars-section" class="flex items-center">
+    <div><svg width="35" height="27" viewBox="0 0 35 27" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M22.2984 11.975C23.3584 9.41593 22.1432 6.48208 19.5841 5.42207C17.025 4.36207 14.0911 5.57731 13.0311 8.13639C11.9711 10.6955 13.1864 13.6293 15.7454 14.6893C18.3045 15.7493 21.2384 14.5341 22.2984 11.975Z" fill="#1C4633"></path> <path d="M31.2766 0.273438H4.05284C2.12768 0.273438 0.561523 1.83959 0.561523 3.76475V23.0556C0.561523 24.9807 2.12768 26.5469 4.05284 26.5469H31.2766C33.2018 26.5469 34.7679 24.9807 34.7679 23.0556V3.76475C34.7679 1.83959 33.2018 0.273438 31.2766 0.273438ZM31.8727 23.0556C31.8727 23.3786 31.5997 23.6516 31.2766 23.6516H26.4344C26.2854 19.9241 23.2197 16.9493 19.4553 16.9493H15.8741C12.1098 16.9493 9.04406 19.9241 8.89504 23.6516H4.05284C3.72977 23.6516 3.45676 23.3786 3.45676 23.0556V3.76475C3.45676 3.44168 3.72977 3.16868 4.05284 3.16868H31.2766C31.5997 3.16868 31.8727 3.44168 31.8727 3.76475V23.0556Z" fill="#1C4633"></path> </svg></div>
+    <div class="px-3">
+      <h2 style="margin: 0px; font-weight: bold;"><span style="color: #1c4633;">Watch Other Webinars</span></h2>
+    </div>
+  </div>
+  <a href="https://www.tvscientific.com/insight/tag/webinar?hsLang=en" class="flex relative items-center group hover:no-underline">
+    <div>
+      <p class="m-0 font-plex-mono tracking-widest text-[#009061] uppercase ">View all webinars</p>
+    </div>
+    <div class="w-4 text-center group-hover:translate-x-0.5 duration-200 transition-transform"><svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7 5L10 8L7 11" stroke="#009061" stroke-width="1.5"></path> </svg></div>
+  </a>
+  {% module "module_16929490274614" path="/tvScientific 2022 Atlas Pro/cli-build/modules/carousel-cards-lg", label="carousel-cards-lg", blog_tag={"name"="Event"} %}
+</div>
+<div class="container pb-20">
+  {% module "module_16929485389853" path="/tvScientific 2022 Atlas Pro/cli-build/modules/cta-section", label="cta-section" %}
+</div>
+{% endblock body %}

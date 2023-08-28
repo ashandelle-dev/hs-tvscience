@@ -2,7 +2,7 @@
 {{ require_css("https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css") }}
 {{ require_js("https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js", "head") }}
 
-{% set contents = blog_recent_posts(module.blog | default('default'), 6 )%}
+{% set contents = blog_recent_tag_posts("default", "blog", 6) %}
 
 <div class="flex flex-wrap items-stretch latest-posts-swiper relative ">
   <div class="swiper-wrapper h-full border-[#C0E7D8] -mx-3 flex items-stretch">

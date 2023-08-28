@@ -9,7 +9,7 @@
   "global": false,
   "help_text": "",
   "host_template_types": [
-    "PAGE"
+    "PAGE","BLOG_POST"
   ],
   "js_assets": [
     {

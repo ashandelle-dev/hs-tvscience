@@ -1,17 +1,7 @@
 {
-  "label": "Carousel Cards Large",
-  "css_assets": [],
-  "external_js": [],
-  "global": false,
-  "help_text": "",
-  "host_template_types": [
-    "PAGE"
-  ],
-  "js_assets": [],
-  "other_assets": [
-
-  ],
-  "smart_type": "NOT_SMART",
-  "tags": [],
-  "is_available_for_new_content": true
+  "global" : false,
+  "host_template_types" : [ "PAGE", "BLOG_POST" ],
+  "module_id" : 123748103282,
+  "label" : "Carousel Cards Large",
+  "is_available_for_new_content" : true
 }

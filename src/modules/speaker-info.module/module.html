@@ -1,18 +1,22 @@
-<!-- module html  -->
+<!-- item.html  -->
+<div class="flex flex-wrap">
+{% for item in module.speaker %}
 <div class="flex items-center">
   <div class="w-[48px]">
-    {% if module.image.src %}
-	{% set sizeAttrs = 'width="{{ module.image.width }}" height="{{ module.image.height }}"' %}
-	{% if module.image.size_type == 'auto' %}
-		{% set sizeAttrs = 'width="{{ module.image.width }}" height="{{ module.image.height }}" style="max-width: 100%; height: auto;"' %}
-	{% elif module.image.size_type == 'auto_custom_max' %}
-		{% set sizeAttrs = 'width="{{ module.image.max_width }}" height="{{ module.image.max_height }}" style="max-width: 100%; height: auto;"' %}
+    {% if item.image.src %}
+	{% set sizeAttrs = 'width="{{ item.image.width }}" height="{{ item.image.height }}"' %}
+	{% if item.image.size_type == 'auto' %}
+		{% set sizeAttrs = 'width="{{ item.image.width }}" height="{{ item.image.height }}" style="max-width: 100%; height: auto;"' %}
+	{% elif item.image.size_type == 'auto_custom_max' %}
+		{% set sizeAttrs = 'width="{{ item.image.max_width }}" height="{{ item.image.max_height }}" style="max-width: 100%; height: auto;"' %}
 	{% endif %}
-	 {% set loadingAttr = module.image.loading != 'disabled' ? 'loading="{{ module.image.loading }}"' : '' %}
-	<img class="rounded-full w-full" src="{{ module.image.src }}" alt="{{ module.image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+	 {% set loadingAttr = item.image.loading != 'disabled' ? 'loading="{{ item.image.loading }}"' : '' %}
+	<img class="rounded-full w-full" src="{{ item.image.src }}" alt="{{ item.image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
 {% endif %}
   </div>
   <div class="w-full px-3 speaker-info-details">
-    {% inline_rich_text field="name_title_company" value="{{ module.name_title_company }}" %}
+    {% inline_rich_text field="name_title_company" value="{{ item.name_title_company }}" %}
   </div>
+</div>
+{% endfor %}
 </div>

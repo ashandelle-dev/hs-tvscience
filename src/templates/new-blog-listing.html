@@ -10,6 +10,7 @@
 
 {% block body %}
 
+
 <main class="body-container-wrapper container">
   <div class="body-container body-container--blog-index">
 
@@ -138,8 +139,10 @@
         <h1 class="text-[#1C4633] capitalize">All 
           {% if tag_id %}
             {{ tag_id }}
-          {% else %}
+          {% elif %}
             {{ tag }}
+          {% else %}
+            {{blog.public_title}}
           {% endif %}</h1>
       </div>
       {% if theme.blog.header_image.src %}
@@ -165,10 +168,23 @@
 
     {% else %}
     {# Blog header #}
-    <div class=" pt-20 mb-12">
+    <div class="pt-20 mb-12">
+      <div class="mb-12">
+        <a href="https://www.tvscientific.com/resources"
+          class="flex relative items-center hover:no-underline group">
+          <div class="w-4 text-center group-hover:-translate-x-0.5 duration-200 transition-transform">
+            <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9.55957 5L6.55957 8L9.55957 11" stroke="#009061" stroke-width="1.5"/>
+              </svg>
+          </div>
+          <div class="px-3">
+            <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-[#009061]">Back to Resources</p>
+          </div>
+        </a>
+      </div>
       <div class="content-wrapper">
         <div class="">
-          <h1 class="text-[#1C4633]">{{ group.public_title }}</h1>
+          <h1 class="text-[#1C4633]">All {{ group.public_title }}</h1>
           {% if theme.blog.header_image.src %}
           <div class="blog-header__image">
             {{ render_image(theme.blog.header_image) }}
@@ -181,11 +197,11 @@
     {# End blog header #}
     {% endif %} 
 
-    {% if tag == "press-release" %}
-      <section class="w-full flex flex-wrap gap-x-16 gap-y-10">
+    {% if blog.public_title == "Press" %}
+      <section class="w-full grid gap-10 grid-cols-2">
 
         {% for content in contents %}
-        <div class="flex-1">
+        <div class="w-full">
           <div class="border-t border-[#009061] relative h-full py-6">
             <p class="mb-1 uppercase text-[#1E4D83]">{{ content.publish_date | datetimeformat('%b %e, %Y') }}</p>
             <a href="{{ content.absolute_url }}">

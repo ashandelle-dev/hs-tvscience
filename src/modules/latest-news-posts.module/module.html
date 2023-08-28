@@ -7,11 +7,15 @@
 <div class="flex flex-wrap items-stretch latest-posts-swiper relative ">
   <div class="swiper-wrapper h-full border-[#C0E7D8] -mx-3 flex items-stretch">
 	{% for content in contents %}
+    {% set pub_logo = content.widgets.publication_logo.body.src %}
+    {% set out_link = content.widgets.title_link.body.value %}
     <div class="swiper-slide px-3 h-full">
       <div class="rounded-lg border h-full border-[#009061] overflow-hidden relative group p-6">
         <a href="{{ content.absolute_url }}" class="absolute top-0 left-0 w-full h-full z-10"></a>
-        <div class="border-b border-[#C0E7D8] pb-6">   
-          <img class="w-full" src="{{ content.featured_image }}" alt="" {{ loadingAttr }} >
+        <div class="border-b border-[#C0E7D8] pb-6 h-[170px] flex items-center">
+
+              <img alt="{{ content.name }} thumbnail graphic" class="inline px-6" src="{{ pub_logo }}" alt="" {{ loadingAttr }} >
+            
         </div>
         <div class="pt-6">
           <p class="mb-1 uppercase text-[#009061]">{{ content.publish_date | datetimeformat('%b %e, %Y') }}</p>

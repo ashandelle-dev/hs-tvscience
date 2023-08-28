@@ -38,9 +38,13 @@
         {{ module.cta_section_header }}
       </p>
       {% if href %}
-      <a href="{{href}}" 
-      {% if module.cta_section_button.link.open_in_new_tab %}target="_blank"{% endif %}
-      {% if module.cta_section_button.link.rel %}rel="{{ module.cta_section_button.link.rel }}"{% endif %} class="hs-button mb-12 lg:mb-0" style="background-color: {{button_bg}}; color: {{button_color}};">{{ module.cta_section_button.text }}</a>
+        {% if module.cta_section_button.link.url.type is equalto "EMAIL_ADDRESS" %}
+          <p style="color: {{header_color}};">Please email <a href="{{href}}">{{module.cta_section_button.link.url.href}}</a></p>
+        {% else %}
+          <a href="{{href}}" 
+          {% if module.cta_section_button.link.open_in_new_tab %}target="_blank"{% endif %}
+          {% if module.cta_section_button.link.rel %}rel="{{ module.cta_section_button.link.rel }}"{% endif %} class="hs-button mb-12 lg:mb-0" style="background-color: {{button_bg}}; color: {{button_color}};">{{ module.cta_section_button.text }}</a>
+        {% endif %}
       {% endif %}
     </div>
   </div>

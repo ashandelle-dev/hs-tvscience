@@ -1,19 +1,26 @@
 <!-- module html  -->
 {{ require_css("https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css") }}
 {{ require_js("https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js", "head") }}
-
+{% set select_blog = blog_by_id(module.card_blog) %}
+{% set blog_title = select_blog.public_title %}
 <div class="flex flex-wrap items-stretch card-swiper relative ">  
   <div class="swiper-wrapper h-full border-[#C0E7D8] flex items-stretch">
-  {% if module.card_tag.slug %}
+   
+  {% if module.card_tag.slug or module.card_blog %}
 
     {% set cta_text = "watch now" %}
-    {% if (module.card_tag.slug == "reports") %}
+    {% if (blog_title == "Ebooks") %}
       {% set cta_text = "read more" %}
     {% endif %}
     {% if (module.card_tag.slug == "news") %}
       {% set cta_text = "read more" %}
     {% endif %}
-    {% set card_tags = blog_recent_tag_posts("default", module.card_tag.name, 6) %}
+    {% unless select_blog %}
+      {% set card_tags = blog_recent_tag_posts("default", module.card_tag.name, 6) %}
+      
+    {% else %}
+      {% set card_tags = blog_recent_posts(module.card_blog, 6) %}
+    {% endunless %}
     {% for card_tag in card_tags %}
     
       {% set card_bg_color = module.card_theme.odd_card_background_color.color %}
