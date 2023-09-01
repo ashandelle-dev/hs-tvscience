@@ -12,6 +12,12 @@
    }
   },
   {
+  "type": "blog",
+  "id": "",
+  "label": "Blog",
+  "name": "card_blog"
+ },
+  {
    "children": [
     {
      "allow_new_line": false,

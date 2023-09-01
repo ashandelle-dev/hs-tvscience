@@ -5,16 +5,28 @@
   screenshotPath: ../images/template-previews/blog-post.png
 -->
 {% extends "./../layouts/base.html" %}
-<link href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
 
 {% block body %}
 
 {% choice "layout" label='Layout', choices=[["layout-a","Layout A"],["layout-b","Layout B"]], multiple='False', display='radio',export_to_template_context=True %}
 {% text "webinar_date" label='Date', export_to_template_context=True %}
 {% text "webinar_time" label='Time', export_to_template_context=True %}
+{% image "webinar_hero" label='Hero Background', export_to_template_context=True %}
+{% text "summary" label='Summary', export_to_template_context=True %}
+{% image "card_image" label='Card Image', export_to_template_context=True %}
 {% if content.widgets.layout.body.value %}
   {% set page_layout = content.widgets.layout.body.value %}
 {% endif %}
+{% if content.widgets.webinar_hero.body.src %}
+  {% set hero_background = content.widgets.webinar_hero.body.src %}
+{% else %}
+  {% set hero_background = content.featured_image %}
+{% endif %}
+{% if content.widgets.gated_form.body.form.form_id %}
+  {% set has_form = true %}
+{% endif %}
+<link href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 <style>
   .sticky-section .cta-container {
     position: sticky;
@@ -37,27 +49,37 @@
     color: #1c4633;
   }
 </style>
+
 {% if page_layout == "layout-a" %}
 {# Layout A #}
 {# Blog header #}
-<div class="webinar-header py-20 text-white bg-cover bg-no-repeat" style="background-image: url('{{ content.featured_image }}');">
+<div class="webinar-header py-20 text-white bg-cover bg-no-repeat" style="background-image: url('{{ hero_background }}');">
   <div class="flex container gap-8 items-center">
     <div class="w-full md:w-2/3">
-      <a href="https://www.tvscientific.com/insight/tag/webinar?hsLang=en" class="flex relative items-center group hover:no-underline mb-10">
+      <a href="{{ group.absolute_url }}" class="flex relative items-center group hover:no-underline mb-10">
         <div class="w-4 text-center group-hover:-translate-x-0.5 duration-200 transition-transform"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M9 5L6 8L9 11" stroke="white" stroke-width="1.5"></path> </svg></div>
         <div class="px-3">
         <p class="m-0 font-plex-mono tracking-widest uppercase" style="font-size: 14px;"><span style="color: #ffffff;">Back to all webinars</span></p>
         </div>
       </a>
       <div class="flex flex-row text-sm font-bold">
-        <p>{{content.widgets.webinar_date.body.value}}</p><span class="text-[#1dafff] px-3">•</span><p>{{content.widgets.webinar_time.body.value}}</p>
+        <p>{{content.widgets.webinar_date.body.value}}</p>
+        {% if content.widgets.webinar_time.body.value %}
+          <span class="text-[#1dafff] px-3">•</span>
+          <p>{{content.widgets.webinar_time.body.value}}</p>
+        {% endif %}
       </div>
       <h1 class="blog-post__title text-white">{{ content.name }}</h1>
-      {% if theme.blog.show_summary %}
-        <p class="blog-post__summary">{{ content.meta_description|striptags }}</p>
+      {% if content.widgets.summary.body.value %}
+          <p class="blog-post__summary">{{content.widgets.summary.body.value}}</p>
+      {% else %}
+        {% if theme.blog.show_summary %}
+          <p class="blog-post__summary">{{ content.meta_description|striptags }}</p>
+        {% endif %}
       {% endif %}
       <hr />
-      {% module "module_16929251484572" path="/tvScientific 2022 Atlas Pro/cli-build/modules/speaker-info", label="speaker-info" %}
+      <p class="mt-0 mb-4 font-plex-mono tracking-widest uppercase" style="font-size: 14px; color: #ffffff;">Speaker(s)</p>
+      {% module "module_16932768549893" path="/tvScientific 2022 Atlas Pro/cli-build/modules/speaker-info", label="speaker-info" %}
     </div>
     <div class="w-full md:w-1/3">
       {% module "gated_form" path="../modules/custom-form.module", label="Webinar form", form_background_color={"color"="#FFFFFF"}, form_input_background_color={"color":"#E5E7EB"} %}
@@ -65,21 +87,32 @@
   </div>
 </div>
 {# End blog header #}
+
 {% endif %}
 <main class="body-container-wrapper container">
   <div class="body-container body-container--blog-post">
-
+{{has_form}}
     
     {# Blog post #}
     <div class="py-16 gap-8 flex sticky-section relative">
-      
+      {% if page_layout == "layout_a" %}
       <div class="w-full md:w-2/3">
-      
+      {% else %}
+        {%if has_form != "true" %}
+          <div class="w-full md:w-2/3 mx-auto my-0">
+        {% else %}
+          <div class="w-full md:w-2/3">
+        {% endif %}
+      {% endif %}
         <article class="blog-post">
           {% if page_layout != "layout-a" %}
           <h1 class="blog-post__title">{{ content.name }}</h1>
-          {% if theme.blog.show_summary %}
-            <p class="blog-post__summary">{{ content.meta_description|striptags }}</p>
+          {% if content.widgets.summary.body.value %}
+              <p class="blog-post__summary">{{content.widgets.summary.body.value}}</p>
+          {% else %}
+            {% if theme.blog.show_summary %}
+              <p class="blog-post__summary">{{ content.meta_description|striptags }}</p>
+            {% endif %}
           {% endif %}
           <hr />
           <div class="blog-post__meta flex">
@@ -116,9 +149,20 @@
           {% module 'blog_comments' path='@hubspot/blog_comments', label="Blog comments" %}
         </div>
         {% endif %}
+        {% if page_layout != "layout-a" %}
+          <p class="mt-0 mb-4 font-plex-mono tracking-widest uppercase" style="font-size: 14px;">Speaker(s)</p>
+          {% module "module_16932768549893" path="/tvScientific 2022 Atlas Pro/cli-build/modules/speaker-info", label="speaker-info" %}
+        {% endif %}
       </div>
-      
+      {% if page_layout == "layout_a" %}
       <div class="w-full md:w-1/3 cta-container">
+      {% else %}
+        {%if has_form != "true" %}
+          <div class="w-full md:w-1/3 cta-container hidden">
+        {% else %}
+          <div class="w-full md:w-1/3 cta-container">
+        {% endif %}
+      {% endif %}
         {% if page_layout != "layout-a" %}
           {% module "gated_form" path="../modules/custom-form.module", label="Webinar form", form_background_color={"color"="#E5E7EB"}, form_input_background_color={"color":"#FFFFFF"} %}
         {% else %}
@@ -161,15 +205,117 @@
       <h2 style="margin: 0px; font-weight: bold;"><span style="color: #1c4633;">Watch Other Webinars</span></h2>
     </div>
   </div>
-  <a href="https://www.tvscientific.com/insight/tag/webinar?hsLang=en" class="flex relative items-center group hover:no-underline">
+  <a href="{{ group.absolute_url }}" class="flex relative items-center group hover:no-underline">
     <div>
       <p class="m-0 font-plex-mono tracking-widest text-[#009061] uppercase ">View all webinars</p>
     </div>
     <div class="w-4 text-center group-hover:translate-x-0.5 duration-200 transition-transform"><svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7 5L10 8L7 11" stroke="#009061" stroke-width="1.5"></path> </svg></div>
   </a>
-  {% module "module_16929490274614" path="/tvScientific 2022 Atlas Pro/cli-build/modules/carousel-cards-lg", label="carousel-cards-lg", blog_tag={"name"="Event"} %}
+  
+  <div class="flex flex-wrap items-stretch card-swiper relative ">  
+    <div class="swiper-wrapper h-full border-[#C0E7D8] flex items-stretch">
+      {% set webinar_posts = blog_recent_posts(130283509831, 6) %}
+      {% for post in webinar_posts %}
+      {% if content.absolute_url != post.absolute_url %}
+      {% set href=post.absolute_url %}
+      <div class="border-t py-6 swiper-slide border-[#C0E7D8] w-full ">
+        <div class="rounded-lg w-11/12 border border-[#009061] h-full overflow-hidden relative group">
+          <a href="{{ href }}" class="absolute top-0 left-0 w-full h-full z-10"></a>
+          <div class="h-[310px]">
+            {% if post.featured_image %}
+            
+              <img class="w-full h-full object-cover" src="{{ post.featured_image }}" alt="{{ blog_tag.featured_image_alt_text }}" >
+            {% endif %}
+            
+          </div>
+          <div class=" p-6">
+            {% if post.widgets.event_date.body.value %}
+              <p class="mb-1 uppercase">{{ post.widgets.event_date.body.value }}</p>
+            {% else %}
+              <p class="mb-1 uppercase">{{ post.publish_date | datetimeformat('%b %e, %Y') }}</p>
+            {% endif %}
+            <h2 class="!text-[28px] !leading-[38px] ">{{ post.name }}</h2>
+          
+            <a href="{{ href }}"
+            class="flex relative items-center hover:no-underline">
+              <div>
+                <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-[#009061]">Watch Now</p>
+              </div>
+              <div class="w-4 text-center group-hover:translate-x-0.5 duration-200 transition-transform">
+                <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7 5L10 8L7 11" stroke="#009061" stroke-width="1.5"></path></svg>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+      <div class="border-t py-6 swiper-slide border-[#C0E7D8] w-full">
+        <div class="rounded-lg w-11/12 h-full" style="background-color: #1C4633;">
+            <div class="mb-6">
+              <img class="w-full" src="https://www.tvscientific.com/hubfs/card-texture-green.png" alt="card-texture-green" loading="lazy">
+            </div>
+            <div class="px-6 pb-6">
+              <h2 class="!text-[22px] !leading-[32px] text-white">View all Webinars</h2>
+            <a href="{{ group.absolute_url }}"
+            class="flex relative items-center group hover:no-underline">
+                <div>
+                  <p class="m-0 font-plex-mono tracking-widest text-[#009061] uppercase text-[14px]">Watch Now</p>
+                </div>
+                <div class="w-4 text-center group-hover:translate-x-0.5 duration-200 transition-transform">
+                  <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7 5L10 8L7 11" stroke="#009061" stroke-width="1.5"></path></svg>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+  </div>
+    </div>
+  </div>
 </div>
 <div class="container pb-20">
   {% module "module_16929485389853" path="/tvScientific 2022 Atlas Pro/cli-build/modules/cta-section", label="cta-section" %}
 </div>
+<script>
+  const swiper = new Swiper('.card-swiper', {
+  speed: 300,
+  spaceBetween: 0,
+  loop: false,
+  grabCursor: true,
+  perMove:1,
+  autoPlay: {
+    delay:3000
+  },
+  centerSlides: true,
+  snapOnRelease: true,
+  sticky:true,
+  mousewheel: {
+    enabled: true,
+    forceToAxis: true,
+  },
+  breakpoints: {
+  
+    480: {
+      slidesPerView: 1.5,
+      spaceBetween: 0
+    },
+    767: {
+      slidesPerView: 1.5,
+      spaceBetween: 0
+    },
+    767: {
+      slidesPerView: 2.2,
+      spaceBetween: 0
+    },
+    992: {
+      slidesPerView: 2.7,
+      spaceBetween: 0
+    },
+    1024: {
+      slidesPerView: 3,
+      spaceBetween: 0
+    }
+  }
+});
+</script>
 {% endblock body %}

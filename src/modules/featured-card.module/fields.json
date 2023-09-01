@@ -1,116 +1,140 @@
-[
-  {
-   "default": {
-    "size_type": "auto",
-    "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/your-guide-thumbnail.jpg",
-    "alt": "your-guide-thumbnail",
-    "loading": "lazy",
-    "width": 1016,
-    "height": 615,
-    "max_width": 1016,
-    "max_height": 615
-   },
-   "display_width": null,
-   "id": "fe4b3538-5aa0-c45f-be48-5f57d8204a8e",
-   "label": "Background Image",
-   "locked": false,
-   "name": "background_image",
-   "required": false,
-   "resizable": true,
-   "responsive": true,
-   "show_loading": false,
-   "type": "image"
+[ {
+  "id" : "cfe66526-30d6-c277-e242-d731f51dcc75",
+  "name" : "card",
+  "display_width" : null,
+  "label" : "Card",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : null
   },
-  {
-   "allow_new_line": false,
-   "default": "June 1, 2023",
-   "display_width": null,
-   "id": "b27e60ba-5a39-2cea-4144-91c3fcf7ed55",
-   "label": "Date",
-   "locked": false,
-   "name": "date",
-   "required": false,
-   "show_emoji_picker": false,
-   "type": "text",
-   "validation_regex": ""
-  },
-  {
-   "allow_new_line": false,
-   "default": "Your Guide to OTT & CTV Advertising",
-   "display_width": null,
-   "id": "48366d01-3d86-cf34-b15f-bb398fd60593",
-   "label": "Title",
-   "locked": false,
-   "name": "title",
-   "required": false,
-   "show_emoji_picker": false,
-   "type": "text",
-   "validation_regex": ""
-  },
-  {
-   "children": [
-    {
-     "default": {
-      "url": {
-       "content_id": null,
-       "type": "EXTERNAL",
-       "href": ""
-      },
-      "open_in_new_tab": false,
-      "no_follow": false
-     },
-     "display_width": null,
-     "id": "0c651af2-8526-46fa-4557-671c91593524",
-     "label": "URL",
-     "locked": false,
-     "name": "url",
-     "required": false,
-     "show_advanced_rel_options": false,
-     "supported_types": [
-      "EXTERNAL",
-      "CONTENT",
-      "FILE",
-      "EMAIL_ADDRESS",
-      "BLOG",
-      "CALL_TO_ACTION",
-      "PHONE_NUMBER",
-      "WHATSAPP_NUMBER",
-      "PAYMENT"
-     ],
-     "type": "link"
+  "children" : [ {
+    "id" : "fe4b3538-5aa0-c45f-be48-5f57d8204a8e",
+    "name" : "background_image",
+    "display_width" : null,
+    "label" : "Background Image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "default" : {
+      "size_type" : "auto",
+      "src" : "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/your-guide-thumbnail.jpg",
+      "alt" : "your-guide-thumbnail",
+      "loading" : "lazy",
+      "width" : 1016,
+      "height" : 615,
+      "max_width" : 1016,
+      "max_height" : 615
+    }
+  }, {
+    "id" : "b27e60ba-5a39-2cea-4144-91c3fcf7ed55",
+    "name" : "date",
+    "display_width" : null,
+    "label" : "Date",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "June 1, 2023"
+  }, {
+    "id" : "48366d01-3d86-cf34-b15f-bb398fd60593",
+    "name" : "title",
+    "display_width" : null,
+    "label" : "Title",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Your Guide to OTT & CTV Advertising"
+  }, {
+    "id" : "6ad89920-432d-21bd-427e-87eaaab7b786",
+    "name" : "link",
+    "display_width" : null,
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "0c651af2-8526-46fa-4557-671c91593524",
+      "name" : "url",
+      "display_width" : null,
+      "label" : "URL",
+      "required" : false,
+      "locked" : false,
+      "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION", "PHONE_NUMBER", "WHATSAPP_NUMBER", "PAYMENT" ],
+      "show_advanced_rel_options" : false,
+      "type" : "link",
+      "default" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    }, {
+      "id" : "733cf81b-f9b2-5da8-65ac-e2bc42dd8fe6",
+      "name" : "text",
+      "display_width" : null,
+      "label" : "Text",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "url" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "background_image" : {
+      "size_type" : "auto",
+      "src" : "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/your-guide-thumbnail.jpg",
+      "alt" : "your-guide-thumbnail",
+      "loading" : "lazy",
+      "width" : 1016,
+      "height" : 615,
+      "max_width" : 1016,
+      "max_height" : 615
     },
-    {
-     "allow_new_line": false,
-     "display_width": null,
-     "id": "733cf81b-f9b2-5da8-65ac-e2bc42dd8fe6",
-     "label": "Text",
-     "locked": false,
-     "name": "text",
-     "required": false,
-     "show_emoji_picker": false,
-     "type": "text",
-     "validation_regex": ""
+    "date" : "June 1, 2023",
+    "title" : "Your Guide to OTT & CTV Advertising",
+    "link" : {
+      "url" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
     }
-   ],
-   "default": {
-    "url": {
-     "url": {
-      "content_id": null,
-      "type": "EXTERNAL",
-      "href": ""
-     },
-     "open_in_new_tab": false,
-     "no_follow": false
-    }
-   },
-   "display_width": null,
-   "expanded": false,
-   "id": "6ad89920-432d-21bd-427e-87eaaab7b786",
-   "label": "Link",
-   "locked": false,
-   "name": "link",
-   "required": false,
-   "tab": "CONTENT",
-   "type": "group"
   }
- ]
+} ]

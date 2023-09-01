@@ -44,7 +44,11 @@
           {% if card_texture %}
             <img class="w-full" src="{{ card_texture }}" alt="{{ card_tag.featured_image_alt_text }}" >
           {% else %}
+            {% if card_tag.widgets.card_image.body.src %}
+            <img class="w-full" src="{{ card_tag.widgets.card_image.body.src }}" alt="" {{ loadingAttr }} >
+            {% else %}
             <img class="w-full" src="{{ card_tag.featured_image }}" alt="" {{ loadingAttr }} >
+            {% endif %}
           {% endif %}
           
         </div>

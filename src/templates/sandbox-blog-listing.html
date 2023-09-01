@@ -1,7 +1,7 @@
 <!--
   templateType: blog_listing
   isAvailableForNewContent: true
-  label: New Blog listing
+  label: Sandbox Blog listing
   screenshotPath: ../images/template-previews/blog-index.png
 -->
 {% extends "./../layouts/base.html" %}
@@ -123,19 +123,6 @@
     {# Blog tag listing #}
     <div class=" pt-20">
       <div class="mb-12">
-        {% if blog.public_title == "Press" %}
-        <a href="https://www.tvscientific.com/press"
-          class="flex relative items-center hover:no-underline group">
-          <div class="w-4 text-center group-hover:-translate-x-0.5 duration-200 transition-transform">
-            <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M9.55957 5L6.55957 8L9.55957 11" stroke="#009061" stroke-width="1.5"/>
-              </svg>
-          </div>
-          <div class="px-3">
-            <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-[#009061]">Back to Press</p>
-          </div>
-        </a>
-        {% else %}
         <a href="https://www.tvscientific.com/resources"
           class="flex relative items-center hover:no-underline group">
           <div class="w-4 text-center group-hover:-translate-x-0.5 duration-200 transition-transform">
@@ -147,7 +134,6 @@
             <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-[#009061]">Back to Resources</p>
           </div>
         </a>
-        {% endif %}
       </div>
       <div class="">
         <h1 class="text-[#1C4633] capitalize">All 
@@ -182,21 +168,8 @@
 
     {% else %}
     {# Blog header #}
-    <div class="pt-20">
+    <div class="pt-20 mb-12">
       <div class="mb-12">
-        {% if blog.public_title == "Press" %}
-        <a href="https://www.tvscientific.com/press"
-          class="flex relative items-center hover:no-underline group">
-          <div class="w-4 text-center group-hover:-translate-x-0.5 duration-200 transition-transform">
-            <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M9.55957 5L6.55957 8L9.55957 11" stroke="#009061" stroke-width="1.5"/>
-              </svg>
-          </div>
-          <div class="px-3">
-            <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-[#009061]">Back to Press</p>
-          </div>
-        </a>
-        {% else %}
         <a href="https://www.tvscientific.com/resources"
           class="flex relative items-center hover:no-underline group">
           <div class="w-4 text-center group-hover:-translate-x-0.5 duration-200 transition-transform">
@@ -208,7 +181,6 @@
             <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-[#009061]">Back to Resources</p>
           </div>
         </a>
-        {% endif %}
       </div>
       <div class="content-wrapper">
         <div class="">
@@ -221,18 +193,6 @@
           {% endif %}
         </div>
       </div>
-    </div>
-    <div class="py-12">
-      <div class="relative">
-        <div class="absolute -left-3 top-0 -translate-y-[6px]">
-          <div class="w-[12px] h-[12px] rounded-full bg-[#C0E7D8]"></div>
-        </div>
-        <div class="absolute -right-3 top-0 -translate-y-[6px]">
-          <div class="w-[12px] h-[12px]  rounded-full bg-[#C0E7D8]"></div>
-        </div>
-        <hr class="border-[#C0E7D8]">
-      </div>
-     
     </div>
     {# End blog header #}
     {% endif %} 
@@ -271,9 +231,7 @@
             {% endunless %}
             {% unless pub_logo %}
             <div class="h-[170px]">
-              {% if content.widgets.card_image.body.src %}
-                <img alt="{{ content.widgets.card_image.body.alt }} thumbnail graphic" class="w-full h-full object-cover" src="{{ content.widgets.card_image.body.src }}" alt="" {{ loadingAttr }} >
-              {% elif content.featured_image %}
+              {% if content.featured_image %}
               <img alt="{{ content.name }} thumbnail graphic" class="w-full h-full object-cover" src="{{ content.featured_image }}" alt="" {{ loadingAttr }} >
               {% endif %}
             </div>

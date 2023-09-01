@@ -1,18 +1,23 @@
 <!-- module html  -->
 {{ require_css("https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css") }}
 {{ require_js("https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js", "head") }}
-
+{% set select_blog = blog_by_id(module.card_blog) %}
+{% set blog_title = select_blog.public_title %}
 <div class="flex flex-wrap items-stretch lg-card-swiper relative h-full">
 
   <div class="swiper-wrapper h-full border-[#C0E7D8]  flex items-stretch">
-  {% if module.blog_tag.slug %}
+  {% if module.blog_tag.slug or module.card_blog %}
     {% set cta_text = "watch now" %}
     
     {% if (module.blog_tag.slug == "reports") %}
       {% set cta_text = "read more" %}
     {% endif %}
-
-    {% set blog_tags = blog_recent_tag_posts("default", module.blog_tag.name, 6) %}
+    {% unless select_blog %}
+      {% set blog_tags = blog_recent_tag_posts("default", module.blog_tag.name, 6) %}
+    {% else %}
+      {% set blog_tags = blog_recent_posts(module.card_blog, 6) %}
+    {% endunless %}
+    
 
     {% for blog_tag in blog_tags %}
       {% set href=blog_tag.absolute_url %}
@@ -20,14 +25,21 @@
         <div class="rounded-lg w-11/12 border border-[#009061] h-full overflow-hidden relative group">
           <a href="{{ href }}" class="absolute top-0 left-0 w-full h-full z-10"></a>
           <div class="h-[310px]">
-            {% if blog_tag.featured_image %}
-            
-              <img class="w-full h-full object-cover" src="{{ blog_tag.featured_image }}" alt="{{ blog_tag.featured_image_alt_text }}" >
+            {% if blog_tag.widgets.card_image.body.src %}
+              <img class="w-full h-full object-cover" src="{{ blog_tag.widgets.card_image.body.src }}" alt="{{ blog_tag.widgets.card_image.body.alt }}" >
+            {% else %}
+              {% if blog_tag.featured_image %}
+                <img class="w-full h-full object-cover" src="{{ blog_tag.featured_image }}" alt="{{ blog_tag.featured_image_alt_text }}" >
+              {% endif %}
             {% endif %}
-            
           </div>
           <div class=" p-6">
-            <p class="mb-1 uppercase">{{ blog_tag.publish_date | datetimeformat('%b %e, %Y') }}</p>
+            {% if blog_tag.widgets.webinar_date.body.value %}
+              <p class="mb-1 uppercase">{{ blog_tag.widgets.webinar_date.body.value }}</p>
+            {% else %}
+              <p class="mb-1 uppercase">{{ blog_tag.publish_date | datetimeformat('%b %e, %Y') }}</p>
+            {% endif %}
+            
             <h2 class="!text-[28px] !leading-[38px] ">{{ blog_tag.name }}</h2>
           
             <a href="{{ href }}"

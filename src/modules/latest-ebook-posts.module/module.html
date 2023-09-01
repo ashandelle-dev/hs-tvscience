@@ -2,29 +2,25 @@
 {{ require_css("https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css") }}
 {{ require_js("https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js", "head") }}
 
-{% set contents = blog_recent_posts(130279678010, 6)%}
+{% set contents = blog_recent_posts(130734470151, "blog", 6) %}
 
 <div class="flex flex-wrap items-stretch latest-posts-swiper relative ">
   <div class="swiper-wrapper h-full border-[#C0E7D8] -mx-3 flex items-stretch">
 	{% for content in contents %}
-    {% set pub_logo = content.widgets.publication_logo.body.src %}
-    {% set out_link = content.widgets.title_link.body.value %}
-    <div class="swiper-slide px-3 h-full">
-      <div class="rounded-lg border h-full border-[#009061] overflow-hidden relative group p-6">
-        <a href="{{ out_link }}" target="_blank" class="absolute top-0 left-0 w-full h-full z-10"></a>
-        <div class="border-b border-[#C0E7D8] pb-6 h-[170px] flex items-center">
-
-              <img alt="{{ content.name }} thumbnail graphic" class="inline px-6" src="{{ pub_logo }}" alt="" {{ loadingAttr }} >
-            
+    <div class="swiper-slide px-3 h-full border-t border-[#C0E7D8] py-6">
+      <div class="rounded-lg border h-full border-[#009061] overflow-hidden relative group">
+        <a href="{{ content.absolute_url }}" class="absolute top-0 left-0 w-full h-full z-10"></a>
+        <div class="h-[275px] bg-[#1c4633]" style="background: url({{ content.featured_image }}) no-repeat top center / cover;">   
+          <!--<img class="w-full" src="{{ content.featured_image }}" alt="" {{ loadingAttr }} >-->
         </div>
-        <div class="pt-6">
-          <p class="mb-1 uppercase text-[#009061]">{{ content.publish_date | datetimeformat('%b %e, %Y') }}</p>
+        <div class=" p-6">
+          
           <h2 class="!text-[22px] !leading-[28px] ">{{ content.name }}</h2>
         
           <a href="{{ content.absolute_url }}"
            class="flex relative items-center hover:no-underline">
             <div>
-              <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-[#009061]">Read now</p>
+              <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-[#009061]">Read more</p>
             </div>
             <div class="w-4 text-center group-hover:translate-x-0.5 duration-200 transition-transform">
               <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7 5L10 8L7 11" stroke="#009061" stroke-width="1.5"></path></svg>
@@ -34,18 +30,18 @@
       </div>
     </div>
   {% endfor %}
-    <div class="swiper-slide px-3 h-full">
+    <div class="swiper-slide px-3 py-6 border-t border-[#C0E7D8] h-full">
       <div class="rounded-lg w-11/12 bg-[#1C4633] h-full">
         <div class="mb-6">
-          <img class="w-full" src="https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/card-texture-green.png" alt="See all blogs card">
+          <img class="w-full" src="https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/card-texture-green.png" alt="Read all ebooks card">
         </div>
         <div class="px-6 pb-6">
-          <h2 class="!text-[22px] !leading-[32px] text-white">See All News</h2>
-          <a href="https://www.tvscientific.com/insight/tag/news"
+          <h2 class="!text-[22px] !leading-[32px] text-white">View All eBooks</h2>
+          <a href="https://www.tvscientific.com/resources/ebooks"
           {% if card.cta.link.open_in_new_tab %}target="_blank"{% endif %}
           {% if card.cta.link.rel %}rel="{{ card.cta.link.rel }}"{% endif %} class="flex relative items-center group hover:no-underline">
             <div>
-              <p class="m-0 font-plex-mono tracking-widest text-[#009061] uppercase text-[14px]">Read Now</p>
+              <p class="m-0 font-plex-mono tracking-widest text-[#009061] uppercase text-[14px]">View more</p>
             </div>
             <div class="w-4 text-center group-hover:translate-x-0.5 duration-200 transition-transform">
               <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7 5L10 8L7 11" stroke="#009061" stroke-width="1.5"></path></svg>

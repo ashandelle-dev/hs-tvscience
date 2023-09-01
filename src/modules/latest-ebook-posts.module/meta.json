@@ -1,11 +1,11 @@
 {
-  "label": "Speaker Info",
+  "label": "Latest Ebook Posts",
   "css_assets": [],
   "external_js": [],
   "global": false,
   "help_text": "",
   "host_template_types": [
-    "PAGE","BLOG_POST"
+    "PAGE"
   ],
   "js_assets": [],
   "other_assets": [],
