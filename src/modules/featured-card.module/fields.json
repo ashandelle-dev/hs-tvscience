@@ -32,7 +32,19 @@
       "max_width" : 1016,
       "max_height" : 615
     }
-  }, {
+  },{
+    "default": {
+     "color": "#ffffff",
+     "opacity": 100
+    },
+    "display_width": null,
+    "id": "5d11cc6a-cfc5-a930-f359-c941b3d482dc",
+    "label": "Card Text Color",
+    "locked": false,
+    "name": "card_text_color",
+    "required": false,
+    "type": "color"
+   }, {
     "id" : "b27e60ba-5a39-2cea-4144-91c3fcf7ed55",
     "name" : "date",
     "display_width" : null,

@@ -1,17 +1,45 @@
 <!-- module html  -->
 {{ require_css("https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css") }}
 {{ require_js("https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js", "head") }}
-
+{% set featured_posts = blog_recent_tag_posts(130734470151, "featured") %}
 {% set contents = blog_recent_posts(130734470151, "blog", 6) %}
 
 <div class="flex flex-wrap items-stretch latest-posts-swiper relative ">
   <div class="swiper-wrapper h-full border-[#C0E7D8] -mx-3 flex items-stretch">
+  {% for featured in featured_posts %}
+    <div class="swiper-slide px-3 h-full border-t border-[#C0E7D8] py-6">
+      <div class="rounded-lg border h-full border-[#009061] overflow-hidden relative group">
+        <a href="{{ featured.absolute_url }}" class="absolute top-0 left-0 w-full h-full z-10"></a>
+        <div class="h-[275px] bg-[#1c4633]" style="background: url({{ featured.featured_image }}) no-repeat top center / cover;">   
+          <!--<img class="w-full" src="{{ content.featured_image }}" alt="" {{ loadingAttr }} >-->
+        </div>
+        <div class=" p-6">
+          
+          <h2 class="!text-[22px] !leading-[28px] ">{{ featured.name }}</h2>
+        
+          <a href="{{ featured.absolute_url }}"
+           class="flex relative items-center hover:no-underline">
+            <div>
+              <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-[#009061]">Read more</p>
+            </div>
+            <div class="w-4 text-center group-hover:translate-x-0.5 duration-200 transition-transform">
+              <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7 5L10 8L7 11" stroke="#009061" stroke-width="1.5"></path></svg>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
 	{% for content in contents %}
+
+  {% unless "Featured" in content.topic_list|map('name') %}
+  
     <div class="swiper-slide px-3 h-full border-t border-[#C0E7D8] py-6">
       <div class="rounded-lg border h-full border-[#009061] overflow-hidden relative group">
         <a href="{{ content.absolute_url }}" class="absolute top-0 left-0 w-full h-full z-10"></a>
         <div class="h-[275px] bg-[#1c4633]" style="background: url({{ content.featured_image }}) no-repeat top center / cover;">   
           <!--<img class="w-full" src="{{ content.featured_image }}" alt="" {{ loadingAttr }} >-->
+          
         </div>
         <div class=" p-6">
           
@@ -29,6 +57,7 @@
         </div>
       </div>
     </div>
+    {% endunless %}
   {% endfor %}
     <div class="swiper-slide px-3 py-6 border-t border-[#C0E7D8] h-full">
       <div class="rounded-lg w-11/12 bg-[#1C4633] h-full">

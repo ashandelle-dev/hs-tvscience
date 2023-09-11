@@ -184,7 +184,7 @@
     {# Blog header #}
     <div class="pt-20">
       <div class="mb-12">
-        {% if blog.public_title == "Press" %}
+        {% if blog.public_title == "Press Releases" or blog.public_title == "News" %}
         <a href="https://www.tvscientific.com/press"
           class="flex relative items-center hover:no-underline group">
           <div class="w-4 text-center group-hover:-translate-x-0.5 duration-200 transition-transform">
@@ -196,6 +196,7 @@
             <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-[#009061]">Back to Press</p>
           </div>
         </a>
+
         {% else %}
         <a href="https://www.tvscientific.com/resources"
           class="flex relative items-center hover:no-underline group">
@@ -237,7 +238,7 @@
     {# End blog header #}
     {% endif %} 
 
-    {% if blog.public_title == "Press" %}
+    {% if group.public_title == "Press Releases" %}
       <section class="w-full grid gap-10 grid-cols-2">
 
         {% for content in contents %}
@@ -261,7 +262,7 @@
         {% set pub_logo = content.widgets.publication_logo.body.src %}
         {% set out_link = content.widgets.title_link.body.value %}
         {# On the blog listing page, the first post will be featured above older posts #}
-
+       
         <article class="h-full">
           <div class="rounded-lg border h-full border-[#009061] overflow-hidden relative group">
             {% unless out_link %}
@@ -284,8 +285,8 @@
             {% endunless %}
             
             <div class=" p-6">
-    
-              {% if tag != "reports"  %}
+              
+              {% if tag != "reports" or group.public_title not "Ebooks"  %}
               <p class="mb-3 uppercase text-[#009061] font-medium ">{{ content.publish_date | datetimeformat('%b %e, %Y') }}</p>
               {% endif  %}
               <h2 class="!text-[22px] !leading-[28px] mb-6 font-medium text-[#31373D]">{{ content.name }}</h2>
