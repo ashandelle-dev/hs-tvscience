@@ -1,0 +1,67 @@
+{% set padding = '120px 0' %}
+
+{% if module.padding.overwrite %}
+  {% set padding = module.padding.value ~ 'px 0' %}
+{% endif %}
+
+<footer class="bg-[#132430] py-5 md:py-6 lg:py-[54px] px-0 md:px-5 lg:px-[62px]">
+  <div class="content-wrapper">
+    {% if module.logo.image.src or module.address or module.social or module.groups %}
+    <div class="logo-social flex items-center pb-7 border-b border-[#E5E7EB]/20">
+
+      <div class="w-1/2 flex justify-self-start">
+
+        {% if module.logo.image.src %}
+        <a href="{{module.logo.link.url.href}}">
+          <img src="{{module.logo.image.src}}" style="width: {{module.logo.image.width}}px;">
+        </a>
+        {% endif %}
+      </div>
+      <div class="social flex flex-row w-1/2 justify-end"> 
+        
+          {% for s in module.social %}
+            <a href="{{ s.link }}" class="inline-block px-1">
+              {% icon name="{{ s.icon.name }}" style="{{ s.icon.type }}" unicode="{{ s.icon.unicode }}" %}
+            </a>
+          {% endfor %}        
+        
+      </div>
+    </div>
+
+    <div class="link-columns grid grid-rows-auto md:grid-rows-2 grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-y-6 md:gap-y-4 lg:gap-y-0 md:gap-x-12 py-10">
+        {% for group in module.groups %}
+          {% if loop.index == 5 || loop.index == 6 %}
+          <div class="row-span-1">
+          {% else %}
+          <div class="row-span-2">
+          {% endif %}
+            <h3 class="text-[12px] text-[#E5E7EB] font-normal tracking-[1px]">{{ group.title }}</h3>
+            <ul>
+              {% for item in group.menu %}
+                <li class="pb-5">
+                  <a href="{{ item.url }}" class="text-sm tracking-[1px] font-medium">{{ item.linkLabel }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endfor %}
+        <div class="text-white footer-contact">
+          <h3 class="text-[12px] text-[#E5E7EB]">Contact</h3>
+          {{ module.address }}
+        </div>
+      </div>
+
+    
+    {% endif %}
+
+    {% if module.legal %}
+    <div class="text-white text-[12px]">
+      {{ module.legal }}
+    </div>
+    {% endif %}
+
+  </div>
+
+  
+</footer>
+

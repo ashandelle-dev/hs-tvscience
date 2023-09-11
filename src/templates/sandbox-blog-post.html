@@ -4,7 +4,7 @@
   label: Sandbox Blog post
   screenshotPath: ../images/template-previews/blog-post.png
 -->
-{% extends "./../layouts/base.html" %}
+{% extends "./../layouts/sandbox-base.html" %}
 {% text "title_link" label='Title Link', export_to_template_context=True %}
 {% image "publication_logo" label='Publication Logo', export_to_template_context=True%}
 {% text "event_date" label='Event Date', export_to_template_context=True %}
@@ -161,7 +161,7 @@
     gets passed to the 'related_blog_posts' tag below #}
     {% macro recent_post(post) %}
 
-    <div class="rounded-lg border border-[#009061] overflow-hidden relative group w-11/12">
+    <div class="rounded-lg border border-[#009061] overflow-hidden relative group w-full">
 
         <a href="{{ post.absolute_url }}" class="absolute top-0 left-0 w-full h-full z-10"></a>
         <div class="h-[240px] bg-[#1c4633]">
@@ -208,7 +208,7 @@
   </div>
   <div class="w-4 text-center group-hover:translate-x-0.5 duration-200 transition-transform"><svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7 5L10 8L7 11" stroke="#009061" stroke-width="1.5"></path> </svg></div>
   </a>
-        <div class="blog-similar-posts flex flex-nowrap gap-6 items-stretch">
+        <div class="blog-similar-posts grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 grid-rows-auto md:grid-rows-2 lg:grid-rows-1 gap-x-0 gap-y-6 md:gap-x-6">
           {#remove blog ID before going live#}
           {% related_blog_posts blog_ids="55261321759", tags="Blog", limit=4, no_wrapper=True, post_formatter="recent_post" %}
           
