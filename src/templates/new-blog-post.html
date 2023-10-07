@@ -1,7 +1,7 @@
 <!--
   templateType: blog_post
   isAvailableForNewContent: true
-  label: New Blog post
+  label: 2 Layout Blog Post Template
   screenshotPath: ../images/template-previews/blog-post.png
 -->
 {% extends "./../layouts/base.html" %}
@@ -10,7 +10,11 @@
 {% text "event_date" label='Event Date', export_to_template_context=True %}
 {% image "hero_image" label='Hero Image', export_to_template_context=True %}
 {% image "card_image" label='Card Image', export_to_template_context=True %}
+{% choice "jump_menu" label="Enable Jump Menu", value="No", choices="Yes, No", export_to_template_context=True %}
+{% choice "layout" label='Layout', choices=[["layout-a","Layout A"],["layout-b","Layout B"]], multiple='False', display='radio',export_to_template_context=True %}
 {% block body %}
+
+{% if content.widgets.layout.body.value != "layout-b" %}
 <main class="body-container-wrapper container">
   <div class="body-container body-container--blog-post">
 
@@ -30,11 +34,6 @@
     <div class="content-wrapper">
 
       <article class="blog-post">
-
-        {% set featured_tag = content.topic_list | first %}
-        {% if featured_tag %}
-        <span class="blog-post__preheader">{{ featured_tag }}</span>
-        {% endif %}
 
         <h1 class="blog-post__title">{{ content.name }}</h1>
 
@@ -171,4 +170,262 @@
 
   </div>
 </main>
+{% else %}
+<style>
+  .kl-social-sharing {
+    justify-content: flex-start !important;
+  }
+  .kl-social-link {
+    margin: 0;
+  }
+  .jump-menu a {
+    color: #132430;
+    font-size: 18px;
+    font-weight: 400;
+    border-left: 2px solid #C0E7D8;
+    
+    padding-left: 0.75rem;
+    flex-grow: 1;
+    margin-bottom: 1.25rem;
+    width: 100%;
+  }
+  .jump-menu a.current {
+    font-weight: 500;
+    border-left: 2px solid #009061;
+  }
+  @media screen and (max-width: 769px){
+    .blog-header--post {
+      min-height: 200px;
+    }
+  }
+  .blog-post__body, .blog-post__body p {
+    font-size: 18px;
+  }
+
+  .blog-post__body h3, .blog-post__body h3 span {
+    color: #1C4633 !important;
+    font-size: 36px !important;
+  }
+</style>
+<main class="container pt-4 md:pt-16">
+  <div class="blog-header flex flex-col md:flex-row gap-4 md:gap-12">
+    <div class="w-full md:w-1/4 flex flex-row md:flex-wrap">
+      <a href="https://www.tvscientific.com/insight"
+          class="flex relative items-center hover:no-underline group w-full self-start">
+          <div class="w-4 text-center group-hover:-translate-x-0.5 duration-200 transition-transform">
+            <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9.55957 5L6.55957 8L9.55957 11" stroke="#009061" stroke-width="1.5"/>
+              </svg>
+          </div>
+          <div class="px-3">
+            <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-[#009061]">Back to All Blogs</p>
+          </div>
+        </a>
+        <div class="timestamp self-end w-full text-[#132430] pb-3 hidden md:block">
+            {{ content.publish_date | datetimeformat('%b %e, %Y') }}
+          </div>
+    </div>
+    <div class="w-full md:w-3/4">
+      <h1 class="blog-post__title text-[#1C4633]">{{ content.name }}</h1>
+      <div class="timestamp self-end w-full text-[#132430] pb-3 md:hidden">
+            {{ content.publish_date | datetimeformat('%b %e, %Y') }}
+          </div>
+    </div>
+  </div>
+  <div class="blog-body flex flex-col md:flex-row gap-4 md:gap-12">
+    <div class="w-full md:w-1/4 relative">
+      
+        {% module "module_16958355586771" path="/tvScientific 2022 Atlas Pro/cli-build/modules/author-byline", label="Author Byline" %}
+      
+      <div class="sticky top-6">
+        {% if content.widgets.jump_menu.body.value == 'Yes' %}
+        <div class="jump-menu flex flex-wrap hidden border-t border-[#C0E7D8] pt-4">
+          <p class="uppercase text-[#009061] opacity-[.88]">Jump to a section…</p>
+          
+        </div>
+        {% endif %}
+        <div class="blog-post__social-sharing">
+          <p class="uppercase text-[#132430]">Share</p>
+            {% module "Social Sharing" path="/tvScientific 2022 Atlas Pro/modules/Social Sharing.module" 
+                  facebook={
+                    "enabled": true
+                  }
+                  linkedin={
+                    "enabled": true
+                  }
+                  twitter={
+                    "enabled": true
+                  }
+                  email={
+                    "enabled": true
+                  }
+                  %}
+         </div>
+       </div>
+    </div>
+    <div class="w-full md:w-3/4">
+    
+
+    {# Blog post #}
+    <article>
+
+        {# Blog header #}
+        {% if content.widgets.hero_image.body.src %}
+          <div class="blog-header--post border rounded-lg border-[#0FBF84] mb-12"
+             style="background-image: url('{{ content.widgets.hero_image.body.src }}');" 
+             ></div>
+        {% else %}
+        <div class="blog-header--post border rounded-lg border-[#0FBF84] mb-12"
+             style="background-image: url('{{ content.featured_image }}');" 
+             ></div>
+        {% endif %}
+        {# End blog header #}
+
+        {% if theme.blog.show_summary %}
+        <h3 class="post-summary text-[36px] text-[#1C4633]">{{ content.meta_description|striptags  }}</h3>
+        {% endif %}
+
+        <div class="blog-post__body">
+          {{ content.post_body }}
+        </div>
+
+        
+         <div class="blog-post__body-wrapper">
+            
+          
+          {% if content.tag_list %}
+          <div class="blog-post__tags">
+            {% for tag in content.tag_list %}
+            <a class="blog-post__tag-link" href="{{ blog_tag_url(group.id, tag.slug) }}">{{ tag.name }}</a>
+            {% endfor %}
+          </div>
+          {% endif %}
+
+        </div>
+
+      </article>
+    
+    {# End blog post #}
+
+
+  </div>
+  </div>
+  <div class="blog-footer">
+    {# Recent posts listing #}
+    {# This macro is used to format each recent post card and
+    gets passed to the 'related_blog_posts' tag below #}
+    {% macro recent_post(post) %}
+
+    <div class="rounded-lg border border-[#009061] overflow-hidden relative group w-full">
+
+        <a href="{{ post.absolute_url }}" class="absolute top-0 left-0 w-full h-full z-10"></a>
+        <div class="h-[240px] bg-[#1c4633]">
+          {% if post.widgets.card_image.body.src %}
+            <img alt="{{ post.widgets.card_image.body.alt }} thumbnail graphic" class="w-full h-full object-cover" src="{{ content.widgets.card_image.body.src }}" alt="" {{ loadingAttr }} >
+          {% else %}
+            <img alt="{{ post.name }} thumbnail graphic" class="w-full h-full object-cover" src="{{ post.featured_image }}" alt="" {{ loadingAttr }} >
+          {% endif %}
+        </div>
+        <div class=" p-6">
+          <p class="mb-1 uppercase text-[#009061]">{{ post.publish_date | datetimeformat('%b %e, %Y') }}</p>
+          <h2 class="!text-[22px] !leading-[28px] ">{{ post.name }}</h2>
+        
+          <a href="{{ post.absolute_url }}"
+           class="flex relative items-center hover:no-underline">
+            <div>
+              <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-[#009061]">Read now</p>
+            </div>
+            <div class="w-4 text-center group-hover:translate-x-0.5 duration-200 transition-transform">
+              <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7 5L10 8L7 11" stroke="#009061" stroke-width="1.5"></path></svg>
+            </div>
+          </a>
+        </div>
+      </div>
+
+    {% endmacro %}
+  <div class="blog-cta my-14">
+    
+  {% module "module_16929485389853" path="/tvScientific 2022 Atlas Pro/cli-build/modules/cta-section", label="cta-section" %}
+  </div>
+
+    <div class="content-wrapper">
+      <div class="blog-more">
+        <div id="blog-section" class="flex items-center">
+        <div><svg width="25" height="26" viewBox="0 0 25 26" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M21.957 14.6054C21.957 15.7622 21.5815 16.8308 20.9488 17.6978L24.1395 20.8909C24.4545 21.2059 24.4545 21.7175 24.1395 22.0326C23.8245 22.3476 23.3129 22.3476 22.9978 22.0326L19.8071 18.8395C18.9402 19.4745 17.8716 19.8476 16.7148 19.8476C13.819 19.8476 11.4727 17.5013 11.4727 14.6054C11.4727 11.7096 13.819 9.36328 16.7148 9.36328C19.6106 9.36328 21.957 11.7096 21.957 14.6054ZM16.7148 18.2346C18.7192 18.2346 20.344 16.6098 20.344 14.6054C20.344 12.6011 18.7192 10.9762 16.7148 10.9762C14.7105 10.9762 13.0856 12.6011 13.0856 14.6054C13.0856 16.6098 14.7105 18.2346 16.7148 18.2346Z" fill="#1C4633"></path> <path d="M12.5557 9.03435C15.0758 7.54749 17.6133 7.63305 19.5841 8.65793V4.66467L15.5913 0.671875H1.63713C0.885602 0.671875 0.276367 1.28111 0.276367 2.03264V23.6476C0.276367 24.3991 0.885602 25.0083 1.63713 25.0083H18.2233C18.9749 25.0083 19.5841 24.3991 19.5841 23.6476V20.604C18.6562 21.0866 17.6026 21.3609 16.4844 21.3609C11.52 21.3609 7.81102 15.9855 10.8603 10.7376C11.269 10.0343 11.855 9.44783 12.5556 9.03444L12.5557 9.03435Z" fill="#1C4633"></path> </svg></div>
+        <div class="px-3">
+        <h2 style="margin: 0px; font-weight: bold;"><span style="color: #1c4633;">Similar posts</span></h2>
+        </div>
+        </div>
+        
+  <a href="/insight/tag/blog?hsLang=en" class="flex relative items-center group hover:no-underline mb-10" rel="noopener">
+  <div>
+  <p class="m-0 font-plex-mono tracking-widest text-[#009061] uppercase ">View all BLOGS</p>
+  </div>
+  <div class="w-4 text-center group-hover:translate-x-0.5 duration-200 transition-transform"><svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7 5L10 8L7 11" stroke="#009061" stroke-width="1.5"></path> </svg></div>
+  </a>
+        <div class="blog-similar-posts grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 grid-rows-auto md:grid-rows-2 lg:grid-rows-1 gap-x-0 gap-y-6 md:gap-x-6">
+          {#remove blog ID before going live#}
+          {% related_blog_posts blog_ids="55261321759", tags="Blog", limit=4, no_wrapper=True, post_formatter="recent_post" %}
+          
+        </div>
+      </div>
+    </div>
+    {# End recent posts listing #}
+
+    {# module "blog-subscribe" path="../modules/Custom Blog Subscribe", label="Custom Blog Subscribe" #}
+    {% module "blog-subscribe" path="../modules/Global Blog Subscribe.module", label="Global Blog Subscribe" %}
+  </div>
+</main>
+
+<script>
+  
+  var isInViewport = function(elem) {
+    var distance = elem.getBoundingClientRect();
+    return (
+      distance.top <= 65
+    );
+  };
+  document.addEventListener("DOMContentLoaded", (event) => {
+    const anchorMenu = document.querySelector('.jump-menu');
+    const currentAnchors = document.querySelectorAll('a[data-hs-anchor]');
+    if( currentAnchors ) {
+      anchorMenu.classList.remove('hidden');
+    }
+    currentAnchors.forEach((currentAnchor) => {
+      var menuAnchor = document.createElement('a');
+      menuAnchor.setAttribute('href','#' + currentAnchor.id);
+      var anchorTitleElement = currentAnchor.nextElementSibling;
+      var anchorTitleText = anchorTitleElement.innerText;
+      var anchorText = document.createTextNode(anchorTitleText);
+      menuAnchor.appendChild(anchorText);
+      anchorMenu.appendChild(menuAnchor);
+    });
+    window.addEventListener('scroll', function(event) {
+    // add event on scroll
+    currentAnchors.forEach(element => {
+        
+        if (isInViewport(element)) {
+          //if in Viewport
+          var dataName = '#'+element.id;
+          var currentButton = document.querySelector('.jump-menu a.current');
+          var sideNavButton = document.querySelector('a[href="'+dataName+'"]');
+          if(currentButton) {
+            if(currentButton !== sideNavButton) {
+              currentButton.classList.remove('current');
+              sideNavButton.classList.add('current');
+            }
+          } else {
+            sideNavButton.classList.add('current');
+          }
+          
+        }
+    });
+    }, false);
+  });
+
+  
+
+  
+</script>
+{% endif %}
 {% endblock body %}

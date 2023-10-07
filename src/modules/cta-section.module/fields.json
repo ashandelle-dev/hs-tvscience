@@ -30,7 +30,7 @@
   "allow_new_line" : false,
   "show_emoji_picker" : false,
   "type" : "text",
-  "default" : "Lorem Ipsum"
+  "default" : "Get Started Today"
 }, {
   "id" : "4223c266-d8aa-aa80-09fd-9e5013d1c2c7",
   "name" : "cta_section_header",
@@ -42,7 +42,7 @@
   "allow_new_line" : false,
   "show_emoji_picker" : false,
   "type" : "text",
-  "default" : "Streamline operations and make bigger sales with Prokeep"
+  "default" : "See how you can boost lift and ROAS with CTV"
 }, {
   "id" : "f4720ce5-80ce-66ea-a418-d4fee6305526",
   "name" : "style",
@@ -157,7 +157,7 @@
       "url" : {
         "content_id" : null,
         "type" : "EXTERNAL",
-        "href" : ""
+        "href" : "/contact"
       },
       "open_in_new_tab" : false,
       "no_follow" : false
@@ -173,7 +173,7 @@
     "allow_new_line" : false,
     "show_emoji_picker" : false,
     "type" : "text",
-    "default" : "Request a Demo"
+    "default" : "Request a demo"
   } ],
   "tab" : "CONTENT",
   "expanded" : false,

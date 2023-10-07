@@ -29,3 +29,109 @@
         }
     }
 }
+
+.confirmation-toolbar {
+    align-items: center; margin-bottom: 15px;
+}
+
+.confirmation-toolbar h3 {
+    width: 50%;
+    margin: 0;
+}
+
+@media screen and (max-width: 418px) {
+    .confirmation-toolbar h3 {
+        width: 100%;
+    }
+}
+
+.confirmation-toolbar .pill-container {
+    width: 50%; justify-content: flex-end;
+}
+
+@media screen and (max-width: 418px) {
+    .confirmation-toolbar .pill-container {
+        width: 100%;
+    }
+}
+
+.circle-hr {
+    position: relative;
+    width: 100%;
+    background-color: #C0E7D8;
+    margin-bottom: 40px;
+}
+
+.circle-hr:before, .circle-hr:after {
+    content: '';
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #C0E7D8;
+    position: absolute;
+    top: -6px;
+}
+
+.circle-hr:before {
+    left: 0;
+}
+
+.circle-hr:after {
+    right: 0;
+}
+.pill {
+    background: #fff;
+    border-radius: 20px;
+    color: #1C4633;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+    .pill {
+        padding: 5px 6px;
+    }
+}
+
+.pill:hover {
+    background: #0FBF84;
+    color: #fff;
+    text-decoration: none;
+}
+
+.pill svg {
+    margin-right: 10px;
+}
+
+.pill:hover svg * {
+    fill: #fff;
+}
+
+.three-col-community {
+    background-image: url('https://www.tvscientific.com/hubfs/background-person-left.png'), url('https://www.tvscientific.com/hubfs/background-person-right.png');
+    background-position: bottom left, top right;
+    background-repeat: no-repeat, no-repeat;
+    padding: 60px 140px;
+    column-gap: 30px;
+}
+
+.three-col-community * {
+    color: #fff;
+}
+
+.three-col-community .inner-column {
+    flex-basis: 100%;
+    border-radius: 12px;
+    padding: 30px 20px;
+}
+
+@media screen and (max-width: 769px) {
+    .three-col-community {
+        background-image: none, none;
+        flex-direction: column;
+        row-gap: 30px;
+        padding: 20px;
+    }
+}

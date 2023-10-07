@@ -1,0 +1,56 @@
+{% set href = module.first_column.cta_section_button.link.url.href %}
+  {% if module.first_column.cta_section_button.link.url.type is equalto "EMAIL_ADDRESS" %}
+    {% set href = "mailto:" + href %}
+  {% endif %}
+
+{% set first_bg_color = module.style.first_background_color.color %}
+{% set second_bg_color = module.style.second_background_color.color %}
+{% set first_header_color = module.style.first_header_text_color.color %}
+{% set second_header_color = module.style.second_header_text_color.color %}
+{% set label_color = module.style.label_text_color.color %}
+{% set button_bg = module.style.button_color.color %}
+{% set button_color = module.style.button_text_color.color %} 
+<!-- module html  -->
+<div class="flex flex-wrap md:flex-nowrap gap-y-6 md:gap-x-6 md:gap-y-0">
+  <div class="rounded-xl w-full md:w-7/12 p-6 lg:p-12" style="background-color: {{first_bg_color}}; background-image: url({{ module.first_column.background_texture.src }}); background-repeat: no-repeat; background-position: center bottom; background-size: contain;">
+  
+    <p class="text-[14px] md:text-[18px] font-bold leading-tight mb-3" style="color: {{label_color}};">
+    {{ module.first_column.cta_section_label }}
+    </p>
+    <p class="text-[24px] md:text-[36px] font-bold leading-tight mb-6" style="color: {{first_header_color}};">
+      {{ module.first_column.cta_section_header }}
+    </p>
+    {% if module.first_column.cta_section_text %}
+      <div class="w-full text-[#ffffff] mb-6">
+        {{ module.first_column.cta_section_text }}
+      </div>
+    {% endif %}
+      
+    {% if href %}
+      {% if module.first_column.cta_section_button.link.url.type is equalto "EMAIL_ADDRESS" %}
+        <p style="color: {{header_color}};">Please email <a href="{{href}}">{{module.first_column.cta_section_button.link.url.href}}</a></p>
+      {% else %}
+        <a href="{{href}}" 
+        {% if module.first_column.cta_section_button.link.open_in_new_tab %}target="_blank"{% endif %}
+        {% if module.first_column.cta_section_button.link.rel %}rel="{{ module.first_column.cta_section_button.link.rel }}"{% endif %} class="hs-button mb-12 lg:mb-0" style="background-color: {{button_bg}}; color: {{button_color}};">{{ module.first_column.cta_section_button.text }}</a>
+      {% endif %}
+    {% endif %}
+    
+    <img src="{{module.first_column.cta_image.src}}" class="mt-4" style="width: {{module.first_column.cta_image.max_width}}px;">
+  </div>
+  <div class="rounded-xl w-full md:w-5/12 p-6 lg:p-12 flex flex-col" style="background-color: {{second_bg_color}}; background-image: url({{ module.second_column.background_texture.src }}); background-repeat: no-repeat; background-position: center bottom; background-size: contain; border: 1px solid {{module.style.second_border_color.color}};">
+    <p class="text-[24px] md:text-[36px] font-bold leading-tight mb-6" style="color: {{second_header_color}};">
+      {{ module.second_column.cta_section_header }}
+    </p>
+    {% for item in module.second_column.icon_links %}
+      <div class="flex items-center mb-5">
+        <div class="rounded-[50%] mr-4 flex items-center justify-center" style="background: {{module.style.icon_background_color.color}}; width: 66px; height: 66px;">
+          <img src="{{item.icon.src}}" style="width: 36px;">
+        </div>
+        <div>
+          <a href="{{item.icon_link.url.href}}" class="text-[#1C4633]">{{item.icon_link_text}}</a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>  
+</div>

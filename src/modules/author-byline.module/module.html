@@ -1,5 +1,6 @@
 <!-- module html  -->
-
+{% if module.author %}
+<div class="blog-post-bio border-t border-[#C0E7D8] py-4 mb-10">
 {% for item in module.author %}
 <div class="flex items-center">
   <div class="w-[87px]">
@@ -19,3 +20,5 @@
   </div>
 </div>
 {% endfor %}
+</div>
+{% endif %}

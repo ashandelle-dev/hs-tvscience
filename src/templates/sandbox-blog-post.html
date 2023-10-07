@@ -11,7 +11,170 @@
 {% image "hero_image" label='Hero Image', export_to_template_context=True %}
 {% image "card_image" label='Card Image', export_to_template_context=True %}
 {% choice "jump_menu" label="Enable Jump Menu", value="No", choices="Yes, No", export_to_template_context=True %}
+{% choice "layout" label='Layout', choices=[["layout-a","Layout A"],["layout-b","Layout B"]], multiple='False', display='radio',export_to_template_context=True %}
 {% block body %}
+{% if content.widgets.layout.body.value == "layout-a" %}
+<main class="body-container-wrapper container">
+  <div class="body-container body-container--blog-post">
+
+    {# Blog header #}
+    {% if content.widgets.hero_image.body.src %}
+      <div class="blog-header blog-header--post"
+         style="background-image: url('{{ content.widgets.hero_image.body.src }}');" 
+         ></div>
+    {% else %}
+    <div class="blog-header blog-header--post"
+         style="background-image: url('{{ content.featured_image }}');" 
+         ></div>
+    {% endif %}
+    {# End blog header #}
+
+    {# Blog post #}
+    <div class="content-wrapper">
+
+      <article class="blog-post">
+
+        {% set featured_tag = content.topic_list | first %}
+        {% if featured_tag %}
+        <span class="blog-post__preheader">{{ featured_tag }}</span>
+        {% endif %}
+
+        <h1 class="blog-post__title">{{ content.name }}</h1>
+
+        {% if theme.blog.show_summary %}
+        <p class="blog-post__summary">{{ content.meta_description|striptags  }}</p>
+        {% endif %}
+
+    <div class="blog-post__meta">
+      <div class="blog-post__bio">
+        {% if content.blog_post_author.avatar %}
+        <div class="blog-post__avatar" 
+           style="background-image: url('{{ content.blog_post_author.avatar }}');">
+        </div>
+        {% endif %}
+
+        <div class="blog-post__author">
+          <a href="{{ blog_author_url(group.id, content.blog_post_author.slug) }}">
+            {{ content.blog_post_author.display_name }}
+          </a>
+          <div class="blog-post__timestamp">
+            {{ content.publish_date | datetimeformat('%b %e, %Y') }}
+          </div>
+        </div>
+      </div>
+       <div class="blog-post__social-sharing">
+          {% module "Social Sharing" path="../modules/Social Sharing.module" 
+          facebook={
+            "enabled": true
+          }
+          linkedin={
+            "enabled": true
+          }
+          twitter={
+            "enabled": true
+          }
+          email={
+            "enabled": true
+          }
+          %}
+       </div>
+    </div>
+
+        <hr class="blog-post__divider" />
+        {% if group.public_title == "Ebooks" %}
+        <div class="blog-post__body-wrapper w-full" style="max-width: max-content;">
+          
+            <div class="blog-post__body flex">
+              <div class="pr-4 w-full md:w-1/2">
+                {{ content.post_body }}
+              </div>
+              <div class="w-full md:w-1/2">
+                {% module "gated_form" path="@hubspot/form", label="form.module" %}
+              </div>
+            </div>
+        
+          {% else %}
+         <div class="blog-post__body-wrapper">
+            <div class="blog-post__body">
+              {{ content.post_body }}
+            </div>
+          {% endif %}
+
+          {% if content.tag_list %}
+          <div class="blog-post__tags">
+            {% for tag in content.tag_list %}
+            <a class="blog-post__tag-link" href="{{ blog_tag_url(group.id, tag.slug) }}">{{ tag.name }}</a>
+            {% endfor %}
+          </div>
+          {% endif %}
+
+        </div>
+
+      </article>
+
+      {% if group.allow_comments %}
+      <div class="blog-comments">
+        {% module 'blog_comments' path='@hubspot/blog_comments', label="Blog comments" %}
+      </div>
+      {% endif %}
+
+    </div>
+    {# End blog post #}
+
+    {# Recent posts listing #}
+    {# This macro is used to format each recent post card and
+    gets passed to the 'related_blog_posts' tag below #}
+    {% macro recent_post(post) %}
+
+    <article class="blog-more-posts__post-wrapper">
+      <div class="blog-more-posts__post">
+        {% if post.featured_image and group.use_featured_image_in_summary %}
+        <a class="blog-more-posts__post-image" 
+           style="background-image: url('{{ post.featured_image }}');" 
+           href="{{ post.absolute_url }}">
+        </a>
+        {% endif %}
+        <div class="blog-more-posts__post-content">
+          <div>
+            {% set featured_tag = post.topic_list | first %}
+            {% if featured_tag %}
+            <span class="blog-more-posts__post-preheader">{{ featured_tag }}</span>
+            {% endif %}
+            <h3><a href="{{ post.absolute_url }}">{{ post.name }}</a></h3>
+            {% if content_group.show_summary_in_listing %}
+            <p>{{ post.meta_description | truncatehtml(150, '...', false) }}</p>
+            {% endif %}
+          </div>
+          <div class="blog-more-posts__post-meta">
+            <span class="blog-more-posts__post-author">
+              {{ post.blog_post_author }}
+            </span>
+            <span class="blog-more-posts__post-date">
+              {{ post.publish_date | datetimeformat('%b %e, %Y') }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    {% endmacro %}
+
+    <div class="content-wrapper">
+      <div class="blog-more">
+        <h2>Similar posts</h2>
+        <div class="blog-more-posts">
+          {% related_blog_posts limit=3, no_wrapper=True, post_formatter="recent_post" %}
+        </div>
+      </div>
+    </div>
+    {# End recent posts listing #}
+
+    {# module "blog-subscribe" path="../modules/Custom Blog Subscribe", label="Custom Blog Subscribe" #}
+    {% module "blog-subscribe" path="../modules/Global Blog Subscribe.module", label="Global Blog Subscribe" %}
+
+  </div>
+</main>
+{% else %}
 <style>
   .kl-social-sharing {
     justify-content: flex-start !important;
@@ -50,7 +213,7 @@
 <main class="container pt-4 md:pt-16">
   <div class="blog-header flex flex-col md:flex-row gap-4 md:gap-12">
     <div class="w-full md:w-1/4 flex flex-row md:flex-wrap">
-      <a href="https://www.tvscientific.com/insights"
+      <a href="https://www.tvscientific.com/insight"
           class="flex relative items-center hover:no-underline group w-full self-start">
           <div class="w-4 text-center group-hover:-translate-x-0.5 duration-200 transition-transform">
             <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -275,5 +438,5 @@
 
   
 </script>
-
+{% endif %}
 {% endblock body %}
