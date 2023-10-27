@@ -216,7 +216,7 @@
     <div class="w-4 text-center group-hover:translate-x-0.5 duration-200 transition-transform"><svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7 5L10 8L7 11" stroke="#009061" stroke-width="1.5"></path> </svg></div>
   </a>
   
-  <div class="flex flex-wrap items-stretch card-swiper relative ">  
+  <div class="flex flex-wrap items-stretch card-swiper relative overflow-hidden">  
     <div class="swiper-wrapper h-full border-[#C0E7D8] flex items-stretch">
       {% set webinar_posts = blog_recent_posts(130283509831, 6) %}
       {% for post in webinar_posts %}
