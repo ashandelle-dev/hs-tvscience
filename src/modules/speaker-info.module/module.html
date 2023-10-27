@@ -2,7 +2,7 @@
 <div class="flex flex-wrap gap-8">
 {% for item in module.speaker %}
 <div class="flex items-center">
-  <div class="w-[48px]">
+  <div class="w-[48px] speaker-info-image">
     {% if item.image.src %}
 	{% set sizeAttrs = 'width="{{ item.image.width }}" height="{{ item.image.height }}"' %}
 	{% if item.image.size_type == 'auto' %}

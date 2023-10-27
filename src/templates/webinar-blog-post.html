@@ -48,6 +48,10 @@
   .blog-post_title {
     color: #1c4633;
   }
+  .speaker-info-image {
+    max-width:60px;
+    width: 100%;
+  }
 </style>
 
 {% if page_layout == "layout-a" %}
@@ -89,7 +93,7 @@
 {# End blog header #}
 
 {% endif %}
-<main class="body-container-wrapper container">
+<main class="body-container-wrapper container test">
   <div class="body-container body-container--blog-post">
 
     
@@ -97,7 +101,7 @@
     <div class="py-16 gap-8 flex sticky-section relative">
       {% if page_layout == "layout_a" %}
       <div class="w-full md:w-2/3">
-      {% else %}
+      {% else %} 
         {%if has_form != "true" %}
           <div class="w-full md:w-2/3 mx-auto my-0">
         {% else %}
