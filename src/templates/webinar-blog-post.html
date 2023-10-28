@@ -110,6 +110,19 @@
       {% endif %}
         <article class="blog-post">
           {% if page_layout != "layout-a" %}
+          <a href="{{ group.absolute_url }}" class="flex relative items-center group hover:no-underline mb-10">
+            <div class="w-4 text-center group-hover:-translate-x-0.5 duration-200 transition-transform"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M9 5L6 8L9 11" stroke="white" stroke-width="1.5"></path> </svg></div>
+            <div class="px-3">
+              <p class="m-0 font-plex-mono tracking-widest uppercase" style="font-size: 14px;"><span>Back to all webinars</span></p>
+            </div>
+          </a>
+            <div class="flex flex-row text-sm font-bold">
+            <p>{{content.widgets.webinar_date.body.value}}</p>
+            {% if content.widgets.webinar_time.body.value %}
+              <span class="text-[#1dafff] px-3">•</span>
+              <p>{{content.widgets.webinar_time.body.value}}</p>
+            {% endif %}
+          </div>
           <h1 class="blog-post__title">{{ content.name }}</h1>
           {% if content.widgets.summary.body.value %}
               <p class="blog-post__summary">{{content.widgets.summary.body.value}}</p>
