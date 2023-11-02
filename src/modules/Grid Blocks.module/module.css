@@ -1,0 +1,18 @@
+@media screen and (max-width: 767px){
+.grid-blocks-container {  
+  grid-template-areas:
+    "area1"
+    "area4"
+    "area2"
+    "area3"
+    "area5";
+}
+
+.grid-block_item-1 { grid-area: area1; }
+
+.grid-block_item-2 { grid-area: area2; }
+
+.grid-block_item-3 { grid-area: area3; }
+.grid-block_item-4 { grid-area: area4; }
+.grid-block_item-5 { grid-area: area5; }
+}
