@@ -1,0 +1,35 @@
+{% require_css %}
+<style>
+  {% scope_css %}
+  .special-richtext {
+    position:relative;
+  }
+  .bar {
+    position: absolute;
+    height: 161px;
+    width: 4px;
+    background-color: #0FBF84;
+    left: 0px;
+    margin-left: -12px;
+  }
+  @media screen and (min-width:768px) {
+    .bar {
+      position: absolute;
+      height: 161px;
+      width: 4px;
+      background-color: #0FBF84;
+      left:0;
+      margin-left: -24px;
+    }
+  }
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+<div class="special-richtext">
+  {% if module.left_graphic %}
+  <div class="bar"></div>
+  {% endif %}
+
+
+  {% inline_rich_text field="richtext" value="{{ module.richtext }}" %}
+</div>

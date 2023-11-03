@@ -1,0 +1,125 @@
+[
+  {
+   "allow_new_line": false,
+   "default": "Case Study",
+   "display_width": null,
+   "id": "863e25c4-c3ae-74b4-4162-d5f11580203b",
+   "label": "Label",
+   "locked": false,
+   "name": "label_text",
+   "required": false,
+   "show_emoji_picker": false,
+   "type": "text",
+   "validation_regex": ""
+  },
+  {
+   "default": {
+    "size_type": "auto",
+    "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/Website%202022/Wisp%20White.png",
+    "alt": "Wisp White",
+    "loading": "lazy",
+    "width": 1498,
+    "height": 629,
+    "max_width": 1498,
+    "max_height": 629
+   },
+   "display_width": null,
+   "id": "2f14717b-58ba-97e2-77cf-eefbbae44946",
+   "label": "Logo",
+   "locked": false,
+   "name": "logo",
+   "required": false,
+   "resizable": true,
+   "responsive": true,
+   "show_loading": false,
+   "type": "image"
+  },
+  {
+   "allow_new_line": false,
+   "default": "How tvScientific's CTV campaigns surpassed Wisp performance KPIs",
+   "display_width": null,
+   "id": "f5423a14-f23f-34e9-59ee-9102eebe6a03",
+   "label": "h1",
+   "locked": false,
+   "name": "h1",
+   "required": false,
+   "show_emoji_picker": false,
+   "type": "text",
+   "validation_regex": ""
+  },
+  {
+   "allow_new_line": false,
+   "default": "Thanks to tvScientific's Performance Advertising Platform and Real-Time Optimizations",
+   "display_width": null,
+   "id": "1f2fc114-c5c3-3dd1-7a5b-6aa73724e66c",
+   "label": "paragraph",
+   "locked": false,
+   "name": "paragraph",
+   "required": false,
+   "show_emoji_picker": false,
+   "type": "text",
+   "validation_regex": ""
+  },
+  {
+   "default": {
+    "size_type": "auto",
+    "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/wisp-cs-hero-img-1.png",
+    "alt": "wisp-cs-hero-img-1",
+    "loading": "lazy",
+    "width": 466,
+    "height": 408,
+    "max_width": 466,
+    "max_height": 408
+   },
+   "display_width": null,
+   "id": "07b9d423-0596-8501-7b14-eb02c40331ed",
+   "label": "Overlay Images",
+   "locked": false,
+   "name": "overlay_images",
+   "occurrence": {
+    "max": 3
+   },
+   "required": false,
+   "resizable": true,
+   "responsive": true,
+   "show_loading": false,
+   "type": "image"
+  },
+  {
+   "default": {
+    "player_id": null
+   },
+   "display_width": null,
+   "id": "37eb8523-5fe2-9a3f-8bec-d9050296beba",
+   "label": "Background Video",
+   "locked": false,
+   "name": "background_video",
+   "required": false,
+   "resizable": true,
+   "show_advanced_options": true,
+   "show_preview": true,
+   "type": "videoplayer"
+  },
+  {
+   "default": {
+    "size_type": "auto",
+    "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/wisp-case-study-hero-img.png",
+    "alt": "wisp-case-study-hero-img",
+    "loading": "lazy",
+    "width": 824,
+    "height": 824,
+    "max_width": 824,
+    "max_height": 824
+   },
+   "display_width": null,
+   "id": "4724762c-0ad4-34ba-a964-eab1a566a869",
+   "label": "Background Image",
+   "locked": false,
+   "name": "image",
+   "required": false,
+   "resizable": true,
+   "responsive": true,
+   "show_loading": false,
+   "type": "image"
+  }
+ ]

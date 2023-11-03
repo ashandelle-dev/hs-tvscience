@@ -1,0 +1,38 @@
+.hs-video-widget {
+  width: 100%;
+}
+
+.cs-hero-bg .hs-video-wrapper,
+.cs-hero-bg img {
+  width: 310px;
+  height: 310px!important;
+  margin: auto;
+  border-radius: 100%;
+  -webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%);
+  -webkit-transform: rotate(0.000001deg); 
+  -webkit-border-radius: 100%; 
+  -moz-border-radius: 100%;
+  display: block;
+  padding: 0!important;
+
+}
+
+.cs-hero-bg .hs-video-widget .hs-video-container {
+  background-image: none!important;
+}
+
+@media only screen and (min-width: 768px)  {
+
+.cs-hero-bg .hs-video-wrapper,
+.cs-hero-bg img {
+  width: 410px;
+  height: 410px!important;
+}
+}
+
+.cs-hero-bg .hs-video-wrapper iframe {
+border-radius: 50%;
+object-fit: cover;
+padding: 10px;
+transform:scale(2.2);
+}

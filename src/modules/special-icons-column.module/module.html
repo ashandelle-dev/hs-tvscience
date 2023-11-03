@@ -1,0 +1,94 @@
+{% require_css %}
+<style>
+  {% scope_css %}
+    p,h1,h2,h3,h4,span {
+    color: {{module.text_color.hex}};
+  }
+  .special-icons-column {
+    display: flex;
+    flex-direction: column-reverse;
+    color: {{module.text_color.hex}};
+  }
+  .content {
+    max-width: 540px;
+  }
+  .icon {
+
+  }
+  .col-left {
+    display: flex;
+    gap: 65px;
+  }
+  .col-left .icon {
+    float: left;
+    display: none;
+  }
+  .col-right {
+    display: flex;
+    justify-content:space-between;
+    padding-bottom: 25px;
+  }
+  @media screen and (min-width:768px){
+    .special-icons-column {
+      justify-content: space-between;
+      flex-direction: row;
+    }
+    .col-left .icon {
+      display: block;
+    }
+    .col-right {
+      padding-bottom: 0px;
+      padding-right: 80px;
+    }
+    .col-right .mobile-only.icon {
+      display: none;
+    }
+  }
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+
+<div class="special-icons-column">
+  <div class="col-left">
+    <div class="icon">
+      {% if module.left_icon.src %}
+      {% set sizeAttrs = 'width="{{ module.left_icon.width }}" height="{{ module.left_icon.height }}"' %}
+      {% if module.left_icon.size_type == 'auto' %}
+      {% set sizeAttrs = 'width="{{ module.left_icon.width }}" height="{{ module.left_icon.height }}" style="max-width: 100%; height: auto;"' %}
+      {% elif module.left_icon.size_type == 'auto_custom_max' %}
+      {% set sizeAttrs = 'width="{{ module.left_icon.max_width }}" height="{{ module.left_icon.max_height }}" style="max-width: 100%; height: auto;"' %}
+      {% endif %}
+      {% set loadingAttr = module.left_icon.loading != 'disabled' ? 'loading="{{ module.left_icon.loading }}"' : '' %}
+      <img src="{{ module.left_icon.src }}" alt="{{ module.left_icon.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+      {% endif %}
+    </div>
+    <div class="content">
+      {% inline_rich_text field="content" value="{{ module.content }}" %}
+    </div>
+  </div>
+  <div class="col-right">
+    <div class="mobile-only icon">
+      {% if module.left_icon.src %}
+      {% set sizeAttrs = 'width="{{ module.left_icon.width }}" height="{{ module.left_icon.height }}"' %}
+      {% if module.left_icon.size_type == 'auto' %}
+      {% set sizeAttrs = 'width="{{ module.left_icon.width }}" height="{{ module.left_icon.height }}" style="max-width: 100%; height: auto;"' %}
+      {% elif module.left_icon.size_type == 'auto_custom_max' %}
+      {% set sizeAttrs = 'width="{{ module.left_icon.max_width }}" height="{{ module.left_icon.max_height }}" style="max-width: 100%; height: auto;"' %}
+      {% endif %}
+      {% set loadingAttr = module.left_icon.loading != 'disabled' ? 'loading="{{ module.left_icon.loading }}"' : '' %}
+      <img src="{{ module.left_icon.src }}" alt="{{ module.left_icon.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+      {% endif %}
+    </div>
+    <div class="icon">{% if module.right_icon.src %}
+      {% set sizeAttrs = 'width="{{ module.right_icon.width }}" height="{{ module.right_icon.height }}"' %}
+      {% if module.right_icon.size_type == 'auto' %}
+      {% set sizeAttrs = 'width="{{ module.right_icon.width }}" height="{{ module.right_icon.height }}" style="max-width: 100%; height: auto;"' %}
+      {% elif module.right_icon.size_type == 'auto_custom_max' %}
+      {% set sizeAttrs = 'width="{{ module.right_icon.max_width }}" height="{{ module.right_icon.max_height }}" style="max-width: 100%; height: auto;"' %}
+      {% endif %}
+      {% set loadingAttr = module.right_icon.loading != 'disabled' ? 'loading="{{ module.right_icon.loading }}"' : '' %}
+      <img src="{{ module.right_icon.src }}" alt="{{ module.right_icon.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+      {% endif %}</div>
+  </div>
+</div>

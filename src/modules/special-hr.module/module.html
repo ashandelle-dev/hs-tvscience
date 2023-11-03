@@ -1,0 +1,16 @@
+{% require_css %}
+<style>
+  {% scope_css %}
+  .special-hr {
+    position:absolute;
+    z-index:999;
+    width: 100%;
+    left:0;
+    height: {{module.size}};
+    background-color:{{module.color.hex}};
+    margin:auto;
+  }
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+<div class="special-hr">{{module.color}}</div>
