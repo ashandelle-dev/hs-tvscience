@@ -1,0 +1,115 @@
+[
+  {
+   "default": {
+    "size_type": "auto",
+    "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/single-card-placeholder.jpg",
+    "alt": "single-card-placeholder",
+    "loading": "lazy",
+    "width": 734,
+    "height": 440,
+    "max_width": 734,
+    "max_height": 440
+   },
+   "display_width": null,
+   "id": "9219c2db-b4bd-eb84-9169-e3d2fc3634f3",
+   "label": "Thumbnail",
+   "locked": false,
+   "name": "card_thumbnail",
+   "required": false,
+   "resizable": true,
+   "responsive": true,
+   "show_loading": false,
+   "type": "image"
+  },
+  {
+   "allow_new_line": false,
+   "default": "Title",
+   "display_width": null,
+   "id": "76f4cf3e-406c-192b-caf3-2db704c613db",
+   "label": "Label",
+   "locked": false,
+   "name": "card_label",
+   "required": false,
+   "show_emoji_picker": false,
+   "type": "text",
+   "validation_regex": ""
+  },
+  {
+   "allow_new_line": false,
+   "default": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. ",
+   "display_width": null,
+   "id": "e9bd78bb-4a8f-d65a-1462-22f06a6ea340",
+   "label": "Title",
+   "locked": false,
+   "name": "card_title",
+   "required": false,
+   "show_emoji_picker": false,
+   "type": "text",
+   "validation_regex": ""
+  },
+  {
+   "children": [
+    {
+     "allow_new_line": false,
+     "default": "Read More",
+     "display_width": null,
+     "id": "5962f3f0-392c-1206-de4b-351cd22efdf1",
+     "label": "Button Text",
+     "locked": false,
+     "name": "text",
+     "required": false,
+     "show_emoji_picker": false,
+     "type": "text",
+     "validation_regex": ""
+    },
+    {
+     "default": {
+      "url": {
+       "content_id": null,
+       "type": "EXTERNAL",
+       "href": ""
+      },
+      "open_in_new_tab": false,
+      "no_follow": false
+     },
+     "display_width": null,
+     "id": "3cd71135-47d9-1490-669d-2b7d2dedb465",
+     "label": "Link",
+     "locked": false,
+     "name": "link",
+     "required": false,
+     "show_advanced_rel_options": false,
+     "supported_types": [
+      "EXTERNAL",
+      "CONTENT",
+      "FILE",
+      "EMAIL_ADDRESS",
+      "BLOG",
+      "CALL_TO_ACTION"
+     ],
+     "type": "link"
+    }
+   ],
+   "default": {
+    "text": "Read More",
+    "link": {
+     "url": {
+      "content_id": null,
+      "type": "EXTERNAL",
+      "href": ""
+     },
+     "open_in_new_tab": false,
+     "no_follow": false
+    }
+   },
+   "display_width": null,
+   "expanded": false,
+   "id": "79274e11-41eb-a24e-6519-a6d90fd1bfd2",
+   "label": "Button",
+   "locked": false,
+   "name": "card_cta",
+   "required": false,
+   "tab": "CONTENT",
+   "type": "group"
+  }
+ ]
