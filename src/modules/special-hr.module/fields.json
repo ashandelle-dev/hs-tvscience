@@ -5,8 +5,6 @@
   "label" : "Color",
   "required" : false,
   "locked" : false,
-  "responsive_enabled" : false,
-  "breakpoint_defaults" : { },
   "type" : "color",
   "default" : {
     "color" : null,
@@ -20,12 +18,20 @@
   "required" : false,
   "locked" : false,
   "display" : "slider",
-  "responsive_enabled" : false,
-  "breakpoint_defaults" : { },
   "min" : 1,
   "max" : 10,
   "step" : 1,
   "suffix" : "px",
   "type" : "number",
   "default" : 1
+}, {
+  "id" : "c88c00e7-e60f-2254-9cd5-cc7edc9e2e8a",
+  "name" : "full_size",
+  "display_width" : null,
+  "label" : "Full Size",
+  "required" : false,
+  "locked" : false,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "default" : false
 } ]

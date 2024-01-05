@@ -2,15 +2,17 @@
 <style>
   {% scope_css %}
   .special-hr {
+    {% if module.full_size %}
     position:absolute;
     z-index:999;
+    {% endif %}
     width: 100%;
     left:0;
-    height: {{module.size}};
+    height: {{module.size}}px;
     background-color:{{module.color.hex}};
     margin:auto;
   }
   {% end_scope_css %}
 </style>
 {% end_require_css %}
-<div class="special-hr">{{module.color}}</div>
+<div class="special-hr"></div>
