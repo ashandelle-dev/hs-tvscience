@@ -234,11 +234,15 @@
   </div>
   <div class="blog-body flex flex-col md:flex-row gap-4 md:gap-12">
     <div class="w-full md:w-1/4 relative">
-      
+
         {% module "module_16958355586771" path="/tvScientific 2022 Atlas Pro/cli-build/modules/author-byline", label="Author Byline" %}
       
       <div class="sticky top-6">
         {% if content.widgets.jump_menu.body.value == 'Yes' %}
+        <div class="border-t border-[#C0E7D8] py-4">
+          <div class="read-time">Read Time: <span id="reading-time"></span></div>
+          
+        </div>
         <div class="jump-menu flex flex-wrap hidden border-t border-[#C0E7D8] pt-4">
           <p class="uppercase text-[#009061] opacity-[.88]">Jump to a section…</p>
           
@@ -421,6 +425,20 @@
         }
     });
     }, false);
+
+
+    function calculateTime(text) {
+      const wordsPerMinute = 200; // Average reading speed
+      const words = text.split(/\s+/).length; 
+      const time = Math.ceil(words / wordsPerMinute);
+      return time;
+    }
+
+    const blogPost = document.getElementById('hs_cos_wrapper_post_body').innerText; 
+    const readingTime = calculateTime(blogPost);
+    document.getElementById('reading-time').innerText = `${readingTime} mins`; 
+
+
   });
 
   
