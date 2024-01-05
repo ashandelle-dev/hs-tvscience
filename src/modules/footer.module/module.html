@@ -1,0 +1,69 @@
+{% set padding = '120px 0' %}
+
+{% if module.padding.overwrite %}
+  {% set padding = module.padding.value ~ 'px 0' %}
+{% endif %}
+
+<footer class="">
+  <div class="content-wrapper">
+    {% if module.logo.image.src or module.address or module.social or module.groups %}
+    <div class="" {% if module.padding.overwrite %}style="padding: {{ padding }};"{% endif %}>
+
+      <div class="">
+
+        {% if module.logo.image.src %}
+          <img src="{{module.logo.image.src}}">
+        {% endif %}
+
+        <div class="">{{ module.address }}</div>
+        <ul class="">
+          {% for s in module.social %}
+            <a href="{{ s.link }}">
+              {% icon name="{{ s.icon.name }}" style="{{ s.icon.type }}" unicode="{{ s.icon.unicode }}" %}
+            </a>
+          {% endfor %}        
+        </ul>
+      </div>
+
+      <div class="">
+        {% for group in module.groups %}
+          <div class="">
+            <h3>{{ group.title }}</h3>
+            <ul>
+              {% for item in group.menu %}
+                <li>
+                  <a href="{{ item.url }}">{{ item.linkLabel }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endfor %}
+      </div>
+
+    </div>
+    {% endif %}
+
+    {% if module.legal %}
+    <div class="">
+      {{ module.legal }}
+    </div>
+    {% endif %}
+
+  </div>
+
+  {% if not theme.footer.hide_byline %}
+  <div class="">
+    <div class="content-wrapper">
+      <div class="">
+        <span>
+          <a href="https://www.kalungi.com/atlas-hubspot-theme-for-b2b-saas-software">
+            Powered by Atlas - a B2B SaaS HubSpot theme
+            <!-- Made by: https://github.com/pipriles -->
+          </a>
+        </span>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</footer>
+

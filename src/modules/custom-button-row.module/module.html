@@ -1,0 +1,46 @@
+{% require_css %}
+<style>
+  {% scope_css %}
+
+  .cta-button {
+    text-decoration: none;
+    font-family: IBM Plex Sans;
+    padding: 8px 17px;
+    font-size: 14px;
+    font-weight: 700px;
+    text-transform: uppercase;
+    line-height: 24px;
+    letter-spacing: 2px;
+    border-radius: 3px;
+  }
+  .cta-group {
+    display: flex;
+    gap: 17px;
+  }
+  .button-primary {
+    background-color:#0FBF84;
+    color: #fff !important;
+  }
+  .button-secondary {
+    background-color: #E5E7EB;
+    color: #009061;
+  }
+  {% end_scope_css%}
+</style>
+{% end_require_css %}
+
+
+<div class="cta-group">
+  {% for item in module.cta %}
+  {% set href = item.link.url.href %}
+  {% if item.link.url.type is equalto "EMAIL_ADDRESS" %}
+  {% set href = "mailto:" + href %}
+  {% endif %}
+  <a class="cta-button button-{{ item.button_style }}" href="{{ href }}"
+     {% if item.link.open_in_new_tab %}target="_blank"{% endif %}
+     {% if item.link.rel %}rel="{{ item.link.rel }}"{% endif %}
+     >
+    {{ item.button_text }}
+  </a>
+  {% endfor %}
+</div>

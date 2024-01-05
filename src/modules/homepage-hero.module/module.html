@@ -1,0 +1,100 @@
+{% require_css %}
+<style>
+
+  .{{name}} {
+    position: relative;
+    {% if module.background == 'color' %}
+    background-color: {{module.style.background_color.css}};
+    {% endif %}
+    {% if module.background == 'image' %}
+    background-image: {{module.background_image.src}};
+    {% endif %}
+  }
+
+  {% scope_css %}
+  h1 {
+    color: var(--Light-Green, #0FBF84);
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: IBM Plex Sans;
+    font-size: 24px !important;
+    font-style: normal;
+    font-weight: 500 !important;
+    line-height: 72px; /* 300% */
+  }
+  h2 {
+    color: #FFF;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: IBM Plex Sans;
+    font-size: 60px !important;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 72px !important; /* 120% */
+    max-width: 827px;
+    margin-top: 0;
+  }
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 100%;
+    position: absolute;
+    bottom: 106px;
+  }
+  .module-content {
+    max-width: {{module.style.container_width}}px !important;
+    margin: auto;
+  }
+  .hs-video-widget {
+    width: 100%;
+  }
+  .cta-button {
+    text-decoration: none;
+    font-family: IBM Plex Sans;
+    padding: 8px 17px;
+    font-size: 14px;
+    font-weight: 700px;
+    text-transform: uppercase;
+    line-height: 24px;
+    letter-spacing: 2px;
+    border-radius: 3px;
+  }
+  .cta-group {
+    display: flex;
+    gap: 17px;
+  }
+  .button-primary {
+    background-color:#0FBF84;
+    color: #fff !important;
+  }
+  .button-secondary {
+    background-color: #E5E7EB;
+    color: #009061;
+  }
+  {% end_scope_css%}
+</style>
+{% end_require_css %}
+
+<div class="{{name}}">
+  {% if module.background == 'video' %}
+  {% video_player "embed_player" autoplay=true, hidden_controls=true, loop=true, player_id={{module.background_video.player_id}}%}
+  {% endif %}
+  <div class="container">
+    <div class="module-content">
+      <h1>{{module.subheading}}</h1>
+      <h2>{{module.content}} </h2>
+      <div class="cta-group">
+        {% for item in module.cta %}
+        {% set href = item.link.url.href %}
+        {% if item.link.url.type is equalto "EMAIL_ADDRESS" %}
+        {% set href = "mailto:" + href %}
+        {% endif %}
+        <a class="cta-button button-{{ item.button_style }}" href="{{ href }}"
+           {% if item.link.open_in_new_tab %}target="_blank"{% endif %}
+           {% if item.link.rel %}rel="{{ item.link.rel }}"{% endif %}
+           >
+          {{ item.button_text }}
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>

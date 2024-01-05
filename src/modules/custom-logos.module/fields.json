@@ -1,0 +1,42 @@
+[ {
+  "id" : "2feac6cb-aa93-11c0-9029-01a57f64c227",
+  "name" : "logo",
+  "display_width" : null,
+  "label" : "Logo",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : 1
+  },
+  "responsive" : true,
+  "resizable" : true,
+  "show_loading" : false,
+  "type" : "image",
+  "default" : [ {
+    "size_type" : "auto",
+    "src" : "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/Inside%20Weather%20Grey%201.svg",
+    "alt" : "Inside Weather Grey 1",
+    "loading" : "lazy",
+    "width" : 192,
+    "height" : 37,
+    "max_width" : 192,
+    "max_height" : 37
+  } ]
+}, {
+  "id" : "b9374542-2e49-e2c4-717c-7ba56d475a89",
+  "name" : "per_row",
+  "display_width" : null,
+  "label" : "Per Row",
+  "required" : true,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "w-full", "One" ], [ "md:w-1/2", "Two" ], [ "md:w-1/3", "Three" ], [ "md:w-1/4", "Four" ], [ "md:w-1/6", "Six" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "default" : "md:w-1/4"
+} ]

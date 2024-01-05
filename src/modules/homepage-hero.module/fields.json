@@ -1,0 +1,192 @@
+[ {
+  "id" : "03de3b5e-6922-76b3-81b6-c260df73c3fe",
+  "name" : "subheading",
+  "display_width" : null,
+  "label" : "subheading",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Retail Ads"
+}, {
+  "id" : "b5bf52e5-57f3-fe90-d11f-2e83a07fdca4",
+  "name" : "content",
+  "display_width" : null,
+  "label" : "Content",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "TV advertising that actually boosts reach, lift, and ROAS"
+}, {
+  "id" : "15d6ee97-b2c8-9961-b499-4c99ab373f4a",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "97cd62ea-d468-35ea-c153-cc954c9bb8c9",
+    "name" : "container_width",
+    "display_width" : null,
+    "label" : "Container Width",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "step" : 1,
+    "suffix" : "px",
+    "type" : "number",
+    "default" : 1100
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "container_width" : 1100
+  }
+}, {
+  "id" : "9c8fbaec-1eeb-34af-2de7-b9210fa17b68",
+  "name" : "cta",
+  "display_width" : null,
+  "label" : "CTA",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : 2,
+    "sorting_label_field" : null,
+    "default" : null
+  },
+  "children" : [ {
+    "id" : "bd023e80-04bc-91f4-9b25-5f7eabad46e7",
+    "name" : "button_style",
+    "display_width" : null,
+    "label" : "Button Style",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "primary"
+  }, {
+    "id" : "4529e8a5-eb04-1076-c02c-d0122dbe4716",
+    "name" : "button_text",
+    "display_width" : null,
+    "label" : "Button Text",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Request a demo"
+  }, {
+    "id" : "1ff41df4-7ed4-7751-b49a-40f7a373452d",
+    "name" : "link",
+    "display_width" : null,
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION", "PHONE_NUMBER", "WHATSAPP_NUMBER", "PAYMENT" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "default" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : [ ]
+}, {
+  "id" : "430c41b7-9f11-aa0d-c5f3-b2cd84a405a3",
+  "name" : "background",
+  "display_width" : null,
+  "label" : "Background Type",
+  "required" : true,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "color", "Color" ], [ "image", "Image" ], [ "video", "Video" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "default" : "color"
+}, {
+  "id" : "b69294cf-8eca-9b2b-b0f3-34afce85181a",
+  "name" : "background_color",
+  "display_width" : null,
+  "label" : "Background Color",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "background",
+    "controlling_value_regex" : "color",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "type" : "color",
+  "default" : {
+    "color" : null,
+    "opacity" : 100
+  }
+}, {
+  "id" : "301db604-8f34-6909-fe69-ad565e64673f",
+  "name" : "background_image",
+  "display_width" : null,
+  "label" : "Background Image",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "background",
+    "controlling_value_regex" : "image",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "responsive" : true,
+  "resizable" : true,
+  "show_loading" : false,
+  "type" : "image",
+  "default" : {
+    "size_type" : "auto",
+    "src" : "",
+    "alt" : null,
+    "loading" : "lazy"
+  }
+}, {
+  "id" : "226a29c8-890a-e11b-3bf7-982d32f6c24e",
+  "name" : "background_video",
+  "display_width" : null,
+  "label" : "Background Video",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "background",
+    "controlling_value_regex" : "video",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "resizable" : true,
+  "show_preview" : true,
+  "show_advanced_options" : false,
+  "type" : "videoplayer"
+} ]

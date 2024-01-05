@@ -1,0 +1,28 @@
+{% require_css %}
+<style>
+  {% scope_css %}
+  .logo {
+    min-height: 113px;
+  }
+  .logo:not(:last-child) {
+    border-right: 1.5px solid #E5E7EB;
+  }
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+<div class="{{name}} flex items-center items-stretch">
+  {% for item in module.logo %}
+  <div class="logo {{module.per_row}} flex flex-grow flex-shrink">
+    {% if item.src %}
+    {% set sizeAttrs = 'width="{{ item.width }}" height="{{ item.height }}"' %}
+    {% if item.size_type == 'auto' %}
+    {% set sizeAttrs = 'width="{{ item.width }}" height="{{ item.height }}" style="max-width: 100%; height: auto;"' %}
+    {% elif item.size_type == 'auto_custom_max' %}
+    {% set sizeAttrs = 'width="{{ item.max_width }}" height="{{ item.max_height }}" style="max-width: 100%; height: auto;"' %}
+    {% endif %}
+    {% set loadingAttr = item.loading != 'disabled' ? 'loading="{{ item.loading }}"' : '' %}
+    <img src="{{ item.src }}" alt="{{ item.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+    {% endif %}
+  </div>
+  {% endfor %}
+</div>
