@@ -32,7 +32,8 @@
     max-width: 827px;
     margin-top: 0;
   }
-  .container {
+  .module-wrapper {
+    
     padding-left: 15px;
     padding-right: 15px;
     width: 100%;
@@ -77,7 +78,7 @@
   {% if module.background == 'video' %}
   {% video_player "embed_player" autoplay=true, hidden_controls=true, loop=true, player_id={{module.background_video.player_id}}%}
   {% endif %}
-  <div class="container">
+  <div class="module-wrapper">
     <div class="module-content">
       <h1>{{module.subheading}}</h1>
       <h2>{{module.content}} </h2>

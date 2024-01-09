@@ -4,15 +4,17 @@
   .logo {
     min-height: 113px;
   }
-  .logo:not(:last-child) {
-    border-right: 1.5px solid #E5E7EB;
+  @media screen and (min-width:767px){
+    .logo:not(:last-child) {
+      border-right: 1.5px solid #E5E7EB;
+    }
   }
   {% end_scope_css %}
 </style>
 {% end_require_css %}
-<div class="{{name}} flex items-center items-stretch">
+<div class="{{name}} grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 items-center">
   {% for item in module.logo %}
-  <div class="logo {{module.per_row}} flex flex-grow flex-shrink">
+  <div class="logo flex">
     {% if item.src %}
     {% set sizeAttrs = 'width="{{ item.width }}" height="{{ item.height }}"' %}
     {% if item.size_type == 'auto' %}
