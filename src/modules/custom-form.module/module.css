@@ -1,17 +1,26 @@
 .lp-hero-form .hs-form-field.field .input {
     /* margin:0 auto; */
 }
+.lp-hero-form  .hs_error_rollup:not(:last-child) {
+    display: none;
+}
+@media screen and (min-width:768px) {
+  .lp-hero-form form {
+  display: flex;
+  }
 
-
+  .lp-hero-form  form fieldset:first-child{
+    flex-grow: 1;
+  }
+}
 
 .lp-hero-form .hs-form-field {
   margin-bottom: 5px;
 }
 
-.lp-hero-form .hs-submit {
-  margin-top: 10px;
+.lp-hero-form form label {
+  margin: 0px
 }
-
 select {
   padding: 15px;
   border-radius: 3px;
@@ -46,7 +55,7 @@ select {
     font-size: 12px;
     font-weight: 700;
     letter-spacing: .1em;
-    padding: .5rem 1.5rem;
+    padding: 13.5px 25px !important;
     text-align: center;
     text-transform: uppercase;
     transition-duration: .2s;

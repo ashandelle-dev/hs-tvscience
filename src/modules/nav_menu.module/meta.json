@@ -1,15 +1,9 @@
 {
-  "label": "Naviagtion Menu",
-  "css_assets": [],
-  "external_js": [],
-  "global": true,
-  "help_text": "",
-  "host_template_types": [
-    "PAGE"
-  ],
-  "js_assets": [],
-  "other_assets": [],
-  "smart_type": "NOT_SMART",
-  "tags": [],
-  "is_available_for_new_content": true
+  "global" : true,
+  "content_types" : [ "LANDING_PAGE", "SITE_PAGE" ],
+  "smart_type" : "NOT_SMART",
+  "host_template_types" : [ "PAGE" ],
+  "module_id" : 119549246623,
+  "label" : "Naviagtion Menu",
+  "is_available_for_new_content" : true
 }

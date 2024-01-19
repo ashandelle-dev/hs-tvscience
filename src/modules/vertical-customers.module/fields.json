@@ -1,152 +1,179 @@
-[
-  {
-   "default": false,
-   "display": "toggle",
-   "display_width": null,
-   "id": "f92e1072-d0fe-2065-96f4-80a3ffba4eb9",
-   "label": "Column Reverse",
-   "locked": false,
-   "name": "column_reverse",
-   "required": false,
-   "type": "boolean"
+[ {
+  "id" : "f92e1072-d0fe-2065-96f4-80a3ffba4eb9",
+  "name" : "column_reverse",
+  "display_width" : null,
+  "label" : "Column Reverse",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "default" : false
+}, {
+  "id" : "168f0b04-48e3-ffdd-ea44-b48ab7c8edf8",
+  "name" : "rows",
+  "display_width" : null,
+  "label" : "Rows",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : null
   },
-  {
-   "type": "group",
-   "id": "168f0b04-48e3-ffdd-ea44-b48ab7c8edf8",
-   "label": "Rows",
-   "children": [
-    {
-     "type": "text",
-     "id": "f37094b3-e5a9-4f44-ece2-8884670eb396",
-     "validation_regex": "",
-     "label": "Title",
-     "name": "title",
-     "default": "Customer Case Study: Mid Core Games"
-    },
-    {
-     "type": "text",
-     "id": "c2984bb4-7a64-6bc8-7097-6c8fce11156c",
-     "validation_regex": "",
-     "label": "Paragraph",
-     "name": "paragraph",
-     "default": "It quickly became clear that they needed to explore new outlets for advertising. Wisp was looking for a way to break into"
-    },
-    {
-     "type": "image",
-     "id": "adf02d1f-2e80-cf5e-f66f-da5561f79fc3",
-     "default": {
-      "size_type": "auto",
-      "src": "",
-      "alt": null,
-      "loading": "lazy"
-     },
-     "resizable": true,
-     "responsive": true,
-     "show_loading": false,
-     "label": "Logo",
-     "name": "logo"
-    },
-    {
-     "type": "image",
-     "id": "f6efc883-06d9-0b7f-5d54-0baf5ad8492b",
-     "default": {
-      "size_type": "auto",
-      "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/mid-core-games.png",
-      "alt": "mid-core-games",
-      "loading": "lazy",
-      "width": 921,
-      "height": 968,
-      "max_width": 921,
-      "max_height": 968
-     },
-     "resizable": true,
-     "responsive": true,
-     "show_loading": false,
-     "label": "Image",
-     "name": "image"
-    },
-    {
-     "type": "group",
-     "id": "e3033334-ba41-9be1-8e35-c24ae2490b0c",
-     "label": "Columns",
-     "children": [
-      {
-       "type": "text",
-       "id": "a6e840b3-ced9-e4d4-75f1-4b9516953f7b",
-       "validation_regex": "",
-       "label": "Number",
-       "name": "number"
-      },
-      {
-       "type": "text",
-       "id": "dc058f1c-7858-b9b9-6819-196b7158ba15",
-       "validation_regex": "",
-       "label": "Detail",
-       "name": "detail"
-      }
-     ],
-     "name": "columns",
-     "default": {},
-     "occurrence": {}
-    },
-    {
-     "type": "link",
-     "id": "fb1abc2b-c7dc-31a6-dfe1-675b6273dcbb",
-     "default": {
-      "url": {
-       "content_id": null,
-       "type": "EXTERNAL",
-       "href": ""
-      },
-      "open_in_new_tab": false,
-      "no_follow": false
-     },
-     "supported_types": [
-      "EXTERNAL",
-      "CONTENT",
-      "FILE",
-      "EMAIL_ADDRESS",
-      "BLOG",
-      "CALL_TO_ACTION",
-      "PHONE_NUMBER",
-      "WHATSAPP_NUMBER",
-      "PAYMENT"
-     ],
-     "label": "Link",
-     "name": "link"
+  "children" : [ {
+    "id" : "f37094b3-e5a9-4f44-ece2-8884670eb396",
+    "name" : "title",
+    "display_width" : null,
+    "label" : "Title",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Customer Case Study: Mid Core Games"
+  }, {
+    "id" : "c2984bb4-7a64-6bc8-7097-6c8fce11156c",
+    "name" : "paragraph",
+    "display_width" : null,
+    "label" : "Paragraph",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "It quickly became clear that they needed to explore new outlets for advertising. Wisp was looking for a way to break into"
+  }, {
+    "id" : "adf02d1f-2e80-cf5e-f66f-da5561f79fc3",
+    "name" : "logo",
+    "display_width" : null,
+    "label" : "Logo",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "default" : {
+      "size_type" : "auto",
+      "src" : "",
+      "alt" : null,
+      "loading" : "lazy"
     }
-   ],
-   "name": "rows",
-   "default": {
-    "title": "Customer Case Study: Mid Core Games",
-    "paragraph": "It quickly became clear that they needed to explore new outlets for advertising. Wisp was looking for a way to break into",
-    "logo": {
-     "size_type": "auto",
-     "src": "",
-     "alt": null,
-     "loading": "lazy"
-    },
-    "image": {
-     "size_type": "auto",
-     "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/mid-core-games.png",
-     "alt": "mid-core-games",
-     "loading": "lazy",
-     "width": 921,
-     "height": 968,
-     "max_width": 921,
-     "max_height": 968
-    },
-    "columns": {},
-    "link": {
-     "url": {
-      "content_id": null,
-      "type": "EXTERNAL",
-      "href": ""
-     },
-     "open_in_new_tab": false,
-     "no_follow": false
+  }, {
+    "id" : "f6efc883-06d9-0b7f-5d54-0baf5ad8492b",
+    "name" : "image",
+    "display_width" : null,
+    "label" : "Image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "default" : {
+      "size_type" : "auto",
+      "src" : "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/mid-core-games.png",
+      "alt" : "mid-core-games",
+      "loading" : "lazy",
+      "width" : 921,
+      "height" : 968,
+      "max_width" : 921,
+      "max_height" : 968
     }
-   },
-   "occurrence": {}
+  }, {
+    "id" : "e3033334-ba41-9be1-8e35-c24ae2490b0c",
+    "name" : "columns",
+    "display_width" : null,
+    "label" : "Columns",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : null,
+      "max" : null,
+      "sorting_label_field" : null,
+      "default" : null
+    },
+    "children" : [ {
+      "id" : "a6e840b3-ced9-e4d4-75f1-4b9516953f7b",
+      "name" : "number",
+      "display_width" : null,
+      "label" : "Number",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text"
+    }, {
+      "id" : "dc058f1c-7858-b9b9-6819-196b7158ba15",
+      "name" : "detail",
+      "display_width" : null,
+      "label" : "Detail",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : { }
+  }, {
+    "id" : "fb1abc2b-c7dc-31a6-dfe1-675b6273dcbb",
+    "name" : "link",
+    "display_width" : null,
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION", "PHONE_NUMBER", "WHATSAPP_NUMBER", "PAYMENT" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "default" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "title" : "Customer Case Study: Mid Core Games",
+    "paragraph" : "It quickly became clear that they needed to explore new outlets for advertising. Wisp was looking for a way to break into",
+    "logo" : {
+      "size_type" : "auto",
+      "src" : "",
+      "alt" : null,
+      "loading" : "lazy"
+    },
+    "image" : {
+      "size_type" : "auto",
+      "src" : "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/mid-core-games.png",
+      "alt" : "mid-core-games",
+      "loading" : "lazy",
+      "width" : 921,
+      "height" : 968,
+      "max_width" : 921,
+      "max_height" : 968
+    },
+    "columns" : { },
+    "link" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
   }
- ]
+} ]

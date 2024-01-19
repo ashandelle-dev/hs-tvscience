@@ -1,73 +1,76 @@
-[
-  {
-   "type": "text",
-   "id": "026672fd-6853-8b7e-735e-628dbcebf709",
-   "validation_regex": "",
-   "label": "Heading",
-   "name": "tt_heading"
+[ {
+  "id" : "026672fd-6853-8b7e-735e-628dbcebf709",
+  "name" : "tt_heading",
+  "display_width" : null,
+  "label" : "Heading",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text"
+}, {
+  "id" : "28f9312d-e3b8-165d-7d9a-522e6f5f0209",
+  "name" : "tt_rows",
+  "display_width" : null,
+  "label" : "Rows",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : null
   },
-  {
-   "children": [
-    {
-     "allow_new_line": false,
-     "display_width": null,
-     "id": "009f740b-e412-5912-812a-78db6367c231",
-     "label": "Title",
-     "locked": false,
-     "name": "title",
-     "required": false,
-     "show_emoji_picker": false,
-     "type": "text",
-     "validation_regex": ""
-    },
-    {
-     "allow_new_line": false,
-     "display_width": null,
-     "id": "8bff2c44-12e6-0242-c5f1-56863aaa3124",
-     "label": "Paragraph",
-     "locked": false,
-     "name": "paragraph",
-     "required": false,
-     "show_emoji_picker": false,
-     "type": "text",
-     "validation_regex": ""
-    },
-    {
-     "default": {
-      "size_type": "auto",
-      "src": "",
-      "alt": null,
-      "loading": "lazy"
-     },
-     "display_width": null,
-     "id": "fa891c0e-79bc-dd6f-5c1f-d4b2b46c2b63",
-     "label": "Image",
-     "locked": false,
-     "name": "image",
-     "required": false,
-     "resizable": true,
-     "responsive": true,
-     "show_loading": false,
-     "type": "image"
+  "children" : [ {
+    "id" : "009f740b-e412-5912-812a-78db6367c231",
+    "name" : "title",
+    "display_width" : null,
+    "label" : "Title",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text"
+  }, {
+    "id" : "8bff2c44-12e6-0242-c5f1-56863aaa3124",
+    "name" : "paragraph",
+    "display_width" : null,
+    "label" : "Paragraph",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text"
+  }, {
+    "id" : "fa891c0e-79bc-dd6f-5c1f-d4b2b46c2b63",
+    "name" : "image",
+    "display_width" : null,
+    "label" : "Image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "default" : {
+      "size_type" : "auto",
+      "src" : "",
+      "alt" : null,
+      "loading" : "lazy"
     }
-   ],
-   "default": {
-    "image": {
-     "size_type": "auto",
-     "src": "",
-     "alt": null,
-     "loading": "lazy"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "image" : {
+      "size_type" : "auto",
+      "src" : "",
+      "alt" : null,
+      "loading" : "lazy"
     }
-   },
-   "display_width": null,
-   "expanded": false,
-   "id": "28f9312d-e3b8-165d-7d9a-522e6f5f0209",
-   "label": "Rows",
-   "locked": false,
-   "name": "tt_rows",
-   "occurrence": {},
-   "required": false,
-   "tab": "CONTENT",
-   "type": "group"
   }
- ]
+} ]

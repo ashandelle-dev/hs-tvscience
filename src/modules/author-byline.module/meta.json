@@ -1,15 +1,8 @@
 {
-  "label": "Author Byline",
-  "css_assets": [],
-  "external_js": [],
-  "global": false,
-  "help_text": "",
-  "host_template_types": [
-    "PAGE","BLOG_POST"
-  ],
-  "js_assets": [],
-  "other_assets": [],
-  "smart_type": "NOT_SMART",
-  "tags": [],
-  "is_available_for_new_content": true
+  "global" : false,
+  "content_types" : [ "LANDING_PAGE", "SITE_PAGE", "BLOG_POST" ],
+  "host_template_types" : [ "PAGE", "BLOG_POST" ],
+  "module_id" : 133495394077,
+  "label" : "Author Byline",
+  "is_available_for_new_content" : true
 }

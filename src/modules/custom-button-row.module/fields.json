@@ -19,7 +19,7 @@
     "required" : true,
     "locked" : false,
     "display" : "select",
-    "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "none", "None" ]  ],
+    "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ], [ "none", "None" ] ],
     "multiple" : false,
     "reordering_enabled" : true,
     "preset" : null,

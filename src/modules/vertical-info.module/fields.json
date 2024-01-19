@@ -1,133 +1,155 @@
-[
-  {
-   "type": "text",
-   "id": "1bb5201c-9ce5-254b-e129-7685fb3aa899",
-   "validation_regex": "",
-   "label": "Header",
-   "name": "vi_header",
-   "default": "Build, optimize, and prove the actual value of your CTV advertising campaigns"
+[ {
+  "id" : "1bb5201c-9ce5-254b-e129-7685fb3aa899",
+  "name" : "vi_header",
+  "display_width" : null,
+  "label" : "Header",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Build, optimize, and prove the actual value of your CTV advertising campaigns"
+}, {
+  "id" : "1668893a-1bf7-ecc7-15f7-6cc66a4e1f05",
+  "name" : "vi_rows",
+  "display_width" : null,
+  "label" : "Rows",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : null
   },
-  {
-   "type": "group",
-   "id": "1668893a-1bf7-ecc7-15f7-6cc66a4e1f05",
-   "label": "Rows",
-   "children": [
-    {
-     "type": "image",
-     "id": "9eade298-f9ec-4e6a-6853-41a46304ea94",
-     "default": {
-      "size_type": "auto",
-      "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/launch-optimize-ads.png",
-      "alt": "launch-optimize-ads",
-      "loading": "lazy",
-      "width": 824,
-      "height": 264,
-      "max_width": 824,
-      "max_height": 264
-     },
-     "resizable": true,
-     "responsive": true,
-     "show_loading": false,
-     "label": "Image",
-     "name": "image_field"
-    },
-    {
-     "type": "text",
-     "id": "87e6c919-ec9d-36ae-6711-bdc0ff54c364",
-     "validation_regex": "",
-     "label": "Header",
-     "name": "header",
-     "default": "Target the right audience, at the right time"
-    },
-    {
-     "type": "text",
-     "id": "bf287c4a-2ef6-44d0-2679-911f82423571",
-     "validation_regex": "",
-     "label": "Paragraph",
-     "name": "paragraph",
-     "default": "Take back control of your targeting tactics. With 15,000+ unique targeting segments, tvScientific helps you precisely reach the right people based on behaviors, interests, geography, and more."
-    },
-    {
-     "type": "group",
-     "id": "e9b815b2-7528-4502-8d00-92c690594f03",
-     "label": "CTA",
-     "children": [
-      {
-       "type": "link",
-       "id": "99b8bf2a-aeec-ba44-0f76-eec7d3937afd",
-       "default": {
-        "url": {
-         "content_id": null,
-         "type": "EXTERNAL",
-         "href": ""
+  "children" : [ {
+    "id" : "9eade298-f9ec-4e6a-6853-41a46304ea94",
+    "name" : "image_field",
+    "display_width" : null,
+    "label" : "Image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "default" : {
+      "size_type" : "auto",
+      "src" : "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/launch-optimize-ads.png",
+      "alt" : "launch-optimize-ads",
+      "loading" : "lazy",
+      "width" : 824,
+      "height" : 264,
+      "max_width" : 824,
+      "max_height" : 264
+    }
+  }, {
+    "id" : "87e6c919-ec9d-36ae-6711-bdc0ff54c364",
+    "name" : "header",
+    "display_width" : null,
+    "label" : "Header",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Target the right audience, at the right time"
+  }, {
+    "id" : "bf287c4a-2ef6-44d0-2679-911f82423571",
+    "name" : "paragraph",
+    "display_width" : null,
+    "label" : "Paragraph",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Take back control of your targeting tactics. With 15,000+ unique targeting segments, tvScientific helps you precisely reach the right people based on behaviors, interests, geography, and more."
+  }, {
+    "id" : "e9b815b2-7528-4502-8d00-92c690594f03",
+    "name" : "cta",
+    "display_width" : null,
+    "label" : "CTA",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "99b8bf2a-aeec-ba44-0f76-eec7d3937afd",
+      "name" : "link",
+      "display_width" : null,
+      "label" : "Link",
+      "required" : false,
+      "locked" : false,
+      "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION", "PHONE_NUMBER", "WHATSAPP_NUMBER" ],
+      "show_advanced_rel_options" : false,
+      "type" : "link",
+      "default" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
         },
-        "open_in_new_tab": false,
-        "no_follow": false
-       },
-       "supported_types": [
-        "EXTERNAL",
-        "CONTENT",
-        "FILE",
-        "EMAIL_ADDRESS",
-        "BLOG",
-        "CALL_TO_ACTION",
-        "PHONE_NUMBER",
-        "WHATSAPP_NUMBER"
-       ],
-       "label": "Link",
-       "name": "link"
-      },
-      {
-       "type": "text",
-       "id": "05d5b49e-4999-35ac-5741-3e30f65d9f7b",
-       "validation_regex": "",
-       "label": "Text",
-       "name": "text",
-       "default": "Learn more"
+        "open_in_new_tab" : false,
+        "no_follow" : false
       }
-     ],
-     "name": "cta",
-     "default": {
-      "link": {
-       "url": {
-        "content_id": null,
-        "type": "EXTERNAL",
-        "href": ""
-       },
-       "open_in_new_tab": false,
-       "no_follow": false
+    }, {
+      "id" : "05d5b49e-4999-35ac-5741-3e30f65d9f7b",
+      "name" : "text",
+      "display_width" : null,
+      "label" : "Text",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : "Learn more"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "link" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
       },
-      "text": "Learn more"
-     }
+      "text" : "Learn more"
     }
-   ],
-   "name": "vi_rows",
-   "default": {
-    "image_field": {
-     "size_type": "auto",
-     "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/launch-optimize-ads.png",
-     "alt": "launch-optimize-ads",
-     "loading": "lazy",
-     "width": 824,
-     "height": 264,
-     "max_width": 824,
-     "max_height": 264
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "image_field" : {
+      "size_type" : "auto",
+      "src" : "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/launch-optimize-ads.png",
+      "alt" : "launch-optimize-ads",
+      "loading" : "lazy",
+      "width" : 824,
+      "height" : 264,
+      "max_width" : 824,
+      "max_height" : 264
     },
-    "header": "Target the right audience, at the right time",
-    "paragraph": "Take back control of your targeting tactics. With 15,000+ unique targeting segments, tvScientific helps you precisely reach the right people based on behaviors, interests, geography, and more.",
-    "cta": {
-     "link": {
-      "url": {
-       "content_id": null,
-       "type": "EXTERNAL",
-       "href": ""
+    "header" : "Target the right audience, at the right time",
+    "paragraph" : "Take back control of your targeting tactics. With 15,000+ unique targeting segments, tvScientific helps you precisely reach the right people based on behaviors, interests, geography, and more.",
+    "cta" : {
+      "link" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
       },
-      "open_in_new_tab": false,
-      "no_follow": false
-     },
-     "text": "Learn more"
+      "text" : "Learn more"
     }
-   },
-   "occurrence": {}
   }
- ]
+} ]

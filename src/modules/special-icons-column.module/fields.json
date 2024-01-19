@@ -5,8 +5,6 @@
   "label" : "Left Icon",
   "required" : false,
   "locked" : false,
-  "responsive_enabled" : false,
-  "breakpoint_defaults" : { },
   "responsive" : true,
   "resizable" : true,
   "show_loading" : false,
@@ -24,8 +22,6 @@
   "label" : "Content",
   "required" : false,
   "locked" : false,
-  "responsive_enabled" : false,
-  "breakpoint_defaults" : { },
   "type" : "richtext"
 }, {
   "id" : "9fd0dae0-3d26-c18e-f571-daf16c008464",
@@ -34,8 +30,6 @@
   "label" : "Right Icon",
   "required" : false,
   "locked" : false,
-  "responsive_enabled" : false,
-  "breakpoint_defaults" : { },
   "responsive" : true,
   "resizable" : true,
   "show_loading" : false,
@@ -53,8 +47,6 @@
   "label" : "Text Color",
   "required" : false,
   "locked" : false,
-  "responsive_enabled" : false,
-  "breakpoint_defaults" : { },
   "type" : "color",
   "default" : {
     "color" : "#000",

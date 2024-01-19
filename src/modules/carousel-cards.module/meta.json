@@ -1,23 +1,18 @@
 {
-  "label": "Carousel Cards",
-  "css_assets": [
-    {
-      "path": "https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"
-    }
-  ],
-  "external_js": [],
-  "global": false,
-  "help_text": "",
-  "host_template_types": [
-    "PAGE","BLOG_POST"
-  ],
-  "js_assets": [
-    {
-      "path": "https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"
-    }
-  ],
-  "other_assets": [],
-  "smart_type": "NOT_SMART",
-  "tags": [],
-  "is_available_for_new_content": true
+  "global" : false,
+  "content_types" : [ "LANDING_PAGE", "SITE_PAGE", "BLOG_POST" ],
+  "host_template_types" : [ "PAGE", "BLOG_POST" ],
+  "module_id" : 123736535688,
+  "css_assets" : [ {
+    "autoload" : false,
+    "path" : "https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css",
+    "name" : "swiper-bundle.min.css"
+  } ],
+  "js_assets" : [ {
+    "autoload" : false,
+    "path" : "https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js",
+    "name" : "swiper-bundle.min.js"
+  } ],
+  "label" : "Carousel Cards",
+  "is_available_for_new_content" : true
 }

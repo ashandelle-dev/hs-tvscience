@@ -51,15 +51,12 @@
     "type" : "text",
     "default" : "See how you can boost lift and ROAS with CTV"
   }, {
-    "id" : null,
+    "id" : "first_column.cta_section_text",
     "name" : "cta_section_text",
     "display_width" : null,
     "label" : "Text",
     "required" : false,
     "locked" : false,
-    "validation_regex" : "",
-    "allow_new_line" : false,
-    "show_emoji_picker" : false,
     "type" : "richtext",
     "default" : ""
   }, {
@@ -268,7 +265,7 @@
         "no_follow" : false
       }
     }, {
-      "id" : null,
+      "id" : "second_column.icon_links.icon_link_text",
       "name" : "icon_link_text",
       "display_width" : null,
       "label" : "Icon Link Text",
@@ -279,7 +276,6 @@
       "show_emoji_picker" : false,
       "type" : "text",
       "default" : "Link text"
-      
     } ],
     "tab" : "CONTENT",
     "expanded" : false,
@@ -345,7 +341,7 @@
       "opacity" : 100
     }
   }, {
-    "id" : null,
+    "id" : "style.second_border_color",
     "name" : "second_border_color",
     "display_width" : null,
     "label" : "Second Column Border Color",
@@ -381,7 +377,7 @@
       "opacity" : 100
     }
   }, {
-    "id" : null,
+    "id" : "style.second_header_text_color",
     "name" : "second_header_text_color",
     "display_width" : null,
     "label" : "Second Column Header Text Color",
@@ -417,7 +413,7 @@
       "opacity" : 100
     }
   }, {
-    "id" : null,
+    "id" : "style.icon_background_color",
     "name" : "icon_background_color",
     "display_width" : null,
     "label" : "Icon Background Color",

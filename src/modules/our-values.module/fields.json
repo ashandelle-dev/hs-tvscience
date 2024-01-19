@@ -1,60 +1,77 @@
-[
-  {
-   "type": "group",
-   "id": "d5c1fc4a-5966-a6bd-985d-f639a588e148",
-   "label": "Value",
-   "children": [
-    {
-     "type": "image",
-     "id": "10c0d2a6-461c-1019-04a1-5e0a8e3b7134",
-     "default": {
-      "size_type": "auto",
-      "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/Values_Data-Driven.svg",
-      "alt": "Values_Data-Driven",
-      "loading": "lazy",
-      "width": 150,
-      "height": 150,
-      "max_width": 150,
-      "max_height": 150
-     },
-     "resizable": true,
-     "responsive": true,
-     "show_loading": false,
-     "label": "Icon",
-     "name": "icon"
-    },
-    {
-     "type": "text",
-     "id": "58bbaf79-f0fe-1a23-b6fa-833e72ef7e50",
-     "validation_regex": "",
-     "label": "Title",
-     "name": "title",
-     "default": "Big Thinkers"
-    },
-    {
-     "type": "text",
-     "id": "b350fe56-ccc2-daf9-81e5-da2680b8dcfe",
-     "validation_regex": "",
-     "label": "Description",
-     "name": "description",
-     "default": "We believe in setting audacious goals and envisioning transformative change."
+[ {
+  "id" : "d5c1fc4a-5966-a6bd-985d-f639a588e148",
+  "name" : "value",
+  "display_width" : null,
+  "label" : "Value",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : null
+  },
+  "children" : [ {
+    "id" : "10c0d2a6-461c-1019-04a1-5e0a8e3b7134",
+    "name" : "icon",
+    "display_width" : null,
+    "label" : "Icon",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "default" : {
+      "size_type" : "auto",
+      "src" : "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/Values_Data-Driven.svg",
+      "alt" : "Values_Data-Driven",
+      "loading" : "lazy",
+      "width" : 150,
+      "height" : 150,
+      "max_width" : 150,
+      "max_height" : 150
     }
-   ],
-   "name": "value",
-   "default": {
-    "icon": {
-     "size_type": "auto",
-     "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/Values_Data-Driven.svg",
-     "alt": "Values_Data-Driven",
-     "loading": "lazy",
-     "width": 150,
-     "height": 150,
-     "max_width": 150,
-     "max_height": 150
+  }, {
+    "id" : "58bbaf79-f0fe-1a23-b6fa-833e72ef7e50",
+    "name" : "title",
+    "display_width" : null,
+    "label" : "Title",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Big Thinkers"
+  }, {
+    "id" : "b350fe56-ccc2-daf9-81e5-da2680b8dcfe",
+    "name" : "description",
+    "display_width" : null,
+    "label" : "Description",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "We believe in setting audacious goals and envisioning transformative change."
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "icon" : {
+      "size_type" : "auto",
+      "src" : "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/Values_Data-Driven.svg",
+      "alt" : "Values_Data-Driven",
+      "loading" : "lazy",
+      "width" : 150,
+      "height" : 150,
+      "max_width" : 150,
+      "max_height" : 150
     },
-    "title": "Big Thinkers",
-    "description": "We believe in setting audacious goals and envisioning transformative change."
-   },
-   "occurrence": {}
+    "title" : "Big Thinkers",
+    "description" : "We believe in setting audacious goals and envisioning transformative change."
   }
- ]
+} ]

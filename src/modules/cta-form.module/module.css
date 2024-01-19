@@ -2,3 +2,29 @@
 .cta-form .legal-consent-container .hs-richtext {
   color: #fff;
 }
+
+.cta-form .hs-form-field .hs-input {
+        border-radius: 4px;
+}
+.cta-form form .hs-button, form input[type=submit] {
+    padding: 13.5px 25px !important;
+}
+.cta-form .hs_error_rollup .hs-main-font-element {
+    display: none !important;
+}
+
+@media screen and (min-width:768px) {
+  .cta-form form {
+    /*display: flex;*/
+  }
+  .cta-form form fieldset:first-child{
+    flex-grow: 1;
+  }
+  .cta-form form label {
+    margin: 0px
+  }
+  .cta-form .hs_email label {
+    margin: 0 !important; 
+}
+
+}

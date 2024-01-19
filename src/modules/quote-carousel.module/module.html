@@ -3,7 +3,7 @@
 {{ require_js("https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js", "head") }}
 
 
-<div class="flex flex-wrap items-stretch quote-swiper relative overflow-hidden">
+<div {% if module.custom_id %}id="{{module.custom_id}}"{% endif %} class="flex flex-wrap items-stretch quote-swiper relative overflow-hidden">
 
   <div class="swiper-wrapper h-full mb-12">
   {% for item in module.quote_slide %}

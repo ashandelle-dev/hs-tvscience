@@ -1,5 +1,6 @@
 {
   "global" : false,
+  "content_types" : [ "LANDING_PAGE", "SITE_PAGE", "BLOG_POST" ],
   "host_template_types" : [ "PAGE", "BLOG_POST" ],
   "module_id" : 143765437822,
   "is_available_for_new_content" : true

@@ -1,16 +1,9 @@
 {
-  "label": "Logo Carousel",
-  "css_assets": [],
-  "external_js": [],
-  "global": false,
-  "help_text": "",
-  "host_template_types": [
-    "PAGE"
-  ],
+  "global" : false,
+  "content_types" : [ "LANDING_PAGE", "SITE_PAGE" ],
   "icon" : "https://f.hubspotusercontent30.net/hubfs/8823337/Logo%20Slider.svg",
-  "js_assets": [],
-  "other_assets": [],
-  "smart_type": "NOT_SMART",
-  "tags": [],
-  "is_available_for_new_content": true
+  "host_template_types" : [ "PAGE" ],
+  "module_id" : 114934154334,
+  "label" : "Logo Carousel",
+  "is_available_for_new_content" : true
 }

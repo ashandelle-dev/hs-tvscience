@@ -1,69 +1,90 @@
-[
-  {
-   "type": "group",
-   "id": "45fbd8c5-efb8-73b9-0319-9622762610c8",
-   "label": "Stats",
-   "children": [
-    {
-     "type": "text",
-     "id": "ce0aa11f-63ca-8a00-c0e6-eb5b257b490b",
-     "validation_regex": "",
-     "label": "Title",
-     "name": "title",
-     "default": "Total Growth"
-    },
-    {
-     "type": "text",
-     "id": "37414b79-9632-2185-3ffb-48dc9cb19918",
-     "validation_regex": "",
-     "label": "Number",
-     "name": "number",
-     "default": "100.3%"
-    },
-    {
-     "type": "text",
-     "id": "c98c35e4-82e6-0368-7462-205877a2e128",
-     "validation_regex": "",
-     "label": "Label",
-     "name": "stat_label",
-     "default": "MoM Revenue Growth"
-    },
-    {
-     "type": "image",
-     "id": "be58934a-47b1-4218-1fbb-faf926993042",
-     "default": {
-      "size_type": "auto",
-      "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/icon-total-growth.png",
-      "alt": "icon-total-growth",
-      "loading": "lazy",
-      "width": 149,
-      "height": 149,
-      "max_width": 149,
-      "max_height": 149
-     },
-     "resizable": true,
-     "responsive": true,
-     "show_loading": false,
-     "label": "Icon",
-     "name": "icon"
+[ {
+  "id" : "45fbd8c5-efb8-73b9-0319-9622762610c8",
+  "name" : "stats",
+  "display_width" : null,
+  "label" : "Stats",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : null
+  },
+  "children" : [ {
+    "id" : "ce0aa11f-63ca-8a00-c0e6-eb5b257b490b",
+    "name" : "title",
+    "display_width" : null,
+    "label" : "Title",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Total Growth"
+  }, {
+    "id" : "37414b79-9632-2185-3ffb-48dc9cb19918",
+    "name" : "number",
+    "display_width" : null,
+    "label" : "Number",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "100.3%"
+  }, {
+    "id" : "c98c35e4-82e6-0368-7462-205877a2e128",
+    "name" : "stat_label",
+    "display_width" : null,
+    "label" : "Label",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "MoM Revenue Growth"
+  }, {
+    "id" : "be58934a-47b1-4218-1fbb-faf926993042",
+    "name" : "icon",
+    "display_width" : null,
+    "label" : "Icon",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "default" : {
+      "size_type" : "auto",
+      "src" : "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/icon-total-growth.png",
+      "alt" : "icon-total-growth",
+      "loading" : "lazy",
+      "width" : 149,
+      "height" : 149,
+      "max_width" : 149,
+      "max_height" : 149
     }
-   ],
-   "name": "stats",
-   "default": {
-    "title": "Total Growth",
-    "number": "100.3%",
-    "stat_label": "MoM Revenue Growth",
-    "icon": {
-     "size_type": "auto",
-     "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/icon-total-growth.png",
-     "alt": "icon-total-growth",
-     "loading": "lazy",
-     "width": 149,
-     "height": 149,
-     "max_width": 149,
-     "max_height": 149
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "title" : "Total Growth",
+    "number" : "100.3%",
+    "stat_label" : "MoM Revenue Growth",
+    "icon" : {
+      "size_type" : "auto",
+      "src" : "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/icon-total-growth.png",
+      "alt" : "icon-total-growth",
+      "loading" : "lazy",
+      "width" : 149,
+      "height" : 149,
+      "max_width" : 149,
+      "max_height" : 149
     }
-   },
-   "occurrence": {}
   }
- ]
+} ]

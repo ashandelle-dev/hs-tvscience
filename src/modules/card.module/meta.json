@@ -1,16 +1,9 @@
 {
-  "label": "Single Card",
-  "css_assets": [],
-  "external_js": [],
-  "global": false,
-  "help_text": "",
-  "host_template_types": [
-    "PAGE"
-  ],
+  "global" : false,
+  "content_types" : [ "LANDING_PAGE", "SITE_PAGE" ],
   "icon" : "https://f.hubspotusercontent40.net/hubfs/8071749/Simple%20card.svg",
-  "js_assets": [],
-  "other_assets": [],
-  "smart_type": "NOT_SMART",
-  "tags": [],
-  "is_available_for_new_content": true
+  "host_template_types" : [ "PAGE" ],
+  "module_id" : 114933540899,
+  "label" : "Single Card",
+  "is_available_for_new_content" : true
 }

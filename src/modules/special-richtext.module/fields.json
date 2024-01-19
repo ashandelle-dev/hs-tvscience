@@ -6,8 +6,6 @@
   "required" : false,
   "locked" : false,
   "display" : "checkbox",
-  "responsive_enabled" : false,
-  "breakpoint_defaults" : { },
   "type" : "boolean",
   "default" : false
 }, {
@@ -17,7 +15,5 @@
   "label" : "Rich text",
   "required" : false,
   "locked" : false,
-  "responsive_enabled" : false,
-  "breakpoint_defaults" : { },
   "type" : "richtext"
 } ]

@@ -6,8 +6,6 @@
   "required" : false,
   "locked" : false,
   "display" : "select",
-  "responsive_enabled" : false,
-  "breakpoint_defaults" : { },
   "choices" : [ [ "2", "2 Blocks" ], [ "3", "3 Blocks" ], [ "5", "5 Blocks" ] ],
   "multiple" : false,
   "reordering_enabled" : true,
@@ -21,8 +19,6 @@
   "label" : "Border Color",
   "required" : false,
   "locked" : false,
-  "responsive_enabled" : false,
-  "breakpoint_defaults" : { },
   "type" : "color",
   "default" : {
     "color" : "#fff",
@@ -35,8 +31,6 @@
   "label" : "Block One",
   "required" : false,
   "locked" : false,
-  "responsive_enabled" : false,
-  "breakpoint_defaults" : { },
   "type" : "richtext"
 }, {
   "id" : "02ee0c75-0cea-b4a4-24da-ccef9f0657ea",
@@ -45,8 +39,6 @@
   "label" : "Block Two",
   "required" : false,
   "locked" : false,
-  "responsive_enabled" : false,
-  "breakpoint_defaults" : { },
   "type" : "richtext"
 }, {
   "id" : "0b9020da-f794-3619-4b69-e2afe23851e3",
@@ -63,8 +55,6 @@
     "operator" : "MATCHES_REGEX",
     "access" : null
   },
-  "responsive_enabled" : false,
-  "breakpoint_defaults" : { },
   "type" : "richtext"
 }, {
   "id" : "857fffcc-74a7-d15a-5745-e1758de17460",
@@ -81,8 +71,6 @@
     "operator" : "EQUAL",
     "access" : null
   },
-  "responsive_enabled" : false,
-  "breakpoint_defaults" : { },
   "type" : "richtext"
 }, {
   "id" : "54432b5b-b900-c1a7-0812-6556d5659db5",
@@ -99,8 +87,6 @@
     "operator" : "EQUAL",
     "access" : null
   },
-  "responsive_enabled" : false,
-  "breakpoint_defaults" : { },
   "type" : "richtext"
 }, {
   "id" : "f4a59031-603f-5933-fe5b-a724d61a646e",
@@ -109,8 +95,6 @@
   "label" : "Block color",
   "required" : false,
   "locked" : false,
-  "responsive_enabled" : false,
-  "breakpoint_defaults" : { },
   "type" : "color",
   "default" : {
     "color" : null,
@@ -124,8 +108,6 @@
   "required" : false,
   "locked" : false,
   "display" : "checkbox",
-  "responsive_enabled" : false,
-  "breakpoint_defaults" : { },
   "type" : "boolean",
   "default" : false
 } ]

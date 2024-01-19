@@ -1,15 +1,9 @@
 {
-  "label": "New Footer",
-  "css_assets": [],
-  "external_js": [],
-  "global": true,
-  "help_text": "",
-  "host_template_types": [
-    "PAGE","BLOG_POST"
-  ],
-  "js_assets": [],
-  "other_assets": [],
-  "smart_type": "NOT_SMART",
-  "tags": [],
-  "is_available_for_new_content": true
+  "global" : true,
+  "content_types" : [ "LANDING_PAGE", "SITE_PAGE", "BLOG_POST" ],
+  "smart_type" : "NOT_SMART",
+  "host_template_types" : [ "PAGE", "BLOG_POST" ],
+  "module_id" : 134446107672,
+  "label" : "New Footer",
+  "is_available_for_new_content" : true
 }

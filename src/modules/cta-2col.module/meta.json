@@ -1,5 +1,6 @@
 {
   "global" : false,
+  "content_types" : [ "LANDING_PAGE", "SITE_PAGE" ],
   "icon" : "https://www.kalungi.com/hubfs/Atlas/Module%20Logos/callout-module.svg",
   "host_template_types" : [ "PAGE" ],
   "module_id" : 137378803873,

@@ -1,190 +1,201 @@
-[
-  {
-   "type": "text",
-   "id": "6e2fd322-c065-3daf-a1b8-bb73d2b59f3f",
-   "validation_regex": "",
-   "label": "form anchor ID",
-   "name": "form_anchor_id",
-   "default": "webinar-form",
-   "help_text": "This is the anchor to use for jumping back to form section for landing page anchor links."
-  },
-  {
-   "allow_new_line": false,
-   "default": "",
-   "display_width": null,
-   "id": "e355a361-931b-ac2a-d06f-244ef8e3a1ca",
-   "label": "Form Title",
-   "locked": false,
-   "name": "title",
-   "required": false,
-   "show_emoji_picker": false,
-   "type": "text",
-   "validation_regex": ""
-  },
-  {
-   "default": {
-    "form_id": "",
-    "response_type": "redirect",
-    "message": "Thanks for submitting the form.",
-    "redirect_id": null,
-    "redirect_url": "http://www.google.com"
-   },
-   "display_width": null,
-   "id": "e4adbe47-d462-2396-c7e7-62d52c812966",
-   "label": "Form",
-   "locked": false,
-   "name": "form",
-   "required": false,
-   "type": "form"
-  },
-  {
-   "type": "color",
-   "id": "a94fca13-ed76-6d90-fc9d-0b27578f9766",
-   "default": {
-    "color": "#ffffff",
-    "opacity": 100
-   },
-   "label": "Form Background Color",
-   "name": "form_background_color",
-   "show_opacity": false
-  },
-  {
-   "type": "color",
-   "id": "0f66bb3f-fb91-86cb-45cb-7bcc443c059e",
-   "default": {
-    "color": "#E5E7EB",
-    "opacity": 100
-   },
-   "label": "Form Input Background Color",
-   "name": "form_input_background_color"
-  },
-  {
-   "default": false,
-   "display": "checkbox",
-   "display_width": null,
-   "id": "96a2942d-c746-0299-c0a9-6b16d7a20c1d",
-   "label": "Send form notifications to specified email addresses instead of the form defaults",
-   "locked": false,
-   "name": "notifications_are_overridden",
-   "required": false,
-   "type": "boolean",
-   "visibility": {
-    "controlling_field": "e4adbe47-d462-2396-c7e7-62d52c812966",
-    "controlling_value_regex": "^((?!\\\"form_type\\\":\\\"TICKET_FORM\\\").)*$",
-    "operator": "MATCHES_REGEX"
-   }
-  },
-  {
-   "allow_custom_email_addresses": false,
-   "display_width": null,
-   "id": "e496f0fb-4c96-8a5f-5fa3-54a5838f02a2",
-   "label": "Email Addresses",
-   "locked": false,
-   "name": "notifications_override_email_addresses",
-   "required": false,
-   "type": "email",
-   "visibility": {
-    "controlling_field": "96a2942d-c746-0299-c0a9-6b16d7a20c1d",
-    "controlling_value_regex": "true",
-    "operator": "MATCHES_REGEX"
-   }
-  },
-  {
-   "advanced_visibility": {
-    "boolean_operator": "AND",
-    "children": [
-     {
-      "boolean_operator": "OR",
-      "children": [
-       {
-        "boolean_operator": "AND",
-        "children": [],
-        "criteria": [
-         {
-          "controlling_field": "fa108c7e-d78d-9edd-f015-f3d8e35fb790",
-          "operator": "NOT_EMPTY"
-         },
-         {
-          "controlling_field": "072ce88d-62f2-604d-feab-f8199eeb40f7",
-          "controlling_value_regex": "true",
-          "operator": "EQUAL"
-         }
-        ]
-       }
-      ],
-      "criteria": [
-       {
-        "access": {
-         "gates": [
-          "ContextualAutomation:FormsEmailsAccess"
-         ],
-         "operator": "HAS_NONE",
-         "scopes": []
-        }
-       }
-      ]
-     }
-    ],
-    "criteria": [
-     {
-      "access": {
-       "operator": "HAS_ALL",
-       "scopes": [
-        "email-marketing-product-access"
-       ]
-      }
-     }
-    ]
-   },
-   "default": false,
-   "display": "checkbox",
-   "display_width": null,
-   "help_text": "To send a follow-up email, make sure the 'Set contacts created as marketing contacts’ setting is turned on. You can manage this in options. <a href='https://knowledge.hubspot.com/contacts/set-contacts-as-marketing#set-the-default-marketing-status-for-new-contacts'>Learn more</a>",
-   "id": "072ce88d-62f2-604d-feab-f8199eeb40f7",
-   "label": "Send a follow-up email",
-   "locked": false,
-   "name": "follow_up_type_simple",
-   "required": false,
-   "type": "boolean",
-   "visibility_rules": "ADVANCED"
-  },
-  {
-   "advanced_visibility": {
-    "boolean_operator": "OR",
-    "children": [],
-    "criteria": [
-     {
-      "controlling_field": "072ce88d-62f2-604d-feab-f8199eeb40f7",
-      "controlling_value_regex": "true",
-      "operator": "EQUAL"
-     },
-     {
-      "access": {
-       "gates": [
-        "ContextualAutomation:FormsEmailsAccess"
-       ],
-       "operator": "HAS_ALL",
-       "scopes": []
-      }
-     }
-    ]
-   },
-   "display_width": null,
-   "id": "fa108c7e-d78d-9edd-f015-f3d8e35fb790",
-   "label": "Email",
-   "locked": false,
-   "name": "simple_email_for_live_id",
-   "required": false,
-   "type": "followupemail",
-   "visibility_rules": "ADVANCED"
-  },
-  {
-   "display_width": null,
-   "id": "82375ac5-e902-3628-b674-1eb8f5397c41",
-   "label": "Salesforce campaign",
-   "locked": false,
-   "name": "sfdc_campaign",
-   "required": false,
-   "type": "salesforcecampaign"
+[ {
+  "id" : "6e2fd322-c065-3daf-a1b8-bb73d2b59f3f",
+  "name" : "form_anchor_id",
+  "display_width" : null,
+  "label" : "form anchor ID",
+  "help_text" : "This is the anchor to use for jumping back to form section for landing page anchor links.",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "webinar-form"
+}, {
+  "id" : "e355a361-931b-ac2a-d06f-244ef8e3a1ca",
+  "name" : "title",
+  "display_width" : null,
+  "label" : "Form Title",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : ""
+}, {
+  "id" : "e4adbe47-d462-2396-c7e7-62d52c812966",
+  "name" : "form",
+  "display_width" : null,
+  "label" : "Form",
+  "required" : false,
+  "locked" : false,
+  "type" : "form",
+  "default" : {
+    "form_id" : "",
+    "response_type" : "redirect",
+    "message" : "Thanks for submitting the form.",
+    "redirect_id" : null,
+    "redirect_url" : "http://www.google.com"
   }
- ]
+}, {
+  "id" : "a94fca13-ed76-6d90-fc9d-0b27578f9766",
+  "name" : "form_background_color",
+  "display_width" : null,
+  "label" : "Form Background Color",
+  "required" : false,
+  "locked" : false,
+  "show_opacity" : false,
+  "type" : "color",
+  "default" : {
+    "color" : "#ffffff",
+    "opacity" : 100
+  }
+}, {
+  "id" : "0f66bb3f-fb91-86cb-45cb-7bcc443c059e",
+  "name" : "form_input_background_color",
+  "display_width" : null,
+  "label" : "Form Input Background Color",
+  "required" : false,
+  "locked" : false,
+  "type" : "color",
+  "default" : {
+    "color" : "#E5E7EB",
+    "opacity" : 100
+  }
+}, {
+  "id" : "96a2942d-c746-0299-c0a9-6b16d7a20c1d",
+  "name" : "notifications_are_overridden",
+  "display_width" : null,
+  "label" : "Send form notifications to specified email addresses instead of the form defaults",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "e4adbe47-d462-2396-c7e7-62d52c812966",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "^((?!\\\"form_type\\\":\\\"TICKET_FORM\\\").)*$",
+    "property" : null,
+    "operator" : "MATCHES_REGEX",
+    "access" : null
+  },
+  "display" : "checkbox",
+  "type" : "boolean",
+  "default" : false
+}, {
+  "id" : "e496f0fb-4c96-8a5f-5fa3-54a5838f02a2",
+  "name" : "notifications_override_email_addresses",
+  "display_width" : null,
+  "label" : "Email Addresses",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "96a2942d-c746-0299-c0a9-6b16d7a20c1d",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "true",
+    "property" : null,
+    "operator" : "MATCHES_REGEX",
+    "access" : null
+  },
+  "allow_custom_email_addresses" : false,
+  "type" : "email"
+}, {
+  "id" : "072ce88d-62f2-604d-feab-f8199eeb40f7",
+  "name" : "follow_up_type_simple",
+  "display_width" : null,
+  "label" : "Send a follow-up email",
+  "help_text" : "To send a follow-up email, make sure the 'Set contacts created as marketing contacts’ setting is turned on. You can manage this in options. <a href='https://knowledge.hubspot.com/contacts/set-contacts-as-marketing#set-the-default-marketing-status-for-new-contacts'>Learn more</a>",
+  "required" : false,
+  "locked" : false,
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "AND",
+    "criteria" : [ {
+      "controlling_field" : null,
+      "controlling_field_path" : null,
+      "controlling_value_regex" : null,
+      "property" : null,
+      "operator" : null,
+      "access" : {
+        "operator" : "HAS_ALL",
+        "scopes" : [ "email-marketing-product-access" ]
+      }
+    } ],
+    "children" : [ {
+      "boolean_operator" : "OR",
+      "criteria" : [ {
+        "controlling_field" : null,
+        "controlling_field_path" : null,
+        "controlling_value_regex" : null,
+        "property" : null,
+        "operator" : null,
+        "access" : {
+          "operator" : "HAS_NONE",
+          "scopes" : [ ],
+          "gates" : [ "ContextualAutomation:FormsEmailsAccess" ]
+        }
+      } ],
+      "children" : [ {
+        "boolean_operator" : "AND",
+        "criteria" : [ {
+          "controlling_field" : "fa108c7e-d78d-9edd-f015-f3d8e35fb790",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : null,
+          "property" : null,
+          "operator" : "NOT_EMPTY",
+          "access" : null
+        }, {
+          "controlling_field" : "072ce88d-62f2-604d-feab-f8199eeb40f7",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "true",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null
+        } ],
+        "children" : [ ]
+      } ]
+    } ]
+  },
+  "display" : "checkbox",
+  "type" : "boolean",
+  "default" : false
+}, {
+  "id" : "fa108c7e-d78d-9edd-f015-f3d8e35fb790",
+  "name" : "simple_email_for_live_id",
+  "display_width" : null,
+  "label" : "Email",
+  "required" : false,
+  "locked" : false,
+  "visibility_rules" : "ADVANCED",
+  "advanced_visibility" : {
+    "boolean_operator" : "OR",
+    "criteria" : [ {
+      "controlling_field" : "072ce88d-62f2-604d-feab-f8199eeb40f7",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    }, {
+      "controlling_field" : null,
+      "controlling_field_path" : null,
+      "controlling_value_regex" : null,
+      "property" : null,
+      "operator" : null,
+      "access" : {
+        "operator" : "HAS_ALL",
+        "scopes" : [ ],
+        "gates" : [ "ContextualAutomation:FormsEmailsAccess" ]
+      }
+    } ],
+    "children" : [ ]
+  },
+  "type" : "followupemail"
+}, {
+  "id" : "82375ac5-e902-3628-b674-1eb8f5397c41",
+  "name" : "sfdc_campaign",
+  "display_width" : null,
+  "label" : "Salesforce campaign",
+  "required" : false,
+  "locked" : false,
+  "type" : "salesforcecampaign"
+} ]

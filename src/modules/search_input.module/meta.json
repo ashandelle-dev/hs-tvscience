@@ -1,22 +1,20 @@
 {
-  "label": "Search",
-  "host_template_types": ["PAGE"],
-  "icon": "../img/icon/edited-search-1.svg",
-  "smart_type": "NOT_SMART",
-  "tags": ["search"],
-  "categories": ["functionality"],
-  "content_tags": [
-    {
-      "name": "SEARCH",
-      "source": "MARKETPLACE"
-    },
-    {
-      "name": "COMPATIBLE_BLOG",
-      "source": "MARKETPLACE"
-    },
-    {
-      "name": "COMPATIBLE_PAGE",
-      "source": "MARKETPLACE"
-    }
-  ]
+  "content_tags" : [ {
+    "name" : "SEARCH",
+    "source" : "MARKETPLACE"
+  }, {
+    "name" : "COMPATIBLE_BLOG",
+    "source" : "MARKETPLACE"
+  }, {
+    "name" : "COMPATIBLE_PAGE",
+    "source" : "MARKETPLACE"
+  } ],
+  "global" : false,
+  "content_types" : [ "LANDING_PAGE", "SITE_PAGE" ],
+  "categories" : [ "functionality" ],
+  "icon" : "../../../../tvScientific%202022%20Atlas%20Pro/cli-build/modules/img/icon/edited-search-1.svg",
+  "host_template_types" : [ "PAGE" ],
+  "module_id" : 123770959428,
+  "label" : "Search",
+  "is_available_for_new_content" : true
 }
