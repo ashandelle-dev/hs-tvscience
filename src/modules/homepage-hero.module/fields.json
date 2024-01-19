@@ -189,4 +189,13 @@
   "show_preview" : true,
   "show_advanced_options" : false,
   "type" : "videoplayer"
+}, {
+  "picker" : "video",
+  "id" : "be2429be-625e-c44c-a881-a6aa90e4d93d",
+  "name" : "mobile_video2",
+  "display_width" : null,
+  "label" : "Mobile Video",
+  "required" : false,
+  "locked" : false,
+  "type" : "file"
 } ]

@@ -34,7 +34,7 @@
     margin-top: 0;
   }
   .module-wrapper {
-    
+
     padding-left: 15px;
     padding-right: 15px;
     width: 100%;
@@ -51,13 +51,17 @@
   .cta-button {
     text-decoration: none;
     font-family: IBM Plex Sans;
-    padding: 8px 17px;
+    padding: 8px 28px;
     font-size: 14px;
     font-weight: 700px;
     text-transform: uppercase;
     line-height: 24px;
     letter-spacing: 2px;
     border-radius: 3px;
+  }
+  .button-secondary {
+    font-size: 12px;
+    padding: 8px 17px;
   }
   .cta-group {
     display: flex;
@@ -71,13 +75,49 @@
     background-color: #E5E7EB;
     color: #009061;
   }
+  .mobile-video {
+    display: none;
+  }
+  @media screen and (max-width: 767px){
+    .desktop-video {
+      display: none;
+    }
+    .mobile-video {
+      display: block;
+    }
+    h2 {
+      font-size: 32px !important;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 42px !important; /* 131.25% */
+    }
+    .cta-group {
+      flex-direction: column;
+    }
+    .cta-button {
+      width: fit-content;
+    }
+
+  }
   {% end_scope_css%}
 </style>
 {% end_require_css %}
+{% if module.mobile_video2 %}
+<link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet" />
+{% endif %}
+
 
 <div class="{{name}}">
   {% if module.background == 'video' %}
-  {% video_player "embed_player" autoplay=true, hidden_controls=true, loop=true, player_id={{module.background_video.player_id}}%}
+  <div class="desktop-video">
+    {% video_player "embed_player" autoplay=true, hidden_controls=true, loop=true, player_id={{module.background_video.player_id}}%}
+  </div>
+  {% if module.mobile_video2 %}
+  <video id="my_video" class="mobile-video video-js vjs-default-skin" controls preload="auto">
+    <source src="{{module.mobile_video2}}" type="video/mp4">
+  </video>
+
+  {% endif %}
   {% endif %}
   <div class="module-wrapper">
     <div class="module-content">
@@ -100,3 +140,22 @@
     </div>
   </div>
 </div>
+
+{% require_js %}
+{% if module.mobile_video2 %}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    videojs('my_video', {
+      autoplay: true, // Video will start playing as soon as it's ready
+      loop: true, // Video will loop continuously
+      controls: false, // Video player controls will be hidden
+      muted: true, // Needed for autoplay in most browsers
+      fluid: true // Ensures the video is responsive
+    });
+  });
+</script>
+{% endif %}
+
+
+<script src="https://vjs.zencdn.net/8.9.0/video.min.js"></script>
+{% end_require_js%}
