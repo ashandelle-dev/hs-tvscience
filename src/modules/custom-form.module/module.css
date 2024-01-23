@@ -8,12 +8,17 @@
   .lp-hero-form form {
   display: flex;
   }
+  #webinar-form form{
+  display: block !important;
+  }
 
   .lp-hero-form  form fieldset:first-child{
     flex-grow: 1;
   }
 }
-
+#webinar-form {
+  padding: 24px;
+}
 .lp-hero-form .hs-form-field {
   margin-bottom: 5px;
 }
