@@ -13,7 +13,7 @@
   }
 
   {% scope_css %}
-  h1 {
+  .h1 {
     color: var(--Light-Green, #0FBF84);
     font-feature-settings: 'clig' off, 'liga' off;
     font-family: IBM Plex Sans;
@@ -22,7 +22,7 @@
     font-weight: 500 !important;
     line-height: 72px; /* 300% */
   }
-  h2 {
+  .h2 {
     color: #FFF;
     font-feature-settings: 'clig' off, 'liga' off;
     font-family: IBM Plex Sans;
@@ -85,7 +85,7 @@
     .mobile-video {
       display: block;
     }
-    h2 {
+    .h2 {
       font-size: 32px !important;
       font-style: normal;
       font-weight: 700;
@@ -102,27 +102,34 @@
   {% end_scope_css%}
 </style>
 {% end_require_css %}
-{% if module.mobile_video2 %}
+{% if module.desktop_video %}
 <link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet" />
 {% endif %}
 
 
 <div class="{{name}}">
   {% if module.background == 'video' %}
-  <div class="desktop-video">
-    {% video_player "embed_player" autoplay=true, hidden_controls=true, loop=true, player_id={{module.background_video.player_id}}%}
-  </div>
-  {% if module.mobile_video2 %}
-  <video id="my_video" class="mobile-video video-js vjs-default-skin" controls preload="auto">
-    <source src="{{module.mobile_video2}}" type="video/mp4">
+
+  {# {% video_player "embed_player" autoplay=true, hidden_controls=true, loop=true, player_id={{module.background_video.player_id}}%}#}
+  <video id="desktop_video" class="desktop-video video-js vjs-default-skin" controls preload="auto">
+    <source src="{{module.desktop_video}}" type="video/mp4">
+  </video>
+
+  {% if module.mobile_video %}
+  <video id="mobile_video" class="mobile-video video-js vjs-default-skin" controls preload="auto">
+    <source src="{{module.mobile_video}}" type="video/mp4">
   </video>
 
   {% endif %}
   {% endif %}
   <div class="module-wrapper">
     <div class="module-content">
-      <h1>{{module.subheading}}</h1>
-      <h2>{{module.content}} </h2>
+      {% if module.subheading %}
+      <h1 class="h1">{{module.subheading}}</h1>
+      <h2 class="h2">{{module.content}} </h2>
+      {% else %}
+      <h1 class="h2">{{module.content}}</h1>
+      {% endif %}
       <div class="cta-group">
         {% for item in module.cta %}
         {% set href = item.link.url.href %}
@@ -142,20 +149,35 @@
 </div>
 
 {% require_js %}
-{% if module.mobile_video2 %}
+<script src="https://vjs.zencdn.net/8.9.0/video.min.js"></script>
+{% if module.desktop_video %}
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    videojs('my_video', {
+    videojs('desktop_video', {
+      muted: true, // Needed for autoplay in most browsers
       autoplay: true, // Video will start playing as soon as it's ready
       loop: true, // Video will loop continuously
-      controls: false, // Video player controls will be hidden
-      muted: true, // Needed for autoplay in most browsers
-      fluid: true // Ensures the video is responsive
+
     });
   });
 </script>
 {% endif %}
+{% if module.mobile_video %}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    videojs('mobile_video', {
+      muted: true, // Needed for autoplay in most browsers
+      autoplay: true, // Video will start playing as soon as it's ready
+      loop: true, // Video will loop continuously
+             fluid: true,
 
 
-<script src="https://vjs.zencdn.net/8.9.0/video.min.js"></script>
+    });
+  });
+
+</script>
+{% endif %}
+
+
+
 {% end_require_js%}

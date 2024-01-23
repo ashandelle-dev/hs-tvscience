@@ -191,8 +191,25 @@
   "type" : "videoplayer"
 }, {
   "picker" : "video",
+  "id" : "8bfdb538-afb9-6ea7-8568-42c13a113957",
+  "name" : "desktop_video",
+  "display_width" : null,
+  "label" : "Desktop Video",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "background",
+    "controlling_value_regex" : "video",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "type" : "file"
+}, {
+  "picker" : "video",
   "id" : "be2429be-625e-c44c-a881-a6aa90e4d93d",
-  "name" : "mobile_video2",
+  "name" : "mobile_video",
   "display_width" : null,
   "label" : "Mobile Video",
   "required" : false,
