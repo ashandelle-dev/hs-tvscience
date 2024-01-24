@@ -7,15 +7,6 @@
   "locked" : false,
   "type" : "blog"
 }, {
-  "id" : "ee2440ab-12d4-a2c6-f5b9-508f5048c6f4",
-  "name" : "tag",
-  "display_width" : null,
-  "label" : "Tag",
-  "required" : false,
-  "locked" : false,
-  "tag_value" : "SLUG",
-  "type" : "tag"
-}, {
   "id" : "2b963016-c995-500d-ad3f-c79df00363c8",
   "name" : "module_label",
   "display_width" : null,

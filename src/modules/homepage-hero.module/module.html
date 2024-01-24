@@ -10,6 +10,7 @@
     background-image: {{module.background_image.src}};
     {% endif %}
     max-height: 740px;
+
   }
 
   {% scope_css %}
@@ -21,6 +22,7 @@
     font-style: normal;
     font-weight: 500 !important;
     line-height: 72px; /* 300% */
+    font-weight: 400 !important;
   }
   .h2 {
     color: #FFF;
@@ -32,6 +34,7 @@
     line-height: 72px !important; /* 120% */
     max-width: 827px;
     margin-top: 0;
+    font-weight: 400 !important;
   }
   .module-wrapper {
 
@@ -84,6 +87,7 @@
     }
     .mobile-video {
       display: block;
+      width: 100%;
     }
     .h2 {
       font-size: 32px !important;
@@ -102,21 +106,16 @@
   {% end_scope_css%}
 </style>
 {% end_require_css %}
-{% if module.desktop_video %}
-<link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet" />
-{% endif %}
 
 
 <div class="{{name}}">
   {% if module.background == 'video' %}
-
-  {# {% video_player "embed_player" autoplay=true, hidden_controls=true, loop=true, player_id={{module.background_video.player_id}}%}#}
-  <video id="desktop_video" class="desktop-video video-js vjs-default-skin" controls preload="auto">
+  <video id="desktop_video" class="desktop-video" autoplay loop muted>
     <source src="{{module.desktop_video}}" type="video/mp4">
   </video>
 
   {% if module.mobile_video %}
-  <video id="mobile_video" class="mobile-video video-js vjs-default-skin" controls preload="auto">
+  <video id="mobile_video" class="mobile-video" autoplay loop muted>
     <source src="{{module.mobile_video}}" type="video/mp4">
   </video>
 
@@ -147,37 +146,3 @@
     </div>
   </div>
 </div>
-
-{% require_js %}
-<script src="https://vjs.zencdn.net/8.9.0/video.min.js"></script>
-{% if module.desktop_video %}
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    videojs('desktop_video', {
-      muted: true, // Needed for autoplay in most browsers
-      autoplay: true, // Video will start playing as soon as it's ready
-      loop: true, // Video will loop continuously
-
-    });
-  });
-</script>
-{% endif %}
-{% if module.mobile_video %}
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    videojs('mobile_video', {
-      muted: true, // Needed for autoplay in most browsers
-      autoplay: true, // Video will start playing as soon as it's ready
-      loop: true, // Video will loop continuously
-             fluid: true,
-
-
-    });
-  });
-
-</script>
-{% endif %}
-
-
-
-{% end_require_js%}

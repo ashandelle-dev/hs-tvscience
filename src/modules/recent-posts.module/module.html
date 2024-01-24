@@ -1,10 +1,32 @@
-{% set posts = '' %}
+{% set latest_posts = blog_recent_posts(module.blog, 4) %}
 
-{% if module.blog %}
-{{module.blog}}
-
-{% endif %}
 <h2>
   {{module.module_label}}
 </h2>
-<a href="">Viw All {{</a>
+<a href="">View All {{module.module_label}}</a>
+
+<section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-2 gap-y-4 md:gap-x-4 md:gap-y-8 mb-12 border-t border-solid border-t-[#C0E7D8] pt-8 mt-8">
+  {% for post in latest_posts %}
+  <article class="resource-card h-full min-h-[383px]">
+    <div class="rounded-lg border h-full border-[#009061] overflow-hidden relative group">
+      <a class="absolute top-0 left-0 w-full h-full z-10" href="{{ post.absolute_url }}">
+        <div class="h-[170px]">
+          {% if post.featured_image %}
+          <img class="w-full h-full object-cover" src="{{ post.featured_image }}" alt="{{ post.name }}">
+          {% endif %}
+        </div>
+        <div class="p-[25px] px-[35px]">
+          <div>{{ post.publish_date|datetimeformat('%B %-d, %Y') }}</div>
+          <h2 class="!text-[22px] !leading-[28px] mb-6 font-medium text-[#31373D]">{{ post.name }}</h2>
+          <div>
+            <p class="flex absolute bottom-3 left-0 px-[35px] items-center hover:no-underline m-0 font-plex-mono tracking-widest uppercase text-[14px] text-[#009061]">Read Now</p>
+            <div class="w-4 text-center group-hover:translate-x-0.5 duration-200 transition-transform">
+              <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7 5L10 8L7 11" stroke="#009061" stroke-width="1.5"></path></svg>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </article>
+  {% endfor %}
+</section>
