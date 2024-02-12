@@ -1,0 +1,16 @@
+<!--
+    templateType: page
+    label: TVSci DND Code Ready
+    isAvailableForNewContent: true
+-->
+{% extends "../layouts/base-code.html" %}
+
+{% block body %}
+<main>
+  {% dnd_area "dnd_area" class='dnd-empty', label='Drag and Drop Area' %}
+
+
+  {% end_dnd_area %}
+
+  </main>
+{% endblock body %}

@@ -9,7 +9,7 @@
     {% if module.background == 'image' %}
     background-image: {{module.background_image.src}};
     {% endif %}
-    max-height: 740px;
+    max-height: 100vh; 
 
   }
 
@@ -34,7 +34,6 @@
     line-height: 72px !important; /* 120% */
     max-width: 827px;
     margin-top: 0;
-    font-weight: 400 !important;
   }
   .module-wrapper {
 
@@ -82,6 +81,9 @@
     display: none;
   }
   @media screen and (max-width: 767px){
+    .module-wrapper {
+      bottom: 56px;
+    }
     .desktop-video {
       display: none;
     }
@@ -92,7 +94,6 @@
     .h2 {
       font-size: 32px !important;
       font-style: normal;
-      font-weight: 700;
       line-height: 42px !important; /* 131.25% */
     }
     .cta-group {
@@ -108,7 +109,7 @@
 {% end_require_css %}
 
 
-<div class="{{name}}">
+<div class="{{name}} homepage-hero-module">
   {% if module.background == 'video' %}
   <video id="desktop_video" class="desktop-video" autoplay loop muted>
     <source src="{{module.desktop_video}}" type="video/mp4">
