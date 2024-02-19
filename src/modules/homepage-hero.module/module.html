@@ -1,7 +1,7 @@
 {% require_css %}
 <style>
 
-  .{{name}} {
+  .homepage-hero-module {
     position: relative;
     {% if module.background == 'color' %}
     background-color: {{module.style.background_color.css}};
@@ -10,7 +10,14 @@
     background-image: {{module.background_image.src}};
     {% endif %}
     max-height: 100vh; 
+    height: 100vh;
+  }
 
+  .homepage-hero-module video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   {% scope_css %}
