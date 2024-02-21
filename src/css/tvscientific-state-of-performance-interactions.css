@@ -1290,7 +1290,7 @@ blockquote {
   position: relative;
 }
 
-.stateperf-takeaway-item-bg {
+.stateperf-key {
   z-index: 2;
   width: 100%;
   max-width: 355px;
@@ -1309,6 +1309,60 @@ blockquote {
   bottom: 0%;
   left: 0%;
   right: 0%;
+}
+
+.stateperf-key-inner {
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .87);
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 16px 32px;
+  display: flex;
+  position: relative;
+}
+
+.key-item {
+  margin-right: 8px;
+  display: flex;
+}
+
+.stateperf-key-wrapper {
+  z-index: 2;
+  width: 100%;
+  max-width: 100%;
+  background-image: linear-gradient(270deg, #0fbf84, #1dafff);
+  padding: 1px;
+  position: relative;
+}
+
+.color-square {
+  width: 14px;
+  height: 14px;
+  background-color: #f3fcfb;
+  margin-right: 6px;
+}
+
+.color-square.pink {
+  background-color: #f2aafc;
+}
+
+.color-square.blue {
+  background-color: #06d2ff;
+}
+
+.color-square.light-blue {
+  background-color: #b1d3e8;
+}
+
+.color-square.green {
+  background-color: #01c097;
+}
+
+.key-text {
+  font-size: 12px;
 }
 
 .stroke-number {

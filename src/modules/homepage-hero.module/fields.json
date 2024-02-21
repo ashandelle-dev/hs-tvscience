@@ -215,4 +215,54 @@
   "required" : false,
   "locked" : false,
   "type" : "file"
+}, {
+  "id" : "7e22946f-87ac-49af-b268-e3716437e55b",
+  "name" : "video_poster_image_desktop",
+  "display_width" : null,
+  "label" : "Video Poster Image Desktop",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "desktop_video",
+    "controlling_value_regex" : null,
+    "property" : null,
+    "operator" : "NOT_EMPTY",
+    "access" : null
+  },
+  "responsive" : true,
+  "resizable" : false,
+  "show_loading" : false,
+  "type" : "image",
+  "default" : {
+    "size_type" : "auto",
+    "src" : "",
+    "alt" : null,
+    "loading" : "disabled"
+  }
+}, {
+  "id" : "49269739-3575-c69d-45d9-f9903bbbd901",
+  "name" : "video_poster_image_mobile",
+  "display_width" : null,
+  "label" : "Video Poster Image Mobile",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "mobile_video",
+    "controlling_value_regex" : null,
+    "property" : null,
+    "operator" : "NOT_EMPTY",
+    "access" : null
+  },
+  "responsive" : true,
+  "resizable" : false,
+  "show_loading" : false,
+  "type" : "image",
+  "default" : {
+    "size_type" : "auto",
+    "src" : "",
+    "alt" : null,
+    "loading" : "disabled"
+  }
 } ]

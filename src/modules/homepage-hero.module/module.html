@@ -29,7 +29,14 @@
     font-style: normal;
     font-weight: 500 !important;
     line-height: 72px; /* 300% */
-    font-weight: 400 !important;
+  }
+  .h1.below {
+    color: #fff;
+    line-height: 1;
+  }
+  
+  h1.sub-below {
+    margin-bottom: 20px;
   }
   .h2 {
     color: #FFF;
@@ -98,6 +105,15 @@
       display: block;
       width: 100%;
     }
+    h1.sub-below {
+      margin-bottom: 16px;
+      font-size: 32px !important;
+      line-height: 38px !important;
+    }
+    p.h1 {
+      font-size: 20px !important;
+      line-height: 27px;
+    }
     .h2 {
       font-size: 32px !important;
       font-style: normal;
@@ -132,8 +148,13 @@
   <div class="module-wrapper">
     <div class="module-content">
       {% if module.subheading %}
-      <h1 class="h1">{{module.subheading}}</h1>
-      <h2 class="h2">{{module.content}} </h2>
+        {% if module.subheading_placement == 'above_title' %}
+          <p class="h1">{{module.subheading}}</p>
+          <h1 class="h2 sub-above">{{module.content}} </h1>
+        {% else %}
+          <h1 class="h2 sub-below">{{module.content}} </h1>
+          <p class="h1 below">{{module.subheading}}</p>
+        {% endif %}
       {% else %}
       <h1 class="h2">{{module.content}}</h1>
       {% endif %}
