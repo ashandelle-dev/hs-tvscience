@@ -11,6 +11,20 @@
   "type" : "text",
   "default" : "Retail Ads"
 }, {
+  "id" : "3409db22-cdc6-bad7-fcb5-9dd8b7e404c3",
+  "name" : "subheading_placement",
+  "display_width" : null,
+  "label" : "Subheading placement",
+  "required" : false,
+  "locked" : false,
+  "display" : "radio",
+  "choices" : [ [ "above_title", "Above Title" ], [ "below_title", "Below Title" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "default" : "above_title"
+}, {
   "id" : "b5bf52e5-57f3-fe90-d11f-2e83a07fdca4",
   "name" : "content",
   "display_width" : null,

@@ -6,7 +6,7 @@
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./src/css/bundled.css (1) ***!
   \*********************************************************************************************************************/
 /*
-! tailwindcss v3.3.3 | MIT License | https://tailwindcss.com
+! tailwindcss v3.3.5 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -849,6 +849,10 @@ h2{
   margin-top: 1.5rem;
 }
 
+.mt-8{
+  margin-top: 2rem;
+}
+
 .block{
   display: block;
 }
@@ -967,6 +971,10 @@ h2{
 
 .max-h-\[56px\]{
   max-height: 56px;
+}
+
+.min-h-\[383px\]{
+  min-height: 383px;
 }
 
 .w-1{
@@ -1330,6 +1338,10 @@ h2{
   border-top-width: 4px;
 }
 
+.border-solid{
+  border-style: solid;
+}
+
 .border-dashed{
   border-style: dashed;
 }
@@ -1361,6 +1373,11 @@ h2{
 .border-b-\[\#1e4d83\]{
   --tw-border-opacity: 1;
   border-bottom-color: rgb(30 77 131 / var(--tw-border-opacity));
+}
+
+.border-t-\[\#C0E7D8\]{
+  --tw-border-opacity: 1;
+  border-top-color: rgb(192 231 216 / var(--tw-border-opacity));
 }
 
 .\!bg-\[\#0FBF84\]{
@@ -1459,6 +1476,10 @@ h2{
   padding: 1.5rem;
 }
 
+.p-\[25px\]{
+  padding: 25px;
+}
+
 .px-0{
   padding-left: 0px;
   padding-right: 0px;
@@ -1482,6 +1503,11 @@ h2{
 .px-6{
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+}
+
+.px-\[35px\]{
+  padding-left: 35px;
+  padding-right: 35px;
 }
 
 .px-\[40px\]{
@@ -1611,6 +1637,10 @@ h2{
 
 .pt-6{
   padding-top: 1.5rem;
+}
+
+.pt-8{
+  padding-top: 2rem;
 }
 
 .text-center{
@@ -1846,6 +1876,10 @@ h2{
 .text-white{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.underline{
+  text-decoration-line: underline;
 }
 
 .opacity-50{
@@ -2452,6 +2486,10 @@ body.mobile-open{
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
+  .md\:grid-cols-4{
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
   .md\:grid-rows-2{
     grid-template-rows: repeat(2, minmax(0, 1fr));
   }
@@ -2743,6 +2781,10 @@ body.mobile-open{
     width: 16.666667%;
   }
 
+  .lg\:w-2\/3{
+    width: 66.666667%;
+  }
+
   .lg\:w-2\/5{
     width: 40%;
   }
@@ -2993,8 +3035,16 @@ body.mobile-open{
     height: 900px;
   }
 
+  .xl\:w-1\/3{
+    width: 33.333333%;
+  }
+
   .xl\:w-1\/5{
     width: 20%;
+  }
+
+  .xl\:w-2\/3{
+    width: 66.666667%;
   }
 
   .xl\:w-5\/12{
