@@ -37,15 +37,13 @@
     font-size: 14px;
     font-weight: 500;
     letter-spacing: 3.43px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
   {% end_scope_css %}
 </style>
 {% end_require_css %}
-
-
-
-
-
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <div class="{{name}}">
@@ -57,7 +55,7 @@
 </div>
 {% require_js %}
 <script>
-  {% if module.board_token %}
+
   nameurl = 'https://boards-api.greenhouse.io/v1/boards/{{module.board_token}}/jobs';
 
   function createJobs(_data) {
@@ -72,19 +70,31 @@
         var apply_url = posting.absolute_url;
         var location = posting.location.name;
 
-        $('.careers-list').append('<div class="jobs__item"><div class="jobs__info"><div class="jobs__title">' + title + '</div><div class="jobs__item-location">' + location + '</div></div><div class="embeddedbutton"><a class="primary-button" href="' + apply_url + '">Apply Now<span> ></span></a></div></div>');
+        $('.careers-list').append('<div class="jobs__item"><div class="jobs__info"><div class="jobs__title">' + title + '</div><div class="jobs__item-location">' + location + '</div></div><div class="embeddedbutton"><a class="primary-button" href="' + apply_url + '">Apply Now<svg xmlns="http://www.w3.org/2000/svg" width="7" height="15" viewBox="0 0 7 15" fill="none"><path d="M1.07422 0.999974L5.00014 7.63927L1.07422 14.2786" stroke="#009061" stroke-width="2" stroke-miterlimit="10"/></svg></a></div></div>');
       }
     }
   }
 
-  //Fetching job postings from Greenhouse API
+  {% if module.board_token %}
   $.ajax({
     dataType: "json",
     url: nameurl,
     success: function(data) {
       createJobs(data);
     }
-  });
+  });  
+  {% else %}
+
+  let demoData = {
+    jobs: [
+      {title: "Name of Position", apply_url: "#", location: {name: "Location"}},
+      {title: "Name of Position", apply_url: "#", location: {name: "Location"}},
+      {title: "Name of Position", apply_url: "#", location: {name: "Location"}},
+      {title: "Name of Position", apply_url: "#", location: {name: "Location"}}
+    ]
+  };
+
+  createJobs(demoData);
   {% endif %}
 </script>
 {% end_require_js %}
