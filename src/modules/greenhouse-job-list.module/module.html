@@ -1,0 +1,90 @@
+{% require_css %}
+<style>
+  {% scope_css %}
+  .description {
+    max-width: 605px;
+    margin-bottom: 2rem
+  }
+  .jobs__item {
+    display: flex;
+    padding: 24px;
+  }
+  .jobs__info {
+    flex-grow: 1;
+  }
+  .jobs__title {
+    color: var(--Dark-Green, #1C4633);
+    font-size: 24px;
+    font-weight: 500;
+  }
+  .jobs__item-location {
+    font-size: 14px;
+    margin-top: 10px;
+    width: fit-content;
+    color: #fff;
+    padding: 6px 8px;
+    border-radius: 4px;
+    background: var(--Brand-Green, #009061);
+  }
+  .jobs__item:nth-child(even) {
+    background-color: #F8F8F8;
+  }
+  .jobs__item:not(:last-child) {
+    border-bottom: 1px solid #E5E7EB
+  }
+  a.primary-button {
+    color: #009061;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 3.43px;
+  }
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<div class="{{name}}">
+  <h2>{{module.title}}</h2>
+  <div class="description">{{module.description}}</div>
+  <div class="careers-list" id="jobs-container">
+    <div id="no-jobs-message">No Jobs Available</div>
+  </div>
+</div>
+{% require_js %}
+<script>
+  {% if module.board_token %}
+  nameurl = 'https://boards-api.greenhouse.io/v1/boards/{{module.board_token}}/jobs';
+
+  function createJobs(_data) {
+    console.log(_data);
+    if (_data.jobs.length > 0) {
+      // Hide the "No Jobs Available" message as there are jobs
+      $('#no-jobs-message').hide();
+
+      for(i = 0; i < _data.jobs.length; i++) {
+        var posting = _data.jobs[i];
+        var title = posting.title;
+        var apply_url = posting.absolute_url;
+        var location = posting.location.name;
+
+        $('.careers-list').append('<div class="jobs__item"><div class="jobs__info"><div class="jobs__title">' + title + '</div><div class="jobs__item-location">' + location + '</div></div><div class="embeddedbutton"><a class="primary-button" href="' + apply_url + '">Apply Now<span> ></span></a></div></div>');
+      }
+    }
+  }
+
+  //Fetching job postings from Greenhouse API
+  $.ajax({
+    dataType: "json",
+    url: nameurl,
+    success: function(data) {
+      createJobs(data);
+    }
+  });
+  {% endif %}
+</script>
+{% end_require_js %}
