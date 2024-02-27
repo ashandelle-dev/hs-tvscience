@@ -58,10 +58,10 @@
           </div>
         </div>
 
-      </div>
-      <div class="lg:p-6  relative mb-4  h-full hidden md:!block !visible">
-        <div class="flex flex-wrap items-center">
-          <div class="md:w-1/4 px-6 lg:px-12">
+      </div> 
+      <div class="inner-wrapper lg:p-6  relative mb-4  h-full hidden md:!block !visible">
+        <div class="content-row flex flex-wrap items-center">
+          <div class="content-image md:w-1/4 px-6 lg:px-12">
             {% if item.headshot.src %}
             {% set sizeAttrs = 'width="{{ item.headshot.width }}" height="{{ item.headshot.height }}"' %}
             {% if item.headshot.size_type == 'auto' %}
@@ -74,7 +74,7 @@
           {% endif %}
           </div>
           <div class="md:w-3/4">
-            <div class="mb-3 px-6 lg:px-12">
+            <div class="content-logo mb-3 px-6 lg:px-12">
             {% if item.logo.src %}
               {% set sizeAttrs = 'width="{{ item.logo.width }}" height="{{ item.logo.height }}"' %}
               {% if item.logo.size_type == 'auto' %}
@@ -92,7 +92,7 @@
                 border-[#0FBF84]
             {% endif %} px-6 lg:px-12">
               <div>
-                <p class="mb-3 text-[24px] md:text-[32px] lg:text-[36px] leading-normal italic {% if module.text_dark %}
+                <p class="content-body mb-3 text-[24px] md:text-[32px] lg:text-[36px] leading-normal italic {% if module.text_dark %}
           
                   text-[#1C4633]
                   {% else %}
@@ -102,7 +102,7 @@
                   {{ item.qs_quote }}
                   </p>
               </div>
-              <div class="flex flex-wrap lg:flex-nowrap relative">
+              <div class="content-author flex flex-wrap lg:flex-nowrap relative">
                 <div class="w-full sm:w-6/12 mb-6 sm:mb-0">
                   
                   <p class="font-bold text-[#0FBF84] m-0">
