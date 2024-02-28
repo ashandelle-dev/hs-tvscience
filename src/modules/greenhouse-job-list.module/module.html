@@ -52,7 +52,7 @@
 {% end_require_css %}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<div class="{{name}}">
+<div id="gh-jobs-board" class="{{name}}">
   <h2>{{module.title}}</h2>
   <div class="description">{{module.description}}</div>
   <div class="careers-list" id="jobs-container">
@@ -102,5 +102,14 @@
 
   createJobs(demoData);
   {% endif %}
+
+{# Smooth scrolls if anchor is used #}
+  $(document).on('click', 'a[href^="#"]', function (event) {
+    event.preventDefault();
+
+    $('html, body').animate({
+        scrollTop: $($.attr(this, 'href')).offset().top
+    }, 750);
+});
 </script>
 {% end_require_js %}
