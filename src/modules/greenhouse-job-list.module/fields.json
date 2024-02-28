@@ -31,4 +31,13 @@
   "locked" : false,
   "type" : "richtext",
   "default" : "<span style=\"font-size: 18px;\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras leo odio, cursus in enim eget, molestie imperdiet neque.</span>"
+}, {
+  "id" : "59544f35-3868-0e7a-77fb-4c10801e0342",
+  "name" : "no_jobs_message",
+  "display_width" : null,
+  "label" : "\"No Jobs\" message",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "default" : "<strong><span style=\"font-size: 18px;\">No jobs available at this time.&nbsp;</span></strong>"
 } ]
