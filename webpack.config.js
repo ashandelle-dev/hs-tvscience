@@ -42,12 +42,15 @@ module.exports = ({ account, autoupload }) => ({
                 { from: "src/layouts", to: "layouts" },
                 { from: "src/partials", to: "partials" },
                 { from: "src/sections", to: "sections" },
+                { from: "src/fonts", to: "fonts" },
                 // { from: "src/macros", to: "macros" },
                 //{ from: "src/css/tvscientific-home-interactionsV2.css", to: "css/tvscientific-home-interactionsV2.css"},
                 { from: "src/css/tvscientific-state-of-performance-interactions.css", to: "css/tvscientific-state-of-performance-interactions.css"},
                 //{ from: "src/css/components.css", to: "css/components.css"},
                 //{ from: "src/css/tvscientific-state-of-performance-components.css", to: "css/tvscientific-state-of-performance-components.css"},
                 //{ from: "src/css/normalize.css", to: "css/normalize.css"}
+                { from: "src/css/fonts.css", to: "css/fonts.css"},
+
             ],
         }),
         new MiniCssExtractPlugin({
