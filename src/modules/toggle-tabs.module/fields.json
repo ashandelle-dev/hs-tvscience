@@ -65,12 +65,13 @@
   "tab" : "CONTENT",
   "expanded" : false,
   "type" : "group",
-  "default" : {
-    "image" : {
-      "size_type" : "auto",
-      "src" : "",
-      "alt" : null,
-      "loading" : "lazy"
-    }
-  }
+  "default" : [ ]
+}, {
+  "id" : "d4aa655a-352c-a892-d6ab-cfec367f763f",
+  "name" : "content",
+  "display_width" : null,
+  "label" : "Content",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext"
 } ]

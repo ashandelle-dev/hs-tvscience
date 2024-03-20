@@ -3025,3 +3025,40 @@ blockquote {
   font-style: normal;
   font-display: swap;
 }
+
+/* Platform Page Specific Styling */
+.platform-page .section-padding {
+  padding: 214px 0 !important;
+}
+
+.platform-page .layout-content-width-l {
+  margin: 0;
+  margin-bottom: 72px
+}
+.platform-page h2 {
+  color: #C0E7D8;
+}
+.platform-page .w-layout-blockcontainer {
+  margin: 0 !important;
+  max-width: 1344px;
+}
+.plat-grid {
+  grid-gap: 40px;
+}
+@media screen and (min-width: 768px) {
+  .plat-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.plat-grid h3 {
+  color: #FFF;
+  font-family: "IBM Plex Sans";
+  font-size: 22px;
+  font-style: normal;
+  line-height: 32px;
+  letter-spacing: 1px;
+}
+.plat-grid p {
+  line-height: 26px;
+  letter-spacing: 0.36px;
+}

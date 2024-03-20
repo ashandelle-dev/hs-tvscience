@@ -1,26 +1,29 @@
 <!-- module html  -->
-<div class="relative md:overflow-hidden">
+<div class="toggle-tabs relative md:overflow-hidden">
   <div class="absolute w-full h-full inset-0 flex justify-end">
     <div class="w-full md:w-6/12 relative mb-6 md:mb-0 hidden md:!flex !visible  justify-end">
-    
+
       {% for row in module.tt_rows %}
 
-        {% if row.image.src %}
-          {% set sizeAttrs = 'width="{{ row.image.width }}" height="{{ row.image.height }}"' %}
-          {% if row.image.size_type == 'auto' %}
-            {% set sizeAttrs = 'width="{{ row.image.width }}" height="{{ row.image.height }}" style="max-width: 100%; height: auto;"' %}
-          {% elif row.image.size_type == 'auto_custom_max' %}
-            {% set sizeAttrs = 'width="{{ row.image.max_width }}" height="{{ row.image.max_height }}" style="max-width: 100%; height: auto;"' %}
-          {% endif %}
-          {% set loadingAttr = row.image.loading != 'disabled' ? 'loading="{{ row.image.loading }}"' : '' %}
+      {% if row.image.src %}
+      {% set sizeAttrs = 'width="{{ row.image.width }}" height="{{ row.image.height }}"' %}
+      {% if row.image.size_type == 'auto' %}
+      {% set sizeAttrs = 'width="{{ row.image.width }}" height="{{ row.image.height }}" style="max-width: 100%; height: auto;"' %}
+      {% elif row.image.size_type == 'auto_custom_max' %}
+      {% set sizeAttrs = 'width="{{ row.image.max_width }}" height="{{ row.image.max_height }}" style="max-width: 100%; height: auto;"' %}
+      {% endif %}
+      {% set loadingAttr = row.image.loading != 'disabled' ? 'loading="{{ row.image.loading }}"' : '' %}
 
-          <img class="row-img {% if !loop.first %} hidden {% endif %}  mr-0" src="{{ row.image.src }}" alt="{{ row.image.alt }}" {{ loadingAttr }} {{ sizeAttrs }} />
-        {% endif %}
+      <img class="row-img {% if !loop.first %} hidden {% endif %}  mr-0" src="{{ row.image.src }}" alt="{{ row.image.alt }}" {{ loadingAttr }} {{ sizeAttrs }} />
+      {% endif %}
       {% endfor %}
     </div>
   </div>
 
   <div class="container relative">
+    {% if module.content %}
+    <div class="module-content w-full md:w-5/12">{{module.content}}</div>
+    {% endif %}
     <div class="flex flex-wrap items-center justify-between">
       <div class="w-full md:w-5/12">
         <div class="w-full  lg:w-10/12 md:mb-12 lg:mb">
@@ -31,7 +34,7 @@
         {% for row in module.tt_rows %}
         <div class="mb-6 py-6 md:py-0">
           <div class="flex items-start cursor-pointer  group vmc-row {% if loop.first %} active {% endif %} md:border-l-4 border-t-4 md:border-t-0 ">
-            
+
             <div class="w-full md:px-3 lg:px-6 pt-6 md:pt-0 ">
               <p class="text-[24px] font-medium text-[#31373D] row-title">
                 {{row.title}}
@@ -43,19 +46,19 @@
               </div>
               <div class="mt-6 md:hidden -mr-[36px]">
                 {% if row.image.src %}
-                  {% set sizeAttrs = 'width="{{ row.image.width }}" height="{{ row.image.height }}"' %}
-                  {% if row.image.size_type == 'auto' %}
-                    {% set sizeAttrs = 'width="{{ row.image.width }}" height="{{ row.image.height }}" style="max-width: 100%; height: auto;"' %}
-                  {% elif row.image.size_type == 'auto_custom_max' %}
-                    {% set sizeAttrs = 'width="{{ row.image.max_width }}" height="{{ row.image.max_height }}" style="max-width: 100%; height: auto;"' %}
-                  {% endif %}
-                  {% set loadingAttr = row.image.loading != 'disabled' ? 'loading="{{ row.image.loading }}"' : '' %}
+                {% set sizeAttrs = 'width="{{ row.image.width }}" height="{{ row.image.height }}"' %}
+                {% if row.image.size_type == 'auto' %}
+                {% set sizeAttrs = 'width="{{ row.image.width }}" height="{{ row.image.height }}" style="max-width: 100%; height: auto;"' %}
+                {% elif row.image.size_type == 'auto_custom_max' %}
+                {% set sizeAttrs = 'width="{{ row.image.max_width }}" height="{{ row.image.max_height }}" style="max-width: 100%; height: auto;"' %}
+                {% endif %}
+                {% set loadingAttr = row.image.loading != 'disabled' ? 'loading="{{ row.image.loading }}"' : '' %}
 
-                  <img class="w-full " src="{{ row.image.src }}" alt="{{ row.image.alt }}" {{ loadingAttr }} {{ sizeAttrs }} />
+                <img class="w-full " src="{{ row.image.src }}" alt="{{ row.image.alt }}" {{ loadingAttr }} {{ sizeAttrs }} />
                 {% endif %}
               </div>
             </div>
-          
+
           </div>
         </div>
         {% endfor %}
