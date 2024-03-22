@@ -3027,9 +3027,6 @@ blockquote {
 }
 
 /* Platform Page Specific Styling */
-.platform-page .section-padding {
-  padding: 214px 0 !important;
-}
 
 .platform-page .layout-content-width-l {
   margin: 0;
@@ -3045,9 +3042,15 @@ blockquote {
 .plat-grid {
   grid-gap: 40px;
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 810px) {
   .plat-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .platform-page .section-padding {
+    padding: 214px 0 !important;
+  }
+  .section.overflow-visible.campains-home-section {
+    height: unset;
   }
 }
 .plat-grid h3 {
