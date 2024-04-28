@@ -1,0 +1,34 @@
+<!-- module html  -->
+<div class="flex items-center flex-wrap -mx-6 py-[64px] md:py-[80px] lg:py-[150px]">
+  <div class="w-full md:w-6/12 lg:w-6/12 mb-[40px] lg:mb-0 px-6">
+    <div class="pr-5">
+      
+      <div class="border-l-4 border-[#0FBF84] pl-[24px] lg:pl-[40px]">
+        <h1 class="text-white lg:!text-[50px]">
+          {{ module.hero_title }}
+        </h1>
+        
+      </div>
+      <div class="pl-[24px] lg:pl-[40px]">
+        <p class="text-white">{{ module.hero_text }}</p>
+      </div>
+      <div class="pl-[24px] lg:pl-[40px] mt-[20px]">
+        <a class="hs-button hero-button" href="{{module.hero_button.hero_button_link.url}}">{{module.hero_button.hero_button_text}}</a>
+      </div>
+      
+    </div>
+  </div>
+  <div class="w-full md:w-6/12 lg:w-6/12 relative lg:static px-6 min-h-[300px] md:min-h-[400px]">
+    {% if module.hero_image.src %}
+      {% set sizeAttrs = 'width="{{ module.hero_image.width|escape_attr }}" height="{{ module.hero_image.height|escape_attr }}"' %}
+      {% if module.hero_image.size_type == 'auto' %}
+        {% set sizeAttrs = 'width="{{ module.hero_image.width|escape_attr }}" height="{{ module.hero_image.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+      {% elif module.hero_image.size_type == 'auto_custom_max' %}
+        {% set sizeAttrs = 'width="{{ module.hero_image.max_width|escape_attr }}" height="{{ module.hero_image.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+      {% endif %}
+       {% set loadingAttr = module.hero_image.loading != 'disabled' ? 'loading="{{ module.hero_image.loading|escape_attr }}"' : '' %}
+      <img class="absolute top-[20px] md:top-[60px] lg:top-[110px]" src="{{ module.hero_image.src|escape_url }}" alt="{{ module.hero_image.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+    {% endif %}
+  </div>
+
+</div>

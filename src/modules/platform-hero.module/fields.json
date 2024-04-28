@@ -1,0 +1,91 @@
+[ {
+  "id" : "f5423a14-f23f-34e9-59ee-9102eebe6a03",
+  "name" : "hero_title",
+  "display_width" : null,
+  "label" : "Hero Title",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "How tvScientific's CTV campaigns surpassed Wisp performance KPIs"
+}, {
+  "id" : "7074156e-7514-8bf1-a17d-1c1804208456",
+  "name" : "hero_text",
+  "display_width" : null,
+  "label" : "Hero Text",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "default" : ""
+}, {
+  "id" : "db53c767-3c38-0e92-a5d0-606be84a203a",
+  "name" : "hero_button",
+  "display_width" : null,
+  "label" : "Hero Button",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "4abcb5b1-82ec-185d-b8e8-6add6b7269b8",
+    "name" : "hero_button_text",
+    "display_width" : null,
+    "label" : "Hero Button Text",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text"
+  }, {
+    "id" : "e255837b-0f23-1c4a-a833-0ddc2fa25bcf",
+    "name" : "hero_button_link",
+    "display_width" : null,
+    "label" : "Hero Button Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "default" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "hero_button_link" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }
+}, {
+  "id" : "c4a84ada-b712-6d02-3599-134292e5dabc",
+  "name" : "hero_image",
+  "display_width" : null,
+  "label" : "Hero Image",
+  "required" : false,
+  "locked" : false,
+  "responsive" : true,
+  "resizable" : true,
+  "show_loading" : false,
+  "type" : "image",
+  "default" : {
+    "size_type" : "auto",
+    "src" : "",
+    "alt" : null,
+    "loading" : "lazy"
+  }
+} ]
