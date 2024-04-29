@@ -1,7 +1,7 @@
 <!--
   templateType: blog_post
   isAvailableForNewContent: true
-  label: 2 Layout Blog Post Template
+  label: 2 layout Blog Post Template
   screenshotPath: ../images/template-previews/blog-post.png
 -->
 {% extends "./../layouts/base.html" %}
@@ -207,7 +207,7 @@
     font-size: 36px !important;
   }
 </style>
-<main class="container pt-4 md:pt-16">
+<main class="container pt-4 md:pt-16 arrow">
   <div class="blog-header flex flex-col md:flex-row gap-4 md:gap-12">
     <div class="w-full md:w-1/4 flex flex-row md:flex-wrap">
       <a href="https://www.tvscientific.com/insight"
@@ -218,13 +218,15 @@
               </svg>
           </div>
           <div class="px-3">
-            <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-[#009061]">Back to All Blogs</p>
-          </div>
+  <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-[#009061] back-to-all-blogs">Back to All Blogs</p>
+</div>
         </a>
-        <div class="timestamp self-end w-full text-[#132430] pb-3 hidden md:block">
+    </div>
+
+
+            <div class="timestamp self-end w-full text-[#132430] pb-3 hidden md:block">
             {{ content.publish_date | datetimeformat('%b %e, %Y') }}
           </div>
-    </div>
     <div class="w-full md:w-3/4">
       <h1 class="blog-post__title text-[#1C4633]">{{ content.name }}</h1>
       <div class="timestamp self-end w-full text-[#132430] pb-3 md:hidden">
@@ -347,15 +349,38 @@
       </div>
 
     {% endmacro %}
-  <div class="blog-cta my-14">
-    
-  {% module "module_16929485389853" path="/tvScientific 2022 Atlas Pro/cli-build/modules/cta-section", label="cta-section" %}
+  <!-- NOTE: Had to remove the cta-section snippet to make the toggle work <3 Will -->
+<div class="blog-cta my-14">
+    <div id="hs_cos_wrapper_module_16929485389853" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+      <!-- module html  -->
+      <div style="position:relative!important;">
+        <div class="absolute right-0 lg:-right-10 lg:-top-10 -top-6 z-0">
+          <div class="translate-x-1/5">
+            <img id="image1" class="w-1/2 md:h-[94px] md:w-[323px] image1" src="https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/top-right-bgp.png" alt="Texture Dots right">
+          </div>
+        </div>
+        <div class="absolute left-0 lg:-left-10 -bottom-10 z-0">
+          <div class="-translate-x-1/4">
+            <img id="image2" class="w-1/2 md:h-[206px] md:w-[153px] image2" src="https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/bottom-left-bgp.png" alt="Texture Dots left">
+          </div>
+        </div>
+        <div class="rounded-xl md:p-6 lg:p-12 relative group flex flex-col-reverse lg:block overflow-hidden" style="background-color: #1c4633;">
+          <div class="absolute right-0 top-0 bottom-0 w-10/12 md:w-3/5 overflow-hidden">
+            <img id="image3" class="w-full h-full object-cover" src="https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/cta-image.png" alt="cta-section-background-texture" loading="lazy">
+          </div>
+          <div class="lg:w-1/2 p-6 lg:py-6 relative">
+            <p class="text-[14px] md:text-[18px] font-bold leading-tight mb-3 cta_section_label" style="color: #C0E7D8;">Get Started Today</p>
+            <p class="text-[24px] md:text-[36px] font-bold leading-tight mb-6 cta_section_header" style="color: #ffffff;">See how you can boost lift and ROAS with CTV</p>
+            <a href="/contact" class="hs-button mb-12 lg:mb-0 cta-button" style="background-color: #0fbf84; color: #ffffff;">Request a demo</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
     <div class="content-wrapper">
       <div class="blog-more">
         <div id="blog-section" class="flex items-center">
-        <div><svg width="25" height="26" viewBox="0 0 25 26" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M21.957 14.6054C21.957 15.7622 21.5815 16.8308 20.9488 17.6978L24.1395 20.8909C24.4545 21.2059 24.4545 21.7175 24.1395 22.0326C23.8245 22.3476 23.3129 22.3476 22.9978 22.0326L19.8071 18.8395C18.9402 19.4745 17.8716 19.8476 16.7148 19.8476C13.819 19.8476 11.4727 17.5013 11.4727 14.6054C11.4727 11.7096 13.819 9.36328 16.7148 9.36328C19.6106 9.36328 21.957 11.7096 21.957 14.6054ZM16.7148 18.2346C18.7192 18.2346 20.344 16.6098 20.344 14.6054C20.344 12.6011 18.7192 10.9762 16.7148 10.9762C14.7105 10.9762 13.0856 12.6011 13.0856 14.6054C13.0856 16.6098 14.7105 18.2346 16.7148 18.2346Z" fill="#1C4633"></path> <path d="M12.5557 9.03435C15.0758 7.54749 17.6133 7.63305 19.5841 8.65793V4.66467L15.5913 0.671875H1.63713C0.885602 0.671875 0.276367 1.28111 0.276367 2.03264V23.6476C0.276367 24.3991 0.885602 25.0083 1.63713 25.0083H18.2233C18.9749 25.0083 19.5841 24.3991 19.5841 23.6476V20.604C18.6562 21.0866 17.6026 21.3609 16.4844 21.3609C11.52 21.3609 7.81102 15.9855 10.8603 10.7376C11.269 10.0343 11.855 9.44783 12.5556 9.03444L12.5557 9.03435Z" fill="#1C4633"></path> </svg></div>
+        <div><svg class="similar-svg" width="25" height="26" viewBox="0 0 25 26" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M21.957 14.6054C21.957 15.7622 21.5815 16.8308 20.9488 17.6978L24.1395 20.8909C24.4545 21.2059 24.4545 21.7175 24.1395 22.0326C23.8245 22.3476 23.3129 22.3476 22.9978 22.0326L19.8071 18.8395C18.9402 19.4745 17.8716 19.8476 16.7148 19.8476C13.819 19.8476 11.4727 17.5013 11.4727 14.6054C11.4727 11.7096 13.819 9.36328 16.7148 9.36328C19.6106 9.36328 21.957 11.7096 21.957 14.6054ZM16.7148 18.2346C18.7192 18.2346 20.344 16.6098 20.344 14.6054C20.344 12.6011 18.7192 10.9762 16.7148 10.9762C14.7105 10.9762 13.0856 12.6011 13.0856 14.6054C13.0856 16.6098 14.7105 18.2346 16.7148 18.2346Z" fill="#1C4633"></path> <path d="M12.5557 9.03435C15.0758 7.54749 17.6133 7.63305 19.5841 8.65793V4.66467L15.5913 0.671875H1.63713C0.885602 0.671875 0.276367 1.28111 0.276367 2.03264V23.6476C0.276367 24.3991 0.885602 25.0083 1.63713 25.0083H18.2233C18.9749 25.0083 19.5841 24.3991 19.5841 23.6476V20.604C18.6562 21.0866 17.6026 21.3609 16.4844 21.3609C11.52 21.3609 7.81102 15.9855 10.8603 10.7376C11.269 10.0343 11.855 9.44783 12.5556 9.03444L12.5557 9.03435Z" fill="#1C4633"></path> </svg></div>
         <div class="px-3">
         <h2 style="margin: 0px; font-weight: bold;"><span style="color: #1c4633;">Similar posts</span></h2>
         </div>
@@ -380,7 +405,6 @@
     {% module "blog-subscribe" path="../modules/Global Blog Subscribe.module", label="Global Blog Subscribe" %}
   </div>
 </main>
-
 <script>
   
   var isInViewport = function(elem) {
@@ -424,7 +448,7 @@
           
         }
     });
-    }, false);
+    }, false); 
 
 
     function calculateTime(text) {

@@ -18,7 +18,7 @@
       
     </div>
   </div>
-  <div class="w-full md:w-6/12 lg:w-6/12 relative lg:static px-6 min-h-[300px] md:min-h-[400px]">
+  <div class="w-full md:w-6/12 lg:w-6/12 relative lg:static px-6 min-h-[285px] md:min-h-[400px]">
     {% if module.hero_image.src %}
       {% set sizeAttrs = 'width="{{ module.hero_image.width|escape_attr }}" height="{{ module.hero_image.height|escape_attr }}"' %}
       {% if module.hero_image.size_type == 'auto' %}
@@ -27,7 +27,7 @@
         {% set sizeAttrs = 'width="{{ module.hero_image.max_width|escape_attr }}" height="{{ module.hero_image.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
       {% endif %}
        {% set loadingAttr = module.hero_image.loading != 'disabled' ? 'loading="{{ module.hero_image.loading|escape_attr }}"' : '' %}
-      <img class="absolute top-[20px] md:top-[60px] lg:top-[110px]" src="{{ module.hero_image.src|escape_url }}" alt="{{ module.hero_image.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+      <img class="absolute top-[20px] -right-[50px] md:right-auto md:top-[60px] lg:top-[110px]" src="{{ module.hero_image.src|escape_url }}" alt="{{ module.hero_image.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
     {% endif %}
   </div>
 

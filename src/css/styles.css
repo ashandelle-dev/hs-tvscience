@@ -3,7 +3,7 @@
   \*****************************************************************************************************************/
 /*@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');*/
 
-/*! tailwindcss v3.3.5 | MIT License | https://tailwindcss.com*/
+/*! tailwindcss v3.3.3 | MIT License | https://tailwindcss.com*/
 
 /*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
@@ -706,6 +706,10 @@ h2 {
   top: 77px;
 }
 
+.top-\[60px\] {
+  top: 60px;
+}
+
 .z-0 {
   z-index: 0;
 }
@@ -865,6 +869,10 @@ h2 {
   margin-top: 2rem;
 }
 
+.mt-\[20px\] {
+  margin-top: 20px;
+}
+
 .block {
   display: block;
 }
@@ -993,6 +1001,18 @@ h2 {
   min-height: 383px;
 }
 
+.min-h-full {
+  min-height: 100%;
+}
+
+.min-h-\[400px\] {
+  min-height: 400px;
+}
+
+.min-h-\[300px\] {
+  min-height: 300px;
+}
+
 .w-1 {
   width: 0.25rem;
 }
@@ -1111,6 +1131,7 @@ h2 {
 
 .w-full {
   width: 100%;
+  margin-top: -5px;
 }
 
 .max-w-\[300px\] {
@@ -1595,6 +1616,21 @@ h2 {
   padding-bottom: 24px;
 }
 
+.py-\[80px\] {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.py-\[150px\] {
+  padding-top: 150px;
+  padding-bottom: 150px;
+}
+
+.py-\[64px\] {
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+
 .pb-20 {
   padding-bottom: 5rem;
 }
@@ -1661,6 +1697,10 @@ h2 {
 
 .pt-8 {
   padding-top: 2rem;
+}
+
+.pr-5 {
+  padding-right: 1.25rem;
 }
 
 .text-center {
@@ -2381,6 +2421,10 @@ body.mobile-open {
     visibility: visible !important;
   }
 
+  .md\:static {
+    position: static;
+  }
+
   .md\:absolute {
     position: absolute;
   }
@@ -2399,6 +2443,10 @@ body.mobile-open {
 
   .md\:right-\[46px\] {
     right: 46px;
+  }
+
+  .md\:top-\[60px\] {
+    top: 60px;
   }
 
   .md\:-mx-6 {
@@ -2452,6 +2500,10 @@ body.mobile-open {
 
   .md\:h-\[94px\] {
     height: 94px;
+  }
+
+  .md\:min-h-\[400px\] {
+    min-height: 400px;
   }
 
   .md\:w-1\/2 {
@@ -2650,6 +2702,11 @@ body.mobile-open {
     padding-bottom: 100px;
   }
 
+  .md\:py-\[80px\] {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
   .md\:pb-0 {
     padding-bottom: 0px;
   }
@@ -2751,6 +2808,10 @@ body.mobile-open {
 
   .lg\:top-\[100px\] {
     top: 100px;
+  }
+
+  .lg\:top-\[110px\] {
+    top: 110px;
   }
 
   .lg\:-mx-3 {
@@ -2984,6 +3045,11 @@ body.mobile-open {
   .lg\:py-\[54px\] {
     padding-top: 54px;
     padding-bottom: 54px;
+  }
+
+  .lg\:py-\[150px\] {
+    padding-top: 150px;
+    padding-bottom: 150px;
   }
 
   .lg\:pb-0 {

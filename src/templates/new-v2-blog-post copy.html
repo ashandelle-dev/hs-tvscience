@@ -261,6 +261,9 @@
   .w-4:hover {
     fill: #BB3F2A !important; 
   }
+.kl-social-logos.kl-logo-facebook {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='31' height='31' fill='none'%3E%3Cpath fill='%23BB3F2A' fill-rule='evenodd' d='M15.5 30.999c8.284 0 15-6.716 15-15 0-8.285-6.716-15-15-15s-15 6.715-15 15 6.716 15 15 15m1.75-24h2.7v3.6h-2.7a.9.9 0 0 0-.9.9v2.7h3.6l-.9 3.6h-2.7v7.2h-3.6v-7.2h-2.7v-3.6h2.7v-2.7a4.5 4.5 0 0 1 4.5-4.5' clip-rule='evenodd'/%3E%3C/svg%3E");
+}
 </style>
 <main class="container pt-4 md:pt-16 arrow">
   <div class="blog-header flex flex-col md:flex-row gap-4 md:gap-12">
@@ -438,32 +441,6 @@
     </div>
   </div>
 </div>
-
-<!-- JavaScript code for toggling images -->
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const styleToggle = document.getElementById('style-toggle');
-    const image1 = document.getElementById('image1');
-    const image2 = document.getElementById('image2');
-    const image3 = document.getElementById('image3');
-
-    styleToggle.addEventListener('change', function() {
-      if (this.checked) {
-        // Update image sources when toggle is activated
-        image1.src = "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/top-right-bgp.png";
-        image2.src = "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/bottom-left-bgp.png";
-        image3.src = "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/cta-image.png";
-      } else {
-        // Revert back to default images when toggle is deactivated
-        image1.src = "https://www.tvscientific.com/hubfs/texture-wide-blue.png";
-        image2.src = "https://www.tvscientific.com/hubfs/Group%20278687.png";
-        image3.src = "https://www.tvscientific.com/hubfs/cta-section-background-texture.png";
-      }
-    });
-  });
-</script>
-
-
     <div class="content-wrapper">
       <div class="blog-more">
         <div id="blog-section" class="flex items-center">
@@ -551,10 +528,6 @@
 
 
   });
-
-  
-
-  
 </script>
 {% endif %}
 {% endblock body %}
