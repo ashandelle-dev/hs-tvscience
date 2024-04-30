@@ -71,7 +71,7 @@
         
       {% if item.dropdown|length > 0 %}
         
-      <div class="absolute lg:group-hover/main:block lg:hidden bg-white lg:shadow-lg lg:-left-[28px] lg:py-12 lg:px-3 rounded-b-lg z-30 top-5 lg:top-[100px] {% if item.large_dropdown %} lg:w-[600px] {% else %} lg:w-[auto] {% endif %} hidden lg:block lg:!visible child-dropdown w-full h-screen lg:h-auto py-6 lg:py-0 {% unless item.large_dropdown %}content-aware{% endunless %}">
+      <div class="absolute lg:group-hover/main:block lg:hidden bg-white lg:shadow-lg lg:-left-[28px] lg:py-12 lg:px-3 rounded-b-lg z-30 top-0 lg:top-[100px] {% if item.large_dropdown %} lg:w-[600px] {% else %} lg:w-[auto] {% endif %} hidden lg:block lg:!visible child-dropdown w-full h-screen lg:h-auto py-6 lg:py-0 {% unless item.large_dropdown %}content-aware{% endunless %}">
         {% if item.has_blog %}
   
         <div class="flex flex-wrap  px-3 lg:px-0">

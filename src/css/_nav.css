@@ -19,6 +19,7 @@ body.mobile-open {
 .menu-item .child-dropdown {
   &.active {
     @apply block visible lg:hidden;
+    width: 100%;
   }
 }
 
