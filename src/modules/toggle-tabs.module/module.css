@@ -7,15 +7,14 @@ border-color: #0FBF84;
     }
     
     .vmc-row.active {
-border-color: #0FBF84;
-}
+    border-color: #0FBF84;
+    }
 
-.vmc-row .vmc-row-description {
-  display:none;
-}
+    .vmc-row .vmc-row-description {
+      display:none;
+    }
 
-.vmc-row.active .vmc-row-description {
-  display:block;
+    .vmc-row.active .vmc-row-description {
+      display:block;
+    }
 }
-}
-
