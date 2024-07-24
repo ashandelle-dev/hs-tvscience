@@ -1,4 +1,3 @@
- <script>
     document.addEventListener("DOMContentLoaded", function() {
       // Get references to the images
       const image1 = document.getElementById('image1');
@@ -10,4 +9,3 @@
       image2.src = "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/bottom-left-bgp.png";
       image3.src = "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/cta-image.png";
     });
-  </script>

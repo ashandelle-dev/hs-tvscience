@@ -12,12 +12,12 @@
   
   <div class="absolute right-0 lg:-right-10 lg:-top-10 -top-6 z-0">
     <div class="translate-x-1/5">
-      <img class="w-1/2 md:h-[94px] md:w-[323px]" src="https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/texture-wide-blue.png" alt="Texture Dots right">
+      <img id="image1" class="w-1/2 md:h-[94px] md:w-[323px]" src="https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/texture-wide-blue.png" alt="Texture Dots right">
     </div>
   </div>
   <div class="absolute left-0 lg:-left-10 -bottom-10 z-0">
     <div class="-translate-x-1/4">
-      <img class="w-1/2 md:h-[206px] md:w-[153px]" src="https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/Group%20278687.png" alt="Texture Dots left">
+      <img id="image2" class="w-1/2 md:h-[206px] md:w-[153px]" src="https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/Group%20278687.png" alt="Texture Dots left">
     </div>
   </div>
   <div class="rounded-xl md:p-6 lg:p-12 relative group flex flex-col-reverse lg:block overflow-hidden" style="background-color: {{bg_color}};">
@@ -25,7 +25,7 @@
       {% if module.background_texture.src %}
        
         {% set loadingAttr = module.background_texture.loading != 'disabled' ? 'loading="{{ module.background_texture.loading }}"' : '' %}
-        <img class="w-full h-full object-cover" src="{{ module.background_texture.src }}" alt="{{ module.background_texture.alt }}" {{ loadingAttr }} >
+        <img id="image3" class="w-full h-full object-cover" src="{{ module.background_texture.src }}" alt="{{ module.background_texture.alt }}" {{ loadingAttr }} >
       {% endif %}
     </div>
     

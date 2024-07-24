@@ -288,7 +288,7 @@
         {# End blog header #}
 
         {% if theme.blog.show_summary %}
-        <h3 class="post-summary text-[36px] text-[#1C4633]">{{ content.meta_description|striptags  }}</h3>
+        <h2 class="post-summary text-[36px] text-[#1C4633] !leading-[50px]">{{ content.meta_description|striptags  }}</h2>
         {% endif %}
 
         <div class="blog-post__body">
@@ -349,33 +349,9 @@
       </div>
 
     {% endmacro %}
-  <!-- NOTE: Had to remove the cta-section snippet to make the toggle work <3 Will -->
+  <!-- Reset back to CTA module BW 072024 -->
 <div class="blog-cta my-14">
-    <div id="hs_cos_wrapper_module_16929485389853" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
-      <!-- module html  -->
-      <div style="position:relative!important;">
-        <div class="absolute right-0 lg:-right-10 lg:-top-10 -top-6 z-0">
-          <div class="translate-x-1/5">
-            <img id="image1" class="w-1/2 md:h-[94px] md:w-[323px] image1" src="https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/top-right-bgp.png" alt="Texture Dots right">
-          </div>
-        </div>
-        <div class="absolute left-0 lg:-left-10 -bottom-10 z-0">
-          <div class="-translate-x-1/4">
-            <img id="image2" class="w-1/2 md:h-[206px] md:w-[153px] image2" src="https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/bottom-left-bgp.png" alt="Texture Dots left">
-          </div>
-        </div>
-        <div class="rounded-xl md:p-6 lg:p-12 relative group flex flex-col-reverse lg:block overflow-hidden" style="background-color: #1c4633;">
-          <div class="absolute right-0 top-0 bottom-0 w-10/12 md:w-3/5 overflow-hidden">
-            <img id="image3" class="w-full h-full object-cover" src="https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/cta-image.png" alt="cta-section-background-texture" loading="lazy">
-          </div>
-          <div class="lg:w-1/2 p-6 lg:py-6 relative">
-            <p class="text-[14px] md:text-[18px] font-bold leading-tight mb-3 cta_section_label" style="color: #C0E7D8;">Get Started Today</p>
-            <p class="text-[24px] md:text-[36px] font-bold leading-tight mb-6 cta_section_header" style="color: #ffffff;">See how you can boost lift and ROAS with CTV</p>
-            <a href="/contact" class="hs-button mb-12 lg:mb-0 cta-button" style="background-color: #0fbf84; color: #ffffff;">Request a demo</a>
-          </div>
-        </div>
-      </div>
-    </div>
+   {% module "module_16929485389853" path="/tvScientific 2022 Atlas Pro/cli-build/modules/cta-section", label="cta-section" %}
   </div>
     <div class="content-wrapper">
       <div class="blog-more">

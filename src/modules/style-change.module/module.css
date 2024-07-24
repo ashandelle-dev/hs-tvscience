@@ -6,17 +6,17 @@
     stroke: #BB3F2A; /* Change the stroke color to #BB3F2A */
 }
 
-.jump-menu p:not(#hs_cos_wrapper_New_Footer p) {
+.blog-body .jump-menu p {
 color: #BB3F2A !important;
 font-weight: 500;
 }
 
-h1,
-h2,
-h3:not(#hs_cos_wrapper_New_Footer h3),
-h4,
-h5,
-h6 {
+.blog-body h1,
+.blog-body h2,
+.blog-body h3,
+.blog-body h4,
+.blog-body h5,
+.blog-body h6 {
 color: #4A0F1A !important;
 }
 
@@ -24,7 +24,7 @@ color: #4A0F1A !important;
 border-color: #FC8B10 !important;
 }
 
-a:not(.jump-menu a):not(#hs_cos_wrapper_main_menu a):not(.main-nav a):not(.cta-button):not(#hs_cos_wrapper_New_Footer a) {
+.blog-body a:not(.jump-menu a) {
 color: #BB3F2A !important;
 font-weight: 500;
 }
@@ -54,7 +54,7 @@ border-left: 2px solid #e7c0c0 !important;
 }
 
 
-p :not(#hs_cos_wrapper_New_Footer p){
+.blog-body p {
 color:#00004D
 }
 
@@ -62,16 +62,15 @@ color:#00004D
 background: linear-gradient(to right, #F3DEB4, #F7CA53);
 }
 
-.cta_section_label {
+/*.cta_section_label {
 color: #BB3F2A !important;
 }
 .cta_section_header {
 color: #4a0f1a !important;
-}
-.cta-button {
-background-color: #4a0f1a !important;
-color: #fff !important;
-border: 2px solid #4a0f1a !important;
+}*/
+.blog-cta .hs-button {
+
+border: 2px solid #BB3F2A !important;
 }
 
 .w-4 {
