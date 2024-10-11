@@ -142,6 +142,14 @@
         "alt" : null,
         "loading" : "lazy"
       }
+    }, {
+      "name" : "is_featured",
+      "label" : "Is Featured",
+      "required" : false,
+      "locked" : false,
+      "type" : "boolean",
+      "display" : "toggle",
+      "default" : false
     } ],
     "tab" : "CONTENT",
     "expanded" : false,
@@ -161,7 +169,8 @@
         "src" : "",
         "alt" : null,
         "loading" : "lazy"
-      }
+      },
+      "is_featured" : false
     }
   } ],
   "tab" : "CONTENT",
@@ -195,7 +204,8 @@
         "src" : "",
         "alt" : null,
         "loading" : "lazy"
-      }
+      },
+      "is_featured" : false
     }
   }
 } ]
