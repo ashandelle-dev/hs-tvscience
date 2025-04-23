@@ -3067,3 +3067,11 @@ blockquote {
   line-height: 26px;
   letter-spacing: 0.36px;
 }
+
+/*Minor responsive fixes - BW 11/2024*/
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .section.overflow-visible.target-home-section, .section.overflow-visible.campains-home-section {
+     height: 100%;
+  }
+}

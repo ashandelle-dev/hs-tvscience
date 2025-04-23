@@ -134,12 +134,12 @@
 
 <div class="{{name}} homepage-hero-module">
   {% if module.background == 'video' %}
-  <video id="desktop_video" class="desktop-video" autoplay loop muted>
+  <video id="desktop_video" class="desktop-video" autoplay="autoplay" loop="loop" muted="" playsinline="">
     <source src="{{module.desktop_video}}" type="video/mp4">
   </video>
 
   {% if module.mobile_video %}
-  <video id="mobile_video" class="mobile-video" autoplay loop muted>
+  <video id="mobile_video" class="mobile-video" autoplay="autoplay" loop="loop" muted="" playsinline="">
     <source src="{{module.mobile_video}}" type="video/mp4">
   </video>
 

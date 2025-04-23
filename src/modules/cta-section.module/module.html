@@ -7,6 +7,7 @@
 {% set label_color = module.style.label_text_color.color %}
 {% set button_bg = module.style.button_color.color %}
 {% set button_color = module.style.button_text_color.color %}
+{% set button_border_color = module.style.button_border_color.color %}
 <!-- module html  -->
 <div style="position:relative!important;">
   
@@ -43,7 +44,7 @@
         {% else %}
           <a href="{{href}}" 
           {% if module.cta_section_button.link.open_in_new_tab %}target="_blank"{% endif %}
-          {% if module.cta_section_button.link.rel %}rel="{{ module.cta_section_button.link.rel }}"{% endif %} class="hs-button mb-12 lg:mb-0" style="background-color: {{button_bg}}; color: {{button_color}};">{{ module.cta_section_button.text }}</a>
+          {% if module.cta_section_button.link.rel %}rel="{{ module.cta_section_button.link.rel }}"{% endif %} class="hs-button mb-12 lg:mb-0" style="background-color: {{button_bg}}; color: {{button_color}}; border-color: {{button_border_color}}">{{ module.cta_section_button.text }}</a>
         {% endif %}
       {% endif %}
     </div>
