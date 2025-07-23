@@ -1,0 +1,45 @@
+{% require_css %}
+<style>
+  {% scope_css %}
+  .logo {
+    min-height: 113px;
+    padding: 15px;
+  }
+  @media screen and (min-width:767px){
+    .logo:not(:last-child) {
+      border-right: 1.5px solid #E5E7EB;
+    }
+  }
+  @media (min-width: 768px) {
+    .grid-cols-2 {grid-template-columns: repeat(2, minmax(0, 1fr));}
+    .grid-cols-3 {grid-template-columns: repeat(3, minmax(0, 1fr));}
+    .grid-cols-4 {grid-template-columns: repeat(4, minmax(0, 1fr));}
+    .grid-cols-5 {grid-template-columns: repeat(5, minmax(0, 1fr));}
+    .grid-cols-6 {grid-template-columns: repeat(6, minmax(0, 1fr));}
+    .grid-cols-7 {grid-template-columns: repeat(7, minmax(0, 1fr));}
+    .grid-cols-8 {grid-template-columns: repeat(8, minmax(0, 1fr));}
+  }
+  @media screen and (max-width: 767px){
+  .grid {
+    grid-template-columns: 1fr 1fr !important;
+}
+}
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+<div class="{{name}} grid sm:grid-cols-2 {{module.per_row}} items-center">
+  {% for item in module.logo %}
+  <div class="logo flex">
+    {% if item.src %}
+    {% set sizeAttrs = 'width="{{ item.width }}" height="{{ item.height }}"' %}
+    {% if item.size_type == 'auto' %}
+    {% set sizeAttrs = 'width="{{ item.width }}" height="{{ item.height }}" style="max-width: 100%; height: auto;"' %}
+    {% elif item.size_type == 'auto_custom_max' %}
+    {% set sizeAttrs = 'width="{{ item.max_width }}" height="{{ item.max_height }}" style="max-width: 100%; height: auto;"' %}
+    {% endif %}
+    {% set loadingAttr = item.loading != 'disabled' ? 'loading="{{ item.loading }}"' : '' %}
+    <img src="{{ item.src }}" alt="{{ item.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+    {% endif %}
+  </div>
+  {% endfor %}
+</div>

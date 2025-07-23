@@ -1,0 +1,154 @@
+{% require_js %}
+<script>
+  let tabTimeout;
+  let lastTabClickTime = 0;
+  function tabLoop() {
+    
+    var nextTab = document.querySelector('.tab-selector.active').nextElementSibling;
+          
+    if (nextTab.classList.contains('tab-selector')) {
+      
+      nextTab.click();
+    } else {
+      
+      document.querySelector('.tab-selector:first-child').click();
+    }
+  }
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('.tab-content:first-child').classList.remove('hidden');
+    document.querySelector('.tab-content:first-child').classList.add('active');
+    const tabSelectors = document.querySelectorAll('.tab-selector');
+    tabSelectors.forEach((tabSelect) => {
+      tabSelect.addEventListener('click', function() {
+        var tab = tabSelect.dataset.target;
+        document.querySelector('.tab-selector.active').classList.remove('active');
+        document.querySelector('.tab-content.active').classList.add('hidden');
+        document.querySelector('.tab-content.active').classList.remove('active');
+        document.querySelector('[data-tab='+tab+']').classList.remove('hidden');
+        document.querySelector('[data-tab='+tab+']').classList.add('active');
+        tabSelect.classList.add('active');
+      });
+    });
+  });
+    
+
+    const tabSelectors = document.querySelectorAll('.tab-selector');
+    tabSelectors.forEach((tabSelect) => {
+      tabSelect.addEventListener('click', function() {
+        if(event.isTrusted) {
+          clearInterval(tabTimeout);
+        }
+      });
+    });
+    
+    window.addEventListener('load', function(){
+      
+      const tabContainer = document.querySelector('.timed-tabs');
+      const observer = new IntersectionObserver(entries => {
+
+        if(entries[0].isIntersecting ){
+        
+            //lastTabClickTime = Date.now();
+            tabTimeout = setInterval(tabLoop, 6000);
+            //tabLoop();
+          }
+        }, { threshold: 0.8});
+
+      observer.observe( tabContainer );
+      });
+  
+</script>
+{% end_require_js %}
+{% require_css %}
+<style>
+
+  .stat-container {
+    border-top: 1px solid #23E596;
+    border-bottom: 1px solid #23E596;
+  }
+  
+  .tab-headers {
+    flex: 1;
+  }
+  
+  .tab-selector {
+    color: rgba(25, 137, 96, 0.30);
+    font-weight: 600;
+    line-height: 120%; /* 57.6px */
+    letter-spacing: 2px;
+    margin: 0 0 8px 0;
+  }
+  
+  .tab-selector.active {
+    color: #1F252B;
+  }
+  
+  .button-container {
+    margin-top: auto;
+  }
+
+  .stat-text {
+    line-height: 133%; /* 31.92px */
+    letter-spacing: -0.4px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .md\:block {
+      display: block !important;
+      visibility: visible;
+    }
+  }
+</style>
+{%end_require_css%}
+
+<div class="timed-tabs flex flex-col md:flex-row items-stretch gap-10">
+  <div class="tab-headers w-full md:w-1/2 flex flex-col pl-6 border-l border-[#23E596]">
+    {% for item in module.tab %}
+      <h3 data-target="tab-{{loop.index}}" class="tab-selector hover:cursor-pointer hover:text-[#198960] text-5xl {%if loop.index == 1%}active{% endif %}">
+        {{item.tab_title}}
+      </h3>
+    {% endfor %}
+    <div class="button-container hidden md:block">
+      <a href="/customers" class="px-8 py-4 bg-[#23E596] rounded-md inline-flex uppercase hover:no-underline hover:bg-[#198960] hover:text-white">
+        View case Studies
+      </a>
+    </div>
+  </div>
+  <div class="tab-content-container w-full md:w-1/2">
+      {% for item in module.tab %}
+        <div data-tab="tab-{{loop.index}}" class="tab-content hidden">
+          {% if item.tab_content_image.src %}
+            {% set sizeAttrs = 'width="{{ item.tab_content_image.width|escape_attr }}" height="{{ item.tab_content_image.height|escape_attr }}"' %}
+            {% if item.tab_content_image.size_type == 'auto' %}
+              {% set sizeAttrs = 'width="{{ item.tab_content_image.width|escape_attr }}" height="{{ item.tab_content_image.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+            {% elif item.tab_content_image.size_type == 'auto_custom_max' %}
+              {% set sizeAttrs = 'width="{{ item.tab_content_image.max_width|escape_attr }}" height="{{ item.tab_content_image.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+            {% endif %}
+             {% set loadingAttr = item.tab_content_image.loading != 'disabled' ? 'loading="{{ item.tab_content_image.loading|escape_attr }}"' : '' %}
+            <img src="{{ item.tab_content_image.src|escape_url }}" alt="{{ item.tab_content_image.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+          {% endif %}
+          <p class="my-6">{{ item.tab_content }}</p>
+          {% set stat_count = item.tab_content_stat|length %}
+          <div class="stat-container grid grid-cols-{{stat_count}} py-4">
+            
+            {% for stat in item.tab_content_stat %}
+            <div>
+              <div class="text-2xl text-[#0F1C2D] font-medium stat-text">
+               {{ stat.tab_stat_text }}
+              </div>
+              <div class="text-xs text-[#198960] stat-label">
+                {{ stat.tab_stat_label }}
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="button-container block md:hidden">
+      <a href="/customers" class="px-8 py-4 bg-[#23E596] rounded-md inline-flex uppercase hover:no-underline hover:bg-[#198960] hover:text-white">
+        View case Studies
+      </a>
+    </div>
+</div>

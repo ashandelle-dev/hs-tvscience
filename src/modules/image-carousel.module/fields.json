@@ -1,0 +1,18 @@
+[ {
+  "id" : "df1ed471-38e7-b6c9-0969-741be96ebe10",
+  "name" : "carousel_image",
+  "label" : "Carousel Image",
+  "required" : false,
+  "locked" : false,
+  "responsive" : true,
+  "resizable" : true,
+  "show_loading" : false,
+  "type" : "image",
+  "display_width" : null,
+  "default" : {
+    "size_type" : "auto",
+    "src" : "",
+    "alt" : null,
+    "loading" : "disabled"
+  }
+} ]

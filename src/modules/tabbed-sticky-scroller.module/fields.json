@@ -1,0 +1,885 @@
+[ {
+  "id" : "sections",
+  "name" : "sections",
+  "display_width" : null,
+  "label" : "Sections",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : "sections.eyebrow_text",
+    "default" : 2
+  },
+  "children" : [ {
+    "id" : "sections.tab",
+    "name" : "tab",
+    "display_width" : null,
+    "label" : "Tab",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "sections.tab.icon",
+      "name" : "icon",
+      "display_width" : null,
+      "label" : "Icon",
+      "required" : false,
+      "locked" : false,
+      "responsive" : true,
+      "resizable" : true,
+      "show_loading" : false,
+      "type" : "image",
+      "default" : {
+        "size_type" : "auto",
+        "src" : "https://8787210.fs1.hubspotusercontent-na1.net/hubfs/8787210/Icons/StreetviewOutlined.svg",
+        "alt" : "Streetview Icon",
+        "height" : 16,
+        "width" : 16,
+        "loading" : "lazy"
+      }
+    }, {
+      "id" : "sections.tab.title",
+      "name" : "title",
+      "display_width" : null,
+      "label" : "Title",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : "Business SMS"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "default" : {
+      "icon" : {
+        "size_type" : "auto",
+        "src" : "https://8787210.fs1.hubspotusercontent-na1.net/hubfs/8787210/Icons/StreetviewOutlined.svg",
+        "alt" : "Streetview Icon",
+        "height" : 16,
+        "width" : 16,
+        "loading" : "lazy"
+      },
+      "title" : "Business SMS"
+    }
+  }, {
+    "id" : "sections.eyebrow_text",
+    "name" : "eyebrow_text",
+    "display_width" : null,
+    "label" : "Eyebrow Text",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Business SMS"
+  }, {
+    "id" : "sections.content",
+    "name" : "content",
+    "display_width" : null,
+    "label" : "Content",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "default" : "<h2>Stop missing sales. <span style=\"color: #DA5039;\">Text</span> enable your business line.</h2>\n<p>Give your customers a better experience by text enabling your business line so they can communicate with your team at the same number they know, but with added speed and convenience.</p>"
+  }, {
+    "id" : "sections.buttons",
+    "name" : "buttons",
+    "display_width" : null,
+    "label" : "Buttons",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : null,
+      "max" : null,
+      "sorting_label_field" : "sections.buttons.text",
+      "default" : 1
+    },
+    "children" : [ {
+      "id" : "sections.buttons.text",
+      "name" : "text",
+      "display_width" : null,
+      "label" : "Text",
+      "required" : true,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : "Learn more"
+    }, {
+      "id" : "sections.buttons.link",
+      "name" : "link",
+      "display_width" : null,
+      "label" : "Link",
+      "required" : true,
+      "locked" : false,
+      "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+      "show_advanced_rel_options" : false,
+      "type" : "link",
+      "default" : {
+        "url" : {
+          "content_id" : null,
+          "href" : "/",
+          "type" : "EXTERNAL"
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    }, {
+      "id" : "sections.buttons.style",
+      "name" : "style",
+      "display_width" : null,
+      "label" : "Style",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "primary", "Primary" ], [ "primary-outline", "Primary - Outline" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "primary-outline"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "default" : [ {
+      "text" : "Learn more",
+      "link" : {
+        "url" : {
+          "content_id" : null,
+          "href" : "/",
+          "type" : "EXTERNAL"
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "style" : "primary-outline"
+    } ]
+  }, {
+    "id" : "sections.image_type",
+    "name" : "image_type",
+    "label" : "Image Type",
+    "required" : false,
+    "locked" : false,
+    "multiple" : "false",
+    "display" : "select",
+    "choices" : [ [ "image", "Image" ], [ "lottie", "LottieFile" ] ],
+    "type" : "choice",
+    "default" : "image"
+}, {
+    "id" : "sections.image",
+    "name" : "image",
+    "display_width" : null,
+    "label" : "Image",
+    "required" : true,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "sections.image_type",
+      "controlling_value_regex" : "image",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "responsive" : false,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "default" : {
+      "size_type" : "exact",
+      "src" : "https://8787210.fs1.hubspotusercontent-na1.net/hubfs/8787210/product-screen-placeholder.png",
+      "alt" : "Product Screen Placeholder",
+      "height" : 536,
+      "width" : 599,
+      "loading" : "lazy"
+    }
+  }, {
+    "id": "sections.lottie",
+    "name": "lottie",
+    "label": "Lottie",
+    "type": "group",
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "sections.image_type",
+      "controlling_value_regex" : "lottie",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "expanded": true,
+    "children": [
+      {
+        "id" : "sections.lottie.animation",
+        "name" : "animation",
+        "display_width" : null,
+        "label" : "Animation",
+        "required" : false,
+        "locked" : false,
+        "children" : [ {
+          "id" : "sections.lottie.animation.animation_location",
+          "name" : "animation_location",
+          "display_width" : null,
+          "label" : "Animation Location",
+          "required" : true,
+          "locked" : false,
+          "display" : "select",
+          "choices" : [ [ "file", "File Uploaded to HubSpot" ], [ "url", "External URL" ] ],
+          "multiple" : false,
+          "reordering_enabled" : true,
+          "preset" : null,
+          "type" : "choice",
+          "default" : "file"
+        }, {
+          "picker" : "file",
+          "id" : "sections.lottie.animation.lottie_file",
+          "name" : "lottie_file",
+          "display_width" : null,
+          "label" : "Lottie File",
+          "required" : true,
+          "locked" : false,
+          "visibility" : {
+            "controlling_field_path" : "sections.lottie.animation.animation_location",
+            "controlling_value_regex" : "file",
+            "property" : null,
+            "operator" : "EQUAL",
+            "access" : null,
+            "hidden_subfields" : null
+          },
+          "type" : "file",
+          "default" : "https://8787210.fs1.hubspotusercontent-na1.net/hubfs/8787210/LottieFiles/1-Homepage-Animation.json"
+        }, {
+          "id" : "sections.lottie.animation.lottie_animation_url",
+          "name" : "lottie_animation_url",
+          "display_width" : null,
+          "label" : "Lottie Animation URL",
+          "help_text" : "Find free animations at the <a href=\"https://lottiefiles.com/featured\">Lottie Marketplace</a>",
+          "required" : true,
+          "locked" : false,
+          "visibility" : {
+            "controlling_field_path" : "sections.lottie.animation.animation_location",
+            "controlling_value_regex" : "url",
+            "property" : null,
+            "operator" : "EQUAL",
+            "access" : null,
+            "hidden_subfields" : null
+          },
+          "supported_types" : [ "EXTERNAL" ],
+          "type" : "url",
+          "default" : {
+            "type" : "EXTERNAL",
+            "href" : "https://assets3.lottiefiles.com/private_files/lf30_esg1l8r1.json",
+            "content_id" : null
+          }
+        } ],
+        "tab" : "CONTENT",
+        "expanded" : false,
+        "type" : "group",
+        "default" : {
+          "animation_location" : "url",
+          "lottie_file" : "https://8787210.fs1.hubspotusercontent-na1.net/hubfs/8787210/LottieFiles/1-Homepage-Animation.json",
+          "lottie_animation_url" : {
+            "type" : "EXTERNAL",
+            "href" : "https://assets1.lottiefiles.com/packages/lf20_ykqqu6va.json",
+            "content_id" : null
+          }
+        }
+      }, {
+        "id" : "sections.lottie.lottie_player_settings",
+        "name" : "lottie_player_settings",
+        "display_width" : null,
+        "label" : "Lottie Player Settings",
+        "required" : false,
+        "locked" : false,
+        "children" : [ {
+          "id" : "sections.lottie.lottie_player_settings.background_color",
+          "name" : "background_color",
+          "display_width" : null,
+          "label" : "Background Color",
+          "required" : true,
+          "locked" : false,
+          "display" : "select",
+          "choices" : [ [ "transparent", "Transparent" ], [ "color", "Color" ] ],
+          "multiple" : false,
+          "reordering_enabled" : true,
+          "preset" : null,
+          "type" : "choice",
+          "default" : "transparent"
+        }, {
+          "id" : "sections.lottie.lottie_player_settings.color",
+          "name" : "color",
+          "display_width" : null,
+          "label" : "Background Color Selector",
+          "required" : true,
+          "locked" : false,
+          "visibility" : {
+            "controlling_field_path" : "sections.lottie.lottie_player_settings.background_color",
+            "controlling_value_regex" : "color",
+            "property" : null,
+            "operator" : "EQUAL",
+            "access" : null,
+            "hidden_subfields" : null
+          },
+          "type" : "color",
+          "default" : {
+            "color" : null,
+            "opacity" : null
+          }
+        }, {
+          "id" : "sections.lottie.lottie_player_settings.speed",
+          "name" : "speed",
+          "display_width" : null,
+          "label" : "Speed",
+          "help_text" : "1 is the default speed. Set lower to slow down the animation or higher to speed up the animation.",
+          "required" : false,
+          "locked" : false,
+          "display" : "text",
+          "step" : 0.1,
+          "type" : "number",
+          "default" : 1
+        }, {
+          "id" : "sections.lottie.lottie_player_settings.autoplay",
+          "name" : "autoplay",
+          "display_width" : null,
+          "label" : "Autoplay",
+          "required" : false,
+          "locked" : false,
+          "display" : "checkbox",
+          "type" : "boolean",
+          "default" : true
+        }, {
+          "id" : "sections.lottie.lottie_player_settings.loop",
+          "name" : "loop",
+          "display_width" : null,
+          "label" : "Loop",
+          "required" : false,
+          "locked" : false,
+          "display" : "checkbox",
+          "type" : "boolean",
+          "default" : true
+        }, {
+          "id" : "sections.lottie.lottie_player_settings.show_controls",
+          "name" : "show_controls",
+          "display_width" : null,
+          "label" : "Show Controls",
+          "required" : false,
+          "locked" : false,
+          "display" : "checkbox",
+          "type" : "boolean",
+          "default" : false
+        }, {
+          "id" : "sections.lottie.lottie_player_settings.style",
+          "name" : "style",
+          "display_width" : null,
+          "label" : "Style (Advanced)",
+          "help_text" : "Custom CSS that can be added to style the animation (e.g. <code>width: 300px;</code>)",
+          "required" : false,
+          "locked" : false,
+          "validation_regex" : "",
+          "allow_new_line" : false,
+          "show_emoji_picker" : false,
+          "type" : "text"
+        } ],
+        "tab" : "CONTENT",
+        "expanded" : false,
+        "type" : "group",
+        "default" : {
+          "background_color" : "transparent",
+          "color" : {
+            "color" : null,
+            "opacity" : null
+          },
+          "speed" : 1,
+          "autoplay" : true,
+          "loop" : true,
+          "show_controls" : false
+        }
+      }, {
+        "id" : "sections.lottie.link",
+        "name" : "link",
+        "display_width" : null,
+        "label" : "Link",
+        "required" : false,
+        "locked" : false,
+        "children" : [ {
+          "id" : "sections.lottie.link.link",
+          "name" : "link",
+          "display_width" : null,
+          "label" : "Link",
+          "required" : false,
+          "locked" : false,
+          "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+          "show_advanced_rel_options" : false,
+          "type" : "link",
+          "default" : {
+            "url" : {
+              "content_id" : null,
+              "type" : "EXTERNAL",
+              "href" : ""
+            },
+            "open_in_new_tab" : false,
+            "no_follow" : false
+          }
+        } ],
+        "tab" : "CONTENT",
+        "expanded" : false,
+        "type" : "group",
+        "default" : {
+          "link" : {
+            "url" : {
+              "content_id" : null,
+              "type" : "EXTERNAL",
+              "href" : ""
+            },
+            "open_in_new_tab" : false,
+            "no_follow" : false
+          }
+        }
+      } 
+    ],
+    "default" : {
+      "animation" : {
+        "animation_location" : "file",
+        "lottie_file" : "https://8787210.fs1.hubspotusercontent-na1.net/hubfs/8787210/LottieFiles/1-Homepage-Animation.json",
+        "lottie_animation_url" : {
+          "type" : "EXTERNAL",
+          "href" : "https://assets3.lottiefiles.com/private_files/lf30_esg1l8r1.json",
+          "content_id" : null
+        }
+      },
+      "lottie_player_settings" : {
+        "background_color" : "transparent",
+        "color" : {
+          "color" : null,
+          "opacity" : null
+        },
+        "speed" : 1,
+        "autoplay" : true,
+        "loop" : true,
+        "show_controls" : false
+      },
+      "link" : {
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "default" : [ {
+    "tab" : {
+      "icon" : {
+        "size_type" : "auto",
+        "src" : "https://8787210.fs1.hubspotusercontent-na1.net/hubfs/8787210/Icons/StreetviewOutlined.svg",
+        "alt" : "Streetview Icon",
+        "height" : 16,
+        "width" : 16,
+        "loading" : "lazy"
+      },
+      "title" : "Business SMS"
+    },
+    "eyebrow_text" : "Business SMS",
+    "content" : "<h2>Stop missing sales. <span style=\"color: #DA5039;\">Text</span> enable your business line.</h2>\n<p>Give your customers a better experience by text enabling your business line so they can communicate with your team at the same number they know, but with added speed and convenience.</p>",
+    "buttons" : [ {
+      "text" : "Learn more about Business SMS",
+      "link" : {
+        "url" : {
+          "content_id" : null,
+          "href" : "/",
+          "type" : "EXTERNAL"
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "style" : "primary-outline"
+    } ],
+    "image_type" : "image",
+    "image" : {
+      "size_type" : "exact",
+      "src" : "https://8787210.fs1.hubspotusercontent-na1.net/hubfs/8787210/product-screen-placeholder.png",
+      "alt" : "Product Screen Placeholder",
+      "height" : 536,
+      "width" : 599,
+      "loading" : "lazy"
+    },
+    "lottie" : {
+      "animation" : {
+        "animation_location" : "file",
+        "lottie_file" : "https://8787210.fs1.hubspotusercontent-na1.net/hubfs/8787210/LottieFiles/1-Homepage-Animation.json",
+        "lottie_animation_url" : {
+          "type" : "EXTERNAL",
+          "href" : "https://assets3.lottiefiles.com/private_files/lf30_esg1l8r1.json",
+          "content_id" : null
+        }
+      },
+      "lottie_player_settings" : {
+        "background_color" : "transparent",
+        "color" : {
+          "color" : null,
+          "opacity" : null
+        },
+        "speed" : 1,
+        "autoplay" : true,
+        "loop" : true,
+        "show_controls" : false
+      },
+      "link" : {
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }
+    }
+  }, {
+    "tab" : {
+      "icon" : {
+        "size_type" : "auto",
+        "src" : "https://8787210.fs1.hubspotusercontent-na1.net/hubfs/8787210/Icons/StreetviewOutlined.svg",
+        "alt" : "Streetview Icon",
+        "height" : 16,
+        "width" : 16,
+        "loading" : "lazy"
+      },
+      "title" : "Centralized Inbox"
+    },
+    "eyebrow_text" : "Centralized Inbox",
+    "content" : "<h2>Stop missing sales. <span style=\"color: #DA5039;\">Text</span> enable your business line.</h2>\n<p>Give your customers a better experience by text enabling your business line so they can communicate with your team at the same number they know, but with added speed and convenience.</p>",
+    "buttons" : [ {
+      "text" : "Learn more about Centralized Inbox",
+      "link" : {
+        "url" : {
+          "content_id" : null,
+          "href" : "/",
+          "type" : "EXTERNAL"
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "style" : "primary-outline"
+    } ],
+    "image_type" : "image",
+    "image" : {
+      "size_type" : "exact",
+      "src" : "https://8787210.fs1.hubspotusercontent-na1.net/hubfs/8787210/product-screen-placeholder.png",
+      "alt" : "Product Screen Placeholder",
+      "height" : 536,
+      "width" : 599,
+      "loading" : "lazy"
+    }, 
+    "lottie" : {
+      "animation" : {
+        "animation_location" : "file",
+        "lottie_file" : "https://8787210.fs1.hubspotusercontent-na1.net/hubfs/8787210/LottieFiles/1-Homepage-Animation.json",
+        "lottie_animation_url" : {
+          "type" : "EXTERNAL",
+          "href" : "https://assets3.lottiefiles.com/private_files/lf30_esg1l8r1.json",
+          "content_id" : null
+        }
+      },
+      "lottie_player_settings" : {
+        "background_color" : "transparent",
+        "color" : {
+          "color" : null,
+          "opacity" : null
+        },
+        "speed" : 1,
+        "autoplay" : true,
+        "loop" : true,
+        "show_controls" : false
+      },
+      "link" : {
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }
+    }
+  }, {
+    "tab" : {
+      "icon" : {
+        "size_type" : "auto",
+        "src" : "https://8787210.fs1.hubspotusercontent-na1.net/hubfs/8787210/Icons/StreetviewOutlined.svg",
+        "alt" : "Streetview Icon",
+        "height" : 16,
+        "width" : 16,
+        "loading" : "lazy"
+      },
+      "title" : "CRM"
+    },
+    "eyebrow_text" : "CRM",
+    "content" : "<h2>Stop missing sales. <span style=\"color: #DA5039;\">Text</span> enable your business line.</h2>\n<p>Give your customers a better experience by text enabling your business line so they can communicate with your team at the same number they know, but with added speed and convenience.</p>",
+    "buttons" : [ {
+      "text" : "Learn more about CRM",
+      "link" : {
+        "url" : {
+          "content_id" : null,
+          "href" : "/",
+          "type" : "EXTERNAL"
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "style" : "primary-outline"
+    } ],
+    "image_type" : "image",
+    "image" : {
+      "size_type" : "exact",
+      "src" : "https://8787210.fs1.hubspotusercontent-na1.net/hubfs/8787210/product-screen-placeholder.png",
+      "alt" : "Product Screen Placeholder",
+      "height" : 536,
+      "width" : 599,
+      "loading" : "lazy"
+    },
+    "lottie" : {
+      "animation" : {
+        "animation_location" : "file",
+        "lottie_file" : "https://8787210.fs1.hubspotusercontent-na1.net/hubfs/8787210/LottieFiles/1-Homepage-Animation.json",
+        "lottie_animation_url" : {
+          "type" : "EXTERNAL",
+          "href" : "https://assets3.lottiefiles.com/private_files/lf30_esg1l8r1.json",
+          "content_id" : null
+        }
+      },
+      "lottie_player_settings" : {
+        "background_color" : "transparent",
+        "color" : {
+          "color" : null,
+          "opacity" : null
+        },
+        "speed" : 1,
+        "autoplay" : true,
+        "loop" : true,
+        "show_controls" : false
+      },
+      "link" : {
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }
+    }
+  }, {
+    "tab" : {
+      "icon" : {
+        "size_type" : "auto",
+        "src" : "https://8787210.fs1.hubspotusercontent-na1.net/hubfs/8787210/Icons/StreetviewOutlined.svg",
+        "alt" : "Streetview Icon",
+        "height" : 16,
+        "width" : 16,
+        "loading" : "lazy"
+      },
+      "title" : "SMS Marketing"
+    },
+    "eyebrow_text" : "SMS Marketing",
+    "content" : "<h2>Stop missing sales. <span style=\"color: #DA5039;\">Text</span> enable your business line.</h2>\n<p>Give your customers a better experience by text enabling your business line so they can communicate with your team at the same number they know, but with added speed and convenience.</p>",
+    "buttons" : [ {
+      "text" : "Learn more about SMS Marketing",
+      "link" : {
+        "url" : {
+          "content_id" : null,
+          "href" : "/",
+          "type" : "EXTERNAL"
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "style" : "primary-outline"
+    } ],
+    "image_type" : "image",
+    "image" : {
+      "size_type" : "exact",
+      "src" : "https://8787210.fs1.hubspotusercontent-na1.net/hubfs/8787210/product-screen-placeholder.png",
+      "alt" : "Product Screen Placeholder",
+      "height" : 536,
+      "width" : 599,
+      "loading" : "lazy"
+    },
+    "lottie" : {
+      "animation" : {
+        "animation_location" : "file",
+        "lottie_file" : "https://8787210.fs1.hubspotusercontent-na1.net/hubfs/8787210/LottieFiles/1-Homepage-Animation.json",
+        "lottie_animation_url" : {
+          "type" : "EXTERNAL",
+          "href" : "https://assets3.lottiefiles.com/private_files/lf30_esg1l8r1.json",
+          "content_id" : null
+        }
+      },
+      "lottie_player_settings" : {
+        "background_color" : "transparent",
+        "color" : {
+          "color" : null,
+          "opacity" : null
+        },
+        "speed" : 1,
+        "autoplay" : true,
+        "loop" : true,
+        "show_controls" : false
+      },
+      "link" : {
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }
+    }
+  }, {
+    "tab" : {
+      "icon" : {
+        "size_type" : "auto",
+        "src" : "https://8787210.fs1.hubspotusercontent-na1.net/hubfs/8787210/Icons/StreetviewOutlined.svg",
+        "alt" : "Streetview Icon",
+        "height" : 16,
+        "width" : 16,
+        "loading" : "lazy"
+      },
+      "title" : "Order Updates"
+    },
+    "eyebrow_text" : "Order Updates",
+    "content" : "<h2>Stop missing sales. <span style=\"color: #DA5039;\">Text</span> enable your business line.</h2>\n<p>Give your customers a better experience by text enabling your business line so they can communicate with your team at the same number they know, but with added speed and convenience.</p>",
+    "buttons" : [ {
+      "text" : "Learn more about Order Updates",
+      "link" : {
+        "url" : {
+          "content_id" : null,
+          "href" : "/",
+          "type" : "EXTERNAL"
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "style" : "primary-outline"
+    } ],
+    "image_type" : "image",
+    "image" : {
+      "size_type" : "exact",
+      "src" : "https://8787210.fs1.hubspotusercontent-na1.net/hubfs/8787210/product-screen-placeholder.png",
+      "alt" : "Product Screen Placeholder",
+      "height" : 536,
+      "width" : 599,
+      "loading" : "lazy"
+    },
+    "lottie" : {
+      "animation" : {
+        "animation_location" : "file",
+        "lottie_file" : "https://8787210.fs1.hubspotusercontent-na1.net/hubfs/8787210/LottieFiles/1-Homepage-Animation.json",
+        "lottie_animation_url" : {
+          "type" : "EXTERNAL",
+          "href" : "https://assets3.lottiefiles.com/private_files/lf30_esg1l8r1.json",
+          "content_id" : null
+        }
+      },
+      "lottie_player_settings" : {
+        "background_color" : "transparent",
+        "color" : {
+          "color" : null,
+          "opacity" : null
+        },
+        "speed" : 1,
+        "autoplay" : true,
+        "loop" : true,
+        "show_controls" : false
+      },
+      "link" : {
+        "link" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }
+    }
+  } ]
+}, {
+  "label": "Styles",
+  "name": "styles",
+  "type": "group",
+  "tab": "STYLE",
+  "children": [
+    {
+      "id" : "styles.background",
+      "name" : "background",
+      "display_width" : null,
+      "label" : "Background",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "styles.background.color",
+        "label": "Color",
+        "name": "color",
+        "type": "color"
+      } ],
+      "tab" : "STYLE",
+      "expanded" : false,
+      "group_occurrence_meta" : null,
+      "type" : "group",
+      "default" : {
+        "color" : {}
+      }
+    },
+    {
+      "id" : "styles.eyebrow_text",
+      "label": "Eyebrow Text",
+      "name": "eyebrow_text",
+      "type": "group",
+      "children": [
+        {
+          "id" : "styles.eyebrow_text.text",
+          "label": "Text",
+          "name": "text",
+          "type": "group",
+          "children": [
+            {
+              "id" : "styles.eyebrow_text.text.color",
+              "label": "Color",
+              "name": "color",
+              "type": "color",
+              "visibility": {
+                "hidden_subfields": {
+                  "opacity": true
+                }
+              }
+            }
+          ]
+        }          
+      ]
+    }
+  ]
+} ]

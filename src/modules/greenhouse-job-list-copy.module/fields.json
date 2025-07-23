@@ -1,0 +1,43 @@
+[ {
+  "id" : "7cd8300c-0d5a-8e5e-0522-8898423ddcf4",
+  "name" : "board_token",
+  "display_width" : null,
+  "label" : "Board Token",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "tvscientific"
+}, {
+  "id" : "8a9c4d67-50b0-a423-0a2f-6fd844e05bbb",
+  "name" : "title",
+  "display_width" : null,
+  "label" : "Title",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Open Roles"
+}, {
+  "id" : "1316231e-da87-9b7d-95a3-0d656cd2d563",
+  "name" : "description",
+  "display_width" : null,
+  "label" : "Description",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "default" : "<span style=\"font-size: 18px;\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras leo odio, cursus in enim eget, molestie imperdiet neque.</span>"
+}, {
+  "id" : "59544f35-3868-0e7a-77fb-4c10801e0342",
+  "name" : "no_jobs_message",
+  "display_width" : null,
+  "label" : "\"No Jobs\" message",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "default" : "<strong><span style=\"font-size: 18px;\">No jobs available at this time.&nbsp;</span></strong>"
+} ]

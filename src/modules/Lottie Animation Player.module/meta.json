@@ -1,0 +1,9 @@
+{
+  "global" : false,
+  "content_types" : [ "LANDING_PAGE", "SITE_PAGE", "BLOG_LISTING", "BLOG_POST" ],
+  "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING" ],
+  "module_id" : 190941774647,
+  "label" : "Lottie Animation Player",
+  "icon" : "https://f.hubspotusercontent30.net/hubfs/8823337/Lottie%20Animations.svg",
+  "is_available_for_new_content" : true
+}

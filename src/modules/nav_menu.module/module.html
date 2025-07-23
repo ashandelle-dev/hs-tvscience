@@ -104,9 +104,10 @@
             {{dropdown_label("Latest")}}
   
             {% for rp in recent_posts %}
+
               <a href="{{rp.absolute_url}}" class="flex w-full mb-3 last:mb-0 hover:no-underline group ">
                 <div class="w-32">
-                  <img class="rounded" src="{{rp.featured_image}}" alt="{{rp.name}}">
+                  <img class="rounded" src="{{rp.featured_image}}" alt="{{rp.featured_image_alt_text}}">
                   
                 </div >
                 <div class="w-full px-3">

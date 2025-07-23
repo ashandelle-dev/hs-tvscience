@@ -1,0 +1,56 @@
+{{ require_js('https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js') }}
+{{ require_js('https://unpkg.com/@lottiefiles/lottie-interactivity@latest/dist/lottie-interactivity.min.js') }}
+{% if module.custom_id %}
+{% require_js %}
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    LottieInteractivity.create({
+        player: '#{{module.custom_id}}',
+        mode: "scroll",
+        actions: [
+            {
+                visibility: [0, 1], 
+                type: "playOnce" 
+            }
+        ]
+    });
+});
+</script>
+{% end_require_js %}
+{% endif %}
+{% set attrs = {} %}
+
+{% if module.play_mode == 'bounce' %}
+  {% do attrs.update({ mode: 'bounce' }) %}
+{% endif %}
+
+{% set bg_color = module.background_color.color|convert_rgb %}
+{% set opacity = module.background_color.opacity != null ? module.background_color.opacity / 100 : 1 %}
+
+{% do attrs.update({ background: 'rgba(%s,%s)' | format(bg_color, opacity) }) %}
+{% do attrs.update({ speed: module.animation_speed }) %}
+{% do attrs.update({ style: 'width: %s; height: %s'|format(module.width, module.height) }) %}
+
+{% if module.direction == '-1' %}
+  {% do attrs.update({ direction: -1 }) %}
+{% endif %}
+
+{% if module.controls %}
+  {% do attrs.update({ controls: true }) %}
+{% endif %}
+
+{% if module.hover %}
+  {% do attrs.update({ hover: true }) %}
+{% endif %}
+
+{% if module.autoplay %}
+  {% do attrs.update({ autoplay: true }) %}
+{% endif %}
+
+{% if module.loop %}
+  {% do attrs.update({ loop: true }) %}
+{% endif %}
+
+<lottie-player {%if module.custom_id%} id="{{module.custom_id}}" {% endif %} {% if module.custom_class %} class="{{module.custom_class}}" {% endif %} src="{{ module.source }}" {{ attrs|xmlattr }}"></lottie-player>
+
+

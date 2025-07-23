@@ -1,0 +1,13 @@
+.row-fluid-wrapper.dnd-section:has(lottie-player.graph) {
+    position: relative;
+}
+.row-fluid-wrapper.dnd-section:has(lottie-player.graph):before {
+    position: absolute;
+    content: "";
+    max-height: 371px;
+    height: 40vw;
+    background-color: #E5E7EB;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+}

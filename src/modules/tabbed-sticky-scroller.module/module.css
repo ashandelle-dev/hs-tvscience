@@ -1,0 +1,23 @@
+/* Override body overflow that's preventing sticky content */
+body { overflow-x: initial; }
+
+/* Sticky Scroller */
+
+/* If no tabs are selected, select the first (prevents issues while scrolling into container) */
+.sticky-scroller__tabs:not(:has(.is-selected)) .sticky-scroller__tab:first-child, /* if no tab is selected, default to the first */
+.sticky-scroller__tab.is-selected {
+  border-color: #DA5039;
+}
+
+.sticky-scroller__image.is-hidden {
+  display: none;
+}
+
+/* Prevent more than one tab/image from being highlighted at the same time */
+.sticky-scroller__tab.is-selected:has(+ .sticky-scroller__tab.is-selected) {
+  border-color: transparent;
+}
+
+.sticky-scroller__image:not(.is-hidden):has(+ .sticky-scroller__image:not(.is-hidden)) {
+  display: none;
+}

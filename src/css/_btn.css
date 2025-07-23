@@ -1,5 +1,5 @@
 .hs-button {
-    @apply px-6 md:px-5 py-2 rounded shadow uppercase text-[12px] md:text-[12px] font-bold  border-2 border-[#0FBF84] text-white bg-[#0FBF84] inline-block  md:min-w-[140px] text-center tracking-widest transition-all duration-200 hover:scale-105 hover:no-underline;
+    @apply px-6 md:px-5 py-2 rounded shadow uppercase text-[12px] md:text-[12px] font-bold  border-2 border-[#23E596] text-[#0F2D29] bg-[#23E596] inline-block  md:min-w-[140px] text-center tracking-widest transition-all duration-200 hover:scale-105 hover:no-underline;
     &.campaign-button {
       @apply bg-[#E5E7EB] text-[#0FBF84] border-[#E5E7EB];
     }  

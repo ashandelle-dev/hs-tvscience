@@ -98,7 +98,7 @@
 
     
     {# Blog post #}
-    <div class="py-16 gap-8 flex sticky-section relative">
+    <div class="py-16 gap-8 flex sticky-section relative flex-wrap md:flex-nowrap">
       {% if page_layout == "layout_a" %}
       <div class="w-full md:w-2/3">
       {% else %} 
@@ -111,7 +111,7 @@
         <article class="blog-post">
           {% if page_layout != "layout-a" %}
           <a href="{{ group.absolute_url }}" class="flex relative items-center group hover:no-underline mb-10">
-            <div class="w-4 text-center group-hover:-translate-x-0.5 duration-200 transition-transform"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M9 5L6 8L9 11" stroke="white" stroke-width="1.5"></path> </svg></div>
+            <div class="w-4 text-center group-hover:-translate-x-0.5 duration-200 transition-transform"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M9 5L6 8L9 11" stroke="#009061" stroke-width="1.5"></path> </svg></div>
             <div class="px-3">
               <p class="m-0 font-plex-mono tracking-widest uppercase" style="font-size: 14px;"><span>Back to all webinars</span></p>
             </div>
@@ -216,18 +216,19 @@
   </div>
 </main>
 <div class="container pb-20">
-  <div id="webinars-section" class="flex items-center">
+  <div id="webinars-section" class="flex flex-wrap md:flex-nowrap items-center">
     <div><svg width="35" height="27" viewBox="0 0 35 27" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M22.2984 11.975C23.3584 9.41593 22.1432 6.48208 19.5841 5.42207C17.025 4.36207 14.0911 5.57731 13.0311 8.13639C11.9711 10.6955 13.1864 13.6293 15.7454 14.6893C18.3045 15.7493 21.2384 14.5341 22.2984 11.975Z" fill="#1C4633"></path> <path d="M31.2766 0.273438H4.05284C2.12768 0.273438 0.561523 1.83959 0.561523 3.76475V23.0556C0.561523 24.9807 2.12768 26.5469 4.05284 26.5469H31.2766C33.2018 26.5469 34.7679 24.9807 34.7679 23.0556V3.76475C34.7679 1.83959 33.2018 0.273438 31.2766 0.273438ZM31.8727 23.0556C31.8727 23.3786 31.5997 23.6516 31.2766 23.6516H26.4344C26.2854 19.9241 23.2197 16.9493 19.4553 16.9493H15.8741C12.1098 16.9493 9.04406 19.9241 8.89504 23.6516H4.05284C3.72977 23.6516 3.45676 23.3786 3.45676 23.0556V3.76475C3.45676 3.44168 3.72977 3.16868 4.05284 3.16868H31.2766C31.5997 3.16868 31.8727 3.44168 31.8727 3.76475V23.0556Z" fill="#1C4633"></path> </svg></div>
     <div class="px-3">
       <h2 style="margin: 0px; font-weight: bold;"><span style="color: #1c4633;">Watch Other Webinars</span></h2>
     </div>
-  </div>
-  <a href="{{ group.absolute_url }}" class="flex relative items-center group hover:no-underline">
+    <a href="{{ group.absolute_url }}" class="flex relative items-center md:ml-auto group hover:no-underline">
     <div>
       <p class="m-0 font-plex-mono tracking-widest text-[#009061] uppercase ">View all webinars</p>
     </div>
     <div class="w-4 text-center group-hover:translate-x-0.5 duration-200 transition-transform"><svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7 5L10 8L7 11" stroke="#009061" stroke-width="1.5"></path> </svg></div>
   </a>
+  </div>
+  
   
   <div class="flex flex-wrap items-stretch card-swiper relative overflow-hidden">  
     <div class="swiper-wrapper h-full border-[#C0E7D8] flex items-stretch">

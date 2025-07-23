@@ -9,7 +9,7 @@
 {% set button_color = module.style.button_text_color.color %}
 {% set button_border_color = module.style.button_border_color.color %}
 <!-- module html  -->
-<div style="position:relative!important;">
+<div clas="cta-section" style="position:relative!important;">
   
   <div class="absolute right-0 lg:-right-10 lg:-top-10 -top-6 z-0">
     <div class="translate-x-1/5">
@@ -21,7 +21,7 @@
       <img id="image2" class="w-1/2 md:h-[206px] md:w-[153px]" src="https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/Group%20278687.png" alt="Texture Dots left">
     </div>
   </div>
-  <div class="rounded-xl md:p-6 lg:p-12 relative group flex flex-col-reverse lg:block overflow-hidden" style="background-color: {{bg_color}};">
+  <div class="cta-block rounded-xl md:p-6 lg:p-12 relative group flex flex-col-reverse lg:block overflow-hidden" style="background-color: {{bg_color}};">
     <div class="absolute right-0 top-0 bottom-0 w-10/12 md:w-3/5 overflow-hidden">
       {% if module.background_texture.src %}
        
@@ -31,7 +31,7 @@
     </div>
     
   
-    <div class="lg:w-1/2 p-6 lg:py-6 relative">
+    <div class="lg:w-1/2 p-6 lg:py-6 relative cta-text-container">
       <p class="text-[14px] md:text-[18px] font-bold leading-tight mb-3" style="color: {{label_color}};">
       {{ module.cta_section_label }}
       </p>

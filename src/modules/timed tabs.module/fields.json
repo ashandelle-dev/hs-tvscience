@@ -1,0 +1,97 @@
+[ {
+  "id" : "4238571f-e3cd-ad84-1afd-07ee51ac3ec4",
+  "name" : "tab",
+  "label" : "Tab",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : null
+  },
+  "children" : [ {
+    "id" : "1167d973-11db-a124-920a-181c7e4eb359",
+    "name" : "tab_title",
+    "label" : "Tab Title",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "display_width" : null
+  }, {
+    "id" : "75a240e1-8f72-728f-ba26-03fe5acadb09",
+    "name" : "tab_content_image",
+    "label" : "Tab Content Image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "size_type" : "auto",
+      "src" : "",
+      "alt" : null,
+      "loading" : "lazy"
+    }
+  }, {
+    "id" : "50de79f8-a4b9-8336-e670-6f9ad1b9bf8c",
+    "name" : "tab_content",
+    "label" : "Tab Content",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "display_width" : null
+  }, {
+    "id" : "c159b1dd-ab09-c3f8-0d37-9fe3b1a0787e",
+    "name" : "tab_content_stat",
+    "label" : "Tab Content Stat",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : null,
+      "max" : null,
+      "sorting_label_field" : null,
+      "default" : null
+    },
+    "children" : [ {
+      "id" : "6618d1be-1778-c43b-a848-021d356bdc5e",
+      "name" : "tab_stat_text",
+      "label" : "Tab Stat Text",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "display_width" : null
+    }, {
+      "id" : "e70812d3-5e47-96f9-bbbe-c72d6fd9c7d0",
+      "name" : "tab_stat_label",
+      "label" : "Tab Stat Label",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "display_width" : null
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : [ ]
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ ]
+} ]
