@@ -1,0 +1,71 @@
+[ {
+  "id" : "9219c2db-b4bd-eb84-9169-e3d2fc3634f3",
+  "name" : "card_thumbnail",
+  "label" : "Thumbnail",
+  "required" : false,
+  "locked" : false,
+  "responsive" : true,
+  "resizable" : true,
+  "show_loading" : false,
+  "type" : "image",
+  "display_width" : null,
+  "default" : {
+    "size_type" : "auto",
+    "src" : "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/single-card-placeholder.jpg",
+    "alt" : "single-card-placeholder",
+    "loading" : "lazy",
+    "width" : 734,
+    "height" : 440,
+    "max_width" : 734,
+    "max_height" : 440
+  }
+}, {
+  "id" : "5c40630e-a65a-3526-69ec-5bdb9486a9fe",
+  "name" : "style",
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "e1d461a8-adfd-3cb9-4745-9fad79988cae",
+    "name" : "border_color",
+    "label" : "Border Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : null,
+      "opacity" : null
+    }
+  }, {
+    "id" : "67c07859-678e-315a-6d8d-95362423e8b8",
+    "name" : "thumbnail_on_bottom",
+    "label" : "Thumbnail on bottom",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : false
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "border_color" : {
+      "color" : null,
+      "opacity" : null
+    },
+    "thumbnail_on_bottom" : false
+  }
+}, {
+  "id" : "e35b2a58-7d1b-b186-dd03-86063abc4adb",
+  "name" : "card_content",
+  "label" : "Card Content",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "display_width" : null
+} ]
