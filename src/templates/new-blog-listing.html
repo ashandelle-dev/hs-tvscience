@@ -264,6 +264,7 @@
         {# On the blog listing page, the first post will be featured above older posts #}
        
         <article class="h-full">
+          {{ content.featured_image }}
           <div class="rounded-lg border h-full border-[#009061] overflow-hidden relative group">
             {% unless out_link %}
             <a href="{{ content.absolute_url }}" class="absolute top-0 left-0 w-full h-full z-10"></a>
@@ -275,7 +276,7 @@
               {% if content.widgets.card_image.body.src %}
                 <img alt="{{ content.widgets.card_image.body.alt }} thumbnail graphic" class="w-full h-full object-cover" src="{{ content.widgets.card_image.body.src }}" alt="" {{ loadingAttr }} >
               {% elif content.featured_image %}
-              <img alt="{{ content.name }} thumbnail graphic" class="w-full h-full object-cover" src="{{ content.featured_image }}" alt="" {{ loadingAttr }} >
+              <img alt="{{ content.name }} thumbnail graphic" class="featured-image-check w-full h-full object-cover" src="{{ content.featured_image }}" alt="" {{ loadingAttr }} >
               {% endif %}
             </div>
             {% else %}
