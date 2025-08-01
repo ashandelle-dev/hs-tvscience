@@ -47,6 +47,26 @@
     "type" : "boolean",
     "display_width" : null,
     "default" : false
+  }, {
+    "id" : "f2a3d7d2-3257-f168-b763-2d9ccc665404",
+    "name" : "thumbnail_on_left",
+    "label" : "Thumbnail Left",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : false
+  }, {
+    "id" : "d2046fab-1e24-f8f0-f366-b6a2e45a8559",
+    "name" : "thumbnail_on_right",
+    "label" : "Thumbnail Right",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : false
   } ],
   "tab" : "STYLE",
   "expanded" : false,
@@ -58,7 +78,9 @@
       "color" : null,
       "opacity" : null
     },
-    "thumbnail_on_bottom" : false
+    "thumbnail_on_bottom" : false,
+    "thumbnail_on_left" : false,
+    "thumbnail_on_right" : false
   }
 }, {
   "id" : "e35b2a58-7d1b-b186-dd03-86063abc4adb",
