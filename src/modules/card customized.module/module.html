@@ -14,20 +14,14 @@
       <path d="M7 5L10 8L7 11" stroke="#009061" stroke-width="1.5"/>
     </svg>    
   </div>
- </div>'
+ </div>
  %}
 
 <div class="rounded-lg overflow-hidden border relative hover:shadow-lg transition-shadow duration-200" style="border-color: {% if module.style.border_color %}{{ module.style.border_color.hex }}{% else %}#009061{% endif %};">
-{% set image_pos = module.style.image_position %}
 <a href="{{ href }}"
 {% if module.card_cta.link.open_in_new_tab %}target="_blank"{% endif %}
-{% if module.card_btn.link.rel %}rel="{{ module.card_cta.link.rel }}"{% endif %} 
-   class="flex group hover:no-underline
-  {% if image_pos == 'above' %}flex flex-col{% endif %}
-  {% if image_pos == 'below' %}flex flex-col-reverse{% endif %} 
-  {% if image_pos == 'left' %}flex flex-row{% endif %}
-  {% if image_pos == 'right' %}flex flex-row-reverse{% endif %}">
-<div class="">
+{% if module.card_btn.link.rel %}rel="{{ module.card_cta.link.rel }}"{% endif %} class="flex {% if module.style.thumbnail_on_bottom == 'true' %}flex-col-reverse{% else %}flex-col{% endif %} group hover:no-underline">
+  <div class="">
     {% if module.card_thumbnail.src %}
     {% set sizeAttrs = 'width="{{ module.card_thumbnail.width }}" height="{{ module.card_thumbnail.height }}"' %}
     {% if module.card_thumbnail.size_type == 'auto' %}

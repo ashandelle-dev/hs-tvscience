@@ -4,7 +4,7 @@
   "label" : "Thumbnail",
   "required" : false,
   "locked" : false,
-  "responsive" : true, 
+  "responsive" : true,
   "resizable" : true,
   "show_loading" : false,
   "type" : "image",
@@ -38,18 +38,15 @@
       "opacity" : null
     }
   }, {
-    "id" : "9c2165c7-32cf-14f6-0a54-cc16ebc5f534",
-    "name" : "image_position",
-    "label" : "Image Position",
+    "id" : "67c07859-678e-315a-6d8d-95362423e8b8",
+    "name" : "thumbnail_on_bottom",
+    "label" : "Thumbnail on bottom",
     "required" : false,
     "locked" : false,
-    "display" : "select",
-    "choices" : [ [ "above", "Above Text" ], [ "below", "Below Text" ], [ "left", "Left of Text" ], [ "right", "Right of Text" ] ],
-    "multiple" : false,
-    "reordering_enabled" : true,
-    "preset" : null,
-    "type" : "choice",
-    "display_width" : null
+    "display" : "toggle",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : false
   } ],
   "tab" : "STYLE",
   "expanded" : false,
@@ -60,7 +57,8 @@
     "border_color" : {
       "color" : null,
       "opacity" : null
-    }
+    },
+    "thumbnail_on_bottom" : false
   }
 }, {
   "id" : "e35b2a58-7d1b-b186-dd03-86063abc4adb",
