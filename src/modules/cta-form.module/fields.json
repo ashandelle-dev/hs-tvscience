@@ -18,6 +18,7 @@
   "required" : false,
   "locked" : false,
   "type" : "form",
+  "embed_versions": ["v2", "v4"],
   "default" : {
     "form_id" : "86549398-6cbe-47d6-8f99-d44a3eaf9c1d",
     "response_type" : "inline",
