@@ -31,6 +31,7 @@
   "required" : false,
   "locked" : false,
   "type" : "form",
+  "embed_versions": ["v2", "v4"],
   "default" : {
     "form_id" : "",
     "response_type" : "redirect",
