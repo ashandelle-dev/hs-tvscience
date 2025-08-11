@@ -9,8 +9,8 @@ document.addEventListener("DOMContentLoaded", function() {
         mode: "scroll",
         actions: [
             {
-                visibility: [0, 1], 
-                type: "playOnce" 
+                visibility: [0, 1],
+                type: "playOnce"
             }
         ]
     });
@@ -51,6 +51,26 @@ document.addEventListener("DOMContentLoaded", function() {
   {% do attrs.update({ loop: true }) %}
 {% endif %}
 
-<lottie-player {%if module.custom_id%} id="{{module.custom_id}}" {% endif %} {% if module.custom_class %} class="{{module.custom_class}}" {% endif %} src="{{ module.source }}" {{ attrs|xmlattr }}"></lottie-player>
-
+{% if is_in_editor %}
+<!-- Editor Preview -->
+<div
+    {%if module.custom_id%} id="{{module.custom_id}}" {% endif %}
+    {% if module.custom_class %} class="{{module.custom_class}}" {% endif %}
+    style="width: 100%; height: {{module.height}}; background: rgba({{bg_color}},{{opacity}}); display: flex; align-items: center; justify-content: center; border: 2px dashed #ccc; color: #666; font-family: Arial, sans-serif;"
+>
+    <div style="text-align: center;">
+        <div style="font-size: 18px; margin-bottom: 8px;">🎬</div>
+        <div>Lottie Animation</div>
+        <div style="font-size: 12px; margin-top: 4px;">Preview on live page</div>
+    </div>
+</div>
+{% else %}
+<!-- Live Site -->
+<lottie-player
+    {%if module.custom_id%} id="{{module.custom_id}}" {% endif %}
+    {% if module.custom_class %} class="{{module.custom_class}}" {% endif %}
+    src="{{ module.source }}"
+    {{ attrs|xmlattr }}>
+</lottie-player>
+{% endif %}
 
