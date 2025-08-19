@@ -1,0 +1,315 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Platform Overview
+  screenshotPath: ../images/template-previews/home.png
+-->
+{% extends "../layouts/base.html" %}
+
+{% block body %}
+
+<style>
+   @font-face {
+    font-family: 'BricolageGrotesque';
+    src: url(https://www.tvscientific.com/hubfs/fonts/BricolageGrotesque-VariableFont.ttf);
+  }
+  @font-face {
+    font-family: 'Rubik';
+    src: url(https://www.tvscientific.com/hubfs/fonts/Rubik-VariableFont.ttf);
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+
+  main h1, main h2, main h3 {
+    font-family: BricolageGrotesque !important;
+  }
+
+  main h1 {
+    font-size: clamp(2.5rem, 1.25rem + 4vw, 3.75rem) !important;
+    letter-spacing: 2px;
+  }
+
+  main h2 {
+    font-size: clamp(2rem, 1rem + 3.2vw, 3rem) !important;
+    font-weight: 600;
+    line-height: 120%; /* 57.6px */
+    letter-spacing: 2px;
+  }
+
+  #how h2 {
+    font-size: clamp(2.5rem, 1.25rem + 4vw, 3.75rem) !important;
+  }
+
+  main h3 {
+    font-size: clamp(2.25rem, 1.707rem + 1.739vw, 3rem) !important;
+  }
+
+  main p {
+    font-family: Rubik !important;
+  }
+
+  .hero {
+    background: url(https://www.tvscientific.com/hubfs/2025%20tvScientific%20AI/ai-hero-bg.webp) no-repeat bottom left/cover;
+  }
+
+  #difference {
+    background: url(https://www.tvscientific.com/hubfs/2025%20tvScientific%20AI/grid-bg.webp) no-repeat center left/contain;
+  }
+
+  #chart {
+    background: url(https://www.tvscientific.com/hubfs/2025%20tvScientific%20AI/Background-timeline.webp) no-repeat top left/cover;
+  }
+
+  #go-section {
+    background: url(https://www.tvscientific.com/hubfs/2025%20tvScientific%20AI/Background-Go.webp) no-repeat top left/cover;
+  }
+
+  main .hs-button {
+    font-size: 16px;
+    padding: 8px 24px;
+}
+
+  .hero-button {
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero-button .hs-button {
+    margin: 0 0 120px 0;
+  }
+
+  @media screen and (max-width: 1024px) {
+    .hero-button .hs-button {
+      margin: 0 0 40px 0;
+    }
+  }
+
+  .hs-video-wrapper iframe {
+    border-radius: 13px;
+    border: 16px solid #1B2C36 !important;
+    margin-top: 3px;
+    z-index: 2;
+  }
+
+  .hs-video-wrapper:after {
+    content: '';
+    display: block;
+    background: url(https://www.tvscientific.com/hubfs/2025%20GO%20Page/video-bg.png) no-repeat top left / 100% 100%;
+    width: calc(100% + 30px);
+    height: calc(100% + 31px);
+    position: absolute;
+    left: -3px;
+    top: 0;
+  }
+
+  .checkmark {
+    background: url('https://www.tvscientific.com/hubfs/2025%20tvScientific%20AI/check-mark.svg') no-repeat left top;
+    padding-left: 28px;
+  }
+
+  .go-icon {
+    color: #1F252B;
+    font-size: clamp(2.5rem, 1.053rem + 5.263vw, 3.75rem) !important;
+    font-weight: 600;
+    line-height: 105% !important;
+    letter-spacing: 2px;
+    background: url('https://www.tvscientific.com/hubfs/2025%20GO%20Page/Guaranteed-Outcomes.svg') no-repeat left center/114px 114px;
+    padding-left: 114px;
+  }
+  
+  @media screen and (max-width: 997px) {
+    .go-icon {
+      background: url('https://www.tvscientific.com/hubfs/2025%20GO%20Page/Guaranteed-Outcomes.svg') no-repeat left top/95px 95px;
+        padding-top: 95px;
+        padding-left: 0;
+    }
+  }
+
+  #hs_cos_wrapper_logo_grid .logo:not(:last-child) {
+    border-right: 0;
+    border-left: 0;
+  }
+
+  .animate-image {
+    background: url(https://www.tvscientific.com/hubfs/2025%20Platform%20Overview/Product-screen-Background.webp) no-repeat center center/100% 100%;
+  }
+
+  .image-container {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  .image-container span {
+    display: inline-flex;
+  }
+
+  .image-container img {
+    margin: 0;
+  }
+
+  .learn-more {
+    background: url(https://www.tvscientific.com/hubfs/learn-more-arrow.svg) no-repeat right center;
+    letter-spacing: 1.5px;
+  }
+
+  .learn-more.blue {
+    background: url(https://www.tvscientific.com/hubfs/2025%20Holiday%20Campaign/small-arrow.svg) no-repeat right center;
+    letter-spacing: 0.24px;
+  }
+
+  @keyframes fade-slide-up {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in-up {
+    animation: fade-slide-up 700ms ease-in forwards;
+  }
+</style>
+
+<main>
+  <section id="hero" class="hero pt-10 pb-[320px] md:pt-20">
+    <div class="container mx-auto">
+      {% module "hero_text" path="@hubspot/rich_text", label="Hero Text", html="<h1 class='text-center text-white title'>tvScientific is Performance TV</h1><p class='text-lg p-0 mx-auto max-w-4xl text-center text-white'><span class='inline-block checkmark'>Find your customers.</span> <span class='inline-block checkmark'>Get them to convert.</span><br><span class='inline-block checkmark'>Do it on streaming (CTV) or linear — and <span class='text-[#23E596]'>only pay when you get results.</span></span></p>" %}
+      {% module "hero_button" path="@hubspot/button", label="Hero Button", button_text="Request a Demo", extra_classes="hero-button" %}
+    </div>
+  </section>
+  <section id="hero-video" class="pb-20 mt-[-300px]">
+    <div class="container mx-auto">
+      {% module "hero_lottie" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player", label="Hero Lottie" %}
+    </div>
+  </section>
+  <section id="difference" class="py-10 md:py-20">
+    <div class="container mx-auto">
+      <div class="flex flex-col md:flex-row">
+        <div class="w-full md:w-1/3">
+          {% module "difference_header" path="@hubspot/rich_text", label="Difference Header", html="<h2 class='text-[#225F96]'>The tvScientific Difference</h2>" %}
+        </div>
+        <div class="w-full md:w-2/3">
+          {% module "difference_text" path="@hubspot/rich_text", label="Difference Text", html="<p>tvScientific is the only platform that gets your brand on TV, optimizes ads for your target audience, and delivers transparent performance along the way.</p>
+          <p>There’s a reason why Performance TV budget doubled between 2024 and 2025 — it connects you to untapped revenue and customers who are actually watching (not just scrolling past).</p>
+          <p>Access patented precision on the biggest, most engaging screens in the house</p>"%}
+          {% module "difference_button" path="@hubspot/button", label="Difference Button", button_text="Request a Demo"%}
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="logos" class="py-10 md:py-20">
+    <div class="container mx-auto">
+      {% module "logo_lead" path="@hubspot/rich_text", label="Logo Lead", html="<p class='text-center text-2xl'>These brands made TV advertising their next measurable growth channel</p>"%}
+      {% module "logo_grid" path="/tvScientific 2022 Atlas Pro/cli-build/modules/grid-logos", label="Logo Grid" %}
+    </div>
+  </section>
+  <section id="chart" class="py-10 md:py-20">
+    <div class="container mx-auto">
+      {% module "chart_title" path="@hubspot/rich_text", label="Chart Title",html="<h2 class='text-[#AEE4FF] text-center'>Every aspect of Performance TV is designed to drive outcomes for your business</h2>" %}
+      <!--chart display code-->
+    </div>
+  </section>
+  <section id="how" class="py-10 md:py-20">
+    <div class="container mx-auto flex flex-col gap-10">
+      <h2 class="text-[60px] text-[#1F252B] border-b-2 border-[#D9E2EB] pb-2">How tvScientific works</h2>
+      <div class="flex flex-col md:flex-row border-b-2 border-[#D9E2EB] p-0 lg:pt-4 lg:px-4 lg:pb-6 overflow-hidden gap-9 lg:gap-0">
+        <div class="w-full md:w-1/2 lg:pr-9">
+          {% module "left_works_title_1" path="@hubspot/rich_text", label="Works Title", html="<h3 class='text-[#613A96] text-5xl font-normal'>Premium Inventory</h3><p>Get direct access to 95% of streaming inventory — no DSP fees, better pricing, and high-value placements across your customers’ favorite channels and apps.</p><a href='#' class='learn-more text-[#198960] pr-4 font-semibold uppercase'>Learn more</a>" %}
+        </div>
+        <div class="w-full md:w-1/2 flex content-end justify-center animate-image">
+          {% module "right_image_1" path="@hubspot/linked_image", label="Right Image", extra_classes="flex content-end pt-9 lg:pt-[55px] px-9 lg:px-[50px] pb-0 image-container" %}
+        </div>
+      </div>
+      <div class="flex flex-col md:flex-row border-b-2 border-[#D9E2EB] p-0 lg:pt-4 lg:px-4 lg:pb-6 overflow-hidden gap-9 lg:gap-0">
+        <div class="w-full md:w-1/2 lg:pr-9">
+          {% module "left_works_title_2" path="@hubspot/rich_text", label="Works Title",html="<h3 class='text-[#613A96] text-5xl font-normal'>Targeting</h3><p>Find your customer on TV, just like you do on paid search and social. Get brand reach or down-funnel outcomes using first-party, third-party, and AI-optimized audiences.</p><a href='https://www.tvscientific.com/tvscientific-platform/targeting' class='learn-more text-[#198960] pr-4 font-semibold uppercase'>Learn more</a>" %}
+        </div>
+        <div class="w-full md:w-1/2 flex content-end justify-center animate-image">
+          {% module "right_image_2" path="@hubspot/linked_image", label="Right Image", extra_classes="flex content-end pt-9 lg:pt-[55px] px-9 lg:px-[50px] pb-0 image-container" %}
+        </div>
+      </div>
+      <div class="flex flex-col md:flex-row border-b-2 border-[#D9E2EB] p-0 lg:pt-4 lg:px-4 lg:pb-6 overflow-hidden gap-9 lg:gap-0">
+        <div class="w-full md:w-1/2 lg:pr-9">
+          {% module "left_works_title_3" path="@hubspot/rich_text", label="Works Title",html="<h3 class='text-[#613A96] text-5xl font-normal'>Attribution</h3><p>Deeply understand the role TV plays in your media mix. Household data and precise attribution windows tie ad views to actions, resulting in campaign-level insights into what’s actually driving results.</p><a href='https://www.tvscientific.com/tvscientific-platform/ctv-measurement-and-attribution' class='learn-more text-[#198960] pr-4 font-semibold uppercase'>Learn more</a>" %}
+        </div>
+        <div class="w-full md:w-1/2 flex content-end justify-center animate-image">
+          {% module "right_iamge_3" path="@hubspot/linked_image", label="Right Image", extra_classes="flex content-end pt-9 lg:pt-[55px] px-9 lg:px-[50px] pb-0 image-container" %}
+        </div>
+      </div>
+      <div class="flex flex-col md:flex-row border-b-2 border-[#D9E2EB] p-0 lg:pt-4 lg:px-4 lg:pb-6 overflow-hidden gap-9 lg:gap-0">
+        <div class="w-full md:w-1/2 lg:pr-9">
+          {% module "left_works_title_4" path="@hubspot/rich_text", label="Works Title",html="<h3 class='text-[#613A96] text-5xl'>Measurement & Reporting</h3><p>Get real-time visibility into campaign impact with breakdowns by audience, channel, creative, and more. Connect your analytics tools to surface cross-channel insights and identify revenue drivers.</p><a href='https://www.tvscientific.com/tvscientific-platform/reporting' class='learn-more text-[#198960] pr-4 font-semibold uppercase'>Learn more</a>" %}
+        </div>
+        <div class="w-full md:w-1/2 flex content-end justify-center animate-image">
+          {% module "right_image_4" path="@hubspot/linked_image", label="Right Image", extra_classes="flex content-end pt-9 lg:pt-[55px] px-9 lg:px-[50px] pb-0 image-container" %}
+        </div>
+      </div>
+      <div class="flex flex-col md:flex-row border-b-2 border-[#D9E2EB] p-0 lg:pt-4 lg:px-4 lg:pb-6 overflow-hidden gap-9 lg:gap-0">
+        <div class="w-full md:w-1/2 lg:pr-9">
+          {% module "left_works_title_5" path="@hubspot/rich_text", label="Works Title",html="<h3 class='text-[#613A96] text-5xl'>Creative Solutions</h3><p>Whether you're uploading existing assets or want to build ads from scratch, tvScientific makes video production and management fast and flexible. Our tools and agency partnerships support ad creation, validation, rotation, A/B testing, and real-time delivery.</p><a href='https://www.tvscientific.com/tvscientific-platform/creative' class='learn-more text-[#198960] pr-4 font-semibold uppercase'>Learn more</a>" %}
+        </div>
+        <div class="w-full md:w-1/2 flex content-end justify-center animate-image">
+          {% module "right_image_5" path="@hubspot/linked_image", label="Right Image", extra_classes="flex content-end pt-9 lg:pt-[55px] px-9 lg:px-[50px] pb-0 image-container" %}
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="go-section" class="py-10 md:py-20">
+    <div class="container flex flex-col md:flex-row mx-auto gap-8 lg:gap-14">
+      <div class="w-full md:w-1/2">
+        {% module "go_lottie" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player", label="Go Lottie" %}
+      </div>
+      <div class="w-full md:w-1/2">
+        <p style="color: #1f252b; font-family: BricolageGrotesque; font-size: clamp(1.375rem, 0.881rem + 1.795vw, 2rem); font-weight: 600; line-height: 125%; letter-spacing: 1px; margin-bottom: clamp(0.75rem, 0.256rem + 1.795vw, 1.375rem) !important;">tvScientific AI powers</p>
+        <h2 class="go-icon">Guaranteed Outcomes</h2>
+        <p style="color: #1f252b; font-size: 18px; line-height: 150%;">You decide what outcome matters most for your business — sales, installs, and more — and only pay when you get results. Our patented AI technology drives Guaranteed Outcomes.</p>
+        {% module "go_button" path="@hubspot/button", label="Go Button", button_text="Learn More" %}
+
+      </div>
+    </div>
+  </section>
+
+  <section id="innovation" class="py-10 md:py-[120px]">
+      <div class="container mx-auto flex flex-col lg:gap-10">
+        <h2 class="pb-2 text-[#1F252B]">Powered by Innovation & Innovators</h2>
+        <div class="flex flex-col md:flex-row gap-9">
+          <div class="w-full md:w-1/3">
+            {% module "icon_lottie_1" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player", label="Icon Lottie" %}
+            {% module "icon_text_1" path="@hubspot/rich_text", label="Works Title",html="<h3 class='!text-[22px] text-[#31373D]'>tvScientific AI</h3><p  class='text-[#77858C]'>We power smarter audience targeting, bidding, and campaign management with AI built for performance marketers.</p><a href='https://www.tvscientific.com/tvscientific-ai' class='text-[#01BBF3] pr-4 text-xs font-medium uppercase learn-more blue'>Learn more</a>" %}
+          </div>
+          <div class="w-full md:w-1/3">
+            {% module "icon_lottie_2" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player", label="Icon Lottie" %}
+            {% module "icon_text_2" path="@hubspot/rich_text", label="Works Title",html="<h3 class='!text-[22px] text-[#31373D]'>Integrations</h3><p class='text-[#77858C]'>We integrate with your existing tools to centralize data and unlock powerful cross-channel insights.</p><a href='#' class='text-[#01BBF3] pr-4 text-xs font-medium uppercase learn-more blue'>Learn more</a>" %}
+          </div>
+          <div class="w-full md:w-1/3">
+            {% module "icon_lottie_3" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player", label="Icon Lottie" %}
+            {% module "icon_text_3" path="@hubspot/rich_text", label="Works Title",html="<h3 class='!text-[22px] text-[#31373D]'>Award-Winning Team</h3><p  class='text-[#77858C]'>Our ad tech experts have decades of industry experience and are fully invested in your success.</p><a href='https://www.tvscientific.com/about-us' class='text-[#01BBF3] pr-4 text-xs font-medium uppercase learn-more blue'>Learn more</a>" %}
+          </div>
+        </div>
+      </div>
+  </section>
+</main>
+<script>
+  document.addEventListener('DOMContentLoaded', function(){
+    const animateImages = document.querySelectorAll('.animate-image');
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.5
+    };
+    const callback = (entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelector('.image-container').classList.add('fade-in-up');
+          //entry.target.classList.add('fade-in-up');
+          // Optional: Stop observing the element once the class is added
+          observer.unobserve(entry.target);
+        }
+      });
+    };
+    const observer = new IntersectionObserver(callback, options);
+    animateImages.forEach((animateImage) => {
+      observer.observe(animateImage);
+    });
+  });
+</script>
+{% endblock body %}
