@@ -37,7 +37,7 @@ module.exports = {
             },
             padding: {
                 "DEFAULT": '1rem',
-                lg: "0"    
+                lg: '0'    
             },
         },
     },
