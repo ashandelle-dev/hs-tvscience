@@ -4,6 +4,6 @@
   "smart_type" : "NOT_SMART",
   "host_template_types" : [ "PAGE" ],
   "module_id" : 134441641747,
-  "label" : "Naviagtion Menu",
+  "label" : "Centered Nav Menu",
   "is_available_for_new_content" : true
 }
