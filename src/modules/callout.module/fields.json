@@ -1,0 +1,18 @@
+[ {
+  "id" : "58082699-242f-9e6b-5275-4141cf47a3d7",
+  "name" : "callout_title",
+  "label" : "Callout Title",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null
+}, {
+  "id" : "07165ab2-bd66-637b-182d-59527c64c374",
+  "name" : "callout_text",
+  "label" : "Callout Text",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "display_width" : null
+} ]

@@ -28,6 +28,12 @@
 	{{ require_js(get_asset_url('../../js/main.js'))  }}
 	{{ require_js(get_asset_url('../../js/helper.js')) }}
     {{ standard_header_includes }}
+    <!-- Hide chat -->
+    <style>
+       #iframe-chat-widget {
+         display: none;
+       }
+    </style>
   </head>
   <body>
     <div class="body-wrapper {{ builtin_body_classes }}">
