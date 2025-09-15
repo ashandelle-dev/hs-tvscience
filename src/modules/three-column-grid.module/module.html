@@ -1,0 +1,32 @@
+{% if module.column|length < 3 %}
+<div class="grid grid-cols-2 gap-4">
+{% else %}
+<div class="grid grid-cols-3 auto-rows-auto gap-4">
+{% endif %}
+  {% for column in module.column %}
+  {% if column.list_icon.src %}
+  <style>
+    ul {
+      list-style:none;
+    }
+    li {
+      background: url({{ item.list_icon.src|escape_url }}) no-repeat;
+      padding-left: 15px;
+    }
+  </style>
+  {% endif %}
+    <div class="rounded border border-[#D9E2EB] bg-[#F9FAFC] p-4">
+      {% if column.column_icon.src %}
+        {% set sizeAttrs = 'width="{{ column.column_icon.width|escape_attr }}" height="{{ column.column_icon.height|escape_attr }}"' %}
+        {% if column.column_icon.size_type == 'auto' %}
+          {% set sizeAttrs = 'width="{{ column.column_icon.width|escape_attr }}" height="{{ column.column_icon.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+        {% elif column.column_icon.size_type == 'auto_custom_max' %}
+          {% set sizeAttrs = 'width="{{ column.column_icon.max_width|escape_attr }}" height="{{ column.column_icon.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+        {% endif %}
+         {% set loadingAttr = column.column_icon.loading != 'disabled' ? 'loading="{{ column.column_icon.loading|escape_attr }}"' : '' %}
+        <img class="mt-0 mx-0 mb-6" src="{{ column.column_icon.src|escape_url }}" alt="{{ column.column_icon.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+      {% endif %}
+      {{column.column_text}}
+    </div>
+  {% endfor %}
+</div>

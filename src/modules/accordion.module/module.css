@@ -1,0 +1,31 @@
+.accordion {
+  background: #FFFFFF;
+}
+
+.accordion-active .accordion-icon {
+  transform: rotate(90deg);
+}
+
+.accordion-header:hover {
+  cursor: pointer;
+}
+
+.accordion-active .accordion-header {
+  background: #F3FFF6;
+}
+
+.accordion-content {
+  height: 0;
+  transition: height .25s ease-out;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 480px) {
+  .accordion-content {
+    padding: 0 16px;
+  }
+}
+
+.accordion-content .accordion-inner {
+  margin: 0 0 2rem;
+}
