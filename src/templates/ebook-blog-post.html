@@ -6,9 +6,16 @@
 -->
 {% extends "./../layouts/base.html" %}
 
-{% block body %}
 {% text "summary" label='Summary', export_to_template_context=True %}
 {% image "card_image" label='Card Image', export_to_template_context=True %}
+{% choice "layout" label='Layout', choices=[["layout-a","Layout A"],["layout-b","Layout B"]], multiple='False', display='radio',export_to_template_context=True %}
+{% if content.widgets.layout.body.value %}
+  {% set page_layout = content.widgets.layout.body.value %}
+{% endif %}
+{% block body %}
+
+{% if page_layout == "layout-a" or page_layout is none%}
+{# Layout A #}
 <style>
   .sticky-section .form-container {
     position: sticky;
@@ -141,4 +148,383 @@
 
   </div>
 </main>
+{% else %}
+{# Layout B #}
+<style>
+   @font-face {
+    font-family: 'BricolageGrotesque';
+    src: url(https://www.tvscientific.com/hubfs/fonts/BricolageGrotesque-VariableFont.ttf);
+  }
+  @font-face {
+    font-family: 'Rubik';
+    src: url(https://www.tvscientific.com/hubfs/fonts/Rubik-VariableFont.ttf);
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+
+  main h1, main h2, main h3 {
+    font-family: BricolageGrotesque !important;
+  }
+
+  .cta-group {
+    justify-content: center;
+  }
+  .kl-social-sharing {
+    justify-content: flex-start !important;
+  }
+  .kl-social-link {
+    margin: 0;
+  }
+
+  .jump-menu p {
+    font-family: BricolageGrotesque !important;
+  }
+  .jump-menu a {
+    color: #132430;
+    font-size: 18px;
+    font-weight: 400;
+    border-left: 2px solid #198960;
+    
+    padding-left: 0.75rem;
+    flex-grow: 1;
+    margin-bottom: 1.25rem;
+  }
+  .jump-menu a.current {
+    color: #198960;
+    font-weight: 700;
+    border-left: 2px solid #0F2D29;
+  }
+
+  .cta-button {
+    background-color: #23E596;
+    color: #0F2D29 !important;
+    text-decoration: none;
+    font-family: IBM Plex Sans;
+    padding: 8px 17px;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 24px;
+    letter-spacing: 2px;
+    border-radius: 3px;
+  }
+
+  @media screen and (max-width: 769px){
+    .blog-header--post {
+      min-height: 200px;
+    }
+  }
+  .blog-post__body, .blog-post__body p {
+    font-size: 18px;
+  }
+
+  .blog-post__body h3, .blog-post__body h3 span {
+    color: #1C4633 !important;
+    font-size: 36px !important;
+  }
+
+  iframe {
+    z-index: 1;
+  }
+
+  .reading-progressbar {
+    width: 100%;
+    height: 16px;
+    color: #23E596;
+    pointer-events: none;
+    transition: -webkit-transform 0.2s;
+    transition: transform 0.2s;
+    transition: transform 0.2s, -webkit-transform 0.2s;
+    z-index: 2;
+  }
+
+  .reading-progressbar--is-out {
+    -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+  }
+
+  .reading-progressbar::-webkit-progress-bar {
+    background-color: #D9E2EB;
+  }
+
+  .reading-progressbar::-webkit-progress-value {
+    background-color: currentColor;
+  }
+
+  .reading-progressbar::-moz-progress-bar {
+    background-color: currentColor;
+  }
+
+  .reading-progressbar__fallback {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background-color: currentColor;
+  }
+
+  .progress-dot {
+        position: absolute;
+        width: 16px; /* Size of the dot */
+        height: 16px;
+        background-color: #198960; /* Color of the dot */
+        border-radius: 50%;
+        top: 0; /* Center vertically */
+        transform: translateX(-50%);
+        
+    }
+</style>
+<main>
+  {% if content.widgets.hero_image.body.src %}
+  <section class="py-20" style="background: url('{{ content.widgets.hero_image.body.src }}') no-repeat center center/cover;">
+  {% else %}
+  <section class="py-20" style="background: url('{{ content.featured_image }}') no-repeat center center/cover;">
+  {% endif %}
+    <div class="max-w-[800px] mx-auto text-center">
+      <span class="inline-block text-2xl text-[#198960] font-light mb-4">Ebook</span>
+      <h1 class="text-white text-center">{{ content.name }}</h1>
+      {% if content.widgets.summary.body.value %}
+      <p class="text-white text-center text-2xl">{{content.widgets.summary.body.value}}</p>
+      {% endif %}
+      
+      {% module "buttons_hero" path="/tvScientific 2022 Atlas Pro/cli-build/modules/custom-button-row.module", label="Hero Buttons" %}
+      
+    </div>
+  </section>
+  <div class="progress sticky top-0 z-10">
+    <div class="progress-dot"></div>
+   <progress aria-hidden="true" class="reading-progressbar js-reading-progressbar" max="100" value="0">
+      
+      <div class="reading-progressbar__fallback js-reading-progressbar__fallback"></div>
+    </progress>
+  </div>
+  <section class="py-20">
+    <div class="container mx-auto">
+ 
+  <div class="blog-body flex flex-col md:flex-row gap-4 md:gap-12">
+    <div class="w-full md:w-1/4 relative">
+            
+      <div class="sticky top-6">
+        {% if content.widgets.jump_menu.body.value == 'Yes' %}
+        <div class="jump-menu flex flex-wrap">
+          <p class="text-black text-[22px]">Contents</p>
+          
+        </div>
+        {% endif %}
+        {% if content.widgets.left_cta.body.value == 'Yes' %}
+        <div class="mb-5 pt-5 border-t border-[#C0E7D8]">
+           <p class="left-cta-title text-[22px] text-[#0F2D29]">See how you can boost lift and ROAS with CTV</p>
+           <a class="cta-button button-primary" href="">Request a Demo</a>
+         </div>
+         {% endif %}
+        <div class="blog-post__social-sharing">
+          <p class="text-black">Share</p>
+            {% module "Social Sharing" path="/tvScientific 2022 Atlas Pro/modules/Social Sharing.module" 
+                  facebook={
+                    "enabled": true
+                  }
+                  linkedin={
+                    "enabled": true
+                  }
+                  twitter={
+                    "enabled": true
+                  }
+                  email={
+                    "enabled": true
+                  }
+                  %}
+         </div>
+         
+       </div>
+    </div>
+    <div class="w-full md:w-3/4">
+    
+
+    {# Blog post #}
+    <article class="js-reading-content">
+
+        
+
+        <div class="blog-post__body">
+          {{ content.post_body }}
+        </div>
+
+        
+         <div class="blog-post__body-wrapper">
+            
+          
+          {% if content.tag_list %}
+          <div class="blog-post__tags">
+            {% for tag in content.tag_list %}
+            <a class="blog-post__tag-link" href="{{ blog_tag_url(group.id, tag.slug) }}">{{ tag.name }}</a>
+            {% endfor %}
+          </div>
+          {% endif %}
+
+        </div>
+
+      </article>
+    
+    {# End blog post #}
+
+
+  </div>
+  </div>
+  </div>
+</div>
+</section>
+</main>
+
+<script>
+  
+  var isInViewport = function(elem) {
+    var distance = elem.getBoundingClientRect();
+    return (
+      distance.top <= 65
+    );
+  };
+  document.addEventListener("DOMContentLoaded", (event) => {
+    const anchorMenu = document.querySelector('.jump-menu');
+    const currentAnchors = document.querySelectorAll('a[data-hs-anchor]');
+    if( currentAnchors ) {
+      anchorMenu.classList.remove('hidden');
+    }
+    currentAnchors.forEach((currentAnchor) => {
+      var menuAnchor = document.createElement('a');
+      menuAnchor.setAttribute('href','#' + currentAnchor.id);
+      var anchorTitleElement = currentAnchor.nextElementSibling;
+      var anchorTitleText = anchorTitleElement.innerText;
+      var anchorText = document.createTextNode(anchorTitleText);
+      menuAnchor.appendChild(anchorText);
+      anchorMenu.appendChild(menuAnchor);
+    });
+    window.addEventListener('scroll', function(event) {
+    // add event on scroll
+    currentAnchors.forEach(element => {
+        
+        if (isInViewport(element)) {
+          //if in Viewport
+          var dataName = '#'+element.id;
+          var currentButton = document.querySelector('.jump-menu a.current');
+          var sideNavButton = document.querySelector('a[href="'+dataName+'"]');
+          if(currentButton) {
+            if(currentButton !== sideNavButton) {
+              currentButton.classList.remove('current');
+              sideNavButton.classList.add('current');
+            }
+          } else {
+            sideNavButton.classList.add('current');
+          }
+          
+        }
+    });
+    }, false);
+  });
+  if(!Util) function Util () {};
+
+Util.addClass = function(el, className) {
+  var classList = className.split(' ');
+  el.classList.add(classList[0]);
+  if (classList.length > 1) Util.addClass(el, classList.slice(1).join(' '));
+};
+
+Util.removeClass = function(el, className) {
+  var classList = className.split(' ');
+  el.classList.remove(classList[0]);
+  if (classList.length > 1) Util.removeClass(el, classList.slice(1).join(' '));
+};
+
+Util.toggleClass = function(el, className, bool) {
+  if(bool) Util.addClass(el, className);
+  else Util.removeClass(el, className);
+};
+
+// File#: _1_reading-progressbar
+// Usage: codyhouse.co/license
+(function() {
+  var readingIndicator = document.getElementsByClassName('js-reading-progressbar')[0],
+    readingIndicatorContent = document.getElementsByClassName('js-reading-content')[0];
+  
+  if( readingIndicator && readingIndicatorContent) {
+    var progressInfo = [],
+      progressEvent = false,
+      progressFallback = readingIndicator.getElementsByClassName('js-reading-progressbar__fallback')[0],
+      progressIsSupported = 'value' in readingIndicator;
+
+    var boundingClientRect = readingIndicatorContent.getBoundingClientRect();
+
+    progressInfo['height'] = readingIndicatorContent.offsetHeight;
+    progressInfo['top'] = boundingClientRect.top;
+    progressInfo['bottom'] = boundingClientRect.bottom;
+    progressInfo['window'] = window.innerHeight;
+    progressInfo['class'] = 'reading-progressbar--is-active';
+    progressInfo['hideClass'] = 'reading-progressbar--is-out';
+    
+    //init indicator
+    setProgressIndicator();
+    // wait for font to be loaded - reset progress bar
+    if(document.fonts) {
+      document.fonts.ready.then(function() {
+        triggerReset();
+      });
+    }
+    // listen to window resize - update progress
+    window.addEventListener('resize', function(event){
+      triggerReset();
+    });
+
+    //listen to the window scroll event - update progress
+    window.addEventListener('scroll', function(event){
+      if(progressEvent) return;
+      progressEvent = true;
+      (!window.requestAnimationFrame) ? setTimeout(function(){setProgressIndicator();}, 250) : window.requestAnimationFrame(setProgressIndicator);
+    });
+    
+    function setProgressIndicator() {
+      var boundingClientRect = readingIndicatorContent.getBoundingClientRect();
+      progressInfo['top'] = boundingClientRect.top;
+      progressInfo['bottom'] = boundingClientRect.bottom;
+
+      if(progressInfo['height'] <= progressInfo['window']) {
+        // short content - hide progress indicator
+        Util.removeClass(readingIndicator, progressInfo['class']);
+        progressEvent = false;
+        return;
+      }
+      // get new progress and update element
+      Util.addClass(readingIndicator, progressInfo['class']);
+      var value = (progressInfo['top'] >= 0) ? 0 : 100*(0 - progressInfo['top'])/(progressInfo['height'] - progressInfo['window']);
+      readingIndicator.setAttribute('value', value);
+      if(value<=100){
+      if(!progressIsSupported && progressFallback) progressFallback.style.width = value+'%';
+      }
+      var progressDot = document.querySelector('.progress-dot');
+      if(value<=100){
+        progressDot.style.left = value+'%';
+      }
+      // hide progress bar when target is outside the viewport
+      Util.toggleClass(readingIndicator, progressInfo['hideClass'], progressInfo['bottom'] <= 0);
+      progressEvent = false;
+    };
+
+    function triggerReset() {
+      if(progressEvent) return;
+      progressEvent = true;
+      (!window.requestAnimationFrame) ? setTimeout(function(){resetProgressIndicator();}, 250) : window.requestAnimationFrame(resetProgressIndicator);
+    };
+
+    function resetProgressIndicator() {
+      progressInfo['height'] = readingIndicatorContent.offsetHeight;
+      progressInfo['window'] = window.innerHeight;
+      setProgressIndicator();
+    };
+  }
+}());
+  
+
+  
+</script>
+{% endif %}
 {% endblock body %}

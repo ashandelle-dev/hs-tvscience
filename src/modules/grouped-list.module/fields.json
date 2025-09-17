@@ -1,0 +1,62 @@
+[ {
+  "id" : "b8de39be-bf20-2136-abe4-98bde73e6d7d",
+  "name" : "list_title",
+  "label" : "List Title",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null
+}, {
+  "id" : "c4faa10d-6c9c-d1fe-a605-75ab081fc6a9",
+  "name" : "list_intro_text",
+  "label" : "List Intro Text",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "display_width" : null
+}, {
+  "id" : "19f5b463-9fc0-1de5-64ab-2456a20e7b83",
+  "name" : "list_item",
+  "label" : "List Item",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : null
+  },
+  "children" : [ {
+    "id" : "50a32940-e25a-0888-57f0-b4ef12315852",
+    "name" : "list_item_icon",
+    "label" : "List Item Icon",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "size_type" : "auto",
+      "src" : "",
+      "alt" : null,
+      "loading" : "lazy"
+    }
+  }, {
+    "id" : "e1d86669-a7ea-0b56-adb0-0ea78ec7722a",
+    "name" : "list_item_text",
+    "label" : "List Item Text",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "display_width" : null
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ ]
+} ]
