@@ -1,4 +1,18 @@
 [ {
+  "id" : "e038e663-6de4-8fcf-f620-c911f80124a8",
+  "name" : "column_layout",
+  "label" : "Column Layout",
+  "required" : false,
+  "locked" : false,
+  "display" : "radio",
+  "choices" : [ [ "2-col", "2 columns" ], [ "3-col", "3 columns" ], [ "4-col", "4 columns" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "display_width" : null,
+  "default" : "3-col"
+}, {
   "id" : "7d45eb7f-6414-fef0-63b0-fdac59f564c0",
   "name" : "column",
   "label" : "Column",

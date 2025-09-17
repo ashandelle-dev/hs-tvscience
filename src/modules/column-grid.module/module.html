@@ -1,7 +1,9 @@
-{% if module.column|length < 3 %}
-<div class="grid grid-cols-2 gap-4">
-{% else %}
+{% if module.column_layout == '2-col' %}
+<div class="grid grid-cols-2 auto-rows-auto gap-4">
+{% elif module.column_layout == '3-col' %}
 <div class="grid grid-cols-3 auto-rows-auto gap-4">
+{% else %}
+<div class="grid grid-cols-4 auto-rows-auto gap-4">
 {% endif %}
   {% for column in module.column %}
   {% if column.list_icon.src %}
