@@ -1,12 +1,12 @@
 [ {
   "id" : "ad3a4725-d18b-fba1-4f86-3acb6dd203c8",
   "name" : "blog_tag",
-  "display_width" : null,
   "label" : "Blog Tag",
   "required" : false,
   "locked" : false,
   "tag_value" : "ALL",
   "type" : "tag",
+  "display_width" : null,
   "default" : {
     "id" : 71015193395,
     "name" : "Event",
@@ -15,15 +15,14 @@
 }, {
   "id" : "card_blog",
   "name" : "card_blog",
-  "display_width" : null,
   "label" : "Blog",
   "required" : false,
   "locked" : false,
-  "type" : "blog"
+  "type" : "blog",
+  "display_width" : null
 }, {
   "id" : "467e1eb9-f21e-4c0b-6b9b-e5d483ff869f",
   "name" : "lg_cards",
-  "display_width" : null,
   "label" : "Cards",
   "required" : false,
   "locked" : false,
@@ -44,19 +43,16 @@
   "children" : [ {
     "id" : "e2c82d37-cae0-24d9-3640-19123c222c88",
     "name" : "title",
-    "display_width" : null,
     "label" : "Title",
     "required" : false,
     "locked" : false,
-    "validation_regex" : "",
     "allow_new_line" : false,
-    "show_emoji_picker" : false,
     "type" : "text",
+    "display_width" : null,
     "default" : "A Winning CTV Strategy in 2023: A TV Advertising AMA"
   }, {
     "id" : "83ab12fc-b78e-dca5-c659-a28b57ed84e9",
     "name" : "thumbnail",
-    "display_width" : null,
     "label" : "Thumbnail",
     "required" : false,
     "locked" : false,
@@ -64,6 +60,7 @@
     "resizable" : true,
     "show_loading" : false,
     "type" : "image",
+    "display_width" : null,
     "default" : {
       "size_type" : "auto",
       "src" : "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/webinar-card-placeholder.png",
@@ -77,32 +74,29 @@
   }, {
     "id" : "ba5b9e21-8d8b-68b3-f917-334cf03ed8a5",
     "name" : "date",
-    "display_width" : null,
     "label" : "Date",
     "required" : false,
     "locked" : false,
-    "validation_regex" : "",
     "allow_new_line" : false,
-    "show_emoji_picker" : false,
     "type" : "text",
+    "display_width" : null,
     "default" : "June 1, 2023"
   }, {
     "id" : "c824534d-ab1b-e169-1f25-3d010a0fba71",
     "name" : "cta",
-    "display_width" : null,
     "label" : "CTA",
     "required" : false,
     "locked" : false,
     "children" : [ {
       "id" : "19c3ca7d-7093-4d4e-80ce-d1e28d143166",
       "name" : "link",
-      "display_width" : null,
       "label" : "Link",
       "required" : false,
       "locked" : false,
       "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION", "PHONE_NUMBER", "WHATSAPP_NUMBER", "PAYMENT" ],
       "show_advanced_rel_options" : false,
       "type" : "link",
+      "display_width" : null,
       "default" : {
         "url" : {
           "content_id" : null,
@@ -115,19 +109,19 @@
     }, {
       "id" : "7b9adde1-fab7-b9a3-8639-61619a414b20",
       "name" : "text",
-      "display_width" : null,
       "label" : "Text",
       "required" : false,
       "locked" : false,
-      "validation_regex" : "",
       "allow_new_line" : false,
-      "show_emoji_picker" : false,
       "type" : "text",
+      "display_width" : null,
       "default" : "Watch now"
     } ],
     "tab" : "CONTENT",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
+    "display_width" : null,
     "default" : {
       "link" : {
         "url" : {
@@ -143,7 +137,9 @@
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
+  "display_width" : null,
   "default" : {
     "title" : "A Winning CTV Strategy in 2023: A TV Advertising AMA",
     "thumbnail" : {
@@ -173,39 +169,36 @@
 }, {
   "id" : "b102ee77-1be8-d432-28a5-c01f845f6a70",
   "name" : "final_card",
-  "display_width" : null,
   "label" : "Final Card",
   "required" : false,
   "locked" : false,
   "children" : [ {
     "id" : "c1a8c44f-ca11-c418-9caa-8056a731d5ff",
     "name" : "show_final_card",
-    "display_width" : null,
     "label" : "Show final Card",
     "required" : false,
     "locked" : false,
     "display" : "checkbox",
     "type" : "boolean",
+    "display_width" : null,
     "default" : true
   }, {
     "id" : "294c23e3-e888-766a-ee29-42b3654f040e",
     "name" : "header",
-    "display_width" : null,
     "label" : "Header",
     "required" : false,
     "locked" : false,
-    "validation_regex" : "",
     "allow_new_line" : false,
-    "show_emoji_picker" : false,
-    "type" : "text"
+    "type" : "text",
+    "display_width" : null
   }, {
     "id" : "14419306-79e1-c199-f744-b9e47c9b1de5",
     "name" : "bg_color",
-    "display_width" : null,
     "label" : "Background Color",
     "required" : false,
     "locked" : false,
     "type" : "color",
+    "display_width" : null,
     "default" : {
       "color" : "#1C4633",
       "opacity" : 100
@@ -213,7 +206,6 @@
   }, {
     "id" : "36fec6dd-0dd0-cd8e-0cbd-4d45fb2c5f19",
     "name" : "texture",
-    "display_width" : null,
     "label" : "Texture",
     "required" : false,
     "locked" : false,
@@ -221,6 +213,7 @@
     "resizable" : true,
     "show_loading" : false,
     "type" : "image",
+    "display_width" : null,
     "default" : {
       "size_type" : "auto",
       "src" : "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/card-texture-green.png",
@@ -234,13 +227,13 @@
   }, {
     "id" : "42bafe82-be3f-2c92-f899-4b07e982a5c9",
     "name" : "link",
-    "display_width" : null,
     "label" : "Link",
     "required" : false,
     "locked" : false,
     "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION", "PHONE_NUMBER", "WHATSAPP_NUMBER", "PAYMENT" ],
     "show_advanced_rel_options" : false,
     "type" : "link",
+    "display_width" : null,
     "default" : {
       "url" : {
         "content_id" : null,
@@ -253,18 +246,18 @@
   }, {
     "id" : "033685ab-76ee-50ce-b9aa-fd346cb9f324",
     "name" : "text",
-    "display_width" : null,
     "label" : "Text",
     "required" : false,
     "locked" : false,
-    "validation_regex" : "",
     "allow_new_line" : false,
-    "show_emoji_picker" : false,
-    "type" : "text"
+    "type" : "text",
+    "display_width" : null
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
+  "display_width" : null,
   "default" : {
     "show_final_card" : true,
     "bg_color" : {

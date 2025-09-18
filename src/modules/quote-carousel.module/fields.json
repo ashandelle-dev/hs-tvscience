@@ -1,7 +1,6 @@
 [ {
   "id" : "b7dfb81b-bab7-d4d9-e88d-3d09cd1d458b",
   "name" : "quote_slide",
-  "display_width" : null,
   "label" : "Quote Slide",
   "required" : false,
   "locked" : false,
@@ -14,7 +13,6 @@
   "children" : [ {
     "id" : "ff2c4758-1da5-d810-e5c9-7a2f0d30c76d",
     "name" : "headshot",
-    "display_width" : null,
     "label" : "Headshot",
     "required" : false,
     "locked" : false,
@@ -22,6 +20,7 @@
     "resizable" : true,
     "show_loading" : false,
     "type" : "image",
+    "display_width" : null,
     "default" : {
       "size_type" : "auto",
       "src" : "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/monica-cepak-headshot.png",
@@ -35,7 +34,6 @@
   }, {
     "id" : "f73d55bb-6364-19f7-e354-0b960e820b12",
     "name" : "logo",
-    "display_width" : null,
     "label" : "Logo",
     "required" : false,
     "locked" : false,
@@ -43,6 +41,7 @@
     "resizable" : true,
     "show_loading" : false,
     "type" : "image",
+    "display_width" : null,
     "default" : {
       "size_type" : "auto",
       "src" : "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/Website%202022/Wisp%20White.png",
@@ -56,70 +55,64 @@
   }, {
     "id" : "0d16ac26-793f-21c0-9610-04971f721117",
     "name" : "qs_quote",
-    "display_width" : null,
     "label" : "Quote",
     "required" : false,
     "locked" : false,
-    "validation_regex" : "",
     "allow_new_line" : false,
-    "show_emoji_picker" : false,
-    "type" : "text"
+    "type" : "text",
+    "display_width" : null
   }, {
     "id" : "d73f3e7a-9aa9-ffb5-4503-8d651f22bc3c",
     "name" : "qs_name",
-    "display_width" : null,
     "label" : "Name",
     "required" : false,
     "locked" : false,
-    "validation_regex" : "",
     "allow_new_line" : false,
-    "show_emoji_picker" : false,
-    "type" : "text"
+    "type" : "text",
+    "display_width" : null
   }, {
     "id" : "e9b9e42b-bff9-f09e-6887-6fc071ed1fd2",
     "name" : "qs_title",
-    "display_width" : null,
     "label" : "Title",
     "required" : false,
     "locked" : false,
-    "validation_regex" : "",
     "allow_new_line" : false,
-    "show_emoji_picker" : false,
-    "type" : "text"
+    "type" : "text",
+    "display_width" : null
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
+  "display_width" : null,
   "default" : [ ]
 }, {
   "id" : "e2ebdee1-1c28-8587-f4e3-8f2cbf24144b",
   "name" : "light",
-  "display_width" : null,
   "label" : "Light",
   "required" : false,
   "locked" : false,
   "display" : "toggle",
   "type" : "boolean",
+  "display_width" : null,
   "default" : false
 }, {
   "id" : "6dd9f9b6-406d-47ce-88ee-f1df1ed179e5",
   "name" : "text_dark",
-  "display_width" : null,
   "label" : "Text Dark",
   "required" : false,
   "locked" : false,
   "display" : "toggle",
   "type" : "boolean",
+  "display_width" : null,
   "default" : false
 }, {
   "id" : "fda1c713-e9a1-688b-fa9d-1e07bc45e0be",
   "name" : "custom_id",
-  "display_width" : null,
   "label" : "Custom id",
   "required" : false,
   "locked" : false,
-  "validation_regex" : "",
   "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text"
+  "type" : "text",
+  "display_width" : null
 } ]

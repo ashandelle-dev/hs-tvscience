@@ -4,6 +4,12 @@
   "label" : "Carousel Image",
   "required" : false,
   "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : null
+  },
   "responsive" : true,
   "resizable" : true,
   "show_loading" : false,

@@ -1,7 +1,6 @@
 [ {
   "id" : "cfe66526-30d6-c277-e242-d731f51dcc75",
   "name" : "card",
-  "display_width" : null,
   "label" : "Card",
   "required" : false,
   "locked" : false,
@@ -14,7 +13,6 @@
   "children" : [ {
     "id" : "fe4b3538-5aa0-c45f-be48-5f57d8204a8e",
     "name" : "background_image",
-    "display_width" : null,
     "label" : "Background Image",
     "required" : false,
     "locked" : false,
@@ -22,6 +20,7 @@
     "resizable" : true,
     "show_loading" : false,
     "type" : "image",
+    "display_width" : null,
     "default" : {
       "size_type" : "auto",
       "src" : "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/your-guide-thumbnail.jpg",
@@ -35,11 +34,11 @@
   }, {
     "id" : "5d11cc6a-cfc5-a930-f359-c941b3d482dc",
     "name" : "card_text_color",
-    "display_width" : null,
     "label" : "Card Text Color",
     "required" : false,
     "locked" : false,
     "type" : "color",
+    "display_width" : null,
     "default" : {
       "color" : "#ffffff",
       "opacity" : 100
@@ -47,44 +46,39 @@
   }, {
     "id" : "b27e60ba-5a39-2cea-4144-91c3fcf7ed55",
     "name" : "date",
-    "display_width" : null,
     "label" : "Date",
     "required" : false,
     "locked" : false,
-    "validation_regex" : "",
     "allow_new_line" : false,
-    "show_emoji_picker" : false,
     "type" : "text",
+    "display_width" : null,
     "default" : "June 1, 2023"
   }, {
     "id" : "48366d01-3d86-cf34-b15f-bb398fd60593",
     "name" : "title",
-    "display_width" : null,
     "label" : "Title",
     "required" : false,
     "locked" : false,
-    "validation_regex" : "",
     "allow_new_line" : false,
-    "show_emoji_picker" : false,
     "type" : "text",
+    "display_width" : null,
     "default" : "Your Guide to OTT & CTV Advertising"
   }, {
     "id" : "6ad89920-432d-21bd-427e-87eaaab7b786",
     "name" : "link",
-    "display_width" : null,
     "label" : "Link",
     "required" : false,
     "locked" : false,
     "children" : [ {
       "id" : "0c651af2-8526-46fa-4557-671c91593524",
       "name" : "url",
-      "display_width" : null,
       "label" : "URL",
       "required" : false,
       "locked" : false,
       "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION", "PHONE_NUMBER", "WHATSAPP_NUMBER", "PAYMENT" ],
       "show_advanced_rel_options" : false,
       "type" : "link",
+      "display_width" : null,
       "default" : {
         "url" : {
           "content_id" : null,
@@ -97,18 +91,18 @@
     }, {
       "id" : "733cf81b-f9b2-5da8-65ac-e2bc42dd8fe6",
       "name" : "text",
-      "display_width" : null,
       "label" : "Text",
       "required" : false,
       "locked" : false,
-      "validation_regex" : "",
       "allow_new_line" : false,
-      "show_emoji_picker" : false,
-      "type" : "text"
+      "type" : "text",
+      "display_width" : null
     } ],
     "tab" : "CONTENT",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
+    "display_width" : null,
     "default" : {
       "url" : {
         "url" : {
@@ -123,7 +117,9 @@
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
+  "display_width" : null,
   "default" : {
     "background_image" : {
       "size_type" : "auto",

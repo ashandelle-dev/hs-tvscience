@@ -16,9 +16,7 @@
     "label" : "Tab Title",
     "required" : false,
     "locked" : false,
-    "validation_regex" : "",
     "allow_new_line" : false,
-    "show_emoji_picker" : false,
     "type" : "text",
     "display_width" : null
   }, {
@@ -64,9 +62,7 @@
       "label" : "Tab Stat Text",
       "required" : false,
       "locked" : false,
-      "validation_regex" : "",
       "allow_new_line" : false,
-      "show_emoji_picker" : false,
       "type" : "text",
       "display_width" : null
     }, {
@@ -75,9 +71,7 @@
       "label" : "Tab Stat Label",
       "required" : false,
       "locked" : false,
-      "validation_regex" : "",
       "allow_new_line" : false,
-      "show_emoji_picker" : false,
       "type" : "text",
       "display_width" : null
     } ],

@@ -1,7 +1,6 @@
 [ {
   "id" : "bcab022f-cac4-9ade-f952-b5eda5be21b6",
   "name" : "author",
-  "display_width" : null,
   "label" : "Author",
   "required" : false,
   "locked" : false,
@@ -14,7 +13,6 @@
   "children" : [ {
     "id" : "bd31475a-51b6-2e58-8302-9765a187f135",
     "name" : "image",
-    "display_width" : null,
     "label" : "Author Headshot",
     "help_text" : "Must be a 1:1 ratio for dimensions (square)",
     "required" : false,
@@ -23,6 +21,7 @@
     "resizable" : true,
     "show_loading" : false,
     "type" : "image",
+    "display_width" : null,
     "default" : {
       "size_type" : "auto",
       "src" : "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/jason-HS.jpg",
@@ -36,15 +35,17 @@
   }, {
     "id" : "966ba7bf-60b0-b843-6777-15573a2e9b0f",
     "name" : "name_title_company",
-    "display_width" : null,
     "label" : "Name, title, company",
     "required" : false,
     "locked" : false,
     "type" : "richtext",
+    "display_width" : null,
     "default" : "<p style=\"font-size: 22px;\">Jason Fairchild</p>\n<p>Co-founder and CEO, tvScientific</p>"
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
+  "display_width" : null,
   "default" : [ ]
 } ]

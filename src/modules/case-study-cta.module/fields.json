@@ -1,7 +1,6 @@
 [ {
   "id" : "15c0be10-3235-651d-d1f8-95376f590044",
   "name" : "background_texture",
-  "display_width" : null,
   "label" : "Background Texture",
   "required" : false,
   "locked" : false,
@@ -9,6 +8,7 @@
   "resizable" : true,
   "show_loading" : false,
   "type" : "image",
+  "display_width" : null,
   "default" : {
     "size_type" : "auto",
     "src" : "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/cs-cta-texture.png",
@@ -22,44 +22,39 @@
 }, {
   "id" : "81a35560-0fdd-2d2a-98e3-5ddf13fbe366",
   "name" : "cta_section_label",
-  "display_width" : null,
   "label" : "Label",
   "required" : false,
   "locked" : false,
-  "validation_regex" : "",
   "allow_new_line" : false,
-  "show_emoji_picker" : false,
   "type" : "text",
+  "display_width" : null,
   "default" : "Lorem Ipsum"
 }, {
   "id" : "4223c266-d8aa-aa80-09fd-9e5013d1c2c7",
   "name" : "cta_section_header",
-  "display_width" : null,
   "label" : "Header",
   "required" : false,
   "locked" : false,
-  "validation_regex" : "",
   "allow_new_line" : false,
-  "show_emoji_picker" : false,
   "type" : "text",
+  "display_width" : null,
   "default" : "Streamline operations and make bigger sales with Prokeep"
 }, {
   "id" : "06b134e1-8321-b8ec-0cc0-5e571816bc0f",
   "name" : "cta_section_button",
-  "display_width" : null,
   "label" : "Button",
   "required" : false,
   "locked" : false,
   "children" : [ {
     "id" : "d4ab65ab-2c0a-7f23-62c2-319da2c1b181",
     "name" : "link",
-    "display_width" : null,
     "label" : "Link",
     "required" : false,
     "locked" : false,
     "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION" ],
     "show_advanced_rel_options" : false,
     "type" : "link",
+    "display_width" : null,
     "default" : {
       "url" : {
         "content_id" : null,
@@ -72,19 +67,19 @@
   }, {
     "id" : "8b21961b-6e44-dbc6-f855-a63f1cba837e",
     "name" : "text",
-    "display_width" : null,
     "label" : "Button Text",
     "required" : false,
     "locked" : false,
-    "validation_regex" : "",
     "allow_new_line" : false,
-    "show_emoji_picker" : false,
     "type" : "text",
+    "display_width" : null,
     "default" : "Request a Demo"
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
+  "display_width" : null,
   "default" : {
     "link" : {
       "url" : {
@@ -100,7 +95,6 @@
 }, {
   "id" : "861ab96a-7c44-0af9-4373-32c682b5a707",
   "name" : "card_image",
-  "display_width" : null,
   "label" : "Card Image",
   "required" : false,
   "locked" : false,
@@ -108,6 +102,7 @@
   "resizable" : true,
   "show_loading" : false,
   "type" : "image",
+  "display_width" : null,
   "default" : {
     "size_type" : "auto",
     "src" : "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/Magazine-Mockup-Presentation-vol9%20copy%201.png",

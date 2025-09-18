@@ -1,18 +1,15 @@
 [ {
   "id" : "026672fd-6853-8b7e-735e-628dbcebf709",
   "name" : "tt_heading",
-  "display_width" : null,
   "label" : "Heading",
   "required" : false,
   "locked" : false,
-  "validation_regex" : "",
   "allow_new_line" : false,
-  "show_emoji_picker" : false,
-  "type" : "text"
+  "type" : "text",
+  "display_width" : null
 }, {
   "id" : "28f9312d-e3b8-165d-7d9a-522e6f5f0209",
   "name" : "tt_rows",
-  "display_width" : null,
   "label" : "Rows",
   "required" : false,
   "locked" : false,
@@ -25,29 +22,24 @@
   "children" : [ {
     "id" : "009f740b-e412-5912-812a-78db6367c231",
     "name" : "title",
-    "display_width" : null,
     "label" : "Title",
     "required" : false,
     "locked" : false,
-    "validation_regex" : "",
     "allow_new_line" : false,
-    "show_emoji_picker" : false,
-    "type" : "text"
+    "type" : "text",
+    "display_width" : null
   }, {
     "id" : "8bff2c44-12e6-0242-c5f1-56863aaa3124",
     "name" : "paragraph",
-    "display_width" : null,
     "label" : "Paragraph",
     "required" : false,
     "locked" : false,
-    "validation_regex" : "",
     "allow_new_line" : false,
-    "show_emoji_picker" : false,
-    "type" : "text"
+    "type" : "text",
+    "display_width" : null
   }, {
     "id" : "fa891c0e-79bc-dd6f-5c1f-d4b2b46c2b63",
     "name" : "image",
-    "display_width" : null,
     "label" : "Image",
     "required" : false,
     "locked" : false,
@@ -55,6 +47,7 @@
     "resizable" : true,
     "show_loading" : false,
     "type" : "image",
+    "display_width" : null,
     "default" : {
       "size_type" : "auto",
       "src" : "",
@@ -64,14 +57,16 @@
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
+  "display_width" : null,
   "default" : [ ]
 }, {
   "id" : "d4aa655a-352c-a892-d6ab-cfec367f763f",
   "name" : "content",
-  "display_width" : null,
   "label" : "Content",
   "required" : false,
   "locked" : false,
-  "type" : "richtext"
+  "type" : "richtext",
+  "display_width" : null
 } ]

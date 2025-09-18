@@ -1,21 +1,19 @@
 [ {
   "id" : "df03e805-db95-895d-a013-c6b834584705",
   "name" : "blog",
-  "display_width" : null,
   "label" : "Blog",
   "required" : false,
   "locked" : false,
-  "type" : "blog"
+  "type" : "blog",
+  "display_width" : null
 }, {
   "id" : "2b963016-c995-500d-ad3f-c79df00363c8",
   "name" : "module_label",
-  "display_width" : null,
   "label" : "Module Label",
   "required" : false,
   "locked" : false,
-  "validation_regex" : "",
   "allow_new_line" : false,
-  "show_emoji_picker" : false,
   "type" : "text",
+  "display_width" : null,
   "default" : "Blog"
 } ]

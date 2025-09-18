@@ -3042,11 +3042,7 @@ blockquote {
 .plat-grid {
   grid-gap: 40px;
 }
-@media screen and (max-width: 809px) {
-  .section.overflow-visible.campains-home-section {
-    height: unset;
-  }
-}
+
 @media screen and (min-width: 810px) {
   .plat-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -3070,8 +3066,13 @@ blockquote {
 
 /*Minor responsive fixes - BW 11/2024*/
 
-@media screen and (min-width: 768px) and (max-width: 1023px) {
+@media screen and (min-width: 768px) and (max-width: 1132px) {
   .section.overflow-visible.target-home-section, .section.overflow-visible.campains-home-section {
      height: 100%;
+     min-height: unset;
+  }
+  
+  .section.overflow-visible.target-home-section .section-padding {
+    padding-top: 0rem;
   }
 }

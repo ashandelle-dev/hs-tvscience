@@ -1,7 +1,6 @@
 [ {
   "id" : "1712e067-aa3a-1d2c-ece1-abb860f683f2",
   "name" : "terms",
-  "display_width" : null,
   "label" : "Terms",
   "required" : false,
   "locked" : true,
@@ -14,28 +13,26 @@
   "children" : [ {
     "id" : "4f6ccd44-a8cc-fb68-a389-78810203a88c",
     "name" : "title",
-    "display_width" : null,
     "label" : "Title",
     "required" : false,
     "locked" : false,
-    "validation_regex" : "",
     "allow_new_line" : false,
-    "show_emoji_picker" : false,
-    "type" : "text"
+    "type" : "text",
+    "display_width" : null
   }, {
     "id" : "7319bf81-5b30-845f-1f3c-26161f629407",
     "name" : "description",
-    "display_width" : null,
     "label" : "Description",
     "required" : false,
     "locked" : false,
-    "validation_regex" : "",
     "allow_new_line" : false,
-    "show_emoji_picker" : false,
-    "type" : "text"
+    "type" : "text",
+    "display_width" : null
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
+  "display_width" : null,
   "default" : { }
 } ]

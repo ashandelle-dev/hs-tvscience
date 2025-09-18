@@ -1,7 +1,6 @@
 [ {
   "id" : "330bca8d-0554-a06a-949a-7208750357fb",
   "name" : "type",
-  "display_width" : null,
   "label" : "Type",
   "required" : false,
   "locked" : false,
@@ -11,15 +10,16 @@
   "reordering_enabled" : true,
   "preset" : null,
   "type" : "choice",
+  "display_width" : null,
   "default" : "3"
 }, {
   "id" : "84f6c374-f4b8-0593-96ac-ce4484fc8764",
   "name" : "border_color",
-  "display_width" : null,
   "label" : "Border Color",
   "required" : false,
   "locked" : false,
   "type" : "color",
+  "display_width" : null,
   "default" : {
     "color" : "#fff",
     "opacity" : 100
@@ -27,23 +27,22 @@
 }, {
   "id" : "e521e52c-7a37-2ced-49e8-4885f260a10b",
   "name" : "block_one",
-  "display_width" : null,
   "label" : "Block One",
   "required" : false,
   "locked" : false,
-  "type" : "richtext"
+  "type" : "richtext",
+  "display_width" : null
 }, {
   "id" : "02ee0c75-0cea-b4a4-24da-ccef9f0657ea",
   "name" : "block_two",
-  "display_width" : null,
   "label" : "Block Two",
   "required" : false,
   "locked" : false,
-  "type" : "richtext"
+  "type" : "richtext",
+  "display_width" : null
 }, {
   "id" : "0b9020da-f794-3619-4b69-e2afe23851e3",
   "name" : "block_three",
-  "display_width" : null,
   "label" : "Block Three",
   "required" : false,
   "locked" : false,
@@ -55,11 +54,11 @@
     "operator" : "MATCHES_REGEX",
     "access" : null
   },
-  "type" : "richtext"
+  "type" : "richtext",
+  "display_width" : null
 }, {
   "id" : "857fffcc-74a7-d15a-5745-e1758de17460",
   "name" : "block_four",
-  "display_width" : null,
   "label" : "Block Four",
   "required" : false,
   "locked" : false,
@@ -71,11 +70,11 @@
     "operator" : "EQUAL",
     "access" : null
   },
-  "type" : "richtext"
+  "type" : "richtext",
+  "display_width" : null
 }, {
   "id" : "54432b5b-b900-c1a7-0812-6556d5659db5",
   "name" : "block_five",
-  "display_width" : null,
   "label" : "Block five",
   "required" : false,
   "locked" : false,
@@ -87,15 +86,16 @@
     "operator" : "EQUAL",
     "access" : null
   },
-  "type" : "richtext"
+  "type" : "richtext",
+  "display_width" : null
 }, {
   "id" : "f4a59031-603f-5933-fe5b-a724d61a646e",
   "name" : "block_color",
-  "display_width" : null,
   "label" : "Block color",
   "required" : false,
   "locked" : false,
   "type" : "color",
+  "display_width" : null,
   "default" : {
     "color" : null,
     "opacity" : null
@@ -103,11 +103,11 @@
 }, {
   "id" : "e07a54f3-10fd-4f4d-aa5a-631c60b529bd",
   "name" : "side_graphic",
-  "display_width" : null,
   "label" : "Side Graphic",
   "required" : false,
   "locked" : false,
   "display" : "checkbox",
   "type" : "boolean",
+  "display_width" : null,
   "default" : false
 } ]

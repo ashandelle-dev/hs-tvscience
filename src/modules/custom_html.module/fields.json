@@ -1,0 +1,17 @@
+[ {
+  "id" : "528e5984-16ec-052f-1092-aa701f07403a",
+  "name" : "embed_field",
+  "label" : "Embed",
+  "required" : false,
+  "locked" : false,
+  "supported_source_types" : [ "html" ],
+  "supported_oembed_types" : [ "photo", "video", "link", "rich" ],
+  "resizable" : true,
+  "show_preview" : true,
+  "supported_media_bridge_providers" : [ ],
+  "type" : "embed",
+  "display_width" : null,
+  "default" : {
+    "source_type" : "html"
+  }
+} ]

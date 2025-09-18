@@ -1,19 +1,19 @@
 [ {
   "id" : "51565cb6-2eaa-a22f-8925-bdecabb5f336",
   "name" : "left_graphic",
-  "display_width" : null,
   "label" : "Left Graphic",
   "required" : false,
   "locked" : false,
   "display" : "checkbox",
   "type" : "boolean",
+  "display_width" : null,
   "default" : false
 }, {
   "id" : "8f260b9c-f5fa-7cee-8ee8-de743d8aab9b",
   "name" : "richtext",
-  "display_width" : null,
   "label" : "Rich text",
   "required" : false,
   "locked" : false,
-  "type" : "richtext"
+  "type" : "richtext",
+  "display_width" : null
 } ]

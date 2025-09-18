@@ -1,153 +1,132 @@
-[
-  {
-    "id": "45fbd8c5-efb8-73b9-0319-9622762610c8",
-    "name": "stats",
-    "display_width": null,
-    "label": "Stats",
-    "required": false,
-    "locked": false,
-    "occurrence": {
-      "min": null,
-      "max": null,
-      "sorting_label_field": null,
-      "default": null
-    },
-    "children": [
-      {
-        "id": "ce0aa11f-63ca-8a00-c0e6-eb5b257b490b",
-        "name": "title",
-        "display_width": null,
-        "label": "Title",
-        "required": false,
-        "locked": false,
-        "validation_regex": "",
-        "allow_new_line": false,
-        "show_emoji_picker": false,
-        "type": "text",
-        "default": "Total Growth"
-      },
-      {
-        "id": "37414b79-9632-2185-3ffb-48dc9cb19918",
-        "name": "number",
-        "display_width": null,
-        "label": "Number",
-        "required": false,
-        "locked": false,
-        "validation_regex": "",
-        "allow_new_line": false,
-        "show_emoji_picker": false,
-        "type": "text",
-        "default": "100.3%"
-      },
-      {
-        "id": "c98c35e4-82e6-0368-7462-205877a2e128",
-        "name": "stat_label",
-        "display_width": null,
-        "label": "Label",
-        "required": false,
-        "locked": false,
-        "validation_regex": "",
-        "allow_new_line": false,
-        "show_emoji_picker": false,
-        "type": "text",
-        "default": "MoM Revenue Growth"
-      },
-      {
-        "id": "be58934a-47b1-4218-1fbb-faf926993042",
-        "name": "icon",
-        "display_width": null,
-        "label": "Icon",
-        "required": false,
-        "locked": false,
-        "responsive": true,
-        "resizable": true,
-        "show_loading": false,
-        "type": "image",
-        "default": {
-          "size_type": "auto",
-          "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/icon-total-growth.png",
-          "alt": "icon-total-growth",
-          "loading": "lazy",
-          "width": 149,
-          "height": 149,
-          "max_width": 149,
-          "max_height": 149
-        }
-      }
-    ],
-    "tab": "CONTENT",
-    "expanded": false,
-    "type": "group",
-    "default": {
-      "title": "Total Growth",
-      "number": "100.3%",
-      "stat_label": "MoM Revenue Growth",
-      "icon": {
-        "size_type": "auto",
-        "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/icon-total-growth.png",
-        "alt": "icon-total-growth",
-        "loading": "lazy",
-        "width": 149,
-        "height": 149,
-        "max_width": 149,
-        "max_height": 149
-      }
-    }
+[ {
+  "id" : "45fbd8c5-efb8-73b9-0319-9622762610c8",
+  "name" : "stats",
+  "label" : "Stats",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : null
   },
-  {
-    "type": "group",
-    "isNew": false,
-    "name": "style",
-    "label": "Style",
-    "tab": "STYLE",
-    "id": "fe653dea-506b-e126-b8f0-4009b093ae4c",
-    "children": [
-     {
-      "type": "choice",
-      "id": "994eec12-093b-5f6c-2508-1a1cd02b6cc4",
-      "display": "select",
-      "required": true,
-      "choices": [
-       [
-        "plex",
-        "IBM Plex"
-       ],
-       [
-        "bricolage-grotesque",
-        "Bricolage Grotesque"
-       ]
-      ],
-      "label": "Stat Font",
-      "name": "stat_font",
-      "default": "plex"
-     },
-     {
-      "name": "font_size",
-      "label": "Font Size",
-      "required": true,
-      "locked": false,
-      "display": "select",
-      "inline_help_text": "",
-      "help_text": "",
-      "choices": [
-      [
-        "32px",
-        "32px"
-      ],
-      [
-        "36px",
-        "36px"
-      ]
-      ],
-      "type": "choice",
-      "placeholder": "",
-      "default": "36px"
-     }
-    ],
-    "default": {
-     "stat_font": "plex",
-     "font_size": "36px"
+  "children" : [ {
+    "id" : "ce0aa11f-63ca-8a00-c0e6-eb5b257b490b",
+    "name" : "title",
+    "label" : "Title",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Total Growth"
+  }, {
+    "id" : "37414b79-9632-2185-3ffb-48dc9cb19918",
+    "name" : "number",
+    "label" : "Number",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "100.3%"
+  }, {
+    "id" : "c98c35e4-82e6-0368-7462-205877a2e128",
+    "name" : "stat_label",
+    "label" : "Label",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "MoM Revenue Growth"
+  }, {
+    "id" : "be58934a-47b1-4218-1fbb-faf926993042",
+    "name" : "icon",
+    "label" : "Icon",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "size_type" : "auto",
+      "src" : "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/icon-total-growth.png",
+      "alt" : "icon-total-growth",
+      "loading" : "lazy",
+      "width" : 149,
+      "height" : 149,
+      "max_width" : 149,
+      "max_height" : 149
     }
-   }
-
-]
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "title" : "Total Growth",
+    "number" : "100.3%",
+    "stat_label" : "MoM Revenue Growth",
+    "icon" : {
+      "size_type" : "auto",
+      "src" : "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/icon-total-growth.png",
+      "alt" : "icon-total-growth",
+      "loading" : "lazy",
+      "width" : 149,
+      "height" : 149,
+      "max_width" : 149,
+      "max_height" : 149
+    }
+  }
+}, {
+  "id" : "fe653dea-506b-e126-b8f0-4009b093ae4c",
+  "name" : "style",
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "994eec12-093b-5f6c-2508-1a1cd02b6cc4",
+    "name" : "stat_font",
+    "label" : "Stat Font",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "plex", "IBM Plex" ], [ "bricolage-grotesque", "Bricolage Grotesque" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "plex"
+  }, {
+    "id" : "style.font_size",
+    "name" : "font_size",
+    "label" : "Font Size",
+    "help_text" : "",
+    "inline_help_text" : "",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "placeholder" : "",
+    "choices" : [ [ "32px", "32px" ], [ "36px", "36px" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "36px"
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "stat_font" : "plex",
+    "font_size" : "36px"
+  }
+} ]

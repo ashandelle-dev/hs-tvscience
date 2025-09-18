@@ -1,37 +1,32 @@
 [ {
   "id" : "6e2fd322-c065-3daf-a1b8-bb73d2b59f3f",
   "name" : "form_anchor_id",
-  "display_width" : null,
   "label" : "form anchor ID",
   "help_text" : "This is the anchor to use for jumping back to form section for landing page anchor links.",
   "required" : false,
   "locked" : false,
-  "validation_regex" : "",
   "allow_new_line" : false,
-  "show_emoji_picker" : false,
   "type" : "text",
+  "display_width" : null,
   "default" : "webinar-form"
 }, {
   "id" : "e355a361-931b-ac2a-d06f-244ef8e3a1ca",
   "name" : "title",
-  "display_width" : null,
   "label" : "Form Title",
   "required" : false,
   "locked" : false,
-  "validation_regex" : "",
   "allow_new_line" : false,
-  "show_emoji_picker" : false,
   "type" : "text",
+  "display_width" : null,
   "default" : ""
 }, {
   "id" : "e4adbe47-d462-2396-c7e7-62d52c812966",
   "name" : "form",
-  "display_width" : null,
   "label" : "Form",
   "required" : false,
   "locked" : false,
   "type" : "form",
-  "embed_versions": ["v2", "v4"],
+  "display_width" : null,
   "default" : {
     "form_id" : "",
     "response_type" : "redirect",
@@ -42,12 +37,12 @@
 }, {
   "id" : "a94fca13-ed76-6d90-fc9d-0b27578f9766",
   "name" : "form_background_color",
-  "display_width" : null,
   "label" : "Form Background Color",
   "required" : false,
   "locked" : false,
   "show_opacity" : false,
   "type" : "color",
+  "display_width" : null,
   "default" : {
     "color" : "#ffffff",
     "opacity" : 100
@@ -55,11 +50,11 @@
 }, {
   "id" : "0f66bb3f-fb91-86cb-45cb-7bcc443c059e",
   "name" : "form_input_background_color",
-  "display_width" : null,
   "label" : "Form Input Background Color",
   "required" : false,
   "locked" : false,
   "type" : "color",
+  "display_width" : null,
   "default" : {
     "color" : "#E5E7EB",
     "opacity" : 100
@@ -67,7 +62,6 @@
 }, {
   "id" : "96a2942d-c746-0299-c0a9-6b16d7a20c1d",
   "name" : "notifications_are_overridden",
-  "display_width" : null,
   "label" : "Send form notifications to specified email addresses instead of the form defaults",
   "required" : false,
   "locked" : false,
@@ -81,11 +75,11 @@
   },
   "display" : "checkbox",
   "type" : "boolean",
+  "display_width" : null,
   "default" : false
 }, {
   "id" : "e496f0fb-4c96-8a5f-5fa3-54a5838f02a2",
   "name" : "notifications_override_email_addresses",
-  "display_width" : null,
   "label" : "Email Addresses",
   "required" : false,
   "locked" : false,
@@ -98,11 +92,11 @@
     "access" : null
   },
   "allow_custom_email_addresses" : false,
-  "type" : "email"
+  "type" : "email",
+  "display_width" : null
 }, {
   "id" : "072ce88d-62f2-604d-feab-f8199eeb40f7",
   "name" : "follow_up_type_simple",
-  "display_width" : null,
   "label" : "Send a follow-up email",
   "help_text" : "To send a follow-up email, make sure the 'Set contacts created as marketing contacts’ setting is turned on. You can manage this in options. <a href='https://knowledge.hubspot.com/contacts/set-contacts-as-marketing#set-the-default-marketing-status-for-new-contacts'>Learn more</a>",
   "required" : false,
@@ -158,11 +152,11 @@
   },
   "display" : "checkbox",
   "type" : "boolean",
+  "display_width" : null,
   "default" : false
 }, {
   "id" : "fa108c7e-d78d-9edd-f015-f3d8e35fb790",
   "name" : "simple_email_for_live_id",
-  "display_width" : null,
   "label" : "Email",
   "required" : false,
   "locked" : false,
@@ -190,13 +184,14 @@
     } ],
     "children" : [ ]
   },
-  "type" : "followupemail"
+  "type" : "followupemail",
+  "display_width" : null
 }, {
   "id" : "82375ac5-e902-3628-b674-1eb8f5397c41",
   "name" : "sfdc_campaign",
-  "display_width" : null,
   "label" : "Salesforce campaign",
   "required" : false,
   "locked" : false,
-  "type" : "salesforcecampaign"
+  "type" : "salesforcecampaign",
+  "display_width" : null
 } ]

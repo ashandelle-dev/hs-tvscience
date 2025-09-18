@@ -1,7 +1,6 @@
 [ {
   "id" : "d6daa7b0-8f6e-1ade-e634-6336ff16a803",
   "name" : "cta",
-  "display_width" : null,
   "label" : "CTA",
   "required" : false,
   "locked" : false,
@@ -14,7 +13,6 @@
   "children" : [ {
     "id" : "929e511b-c134-b5d4-0aee-5fe78fbbcf9a",
     "name" : "button_style",
-    "display_width" : null,
     "label" : "Button Style",
     "required" : true,
     "locked" : false,
@@ -24,29 +22,28 @@
     "reordering_enabled" : true,
     "preset" : null,
     "type" : "choice",
+    "display_width" : null,
     "default" : "primary"
   }, {
     "id" : "afa1e026-1bc1-2231-9628-8e37d8820e99",
     "name" : "button_text",
-    "display_width" : null,
     "label" : "Button Text",
     "required" : false,
     "locked" : false,
-    "validation_regex" : "",
     "allow_new_line" : false,
-    "show_emoji_picker" : false,
     "type" : "text",
+    "display_width" : null,
     "default" : "Request a Demo"
   }, {
     "id" : "08de0981-7550-f588-61aa-9cc697b78c81",
     "name" : "link",
-    "display_width" : null,
     "label" : "Link",
     "required" : false,
     "locked" : false,
     "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION", "PHONE_NUMBER", "WHATSAPP_NUMBER", "PAYMENT" ],
     "show_advanced_rel_options" : false,
     "type" : "link",
+    "display_width" : null,
     "default" : {
       "url" : {
         "content_id" : null,
@@ -59,7 +56,9 @@
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
+  "display_width" : null,
   "default" : [ {
     "button_style" : "primary",
     "button_text" : "Request a Demo",

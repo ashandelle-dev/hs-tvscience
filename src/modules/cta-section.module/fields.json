@@ -25,9 +25,7 @@
   "label" : "Label",
   "required" : false,
   "locked" : false,
-  "validation_regex" : "",
   "allow_new_line" : false,
-  "show_emoji_picker" : false,
   "type" : "text",
   "display_width" : null,
   "default" : "Get Started Today"
@@ -37,9 +35,7 @@
   "label" : "Header",
   "required" : false,
   "locked" : false,
-  "validation_regex" : "",
   "allow_new_line" : false,
-  "show_emoji_picker" : false,
   "type" : "text",
   "display_width" : null,
   "default" : "See how you can boost lift and ROAS with CTV"
@@ -184,9 +180,7 @@
     "label" : "Button Text",
     "required" : false,
     "locked" : false,
-    "validation_regex" : "",
     "allow_new_line" : false,
-    "show_emoji_picker" : false,
     "type" : "text",
     "display_width" : null,
     "default" : "Request a demo"

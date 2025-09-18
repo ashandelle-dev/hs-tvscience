@@ -1,7 +1,6 @@
 [ {
   "id" : "2feac6cb-aa93-11c0-9029-01a57f64c227",
   "name" : "logo",
-  "display_width" : null,
   "label" : "Logo",
   "required" : false,
   "locked" : false,
@@ -15,6 +14,7 @@
   "resizable" : true,
   "show_loading" : false,
   "type" : "image",
+  "display_width" : null,
   "default" : [ {
     "size_type" : "auto",
     "src" : "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/Inside%20Weather%20Grey%201.svg",
@@ -28,7 +28,6 @@
 }, {
   "id" : "b9374542-2e49-e2c4-717c-7ba56d475a89",
   "name" : "per_row",
-  "display_width" : null,
   "label" : "Per Row",
   "required" : true,
   "locked" : false,
@@ -38,5 +37,6 @@
   "reordering_enabled" : true,
   "preset" : null,
   "type" : "choice",
+  "display_width" : null,
   "default" : "md:w-1/4"
 } ]

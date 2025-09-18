@@ -1,7 +1,6 @@
 [ {
   "id" : "55e6c98c-634f-f656-a015-339ef231dbbc",
   "name" : "nav_items",
-  "display_width" : null,
   "label" : "Nav Items",
   "required" : false,
   "locked" : true,
@@ -14,42 +13,38 @@
   "children" : [ {
     "id" : "07724988-c383-80eb-38fd-12dfa4bfd036",
     "name" : "icon_svg",
-    "display_width" : null,
     "label" : "Icon SVG",
     "help_text" : "Insert SVG Code for icon",
     "required" : false,
     "locked" : false,
-    "validation_regex" : "",
     "allow_new_line" : false,
-    "show_emoji_picker" : false,
-    "type" : "text"
+    "type" : "text",
+    "display_width" : null
   }, {
     "id" : "c3cd30b7-69b4-4ab6-539d-7b78ecd6e260",
     "name" : "text",
-    "display_width" : null,
     "label" : "Text",
     "required" : false,
     "locked" : false,
-    "validation_regex" : "",
     "allow_new_line" : false,
-    "show_emoji_picker" : false,
-    "type" : "text"
+    "type" : "text",
+    "display_width" : null
   }, {
     "id" : "82bf3f47-7d7a-e69e-6c60-e968b6e5336a",
     "name" : "anchor",
-    "display_width" : null,
     "label" : "Anchor",
     "required" : false,
     "locked" : false,
-    "validation_regex" : "",
     "allow_new_line" : false,
-    "show_emoji_picker" : false,
     "type" : "text",
+    "display_width" : null,
     "default" : "#blog"
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
+  "display_width" : null,
   "default" : {
     "anchor" : "#blog-section"
   }

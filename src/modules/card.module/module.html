@@ -17,7 +17,7 @@
  </div>'
  %}
 
-<div class="rounded-lg overflow-hidden border border-[#009061] relative hover:shadow-lg transition-shadow duration-200">
+<div class="rounded-lg overflow-hidden border relative hover:shadow-lg transition-shadow duration-200" style="border-color: {% if module.style.border_color %}{{ module.style.border_color.hex }}{% else %}#009061{% endif %};">
 <a href="{{ href }}"
 {% if module.card_cta.link.open_in_new_tab %}target="_blank"{% endif %}
 {% if module.card_btn.link.rel %}rel="{{ module.card_cta.link.rel }}"{% endif %} class="block group hover:no-underline">
