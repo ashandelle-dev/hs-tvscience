@@ -55,5 +55,62 @@
    "reordering_enabled": true,
    "required": false,
    "type": "choice"
+  },
+  {
+    "name": "styles",
+    "label": "Styles",
+    "children": [
+      {
+        "name": "background_color",
+        "label": "Background Color",
+        "required": false,
+        "locked": false,
+        "inline_help_text": "",
+        "help_text": "",
+        "type": "color",
+        "default": null
+      },
+      {
+        "name": "text_color",
+        "label": "Color",
+        "required": false,
+        "locked": false,
+        "inline_help_text": "",
+        "help_text": "",
+        "type": "color",
+        "default": null
+      },
+      {
+        "name": "padding",
+        "label": "Padding",
+        "required": false,
+        "locked": false,
+        "type": "spacing",
+        "inline_help_text": "",
+        "help_text": "",
+        "default": {
+          "margin": {
+            "bottom": {
+              "value": 22,
+              "units": "px"
+            }
+          }
+        }
+      }
+    ],
+    "type": "group",
+    "tab": "STYLE",
+    "default": {
+      "background_color": null,
+      "text_color": null,
+      "padding": {
+        "margin": {
+          "bottom": {
+            "value": 22,
+            "units": "px"
+          }
+        }
+      }
+    }
   }
  ]
