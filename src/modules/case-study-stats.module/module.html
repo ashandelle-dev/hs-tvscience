@@ -21,10 +21,10 @@
 <div class="border p-6 rounded relative bg-white z-10">
   {% for stat in module.stats %}
   {% set sizeAttrs = 'width="{{ stat.icon.width }}" height="{{ stat.icon.height }}"' %}
-  
+
   <div class="border-b py-6 last:border-transparent">
     <div>
-      <p class="text-[24px] font-bold">{{stat.title}}</p>
+      <p class="text-[24px] font-bold {% if module.style.stat_font == 'bricolage-grotesque' %}font-bricolage-grotesque text-black{% else %}font-plex{% endif %}">{{stat.title}}</p>
 
     </div>
     <div class="flex items-center">
@@ -36,10 +36,10 @@
       {% endif %}
       {% set loadingAttr = stat.icon.loading != 'disabled' ? 'loading="{{ stat.icon.loading }}"' : '' %}
         <img class="w-full" src="{{ stat.icon.src }}" alt="{{ stat.icon.alt }}" {{ loadingAttr }} >
-  
+
       </div>
       <div class="w-full  px-6 md:px-3 lg:px-6">
-        <p class="m-0 text-[28px] md:text-[16px] lg:text-[36px] font-bold text-[#13171A]">{{stat.number}}</p>
+        <p class="m-0 text-[28px] md:text-[16px] {% if module.style.font_size == '32px' %} lg:text-[32px] {% else %} lg:text-[36px] {% endif %} font-bold text-[#13171A] font-{{module.style.stat_font}}">{{stat.number}}</p>
         <p class="m-0 text-[16px] md:text-[14px] lg:text-[16px] text-[#77858C]">{{stat.stat_label}}</p>
 
       </div>

@@ -14,10 +14,11 @@ module.exports = {
 
     ],
     theme: {
-   
         fontFamily: {
             plex: ["'IBM Plex Sans'", "san-serif"],
             "plex-mono": ["'IBM Plex Mono'", "monospace"],
+            rubik: ["'Rubik'", "sans-serif"],
+            "bricolage-grotesque": ["'BricolageGrotesque'", "sans-serif"],
         },
         extend: {
             animation: {
@@ -29,6 +30,12 @@ module.exports = {
                     "100%": { opacity: 1, transform: "translateY(0)" },
                 },
             },
+            colors: {
+                "primary": "#009061",
+                "primary-darker": "#1C4633",
+                "primary-dark": "#1F252B",
+                "black": "#000000",
+            },
         },
         container: {
             center: true,
@@ -37,11 +44,18 @@ module.exports = {
             },
             padding: {
                 "DEFAULT": '1rem',
-                lg: '0'    
+                lg: '0'
             },
         },
     },
     plugins: [
-  
+
+    ],
+    safelist: [
+        'text-primary',
+        'text-primary-dark',
+        'font-plex',
+        'font-bricolage-grotesque',
+        'font-rubik'
     ],
 };

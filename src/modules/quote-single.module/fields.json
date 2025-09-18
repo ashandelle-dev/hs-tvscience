@@ -1,0 +1,125 @@
+[
+  {
+    "id": "ff2c4758-1da5-d810-e5c9-7a2f0d30c76d",
+    "name": "headshot",
+    "display_width": null,
+    "label": "Headshot",
+    "required": false,
+    "locked": false,
+    "responsive": true,
+    "resizable": true,
+    "show_loading": false,
+    "type": "image",
+    "default": {
+      "size_type": "exact",
+      "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/monica-cepak-headshot.png",
+      "alt": "monica-cepak-headshot",
+      "loading": "lazy",
+      "width": 141,
+      "height": 141
+    }
+  },
+  {
+    "name": "round_headshot",
+    "label": "Round Headshot",
+    "required": false,
+    "locked": false,
+    "type": "boolean",
+    "inline_help_text": "",
+    "help_text": "",
+    "default": false
+  },
+  {
+    "id": "0d16ac26-793f-21c0-9610-04971f721117",
+    "name": "qs_quote",
+    "display_width": null,
+    "label": "Quote",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text"
+  },
+  {
+    "id": "d73f3e7a-9aa9-ffb5-4503-8d651f22bc3c",
+    "name": "qs_name",
+    "display_width": null,
+    "label": "Name",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text"
+  },
+  {
+    "id": "e9b9e42b-bff9-f09e-6887-6fc071ed1fd2",
+    "name": "qs_title",
+    "display_width": null,
+    "label": "Title",
+    "required": false,
+    "locked": false,
+    "validation_regex": "",
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "type": "text"
+  },
+  {
+    "name": "styles",
+    "label": "Styles",
+    "children": [
+      {
+        "name": "background_color",
+        "label": "Background Color",
+        "required": false,
+        "locked": false,
+        "inline_help_text": "",
+        "help_text": "",
+        "type": "color",
+        "default": null
+      },
+      {
+        "name": "text_color",
+        "label": "Color",
+        "required": false,
+        "locked": false,
+        "inline_help_text": "",
+        "help_text": "",
+        "type": "color",
+        "default": null
+      },
+      {
+        "name": "padding",
+        "label": "Padding",
+        "required": false,
+        "locked": false,
+        "type": "spacing",
+        "inline_help_text": "",
+        "help_text": "",
+        "default": {
+          "margin": {
+            "bottom": {
+              "value": 22,
+              "units": "px"
+            }
+          }
+        }
+      }
+    ],
+    "type": "group",
+    "tab": "STYLE",
+    "default": {
+      "background_color": null,
+      "text_color": null,
+      "padding": {
+        "margin": {
+          "bottom": {
+            "value": 22,
+            "units": "px"
+          }
+        }
+      }
+    }
+  }
+]
