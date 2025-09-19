@@ -47,15 +47,15 @@
             {% set sizeAttrs = 'width="{{ module.headshot.max_width }}" height="{{ module.headshot.max_height }}" style="max-width: 100%; height: auto;"' %}
           {% endif %}
             {% set loadingAttr = module.headshot.loading != 'disabled' ? 'loading="{{ module.headshot.loading }}"' : '' %}
-          <img src="{{ module.headshot.src }}" alt="{{ module.headshot.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+          <img class="{% if module.round_headshot %} rounded-full {% endif %}" src="{{ module.headshot.src }}" alt="{{ module.headshot.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
         {% endif %}
         </div>
         <div class="w-2/3 px-6">
 
-          <p class="font-bold {% if custom_color %}text-inherit{% else %}text-[#0FBF84]{% endif %} m-0">
+          <p class="font-bold {% if custom_color %} text-inherit {% else %} text-[#438663] {% endif %} m-0">
             {{ module.qs_name }}
             </p>
-            <p class="m-0 {% if custom_color %}text-inherit{% else %}text-[#0FBF84]{% endif %}">
+            <p class="m-0 {% if custom_color %} text-inherit {% else %} text-[#438663] {% endif %}">
             {{ module.qs_title }}
             </p>
         </div>
@@ -77,7 +77,7 @@
         {% endif %}
         </div>
         <div>
-          <div class="border-l-4 {% if !custom_color %} border-[#0FBF84] {% endif %} lg:pl-10 lg:ml-10" {% if custom_color %}style="border-color: {{ module.styles.text_color.css }};"{% endif %}>
+          <div class="border-l-4 {% if !custom_color %} border-[#0FBF84] {% endif %} md:pl-10 md:ml-10" {% if custom_color %}style="border-color: {{ module.styles.text_color.css }};"{% endif %}>
             <div>
               <p class="content-body mb-3 text-[24px] md:text-[32px] lg:text-[36px] leading-tight italic {% if custom_color %} text-inherit {% else %} text-primary-darker {% endif %}">
                 {{ module.qs_quote }}
@@ -85,7 +85,6 @@
             </div>
             <div class="content-author flex flex-wrap lg:flex-nowrap relative">
               <div class="w-full sm:w-6/12 mb-6 sm:mb-0">
-
                 <p class="font-bold text-2xl {% if custom_color %} text-inherit {% else %} text-[#438663] {% endif %} m-0">
                   {{ module.qs_name }}
                 </p>

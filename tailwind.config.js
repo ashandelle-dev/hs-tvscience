@@ -56,6 +56,11 @@ module.exports = {
         'text-primary-dark',
         'font-plex',
         'font-bricolage-grotesque',
-        'font-rubik'
+        'font-rubik',
+        'text-6xl',
+        'text-7xl',
+        'text-8xl',
+        'text-9xl',
+        'text-base',
     ],
 };

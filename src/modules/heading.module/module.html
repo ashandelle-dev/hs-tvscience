@@ -1,1 +1,36 @@
-<{{ module.header_tag }}>{{ module.value }}</{{ module.header_tag }}>
+{% require_css %}
+<style>
+    {% scope_css %}
+    .tvsci-heading {
+        {{ module.styles.padding.css }}
+        {% if module.styles.background_color %}
+        background-color: {{ module.styles.background_color.css }};
+        {% endif %}
+        text-wrap: balance;
+    }
+    .tvsci-heading .heading {
+        {% if module.styles.text_color %}
+        color: {{ module.styles.text_color.css }};
+        {% endif %}
+        {% if module.heading_size != 0 %}
+        font-size: {{ module.heading_size }}px !important;
+        line-height: 1.225 !important;
+        {% endif %}
+    }
+    {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+<span class="tvsci-heading flex gap-2">
+    {% if module.image.src %}
+    {% set sizeAttrs = 'width="{{ module.image.width|escape_attr }}" height="{{ module.image.height|escape_attr }}"' %}
+    {% if module.image.size_type == 'auto' %}
+        {% set sizeAttrs = 'width="{{ module.image.width|escape_attr }}" height="{{ module.image.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+    {% elif module.image.size_type == 'auto_custom_max' %}
+        {% set sizeAttrs = 'width="{{ module.image.max_width|escape_attr }}" height="{{ module.image.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+    {% endif %}
+    {% set loadingAttr = module.image.loading != 'disabled' ? 'loading="{{ module.image.loading|escape_attr }}"' : '' %}
+    <img class="tvsci-heading-image m-0 mb-0" src="{{ module.image.src|escape_url }}" alt="{{ module.image.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+    {% endif %}
+    <{{ module.header_tag }} class="heading !m-0">{{ module.value }}</{{ module.header_tag }}>
+</span>

@@ -29,7 +29,10 @@
     line-height: 150%;
   }
 
-  main h1, main h2, main h3 {
+  main h1, main h2, main h3,
+  main h4, main h5, main h6,
+  main .h1, main .h2, main .h3,
+  main .h4, main .h5, main .h6 {
     font-family: BricolageGrotesque !important;
   }
   .body-wrapper {
@@ -169,7 +172,7 @@
         {% end_dnd_area %}
       </aside>
       <article class="main-content-grid text-primary-dark text-lg">
-        {% dnd_area "dnd_area_3" class='dnd-empty sub-section', label='Main Content' %}
+        {% dnd_area "dnd_area_3" class='dnd-empty sub-section xl:pr-20', label='Main Content' %}
 
 
         {% end_dnd_area %}
