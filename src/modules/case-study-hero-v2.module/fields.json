@@ -1,0 +1,79 @@
+[
+  {
+    "id": "863e25c4-c3ae-74b4-4162-d5f11580203b",
+    "name": "label_text",
+    "label": "Label",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Case Study"
+  },
+  {
+    "id": "2f14717b-58ba-97e2-77cf-eefbbae44946",
+    "name": "logo",
+    "label": "Logo",
+    "required": false,
+    "locked": false,
+    "responsive": true,
+    "resizable": true,
+    "show_loading": false,
+    "type": "image",
+    "display_width": null,
+    "default": {
+      "size_type": "auto",
+      "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/Website%202022/Wisp%20White.png",
+      "alt": "Wisp White",
+      "loading": "lazy",
+      "width": 1498,
+      "height": 629,
+      "max_width": 1498,
+      "max_height": 629
+    }
+  },
+  {
+    "id": "f5423a14-f23f-34e9-59ee-9102eebe6a03",
+    "name": "h1",
+    "label": "h1",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "How tvScientific's CTV campaigns surpassed Wisp performance KPIs"
+  },
+  {
+    "id": "1f2fc114-c5c3-3dd1-7a5b-6aa73724e66c",
+    "name": "paragraph",
+    "label": "paragraph",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Thanks to tvScientific's Performance Advertising Platform and Real-Time Optimizations"
+  },
+  {
+    "id": "4724762c-0ad4-34ba-a964-eab1a566a869",
+    "name": "image",
+    "label": "Background Image",
+    "required": false,
+    "locked": false,
+    "responsive": true,
+    "resizable": true,
+    "show_loading": false,
+    "type": "image",
+    "display_width": null,
+    "default": {
+      "size_type": "auto",
+      "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/wisp-case-study-hero-img.png",
+      "alt": "wisp-case-study-hero-img",
+      "loading": "lazy",
+      "width": 824,
+      "height": 824,
+      "max_width": 824,
+      "max_height": 824
+    }
+  }
+]

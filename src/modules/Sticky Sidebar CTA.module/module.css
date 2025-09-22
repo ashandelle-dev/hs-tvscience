@@ -1,0 +1,11 @@
+.sidebar-grid .sub-section {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-grid .sub-section > div {
+  top: var(--top, 0px);
+  position: sticky;
+  width: 100%;
+}
