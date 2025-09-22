@@ -9,9 +9,14 @@
 {% text "summary" label='Summary', export_to_template_context=True %}
 {% image "card_image" label='Card Image', export_to_template_context=True %}
 {% choice "layout" label='Layout', choices=[["layout-a","Layout A"],["layout-b","Layout B"]], multiple='False', display='radio',export_to_template_context=True %}
+{% choice "gated" label='Gated Post', choices=[["yes","Yes"],["no","No"]], multiple='False', display='radio',export_to_template_context=True %}
 {% if content.widgets.layout.body.value %}
   {% set page_layout = content.widgets.layout.body.value %}
 {% endif %}
+{% if content.widgets.gated.body.value %}
+  {% set gated = content.widgets.gated.body.value %}
+{% endif %}
+
 {% block body %}
 
 {% if page_layout == "layout-a" or page_layout is none%}
@@ -279,6 +284,132 @@
         transform: translateX(-50%);
         
     }
+
+    #footer-cta {
+      background: url(https://www.tvscientific.com/hubfs/go-works-background.jpg) no-repeat top center/cover;
+    }
+
+    #footer-cta .hs-image-widget {
+      margin: 0;
+    }
+
+    #gated-form {
+      background: url(https://www.tvscientific.com/hubfs/Gated%20Content%20Moda%20background.webp) no-repeat top center/cover;
+      backdrop-filter: blur(4px);
+    }
+
+    form {
+    display: flex;
+    margin: 0 auto !important;
+  }
+  
+  @media screen and (max-width: 440px) {
+    form {
+      width: 100%;
+      flex-direction: column;
+    }
+  }
+  
+  form label {
+    display: none !important;
+  }
+  form fieldset:first-child {
+    flex: 1;
+  }
+  
+  [data-hsfc-id=Renderer] .hsfc-TextInput {
+    border-radius: 8px !important;
+    border: 2px solid #23E596 !important;
+  }
+  
+  [data-hsfc-id=Renderer] .hsfc-Step .hsfc-Step__Content {
+    padding: 0 !important;
+  }
+  
+  [data-hsfc-id=Renderer] .hsfc-NavigationRow {
+    margin-top: 0 !important;
+  }
+  
+  .hsfc-Step:nth-child(2) .hsfc-Step__Content {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .hsfc-Step:nth-child(2) .hsfc-Step__Content .hsfc-Row:first-child, .hsfc-Step:nth-child(2) .hsfc-Step__Content .hsfc-Row:nth-child(2) {
+    width: 50%;
+  }
+  
+  .hsfc-Step:nth-child(2) .hsfc-Step__Content .hsfc-Row:first-child {
+    padding-right: 16px;
+  }
+  
+  @media screen and (max-width: 769px) {
+    .hsfc-Step:nth-child(2) .hsfc-Step__Content .hsfc-Row:first-child {
+      padding-right: 8px;
+    }
+  }
+  
+  .hsfc-Step:nth-child(2) .hsfc-Step__Content .hsfc-Row:nth-child(2) {
+    padding-left: 16px;
+  }
+  
+  @media screen and (max-width: 769px) {
+    .hsfc-Step:nth-child(2) .hsfc-Step__Content .hsfc-Row:nth-child(2) {
+      padding-left: 8px;
+    }
+  }
+  
+  .hsfc-NavigationRow {
+    width: 100%;
+  }
+  
+  .hsfc-Step:nth-child(2) .hsfc-NavigationRow .hsfc-Button:first-child {
+    background-color: transparent;
+    color: #23E596;
+    padding: 0;
+  }
+  
+  .hsfc-Step:nth-child(2) .hsfc-NavigationRow .hsfc-Button:first-child:before {
+    display: inline-block;
+    vertical-align: middle;
+  content: '';
+    background: url(https://www.tvscientific.com/hubfs/2025%20Holiday%20Campaign/small-arrow.svg) no-repeat center center / cover;
+    width: 24px;
+    height: 24px;
+    transform: rotate(180deg);
+  }
+  .hsfc-Step:nth-child(2) .hsfc-NavigationRow .hsfc-Button:first-child:hover:before {
+    transform: rotate(180deg) translateX(0.125rem);
+  }
+  
+  @media screen and (max-width: 769px) {
+    [data-hsfc-id=Renderer] .hsfc-Row {
+      margin-bottom: 10px !important;
+    }
+    
+    [data-hsfc-id=Renderer] .hsfc-NavigationRow__Alerts {
+      margin-bottom: 10px !important;
+    }
+  }
+  
+  form .hs-button, form input[type=submit] {
+    border-radius: 0px 6px 6px 0px;
+    background: #23E596;
+    color: #0F2D29;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 14px 32px;
+  }
+  
+  @media screen and (max-width: 440px) {
+    form .hs-button, form input[type=submit] {
+      border-radius: 6px;
+    }
+  }
+  
 </style>
 <main>
   {% if content.widgets.hero_image.body.src %}
@@ -344,10 +475,9 @@
        </div>
     </div>
     <div class="w-full md:w-3/4">
-    
 
     {# Blog post #}
-    <article class="js-reading-content">
+      <article class="js-reading-content">
 
         
 
@@ -373,13 +503,44 @@
     
     {# End blog post #}
 
-
+    </div>
   </div>
   </div>
-  </div>
-</div>
 </section>
+<section id="footer-cta" class="py-20">
+  <div class="max-w-[800px] mx-auto">
+    {% module "footer_image" path="@hubspot/linked_image", label="Footer Image", extra_classes="text-left" %}
+    {% module "footer_cta_text" path="@hubspot/rich_text", label="Footer CTA Text", html="<h2 class='text-white'>Need a hand with the checklist?</h2><p class='text-white'>We built tvScientific to check every box. And then some. Connect with our team for a personalized demo and answers to all your questions</p>" %}
+    {% module "buttons_footer_cta" path="/tvScientific 2022 Atlas Pro/cli-build/modules/custom-button-row.module", label="Footer CTA Buttons" %}
+  </div>
+</section>
+
 </main>
+{% if gated == 'yes' %}
+<section id="gated-form" class="py-[120px] border border-t border-[#D9E2EB]">
+  <div class="max-w-[800px] mx-auto">
+    {% module "gated_text" path="@hubspot/rich_text", label="Gate Form Text", html="<h2 class='text-center'>The Rise of Performance TV</h2><p class='text-center'>Sign up below to get the full report.</p>" %}
+    {% module "gated_form" path="@hubspot/form", label="form.module" %}
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    let newHeight = document.querySelector('#break').offsetTop;
+    let container = document.querySelector('main');
+    let gatedForm = document.querySelector('#gated-form');
+    let formHeight = gatedForm.offsetHeight;
+    container.style.height = newHeight+'px';
+    container.style.overflow = 'hidden';
+    gatedForm.style.marginTop = '-'+formHeight+'px';
+    window.addEventListener('hs-form-event:on-submission:success', (event) => {
+      container.removeAttribute('style');
+      gatedForm.style.display = 'none';
+    });
+  });
+
+</script>
+{% endif %}
 
 <script>
   
