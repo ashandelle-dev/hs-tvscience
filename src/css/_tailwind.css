@@ -21,19 +21,3 @@
 @tailwind components;
 
 @tailwind utilities;
-
-@layer components {
-    .heading-xxl {
-        @apply font-bold;
-        font-family: "Bricolage Grotesque";
-        font-size: clamp(40px, 5vw + 20px, 80px);
-        line-height: 1;
-    }
-
-    .heading-xl {
-        @apply font-semibold;
-        font-family: "Bricolage Grotesque";
-        font-size: clamp(32px, 4vw + 16px, 60px);
-        line-height: clamp(125%, 0.3vw + 112%, 120%);
-    }
-}
