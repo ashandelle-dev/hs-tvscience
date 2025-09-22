@@ -5,3 +5,43 @@
     } 
   }
 }
+
+.heading-xxl {
+    @apply font-bold;
+    font-family: BricolageGrotesque;
+    font-size: clamp(2.5rem, 1.4rem + 3.67vw, 3.75rem) !important;
+    line-height: 1;
+}
+
+.heading-xl {
+    @apply font-semibold;
+    font-family: "Bricolage Grotesque";
+    font-size: clamp(2.25rem, 0.93rem + 4.4vw, 3.75rem) !important;
+    line-height: clamp(2.81rem, 1.33rem + 4.95vw, 4.5rem) !important;
+}
+.heading-l {
+    @apply font-semibold;
+    font-family: "Bricolage Grotesque";
+    font-size: clamp(2rem, 1.12rem + 2.94vw, 3rem) !important;
+    line-height: clamp(2.63rem, 1.74rem + 2.94vw, 3.63rem) !important;
+}
+
+@media screen and (max-width: 768px) {
+    .heading-l {
+        letter-spacing: -0.4px;
+    }
+}
+
+.heading-m {
+    @apply font-medium;
+    font-family: "Bricolate Grotesque";
+    font-size: clamp(1.5rem, 1.06rem + 1.47vw, 2rem) !important;
+    line-height: clamp(2rem, 1.56rem + 1.47vw, 2.5rem) !important;
+}
+
+@media screen and (max-width: 768px) {
+    .heading-m {
+        @apply font-normal;
+        letter-spacing: 1px;
+    }
+}
