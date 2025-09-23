@@ -1,7 +1,6 @@
 [ {
   "id" : "62b92115-2b20-d80f-1de1-5443461459a0",
   "name" : "menu_item",
-  "display_width" : null,
   "label" : "Menu Item",
   "required" : false,
   "locked" : true,
@@ -14,24 +13,22 @@
   "children" : [ {
     "id" : "3cfe1126-2429-9451-49b7-2e92d19ecf7f",
     "name" : "title",
-    "display_width" : null,
     "label" : "Title",
     "required" : false,
     "locked" : false,
-    "validation_regex" : "",
     "allow_new_line" : false,
-    "show_emoji_picker" : false,
-    "type" : "text"
+    "type" : "text",
+    "display_width" : null
   }, {
     "id" : "ba828f44-8898-5586-3d91-d68b239b0b37",
     "name" : "link",
-    "display_width" : null,
     "label" : "Link",
     "required" : false,
     "locked" : false,
     "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION", "PHONE_NUMBER", "WHATSAPP_NUMBER", "PAYMENT" ],
     "show_advanced_rel_options" : false,
     "type" : "link",
+    "display_width" : null,
     "default" : {
       "url" : {
         "content_id" : null,
@@ -44,48 +41,45 @@
   }, {
     "id" : "1f3b8cac-38ec-089f-85ec-1881b6a2193b",
     "name" : "dropdown_label",
-    "display_width" : null,
     "label" : "Dropdown Label",
     "required" : false,
     "locked" : false,
-    "validation_regex" : "",
     "allow_new_line" : false,
-    "show_emoji_picker" : false,
-    "type" : "text"
+    "type" : "text",
+    "display_width" : null
   }, {
     "id" : "668f5b87-3be0-568d-201b-fd0f94d93fb0",
     "name" : "as_rows",
-    "display_width" : null,
     "label" : "Dropdown as Rows?",
     "required" : false,
     "locked" : false,
     "display" : "toggle",
     "type" : "boolean",
+    "display_width" : null,
     "default" : false
   }, {
     "id" : "43c790c0-6842-f4a2-11ec-161994a0a266",
     "name" : "large_dropdown",
-    "display_width" : null,
     "label" : "Large Dropdown",
     "required" : false,
     "locked" : false,
     "display" : "toggle",
     "type" : "boolean",
+    "display_width" : null,
     "default" : false
   }, {
     "id" : "9b2193b8-b3a4-f96a-3eae-5a39ce570e6c",
     "name" : "has_blog",
-    "display_width" : null,
     "label" : "Dropdown Has Latest Blogs?",
     "required" : false,
     "locked" : false,
     "display" : "toggle",
     "type" : "boolean",
+    "display_width" : null,
     "default" : false
   }, {
     "id" : "58a6d52f-4f4d-be57-81da-57b832e9c888",
     "name" : "dropdown",
-    "display_width" : null,
     "label" : "Dropdown Items",
     "required" : false,
     "locked" : false,
@@ -98,24 +92,22 @@
     "children" : [ {
       "id" : "6b98f5f1-8c3e-13e0-9fb6-3e9538bbd64c",
       "name" : "title",
-      "display_width" : null,
       "label" : "Title",
       "required" : false,
       "locked" : false,
-      "validation_regex" : "",
       "allow_new_line" : false,
-      "show_emoji_picker" : false,
-      "type" : "text"
+      "type" : "text",
+      "display_width" : null
     }, {
       "id" : "6474c846-1a00-547d-8ed3-ec4e6556bcca",
       "name" : "link",
-      "display_width" : null,
       "label" : "Link",
       "required" : false,
       "locked" : false,
       "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION", "PHONE_NUMBER", "WHATSAPP_NUMBER", "PAYMENT" ],
       "show_advanced_rel_options" : false,
       "type" : "link",
+      "display_width" : null,
       "default" : {
         "url" : {
           "content_id" : null,
@@ -128,7 +120,6 @@
     }, {
       "id" : "990715e0-d61f-a654-2ab9-db363b64e129",
       "name" : "icon",
-      "display_width" : null,
       "label" : "Icon",
       "required" : false,
       "locked" : false,
@@ -136,6 +127,7 @@
       "resizable" : true,
       "show_loading" : false,
       "type" : "image",
+      "display_width" : null,
       "default" : {
         "size_type" : "auto",
         "src" : "",
@@ -143,17 +135,21 @@
         "loading" : "lazy"
       }
     }, {
+      "id" : "menu_item.dropdown.is_featured",
       "name" : "is_featured",
       "label" : "Is Featured",
       "required" : false,
       "locked" : false,
-      "type" : "boolean",
       "display" : "toggle",
+      "type" : "boolean",
+      "display_width" : null,
       "default" : false
     } ],
     "tab" : "CONTENT",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
+    "display_width" : null,
     "default" : {
       "link" : {
         "url" : {
@@ -175,7 +171,9 @@
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
+  "display_width" : null,
   "default" : {
     "link" : {
       "url" : {

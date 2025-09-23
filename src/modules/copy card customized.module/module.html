@@ -1,0 +1,57 @@
+<!-- module html  -->
+{% set href = module.card_cta.link.url.href %}
+{% if module.card_cta.link.url.type is equalto "EMAIL_ADDRESS" %}
+  {% set href = "mailto:" + href %}
+{% endif %}
+
+
+ {% set link_el = '<div class="flex relative items-center">
+  <div>
+    <p class="m-0 text-[14px] font-plex-mono tracking-widest text-[#009061] uppercase ">{{ module.card_cta.text }}</p>
+  </div>
+  <div class="w-4 text-center group-hover:translate-x-0.5 duration-200 transition-transform">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M7 5L10 8L7 11" stroke="#009061" stroke-width="1.5"/>
+    </svg>    
+  </div>
+ </div>'
+ %}
+{% set bottom = module.style.thumbnail_on_bottom %}
+{% set left = module.style.thumbnail_on_left %}
+{% set right = module.style.thumbnail_on_right %}
+
+{% set layout_class = "flex-col" %}
+{% if bottom %}
+  {% set layout_class = "flex-col-reverse" %}
+{% endif %}
+{% if left %}
+  {% set layout_class = "flex-row" %}
+{% endif %}
+{% if right %}
+  {% set layout_class = "flex-row-reverse" %}
+{% endif %}
+
+<div class="rounded-lg overflow-hidden border relative hover:shadow-lg transition-shadow duration-200" style="border-color: {% if module.style.border_color %}{{ module.style.border_color.hex }}{% else %}#009061{% endif %};">
+<a href="{{ href }}"
+{% if module.card_cta.link.open_in_new_tab %}target="_blank"{% endif %}
+{% if module.card_btn.link.rel %}rel="{{ module.card_cta.link.rel }}"{% endif %} class="flex {{ layout_class }} group hover:no-underline">
+  <div class="">
+    {% if module.card_thumbnail.src %}
+    {% set sizeAttrs = 'width="{{ module.card_thumbnail.width }}" height="{{ module.card_thumbnail.height }}"' %}
+    {% if module.card_thumbnail.size_type == 'auto' %}
+      {% set sizeAttrs = 'width="{{ module.card_thumbnail.width }}" height="{{ module.card_thumbnail.height }}" style="max-width: 100%; height: auto;"' %}
+    {% elif module.card_thumbnail.size_type == 'auto_custom_max' %}
+      {% set sizeAttrs = 'width="{{ module.card_thumbnail.max_width }}" height="{{ module.card_thumbnail.max_height }}" style="max-width: 100%; height: auto;"' %}
+    {% endif %}
+      {% set loadingAttr = module.card_thumbnail.loading != 'disabled' ? 'loading="{{ module.card_thumbnail.loading }}"' : '' %}
+    <img class="w-full h-full object-cover" src="{{ module.card_thumbnail.src }}" alt="{{ module.card_thumbnail.alt }}" {{ loadingAttr }}>
+    {% endif %}
+
+  </div>
+  <div  class="p-6 bg-white relative">
+    {{module.card_content}}
+   
+  </div>
+  
+</div>
+</a>

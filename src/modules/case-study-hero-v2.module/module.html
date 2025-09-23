@@ -1,0 +1,55 @@
+<!-- module html  -->
+<div class="relative py-[24px] md:py-[100px] z-0 ">
+  <div class="container grid grid-cols-1 lg:grid-cols-2 gap-10">
+    <div class="w-full">
+      <div class="px-5">
+        <div class="flex items-center pl-[24px] lg:pl-[40px] mb-6">
+          <div class="py-2">
+            <a href="/customers/" class="m-0 text-[#0FBF84] text-[14px] uppercase tracking-widest font-bold">{{ module.label_text }}</a>
+          </div>
+          <div class=" h-full  w-[1px] bg-[#0FBF84]  mx-6">
+            &nbsp;
+          </div>
+          <div class="w-24">
+            {% if module.logo.src %}
+            {% set sizeAttrs = 'width="{{ module.logo.width }}" height="{{ module.logo.height }}"' %}
+            {% if module.logo.size_type == 'auto' %}
+              {% set sizeAttrs = 'width="{{ module.logo.width }}" height="{{ module.logo.height }}" style="max-width: 100%; height: auto;"' %}
+            {% elif module.logo.size_type == 'auto_custom_max' %}
+              {% set sizeAttrs = 'width="{{ module.logo.max_width }}" height="{{ module.logo.max_height }}" style="max-width: 100%; height: auto;"' %}
+            {% endif %}
+            {% set loadingAttr = module.logo.loading != 'disabled' ? 'loading="{{ module.logo.loading }}"' : '' %}
+            <img src="{{ module.logo.src }}" alt="{{ module.logo.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+          {% endif %}
+
+          </div>
+        </div>
+        <div class="border-l-4 border-[#0FBF84] pl-[24px] lg:pl-[40px]">
+          <h1 class="text-white lg:!text-[50px]">
+            {{ module.h1 }}
+          </h1>
+
+        </div>
+        <div class="pl-[24px] lg:pl-[40px]">
+          <p class="text-[18px] text-white">
+            {{ module.paragraph }}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="w-full relative ">
+      <div class="flex items-center justify-center w-full h-full inset-0 cs-hero-bg">
+        {% if module.image.src %}
+        {% set sizeAttrs = 'width="{{ module.image.width }}" height="{{ module.image.height }}"' %}
+        {% if module.image.size_type == 'auto' %}
+          {% set sizeAttrs = 'width="{{ module.image.width }}" height="{{ module.image.height }}" style="max-width: 100%; height: auto;"' %}
+        {% elif module.image.size_type == 'auto_custom_max' %}
+          {% set sizeAttrs = 'width="{{ module.image.max_width }}" height="{{ module.image.max_height }}" style="max-width: 100%; height: auto;"' %}
+        {% endif %}
+        {% set loadingAttr = module.image.loading != 'disabled' ? 'loading="{{ module.image.loading }}"' : '' %}
+        <img src="{{ module.image.src }}" alt="{{ module.image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

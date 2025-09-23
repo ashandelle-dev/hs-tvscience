@@ -12,9 +12,9 @@
   "global" : false,
   "content_types" : [ "LANDING_PAGE", "SITE_PAGE" ],
   "categories" : [ "functionality" ],
-  "icon" : "../../../../tvScientific%202022%20Atlas%20Pro/cli-build/modules/img/icon/edited-search-1.svg",
   "host_template_types" : [ "PAGE" ],
   "module_id" : 123770959428,
   "label" : "Search",
+  "icon" : "../../../../tvScientific%202022%20Atlas%20Pro/cli-build/modules/img/icon/edited-search-1.svg",
   "is_available_for_new_content" : true
 }

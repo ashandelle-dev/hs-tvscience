@@ -1,9 +1,9 @@
 {
   "global" : false,
   "content_types" : [ "LANDING_PAGE", "SITE_PAGE" ],
-  "icon" : "https://f.hubspotusercontent30.net/hubfs/8823337/Logo%20Slider.svg",
   "host_template_types" : [ "PAGE" ],
   "module_id" : 114934154334,
   "label" : "Logo Carousel",
+  "icon" : "https://f.hubspotusercontent30.net/hubfs/8823337/Logo%20Slider.svg",
   "is_available_for_new_content" : true
 }

@@ -1,19 +1,16 @@
 [ {
   "id" : "03de3b5e-6922-76b3-81b6-c260df73c3fe",
   "name" : "subheading",
-  "display_width" : null,
   "label" : "subheading",
   "required" : false,
   "locked" : false,
-  "validation_regex" : "",
   "allow_new_line" : false,
-  "show_emoji_picker" : false,
   "type" : "text",
+  "display_width" : null,
   "default" : "Retail Ads"
 }, {
   "id" : "3409db22-cdc6-bad7-fcb5-9dd8b7e404c3",
   "name" : "subheading_placement",
-  "display_width" : null,
   "label" : "Subheading placement",
   "required" : false,
   "locked" : false,
@@ -23,30 +20,27 @@
   "reordering_enabled" : true,
   "preset" : null,
   "type" : "choice",
+  "display_width" : null,
   "default" : "above_title"
 }, {
   "id" : "b5bf52e5-57f3-fe90-d11f-2e83a07fdca4",
   "name" : "content",
-  "display_width" : null,
   "label" : "Content",
   "required" : false,
   "locked" : false,
-  "validation_regex" : "",
   "allow_new_line" : false,
-  "show_emoji_picker" : false,
   "type" : "text",
+  "display_width" : null,
   "default" : "TV advertising that actually boosts reach, lift, and ROAS"
 }, {
   "id" : "15d6ee97-b2c8-9961-b499-4c99ab373f4a",
   "name" : "style",
-  "display_width" : null,
   "label" : "Style",
   "required" : false,
   "locked" : false,
   "children" : [ {
     "id" : "97cd62ea-d468-35ea-c153-cc954c9bb8c9",
     "name" : "container_width",
-    "display_width" : null,
     "label" : "Container Width",
     "required" : false,
     "locked" : false,
@@ -54,18 +48,20 @@
     "step" : 1,
     "suffix" : "px",
     "type" : "number",
+    "display_width" : null,
     "default" : 1100
   } ],
   "tab" : "STYLE",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
+  "display_width" : null,
   "default" : {
     "container_width" : 1100
   }
 }, {
   "id" : "9c8fbaec-1eeb-34af-2de7-b9210fa17b68",
   "name" : "cta",
-  "display_width" : null,
   "label" : "CTA",
   "required" : false,
   "locked" : false,
@@ -78,7 +74,6 @@
   "children" : [ {
     "id" : "bd023e80-04bc-91f4-9b25-5f7eabad46e7",
     "name" : "button_style",
-    "display_width" : null,
     "label" : "Button Style",
     "required" : true,
     "locked" : false,
@@ -88,29 +83,28 @@
     "reordering_enabled" : true,
     "preset" : null,
     "type" : "choice",
+    "display_width" : null,
     "default" : "primary"
   }, {
     "id" : "4529e8a5-eb04-1076-c02c-d0122dbe4716",
     "name" : "button_text",
-    "display_width" : null,
     "label" : "Button Text",
     "required" : false,
     "locked" : false,
-    "validation_regex" : "",
     "allow_new_line" : false,
-    "show_emoji_picker" : false,
     "type" : "text",
+    "display_width" : null,
     "default" : "Request a demo"
   }, {
     "id" : "1ff41df4-7ed4-7751-b49a-40f7a373452d",
     "name" : "link",
-    "display_width" : null,
     "label" : "Link",
     "required" : false,
     "locked" : false,
     "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION", "PHONE_NUMBER", "WHATSAPP_NUMBER", "PAYMENT" ],
     "show_advanced_rel_options" : false,
     "type" : "link",
+    "display_width" : null,
     "default" : {
       "url" : {
         "content_id" : null,
@@ -123,12 +117,13 @@
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
+  "display_width" : null,
   "default" : [ ]
 }, {
   "id" : "430c41b7-9f11-aa0d-c5f3-b2cd84a405a3",
   "name" : "background",
-  "display_width" : null,
   "label" : "Background Type",
   "required" : true,
   "locked" : false,
@@ -138,11 +133,11 @@
   "reordering_enabled" : true,
   "preset" : null,
   "type" : "choice",
+  "display_width" : null,
   "default" : "color"
 }, {
   "id" : "b69294cf-8eca-9b2b-b0f3-34afce85181a",
   "name" : "background_color",
-  "display_width" : null,
   "label" : "Background Color",
   "required" : false,
   "locked" : false,
@@ -155,6 +150,7 @@
     "access" : null
   },
   "type" : "color",
+  "display_width" : null,
   "default" : {
     "color" : null,
     "opacity" : 100
@@ -162,7 +158,6 @@
 }, {
   "id" : "301db604-8f34-6909-fe69-ad565e64673f",
   "name" : "background_image",
-  "display_width" : null,
   "label" : "Background Image",
   "required" : false,
   "locked" : false,
@@ -178,6 +173,7 @@
   "resizable" : true,
   "show_loading" : false,
   "type" : "image",
+  "display_width" : null,
   "default" : {
     "size_type" : "auto",
     "src" : "",
@@ -187,7 +183,6 @@
 }, {
   "id" : "226a29c8-890a-e11b-3bf7-982d32f6c24e",
   "name" : "background_video",
-  "display_width" : null,
   "label" : "Background Video",
   "required" : false,
   "locked" : false,
@@ -202,12 +197,12 @@
   "resizable" : true,
   "show_preview" : true,
   "show_advanced_options" : false,
-  "type" : "videoplayer"
+  "type" : "videoplayer",
+  "display_width" : null
 }, {
   "picker" : "video",
   "id" : "8bfdb538-afb9-6ea7-8568-42c13a113957",
   "name" : "desktop_video",
-  "display_width" : null,
   "label" : "Desktop Video",
   "required" : false,
   "locked" : false,
@@ -219,20 +214,20 @@
     "operator" : "EQUAL",
     "access" : null
   },
-  "type" : "file"
+  "type" : "file",
+  "display_width" : null
 }, {
   "picker" : "video",
   "id" : "be2429be-625e-c44c-a881-a6aa90e4d93d",
   "name" : "mobile_video",
-  "display_width" : null,
   "label" : "Mobile Video",
   "required" : false,
   "locked" : false,
-  "type" : "file"
+  "type" : "file",
+  "display_width" : null
 }, {
   "id" : "7e22946f-87ac-49af-b268-e3716437e55b",
   "name" : "video_poster_image_desktop",
-  "display_width" : null,
   "label" : "Video Poster Image Desktop",
   "required" : false,
   "locked" : false,
@@ -248,6 +243,7 @@
   "resizable" : false,
   "show_loading" : false,
   "type" : "image",
+  "display_width" : null,
   "default" : {
     "size_type" : "auto",
     "src" : "",
@@ -257,7 +253,6 @@
 }, {
   "id" : "49269739-3575-c69d-45d9-f9903bbbd901",
   "name" : "video_poster_image_mobile",
-  "display_width" : null,
   "label" : "Video Poster Image Mobile",
   "required" : false,
   "locked" : false,
@@ -273,6 +268,7 @@
   "resizable" : false,
   "show_loading" : false,
   "type" : "image",
+  "display_width" : null,
   "default" : {
     "size_type" : "auto",
     "src" : "",

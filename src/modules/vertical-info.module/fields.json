@@ -1,19 +1,16 @@
 [ {
   "id" : "1bb5201c-9ce5-254b-e129-7685fb3aa899",
   "name" : "vi_header",
-  "display_width" : null,
   "label" : "Header",
   "required" : false,
   "locked" : false,
-  "validation_regex" : "",
   "allow_new_line" : false,
-  "show_emoji_picker" : false,
   "type" : "text",
+  "display_width" : null,
   "default" : "Build, optimize, and prove the actual value of your CTV advertising campaigns"
 }, {
   "id" : "1668893a-1bf7-ecc7-15f7-6cc66a4e1f05",
   "name" : "vi_rows",
-  "display_width" : null,
   "label" : "Rows",
   "required" : false,
   "locked" : false,
@@ -26,7 +23,6 @@
   "children" : [ {
     "id" : "9eade298-f9ec-4e6a-6853-41a46304ea94",
     "name" : "image_field",
-    "display_width" : null,
     "label" : "Image",
     "required" : false,
     "locked" : false,
@@ -34,6 +30,7 @@
     "resizable" : true,
     "show_loading" : false,
     "type" : "image",
+    "display_width" : null,
     "default" : {
       "size_type" : "auto",
       "src" : "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/launch-optimize-ads.png",
@@ -47,44 +44,39 @@
   }, {
     "id" : "87e6c919-ec9d-36ae-6711-bdc0ff54c364",
     "name" : "header",
-    "display_width" : null,
     "label" : "Header",
     "required" : false,
     "locked" : false,
-    "validation_regex" : "",
     "allow_new_line" : false,
-    "show_emoji_picker" : false,
     "type" : "text",
+    "display_width" : null,
     "default" : "Target the right audience, at the right time"
   }, {
     "id" : "bf287c4a-2ef6-44d0-2679-911f82423571",
     "name" : "paragraph",
-    "display_width" : null,
     "label" : "Paragraph",
     "required" : false,
     "locked" : false,
-    "validation_regex" : "",
     "allow_new_line" : false,
-    "show_emoji_picker" : false,
     "type" : "text",
+    "display_width" : null,
     "default" : "Take back control of your targeting tactics. With 15,000+ unique targeting segments, tvScientific helps you precisely reach the right people based on behaviors, interests, geography, and more."
   }, {
     "id" : "e9b815b2-7528-4502-8d00-92c690594f03",
     "name" : "cta",
-    "display_width" : null,
     "label" : "CTA",
     "required" : false,
     "locked" : false,
     "children" : [ {
       "id" : "99b8bf2a-aeec-ba44-0f76-eec7d3937afd",
       "name" : "link",
-      "display_width" : null,
       "label" : "Link",
       "required" : false,
       "locked" : false,
       "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION", "PHONE_NUMBER", "WHATSAPP_NUMBER" ],
       "show_advanced_rel_options" : false,
       "type" : "link",
+      "display_width" : null,
       "default" : {
         "url" : {
           "content_id" : null,
@@ -97,19 +89,19 @@
     }, {
       "id" : "05d5b49e-4999-35ac-5741-3e30f65d9f7b",
       "name" : "text",
-      "display_width" : null,
       "label" : "Text",
       "required" : false,
       "locked" : false,
-      "validation_regex" : "",
       "allow_new_line" : false,
-      "show_emoji_picker" : false,
       "type" : "text",
+      "display_width" : null,
       "default" : "Learn more"
     } ],
     "tab" : "CONTENT",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
+    "display_width" : null,
     "default" : {
       "link" : {
         "url" : {
@@ -125,7 +117,9 @@
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
+  "display_width" : null,
   "default" : {
     "image_field" : {
       "size_type" : "auto",

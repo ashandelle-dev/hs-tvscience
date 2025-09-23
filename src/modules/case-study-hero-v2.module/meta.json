@@ -1,0 +1,8 @@
+{
+  "global" : false,
+  "content_types" : [ "LANDING_PAGE", "SITE_PAGE" ],
+  "host_template_types" : [ "PAGE" ],
+  "module_id" : 118559900188,
+  "label" : "Case Study Hero v2",
+  "is_available_for_new_content" : true
+}

@@ -1,0 +1,297 @@
+<!--
+    templateType: page
+    label: DND Multi Column New Nav
+    isAvailableForNewContent: true
+-->
+{% extends "../layouts/base.html" %}
+{% block header %}
+{% global_partial path="../partials/header.html" %}
+{% require_css %}
+<style>
+  @font-face {
+    font-family: 'BricolageGrotesque';
+    src: url(https://www.tvscientific.com/hubfs/fonts/BricolageGrotesque-VariableFont.ttf);
+  }
+  @font-face {
+    font-family: 'Rubik';
+    src: url(https://www.tvscientific.com/hubfs/fonts/Rubik-VariableFont.ttf);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body .multi-column-new-nav {
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 150%;
+  }
+
+  main h1, main h2, main h3,
+  main h4, main h5, main h6,
+  main .h1, main .h2, main .h3,
+  main .h4, main .h5, main .h6 {
+    font-family: BricolageGrotesque !important;
+  }
+  .body-wrapper {
+    overflow-x: initial !important;
+  }
+  .container-fluid.dnd-empty.sub-section .dnd-section,
+  .container-fluid.dnd-empty.sub-section .content-wrapper--vertical-spacing,
+  .container-fluid.dnd-empty.sub-section .span12.dnd-column {
+      padding: 0;
+  }
+
+  /* Remove unwanted padding from grid sections */
+  .dnd-section {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+    overflow: initial !important;
+  }
+
+  .row-fluid {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* CSS Grid for two-column layout - cleaner approach */
+  .two-column-grid {
+    display: grid;
+    grid-template-areas: "sidebar main";
+    grid-template-columns: 306px 1fr;
+    margin: 0 auto;
+    column-gap: 48px;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  .sidebar-grid {
+    grid-area: sidebar;
+  }
+
+  .main-content-grid {
+    grid-area: main;
+    max-width: 910px;
+  }
+
+  /* Responsive behavior */
+  @media (max-width: 993px) {
+    .two-column-grid {
+      grid-template-areas:
+        "sidebar"
+        "main";
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .sidebar-grid {
+      grid-area: sidebar;
+    }
+
+    .main-content-grid {
+      grid-area: main;
+      max-width: none;
+    }
+  }
+
+  .reading-progressbar {
+  width: 100%;
+  height: 16px;
+  color: #23E596;
+  pointer-events: none;
+  transition: -webkit-transform 0.2s;
+  transition: transform 0.2s;
+  transition: transform 0.2s, -webkit-transform 0.2s;
+  z-index: 2;
+}
+
+.reading-progressbar--is-out {
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+}
+
+.reading-progressbar::-webkit-progress-bar {
+  background-color: #D9E2EB;
+}
+
+.reading-progressbar::-webkit-progress-value {
+  background-color: currentColor;
+}
+
+.reading-progressbar::-moz-progress-bar {
+  background-color: currentColor;
+}
+
+.reading-progressbar__fallback {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background-color: currentColor;
+}
+
+  .progress-dot {
+    position: absolute;
+    width: 16px; /* Size of the dot */
+    height: 16px;
+    background-color: #198960; /* Color of the dot */
+    border-radius: 50%;
+    top: 0; /* Center vertically */
+    transform: translateX(-50%);
+  }
+</style>
+{% end_require_css %}
+{% endblock header %}
+
+
+{% block body %}
+<main class="multi-column-new-nav">
+  <!-- Hero/Header section -->
+  <header class="w-full">
+    {% dnd_area "dnd_area" class='dnd-empty', label='Hero Section' %}
+
+
+    {% end_dnd_area %}
+  </header>
+
+  <div class="progress sticky top-0 z-[12] line-height-1 leading-none">
+    <div class="progress-dot"></div>
+      <progress aria-hidden="true" class="reading-progressbar js-reading-progressbar" max="100" value="0">
+      <div class="reading-progressbar__fallback js-reading-progressbar__fallback"></div>
+    </progress>
+  </div>
+  <!-- Main content section with sidebar -->
+  <div class="dnd-section js-reading-content">
+
+    <section class="two-column-grid row-fluid">
+      <aside class="sidebar-grid">
+        {% dnd_area "dnd_area_2" class='dnd-empty sub-section', label='Sidebar Content' %}
+
+
+        {% end_dnd_area %}
+      </aside>
+      <article class="main-content-grid text-primary-dark text-lg">
+        {% dnd_area "dnd_area_3" class='dnd-empty sub-section xl:pr-20', label='Main Content' %}
+
+
+        {% end_dnd_area %}
+      </article>
+    </section>
+  </div>
+
+  <!-- Footer/CTA section -->
+  <footer class="w-full">
+    {% dnd_area "dnd_area_4" class='dnd-empty', label='Footer Section' %}
+
+
+    {% end_dnd_area %}
+  </footer>
+</main>
+{% require_js %}
+  <script>
+    if(!Util) function Util () {};
+
+    Util.addClass = function(el, className) {
+      var classList = className.split(' ');
+      el.classList.add(classList[0]);
+      if (classList.length > 1) Util.addClass(el, classList.slice(1).join(' '));
+    };
+
+    Util.removeClass = function(el, className) {
+      var classList = className.split(' ');
+      el.classList.remove(classList[0]);
+      if (classList.length > 1) Util.removeClass(el, classList.slice(1).join(' '));
+    };
+
+    Util.toggleClass = function(el, className, bool) {
+      if(bool) Util.addClass(el, className);
+      else Util.removeClass(el, className);
+    };
+
+    // File#: _1_reading-progressbar
+    // Usage: codyhouse.co/license
+    (function() {
+      var readingIndicator = document.getElementsByClassName('js-reading-progressbar')[0],
+        readingIndicatorContent = document.getElementsByClassName('js-reading-content')[0];
+
+      if( readingIndicator && readingIndicatorContent) {
+        var progressInfo = [],
+          progressEvent = false,
+          progressFallback = readingIndicator.getElementsByClassName('js-reading-progressbar__fallback')[0],
+          progressIsSupported = 'value' in readingIndicator;
+
+        var boundingClientRect = readingIndicatorContent.getBoundingClientRect();
+
+        progressInfo['height'] = readingIndicatorContent.offsetHeight;
+        progressInfo['top'] = boundingClientRect.top;
+        progressInfo['bottom'] = boundingClientRect.bottom;
+        progressInfo['window'] = window.innerHeight;
+        progressInfo['class'] = 'reading-progressbar--is-active';
+        progressInfo['hideClass'] = 'reading-progressbar--is-out';
+
+        //init indicator
+        setProgressIndicator();
+        // wait for font to be loaded - reset progress bar
+        if(document.fonts) {
+          document.fonts.ready.then(function() {
+            triggerReset();
+          });
+        }
+        // listen to window resize - update progress
+        window.addEventListener('resize', function(event){
+          triggerReset();
+        });
+
+        //listen to the window scroll event - update progress
+        window.addEventListener('scroll', function(event){
+          if(progressEvent) return;
+          progressEvent = true;
+          (!window.requestAnimationFrame) ? setTimeout(function(){setProgressIndicator();}, 250) : window.requestAnimationFrame(setProgressIndicator);
+        });
+
+        function setProgressIndicator() {
+          var boundingClientRect = readingIndicatorContent.getBoundingClientRect();
+          progressInfo['top'] = boundingClientRect.top;
+          progressInfo['bottom'] = boundingClientRect.bottom;
+
+          if(progressInfo['height'] <= progressInfo['window']) {
+            // short content - hide progress indicator
+            Util.removeClass(readingIndicator, progressInfo['class']);
+            progressEvent = false;
+            return;
+          }
+          // get new progress and update element
+          Util.addClass(readingIndicator, progressInfo['class']);
+          var value = (progressInfo['top'] >= 0) ? 0 : 100*(0 - progressInfo['top'])/(progressInfo['height'] - progressInfo['window']);
+          readingIndicator.setAttribute('value', value);
+          if(value<=100){
+          if(!progressIsSupported && progressFallback) progressFallback.style.width = value+'%';
+          }
+          var progressDot = document.querySelector('.progress-dot');
+          if(value<=100){
+            progressDot.style.left = value+'%';
+          }
+          // hide progress bar when target is outside the viewport
+          Util.toggleClass(readingIndicator, progressInfo['hideClass'], progressInfo['bottom'] <= 0);
+          progressEvent = false;
+        };
+
+        function triggerReset() {
+          if(progressEvent) return;
+          progressEvent = true;
+          (!window.requestAnimationFrame) ? setTimeout(function(){resetProgressIndicator();}, 250) : window.requestAnimationFrame(resetProgressIndicator);
+        };
+
+        function resetProgressIndicator() {
+          progressInfo['height'] = readingIndicatorContent.offsetHeight;
+          progressInfo['window'] = window.innerHeight;
+          setProgressIndicator();
+        };
+      }
+    }());
+  </script>
+{% end_require_js %}
+
+{% endblock body %}

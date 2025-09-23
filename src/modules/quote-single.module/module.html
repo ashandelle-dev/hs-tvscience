@@ -1,0 +1,104 @@
+{% require_css %}
+
+<style>
+  {% scope_css %}
+  .quote-single {
+    background-color: {{ module.styles.background_color.css }};
+    color: {{ module.styles.text_color.css }};
+    {{ module.styles.padding.css }}
+  }
+  {% end_scope_css %}
+</style>
+
+{% end_require_css %}
+
+{% set custom_color = module.styles.text_color.css is truthy %}
+
+<div {% if module.custom_id %}id="{{module.custom_id}}"{% endif %} class="color-{{ custom_color }} flex flex-wrap items-stretch relative overflow-hidden">
+
+  <div class="quote-single">
+    <div class="md:hidden">
+
+      <div class="mb-6">
+        {% if module.logo.src %}
+          {% set sizeAttrs = 'width="{{ module.logo.width }}" height="{{ module.logo.height }}"' %}
+          {% if module.logo.size_type == 'auto' %}
+            {% set sizeAttrs = 'width="{{ module.logo.width }}" height="{{ module.logo.height }}" style="max-width: 100%; height: auto;"' %}
+          {% elif module.logo.size_type == 'auto_custom_max' %}
+            {% set sizeAttrs = 'width="{{ module.logo.max_width }}" height="{{ module.logo.max_height }}" style="max-width: 100%; height: auto;"' %}
+          {% endif %}
+          {% set loadingAttr = module.logo.loading != 'disabled' ? 'loading="{{ module.logo.loading }}"' : '' %}
+          <img class="m-0" src="{{ module.logo.src }}" alt="{{ module.logo.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+        {% endif %}
+      </div>
+      <div class="h-1 w-full {% if !custom_color %}bg-[#0FBF84] {% endif %} mb-6" {% if custom_color %}style="background-color: {{ module.styles.text_color.css }};"{% endif %}></div>
+      <div class="mb-6">
+        <p class="mb-3 text-[24px] leading-normal italic {% if custom_color %} text-inherit {% else %} text-[#1C4633] {% endif %}">
+          {{ module.qs_quote }}
+        </p>
+      </div>
+      <div class="flex items-center">
+        <div class="mobile-image w-1/3">
+          {% if module.headshot.src %}
+          {% set sizeAttrs = 'width="{{ module.headshot.width }}" height="{{ module.headshot.height }}"' %}
+          {% if module.headshot.size_type == 'auto' %}
+            {% set sizeAttrs = 'width="{{ module.headshot.width }}" height="{{ module.headshot.height }}" style="max-width: 100%; height: auto;"' %}
+          {% elif module.headshot.size_type == 'auto_custom_max' %}
+            {% set sizeAttrs = 'width="{{ module.headshot.max_width }}" height="{{ module.headshot.max_height }}" style="max-width: 100%; height: auto;"' %}
+          {% endif %}
+            {% set loadingAttr = module.headshot.loading != 'disabled' ? 'loading="{{ module.headshot.loading }}"' : '' %}
+          <img class="{% if module.round_headshot %} rounded-full {% endif %}" src="{{ module.headshot.src }}" alt="{{ module.headshot.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+        {% endif %}
+        </div>
+        <div class="w-2/3 px-6">
+
+          <p class="font-bold {% if custom_color %} text-inherit {% else %} text-[#438663] {% endif %} m-0">
+            {{ module.qs_name }}
+            </p>
+            <p class="m-0 {% if custom_color %} text-inherit {% else %} text-[#438663] {% endif %}">
+            {{ module.qs_title }}
+            </p>
+        </div>
+      </div>
+
+    </div>
+    <div class="inner-wrapper relative h-full hidden md:!block !visible">
+      <div class="content-row flex items-center">
+        <div class="content-image" style="min-width: {{ module.headshot.width }}px;">
+          {% if module.headshot.src %}
+          {% set sizeAttrs = 'width="{{ module.headshot.width }}" height="{{ module.headshot.height }}"' %}
+          {% if module.headshot.size_type == 'auto' %}
+            {% set sizeAttrs = 'width="{{ module.headshot.width }}" height="{{ module.headshot.height }}" style="max-width: 100%; height: auto;"' %}
+          {% elif module.headshot.size_type == 'auto_custom_max' %}
+            {% set sizeAttrs = 'width="{{ module.headshot.max_width }}" height="{{ module.headshot.max_height }}" style="max-width: 100%; height: auto;"' %}
+          {% endif %}
+            {% set loadingAttr = module.headshot.loading != 'disabled' ? 'loading="{{ module.headshot.loading }}"' : '' %}
+          <img class="{% if module.round_headshot %} rounded-full {% endif %}" src="{{ module.headshot.src }}" alt="{{ module.headshot.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+        {% endif %}
+        </div>
+        <div>
+          <div class="border-l-4 {% if !custom_color %} border-[#0FBF84] {% endif %} md:pl-10 md:ml-10" {% if custom_color %}style="border-color: {{ module.styles.text_color.css }};"{% endif %}>
+            <div>
+              <p class="content-body mb-3 text-[24px] md:text-[32px] lg:text-[36px] leading-tight italic {% if custom_color %} text-inherit {% else %} text-primary-darker {% endif %}">
+                {{ module.qs_quote }}
+                </p>
+            </div>
+            <div class="content-author flex flex-wrap lg:flex-nowrap relative">
+              <div class="w-full sm:w-6/12 mb-6 sm:mb-0">
+                <p class="font-bold text-2xl {% if custom_color %} text-inherit {% else %} text-[#438663] {% endif %} m-0">
+                  {{ module.qs_name }}
+                </p>
+                <p class="m-0 text-lg {% if custom_color %} text-inherit {% else %} text-[#438663] {% endif %}">
+                {{ module.qs_title }}
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>

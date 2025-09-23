@@ -1,7 +1,6 @@
 [ {
   "id" : "2a86805c-fca5-61f4-9d99-74bc65f447f9",
   "name" : "tso_texture_graphic",
-  "display_width" : null,
   "label" : "Texture Graphic",
   "required" : false,
   "locked" : false,
@@ -9,6 +8,7 @@
   "resizable" : true,
   "show_loading" : false,
   "type" : "image",
+  "display_width" : null,
   "default" : {
     "size_type" : "auto",
     "src" : "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/texture-graphic.png",
@@ -22,7 +22,6 @@
 }, {
   "id" : "39b52964-f9be-7729-f5ea-be7c217b7515",
   "name" : "texture_position",
-  "display_width" : null,
   "label" : "Texture Position",
   "required" : false,
   "locked" : false,
@@ -32,11 +31,11 @@
   "reordering_enabled" : true,
   "preset" : null,
   "type" : "choice",
+  "display_width" : null,
   "default" : "left"
 }, {
   "id" : "da5fc715-2618-1f73-a902-19d5a8529e06",
   "name" : "x_axis",
-  "display_width" : null,
   "label" : "X axis",
   "required" : false,
   "locked" : false,
@@ -45,11 +44,11 @@
   "max" : 100,
   "step" : 1,
   "type" : "number",
+  "display_width" : null,
   "default" : 0
 }, {
   "id" : "d79bb44c-1ce5-ad8f-23e6-aac2fea51e07",
   "name" : "y_axis",
-  "display_width" : null,
   "label" : "Y Axis",
   "required" : false,
   "locked" : false,
@@ -58,5 +57,6 @@
   "max" : 100,
   "step" : 1,
   "type" : "number",
+  "display_width" : null,
   "default" : -50
 } ]

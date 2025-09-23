@@ -1,7 +1,6 @@
 [ {
   "id" : "f87c4af5-bf91-5e6e-b9cd-ad6f2ad7b8c3",
   "name" : "left_icon",
-  "display_width" : null,
   "label" : "Left Icon",
   "required" : false,
   "locked" : false,
@@ -9,6 +8,7 @@
   "resizable" : true,
   "show_loading" : false,
   "type" : "image",
+  "display_width" : null,
   "default" : {
     "size_type" : "auto",
     "src" : "",
@@ -18,15 +18,14 @@
 }, {
   "id" : "33c8b841-c571-5cb2-0303-8a936a463f1f",
   "name" : "content",
-  "display_width" : null,
   "label" : "Content",
   "required" : false,
   "locked" : false,
-  "type" : "richtext"
+  "type" : "richtext",
+  "display_width" : null
 }, {
   "id" : "9fd0dae0-3d26-c18e-f571-daf16c008464",
   "name" : "right_icon",
-  "display_width" : null,
   "label" : "Right Icon",
   "required" : false,
   "locked" : false,
@@ -34,6 +33,7 @@
   "resizable" : true,
   "show_loading" : false,
   "type" : "image",
+  "display_width" : null,
   "default" : {
     "size_type" : "auto",
     "src" : "",
@@ -43,11 +43,11 @@
 }, {
   "id" : "4ffb5b34-b997-888e-e87d-06c148b65fbf",
   "name" : "text_color",
-  "display_width" : null,
   "label" : "Text Color",
   "required" : false,
   "locked" : false,
   "type" : "color",
+  "display_width" : null,
   "default" : {
     "color" : "#000",
     "opacity" : 100

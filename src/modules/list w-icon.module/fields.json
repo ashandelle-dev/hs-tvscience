@@ -1,7 +1,6 @@
 [ {
   "id" : "5547594c-995d-d2b5-2fda-0ec31e3adfdb",
   "name" : "item",
-  "display_width" : null,
   "label" : "Item",
   "required" : false,
   "locked" : false,
@@ -14,7 +13,6 @@
   "children" : [ {
     "id" : "6aa8c776-1d11-2e74-6eae-4a8c3a0b2893",
     "name" : "icon",
-    "display_width" : null,
     "label" : "Icon",
     "required" : false,
     "locked" : false,
@@ -22,6 +20,7 @@
     "resizable" : false,
     "show_loading" : false,
     "type" : "image",
+    "display_width" : null,
     "default" : {
       "size_type" : "exact",
       "src" : "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/Icons/a%20(1).svg",
@@ -35,16 +34,18 @@
   }, {
     "id" : "a53fcc79-e224-e3a6-b3de-6a73636c34f6",
     "name" : "description",
-    "display_width" : null,
     "label" : "Description",
     "required" : false,
     "locked" : false,
     "type" : "richtext",
+    "display_width" : null,
     "default" : "<span style=\"font-size: 16px;\">Lorem ipsum dolor sit amet, consectetur adipiscing</span>"
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
+  "display_width" : null,
   "default" : [ {
     "icon" : {
       "size_type" : "exact",
@@ -97,18 +98,17 @@
 }, {
   "id" : "3f81aa1c-d3cf-cb1f-9251-4b8272f22219",
   "name" : "style",
-  "display_width" : null,
   "label" : "Style",
   "required" : false,
   "locked" : false,
   "children" : [ {
     "id" : "cc622bcd-8594-72c1-8031-f9de7a8992e5",
     "name" : "background_color",
-    "display_width" : null,
     "label" : "Background Color",
     "required" : false,
     "locked" : false,
     "type" : "color",
+    "display_width" : null,
     "default" : {
       "color" : "#fff",
       "opacity" : 100
@@ -116,11 +116,11 @@
   }, {
     "id" : "7f94a11a-0938-ea9c-1697-472451b8618d",
     "name" : "spacing",
-    "display_width" : null,
     "label" : "Spacing",
     "required" : false,
     "locked" : false,
     "type" : "spacing",
+    "display_width" : null,
     "default" : {
       "padding" : {
         "top" : {
@@ -144,7 +144,6 @@
   }, {
     "id" : "dadd9bd6-a177-c9d9-a9a9-1f35a45ac865",
     "name" : "border_radius",
-    "display_width" : null,
     "label" : "Border Radius",
     "required" : false,
     "locked" : false,
@@ -152,11 +151,14 @@
     "step" : 1,
     "suffix" : "px",
     "type" : "number",
+    "display_width" : null,
     "default" : 10
   } ],
   "tab" : "STYLE",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
+  "display_width" : null,
   "default" : {
     "background_color" : {
       "color" : "#fff",

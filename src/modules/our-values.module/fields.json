@@ -1,7 +1,6 @@
 [ {
   "id" : "d5c1fc4a-5966-a6bd-985d-f639a588e148",
   "name" : "value",
-  "display_width" : null,
   "label" : "Value",
   "required" : false,
   "locked" : false,
@@ -14,7 +13,6 @@
   "children" : [ {
     "id" : "10c0d2a6-461c-1019-04a1-5e0a8e3b7134",
     "name" : "icon",
-    "display_width" : null,
     "label" : "Icon",
     "required" : false,
     "locked" : false,
@@ -22,6 +20,7 @@
     "resizable" : true,
     "show_loading" : false,
     "type" : "image",
+    "display_width" : null,
     "default" : {
       "size_type" : "auto",
       "src" : "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/Values_Data-Driven.svg",
@@ -35,31 +34,29 @@
   }, {
     "id" : "58bbaf79-f0fe-1a23-b6fa-833e72ef7e50",
     "name" : "title",
-    "display_width" : null,
     "label" : "Title",
     "required" : false,
     "locked" : false,
-    "validation_regex" : "",
     "allow_new_line" : false,
-    "show_emoji_picker" : false,
     "type" : "text",
+    "display_width" : null,
     "default" : "Big Thinkers"
   }, {
     "id" : "b350fe56-ccc2-daf9-81e5-da2680b8dcfe",
     "name" : "description",
-    "display_width" : null,
     "label" : "Description",
     "required" : false,
     "locked" : false,
-    "validation_regex" : "",
     "allow_new_line" : false,
-    "show_emoji_picker" : false,
     "type" : "text",
+    "display_width" : null,
     "default" : "We believe in setting audacious goals and envisioning transformative change."
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
+  "display_width" : null,
   "default" : {
     "icon" : {
       "size_type" : "auto",

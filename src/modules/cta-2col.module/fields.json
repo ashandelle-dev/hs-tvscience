@@ -1,14 +1,12 @@
 [ {
   "id" : "d56156d9-bd5d-f57e-ad45-9a1d5dcc2579",
   "name" : "first_column",
-  "display_width" : null,
   "label" : "First Column",
   "required" : false,
   "locked" : false,
   "children" : [ {
     "id" : "15c0be10-3235-651d-d1f8-95376f590044",
     "name" : "background_texture",
-    "display_width" : null,
     "label" : "Background Texture",
     "required" : false,
     "locked" : false,
@@ -16,6 +14,7 @@
     "resizable" : true,
     "show_loading" : false,
     "type" : "image",
+    "display_width" : null,
     "default" : {
       "size_type" : "auto",
       "src" : "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/cta-section-background-texture.png",
@@ -29,40 +28,35 @@
   }, {
     "id" : "81a35560-0fdd-2d2a-98e3-5ddf13fbe366",
     "name" : "cta_section_label",
-    "display_width" : null,
     "label" : "Label",
     "required" : false,
     "locked" : false,
-    "validation_regex" : "",
     "allow_new_line" : false,
-    "show_emoji_picker" : false,
     "type" : "text",
+    "display_width" : null,
     "default" : "Get Started Today"
   }, {
     "id" : "4223c266-d8aa-aa80-09fd-9e5013d1c2c7",
     "name" : "cta_section_header",
-    "display_width" : null,
     "label" : "Header",
     "required" : false,
     "locked" : false,
-    "validation_regex" : "",
     "allow_new_line" : false,
-    "show_emoji_picker" : false,
     "type" : "text",
+    "display_width" : null,
     "default" : "See how you can boost lift and ROAS with CTV"
   }, {
     "id" : "first_column.cta_section_text",
     "name" : "cta_section_text",
-    "display_width" : null,
     "label" : "Text",
     "required" : false,
     "locked" : false,
     "type" : "richtext",
+    "display_width" : null,
     "default" : ""
   }, {
     "id" : "cta_image",
     "name" : "cta_image",
-    "display_width" : null,
     "label" : "First Column CTA Image",
     "required" : false,
     "locked" : false,
@@ -70,6 +64,7 @@
     "resizable" : true,
     "show_loading" : false,
     "type" : "image",
+    "display_width" : null,
     "default" : {
       "size_type" : "auto",
       "src" : "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/cta-section-background-texture.png",
@@ -83,20 +78,19 @@
   }, {
     "id" : "06b134e1-8321-b8ec-0cc0-5e571816bc0f",
     "name" : "cta_section_button",
-    "display_width" : null,
     "label" : "Button",
     "required" : false,
     "locked" : false,
     "children" : [ {
       "id" : "d4ab65ab-2c0a-7f23-62c2-319da2c1b181",
       "name" : "link",
-      "display_width" : null,
       "label" : "Link",
       "required" : false,
       "locked" : false,
       "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION" ],
       "show_advanced_rel_options" : false,
       "type" : "link",
+      "display_width" : null,
       "default" : {
         "url" : {
           "content_id" : null,
@@ -109,19 +103,19 @@
     }, {
       "id" : "8b21961b-6e44-dbc6-f855-a63f1cba837e",
       "name" : "text",
-      "display_width" : null,
       "label" : "Button Text",
       "required" : false,
       "locked" : false,
-      "validation_regex" : "",
       "allow_new_line" : false,
-      "show_emoji_picker" : false,
       "type" : "text",
+      "display_width" : null,
       "default" : "Request a demo"
     } ],
     "tab" : "CONTENT",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
+    "display_width" : null,
     "default" : {
       "link" : {
         "url" : {
@@ -137,7 +131,9 @@
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
+  "display_width" : null,
   "default" : {
     "background_texture" : {
       "size_type" : "auto",
@@ -178,14 +174,12 @@
 }, {
   "id" : "edad90a2-7632-add4-0fb1-87f233971dce",
   "name" : "second_column",
-  "display_width" : null,
   "label" : "Second Column",
   "required" : false,
   "locked" : false,
   "children" : [ {
     "id" : "b15e484b-0d67-2505-c868-b07fba2b47b3",
     "name" : "background_texture",
-    "display_width" : null,
     "label" : "Background Texture",
     "required" : false,
     "locked" : false,
@@ -193,6 +187,7 @@
     "resizable" : true,
     "show_loading" : false,
     "type" : "image",
+    "display_width" : null,
     "default" : {
       "size_type" : "auto",
       "src" : "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/cta-section-background-texture.png",
@@ -206,19 +201,16 @@
   }, {
     "id" : "2cc5b761-d4dc-0a49-8fa8-83af9856857b",
     "name" : "cta_section_header",
-    "display_width" : null,
     "label" : "Header",
     "required" : false,
     "locked" : false,
-    "validation_regex" : "",
     "allow_new_line" : false,
-    "show_emoji_picker" : false,
     "type" : "text",
+    "display_width" : null,
     "default" : "See how you can boost lift and ROAS with CTV"
   }, {
     "id" : "aebf326a-ee8e-ba2a-3cc5-43577a3095c4",
     "name" : "icon_links",
-    "display_width" : null,
     "label" : "Icon Links",
     "required" : false,
     "locked" : false,
@@ -231,7 +223,6 @@
     "children" : [ {
       "id" : "244241d0-78c6-8fa5-1b4b-da26dac35b4c",
       "name" : "icon",
-      "display_width" : null,
       "label" : "Icon",
       "required" : false,
       "locked" : false,
@@ -239,6 +230,7 @@
       "resizable" : true,
       "show_loading" : false,
       "type" : "image",
+      "display_width" : null,
       "default" : {
         "size_type" : "auto",
         "src" : "",
@@ -248,13 +240,13 @@
     }, {
       "id" : "3d99a4e9-482f-ef05-ab1b-340108de5feb",
       "name" : "icon_link",
-      "display_width" : null,
       "label" : "Icon Link",
       "required" : false,
       "locked" : false,
       "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
       "show_advanced_rel_options" : false,
       "type" : "link",
+      "display_width" : null,
       "default" : {
         "url" : {
           "content_id" : null,
@@ -267,24 +259,26 @@
     }, {
       "id" : "second_column.icon_links.icon_link_text",
       "name" : "icon_link_text",
-      "display_width" : null,
       "label" : "Icon Link Text",
       "required" : false,
       "locked" : false,
-      "validation_regex" : "",
       "allow_new_line" : false,
-      "show_emoji_picker" : false,
       "type" : "text",
+      "display_width" : null,
       "default" : "Link text"
     } ],
     "tab" : "CONTENT",
     "expanded" : false,
+    "group_occurrence_meta" : null,
     "type" : "group",
+    "display_width" : null,
     "default" : [ ]
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
+  "display_width" : null,
   "default" : {
     "background_texture" : {
       "size_type" : "auto",
@@ -312,18 +306,17 @@
 }, {
   "id" : "f4720ce5-80ce-66ea-a418-d4fee6305526",
   "name" : "style",
-  "display_width" : null,
   "label" : "Style",
   "required" : false,
   "locked" : false,
   "children" : [ {
     "id" : "43572f2f-1b3d-61bb-3e17-e6970cfa10af",
     "name" : "first_background_color",
-    "display_width" : null,
     "label" : "First Column Background Color",
     "required" : false,
     "locked" : false,
     "type" : "color",
+    "display_width" : null,
     "default" : {
       "color" : "#1c4633",
       "opacity" : 100
@@ -331,11 +324,11 @@
   }, {
     "id" : "636eb383-ff71-538c-58f5-998f31acf6b1",
     "name" : "second_background_color",
-    "display_width" : null,
     "label" : "Second Column Background Color",
     "required" : false,
     "locked" : false,
     "type" : "color",
+    "display_width" : null,
     "default" : {
       "color" : "#F8F8F8",
       "opacity" : 100
@@ -343,11 +336,11 @@
   }, {
     "id" : "style.second_border_color",
     "name" : "second_border_color",
-    "display_width" : null,
     "label" : "Second Column Border Color",
     "required" : false,
     "locked" : false,
     "type" : "color",
+    "display_width" : null,
     "default" : {
       "color" : "#CBCBCB",
       "opacity" : 100
@@ -355,11 +348,11 @@
   }, {
     "id" : "f94d070e-66b4-89a9-49f7-5ef028424014",
     "name" : "label_text_color",
-    "display_width" : null,
     "label" : "Label Text Color",
     "required" : false,
     "locked" : false,
     "type" : "color",
+    "display_width" : null,
     "default" : {
       "color" : "#C0E7D8",
       "opacity" : 100
@@ -367,11 +360,11 @@
   }, {
     "id" : "f00d3244-c43c-3a50-6840-749d17dd1dd9",
     "name" : "first_header_text_color",
-    "display_width" : null,
     "label" : "First Column Header Text Color",
     "required" : false,
     "locked" : false,
     "type" : "color",
+    "display_width" : null,
     "default" : {
       "color" : "#ffffff",
       "opacity" : 100
@@ -379,11 +372,11 @@
   }, {
     "id" : "style.second_header_text_color",
     "name" : "second_header_text_color",
-    "display_width" : null,
     "label" : "Second Column Header Text Color",
     "required" : false,
     "locked" : false,
     "type" : "color",
+    "display_width" : null,
     "default" : {
       "color" : "#132430",
       "opacity" : 100
@@ -391,11 +384,11 @@
   }, {
     "id" : "bba2d082-e6e5-407f-99ff-19d5552c6f1e",
     "name" : "button_color",
-    "display_width" : null,
     "label" : "Button Color",
     "required" : false,
     "locked" : false,
     "type" : "color",
+    "display_width" : null,
     "default" : {
       "color" : "#0fbf84",
       "opacity" : 100
@@ -403,11 +396,11 @@
   }, {
     "id" : "8a66d663-7bad-c54c-f4f9-69280b3b7a34",
     "name" : "button_text_color",
-    "display_width" : null,
     "label" : "Button Text Color",
     "required" : false,
     "locked" : false,
     "type" : "color",
+    "display_width" : null,
     "default" : {
       "color" : "#ffffff",
       "opacity" : 100
@@ -415,11 +408,11 @@
   }, {
     "id" : "style.icon_background_color",
     "name" : "icon_background_color",
-    "display_width" : null,
     "label" : "Icon Background Color",
     "required" : false,
     "locked" : false,
     "type" : "color",
+    "display_width" : null,
     "default" : {
       "color" : "#A1E5CE",
       "opacity" : 100
@@ -427,7 +420,9 @@
   } ],
   "tab" : "STYLE",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
+  "display_width" : null,
   "default" : {
     "first_background_color" : {
       "color" : "#1c4633",

@@ -10,11 +10,11 @@
         @apply list-disc pl-6;
     }
 
-    h1 {
+    h1, .h1 {
         @apply !text-[32px] !leading-[42px]  md:!text-[42px] md:!leading-[50px] lg:!text-[50px] lg:!leading-[60px] text-black !font-plex !font-semibold;
       }
-      
-    h2 {
+
+    h2, .h2 {
       @apply !text-[24px] !leading-[32px]  md:!text-[36px] md:!leading-[44px] text-black font-normal !font-plex;
     }
 }

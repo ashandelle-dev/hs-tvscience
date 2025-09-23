@@ -32,7 +32,6 @@
   {% set recent_posts = blog_recent_posts('default', 3) %}
   
   {% set dropdown_link_classes = "flex items-center w-full lg:px-3 py-2 hover:no-underline mb-1 rounded last:mb-0 hover:bg-[#E5E7EB]" %}
-  {% set dropdown_link_featured_classes = "px-3 lg:mx-2 bg-[#C0E7D8] hover:bg-[#E5E7EB]" %}
   
   <ul class="flex flex-wrap items-center m-0 p-0 list-none py-12 lg:py-0 border-t lg:border-0 relative">
              
@@ -92,7 +91,7 @@
                 
                 <a {% if href %} href="{{ href }} {% endif %}"
                 {% if dropdown.link.open_in_new_tab %}target="_blank"{% endif %}
-                {% if dropdown.link.rel %}rel="{{ dropdown.link.rel }}"{% endif %}class="{{dropdown_link_classes}}{% if dropdown.is_featured %} {{ dropdown_link_featured_classes}}{% endif %}">
+                {% if dropdown.link.rel %}rel="{{ dropdown.link.rel }}"{% endif %}class="{{dropdown_link_classes}}">
                 {{dropdown_menu_item(dropdown)}}
               </a>
               {% endfor %}
@@ -139,7 +138,7 @@
               
               <a href="{{ href }}"
                 {% if dropdown.link.open_in_new_tab %}target="_blank"{% endif %}
-                {% if dropdown.link.rel %}rel="{{ dropdown.link.rel }}"{% endif %} class=" w-full {% if item.as_rows %} lg:w-1/2 {% endif %} {{dropdown_link_classes}}{% if dropdown.is_featured %} {{ dropdown_link_featured_classes}}{% endif %}">
+                {% if dropdown.link.rel %}rel="{{ dropdown.link.rel }}"{% endif %} class=" w-full {% if item.as_rows %} lg:w-1/2 {% endif %} {{dropdown_link_classes}}">
               
                 {{dropdown_menu_item(dropdown)}}
   

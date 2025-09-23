@@ -1,7 +1,6 @@
 [ {
   "id" : "b4b4bfca-fcb0-a98b-fee4-f2295652a773",
   "name" : "hero_image",
-  "display_width" : null,
   "label" : "Image",
   "required" : false,
   "locked" : false,
@@ -9,6 +8,7 @@
   "resizable" : true,
   "show_loading" : false,
   "type" : "image",
+  "display_width" : null,
   "default" : {
     "size_type" : "auto",
     "src" : "",
@@ -18,12 +18,12 @@
 }, {
   "id" : "67c8ed8f-7c9a-ea44-58b6-b7786aa3643e",
   "name" : "hero_video_player",
-  "display_width" : null,
   "label" : "Video",
   "required" : false,
   "locked" : false,
   "resizable" : true,
   "show_preview" : true,
   "show_advanced_options" : true,
-  "type" : "videoplayer"
+  "type" : "videoplayer",
+  "display_width" : null
 } ]

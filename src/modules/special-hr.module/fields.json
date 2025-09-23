@@ -1,11 +1,11 @@
 [ {
   "id" : "c72892ad-a43a-a016-592e-455654490108",
   "name" : "color",
-  "display_width" : null,
   "label" : "Color",
   "required" : false,
   "locked" : false,
   "type" : "color",
+  "display_width" : null,
   "default" : {
     "color" : null,
     "opacity" : null
@@ -13,7 +13,6 @@
 }, {
   "id" : "0e7f6c25-146f-6eb6-2a7e-5cf327deb822",
   "name" : "size",
-  "display_width" : null,
   "label" : "size",
   "required" : false,
   "locked" : false,
@@ -23,15 +22,16 @@
   "step" : 1,
   "suffix" : "px",
   "type" : "number",
+  "display_width" : null,
   "default" : 1
 }, {
   "id" : "c88c00e7-e60f-2254-9cd5-cc7edc9e2e8a",
   "name" : "full_size",
-  "display_width" : null,
   "label" : "Full Size",
   "required" : false,
   "locked" : false,
   "display" : "checkbox",
   "type" : "boolean",
+  "display_width" : null,
   "default" : false
 } ]
