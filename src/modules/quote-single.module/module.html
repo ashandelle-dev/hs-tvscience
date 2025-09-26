@@ -7,6 +7,22 @@
     color: {{ module.styles.text_color.css }};
     {{ module.styles.padding.css }}
   }
+  .quote-single .content-body {
+    {% if module.text_size != 0 %}
+    font-size: {{ module.text_size }}px !important;
+    line-height: 1.225 !important;
+    {% endif %}
+  }
+  @media (max-width: 1024px) {
+    .quote-single .content-body {
+      font-size: {{ module.text_size - 8 }}px !important;
+    }
+  }
+  @media (max-width: 768px) {
+    .quote-single .content-body {
+      font-size: {{ module.text_size - 12 }}px !important;
+    }
+  }
   {% end_scope_css %}
 </style>
 
@@ -79,7 +95,7 @@
         <div>
           <div class="border-l-4 {% if !custom_color %} border-[#0FBF84] {% endif %} md:pl-10 md:ml-10" {% if custom_color %}style="border-color: {{ module.styles.text_color.css }};"{% endif %}>
             <div>
-              <p class="content-body mb-3 text-[24px] md:text-[32px] lg:text-[36px] leading-tight italic {% if custom_color %} text-inherit {% else %} text-primary-darker {% endif %}">
+              <p class="content-body {% if module.text_size == 0 %} text-[24px] md:text-[32px] lg:text-[36px] {% endif %} font-bricolage-grotesque mb-3 leading-tight italic {% if custom_color %} text-inherit {% else %} text-primary-darker {% endif %}">
                 {{ module.qs_quote }}
                 </p>
             </div>
