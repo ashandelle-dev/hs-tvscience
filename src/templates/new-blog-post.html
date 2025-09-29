@@ -218,15 +218,16 @@
               </svg>
           </div>
           <div class="px-3">
-  <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-[#009061] back-to-all-blogs">Back to All Blogs</p>
-</div>
+            <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-[#009061] back-to-all-blogs">Back to All Blogs</p>
+          </div>
         </a>
+        <div class="timestamp self-end w-full text-[#132430] pb-3 hidden md:block">
+          {{ content.publish_date | datetimeformat('%b %e, %Y') }}
+        </div>
     </div>
 
 
-            <div class="timestamp self-end w-full text-[#132430] pb-3 hidden md:block">
-            {{ content.publish_date | datetimeformat('%b %e, %Y') }}
-          </div>
+    
     <div class="w-full md:w-3/4">
       <h1 class="blog-post__title text-[#1C4633]">{{ content.name }}</h1>
       <div class="timestamp self-end w-full text-[#132430] pb-3 md:hidden">
