@@ -16,7 +16,7 @@
 {% if content.widgets.gated.body.value %}
   {% set gated = content.widgets.gated.body.value %}
 {% endif %}
-
+ 
 {% block body %}
 
 {% if page_layout == "layout-a" or page_layout is none%}
@@ -409,6 +409,14 @@
       border-radius: 6px;
     }
   }
+
+  #footer-cta .cta-group {
+    align-items: flex-start;
+  }
+
+  #hs_cos_wrapper_hero_eyebrow span {
+    all: inherit;
+  }
   
 </style>
 <main>
@@ -417,8 +425,8 @@
   {% else %}
   <section class="py-20" style="background: url('{{ content.featured_image }}') no-repeat center center/cover;">
   {% endif %}
-    <div class="max-w-[800px] mx-auto text-center">
-      <span class="inline-block text-2xl text-[#198960] font-light mb-4">Ebook</span>
+    <div class="max-w-[800px] mx-auto text-center hero-container">
+      {% module "hero_eyebrow" path="@hubspot/text", label="Hero Eyebrow" value="Ebook" extra_classes="inline-block text-2xl text-[#198960] font-light mb-4"%}
       <h1 class="text-white text-center">{{ content.name }}</h1>
       {% if content.widgets.summary.body.value %}
       <p class="text-white text-center text-2xl">{{content.widgets.summary.body.value}}</p>
@@ -508,7 +516,7 @@
   </div>
 </section>
 <section id="footer-cta" class="py-20">
-  <div class="max-w-[800px] mx-auto">
+  <div class="container max-w-[700px] mx-auto">
     {% module "footer_image" path="@hubspot/linked_image", label="Footer Image", extra_classes="text-left" %}
     {% module "footer_cta_text" path="@hubspot/rich_text", label="Footer CTA Text", html="<h2 class='text-white'>Need a hand with the checklist?</h2><p class='text-white'>We built tvScientific to check every box. And then some. Connect with our team for a personalized demo and answers to all your questions</p>" %}
     {% module "buttons_footer_cta" path="/tvScientific 2022 Atlas Pro/cli-build/modules/custom-button-row.module", label="Footer CTA Buttons" %}
@@ -518,9 +526,11 @@
 </main>
 {% if gated == 'yes' %}
 <section id="gated-form" class="py-[120px] border border-t border-[#D9E2EB]">
-  <div class="max-w-[800px] mx-auto">
+  <div class="container max-w-[700px] mx-auto">
     {% module "gated_text" path="@hubspot/rich_text", label="Gate Form Text", html="<h2 class='text-center'>The Rise of Performance TV</h2><p class='text-center'>Sign up below to get the full report.</p>" %}
-    {% module "gated_form" path="@hubspot/form", label="form.module" %}
+    {% module "gated_form" path="@hubspot/form", label="Gated Form" %}
+    
+
   </div>
 </section>
 
