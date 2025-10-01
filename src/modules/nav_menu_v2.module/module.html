@@ -1,0 +1,189 @@
+<!-- module html  -->
+{% set main_items_classes = "text-[16px] text-[#1C4633] m-0 group-hover/main:text-[#0fbf84] hover:no-underline block py-3 lg:py-10 font-medium" %}
+
+{% macro dropdown_menu_item(dropdown, parent_menu) %}
+<div class="{{'min-w-16' if dropdown.mega_menu or parent_menu.mega_menu else 'min-w-4' }} leading-none">
+  {% if dropdown.icon.src %}
+  {% set sizeAttrs = 'width="{{ dropdown.icon.width }}" height="{{ itdropdownem2.icon.height }}"' %}
+  {% if dropdown.icon.size_type == 'auto' %}
+  {% set sizeAttrs = 'width="{{ dropdown.icon.width }}" height="{{ dropdown.icon.height }}" style="max-width: 100%; height: auto;"' %}
+  {% elif dropdown.icon.size_type == 'auto_custom_max' %}
+  {% set sizeAttrs = 'width="{{ dropdown.icon.max_width }}" height="{{ dropdown.icon.max_height }}" style="max-width: 100%; height: auto;"' %}
+  {% endif %}
+  {% set loadingAttr = dropdown.icon.loading != 'disabled' ? 'loading="{{ dropdown.icon.loading }}"' : '' %}
+  <img src="{{ dropdown.icon.src }}" alt="{{ dropdown.icon.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+  {% endif %}
+</div>
+<div>
+  <p class="m-0 w-full text-[14px] text-black font-semibold">
+    {{dropdown.title}}
+  </p>
+  {% if dropdown.description %}
+  <p class="m-0 w-full text-[10px] text-[#46515B] font-normal">
+    {{dropdown.description}}
+  </p>
+  {% endif %}
+</div>
+{% endmacro %}
+
+{% macro dropdown_label(label) %}
+<div class="mb-3 ">
+  <p class="text-[12px] text-[#9AA0A6] m-0">
+    {{ label }}
+  </p>
+</div>
+{% endmacro %}
+
+{% set recent_posts = blog_recent_posts('default', 3) %}
+
+{% set dropdown_link_classes = "flex items-center w-full hover:no-underline gap-4" %}
+
+<ul class="flex flex-wrap items-center m-0 p-0 list-none py-12 lg:py-0 border-t lg:border-0">
+
+  {% for item in module.menu_item %}
+  {% set href = item.link.url.href %}
+  {% if item.link.url.type is equalto "EMAIL_ADDRESS" %}
+  {% set href = "mailto:" + href %}
+  {% endif %}
+
+  <li class="group/main menu-item lg:px-2 w-full lg:w-auto cursor-pointer lg:cursor-default xl:mx-1 {{'lg:relative' if item.mega_menu && !item.sidebar_boolean }} {{'lg:relative' if not item.mega_menu and not item.has_blog }} {% if item.dropdown|length > 0 %}{%else%}single-nav{% endif %}">
+    <div class="flex flex-wrap items-center justify-between lg:p-0 px-6">
+
+      <a class="{{main_items_classes}}" {% if href %} href="{{ href }} {% endif %}"
+         {% if item.link.open_in_new_tab %}target="_blank"{% endif %}
+         {% if item.link.rel %}rel="{{ item.link.rel }}"{% endif %}
+         >
+        {{ item.title }}
+      </a>
+
+      {% if item.dropdown|length > 0 %}
+      <div class="pl-1 pr-2 hidden lg:!block lg:!visible">
+
+        <svg class="group-hover/main:rotate-180 origin-center transition-transform duration-200" width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M11 7.70752L8 10.7075L5 7.70752" stroke="#31373D" stroke-width="1.5"/>
+        </svg>
+
+      </div>
+      <div class="px-6 lg:hidden sub-menu-caret duration-200 transition-transform origin-center">
+        <svg width="6" height="11" viewBox="0 0 6 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0.768463 1.22314L4.27551 4.72993C4.66606 5.12045 4.66607 5.75363 4.27553 6.14417L0.768462 9.65124" stroke="#1C4633" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      {% endif %}
+
+    </div>
+
+    {% if item.dropdown|length > 0 %}
+    <div class="absolute lg:group-hover/main:block lg:hidden bg-white lg:shadow-lg rounded-b-lg z-30  top-0 lg:top-[100px] overflow-y-auto lg:overflow-hidden {% if item.mega_menu && item.sidebar_boolean %} lg:min-w-[860px] lg:right-0 {% elif item.mega_menu && !item.sidebar_boolean %} lg:min-w-[615px] lg:max-w-[615px] lg:-left-4 {% elif item.has_blog %} lg:min-w-[600px] lg:max-w-[600px] lg:right-0 {% else %} lg:-left-4 lg:w-[auto] lg:whitespace-nowrap {% endif %} hidden lg:block lg:!visible child-dropdown w-full h-[calc(100vh-77px)] lg:h-auto">
+      {% if item.has_blog %}
+      <div class="flex flex-wrap flex-col lg:flex-row lg:h-auto h-full">
+        <div class="w-full lg:w-[270px] mb-6 lg:mb-0 p-6">
+          {% if item.dropdown_label %}
+          {{dropdown_label(item.dropdown_label)}}
+          {% else %}
+          {{dropdown_label(item.title)}}
+          {% endif %}
+          <div class="{{'grid lg:grid-cols-2 grid-cols-1 gap-3' if item.mega_menu else 'flex flex-wrap gap-4'}}">
+            {% for dropdown in item.dropdown %}
+            {% set href = dropdown.link.url.href %}
+            {% if dropdown.link.url.type is equalto "EMAIL_ADDRESS" %}
+            {% set href = "mailto:" + href %}
+            {% endif %}
+
+            <a {% if href %} href="{{ href }} {% endif %}"
+               {% if dropdown.link.open_in_new_tab %}target="_blank"{% endif %}
+               {% if dropdown.link.rel %}rel="{{ dropdown.link.rel }}"{% endif %}class="{{dropdown_link_classes}} {% if dropdown.is_featured %} bg-[#AAEFCE] p-4 rounded-lg cursor-default col-span-full {% endif %}">
+              {{dropdown_menu_item(dropdown, item)}}
+            </a>
+            {% endfor %}
+
+          </div>
+        </div>
+        <div class="w-full lg:w-6/12 p-6 bg-[#F9FAFC] flex-1">
+          {{dropdown_label("Latest")}}
+
+          {% for rp in recent_posts %}
+
+          <a href="{{rp.absolute_url}}" class="flex w-full mb-3 last:mb-0 hover:no-underline group ">
+            <div class="w-32">
+              <img class="rounded" src="{{rp.featured_image}}" alt="{{rp.featured_image_alt_text}}">
+
+            </div >
+            <div class="w-full px-3">
+              <p class="text-[12px] text-[#727383] group-hover:text-[#1C4633] m-0">{{rp.name}}</p>
+
+            </div>
+
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+      {% else %}
+      <div class="flex items-start lg:flex-row flex-col {{'lg:h-auto h-full' if item.mega_menu && !item.sidebar_boolean }} {{'lg:h-auto h-full' if !item.mega_menu and !item.has_blog }}">
+        <div class="flex-1 bg-[#F9FAFC] p-6 w-full">
+          {% if item.dropdown_label %}
+          {{dropdown_label(item.dropdown_label)}}
+          {% else %}
+          {{dropdown_label(item.title)}}
+          {% endif %}
+          <div class="{{'grid lg:grid-cols-2 grid-cols-1 gap-3' if item.mega_menu else 'flex flex-wrap gap-4'}}">
+            {% for dropdown in item.dropdown %}
+            {% set href = dropdown.link.url.href %}
+            {% if dropdown.link.url.type is equalto "EMAIL_ADDRESS" %}
+            {% set href = "mailto:" + href %}
+            {% endif %}
+            <a href="{{ href }}"
+               {% if dropdown.link.open_in_new_tab %}target="_blank"{% endif %}
+               {% if dropdown.link.rel %}rel="{{ dropdown.link.rel }}"{% endif %} class=" w-full {% if dropdown.is_featured %} bg-[#AAEFCE] p-4 rounded-lg cursor-default col-span-full {% endif %} {{ dropdown_link_classes}} {{ 'hover:bg-white' if item.mega_menu && !dropdown.is_featured }}">
+              {{dropdown_menu_item(dropdown, item)}}
+            </a>
+            {% endfor %}
+          </div>
+        </div>
+        {% if item.sidebar_menu %}
+        <div class="sidebar_menu max-w-[230px] min-w-[230px] p-6">
+          {% if item.sidebar_title %}
+          {{dropdown_label(item.sidebar_title)}}
+          {% else %}
+          {{dropdown_label(item.sidebar_title)}}
+          {% endif %}
+          <div class='flex flex-wrap gap-4'>
+            {% for dropdown in item.sidebar_menu %}
+            {% set href = dropdown.link.url.href %}
+            {% if dropdown.link.url.type is equalto "EMAIL_ADDRESS" %}
+            {% set href = "mailto:" + href %}
+            {% endif %}
+            <a href="{{ href }}"
+              {% if dropdown.link.open_in_new_tab %}target="_blank"{% endif %}
+              {% if dropdown.link.rel %}rel="{{ dropdown.link.rel }}"{% endif %} class=" w-full {% if dropdown.is_featured %} bg-[#AAEFCE] p-4 rounded-lg cursor-default col-span-full {% endif %} {{dropdown_link_classes }}">
+              {{ dropdown_menu_item(dropdown) }}
+            </a>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+      </div>
+      {% if item.announcement_boolean %}
+      <div class="w-full announcement text-white p-4" style="background-color: {{item.announcement.background.css}};">
+        {% if item.announcement.image.src %}
+          {% set sizeAttrs = 'width="{{ item.announcement.image.width|escape_attr }}" height="{{ item.announcement.image.height|escape_attr }}"' %}
+          {% if item.announcement.image.size_type == 'auto' %}
+            {% set sizeAttrs = 'width="{{ item.announcement.image.width|escape_attr }}" height="{{ item.announcement.image.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+          {% elif item.announcement.image.size_type == 'auto_custom_max' %}
+            {% set sizeAttrs = 'width="{{ item.announcement.image.max_width|escape_attr }}" height="{{ item.announcement.image.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+          {% endif %}
+          {% set loadingAttr = item.announcement.image.loading != 'disabled' ? 'loading="{{ item.announcement.image.loading|escape_attr }}"' : '' %}
+          <img src="{{ item.announcement.image.src|escape_url }}" alt="{{ item.announcement.image.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+        {% endif %}
+        {{item.announcement.text}}
+      </div>
+      {% endif %}
+      {% endif %}
+    </div>
+
+    {% endif %}
+
+  </li>
+  {% endfor %}
+</ul>
