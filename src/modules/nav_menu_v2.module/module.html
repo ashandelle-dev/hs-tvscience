@@ -15,7 +15,7 @@
   {% endif %}
 </div>
 <div>
-  <p class="m-0 w-full text-[14px] text-black font-semibold">
+  <p class="m-0 w-full text-[14px] text-black font-semibold transition-colors duration-200 {{'hover:text-[#198960]' if !dropdown.description }}">
     {{dropdown.title}}
   </p>
   {% if dropdown.description %}
@@ -36,7 +36,7 @@
 
 {% set recent_posts = blog_recent_posts('default', 3) %}
 
-{% set dropdown_link_classes = "flex items-center w-full hover:no-underline gap-4" %}
+{% set dropdown_link_classes = "flex items-center w-full hover:no-underline gap-4 rounded-[10px]" %}
 
 <ul class="flex flex-wrap items-center m-0 p-0 list-none py-12 lg:py-0 border-t lg:border-0">
 
@@ -93,7 +93,7 @@
 
             <a {% if href %} href="{{ href }} {% endif %}"
                {% if dropdown.link.open_in_new_tab %}target="_blank"{% endif %}
-               {% if dropdown.link.rel %}rel="{{ dropdown.link.rel }}"{% endif %}class="{{dropdown_link_classes}} {% if dropdown.is_featured %} bg-[#AAEFCE] p-4 rounded-lg cursor-default col-span-full {% endif %}">
+               {% if dropdown.link.rel %}rel="{{ dropdown.link.rel }}"{% endif %}class="{{dropdown_link_classes}} {% if dropdown.is_featured %} bg-[#AAEFCE] p-4 rounded-[10px] col-span-full {% endif %}">
               {{dropdown_menu_item(dropdown, item)}}
             </a>
             {% endfor %}
@@ -135,7 +135,7 @@
             {% endif %}
             <a href="{{ href }}"
                {% if dropdown.link.open_in_new_tab %}target="_blank"{% endif %}
-               {% if dropdown.link.rel %}rel="{{ dropdown.link.rel }}"{% endif %} class=" w-full {% if dropdown.is_featured %} bg-[#AAEFCE] p-4 rounded-lg cursor-default col-span-full {% endif %} {{ dropdown_link_classes}} {{ 'hover:bg-white' if item.mega_menu && !dropdown.is_featured }}">
+               {% if dropdown.link.rel %}rel="{{ dropdown.link.rel }}"{% endif %} class=" w-full {% if dropdown.is_featured %} bg-[#AAEFCE] p-4 rounded-lg col-span-full border-transparent hover:border-[#23E596] border-2 pr-6 {% endif %} {{ dropdown_link_classes }} {{ 'hover:bg-white border-transparent hover:border-[#23E596] border-2 pr-6' if item.mega_menu && !dropdown.is_featured }}">
               {{dropdown_menu_item(dropdown, item)}}
             </a>
             {% endfor %}
@@ -165,7 +165,11 @@
         {% endif %}
       </div>
       {% if item.announcement_boolean %}
-      <div class="w-full announcement text-white p-4" style="background-color: {{item.announcement.background.css}};">
+      <a
+      {% if item.announcement.link.url.href %} href="{{ item.announcement.link.url.href }}" {% endif %}
+      {% if item.announcement.link.open_in_new_tab %}target="_blank"{% endif %}
+      {% if item.announcement.link.rel %}rel="{{ item.announcement.link.rel }}"{% endif %}
+       class="w-full announcement text-white p-4 block hover:no-underline border-t-2 border-transparent hover:border-[#23E596]" style="--background-color: {{item.announcement.background.css}}; --hover-background-color: #91F2CB;">
         {% if item.announcement.image.src %}
           {% set sizeAttrs = 'width="{{ item.announcement.image.width|escape_attr }}" height="{{ item.announcement.image.height|escape_attr }}"' %}
           {% if item.announcement.image.size_type == 'auto' %}
@@ -174,10 +178,10 @@
             {% set sizeAttrs = 'width="{{ item.announcement.image.max_width|escape_attr }}" height="{{ item.announcement.image.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
           {% endif %}
           {% set loadingAttr = item.announcement.image.loading != 'disabled' ? 'loading="{{ item.announcement.image.loading|escape_attr }}"' : '' %}
-          <img src="{{ item.announcement.image.src|escape_url }}" alt="{{ item.announcement.image.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+          <img class="mr-4" src="{{ item.announcement.image.src|escape_url }}" alt="{{ item.announcement.image.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
         {% endif %}
         {{item.announcement.text}}
-      </div>
+      </a>
       {% endif %}
       {% endif %}
     </div>

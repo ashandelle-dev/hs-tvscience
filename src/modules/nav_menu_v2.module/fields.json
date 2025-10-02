@@ -255,6 +255,24 @@
             "default": "<strong><span style=\"color: #009061;\"><em>NEW</em></span> tvScientific Guaranteed Outcomes</strong>"
           },
           {
+          "name" : "link",
+          "label" : "Link",
+          "required" : false,
+          "locked" : false,
+          "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+          "type" : "link",
+          "inline_help_text": "",
+          "help_text": "",
+          "default" : {
+            "url" : {
+              "content_id" : null,
+              "type" : "EXTERNAL",
+              "href" : ""
+            },
+            "open_in_new_tab" : false,
+            "no_follow" : false
+          } },
+          {
             "id": "ec995f31-99f7-09f4-a132-71c1b073df7e",
             "name": "background",
             "label": "Background",
