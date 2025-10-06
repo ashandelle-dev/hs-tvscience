@@ -7,6 +7,7 @@
 {% extends "./../layouts/base.html" %}
 
 {% text "summary" label='Summary', export_to_template_context=True %}
+{% text "title_link" label='Title Link', export_to_template_context=True %}
 {% image "card_image" label='Card Image', export_to_template_context=True %}
 {% choice "layout" label='Layout', choices=[["layout-a","Layout A"],["layout-b","Layout B"]], multiple='False', display='radio',export_to_template_context=True %}
 {% choice "gated" label='Gated Post', choices=[["yes","Yes"],["no","No"]], multiple='False', display='radio',export_to_template_context=True %}
@@ -296,6 +297,7 @@
     #gated-form {
       background: url(https://www.tvscientific.com/hubfs/Gated%20Content%20Moda%20background.webp) no-repeat top center/cover;
       backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
     }
 
     form {
