@@ -1,0 +1,40 @@
+
+ <!--
+ templateType: section
+ label: Divider Section
+ isAvailableForNewContent: true
+-->
+
+{% dnd_section
+    padding={
+      "default" : {
+        "bottom" : "0px",
+        "top" : "0px"
+      }
+    }
+  %}
+    {% dnd_column
+      offset=0,
+      width=12
+    %}
+      {% dnd_row %}
+        {% dnd_module
+          path="@hubspot/divider",
+          offset=0,
+          width=12,
+          styles={
+            "line" : {
+              "color" : {
+                "color" : "#D9E2EB",
+                "opacity" : 100
+              }
+            },
+            "size" : {
+              "width" : 100
+            }
+          }
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}

@@ -1,0 +1,146 @@
+<div class="w-full">
+  <!-- Logo Header Section - Desktop Only -->
+  <div class="hidden md:flex items-center mb-8 md:px-10 gap-[30px]">
+    <!-- Empty space for feature text column -->
+    <div class="flex-1 pr-8"></div>
+
+    <div class="w-[135px] flex justify-center">
+        {% if module.left_logo.src %}
+            {% set sizeAttrs = 'width="{{ module.left_logo.width|escape_attr }}" height="{{ module.left_logo.height|escape_attr }}"' %}
+            {% if module.left_logo.size_type == 'auto' %}
+                {% set sizeAttrs = 'width="{{ module.left_logo.width|escape_attr }}" height="{{ module.left_logo.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+            {% elif module.left_logo.size_type == 'auto_custom_max' %}
+                {% set sizeAttrs = 'width="{{ module.left_logo.max_width|escape_attr }}" height="{{ module.left_logo.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+            {% endif %}
+            {% set loadingAttr = module.left_logo.loading != 'disabled' ? 'loading="{{ module.left_logo.loading|escape_attr }}"' : '' %}
+            <img src="{{ module.left_logo.src|escape_url }}" alt="{{ module.left_logo.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+        {% endif %}
+    </div>
+
+    <div class="w-[135px] flex justify-center">
+        {% if module.right_logo.src %}
+            {% set sizeAttrs = 'width="{{ module.right_logo.width|escape_attr }}" height="{{ module.right_logo.height|escape_attr }}"' %}
+            {% if module.right_logo.size_type == 'auto' %}
+                {% set sizeAttrs = 'width="{{ module.right_logo.width|escape_attr }}" height="{{ module.right_logo.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+            {% elif module.right_logo.size_type == 'auto_custom_max' %}
+                {% set sizeAttrs = 'width="{{ module.right_logo.max_width|escape_attr }}" height="{{ module.right_logo.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+            {% endif %}
+            {% set loadingAttr = module.right_logo.loading != 'disabled' ? 'loading="{{ module.right_logo.loading|escape_attr }}"' : '' %}
+            <img src="{{ module.right_logo.src|escape_url }}" alt="{{ module.right_logo.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+        {% endif %}
+    </div>
+  </div>
+
+  <!-- Logo Header Section - Mobile Only -->
+  <div class="flex md:hidden items-center mb-6 px-4">
+    <div class="w-1/2 pr-2"></div>
+
+    <div class="w-1/4 flex justify-center px-1">
+        {% if module.left_logo.src %}
+            {% set sizeAttrs = 'width="{{ module.left_logo.width|escape_attr }}" height="{{ module.left_logo.height|escape_attr }}"' %}
+            {% if module.left_logo.size_type == 'auto' %}
+                {% set sizeAttrs = 'width="{{ module.left_logo.width|escape_attr }}" height="{{ module.left_logo.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+            {% elif module.left_logo.size_type == 'auto_custom_max' %}
+                {% set sizeAttrs = 'width="{{ module.left_logo.max_width|escape_attr }}" height="{{ module.left_logo.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+            {% endif %}
+            {% set loadingAttr = module.left_logo.loading != 'disabled' ? 'loading="{{ module.left_logo.loading|escape_attr }}"' : '' %}
+            <img src="{{ module.left_logo.src|escape_url }}" alt="{{ module.left_logo.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+        {% endif %}
+    </div>
+
+    <div class="w-1/4 flex justify-center px-1">
+        {% if module.right_logo.src %}
+            {% set sizeAttrs = 'width="{{ module.right_logo.width|escape_attr }}" height="{{ module.right_logo.height|escape_attr }}"' %}
+            {% if module.right_logo.size_type == 'auto' %}
+                {% set sizeAttrs = 'width="{{ module.right_logo.width|escape_attr }}" height="{{ module.right_logo.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+            {% elif module.right_logo.size_type == 'auto_custom_max' %}
+                {% set sizeAttrs = 'width="{{ module.right_logo.max_width|escape_attr }}" height="{{ module.right_logo.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+            {% endif %}
+            {% set loadingAttr = module.right_logo.loading != 'disabled' ? 'loading="{{ module.right_logo.loading|escape_attr }}"' : '' %}
+            <img src="{{ module.right_logo.src|escape_url }}" alt="{{ module.right_logo.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+        {% endif %}
+    </div>
+  </div>
+
+  <!-- Comparison Table -->
+  <div class="bg-white rounded-2xl md:rounded-3xl shadow-sm border border-gray-200 overflow-hidden pt-2 px-4 md:px-10">
+    {% for feature in module.features %}
+      <div class="flex items-center border-b border-gray-100 last:border-b-0 py-4 md:py-6 leading-tight md:gap-[30px]">
+        <!-- Feature Text -->
+        <div class="w-1/2 md:flex-1 pr-2 md:pr-8">
+          <p class="text-base md:text-[22px] font-medium text-gray-900 mb-0 font-bricolage-grotesque leading-tight">{{ feature.feature_text }}</p>
+        </div>
+
+        <!-- Left Status Icon -->
+        <div class="w-1/4 md:w-[135px] flex justify-center flex-shrink-0">
+          {% if feature.left_status %}
+            <div class="inline-flex items-center justify-center w-6 h-6">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.1673 23.5636H4.43394C1.98959 23.5636 0 21.597 0 19.1809V6.59454C0 4.17841 1.98959 2.21179 4.43394 2.21179H17.1673C19.6117 2.21179 21.6013 4.17841 21.6013 6.59454V19.1809C21.6013 21.597 19.6117 23.5636 17.1673 23.5636ZM4.43394 5.58314C3.86549 5.58314 3.41073 6.03265 3.41073 6.59454V19.1809C3.41073 19.7428 3.86549 20.1923 4.43394 20.1923H17.1673C17.7358 20.1923 18.1905 19.7428 18.1905 19.1809V6.59454C18.1905 6.03265 17.7358 5.58314 17.1673 5.58314H4.43394Z" fill="#23E596"/>
+                <path d="M23.9999 2.93113L21.6806 5.98782L11.7554 19.0574L9.11778 15.6074L4.43372 9.47154L7.79897 6.95427L11.744 12.1237L18.1676 3.67283L20.6233 0.43634L23.9999 2.93113Z" fill="#FFCD40"/>
+                <mask id="mask0_4074_1854" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="2" width="22" height="22">
+                <path d="M17.1673 23.5636H4.43394C1.98959 23.5636 0 21.597 0 19.1809V6.59454C0 4.17841 1.98959 2.21179 4.43394 2.21179H17.1673C19.6117 2.21179 21.6013 4.17841 21.6013 6.59454V19.1809C21.6013 21.597 19.6117 23.5636 17.1673 23.5636ZM4.43394 5.58314C3.86549 5.58314 3.41073 6.03265 3.41073 6.59454V19.1809C3.41073 19.7428 3.86549 20.1923 4.43394 20.1923H17.1673C17.7358 20.1923 18.1905 19.7428 18.1905 19.1809V6.59454C18.1905 6.03265 17.7358 5.58314 17.1673 5.58314H4.43394Z" fill="white"/>
+                </mask>
+                <g mask="url(#mask0_4074_1854)">
+                <path d="M23.9999 2.9312L21.6806 5.98788L11.7554 19.0575L9.11778 15.6074L4.43372 9.4716L7.79897 6.95433L11.744 12.1237L18.1676 3.67289L20.6233 0.436401L23.9999 2.9312Z" fill="#198960"/>
+                </g>
+              </svg>
+            </div>
+          {% else %}
+            <div class="inline-flex items-center justify-center w-6 h-6">
+              <svg width="24" height="26" viewBox="0 0 24 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_4074_1856)">
+                <path d="M17.4149 24.9996H4.49811C2.01847 24.9996 0 23.0654 0 20.689V8.31057C0 5.93414 2.01847 4 4.49811 4H17.4149C19.8946 4 21.913 5.93414 21.913 8.31057V20.6894C21.913 23.0659 19.8946 25 17.4149 25V24.9996ZM4.49811 7.31586C3.92153 7.31586 3.45991 7.75815 3.45991 8.31057V20.6894C3.45991 21.2418 3.92108 21.6841 4.49811 21.6841H17.4149C17.9915 21.6841 18.4531 21.2418 18.4531 20.6894V8.31057C18.4531 7.75815 17.992 7.31586 17.4149 7.31586H4.49811Z" fill="#EB5A5C"/>
+                <path d="M6.26086 20L12.7408 10.973L6.37533 2H11.1711L15.5099 8.87287H15.6809L20.0484 2H24.8725L18.4495 10.8636L25.0435 20H20.2765L15.6804 12.9637H15.5094L11.0279 20H6.26086Z" fill="#F5ADAE"/>
+                <path d="M7.79346 4L10.1494 7.32812L14.5292 7.31836L12.4341 4H7.79346Z" fill="#AA4323"/>
+                <path d="M21.6317 6.47266C21.0576 5.34691 19.9731 4.48336 18.6685 4.16992L16.6711 7.31836L17.5601 7.32907C18.1388 7.32907 18.6022 7.76787 18.6022 8.31595V10.6506L21.6317 6.47266Z" fill="#AA4323"/>
+                <path d="M21.9293 15.6719L18.6256 11.1089L18.4646 17.2422L20.2745 20H21.9293V15.6719Z" fill="#AA4323"/>
+                </g>
+                <defs>
+                <clipPath id="clip0_4074_1856">
+                <rect width="24" height="26" fill="white"/>
+                </clipPath>
+                </defs>
+              </svg>
+            </div>
+          {% endif %}
+        </div>
+
+        <!-- Right Status Icon -->
+        <div class="w-1/4 md:w-[135px] flex justify-center flex-shrink-0">
+          {% if feature.right_status %}
+          <div class="inline-flex items-center justify-center w-6 h-6">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.1673 23.5636H4.43394C1.98959 23.5636 0 21.597 0 19.1809V6.59454C0 4.17841 1.98959 2.21179 4.43394 2.21179H17.1673C19.6117 2.21179 21.6013 4.17841 21.6013 6.59454V19.1809C21.6013 21.597 19.6117 23.5636 17.1673 23.5636ZM4.43394 5.58314C3.86549 5.58314 3.41073 6.03265 3.41073 6.59454V19.1809C3.41073 19.7428 3.86549 20.1923 4.43394 20.1923H17.1673C17.7358 20.1923 18.1905 19.7428 18.1905 19.1809V6.59454C18.1905 6.03265 17.7358 5.58314 17.1673 5.58314H4.43394Z" fill="#23E596"/>
+              <path d="M23.9999 2.93113L21.6806 5.98782L11.7554 19.0574L9.11778 15.6074L4.43372 9.47154L7.79897 6.95427L11.744 12.1237L18.1676 3.67283L20.6233 0.43634L23.9999 2.93113Z" fill="#FFCD40"/>
+              <mask id="mask0_4074_1854" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="2" width="22" height="22">
+              <path d="M17.1673 23.5636H4.43394C1.98959 23.5636 0 21.597 0 19.1809V6.59454C0 4.17841 1.98959 2.21179 4.43394 2.21179H17.1673C19.6117 2.21179 21.6013 4.17841 21.6013 6.59454V19.1809C21.6013 21.597 19.6117 23.5636 17.1673 23.5636ZM4.43394 5.58314C3.86549 5.58314 3.41073 6.03265 3.41073 6.59454V19.1809C3.41073 19.7428 3.86549 20.1923 4.43394 20.1923H17.1673C17.7358 20.1923 18.1905 19.7428 18.1905 19.1809V6.59454C18.1905 6.03265 17.7358 5.58314 17.1673 5.58314H4.43394Z" fill="white"/>
+              </mask>
+              <g mask="url(#mask0_4074_1854)">
+              <path d="M23.9999 2.9312L21.6806 5.98788L11.7554 19.0575L9.11778 15.6074L4.43372 9.4716L7.79897 6.95433L11.744 12.1237L18.1676 3.67289L20.6233 0.436401L23.9999 2.9312Z" fill="#198960"/>
+              </g>
+            </svg>
+          </div>
+          {% else %}
+          <div class="inline-flex items-center justify-center w-6 h-6">
+            <svg width="24" height="26" viewBox="0 0 24 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g clip-path="url(#clip0_4074_1856)">
+              <path d="M17.4149 24.9996H4.49811C2.01847 24.9996 0 23.0654 0 20.689V8.31057C0 5.93414 2.01847 4 4.49811 4H17.4149C19.8946 4 21.913 5.93414 21.913 8.31057V20.6894C21.913 23.0659 19.8946 25 17.4149 25V24.9996ZM4.49811 7.31586C3.92153 7.31586 3.45991 7.75815 3.45991 8.31057V20.6894C3.45991 21.2418 3.92108 21.6841 4.49811 21.6841H17.4149C17.9915 21.6841 18.4531 21.2418 18.4531 20.6894V8.31057C18.4531 7.75815 17.992 7.31586 17.4149 7.31586H4.49811Z" fill="#EB5A5C"/>
+              <path d="M6.26086 20L12.7408 10.973L6.37533 2H11.1711L15.5099 8.87287H15.6809L20.0484 2H24.8725L18.4495 10.8636L25.0435 20H20.2765L15.6804 12.9637H15.5094L11.0279 20H6.26086Z" fill="#F5ADAE"/>
+              <path d="M7.79346 4L10.1494 7.32812L14.5292 7.31836L12.4341 4H7.79346Z" fill="#AA4323"/>
+              <path d="M21.6317 6.47266C21.0576 5.34691 19.9731 4.48336 18.6685 4.16992L16.6711 7.31836L17.5601 7.32907C18.1388 7.32907 18.6022 7.76787 18.6022 8.31595V10.6506L21.6317 6.47266Z" fill="#AA4323"/>
+              <path d="M21.9293 15.6719L18.6256 11.1089L18.4646 17.2422L20.2745 20H21.9293V15.6719Z" fill="#AA4323"/>
+              </g>
+              <defs>
+              <clipPath id="clip0_4074_1856">
+              <rect width="24" height="26" fill="white"/>
+              </clipPath>
+              </defs>
+            </svg>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>

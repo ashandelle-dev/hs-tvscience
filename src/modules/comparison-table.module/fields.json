@@ -1,0 +1,57 @@
+[
+  {
+    "name": "left_logo",
+    "label": "Left Column Logo",
+    "type": "image",
+    "default": {
+      "size_type": "exact",
+      "src": "https://tvscientific.com/hubfs/tvsci-logo-black.svg",
+      "alt": null,
+      "loading": "lazy"
+    },
+    "required": false
+  },
+  {
+    "name": "right_logo",
+    "label": "Right Column Logo",
+    "type": "image",
+    "default": {
+      "size_type": "exact",
+      "src": "https://tvscientific.com/hubfs/Tatari_Lockup_Black.svg",
+      "alt": null,
+      "loading": "lazy"
+    },
+    "required": false
+  },
+  {
+    "name": "features",
+    "label": "Features",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": null,
+      "default": 4
+    },
+    "children": [
+      {
+        "name": "feature_text",
+        "label": "Feature Text",
+        "default": "Feature Text",
+        "type": "text",
+        "required": false
+      },
+      {
+        "name": "left_status",
+        "label": "Left Column",
+        "type": "boolean",
+        "default": true
+      },
+      {
+        "name": "right_status",
+        "label": "Right Column",
+        "type": "boolean",
+        "default": false
+      }
+    ]
+  }
+]
