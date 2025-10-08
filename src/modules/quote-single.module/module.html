@@ -13,15 +13,15 @@
     line-height: 1.225 !important;
     {% endif %}
   }
-  @media (max-width: 1024px) {
-    .quote-single .content-body {
-      font-size: {{ module.text_size - 8 }}px !important;
-    }
+  .quote-single .content-author {
+    {% if module.name_size != 0 %}
+    font-size: {{ module.name_size }}px !important;
+    {% endif %}
   }
-  @media (max-width: 768px) {
-    .quote-single .content-body {
-      font-size: {{ module.text_size - 12 }}px !important;
-    }
+  .quote-single .content-title {
+    {% if module.title_size != 0 %}
+    font-size: {{ module.title_size }}px !important;
+    {% endif %}
   }
   {% end_scope_css %}
 </style>
@@ -68,10 +68,10 @@
         </div>
         <div class="w-2/3 px-6">
 
-          <p class="font-bold {% if custom_color %} text-inherit {% else %} text-[#438663] {% endif %} m-0">
+          <p class="content-author font-bold {% if module.name_size == 0 %} text-2xl {% endif %} {% if custom_color %} text-inherit {% else %} text-[#438663] {% endif %} m-0">
             {{ module.qs_name }}
             </p>
-            <p class="m-0 {% if custom_color %} text-inherit {% else %} text-[#438663] {% endif %}">
+            <p class="content-title m-0 {% if module.title_size == 0 %} text-lg {% endif %} {% if custom_color %} text-inherit {% else %} text-[#438663] {% endif %}">
             {{ module.qs_title }}
             </p>
         </div>
@@ -95,16 +95,16 @@
         <div>
           <div class="border-l-4 {% if !custom_color %} border-[#0FBF84] {% endif %} md:pl-10 md:ml-10" {% if custom_color %}style="border-color: {{ module.styles.text_color.css }};"{% endif %}>
             <div>
-              <p class="content-body {% if module.text_size == 0 %} text-[24px] md:text-[32px] lg:text-[36px] {% endif %} font-bricolage-grotesque mb-3 leading-tight italic {% if custom_color %} text-inherit {% else %} text-primary-darker {% endif %}">
+              <p class="content-body {% if module.text_size == 0 %} text-[24px] md:text-[32px] lg:text-[36px] {% endif %} font-bricolage-grotesque mb-3 leading-tight {% if custom_color %} text-inherit {% else %} text-primary-darker {% endif %}">
                 {{ module.qs_quote }}
                 </p>
             </div>
             <div class="content-author flex flex-wrap lg:flex-nowrap relative">
               <div class="w-full sm:w-6/12 mb-6 sm:mb-0">
-                <p class="font-bold text-2xl {% if custom_color %} text-inherit {% else %} text-[#438663] {% endif %} m-0">
+                <p class="content-author font-bold {% if module.name_size == 0 %} text-2xl {% endif %} {% if custom_color %} text-inherit {% else %} text-[#438663] {% endif %} m-0">
                   {{ module.qs_name }}
                 </p>
-                <p class="m-0 text-lg {% if custom_color %} text-inherit {% else %} text-[#438663] {% endif %}">
+                <p class="content-title m-0 {% if module.title_size == 0 %} text-lg {% endif %} {% if custom_color %} text-inherit {% else %} text-[#438663] {% endif %}">
                 {{ module.qs_title }}
                 </p>
               </div>

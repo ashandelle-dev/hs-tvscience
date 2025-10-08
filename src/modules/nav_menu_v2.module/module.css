@@ -1,0 +1,26 @@
+/*BW 06/20/2023 - Nav Single Fix */
+.single-nav {
+  margin-right: 1rem;
+}
+
+.pl-3 {
+  padding-left: 0.75rem;
+}
+
+.pr-2 {
+  padding-right: 0.5rem;
+}
+
+.content-aware {
+  width: auto;
+  white-space: nowrap;
+}
+
+.announcement {
+  background-color: var(--background-color);
+  transition: background-color 0.3s ease;
+}
+
+.announcement:hover {
+  background-color: var(--hover-background-color);
+}
