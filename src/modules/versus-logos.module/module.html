@@ -1,0 +1,39 @@
+{% require_css %}
+    <style>
+        {% scope_css %}
+        .versus-logos {
+            {{ module.styles.spacing.css }};
+        }
+        {% end_scope_css %}
+    </style>
+{% end_require_css %}
+
+<div class="versus-logos flex justify-center items-center md:flex-row flex-col gap-8">
+    <div>
+        {% if module.left_logo.src %}
+            {% set sizeAttrs = 'width="{{ module.left_logo.width|escape_attr }}" height="{{ module.left_logo.height|escape_attr }}"' %}
+            {% if module.left_logo.size_type == 'auto' %}
+                {% set sizeAttrs = 'width="{{ module.left_logo.width|escape_attr }}" height="{{ module.left_logo.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+            {% elif module.left_logo.size_type == 'auto_custom_max' %}
+                {% set sizeAttrs = 'width="{{ module.left_logo.max_width|escape_attr }}" height="{{ module.left_logo.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+            {% endif %}
+            {% set loadingAttr = module.left_logo.loading != 'disabled' ? 'loading="{{ module.left_logo.loading|escape_attr }}"' : '' %}
+            <img src="{{ module.left_logo.src|escape_url }}" alt="{{ module.left_logo.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+        {% endif %}
+    </div>
+    <span class="text-lg text-white leading-none">
+        VS
+    </span>
+    <div>
+        {% if module.right_logo.src %}
+            {% set sizeAttrs = 'width="{{ module.right_logo.width|escape_attr }}" height="{{ module.right_logo.height|escape_attr }}"' %}
+            {% if module.right_logo.size_type == 'auto' %}
+                {% set sizeAttrs = 'width="{{ module.right_logo.width|escape_attr }}" height="{{ module.right_logo.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+            {% elif module.right_logo.size_type == 'auto_custom_max' %}
+                {% set sizeAttrs = 'width="{{ module.right_logo.max_width|escape_attr }}" height="{{ module.right_logo.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+            {% endif %}
+            {% set loadingAttr = module.right_logo.loading != 'disabled' ? 'loading="{{ module.right_logo.loading|escape_attr }}"' : '' %}
+            <img src="{{ module.right_logo.src|escape_url }}" alt="{{ module.right_logo.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+        {% endif %}
+    </div>
+</div>

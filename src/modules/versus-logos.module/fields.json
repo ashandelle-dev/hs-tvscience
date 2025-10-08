@@ -1,0 +1,55 @@
+[
+  {
+    "name": "left_logo",
+    "label": "Left Logo",
+    "required": false,
+    "locked": false,
+    "inline_help_text": "",
+    "help_text": "",
+    "responsive": true,
+    "resizable": true,
+    "show_loading": false,
+    "type": "image",
+    "default": {
+      "size_type": "auto",
+      "src": "",
+      "alt": null,
+      "loading": "disabled"
+    }
+  },
+  {
+    "name": "right_logo",
+    "label": "Right Logo",
+    "required": false,
+    "locked": false,
+    "inline_help_text": "",
+    "help_text": "",
+    "responsive": true,
+    "resizable": true,
+    "show_loading": false,
+    "type": "image",
+    "default": {
+      "size_type": "auto",
+      "src": "",
+      "alt": null,
+      "loading": "disabled"
+    }
+  },
+  {
+    "name": "styles",
+    "label": "Styles",
+    "children": [
+      {
+        "name": "spacing",
+        "label": "Spacing",
+        "required": false,
+        "locked": false,
+        "type": "spacing",
+        "inline_help_text": "",
+        "help_text": ""
+      }
+    ],
+    "type": "group",
+    "tab": "STYLE"
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "label": "Comparison Table",
+  "css_assets": [],
+  "external_js": [],
+  "global": false,
+  "help_text": "A comparison table with logo headers and repeatable feature rows",
+  "content_types": [ "LANDING_PAGE", "SITE_PAGE" ],
+  "js_assets": [],
+  "other_assets": [],
+  "smart_type": "NOT_SMART",
+  "tags": [],
+  "is_available_for_new_content": true
+}
