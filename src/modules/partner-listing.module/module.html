@@ -1,0 +1,127 @@
+<!-- Partner Listing Module -->
+{% set table = module.hubdb_table %}
+{% set categories_filters = hubdb_table_column(table, "category") %}
+{% set capabilities_filters = hubdb_table_column(table, "capability") %}
+{% set partners = hubdb_table_rows(table, "orderBy=partner_name") %}
+
+<div class="partner-listing-wrapper">
+  <div class="partner-listing-container max-w-7xl mx-auto px-4 py-8 lg:py-12">
+    <div class="flex flex-col lg:flex-row gap-8">
+
+      <!-- Left Sidebar - Filters -->
+      <aside class="partner-filters w-full lg:w-64 flex-shrink-0">
+
+        <!-- Collections Filter -->
+        <div class="filter-group mb-10">
+          <p class="text-sm mb-2 text-[#202223]">Collections</p>
+          <div class="filter-options space-y-4">
+            {% for option in categories_filters.options %}
+            <label class="flex items-center cursor-pointer group">
+              <input
+                type="checkbox"
+                class="category-filter mt-0.5 mr-3 w-[18px] h-[20px] cursor-pointer rounded border-2 border-gray-300"
+                data-filter-type="category"
+                data-filter-value="{{ option.name }}"
+              >
+              <span class="text-sm text-[#202223] group-hover:text-[#198960] select-none leading-none">{{ option.label }}</span>
+            </label>
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- Categories Filter -->
+        <div class="filter-group mb-6 border-b border-[#D9E2EB] pb-6 lg:border-b-0">
+          <p class="text-sm mb-2 text-[#202223]">Categories</p>
+          <div class="filter-options space-y-4">
+            {% for option in capabilities_filters.options %}
+            <label class="flex items-center cursor-pointer group">
+              <input
+                type="checkbox"
+                class="capability-filter mt-0.5 mr-3 w-5 h-5 cursor-pointer rounded border-2 border-gray-300"
+                data-filter-type="capability"
+                data-filter-value="{{ option.name }}"
+              >
+              <span class="text-sm text-[#202223] group-hover:text-[#198960] select-none leading-none">{{ option.label }}</span>
+            </label>
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- Clear Filters Button -->
+        <button style="background: none; border: none; cursor: pointer;" class="p-0  border-none clear-filters hidden text-[#198960] hover:text-[#198960] font-medium flex items-center">
+            <svg class="mr-2 inline-block" width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="12.8141" y1="13.7618" x2="1.22827" y2="2.17605" stroke="#198960" stroke-width="2" stroke-linecap="round"/>
+                <line x1="1" y1="13.8239" x2="12.5858" y2="2.23816" stroke="#198960" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+
+          Clear Filters
+        </button>
+      </aside>
+
+      <!-- Right Content - Partner Cards Grid -->
+      <main class="partner-grid-container flex-1 w-full">
+        <div class="partner-grid grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-6">
+
+          {% for partner in partners %}
+          <a
+            href="{{ partner.partner_url }}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex flex-col partner-card bg-white rounded-lg shadow-sm border border-gray-200 p-4 lg:p-6 hover:shadow-md transition-shadow no-underline hover:no-underline hover:border-[#23E596]"
+            data-categories="{% for cat in partner.category %}{{ cat.name }}{% if not loop.last %},{% endif %}{% endfor %}"
+            data-capabilities="{% for cap in partner.capability %}{{ cap.name }}{% if not loop.last %},{% endif %}{% endfor %}"
+          >
+
+            <!-- Partner Logo -->
+            <div class="partner-logo mb-6">
+              {% if partner.logo %}
+              <img
+                src="{{ partner.logo.url }}"
+                alt="{{ partner.logo.altText or partner.partner_name }}"
+                width="{{ partner.logo.width }}"
+                height="{{ partner.logo.height }}"
+                class="inline-block"
+              >
+              {% else %}
+              <div class="w-full h-full bg-gray-200 rounded"></div>
+              {% endif %}
+            </div>
+
+            <!-- Partner Name -->
+            <h3 class="partner-name text-base text-[#1F252B] font-bold mb-3">
+              {{ partner.partner_name }}
+            </h3>
+
+            <!-- Partner Description -->
+            <p class="partner-description text-gray-600 text-sm mb-4">
+              {{ partner.description }}
+            </p>
+
+            <!-- Category Tags -->
+            <div class="partner-tags flex flex-wrap gap-2">
+              {% for category in partner.category %}
+              <span class="category-tag p-1 text-[#1F252B] text-xs rounded border-[#D9E2EB] border">
+                {{ category.label }}
+              </span>
+              {% endfor %}
+              {% for capability in partner.capability %}
+              <span class="capability-tag p-1 text-[#1F252B] text-xs rounded border-[#D9E2EB] border">
+                {{ capability.label }}
+              </span>
+              {% endfor %}
+            </div>
+
+          </a>
+          {% endfor %}
+
+        </div>
+
+        <!-- No Results Message -->
+        <div class="no-results hidden text-center py-12">
+          <p class="text-gray-500 text-lg">No partners found matching your filters.</p>
+        </div>
+      </main>
+
+    </div>
+  </div>
+</div>
