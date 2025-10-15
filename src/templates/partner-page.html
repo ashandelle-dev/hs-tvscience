@@ -1,0 +1,53 @@
+<!--
+    templateType: page
+    label: Partner Page
+    isAvailableForNewContent: true
+-->
+{% extends "../layouts/base.html" %}
+{% block header %}
+  {% global_partial path="../partials/header.html" %}
+  {% require_css %}
+  <style>
+    @font-face {
+        font-family: 'BricolageGrotesque';
+        src: url(https://www.tvscientific.com/hubfs/fonts/BricolageGrotesque-VariableFont.ttf);
+    }
+    @font-face {
+        font-family: 'Rubik';
+        src: url(https://www.tvscientific.com/hubfs/fonts/Rubik-VariableFont.ttf);
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body main {
+        font-family: 'Rubik' !important;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 150%;
+    }
+
+    main h1, main h2, main h3,
+    main h4, main h5, main h6,
+    main .h1, main .h2, main .h3,
+    main .h4, main .h5, main .h6 {
+        font-family: BricolageGrotesque !important;
+    }
+
+    .body-wrapper {
+        overflow-x: initial !important;
+    }
+  </style>
+  {% end_require_css %}
+{% endblock header %}
+{% block body %}
+<main>
+  {% dnd_area "dnd_area" class='dnd-empty', label='Drag and Drop Area' %}
+
+
+  {% end_dnd_area %}
+</main>
+{% endblock body %}
+

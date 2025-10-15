@@ -1,0 +1,9 @@
+[
+  {
+   "type": "hubdbtable",
+   "id": "0c7fabce-fcb5-4640-a038-bff44c77408c",
+   "label": "HubDB table",
+   "name": "hubdb_table",
+   "default": 136109486
+  }
+ ]

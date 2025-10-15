@@ -1,0 +1,13 @@
+{
+  "label": "Partner Listing with Filters",
+  "css_assets": [],
+  "external_js": [],
+  "global": false,
+  "help_text": "Displays a filterable list of partners from a HubDB table with category and capability filters",
+  "content_types": [ "LANDING_PAGE", "SITE_PAGE" ],
+  "js_assets": [],
+  "other_assets": [],
+  "smart_type": "NOT_SMART",
+  "tags": ["partner", "listing", "filters", "hubdb"],
+  "is_available_for_new_content": true
+}
