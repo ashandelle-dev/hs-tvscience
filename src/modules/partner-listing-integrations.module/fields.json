@@ -1,0 +1,68 @@
+[
+  {
+    "type": "hubdbtable",
+    "id": "0c7fabce-fcb5-4640-a038-bff44c77408c",
+    "label": "HubDB table",
+    "name": "hubdb_table",
+    "default": 136109486
+  },
+  {
+    "name": "filters",
+    "label": "Filters",
+    "required": false,
+    "locked": false,
+    "occurrence": {
+      "min": null,
+      "max": null,
+      "sorting_label_field": null,
+      "default": 6
+    },
+    "children": [
+      {
+        "name": "label_",
+        "label": "Label",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": null
+      },
+      {
+        "name": "value",
+        "label": "Value",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": null
+      }
+    ],
+    "type": "group",
+    "inline_help_text": "",
+    "help_text": "",
+    "default": [
+      {
+        "label_": "MMPs",
+        "value": "mmps"
+      },
+      {
+        "label_": "Affiliate Networks",
+        "value": "affiliate_networks"
+      },
+      {
+        "label_": "Conversion Tracking",
+        "value": "conversion_tracking"
+      },
+      {
+        "label_": "Measurement & Analytics",
+        "value": "measurement_analytics"
+      },
+      {
+        "label_": "Audience Integrations",
+        "value": "audience_integrations"
+      },
+      {
+        "label_": "Linear",
+        "value": "linear"
+      }
+    ]
+  }
+]
