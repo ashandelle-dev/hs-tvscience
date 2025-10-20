@@ -1,0 +1,223 @@
+[
+  {
+    "name": "cards",
+    "label": "Cards",
+    "required": false,
+    "locked": false,
+    "occurrence": {
+      "min": null,
+      "max": null,
+      "sorting_label_field": null,
+      "default": 4
+    },
+    "children": [
+      {
+        "name": "heading",
+        "label": "Heading",
+        "required": false,
+        "locked": false,
+        "validation_regex": "",
+        "validation_error_message": "",
+        "allow_new_line": false,
+        "show_emoji_picker": false,
+        "type": "text",
+        "placeholder": "",
+        "inline_help_text": "",
+        "help_text": "",
+        "default": "Creative & production"
+      },
+      {
+        "name": "description",
+        "label": "Description",
+        "required": false,
+        "locked": false,
+        "type": "richtext",
+        "inline_help_text": "",
+        "help_text": "",
+        "default": "<p>Launch high-impact ads quickly. Access top-tier video talent to meet your creative goals.</p>"
+      },
+      {
+        "name": "image",
+        "label": "Image",
+        "required": false,
+        "locked": false,
+        "type": "image",
+        "inline_help_text": "",
+        "help_text": "",
+        "default": {
+          "size_type": "exact",
+          "src": "https://tvscientific.com/hubfs/PartnerPage/Icon-Creative.svg",
+          "alt": "Creative & Production",
+          "loading": "lazy",
+          "width": 52,
+          "height": 52
+        }
+      },
+      {
+        "name": "button",
+        "label": "Button",
+        "required": false,
+        "locked": false,
+        "children": [
+          {
+            "name": "text",
+            "label": "Text",
+            "required": false,
+            "locked": false,
+            "type": "text",
+            "default": ""
+          },
+          {
+            "name": "link",
+            "label": "Link",
+            "required": false,
+            "locked": false,
+            "supported_types": [
+              "EXTERNAL",
+              "CONTENT",
+              "FILE",
+              "EMAIL_ADDRESS",
+              "BLOG"
+            ],
+            "type": "link",
+            "inline_help_text": "",
+            "help_text": "",
+            "default": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": ""
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            }
+          }
+        ],
+        "type": "group",
+        "inline_help_text": "",
+        "help_text": "",
+        "default": {}
+      }
+    ],
+    "type": "group",
+    "inline_help_text": "",
+    "help_text": "",
+    "default": [
+      {
+        "heading": "Creative & production",
+        "description": "<p>Launch high-impact ads quickly. Access top-tier video talent to meet your creative goals.</p>",
+        "image": {
+          "size_type": "exact",
+          "src": "https://tvscientific.com/hubfs/PartnerPage/Icon-Creative.svg",
+          "alt": "Creative & Production",
+          "loading": "lazy",
+          "width": 52,
+          "height": 52
+        }
+      },
+      {
+        "heading": "Audience targeting & data solutions",
+        "description": "<p>Reach the right viewers with first-party data and premium audience segments and providers.</p>",
+        "image": {
+          "size_type": "exact",
+          "src": "https://tvscientific.com/hubfs/PartnerPage/Target-dark%20background.svg",
+          "alt": "Audience targeting & data solutions",
+          "loading": "lazy",
+          "width": 52,
+          "height": 52
+        }
+      },
+      {
+        "heading": "Attribution & measurement",
+        "description": "<p>Prove ROI with advanced measurement solutions, performance insights, and cross-channel reporting.</p>",
+        "image": {
+          "size_type": "exact",
+          "src": "https://tvscientific.com/hubfs/PartnerPage/Outcomes-1.svg",
+          "alt": "Attribution & measurement",
+          "loading": "lazy",
+          "width": 52,
+          "height": 52
+        }
+      },
+      {
+        "heading": "Campaign & channel management",
+        "description": "<p>Scale performance across CTV, linear TV and digital with expert strategy, campaign execution, and cross-channel optimization.</p>",
+        "image": {
+          "size_type": "exact",
+          "src": "https://tvscientific.com/hubfs/PartnerPage/Icon-Campaign.svg",
+          "alt": "Campaign & channel management",
+          "loading": "lazy",
+          "width": 52,
+          "height": 52
+        }
+      }
+    ]
+  },
+  {
+    "name": "styles",
+    "label": "Styles",
+    "children": [
+      {
+        "name": "background_color",
+        "label": "Background color",
+        "required": false,
+        "locked": false,
+        "inline_help_text": "",
+        "help_text": "",
+        "type": "color",
+        "default": null
+      },
+      {
+        "name": "color",
+        "label": "Color ",
+        "required": false,
+        "locked": false,
+        "inline_help_text": "",
+        "help_text": "",
+        "type": "color",
+        "default": null
+      },
+      {
+        "name": "border_radius",
+        "label": "Border radius",
+        "required": false,
+        "locked": false,
+        "type": "number",
+        "default": null,
+        "inline_help_text": "",
+        "help_text": ""
+      },
+      {
+        "name": "padding",
+        "label": "Padding",
+        "required": false,
+        "locked": false,
+        "type": "spacing",
+        "inline_help_text": "",
+        "help_text": "",
+        "default": {
+          "padding": {
+            "top": {
+              "value": 1,
+              "units": "rem"
+            },
+            "bottom": {
+              "value": 1,
+              "units": "rem"
+            },
+            "left": {
+              "value": 1,
+              "units": "rem"
+            },
+            "right": {
+              "value": 1,
+              "units": "rem"
+            }
+          }
+        }
+      }
+    ],
+    "type": "group",
+    "tab": "STYLE"
+  }
+]

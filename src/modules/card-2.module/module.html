@@ -1,0 +1,81 @@
+{% require_css %}
+<style>
+  {% scope_css %}
+
+    .card {
+        {{ module.styles.padding.css }};
+        {% if module.styles.background_color.css %}
+        background-color: {{ module.styles.background_color.css }};
+        {% endif %}
+        {% if module.styles.color.css %}
+            color: {{ module.styles.color.css }};
+        {% endif %}
+        border-radius: {{ module.styles.border_radius }}px;
+    }
+    {% if module.styles.color.css %}
+    .card *:not(a) {
+        color: {{ module.styles.color.css }};
+    }
+    {% endif %}
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+
+<div class="grid
+{% if module.cards|length == 2 %}
+    md:grid-cols-2
+{% elif module.cards|length == 3 %}
+    md:grid-cols-3
+{% elif module.cards|length >= 4 %}
+    md:grid-cols-2 lg:grid-cols-4
+{% else %}
+    grid-cols-1
+{% endif %}
+gap-3">
+    {% for item in module.cards %}
+    <div class="card rounded p-4 shadow-sm border border-primary transition-shadow">
+        <div class=" mb-6">
+            {% if item.image.src %}
+                {% set sizeAttrs = 'width="{{ item.image.width|escape_attr }}" height="{{ item.image.height|escape_attr }}"' %}
+                {% if item.image.size_type == 'auto' %}
+                    {% set sizeAttrs = 'width="{{ item.image.width|escape_attr }}" height="{{ item.image.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+                {% elif item.image.size_type == 'auto_custom_max' %}
+                    {% set sizeAttrs = 'width="{{ item.image.max_width|escape_attr }}" height="{{ item.image.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+                {% endif %}
+                {% set loadingAttr = item.image.loading != 'disabled' ? 'loading="{{ item.image.loading|escape_attr }}"' : '' %}
+                <img class="inline-block" src="{{ item.image.src|escape_url }}" alt="{{ item.image.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+            {% endif %}
+        </div>
+        <h3 class="font-bricolage-grotesque font-semibold text-gray-900 mb-2 leading-none tracking-wider"> {{ item.heading }} </h3>
+        <p class="text-gray-600 font-normal leading-relaxed text-sm"> {{ item.description }} </p>
+
+        {% if item.button.text %}
+        {% set href = item.button.link.url.href %}
+        {% if item.button.link.url.type is equalto "EMAIL_ADDRESS" %}
+        {% set href = "mailto:" + href %}
+        {% elif item.button.link.url.type is equalto "PHONE_NUMBER" %}
+        {% set href = "tel:" + href %}
+        {% endif %}
+        <a
+        class="bg-transparent text-[#23e596] font-bold tracking-[1.5px] text-sm"
+        {% if item.button.link.url.type is equalto "CALL_TO_ACTION"  %}
+            href="{{ href }}" {# The href here is not escaped as it is not editable and functions as a JavaScript call to the associated CTA #}
+        {% else %}
+            href="{{ href|escape_url }}"
+        {% endif %}
+        {% if item.button.link.open_in_new_tab %}
+            target="_blank"
+        {% endif %}
+        {% if item.button.link.rel %}
+            rel="{{ item.button.link.rel|escape_attr }}"
+        {% endif %}
+        >
+        {{ item.button.text }}
+        </a>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+
+

@@ -101,6 +101,16 @@
     "locked": false,
     "children": [
       {
+      "name": "alignment",
+      "label": "Alignment",
+      "required": false,
+      "locked": false,
+      "type": "alignment",
+      "inline_help_text": "",
+      "help_text": "",
+      "alignment_direction": "HORIZONTAL"
+      },
+      {
         "id": "styles.background_color",
         "name": "background_color",
         "label": "Background Color",

@@ -7,6 +7,7 @@
         background-color: {{ module.styles.background_color.css }};
         {% endif %}
         text-wrap: balance;
+        justify-content: {{ module.styles.alignment.horizontal_align|replace('left', 'flex-start')|replace('right', 'flex-end')|replace('center', 'center') }};
     }
     .tvsci-heading .heading {
         {% if module.styles.text_color %}
@@ -21,7 +22,7 @@
 </style>
 {% end_require_css %}
 
-<span class="tvsci-heading flex gap-2">
+<span class="tvsci-heading flex  gap-2"">
     {% if module.image.src %}
     {% set sizeAttrs = 'width="{{ module.image.width|escape_attr }}" height="{{ module.image.height|escape_attr }}"' %}
     {% if module.image.size_type == 'auto' %}
