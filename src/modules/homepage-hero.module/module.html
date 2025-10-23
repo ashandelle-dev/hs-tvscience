@@ -9,7 +9,7 @@
     {% if module.background == 'image' %}
     background-image: {{module.background_image.src}};
     {% endif %}
-    max-height: 100vh; 
+    max-height: 100vh;
     height: 100vh;
   }
 
@@ -28,13 +28,14 @@
     font-size: 24px !important;
     font-style: normal;
     font-weight: 500 !important;
-    line-height: 72px; /* 300% */
+    line-height: 32px !important;
+    text-wrap: balance !important;
   }
   .h1.below {
     color: #fff;
     line-height: 1;
   }
-  
+
   h1.sub-below {
     margin-bottom: 20px;
   }

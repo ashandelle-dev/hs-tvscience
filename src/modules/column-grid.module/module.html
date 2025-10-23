@@ -1,3 +1,12 @@
+<style>
+  {% scope_css %}
+  h3 {
+    font-size: 20px;
+    line-height: 1.2;
+  }
+  {% end_scope_css %}
+</style>
+
 {% if module.column_layout == '2-col' %}
 <div class="grid grid-cols-1 md:grid-cols-2 auto-rows-auto gap-4">
 {% elif module.column_layout == '3-col' %}
@@ -12,7 +21,7 @@
       list-style:none;
     }
     li {
-      background: url({{ item.list_icon.src|escape_url }}) no-repeat;
+      background: url({{ column.list_icon.src|escape_url }}) no-repeat;
       padding-left: 15px;
     }
   </style>
@@ -28,7 +37,7 @@
          {% set loadingAttr = column.column_icon.loading != 'disabled' ? 'loading="{{ column.column_icon.loading|escape_attr }}"' : '' %}
         <img class="mt-0 mx-0 mb-6" src="{{ column.column_icon.src|escape_url }}" alt="{{ column.column_icon.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
       {% endif %}
-      {{column.column_text}}
+      {{ column.column_text }}
     </div>
   {% endfor %}
 </div>

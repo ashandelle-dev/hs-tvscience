@@ -26,31 +26,13 @@
       allButton.classList.add('active');
     }
 
-    // Handle filter button clicks
+    // Handle filter button clicks (only one active at a time)
     function handleFilterClick(clickedButton) {
-      const filterValue = clickedButton.dataset.filterValue;
+      // Deactivate all buttons
+      filterButtons.forEach(btn => btn.classList.remove('active'));
 
-      // If "All" is clicked, deactivate all other filters
-      if (filterValue === 'all') {
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        clickedButton.classList.add('active');
-      } else {
-        // Remove "All" if any specific filter is clicked
-        if (allButton) {
-          allButton.classList.remove('active');
-        }
-
-        // Toggle the clicked button
-        clickedButton.classList.toggle('active');
-
-        // If no filters are active, activate "All"
-        const hasActiveFilters = Array.from(filterButtons).some(btn =>
-          btn.classList.contains('active') && btn.dataset.filterValue !== 'all'
-        );
-        if (!hasActiveFilters && allButton) {
-          allButton.classList.add('active');
-        }
-      }
+      // Activate the clicked button
+      clickedButton.classList.add('active');
 
       filterPartners();
     }

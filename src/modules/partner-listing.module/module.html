@@ -1,8 +1,8 @@
 <!-- Partner Listing Module -->
 {% set table = module.hubdb_table %}
-{% set categories_filters = hubdb_table_column(table, "category") %}
-{% set capabilities_filters = hubdb_table_column(table, "capability") %}
-{% set partners = hubdb_table_rows(table, "orderBy=partner_name") %}
+{% set categories_filters = hubdb_table_column(table, "partner_categories") %}
+{% set capabilities_filters = hubdb_table_column(table, "capabilities") %}
+{% set partners = hubdb_table_rows(table, "orderBy=name") %}
 
 <div class="partner-listing-wrapper">
   <div class="partner-listing-container py-8 lg:py-12">
@@ -13,7 +13,7 @@
 
         <!-- Collections Filter -->
         <div class="filter-group mb-10">
-          <p class="text-sm mb-2 text-[#202223]">Collections</p>
+          <p class="text-sm mb-2 text-[#202223] font-semibold">Categories</p>
           <div class="filter-options space-y-4">
             {% for option in categories_filters.options %}
             <label class="flex items-center cursor-pointer group">
@@ -31,7 +31,7 @@
 
         <!-- Categories Filter -->
         <div class="filter-group mb-6 border-b border-[#D9E2EB] pb-6 lg:border-b-0">
-          <p class="text-sm mb-2 text-[#202223]">Categories</p>
+          <p class="text-sm mb-2 text-[#202223] font-semibold">Capabilities</p>
           <div class="filter-options space-y-4">
             {% for option in capabilities_filters.options %}
             <label class="flex items-center cursor-pointer group">
@@ -63,23 +63,25 @@
         <div class="partner-grid grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-6">
 
           {% for partner in partners %}
-          <a
-            href="{{ partner.partner_url }}"
+          <{% if partner.url %}a{% else %}div{% endif %}
+            {% if partner.url %}
+            href="{{ partner.url }}"
             target="_blank"
             rel="noopener noreferrer"
+            {% endif %}
             class="flex flex-col partner-card bg-white rounded-lg shadow-sm border border-gray-200 p-4 lg:p-6 hover:shadow-md transition-shadow no-underline hover:no-underline hover:border-[#23E596]"
-            data-categories="{% for cat in partner.category %}{{ cat.name }}{% if not loop.last %},{% endif %}{% endfor %}"
-            data-capabilities="{% for cap in partner.capability %}{{ cap.name }}{% if not loop.last %},{% endif %}{% endfor %}"
+            data-categories="{% for cat in partner.partner_categories %}{{ cat.name }}{% if not loop.last %},{% endif %}{% endfor %}"
+            data-capabilities="{% for cap in partner.capabilities %}{{ cap.name }}{% if not loop.last %},{% endif %}{% endfor %}"
           >
 
             <!-- Partner Logo -->
             <div class="partner-logo mb-6">
-              {% if partner.logo %}
+              {% if partner.image.url %}
               <img
-                src="{{ partner.logo.url }}"
-                alt="{{ partner.logo.altText or partner.partner_name }}"
-                width="{{ partner.logo.width }}"
-                height="{{ partner.logo.height }}"
+                src="{{ partner.image.url }}"
+                alt="{{ partner.image.altText or partner.name }}"
+                width="{{ partner.image.width }}"
+                height="{{ partner.image.height }}"
                 class="inline-block"
               >
               {% else %}
@@ -89,7 +91,7 @@
 
             <!-- Partner Name -->
             <h3 class="partner-name text-base text-[#1F252B] font-bold mb-3">
-              {{ partner.partner_name }}
+              {{ partner.name }}
             </h3>
 
             <!-- Partner Description -->
@@ -99,19 +101,19 @@
 
             <!-- Category Tags -->
             <div class="partner-tags flex flex-wrap gap-2">
-              {% for category in partner.category %}
+              {% for category in partner.partner_categories %}
               <span class="category-tag p-1 text-[#1F252B] text-xs rounded border-[#D9E2EB] border">
                 {{ category.label }}
               </span>
               {% endfor %}
-              {% for capability in partner.capability %}
+              {% for capability in partner.capabilities %}
               <span class="capability-tag p-1 text-[#1F252B] text-xs rounded border-[#D9E2EB] border">
                 {{ capability.label }}
               </span>
               {% endfor %}
             </div>
 
-          </a>
+          </{% if partner.url %}a{% else %}div{% endif %}>
           {% endfor %}
 
         </div>
@@ -119,6 +121,10 @@
         <!-- No Results Message -->
         <div class="no-results hidden text-center py-12">
           <p class="text-gray-500 text-lg">No partners found matching your filters.</p>
+        </div>
+
+        <div class="description text-gray-600 text-sm border-t border-[#D9E2EB] pt-8 mt-8">
+          {{ module.description }}
         </div>
       </main>
 

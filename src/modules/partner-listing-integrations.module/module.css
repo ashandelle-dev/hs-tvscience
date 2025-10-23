@@ -25,10 +25,10 @@
 }
 
 /* Filter button active state */
-.filter-button.active {
-  background-color: #10b981;
-  border-color: #10b981;
-  color: white;
+.filter-button.active, .filter-button:hover, .filter-button:focus {
+  background-color: #F5FEF7;
+  border-color: #23E596;
+  color: #0F2D29;
 }
 
 /* Mobile filter improvements */
