@@ -4,25 +4,10 @@
   display: none !important;
 }
 
-.partner-description {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+.partner-description p {
+  font-size: 14px;
 }
 
-/* Mobile: 3 lines */
-@media (max-width: 1023px) {
-  .partner-description {
-    -webkit-line-clamp: 3;
-  }
-}
-
-/* Desktop: 4 lines */
-@media (min-width: 1024px) {
-  .partner-description {
-    -webkit-line-clamp: 4;
-  }
-}
 
 /* Filter button active state */
 .filter-button.active, .filter-button:hover, .filter-button:focus {

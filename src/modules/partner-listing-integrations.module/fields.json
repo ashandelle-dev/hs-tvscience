@@ -7,6 +7,16 @@
     "default": 136413080
   },
   {
+  "name": "show_card_description",
+  "label": "Show card description",
+  "required": false,
+  "locked": false,
+  "type": "boolean",
+  "inline_help_text": "",
+  "help_text": "",
+  "default": false } ,
+
+  {
     "name": "filters",
     "label": "Filters",
     "required": false,

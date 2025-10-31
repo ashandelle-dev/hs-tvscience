@@ -1,16 +1,27 @@
 [
   {
-   "type": "hubdbtable",
-   "id": "0c7fabce-fcb5-4640-a038-bff44c77408c",
-   "label": "HubDB table",
-   "name": "hubdb_table",
-   "default": 136413080
+    "type": "hubdbtable",
+    "id": "0c7fabce-fcb5-4640-a038-bff44c77408c",
+    "label": "HubDB table",
+    "name": "hubdb_table",
+    "default": 136413080
   },
   {
-  "name": "description",
-  "label": "Description",
-  "required": false,
-  "locked": false,
-  "type": "text",
-  "default": "<p>These partners are independent organizations we’ve selected for their expertise and shared commitment to drive performance for your TV campaigns. While we facilitate these connections, each partner manages their own services, and tvScientific is not responsible for client outcomes.</p>" }
- ]
+    "name": "show_card_description",
+    "label": "Show card description",
+    "required": false,
+    "locked": false,
+    "type": "boolean",
+    "inline_help_text": "",
+    "help_text": "",
+    "default": false
+  },
+  {
+    "name": "description",
+    "label": "Description",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "<p>These partners are independent organizations we’ve selected for their expertise and shared commitment to drive performance for your TV campaigns. While we facilitate these connections, each partner manages their own services, and tvScientific is not responsible for client outcomes.</p>"
+  }
+]

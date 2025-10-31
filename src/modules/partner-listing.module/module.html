@@ -4,6 +4,23 @@
 {% set capabilities_filters = hubdb_table_column(table, "capabilities") %}
 {% set partners = hubdb_table_rows(table, "orderBy=name") %}
 
+{# Build arrays of used categories and capabilities from partners #}
+{% set used_categories = [] %}
+{% set used_capabilities = [] %}
+
+{% for partner in partners %}
+  {% for category in partner.partner_categories %}
+    {% if category.name not in used_categories %}
+      {% do used_categories.append(category.name) %}
+    {% endif %}
+  {% endfor %}
+  {% for capability in partner.capabilities %}
+    {% if capability.name not in used_capabilities %}
+      {% do used_capabilities.append(capability.name) %}
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
 <div class="partner-listing-wrapper">
   <div class="partner-listing-container py-8 lg:py-12">
     <div class="flex flex-col lg:flex-row gap-8">
@@ -16,6 +33,7 @@
           <p class="text-sm mb-2 text-[#202223] font-semibold">Categories</p>
           <div class="filter-options space-y-4">
             {% for option in categories_filters.options %}
+            {% if option.name in used_categories %}
             <label class="flex items-center cursor-pointer group">
               <input
                 type="checkbox"
@@ -25,6 +43,7 @@
               >
               <span class="text-sm text-[#202223] group-hover:text-[#198960] select-none leading-none">{{ option.label }}</span>
             </label>
+            {% endif %}
             {% endfor %}
           </div>
         </div>
@@ -34,6 +53,7 @@
           <p class="text-sm mb-2 text-[#202223] font-semibold">Capabilities</p>
           <div class="filter-options space-y-4">
             {% for option in capabilities_filters.options %}
+            {% if option.name in used_capabilities %}
             <label class="flex items-center cursor-pointer group">
               <input
                 type="checkbox"
@@ -43,6 +63,7 @@
               >
               <span class="text-sm text-[#202223] group-hover:text-[#198960] select-none leading-none">{{ option.label }}</span>
             </label>
+            {% endif %}
             {% endfor %}
           </div>
         </div>
@@ -95,12 +116,14 @@
             </h3>
 
             <!-- Partner Description -->
-            <div class="partner-description text-gray-600 text-[14px] mb-4">
+            {% if module.show_card_description %}
+            <div class="partner-description text-gray-600 text-[14px] ">
               {{ partner.description }}
             </div>
+            {% endif %}
 
             <!-- Category Tags -->
-            <div class="partner-tags flex flex-wrap gap-2">
+            <div class="partner-tags flex flex-wrap gap-2 mt-4">
               {% for category in partner.partner_categories %}
               <span class="category-tag p-1 text-[#1F252B] text-xs rounded border-[#D9E2EB] border">
                 {{ category.label }}

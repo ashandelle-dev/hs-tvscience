@@ -3,6 +3,17 @@
 {% set categories_filters = hubdb_table_column(table, "integration_categories") %}
 {% set partners = hubdb_table_rows(table, "orderBy=name") %}
 
+{# Build array of used categories from partners #}
+{% set used_categories = [] %}
+
+{% for partner in partners %}
+  {% for category in partner.integration_categories %}
+    {% if category.name not in used_categories %}
+      {% do used_categories.append(category.name) %}
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
 <div class="partner-listing-wrapper">
   <div class="partner-listing-container py-8 lg:py-12">
     <div class="flex flex-col lg:flex-row gap-8">
@@ -25,6 +36,7 @@
             </div>
 
             {% for option in module.filters %}
+            {% if option.value in used_categories %}
             <div class="w-full">
               <button
                 class="category-filter rounded-md filter-button px-3 py-1 text-sm border-2 border-[#D9E2EB] bg-white text-[#0F2D29] cursor-pointer hover:border-[#10b981] hover:bg-[#10b981] hover:text-white transition-all"
@@ -34,6 +46,7 @@
                 {{ option.label_ }}
               </button>
             </div>
+            {% endif %}
             {% endfor %}
           </div>
         </div>
@@ -90,13 +103,14 @@
               </h3>
             </div>
 
+            {% if module.show_card_description %}
               <!-- Partner Description -->
-              <p class="partner-description text-gray-600 text-sm mb-4">
+              <div class="partner-description text-gray-600 text-[14px]">
                 {{ partner.description }}
-              </p>
-
+              </div>
+            {% endif %}
               <!-- Category Tags -->
-              <div class="partner-tags flex flex-wrap gap-2">
+              <div class="partner-tags flex flex-wrap gap-2 mt-4">
                 {% for category in partner.integration_categories %}
                 <span class="category-tag p-1 text-[#1F252B] text-xs rounded border-[#D9E2EB] border">
                   {{ category.label }}
@@ -156,13 +170,15 @@
               </div>
 
 
+              {% if module.show_card_description %}
               <!-- Partner Description -->
-              <p class="partner-description text-gray-600 text-sm mb-4">
+              <div class="partner-description text-gray-600 text-[14px]">
                 {{ partner.description }}
-              </p>
+              </div>
+              {% endif %}
 
               <!-- Category Tags -->
-              <div class="partner-tags flex flex-wrap gap-2">
+              <div class="partner-tags flex flex-wrap gap-2 mt-4">
                 {% for category in partner.integration_categories %}
                 <span class="category-tag p-1 text-[#1F252B] text-xs rounded border-[#D9E2EB] border">
                   {{ category.label }}
