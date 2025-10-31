@@ -78,8 +78,8 @@
           <h2>Stories by {{ blog_author.display_name | split(' ') | first }}</h2>
         </div>
       </div>
-      
-      
+
+
       <div class="py-12">
         <div class="relative">
           <div class="absolute -left-3 top-0 -translate-y-[6px]">
@@ -90,7 +90,7 @@
           </div>
           <hr class="border-[#C0E7D8]">
         </div>
-       
+
       </div>
     </div>
     {# End blog author listing #}
@@ -150,7 +150,7 @@
         {% endif %}
       </div>
       <div class="">
-        <h1 class="text-[#1C4633] capitalize">All 
+        <h1 class="text-[#1C4633] capitalize">All
           {% if tag_id %}
             {{ tag_id }}
           {% elif %}
@@ -175,9 +175,9 @@
         </div>
         <hr class="border-[#C0E7D8]">
       </div>
-     
+
     </div>
-    
+
     {# End blog tag listing #}
 
     {% else %}
@@ -217,7 +217,7 @@
           {% if theme.blog.header_image.src %}
           <div class="blog-header__image">
             {{ render_image(theme.blog.header_image) }}
-       
+
           </div>
           {% endif %}
         </div>
@@ -233,10 +233,10 @@
         </div>
         <hr class="border-[#C0E7D8]">
       </div>
-     
+
     </div>
     {# End blog header #}
-    {% endif %} 
+    {% endif %}
 
     {% if group.public_title == "Press Releases" %}
       <section class="w-full grid gap-10 grid-cols-2">
@@ -282,10 +282,10 @@
               <img alt="{{ content.name }} thumbnail graphic" class="p-6" src="{{ pub_logo }}" alt="" {{ loadingAttr }} >
             </div>
             {% endunless %}
-            
+
             <div class=" p-6">
-              
-              {% if tag != "reports" or group.public_title not "Ebooks"  %}
+
+              {% if tag != "reports" or group.public_title not "Reports"  %}
               <p class="mb-3 uppercase text-[#009061] font-medium ">{{ content.publish_date | datetimeformat('%b %e, %Y') }}</p>
               {% endif  %}
               <h2 class="!text-[22px] !leading-[28px] mb-6 font-medium text-[#31373D]">{{ content.name }}</h2>

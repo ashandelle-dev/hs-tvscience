@@ -68,15 +68,16 @@
               data-capabilities="{% for cap in partner.capabilities %}{{ cap.name }}{% if not loop.last %},{% endif %}{% endfor %}"
               data-featured="true"
             >
+            <div class="parter-name flex items-center gap-4  mb-3">
               <!-- Partner Logo -->
-              <div class="partner-logo mb-6">
+              <div class="partner-logo">
                 {% if partner.image.url %}
                 <img
                   src="{{ partner.image.url }}"
                   alt="{{ partner.image.altText or partner.name }}"
                   width="{{ partner.image.width }}"
                   height="{{ partner.image.height }}"
-                  class="inline-block"
+                  class="inline-block bg-[#F4F7F9] rounded-3xl"
                 >
                 {% else %}
                 <div class="w-full h-full bg-gray-200 rounded"></div>
@@ -84,9 +85,10 @@
               </div>
 
               <!-- Partner Name -->
-              <h3 class="partner-name text-base text-[#1F252B] font-bold mb-3">
+              <h3 class="partner-name text-base text-[#1F252B] font-bold mb-0">
                 {{ partner.name }}
               </h3>
+            </div>
 
               <!-- Partner Description -->
               <p class="partner-description text-gray-600 text-sm mb-4">
@@ -131,25 +133,28 @@
               data-featured="false"
             >
 
-              <!-- Partner Logo -->
-              <div class="partner-logo mb-6">
-                {% if partner.image.url %}
-                <img
-                  src="{{ partner.image.url }}"
-                  alt="{{ partner.image.altText or partner.name }}"
-                  width="{{ partner.image.width }}"
-                  height="{{ partner.image.height }}"
-                  class="inline-block"
-                >
-                {% else %}
-                <div class="w-full h-full bg-gray-200 rounded"></div>
-                {% endif %}
+              <div class="parter-name flex items-center gap-4  mb-3">
+                <!-- Partner Logo -->
+                <div class="partner-logo">
+                  {% if partner.image.url %}
+                  <img
+                    src="{{ partner.image.url }}"
+                    alt="{{ partner.image.altText or partner.name }}"
+                    width="{{ partner.image.width }}"
+                    height="{{ partner.image.height }}"
+                    class="inline-block bg-[#F4F7F9] rounded-3xl"
+                  >
+                  {% else %}
+                  <div class="w-full h-full bg-gray-200 rounded"></div>
+                  {% endif %}
+                </div>
+
+                <!-- Partner Name -->
+                <h3 class="partner-name text-base text-[#1F252B] font-bold mb-0">
+                  {{ partner.name }}
+                </h3>
               </div>
 
-              <!-- Partner Name -->
-              <h3 class="partner-name text-base text-[#1F252B] font-bold mb-3">
-                {{ partner.name }}
-              </h3>
 
               <!-- Partner Description -->
               <p class="partner-description text-gray-600 text-sm mb-4">

@@ -76,12 +76,12 @@
 
             <!-- Partner Logo -->
             <div class="partner-logo mb-6">
-              {% if partner.image.url %}
+              {% if partner.logo_full.url %}
               <img
-                src="{{ partner.image.url }}"
-                alt="{{ partner.image.altText or partner.name }}"
-                width="{{ partner.image.width }}"
-                height="{{ partner.image.height }}"
+                src="{{ partner.logo_full.url }}"
+                alt="{{ partner.logo_full.altText or partner.name }}"
+                width="{{ partner.logo_full.width }}"
+                height="{{ partner.logo_full.height }}"
                 class="inline-block"
               >
               {% else %}
@@ -95,9 +95,9 @@
             </h3>
 
             <!-- Partner Description -->
-            <p class="partner-description text-gray-600 text-sm mb-4">
+            <div class="partner-description text-gray-600 text-[14px] mb-4">
               {{ partner.description }}
-            </p>
+            </div>
 
             <!-- Category Tags -->
             <div class="partner-tags flex flex-wrap gap-2">
