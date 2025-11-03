@@ -1,0 +1,46 @@
+[ {
+  "id" : "e24a2874-9c91-7ad8-44e8-52ed614f3261",
+  "name" : "callout_heading",
+  "label" : "Callout Heading",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null
+}, {
+  "id" : "88c12d7d-cd2a-aafa-4a72-1fd6e65a57d6",
+  "name" : "callout_text",
+  "label" : "Callout Text",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "display_width" : null
+}, {
+  "id" : "9a9e1fec-e8a3-ee44-2f19-dfcd8ca933ef",
+  "name" : "button",
+  "label" : "Button",
+  "required" : false,
+  "locked" : false,
+  "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "BLOG" ],
+  "show_advanced_rel_options" : false,
+  "type" : "link",
+  "display_width" : null,
+  "default" : {
+    "url" : {
+      "content_id" : null,
+      "type" : "EXTERNAL",
+      "href" : ""
+    },
+    "open_in_new_tab" : false,
+    "no_follow" : false
+  }
+}, {
+  "id" : "9051d51e-1b79-a348-a163-6eba664215a9",
+  "name" : "button_text",
+  "label" : "Button Text",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null
+} ]

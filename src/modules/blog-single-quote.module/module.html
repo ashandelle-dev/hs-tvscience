@@ -1,0 +1,62 @@
+{% require_css %}
+
+<style>
+  {% scope_css %}
+  .quote-single {
+    background-color: {{ module.styles.background_color.css }};
+    color: {{ module.styles.text_color.css }};
+    {{ module.styles.padding.css }}
+    border: 1px solid {{module.styles.border_color.css}};
+  }
+  .quote-single .content-body {
+    
+    
+  }
+  .quote-single .content-author {
+    
+
+  }
+  .quote-single .content-title {
+    
+  }
+  {% end_scope_css %}
+</style>
+
+{% end_require_css %}
+
+{% set custom_color = module.styles.text_color.css is truthy %}
+
+<div {% if module.custom_id %}id="{{module.custom_id}}"{% endif %} class="quote-single color-{{ custom_color }} flex items-center relative p-6 rounded-2xl">
+    <div class="content-image w-1/4 md:w-1/12">
+          {% if module.headshot.src %}
+          {% set sizeAttrs = 'width="{{ module.headshot.width }}" height="{{ module.headshot.height }}"' %}
+          {% if module.headshot.size_type == 'auto' %}
+            {% set sizeAttrs = 'width="{{ module.headshot.width }}" height="{{ module.headshot.height }}" style="max-width: 100%; height: auto;"' %}
+          {% elif module.headshot.size_type == 'auto_custom_max' %}
+            {% set sizeAttrs = 'width="{{ module.headshot.max_width }}" height="{{ module.headshot.max_height }}" style="max-width: 100%; height: auto;"' %}
+          {% endif %}
+            {% set loadingAttr = module.headshot.loading != 'disabled' ? 'loading="{{ module.headshot.loading }}"' : '' %}
+          <img class="{% if module.round_headshot %} rounded-full {% endif %}" src="{{ module.headshot.src }}" alt="{{ module.headshot.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+        {% endif %}
+        </div>
+        <div class="w-3/4 md:w-11/12 border-l-4 {% if !custom_color %} border-[#0FBF84] {% endif %} pl-5 md:pl-10 ml-5 md:ml-10" {% if custom_color %}style="border-color: {{ module.styles.text_color.css }};"{% endif %}>
+            <div>
+              <p class="content-body heading-m mb-3 leading-tight" style="{% if module.quote.quote_text_color%}color: {{module.quote.quote_text_color.css}};{% endif %}">
+                {{ module.quote.qs_quote }}
+                </p>
+                {% if module.quote_name.qs_name %}
+                <p class="content-author font-bold font-rubik text-xl text-[#438663] m-0" style="{% if module.name.name_color%}color: {{module.quote_name.name_color.css}};{% endif %}">
+                  {{ module.quote_name.qs_name }}
+                </p>
+                {% endif %}
+                {% if module.title.qs_title %}
+                <p class="content-title m-0 text-lg text-[#438663] font-rubik" style="{% if module.title.title_color%}color: {{module.title.title_color.css}};{% endif %}">
+                {{ module.title.qs_title }}
+                {% endif %}
+                </p> 
+            </div>
+            
+          </div>
+      
+    </div>
+

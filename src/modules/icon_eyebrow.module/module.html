@@ -1,0 +1,18 @@
+<div class="flex items-center text-[#225F96] icon-eyebrow font-bricolage-grotesque">
+  <img src="{{ module.icon.src|escape_url }}" class="block m-0 w-[32px] pr-2">{{ module.eyebrow_text }}
+</div>
+
+{% require_css %}
+
+<style>
+  {% scope_css %}
+    .icon-eyebrow {
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: 0.28px;
+    }
+  {% end_scope_css %}
+</style>
+
+{% end_require_css %}

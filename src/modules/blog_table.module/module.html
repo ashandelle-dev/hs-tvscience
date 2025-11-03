@@ -1,0 +1,26 @@
+<div class="blog-table">
+  <table class="w-full border-collapse border-0">
+    <thead>
+      <tr>
+        <th colspan="2" class="px-4 py-2 border-0 text-left text-[#1F252B]" style="background:{{module.style.table_heading_color.color}};" >
+          {{ module.table_heading }}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in module.table_row %}
+      
+      <tr class="border-b border-[#A7B2BE]" style="{% if loop.index is odd %}background: {{module.style.odd_row_background.color}};{% else %}background: {{module.style.even_row_background.color}};{% endif %}">
+        
+        <td class="w-1/3 px-4 py-2 border-0 font-bold text-[#46515B]">
+          {{ row.first_cell_content }}
+        </td>
+        
+        <td class="w-2/3 px-4 py-2 border-0 text-[#1F252B]">
+          {{ row.second_cell_content }}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
