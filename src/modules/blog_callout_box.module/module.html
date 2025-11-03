@@ -1,0 +1,17 @@
+<div class="flex flex-wrap border border-[#198960] bg-[#F3FFF6] rounded p-6">
+  <p class="font-bricolage-grotesque text-2xl font-medium text-[#1F252B] mb-0 w-full">{{ module.callout_heading }}</p>
+  <div class="font-rubik text-lg text-[#1F252B] w-full">{{ module.callout_text }}</div>
+  {% set href = module.button.url.href %}
+  {%if href %}
+  <a class="hs-button py-3 mt-6" href="{{ href|escape_url }}"
+    {% if module.button.open_in_new_tab %}
+      target="_blank"
+    {% endif %}
+    {% if module.button.rel %}
+      rel="{{ module.button.rel|escape_attr }}"
+    {% endif %}
+    >
+    {{module.button_text}}
+  </a>
+  {% endif %}
+</div>
