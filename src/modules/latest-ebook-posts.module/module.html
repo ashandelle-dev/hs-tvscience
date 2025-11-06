@@ -9,15 +9,18 @@
   {% for featured in featured_posts %}
     <div class="swiper-slide px-3 h-full border-t border-[#C0E7D8] py-6">
       <div class="rounded-lg border h-full border-[#009061] overflow-hidden relative group">
-        <a href="{{ featured.absolute_url }}" class="absolute top-0 left-0 w-full h-full z-10"></a>
-        <div class="h-[275px] bg-[#1c4633]" style="background: url({{ featured.featured_image }}) no-repeat top center / cover;">   
+        {% set out_link = featured.widgets.title_link.body.value %}
+        {% set link = out_link ? out_link : featured.absolute_url %}
+
+        <a href="{{ link }}" class="absolute top-0 left-0 w-full h-full z-10"></a>
+        <div class="h-[275px] bg-[#1c4633]" style="background: url({{ featured.featured_image }}) no-repeat top center / cover;">
           <!--<img class="w-full" src="{{ content.featured_image }}" alt="" {{ loadingAttr }} >-->
         </div>
         <div class=" p-6">
-          
+
           <h2 class="!text-[22px] !leading-[28px] ">{{ featured.name }}</h2>
-        
-          <a href="{{ featured.absolute_url }}"
+
+          <a href="{{ link }}"
            class="flex relative items-center hover:no-underline">
             <div>
               <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-[#009061]">Read more</p>
@@ -31,21 +34,23 @@
     </div>
   {% endfor %}
 	{% for content in contents %}
+  {% set out_link = content.widgets.title_link.body.value %}
+  {% set link = out_link ? out_link : featured.absolute_url %}
 
   {% unless "Featured" in content.topic_list|map('name') %}
-  
+
     <div class="swiper-slide px-3 h-full border-t border-[#C0E7D8] py-6">
       <div class="rounded-lg border h-full border-[#009061] overflow-hidden relative group">
-        <a href="{{ content.absolute_url }}" class="absolute top-0 left-0 w-full h-full z-10"></a>
-        <div class="h-[275px] bg-[#1c4633]" style="background: url({{ content.featured_image }}) no-repeat top center / cover;">   
+        <a href="{{ link }}" class="absolute top-0 left-0 w-full h-full z-10"></a>
+        <div class="h-[275px] bg-[#1c4633]" style="background: url({{ content.featured_image }}) no-repeat top center / cover;">
           <!--<img class="w-full" src="{{ content.featured_image }}" alt="" {{ loadingAttr }} >-->
-          
+
         </div>
         <div class=" p-6">
-          
+
           <h2 class="!text-[22px] !leading-[28px] ">{{ content.name }}</h2>
-        
-          <a href="{{ content.absolute_url }}"
+
+          <a href="{{ link }}"
            class="flex relative items-center hover:no-underline">
             <div>
               <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-[#009061]">Read more</p>
