@@ -1,0 +1,13 @@
+{
+  "label": "Fade In Image",
+  "css_assets": [],
+  "external_js": [],
+  "global": false,
+  "help_text": "A fade in image that animates when it enters the viewport",
+  "content_types" : [ "LANDING_PAGE", "SITE_PAGE" ],
+  "js_assets": [],
+  "other_assets": [],
+  "smart_type": "NOT_SMART",
+  "tags": ["image", "fade", "in"],
+  "is_available_for_new_content": true
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "name": "background_image",
+    "label": "Background Image",
+    "required": false,
+    "locked": false,
+    "inline_help_text": "",
+    "help_text": "",
+    "responsive": true,
+    "resizable": true,
+    "show_loading": false,
+    "type": "image",
+    "default": {
+      "size_type": "exact",
+      "src": "https://www.tvscientific.com/hubfs/2025%20Platform%20Overview/v3/Patent%20Background.webp",
+      "alt": null,
+      "loading": "disabled"
+    }
+  },
+  {
+    "name": "image",
+    "label": "Image",
+    "required": false,
+    "locked": false,
+    "inline_help_text": "",
+    "help_text": "",
+    "responsive": true,
+    "resizable": true,
+    "show_loading": false,
+    "type": "image",
+    "default": {
+      "size_type": "exact",
+      "src": "https://www.tvscientific.com/hubfs/2025%20Patents/household-graph-v2.svg",
+      "alt": null,
+      "loading": "disabled"
+    }
+  }
+]

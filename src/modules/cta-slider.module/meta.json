@@ -1,0 +1,11 @@
+{
+  "label": "CTA Slider",
+  "global": false,
+  "help_text": "A slider component using Splide.js with center-focused cards and custom pagination",
+  "content_types": ["LANDING_PAGE", "SITE_PAGE", "BLOG_POST"],
+  "js_assets": [],
+  "other_assets": [],
+  "smart_type": "NOT_SMART",
+  "tags": ["slider", "carousel", "cta"],
+  "is_available_for_new_content": true
+}

@@ -1,0 +1,22 @@
+{% require_css %}
+<style type="text/css">
+    {% scope_css %}
+        .fade-in-image {
+            background-image: url('{{ module.background_image.src|escape_url }}');
+        }
+    {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+<div class="fade-in-image w-full self-stretch flex items-center justify-center animate-image">
+    {% if module.image.src %}
+    {% set sizeAttrs = 'width="{{ module.image.width|escape_attr }}" height="{{ module.image.height|escape_attr }}"' %}
+    {% if module.image.size_type == 'auto' %}
+      {% set sizeAttrs = 'width="{{ module.image.width|escape_attr }}" height="{{ module.image.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+    {% elif module.image.size_type == 'auto_custom_max' %}
+      {% set sizeAttrs = 'width="{{ module.image.max_width|escape_attr }}" height="{{ module.image.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+    {% endif %}
+     {% set loadingAttr = module.image.loading != 'disabled' ? 'loading="{{ module.image.loading|escape_attr }}"' : '' %}
+    <img class="image-container max-w-full h-auto" src="{{ module.image.src|escape_url }}" alt="{{ module.image.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+  {% endif %}
+</div>
