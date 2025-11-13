@@ -5,12 +5,15 @@
     constructor(element) {
       this.container = element;
       this.track = this.container.querySelector('#ctaSliderTrack');
-      this.slides = Array.from(this.track.querySelectorAll('.cta-slide'));
+      this.originalSlides = Array.from(this.track.querySelectorAll('.cta-slide'));
       this.dots = Array.from(this.container.querySelectorAll('.dot'));
 
-      this.currentIndex = 0;
-      this.slideWidth = 545; // Base slide width
-      this.slideGap = 0; // Gap between slides
+      // Configuration
+      this.enableAutoPlay = false; // Set to false to disable autoplay for debugging
+
+      this.totalSlides = this.originalSlides.length;
+      this.slideWidth = 545;
+      this.slideGap = 0;
       this.isDragging = false;
       this.startX = 0;
       this.currentTranslate = 0;
@@ -20,12 +23,27 @@
     }
 
     init() {
-      // Set initial active slide
-      this.updateSlides();
+      // Clone slides before and after
+      this.cloneSlides();
+      this.slides = Array.from(this.track.querySelectorAll('.cta-slide'));
+
+      // Start at the first real slide (after the prepended clones)
+      this.realIndex = 0; // Logical index (0 to totalSlides-1)
+      this.actualIndex = this.totalSlides; // Actual DOM index
+
+      // Initial positioning
+      this.updateActiveStates();
+      this.positionSlider(false);
 
       // Add dot click handlers
       this.dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => this.goToSlide(index));
+      dot.addEventListener('click', () => {
+        this.stopAutoPlay();
+        this.goToSlide(index);
+        if (this.enableAutoPlay) {
+          setTimeout(() => this.startAutoPlay(), 3000);
+        }
+      });
       });
 
       // Add touch/drag support
@@ -37,29 +55,71 @@
         if (e.key === 'ArrowRight') this.next();
       });
 
-      // Auto-play (optional - remove if not needed)
-      this.startAutoPlay();
+      // Handle transition end for infinite loop
+      this.track.addEventListener('transitionend', (e) => {
+        if (e.propertyName === 'transform') {
+          this.checkAndResetPosition();
+        }
+      });
+
+      // Auto-play
+      if (this.enableAutoPlay) {
+        this.startAutoPlay();
+      }
 
       // Update on window resize
-      window.addEventListener('resize', () => this.updateSlides());
+      window.addEventListener('resize', () => this.positionSlider(false));
     }
 
-    goToSlide(index) {
-      // Stop auto-play on manual interaction
-      this.stopAutoPlay();
+    cloneSlides() {
+      // Clone all original slides and add to beginning and end
+      const fragment1 = document.createDocumentFragment();
+      const fragment2 = document.createDocumentFragment();
 
-      this.currentIndex = Math.max(0, Math.min(index, this.slides.length - 1));
-      this.updateSlides();
+      this.originalSlides.forEach(slide => {
+        const cloneBefore = slide.cloneNode(true);
+        const cloneAfter = slide.cloneNode(true);
+        cloneBefore.classList.add('clone');
+        cloneAfter.classList.add('clone');
+        fragment1.appendChild(cloneBefore);
+        fragment2.appendChild(cloneAfter);
+      });
+
+      this.track.insertBefore(fragment1, this.track.firstChild);
+      this.track.appendChild(fragment2);
     }
 
-    updateSlides() {
-      // Remove active class and position classes from all slides
+    goToSlide(logicalIndex) {
+      this.realIndex = logicalIndex;
+      this.actualIndex = this.totalSlides + logicalIndex;
+      this.updateActiveStates();
+      this.positionSlider(true);
+    }
+
+    next() {
+      this.realIndex = (this.realIndex + 1) % this.totalSlides;
+      this.actualIndex++;
+      this.updateActiveStates();
+      this.positionSlider(true);
+    }
+
+    prev() {
+      this.realIndex = (this.realIndex - 1 + this.totalSlides) % this.totalSlides;
+      this.actualIndex--;
+      this.updateActiveStates();
+      this.positionSlider(true);
+    }
+
+    updateActiveStates() {
+      // Update all slide classes based on distance from active
       this.slides.forEach((slide, index) => {
         slide.classList.remove('active', 'next-1', 'next-2', 'next-3', 'next-4', 'next-5', 'next-6', 'next-7', 'next-8', 'prev-1', 'prev-2', 'prev-3', 'prev-4', 'prev-5', 'prev-6', 'prev-7', 'prev-8');
 
-        // Add position-based classes
-        const distance = index - this.currentIndex;
-        if (distance === 1) {
+        const distance = index - this.actualIndex;
+
+        if (index === this.actualIndex) {
+          slide.classList.add('active');
+        } else if (distance === 1) {
           slide.classList.add('next-1');
         } else if (distance >= 2) {
           slide.classList.add('next-' + Math.min(distance, 8));
@@ -70,75 +130,70 @@
         }
       });
 
-      // Add active class to current slide
-      if (this.slides[this.currentIndex]) {
-        this.slides[this.currentIndex].classList.add('active');
-      }
-
       // Update dots
       this.dots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === this.currentIndex);
+        dot.classList.toggle('active', index === this.realIndex);
       });
-
-      // Calculate the transform to center the active slide
-      this.centerActiveSlide();
     }
 
-    centerActiveSlide() {
-      // Get container width
+    positionSlider(animate = true) {
       const containerWidth = this.container.offsetWidth;
-
-      // Get actual slide width from DOM (in case it changed due to responsive design)
       const actualSlideWidth = this.slides[0]?.offsetWidth || this.slideWidth;
 
-      // Calculate the position where the active slide should be centered
       const slideCenter = actualSlideWidth / 2;
       const containerCenter = containerWidth / 2;
 
-      // Calculate total offset including negative margins
+      // Calculate offset with negative margins
       let totalOffset = 0;
-      for (let i = 0; i < this.currentIndex; i++) {
+      for (let i = 0; i < this.actualIndex; i++) {
         totalOffset += actualSlideWidth + this.slideGap;
 
-        // Account for negative margins
-        const distance = this.currentIndex - i;
+        const distance = this.actualIndex - i;
         if (distance === 1) {
-          totalOffset -= 60; // prev-1 has -60px margin-right
+          totalOffset -= 10;
         } else if (distance >= 2) {
-          totalOffset -= 170; // prev-2+ has -170px margin-right
+          totalOffset -= 50;
         }
       }
 
-      // Calculate the transform needed to center the active slide
       const translateX = containerCenter - slideCenter - totalOffset;
 
-      // Apply the transform
+      if (animate) {
+        this.track.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+      } else {
+        this.track.style.transition = 'none';
+      }
+
       this.track.style.transform = `translateX(${translateX}px)`;
       this.currentTranslate = translateX;
       this.prevTranslate = translateX;
     }
 
-    next() {
-      this.goToSlide(this.currentIndex + 1);
-    }
-
-    prev() {
-      this.goToSlide(this.currentIndex - 1);
+    checkAndResetPosition() {
+      // If we've gone into the cloned areas, snap back to real slides
+      if (this.actualIndex >= this.totalSlides * 2) {
+        // We're in the end clones, jump back to the start of real slides
+        this.actualIndex = this.totalSlides + (this.actualIndex - this.totalSlides * 2);
+        this.updateActiveStates();
+        this.positionSlider(false);
+      } else if (this.actualIndex < this.totalSlides) {
+        // We're in the beginning clones, jump to the end of real slides
+        this.actualIndex = this.totalSlides * 2 - (this.totalSlides - this.actualIndex);
+        this.updateActiveStates();
+        this.positionSlider(false);
+      }
     }
 
     addDragSupport() {
-      // Mouse events
       this.track.addEventListener('mousedown', this.dragStart.bind(this));
       this.track.addEventListener('mousemove', this.drag.bind(this));
       this.track.addEventListener('mouseup', this.dragEnd.bind(this));
       this.track.addEventListener('mouseleave', this.dragEnd.bind(this));
 
-      // Touch events
-      this.track.addEventListener('touchstart', this.dragStart.bind(this));
-      this.track.addEventListener('touchmove', this.drag.bind(this));
+      this.track.addEventListener('touchstart', this.dragStart.bind(this), { passive: true });
+      this.track.addEventListener('touchmove', this.drag.bind(this), { passive: false });
       this.track.addEventListener('touchend', this.dragEnd.bind(this));
 
-      // Prevent default drag behavior on images
       this.slides.forEach(slide => {
         slide.addEventListener('dragstart', (e) => e.preventDefault());
       });
@@ -148,13 +203,12 @@
       this.isDragging = true;
       this.startX = this.getPositionX(e);
       this.track.style.transition = 'none';
-
-      // Stop auto-play when user starts dragging
       this.stopAutoPlay();
     }
 
     drag(e) {
       if (!this.isDragging) return;
+      e.preventDefault();
 
       const currentX = this.getPositionX(e);
       const diff = currentX - this.startX;
@@ -169,15 +223,17 @@
       this.isDragging = false;
       const movedBy = this.currentTranslate - this.prevTranslate;
 
-      // If moved more than 50px, change slide
-      if (movedBy < -50 && this.currentIndex < this.slides.length - 1) {
-        this.currentIndex++;
-      } else if (movedBy > 50 && this.currentIndex > 0) {
-        this.currentIndex--;
+      if (movedBy < -50) {
+        this.next();
+      } else if (movedBy > 50) {
+        this.prev();
+      } else {
+        this.positionSlider(true);
       }
 
-      this.track.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
-      this.updateSlides();
+      if (this.enableAutoPlay) {
+        setTimeout(() => this.startAutoPlay(), 3000);
+      }
     }
 
     getPositionX(e) {
@@ -185,14 +241,10 @@
     }
 
     startAutoPlay() {
+      this.stopAutoPlay();
       this.autoPlayInterval = setInterval(() => {
-        const nextIndex = this.currentIndex + 1;
-        if (nextIndex >= this.slides.length) {
-          this.goToSlide(0);
-        } else {
-          this.next();
-        }
-      }, 5000); // Change slide every 5 seconds
+        this.next();
+      }, 5000);
     }
 
     stopAutoPlay() {
@@ -211,11 +263,9 @@
     }
   }
 
-  // Run on DOM ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initSlider);
   } else {
     initSlider();
   }
 })();
-

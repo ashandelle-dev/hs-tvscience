@@ -3,6 +3,7 @@
     {% scope_css %}
         .fade-in-image {
             background-image: url('{{ module.background_image.src|escape_url }}');
+            {{ module.styles.padding.css }};
         }
     {% end_scope_css %}
 </style>

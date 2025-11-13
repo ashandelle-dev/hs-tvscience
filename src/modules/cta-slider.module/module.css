@@ -1,9 +1,4 @@
-.cta-slider-wrapper {
-  width: 100%;
-  max-width: 1600px;
-  margin: 0 auto;
-  padding: 60px 20px;
-}
+
 
 .cta-slider-title {
   text-align: center;
@@ -16,27 +11,29 @@
 .cta-slider-container {
   position: relative;
   width: 100%;
-  padding: 40px 0;
 }
 
 .cta-slider-track {
   display: flex;
+  cursor: grab;
   gap: 0;
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform;
+  margin-left: -75px;
 }
 
 .cta-slide {
   flex-shrink: 0;
   width: 545px;
   transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  transform: scale(0.6);
+  transform: scale(0.8);
   transform-origin: center;
 }
 
 /* Progressive negative margins based on distance from active */
 .cta-slide.next-1 {
-  margin-left: -60px;
+  margin-left: -10px;
+  width: 400px;
 }
 
 .cta-slide.next-2,
@@ -46,11 +43,13 @@
 .cta-slide.next-6,
 .cta-slide.next-7,
 .cta-slide.next-8 {
-  margin-left: -170px;
+  margin-left: -50px;
+  width: 400px;
 }
 
 .cta-slide.prev-1 {
-  margin-right: -60px;
+  margin-right: -10px;
+  width: 400px;
 }
 
 .cta-slide.prev-2,
@@ -60,7 +59,8 @@
 .cta-slide.prev-6,
 .cta-slide.prev-7,
 .cta-slide.prev-8 {
-  margin-right: -170px;
+  margin-right: -50px;
+  width: 400px;
 }
 
 .cta-slide.active {
@@ -122,6 +122,7 @@
 
 .cta-slide-link {
   display: inline-flex;
+  opacity: 0;
   align-items: center;
   gap: 6px;
   color: #00d9a3;
@@ -131,6 +132,10 @@
   letter-spacing: 0.5px;
   text-decoration: none;
   transition: all 0.3s ease;
+}
+
+.cta-slide.active .cta-slide-link {
+  opacity: 1;
 }
 
 .cta-slide-link .arrow {
@@ -155,14 +160,14 @@
   display: flex;
   justify-content: center;
   gap: 12px;
-  margin-top: 40px;
+  margin-top: 22px;
 }
 
 .dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
+  width: 24px;
+  height: 6px;
+  border-radius: 4px;
+  background: #D9D9D9;
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -175,9 +180,7 @@
 }
 
 .dot.active {
-  background: #00d9a3;
-  width: 32px;
-  border-radius: 4px;
+  background: #71E09D;
 }
 
 /* Responsive adjustments */
@@ -192,6 +195,9 @@
 }
 
 @media (max-width: 768px) {
+  .cta-slider-track {
+    margin-left: 0;
+  }
   .cta-slider-wrapper {
     padding: 40px 15px;
   }

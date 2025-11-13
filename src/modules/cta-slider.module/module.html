@@ -1,7 +1,4 @@
 <div class="cta-slider-wrapper">
-  {% if module.title %}
-  <h2 class="cta-slider-title">{{ module.title }}</h2>
-  {% endif %}
 
   <div class="cta-slider-container">
     <div class="cta-slider-track" id="ctaSliderTrack">
@@ -23,7 +20,7 @@
             <div class="cta-slide-description">{{ card.card_description }}</div>
             {% endif %}
 
-            {% if card.cta.text and card.cta.link.url.href %}
+            {% if card.cta.text %}
             <a href="{{ card.cta.link.url.href }}"
                class="cta-slide-link"
                {% if card.cta.link.open_in_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}

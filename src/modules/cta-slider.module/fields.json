@@ -1,26 +1,15 @@
 [
   {
-    "id": "title",
-    "name": "title",
-    "label": "Section Title",
-    "required": false,
-    "locked": false,
-    "allow_new_line": false,
-    "type": "text",
-    "display_width": null,
-    "default": "How tvScientific does it:"
-  },
-  {
     "id": "slider_cards",
     "name": "slider_cards",
     "label": "Slider Cards",
     "required": false,
     "locked": false,
-    "occurrence": {
+      "occurrence": {
       "min": null,
       "max": null,
       "sorting_label_field": "card_title",
-      "default": 9
+      "default": 10
     },
     "children": [
       {
@@ -36,67 +25,12 @@
         "display_width": null,
         "default": {
           "size_type": "exact",
-          "src": "https://tvscientific.com/hubfs/CTACARDS/trusted-team-combo.webp",
+          "src": "https://tvscientific.com/hubfs/CTACARDS/premium-ctv-and-linear-combo.webp",
           "alt": "tvScientific feature card",
           "loading": "lazy",
-          "width": 800,
-          "height": 450
+          "width": 818,
+          "height": 278
         }
-      },
-      {
-        "id": "overlay_text",
-        "name": "overlay_text",
-        "label": "Overlay Text",
-        "required": false,
-        "locked": false,
-        "allow_new_line": false,
-        "type": "text",
-        "display_width": null,
-        "default": ""
-      },
-      {
-        "id": "overlay_logos",
-        "name": "overlay_logos",
-        "label": "Overlay Logos/Items",
-        "required": false,
-        "locked": false,
-        "occurrence": {
-          "min": null,
-          "max": null,
-          "sorting_label_field": null,
-          "default": null
-        },
-        "children": [
-          {
-            "id": "logo_text",
-            "name": "logo_text",
-            "label": "Logo/Item Text",
-            "required": false,
-            "locked": false,
-            "allow_new_line": false,
-            "type": "text",
-            "display_width": null,
-            "default": ""
-          },
-          {
-            "id": "logo_image",
-            "name": "logo_image",
-            "label": "Logo Image (optional)",
-            "required": false,
-            "locked": false,
-            "responsive": true,
-            "resizable": true,
-            "show_loading": false,
-            "type": "image",
-            "display_width": null
-          }
-        ],
-        "tab": "CONTENT",
-        "expanded": false,
-        "group_occurrence_meta": null,
-        "type": "group",
-        "display_width": null,
-        "default": []
       },
       {
         "id": "card_title",
@@ -196,69 +130,12 @@
       {
         "card_image": {
           "size_type": "exact",
-          "src": "https://tvscientific.com/hubfs/CTACARDS/trusted-team-combo.webp",
-          "alt": "AI-powered bidding feature",
+          "src": "https://tvscientific.com/hubfs/CTACARDS/premium-ctv-and-linear-combo.webp",
+          "alt": "Premium CTV and linear inventory access",
           "loading": "lazy",
-          "width": 800,
-          "height": 450
+          "width": 818,
+          "height": 278
         },
-        "overlay_text": "Suggested Bids for your Audience",
-        "overlay_logos": [
-          {
-            "logo_text": "hulu"
-          },
-          {
-            "logo_text": "NBCUniversal"
-          },
-          {
-            "logo_text": "Paramount+"
-          }
-        ],
-        "card_title": "AI-powered bidding.",
-        "card_description": "Maximize efficiency and ROAS with real-time optimization.",
-        "cta": {
-          "link": {
-            "url": {
-              "content_id": null,
-              "type": "EXTERNAL",
-              "href": ""
-            },
-            "open_in_new_tab": false,
-            "no_follow": false
-          },
-          "text": "TEXT LINK"
-        }
-      },
-      {
-        "card_image": {
-          "size_type": "exact",
-          "src": "https://tvscientific.com/hubfs/CTACARDS/trusted-team-combo.webp",
-          "alt": "Premium CTV inventory access",
-          "loading": "lazy",
-          "width": 800,
-          "height": 450
-        },
-        "overlay_text": "Vast Inventory for Your Creative",
-        "overlay_logos": [
-          {
-            "logo_text": "CNN"
-          },
-          {
-            "logo_text": "animal planet"
-          },
-          {
-            "logo_text": "Roku"
-          },
-          {
-            "logo_text": "abc"
-          },
-          {
-            "logo_text": "NBCUniversal"
-          },
-          {
-            "logo_text": "peacock"
-          }
-        ],
         "card_title": "Premium CTV and linear inventory access.",
         "card_description": "Launch and optimize TV campaigns quickly.",
         "cta": {
@@ -271,31 +148,43 @@
             "open_in_new_tab": false,
             "no_follow": false
           },
-          "text": "TEXT LINK"
+          "text": "READ MORE"
         }
       },
       {
         "card_image": {
           "size_type": "exact",
-          "src": "https://tvscientific.com/hubfs/CTACARDS/trusted-team-combo.webp",
-          "alt": "Smart audience targeting",
+          "src": "https://tvscientific.com/hubfs/CTACARDS/easy-campaign-setup-combo.webp",
+          "alt": "Lead generation beyond ads and engagement",
           "loading": "lazy",
-          "width": 800,
-          "height": 450
+          "width": 818,
+          "height": 278
         },
-        "overlay_text": "Your Targeted Demographics",
-        "overlay_logos": [
-          {
-            "logo_text": "21-29"
+        "card_title": "Easy campaign setup and management",
+        "card_description": "Launch and optimize TV campaigns quickly.",
+        "cta": {
+          "link": {
+            "url": {
+              "content_id": null,
+              "type": "EXTERNAL",
+              "href": ""
+            },
+            "open_in_new_tab": false,
+            "no_follow": false
           },
-          {
-            "logo_text": "Female"
-          },
-          {
-            "logo_text": "Creatives"
-          }
-        ],
-        "card_title": "Smart audience targeting.",
+          "text": "READ MORE"
+        }
+      },
+      {
+        "card_image": {
+          "size_type": "exact",
+          "src": "https://tvscientific.com/hubfs/CTACARDS/smart-audience-targeting-combo.webp",
+          "alt": "Custom audience targeting",
+          "loading": "lazy",
+          "width": 818,
+          "height": 278
+        },
+        "card_title": "Smart audience targeting",
         "card_description": "Connect with purchase-ready viewers at the right time.",
         "cta": {
           "link": {
@@ -307,30 +196,18 @@
             "open_in_new_tab": false,
             "no_follow": false
           },
-          "text": "TEXT LINK"
+          "text": "READ MORE"
         }
       },
       {
         "card_image": {
           "size_type": "exact",
-          "src": "https://tvscientific.com/hubfs/CTACARDS/trusted-team-combo.webp",
-          "alt": "AI-powered bidding feature",
+          "src": "https://tvscientific.com/hubfs/CTACARDS/ai-powered-bidding-combo.webp",
+          "alt": "AI-powered bidding",
           "loading": "lazy",
-          "width": 800,
-          "height": 450
+          "width": 818,
+          "height": 278
         },
-        "overlay_text": "Suggested Bids for your Audience",
-        "overlay_logos": [
-          {
-            "logo_text": "hulu"
-          },
-          {
-            "logo_text": "NBCUniversal"
-          },
-          {
-            "logo_text": "Paramount+"
-          }
-        ],
         "card_title": "AI-powered bidding.",
         "card_description": "Maximize efficiency and ROAS with real-time optimization.",
         "cta": {
@@ -343,41 +220,20 @@
             "open_in_new_tab": false,
             "no_follow": false
           },
-          "text": "TEXT LINK"
+          "text": "READ MORE"
         }
       },
       {
         "card_image": {
           "size_type": "exact",
-          "src": "https://tvscientific.com/hubfs/CTACARDS/trusted-team-combo.webp",
-          "alt": "Premium CTV inventory access",
+          "src": "https://tvscientific.com/hubfs/CTACARDS/campaign-organization-combo.webp",
+          "alt": "Campaign optimization",
           "loading": "lazy",
-          "width": 800,
-          "height": 450
+          "width": 818,
+          "height": 278
         },
-        "overlay_text": "Vast Inventory for Your Creative",
-        "overlay_logos": [
-          {
-            "logo_text": "CNN"
-          },
-          {
-            "logo_text": "animal planet"
-          },
-          {
-            "logo_text": "Roku"
-          },
-          {
-            "logo_text": "abc"
-          },
-          {
-            "logo_text": "NBCUniversal"
-          },
-          {
-            "logo_text": "peacock"
-          }
-        ],
-        "card_title": "Premium CTV and linear inventory access.",
-        "card_description": "Launch and optimize TV campaigns quickly.",
+        "card_title": "Campaign optimization",
+        "card_description": "Our AI analyzes thousands of line items to guide smarter budget allocation, targeting, audience selection, and creative choices for continuous improvement.",
         "cta": {
           "link": {
             "url": {
@@ -388,32 +244,20 @@
             "open_in_new_tab": false,
             "no_follow": false
           },
-          "text": "TEXT LINK"
+          "text": "READ MORE"
         }
       },
       {
         "card_image": {
           "size_type": "exact",
-          "src": "https://tvscientific.com/hubfs/CTACARDS/trusted-team-combo.webp",
-          "alt": "Smart audience targeting",
+          "src": "https://tvscientific.com/hubfs/CTACARDS/patented-attribution-combo.webp",
+          "alt": "Patented attribution you can trust",
           "loading": "lazy",
-          "width": 800,
+          "width": 818,
           "height": 450
         },
-        "overlay_text": "Your Targeted Demographics",
-        "overlay_logos": [
-          {
-            "logo_text": "21-29"
-          },
-          {
-            "logo_text": "Female"
-          },
-          {
-            "logo_text": "Creatives"
-          }
-        ],
-        "card_title": "Smart audience targeting.",
-        "card_description": "Connect with purchase-ready viewers at the right time.",
+        "card_title": "Patented attribution you can trust",
+        "card_description": "Tie TV ad spend directly to business outcomes. ",
         "cta": {
           "link": {
             "url": {
@@ -424,32 +268,20 @@
             "open_in_new_tab": false,
             "no_follow": false
           },
-          "text": "TEXT LINK"
+          "text": "READ MORE"
         }
       },
       {
         "card_image": {
           "size_type": "exact",
-          "src": "https://tvscientific.com/hubfs/CTACARDS/trusted-team-combo.webp",
-          "alt": "AI-powered bidding feature",
+          "src": "https://tvscientific.com/hubfs/CTACARDS/on-demand-measurement-combo.webp",
+          "alt": "On-demand measurement and reporting",
           "loading": "lazy",
-          "width": 800,
-          "height": 450
+          "width": 818,
+          "height": 278
         },
-        "overlay_text": "Suggested Bids for your Audience",
-        "overlay_logos": [
-          {
-            "logo_text": "hulu"
-          },
-          {
-            "logo_text": "NBCUniversal"
-          },
-          {
-            "logo_text": "Paramount+"
-          }
-        ],
-        "card_title": "AI-powered bidding.",
-        "card_description": "Maximize efficiency and ROAS with real-time optimization.",
+        "card_title": "On-demand measurement and reporting",
+        "card_description": "Prove results through transparent performance insights at your fingertips. ",
         "cta": {
           "link": {
             "url": {
@@ -460,41 +292,20 @@
             "open_in_new_tab": false,
             "no_follow": false
           },
-          "text": "TEXT LINK"
+          "text": "READ MORE"
         }
       },
       {
         "card_image": {
           "size_type": "exact",
-          "src": "https://tvscientific.com/hubfs/CTACARDS/trusted-team-combo.webp",
-          "alt": "Premium CTV inventory access",
+          "src": "https://tvscientific.com/hubfs/CTACARDS/creative-solutions-combo.webp",
+          "alt": "Creative solutions",
           "loading": "lazy",
-          "width": 800,
-          "height": 450
+          "width": 818,
+          "height": 278
         },
-        "overlay_text": "Vast Inventory for Your Creative",
-        "overlay_logos": [
-          {
-            "logo_text": "CNN"
-          },
-          {
-            "logo_text": "animal planet"
-          },
-          {
-            "logo_text": "Roku"
-          },
-          {
-            "logo_text": "abc"
-          },
-          {
-            "logo_text": "NBCUniversal"
-          },
-          {
-            "logo_text": "peacock"
-          }
-        ],
-        "card_title": "Premium CTV and linear inventory access.",
-        "card_description": "Launch and optimize TV campaigns quickly.",
+        "card_title": "Creative solutions",
+        "card_description": "From ad format flexibility to full-service creative support, brands of all sizes find performance on TV. ",
         "cta": {
           "link": {
             "url": {
@@ -505,32 +316,20 @@
             "open_in_new_tab": false,
             "no_follow": false
           },
-          "text": "TEXT LINK"
+          "text": "READ MORE"
         }
       },
       {
         "card_image": {
           "size_type": "exact",
           "src": "https://tvscientific.com/hubfs/CTACARDS/trusted-team-combo.webp",
-          "alt": "Smart audience targeting",
+          "alt": "Trusted team",
           "loading": "lazy",
-          "width": 800,
-          "height": 450
+          "width": 818,
+          "height": 278
         },
-        "overlay_text": "Your Targeted Demographics",
-        "overlay_logos": [
-          {
-            "logo_text": "21-29"
-          },
-          {
-            "logo_text": "Female"
-          },
-          {
-            "logo_text": "Creatives"
-          }
-        ],
-        "card_title": "Smart audience targeting.",
-        "card_description": "Connect with purchase-ready viewers at the right time.",
+        "card_title": "Trusted team",
+        "card_description": " Our account managers provide real-time, strategic guidance.",
         "cta": {
           "link": {
             "url": {
@@ -541,7 +340,31 @@
             "open_in_new_tab": false,
             "no_follow": false
           },
-          "text": "TEXT LINK"
+          "text": "READ MORE"
+        }
+      },
+      {
+        "card_image": {
+          "size_type": "exact",
+          "src": "https://tvscientific.com/hubfs/CTACARDS/flexible-engagement-models-combo.webp",
+          "alt": "Flexible engagement models",
+          "loading": "lazy",
+          "width": 818,
+          "height": 278
+        },
+        "card_title": "Flexible engagement models",
+        "card_description": "Buy on a CPM or CPA (Guaranteed Outcomes) basis. Drive the outcome you want, and pay only when it’s achieved.",
+        "cta": {
+          "link": {
+            "url": {
+              "content_id": null,
+              "type": "EXTERNAL",
+              "href": ""
+            },
+            "open_in_new_tab": false,
+            "no_follow": false
+          },
+          "text": "READ MORE"
         }
       }
     ]

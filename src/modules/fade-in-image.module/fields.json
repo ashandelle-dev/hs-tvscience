@@ -12,7 +12,7 @@
     "type": "image",
     "default": {
       "size_type": "exact",
-      "src": "https://www.tvscientific.com/hubfs/2025%20Platform%20Overview/v3/Patent%20Background.webp",
+      "src": "https://www.tvscientific.com/hubfs/illustration-bg-green-left.webp",
       "alt": null,
       "loading": "disabled"
     }
@@ -30,9 +30,46 @@
     "type": "image",
     "default": {
       "size_type": "exact",
-      "src": "https://www.tvscientific.com/hubfs/2025%20Patents/household-graph-v2.svg",
+      "src": "https://www.tvscientific.com/hs-fs/hubfs/non-skippable-full-screen.webp?width=756&height=330&name=non-skippable-full-screen.webp",
       "alt": null,
       "loading": "disabled"
     }
+  },
+  {
+    "name": "styles",
+    "label": "Styles",
+    "children": [
+      {
+        "name": "padding",
+        "label": "Padding",
+        "required": false,
+        "locked": false,
+        "type": "spacing",
+        "inline_help_text": "",
+        "help_text": "",
+        "default": {
+          "padding": {
+            "top": {
+              "value": 40,
+              "units": "px"
+            },
+            "bottom": {
+              "value": 40,
+              "units": "px"
+            },
+            "left": {
+              "value": 40,
+              "units": "px"
+            },
+            "right": {
+              "value": 40,
+              "units": "px"
+            }
+          }
+        }
+      }
+    ],
+    "type": "group",
+    "tab": "STYLE"
   }
 ]

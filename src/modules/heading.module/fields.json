@@ -94,6 +94,19 @@
     "default": 48
   },
   {
+    "name": "heading_size_mobile",
+    "label": "Heading Size Mobile",
+    "required": false,
+    "locked": false,
+    "display": "text",
+    "step": 1,
+    "type": "number",
+    "inline_help_text": "Set to 0 to use the default size",
+    "help_text": "",
+    "suffix": "px",
+    "default": 0
+  },
+  {
     "id": "styles",
     "name": "styles",
     "label": "Styles",
@@ -101,14 +114,14 @@
     "locked": false,
     "children": [
       {
-      "name": "alignment",
-      "label": "Alignment",
-      "required": false,
-      "locked": false,
-      "type": "alignment",
-      "inline_help_text": "",
-      "help_text": "",
-      "alignment_direction": "HORIZONTAL"
+        "name": "alignment",
+        "label": "Alignment",
+        "required": false,
+        "locked": false,
+        "type": "alignment",
+        "inline_help_text": "",
+        "help_text": "",
+        "alignment_direction": "HORIZONTAL"
       },
       {
         "id": "styles.background_color",

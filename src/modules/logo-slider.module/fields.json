@@ -44,12 +44,6 @@
           "src": "https://tvscientific.com/hubfs/logos/Disney%2B%20Grey-dark-blue%201.png",
           "alt": "Partner Logo"
         }
-      },
-      {
-        "name": "logo_alt",
-        "label": "Logo Alt Text",
-        "type": "text",
-        "default": "Partner Logo"
       }
     ]
   },

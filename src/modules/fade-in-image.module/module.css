@@ -1,7 +1,8 @@
-#bottomBg {
+.fade-in-image {
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+  border-radius: 8px;
 }
 
 @keyframes fade-slide-up {
@@ -16,6 +17,11 @@
   }
 }
 
+.animate-image img {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
 .fade-in-up {
-  animation: fade-slide-up 300ms ease-in forwards;
+  animation: fade-slide-up 400ms ease-in forwards;
 }
