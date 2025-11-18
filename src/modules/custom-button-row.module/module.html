@@ -15,6 +15,7 @@
     }
     .cta-group {
       display: flex;
+      justify-content: {{ module.styles.alignment_field.horizontal_align|replace('left', 'flex-start')|replace('right', 'flex-end')|replace('center', 'center') }};
       gap: 17px;
     }
     .button-primary {

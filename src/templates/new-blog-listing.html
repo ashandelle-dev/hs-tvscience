@@ -150,7 +150,7 @@
         {% endif %}
       </div>
       <div class="">
-        <h1 class="text-[#1C4633] capitalize">All
+        <h1 class="text-[#1C4633] capitalize">{{ "All" if blog.public_title != "Blog" }}
           {% if tag_id %}
             {{ tag_id }}
           {% elif %}
@@ -213,7 +213,7 @@
       </div>
       <div class="content-wrapper">
         <div class="">
-          <h1 class="text-[#1C4633]">All {{ group.public_title }}</h1>
+          <h1 class="text-[#1C4633]">{{"All" if group.public_title != "Blog" }} {{ group.public_title }}</h1>
           {% if theme.blog.header_image.src %}
           <div class="blog-header__image">
             {{ render_image(theme.blog.header_image) }}
