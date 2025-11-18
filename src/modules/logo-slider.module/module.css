@@ -64,6 +64,10 @@
   animation: scroll-left var(--scroll-duration, 30s) linear infinite;
 }
 
+.logo-slider-container[data-scroll-direction="right"] .logo-slider-track {
+  animation-name: scroll-right;
+}
+
 .logo-slider-container:hover .logo-slider-track {
   animation-play-state: paused;
 }
@@ -95,7 +99,16 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(calc(-100% / 4));
+  }
+}
+
+@keyframes scroll-right {
+  0% {
+    transform: translateX(calc(-100% / 4));
+  }
+  100% {
+    transform: translateX(0);
   }
 }
 

@@ -9,14 +9,24 @@
     </a>
   </div>
 
-  <div class="logo-slider-container" data-scroll-speed="{{ module.scroll_speed }}">
+  <div class="logo-slider-container" data-scroll-speed="{{ module.scroll_speed }}" data-scroll-direction="{{ module.scroll_direction }}">
     <div class="logo-slider-track">
       {% for logo in module.logos %}
         <div class="logo-slide">
           <img src="{{ logo.logo.src }}" alt="{{ logo.logo.alt }}" loading="lazy">
         </div>
       {% endfor %}
-      <!-- Duplicate for seamless loop -->
+      <!-- Duplicate sets for seamless loop on large screens -->
+      {% for logo in module.logos %}
+        <div class="logo-slide">
+          <img src="{{ logo.logo.src }}" alt="{{ logo.logo.alt }}" loading="lazy">
+        </div>
+      {% endfor %}
+      {% for logo in module.logos %}
+        <div class="logo-slide">
+          <img src="{{ logo.logo.src }}" alt="{{ logo.logo.alt }}" loading="lazy">
+        </div>
+      {% endfor %}
       {% for logo in module.logos %}
         <div class="logo-slide">
           <img src="{{ logo.logo.src }}" alt="{{ logo.logo.alt }}" loading="lazy">

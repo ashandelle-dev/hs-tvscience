@@ -52,5 +52,15 @@
     "label": "Scroll Speed (seconds)",
     "type": "number",
     "default": 30
+  },
+  {
+    "name": "scroll_direction",
+    "label": "Scroll Direction",
+    "type": "choice",
+    "choices": [
+      ["left", "Left"],
+      ["right", "Right"]
+    ],
+    "default": "left"
   }
 ]

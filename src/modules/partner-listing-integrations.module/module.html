@@ -71,12 +71,13 @@
           <h2 class="text-2xl font-bold text-[#1F252B] mb-6">Featured Integrations</h2>
           <div class="partner-grid grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-6">
             {% for partner in featured_partners %}
-            <div  {#
+            <{% if partner.url %}a{% else %}div{% endif %}
+              {% if partner.url %}
               href="{{ partner.url }}"
               target="_blank"
-              rel="noopener noreferrer" #}
-              class="flex flex-col partner-card bg-white rounded-lg shadow-sm border border-gray-200 p-4 lg:p-6
-              {# hover:shadow-md transition-shadow no-underline hover:no-underline hover:border-[#23E596] relative #}"
+              rel="noopener noreferrer"
+              {% endif %}
+              class="flex flex-col partner-card bg-white rounded-lg shadow-sm border border-gray-200 p-4 lg:p-6 hover:shadow-md transition-shadow no-underline hover:no-underline hover:border-[#23E596]"
               data-categories="{% for cat in partner.integration_categories %}{{ cat.name }}{% if not loop.last %},{% endif %}{% endfor %}"
               data-capabilities="{% for cap in partner.capabilities %}{{ cap.name }}{% if not loop.last %},{% endif %}{% endfor %}"
               data-featured="true"
@@ -123,7 +124,7 @@
                 {% endfor %}
               </div>
 
-            </div>
+            </{% if partner.url %}a{% else %}div{% endif %}>
             {% endfor %}
           </div>
         </div>
