@@ -148,19 +148,29 @@
               data-featured="false"
             >
 
-              <div class="parter-name flex items-center gap-4  mb-3">
+              <div class="parter-name {{ 'flex' if !module.show_full_logo }} items-center gap-4  mb-3">
                 <!-- Partner Logo -->
-                <div class="partner-logo">
+                <div class="partner-logo ">
+                  {% if !module.show_full_logo %}
                   {% if partner.image.url %}
                   <img
                     src="{{ partner.image.url }}"
                     alt="{{ partner.image.altText or partner.name }}"
                     width="{{ partner.image.width }}"
                     height="{{ partner.image.height }}"
-                    class="inline-block bg-[#F4F7F9] rounded-3xl"
+                    class="inline-block bg-[#F4F7F9] rounded-3xl logo-small"
                   >
                   {% else %}
                   <div class="w-full h-full bg-gray-200 rounded"></div>
+                  {% endif %}
+                  {% else %}
+                  <img
+                    src="{{ partner.logo_full.url }}"
+                    alt="{{ partner.logo_full.alt or partner.name }}"
+                    width="{{ partner.logo_full.width }}"
+                    height="{{ partner.logo_full.height }}"
+                    class="logo-full"
+                  >
                   {% endif %}
                 </div>
 
