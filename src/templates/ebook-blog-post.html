@@ -17,7 +17,7 @@
 {% if content.widgets.gated.body.value %}
   {% set gated = content.widgets.gated.body.value %}
 {% endif %}
- 
+
 {% block body %}
 
 {% if page_layout == "layout-a" or page_layout is none%}
@@ -65,7 +65,7 @@
             </div>
              <div class="blog-post__social-sharing w-full md:w-1/3">
 
-                {% module "Social Sharing" path="/tvScientific 2022 Atlas Pro/modules/Social Sharing.module" 
+                {% module "Social Sharing" path="/tvScientific 2022 Atlas Pro/modules/Social Sharing.module"
                 facebook={
                   "enabled": true
                 }
@@ -82,10 +82,10 @@
              </div>
           </div>
 
-          
+
           {{ content.post_body }}
 
-      		
+
 
         </article>
 
@@ -109,8 +109,8 @@
     <article class="blog-more-posts__post-wrapper">
       <div class="blog-more-posts__post">
         {% if post.featured_image and group.use_featured_image_in_summary %}
-        <a class="blog-more-posts__post-image" 
-           style="background-image: url('{{ post.featured_image }}');" 
+        <a class="blog-more-posts__post-image"
+           style="background-image: url('{{ post.featured_image }}');"
            href="{{ post.absolute_url }}">
         </a>
         {% endif %}
@@ -157,6 +157,8 @@
 {% else %}
 {# Layout B #}
 <style>
+  {% if request.query_dict.font == 'ibm' %}
+  {% else %}
    @font-face {
     font-family: 'BricolageGrotesque';
     src: url(https://www.tvscientific.com/hubfs/fonts/BricolageGrotesque-VariableFont.ttf);
@@ -165,14 +167,18 @@
     font-family: 'Rubik';
     src: url(https://www.tvscientific.com/hubfs/fonts/Rubik-VariableFont.ttf);
   }
-  
+  main h1, main h2, main h3 {
+    font-family: BricolageGrotesque !important;
+  }
+  .jump-menu p {
+    font-family: BricolageGrotesque !important;
+  }
+  {% endif %}
   html {
     scroll-behavior: smooth;
   }
 
-  main h1, main h2, main h3 {
-    font-family: BricolageGrotesque !important;
-  }
+
 
   .cta-group {
     justify-content: center;
@@ -184,15 +190,13 @@
     margin: 0;
   }
 
-  .jump-menu p {
-    font-family: BricolageGrotesque !important;
-  }
+
   .jump-menu a {
     color: #132430;
     font-size: 18px;
     font-weight: 400;
     border-left: 2px solid #198960;
-    
+
     padding-left: 0.75rem;
     flex-grow: 1;
     margin-bottom: 1.25rem;
@@ -283,7 +287,7 @@
         border-radius: 50%;
         top: 0; /* Center vertically */
         transform: translateX(-50%);
-        
+
     }
 
     #footer-cta {
@@ -304,73 +308,73 @@
     display: flex;
     margin: 0 auto !important;
   }
-  
+
   @media screen and (max-width: 440px) {
     form {
       width: 100%;
       flex-direction: column;
     }
   }
-  
+
   form label {
     display: none !important;
   }
   form fieldset:first-child {
     flex: 1;
   }
-  
+
   [data-hsfc-id=Renderer] .hsfc-TextInput {
     border-radius: 8px !important;
     border: 2px solid #23E596 !important;
   }
-  
+
   [data-hsfc-id=Renderer] .hsfc-Step .hsfc-Step__Content {
     padding: 0 !important;
   }
-  
+
   [data-hsfc-id=Renderer] .hsfc-NavigationRow {
     margin-top: 0 !important;
   }
-  
+
   .hsfc-Step:nth-child(2) .hsfc-Step__Content {
     display: flex;
     flex-wrap: wrap;
   }
-  
+
   .hsfc-Step:nth-child(2) .hsfc-Step__Content .hsfc-Row:first-child, .hsfc-Step:nth-child(2) .hsfc-Step__Content .hsfc-Row:nth-child(2) {
     width: 50%;
   }
-  
+
   .hsfc-Step:nth-child(2) .hsfc-Step__Content .hsfc-Row:first-child {
     padding-right: 16px;
   }
-  
+
   @media screen and (max-width: 769px) {
     .hsfc-Step:nth-child(2) .hsfc-Step__Content .hsfc-Row:first-child {
       padding-right: 8px;
     }
   }
-  
+
   .hsfc-Step:nth-child(2) .hsfc-Step__Content .hsfc-Row:nth-child(2) {
     padding-left: 16px;
   }
-  
+
   @media screen and (max-width: 769px) {
     .hsfc-Step:nth-child(2) .hsfc-Step__Content .hsfc-Row:nth-child(2) {
       padding-left: 8px;
     }
   }
-  
+
   .hsfc-NavigationRow {
     width: 100%;
   }
-  
+
   .hsfc-Step:nth-child(2) .hsfc-NavigationRow .hsfc-Button:first-child {
     background-color: transparent;
     color: #23E596;
     padding: 0;
   }
-  
+
   .hsfc-Step:nth-child(2) .hsfc-NavigationRow .hsfc-Button:first-child:before {
     display: inline-block;
     vertical-align: middle;
@@ -383,17 +387,17 @@
   .hsfc-Step:nth-child(2) .hsfc-NavigationRow .hsfc-Button:first-child:hover:before {
     transform: rotate(180deg) translateX(0.125rem);
   }
-  
+
   @media screen and (max-width: 769px) {
     [data-hsfc-id=Renderer] .hsfc-Row {
       margin-bottom: 10px !important;
     }
-    
+
     [data-hsfc-id=Renderer] .hsfc-NavigationRow__Alerts {
       margin-bottom: 10px !important;
     }
   }
-  
+
   form .hs-button, form input[type=submit] {
     border-radius: 0px 6px 6px 0px;
     background: #23E596;
@@ -405,7 +409,7 @@
     text-transform: uppercase;
     padding: 14px 32px;
   }
-  
+
   @media screen and (max-width: 440px) {
     form .hs-button, form input[type=submit] {
       border-radius: 6px;
@@ -419,7 +423,7 @@
   #hs_cos_wrapper_hero_eyebrow span {
     all: inherit;
   }
-  
+
 </style>
 <main>
   {% if content.widgets.hero_image.body.src %}
@@ -433,29 +437,29 @@
       {% if content.widgets.summary.body.value %}
       <p class="text-white text-center text-2xl">{{content.widgets.summary.body.value}}</p>
       {% endif %}
-      
+
       {% module "buttons_hero" path="/tvScientific 2022 Atlas Pro/cli-build/modules/custom-button-row.module", label="Hero Buttons" %}
-      
+
     </div>
   </section>
   <div class="progress sticky top-0 z-10">
     <div class="progress-dot"></div>
    <progress aria-hidden="true" class="reading-progressbar js-reading-progressbar" max="100" value="0">
-      
+
       <div class="reading-progressbar__fallback js-reading-progressbar__fallback"></div>
     </progress>
   </div>
   <section class="py-20">
     <div class="container mx-auto">
- 
+
   <div class="blog-body flex flex-col md:flex-row gap-4 md:gap-12">
     <div class="w-full md:w-1/4 relative">
-            
+
       <div class="sticky top-6">
         {% if content.widgets.jump_menu.body.value == 'Yes' %}
         <div class="jump-menu flex flex-wrap flex-col">
           <p class="text-black text-[22px]">Contents</p>
-          
+
         </div>
         {% endif %}
         {% if content.widgets.left_cta.body.value == 'Yes' %}
@@ -466,7 +470,7 @@
          {% endif %}
         <div class="blog-post__social-sharing">
           <p class="text-black">Share</p>
-            {% module "Social Sharing" path="/tvScientific 2022 Atlas Pro/modules/Social Sharing.module" 
+            {% module "Social Sharing" path="/tvScientific 2022 Atlas Pro/modules/Social Sharing.module"
                   facebook={
                     "enabled": true
                   }
@@ -481,7 +485,7 @@
                   }
                   %}
          </div>
-         
+
        </div>
     </div>
     <div class="w-full md:w-3/4">
@@ -489,16 +493,16 @@
     {# Blog post #}
       <article class="js-reading-content">
 
-        
+
 
         <div class="blog-post__body">
           {{ content.post_body }}
         </div>
 
-        
+
          <div class="blog-post__body-wrapper">
-            
-          
+
+
           {% if content.tag_list %}
           <div class="blog-post__tags">
             {% for tag in content.tag_list %}
@@ -510,7 +514,7 @@
         </div>
 
       </article>
-    
+
     {# End blog post #}
 
     </div>
@@ -531,7 +535,7 @@
   <div class="container max-w-[700px] mx-auto">
     {% module "gated_text" path="@hubspot/rich_text", label="Gate Form Text", html="<h2 class='text-center'>The Rise of Performance TV</h2><p class='text-center'>Sign up below to get the full report.</p>" %}
     {% module "gated_form" path="@hubspot/form", label="Gated Form" %}
-    
+
 
   </div>
 </section>
@@ -555,7 +559,7 @@
 {% endif %}
 
 <script>
-  
+
   var isInViewport = function(elem) {
     var distance = elem.getBoundingClientRect();
     return (
@@ -580,7 +584,7 @@
     window.addEventListener('scroll', function(event) {
     // add event on scroll
     currentAnchors.forEach(element => {
-        
+
         if (isInViewport(element)) {
           //if in Viewport
           var dataName = '#'+element.id;
@@ -594,7 +598,7 @@
           } else {
             sideNavButton.classList.add('current');
           }
-          
+
         }
     });
     }, false);
@@ -623,7 +627,7 @@ Util.toggleClass = function(el, className, bool) {
 (function() {
   var readingIndicator = document.getElementsByClassName('js-reading-progressbar')[0],
     readingIndicatorContent = document.getElementsByClassName('js-reading-content')[0];
-  
+
   if( readingIndicator && readingIndicatorContent) {
     var progressInfo = [],
       progressEvent = false,
@@ -638,7 +642,7 @@ Util.toggleClass = function(el, className, bool) {
     progressInfo['window'] = window.innerHeight;
     progressInfo['class'] = 'reading-progressbar--is-active';
     progressInfo['hideClass'] = 'reading-progressbar--is-out';
-    
+
     //init indicator
     setProgressIndicator();
     // wait for font to be loaded - reset progress bar
@@ -658,7 +662,7 @@ Util.toggleClass = function(el, className, bool) {
       progressEvent = true;
       (!window.requestAnimationFrame) ? setTimeout(function(){setProgressIndicator();}, 250) : window.requestAnimationFrame(setProgressIndicator);
     });
-    
+
     function setProgressIndicator() {
       var boundingClientRect = readingIndicatorContent.getBoundingClientRect();
       progressInfo['top'] = boundingClientRect.top;
@@ -699,9 +703,9 @@ Util.toggleClass = function(el, className, bool) {
     };
   }
 }());
-  
 
-  
+
+
 </script>
 {% endif %}
 {% endblock body %}

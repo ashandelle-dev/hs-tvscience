@@ -21,6 +21,28 @@
     "display_width": null
   },
   {
+    "id": "subhead",
+    "name": "subhead",
+    "label": "Subhead",
+    "type": "richtext",
+    "required": false,
+    "default": "Inside Performance Advertising with Jason Fairchild delivers unfiltered insights, strategic perspective, and hard truths from a founder's point of view inside the evolving world of adtech — cutting through the noise with the real lessons behind building high-performance teams and scaling category-defining startups.",
+    "help_text": "Subhead text displayed below the header title",
+    "locked": false,
+    "display_width": null
+  },
+  {
+    "id": "year_filter",
+    "name": "year_filter",
+    "label": "Year Filter",
+    "type": "number",
+    "required": false,
+    "default": null,
+    "help_text": "Only show posts from this year and later (leave empty to show all posts)",
+    "locked": false,
+    "display_width": null
+  },
+  {
     "id": "author_slug",
     "name": "author_slug",
     "label": "Author Slug",

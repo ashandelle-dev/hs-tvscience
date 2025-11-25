@@ -3,9 +3,21 @@
 {% else %}
   {% set module_id = 'author-blog-listing-default' %}
 {% endif %}
-{% set author_posts = blog_recent_author_posts(module.blog.id, module.author_slug, 200) %}
+{% set all_author_posts = blog_recent_author_posts(module.blog.id, module.author_slug, 200) %}
+{% set year_filter = module.year_filter|int if module.year_filter else null %}
+{% set filtered_count = 0 %}
+{% if year_filter %}
+  {% for post in all_author_posts %}
+    {% set post_year = post.publish_date|datetimeformat('%Y')|int %}
+    {% if post_year >= year_filter %}
+      {% set filtered_count = filtered_count + 1 %}
+    {% endif %}
+  {% endfor %}
+{% else %}
+  {% set filtered_count = all_author_posts|length %}
+{% endif %}
 {% set posts_per_page = 12 %}
-{% set total_posts = author_posts|length %}
+{% set total_posts = filtered_count %}
 {% set total_pages = (total_posts / posts_per_page)|round(0, 'ceil') %}
 
 <div class="author-blog-listing-module" data-module-id="{{ module_id }}" data-posts-per-page="{{ posts_per_page }}" data-total-posts="{{ total_posts }}" data-total-pages="{{ total_pages }}">
@@ -35,6 +47,9 @@
     {% endif %}
     <div class="">
       <h1 class="text-[#1C4633]">{{ module.header_title }}</h1>
+      {% if module.subhead %}
+      <p class="mt-4 text-[#31373D]">{{ module.subhead }}</p>
+      {% endif %}
     </div>
   </div>
 
@@ -53,7 +68,13 @@
 
   {# Blog Posts Grid #}
   <section class="author-blog-listing__posts grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-2 gap-y-4 md:gap-x-4 md:gap-y-8 mb-12">
-    {% for content in author_posts %}
+    {% for content in all_author_posts %}
+    {% set post_year = content.publish_date|datetimeformat('%Y')|int %}
+    {% set show_post = true %}
+    {% if year_filter and post_year < year_filter %}
+      {% set show_post = false %}
+    {% endif %}
+    {% if show_post %}
     {# the following picks up information from news posts #}
     {% set pub_logo = content.widgets.publication_logo.body.src if content.widgets.publication_logo else null %}
     {% set out_link = content.widgets.title_link.body.value if content.widgets.title_link else null %}
@@ -97,6 +118,7 @@
         </div>
       </div>
     </article>
+    {% endif %}
     {% endfor %}
   </section>
   {# End Blog Posts Grid #}

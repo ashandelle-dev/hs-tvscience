@@ -3,13 +3,13 @@
 
   function initAuthorBlogListingPagination() {
     const modules = document.querySelectorAll('.author-blog-listing-module');
-    
+
     modules.forEach(function(module) {
       const moduleId = module.getAttribute('data-module-id');
       const postsPerPage = parseInt(module.getAttribute('data-posts-per-page')) || 12;
       const totalPosts = parseInt(module.getAttribute('data-total-posts')) || 0;
       const totalPages = parseInt(module.getAttribute('data-total-pages')) || 1;
-      
+
       if (totalPages <= 1) {
         // No pagination needed
         return;
@@ -18,7 +18,7 @@
       const postsContainer = module.querySelector('.author-blog-listing__posts');
       const posts = Array.from(module.querySelectorAll('.author-blog-listing__post'));
       const paginationContainer = module.querySelector('.author-blog-listing__pagination');
-      
+
       if (!postsContainer || !paginationContainer || posts.length === 0) {
         return;
       }
@@ -45,7 +45,7 @@
 
         currentPage = page;
         renderPagination();
-        
+
         // Scroll to top of module
         module.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
