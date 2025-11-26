@@ -1,0 +1,37 @@
+<div class="logo-slider-wrapper">
+  <div class="logo-slider-header">
+    <span class="logo-slider-pill">{{ module.category_label }}</span>
+    <a href="{{ module.inventory_link.url.href }}" class="logo-slider-link">
+      {{ module.inventory_link.text }}
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+
+  <div class="logo-slider-container" data-scroll-speed="{{ module.scroll_speed }}" data-scroll-direction="{{ module.scroll_direction }}">
+    <div class="logo-slider-track">
+      {% for logo in module.logos %}
+        <div class="logo-slide">
+          <img src="{{ logo.logo.src }}" alt="{{ logo.logo.alt }}" loading="lazy">
+        </div>
+      {% endfor %}
+      <!-- Duplicate sets for seamless loop on large screens -->
+      {% for logo in module.logos %}
+        <div class="logo-slide">
+          <img src="{{ logo.logo.src }}" alt="{{ logo.logo.alt }}" loading="lazy">
+        </div>
+      {% endfor %}
+      {% for logo in module.logos %}
+        <div class="logo-slide">
+          <img src="{{ logo.logo.src }}" alt="{{ logo.logo.alt }}" loading="lazy">
+        </div>
+      {% endfor %}
+      {% for logo in module.logos %}
+        <div class="logo-slide">
+          <img src="{{ logo.logo.src }}" alt="{{ logo.logo.alt }}" loading="lazy">
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,87 @@
+[
+  {
+    "id": "blog_field",
+    "name": "blog",
+    "label": "Blog",
+    "type": "blog",
+    "required": true,
+    "locked": false,
+    "display_width": null
+  },
+
+  {
+    "id": "header_title",
+    "name": "header_title",
+    "label": "Header Title",
+    "type": "text",
+    "required": true,
+    "default": "Inside Performance Advertising",
+    "help_text": "Main header title",
+    "locked": false,
+    "display_width": null
+  },
+  {
+    "id": "subhead",
+    "name": "subhead",
+    "label": "Subhead",
+    "type": "richtext",
+    "required": false,
+    "default": "Inside Performance Advertising with Jason Fairchild delivers unfiltered insights, strategic perspective, and hard truths from a founder's point of view inside the evolving world of adtech — cutting through the noise with the real lessons behind building high-performance teams and scaling category-defining startups.",
+    "help_text": "Subhead text displayed below the header title",
+    "locked": false,
+    "display_width": null
+  },
+  {
+    "id": "year_filter",
+    "name": "year_filter",
+    "label": "Year Filter",
+    "type": "number",
+    "required": false,
+    "default": null,
+    "help_text": "Only show posts from this year and later (leave empty to show all posts)",
+    "locked": false,
+    "display_width": null
+  },
+  {
+    "id": "author_slug",
+    "name": "author_slug",
+    "label": "Author Slug",
+    "type": "text",
+    "required": true,
+    "default": "jason-fairchild",
+    "help_text": "The slug of the author",
+    "locked": false,
+    "display_width": null
+  },
+  {
+    "id": "back_button_text",
+    "name": "back_button_text",
+    "label": "Back Button Text",
+    "type": "text",
+    "required": false,
+    "default": "Back to Resources",
+    "help_text": "Text for the back button",
+    "locked": false,
+    "display_width": null
+  },
+  {
+    "id": "back_button_link",
+    "name": "back_button_link",
+    "label": "Back Button Link",
+    "type": "link",
+    "required": false,
+    "locked": false,
+    "supported_types": ["EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG"],
+    "show_advanced_rel_options": false,
+    "display_width": null,
+    "default": {
+      "url": {
+        "type": "EXTERNAL",
+        "href": "https://www.tvscientific.com/resources",
+        "content_id": null
+      },
+      "open_in_new_tab": false,
+      "no_follow": false
+    }
+  }
+]

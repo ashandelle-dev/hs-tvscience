@@ -1,0 +1,27 @@
+.fade-in-image {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  border-radius: 8px;
+}
+
+@keyframes fade-slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-image img {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.fade-in-up {
+  animation: fade-slide-up 400ms ease-in forwards;
+}

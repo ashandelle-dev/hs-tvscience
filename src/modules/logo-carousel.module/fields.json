@@ -1,28 +1,30 @@
-[ {
-  "id" : "1ace1904-7b6a-11db-76b1-311cf99044ac",
-  "name" : "image_field",
-  "label" : "Image",
-  "required" : false,
-  "locked" : false,
-  "occurrence" : {
-    "min" : null,
-    "max" : null,
-    "sorting_label_field" : null,
-    "default" : null
-  },
-  "responsive" : true,
-  "resizable" : true,
-  "show_loading" : false,
-  "type" : "image",
-  "display_width" : null,
-  "default" : {
-    "size_type" : "auto",
-    "src" : "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/bigfish-logo.png",
-    "alt" : "bigfish-logo",
-    "loading" : "lazy",
-    "width" : 54,
-    "height" : 42,
-    "max_width" : 54,
-    "max_height" : 42
+[
+  {
+    "id": "1ace1904-7b6a-11db-76b1-311cf99044ac",
+    "name": "image_field",
+    "label": "Image",
+    "required": false,
+    "locked": false,
+    "occurrence": {
+      "min": null,
+      "max": null,
+      "sorting_label_field": null,
+      "default": null
+    },
+    "responsive": true,
+    "resizable": true,
+    "show_loading": false,
+    "type": "image",
+    "display_width": null,
+    "default": {
+      "size_type": "auto",
+      "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/bigfish-logo.png",
+      "alt": "bigfish-logo",
+      "loading": "lazy",
+      "width": 54,
+      "height": 42,
+      "max_width": 54,
+      "max_height": 42
+    }
   }
-} ]
+]

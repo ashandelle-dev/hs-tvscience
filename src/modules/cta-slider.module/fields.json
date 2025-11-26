@@ -1,0 +1,372 @@
+[
+  {
+    "id": "slider_cards",
+    "name": "slider_cards",
+    "label": "Slider Cards",
+    "required": false,
+    "locked": false,
+      "occurrence": {
+      "min": null,
+      "max": null,
+      "sorting_label_field": "card_title",
+      "default": 10
+    },
+    "children": [
+      {
+        "id": "card_image",
+        "name": "card_image",
+        "label": "Card Image",
+        "required": false,
+        "locked": false,
+        "responsive": true,
+        "resizable": true,
+        "show_loading": false,
+        "type": "image",
+        "display_width": null,
+        "default": {
+          "size_type": "exact",
+          "src": "https://tvscientific.com/hubfs/CTACARDS/premium-ctv-and-linear-combo.webp",
+          "alt": "tvScientific feature card",
+          "loading": "lazy",
+          "width": 818,
+          "height": 278
+        }
+      },
+      {
+        "id": "card_title",
+        "name": "card_title",
+        "label": "Card Title",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": ""
+      },
+      {
+        "id": "card_description",
+        "name": "card_description",
+        "label": "Card Description",
+        "required": false,
+        "locked": false,
+        "type": "richtext",
+        "display_width": null,
+        "default": ""
+      },
+      {
+        "id": "cta",
+        "name": "cta",
+        "label": "Call to Action",
+        "required": false,
+        "locked": false,
+        "children": [
+          {
+            "id": "cta_link",
+            "name": "link",
+            "label": "Link",
+            "required": false,
+            "locked": false,
+            "supported_types": [
+              "EXTERNAL",
+              "CONTENT",
+              "FILE",
+              "EMAIL_ADDRESS",
+              "BLOG",
+              "CALL_TO_ACTION",
+              "PHONE_NUMBER",
+              "WHATSAPP_NUMBER",
+              "PAYMENT"
+            ],
+            "show_advanced_rel_options": false,
+            "type": "link",
+            "display_width": null,
+            "default": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": ""
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            }
+          },
+          {
+            "id": "cta_text",
+            "name": "text",
+            "label": "CTA Text",
+            "required": false,
+            "locked": false,
+            "allow_new_line": false,
+            "type": "text",
+            "display_width": null,
+            "default": "TEXT LINK"
+          }
+        ],
+        "tab": "CONTENT",
+        "expanded": false,
+        "group_occurrence_meta": null,
+        "type": "group",
+        "display_width": null,
+        "default": {
+          "link": {
+            "url": {
+              "content_id": null,
+              "type": "EXTERNAL",
+              "href": ""
+            },
+            "open_in_new_tab": false,
+            "no_follow": false
+          },
+          "text": "TEXT LINK"
+        }
+      }
+    ],
+    "tab": "CONTENT",
+    "expanded": false,
+    "group_occurrence_meta": null,
+    "type": "group",
+    "display_width": null,
+    "default": [
+      {
+        "card_image": {
+          "size_type": "exact",
+          "src": "https://tvscientific.com/hubfs/CTACARDS/premium-ctv-and-linear-combo.webp",
+          "alt": "Premium CTV and linear inventory access",
+          "loading": "lazy",
+          "width": 818,
+          "height": 278
+        },
+        "card_title": "Premium CTV and linear inventory access.",
+        "card_description": "Launch and optimize TV campaigns quickly.",
+        "cta": {
+          "link": {
+            "url": {
+              "content_id": null,
+              "type": "EXTERNAL",
+              "href": ""
+            },
+            "open_in_new_tab": false,
+            "no_follow": false
+          },
+          "text": "READ MORE"
+        }
+      },
+      {
+        "card_image": {
+          "size_type": "exact",
+          "src": "https://tvscientific.com/hubfs/CTACARDS/easy-campaign-setup-combo.webp",
+          "alt": "Lead generation beyond ads and engagement",
+          "loading": "lazy",
+          "width": 818,
+          "height": 278
+        },
+        "card_title": "Easy campaign setup and management",
+        "card_description": "Launch and optimize TV campaigns quickly.",
+        "cta": {
+          "link": {
+            "url": {
+              "content_id": null,
+              "type": "EXTERNAL",
+              "href": ""
+            },
+            "open_in_new_tab": false,
+            "no_follow": false
+          },
+          "text": "READ MORE"
+        }
+      },
+      {
+        "card_image": {
+          "size_type": "exact",
+          "src": "https://tvscientific.com/hubfs/CTACARDS/smart-audience-targeting-combo.webp",
+          "alt": "Custom audience targeting",
+          "loading": "lazy",
+          "width": 818,
+          "height": 278
+        },
+        "card_title": "Smart audience targeting",
+        "card_description": "Connect with purchase-ready viewers at the right time.",
+        "cta": {
+          "link": {
+            "url": {
+              "content_id": null,
+              "type": "EXTERNAL",
+              "href": ""
+            },
+            "open_in_new_tab": false,
+            "no_follow": false
+          },
+          "text": "READ MORE"
+        }
+      },
+      {
+        "card_image": {
+          "size_type": "exact",
+          "src": "https://tvscientific.com/hubfs/CTACARDS/ai-powered-bidding-combo.webp",
+          "alt": "AI-powered bidding",
+          "loading": "lazy",
+          "width": 818,
+          "height": 278
+        },
+        "card_title": "AI-powered bidding.",
+        "card_description": "Maximize efficiency and ROAS with real-time optimization.",
+        "cta": {
+          "link": {
+            "url": {
+              "content_id": null,
+              "type": "EXTERNAL",
+              "href": ""
+            },
+            "open_in_new_tab": false,
+            "no_follow": false
+          },
+          "text": "READ MORE"
+        }
+      },
+      {
+        "card_image": {
+          "size_type": "exact",
+          "src": "https://tvscientific.com/hubfs/CTACARDS/campaign-organization-combo.webp",
+          "alt": "Campaign optimization",
+          "loading": "lazy",
+          "width": 818,
+          "height": 278
+        },
+        "card_title": "Campaign optimization",
+        "card_description": "Our AI analyzes thousands of line items to guide smarter budget allocation, targeting, audience selection, and creative choices for continuous improvement.",
+        "cta": {
+          "link": {
+            "url": {
+              "content_id": null,
+              "type": "EXTERNAL",
+              "href": ""
+            },
+            "open_in_new_tab": false,
+            "no_follow": false
+          },
+          "text": "READ MORE"
+        }
+      },
+      {
+        "card_image": {
+          "size_type": "exact",
+          "src": "https://tvscientific.com/hubfs/CTACARDS/patented-attribution-combo.webp",
+          "alt": "Patented attribution you can trust",
+          "loading": "lazy",
+          "width": 818,
+          "height": 450
+        },
+        "card_title": "Patented attribution you can trust",
+        "card_description": "Tie TV ad spend directly to business outcomes. ",
+        "cta": {
+          "link": {
+            "url": {
+              "content_id": null,
+              "type": "EXTERNAL",
+              "href": ""
+            },
+            "open_in_new_tab": false,
+            "no_follow": false
+          },
+          "text": "READ MORE"
+        }
+      },
+      {
+        "card_image": {
+          "size_type": "exact",
+          "src": "https://tvscientific.com/hubfs/CTACARDS/on-demand-measurement-combo.webp",
+          "alt": "On-demand measurement and reporting",
+          "loading": "lazy",
+          "width": 818,
+          "height": 278
+        },
+        "card_title": "On-demand measurement and reporting",
+        "card_description": "Prove results through transparent performance insights at your fingertips. ",
+        "cta": {
+          "link": {
+            "url": {
+              "content_id": null,
+              "type": "EXTERNAL",
+              "href": ""
+            },
+            "open_in_new_tab": false,
+            "no_follow": false
+          },
+          "text": "READ MORE"
+        }
+      },
+      {
+        "card_image": {
+          "size_type": "exact",
+          "src": "https://tvscientific.com/hubfs/CTACARDS/creative-solutions-combo.webp",
+          "alt": "Creative solutions",
+          "loading": "lazy",
+          "width": 818,
+          "height": 278
+        },
+        "card_title": "Creative solutions",
+        "card_description": "From ad format flexibility to full-service creative support, brands of all sizes find performance on TV. ",
+        "cta": {
+          "link": {
+            "url": {
+              "content_id": null,
+              "type": "EXTERNAL",
+              "href": ""
+            },
+            "open_in_new_tab": false,
+            "no_follow": false
+          },
+          "text": "READ MORE"
+        }
+      },
+      {
+        "card_image": {
+          "size_type": "exact",
+          "src": "https://tvscientific.com/hubfs/CTACARDS/trusted-team-combo.webp",
+          "alt": "Trusted team",
+          "loading": "lazy",
+          "width": 818,
+          "height": 278
+        },
+        "card_title": "Trusted team",
+        "card_description": " Our account managers provide real-time, strategic guidance.",
+        "cta": {
+          "link": {
+            "url": {
+              "content_id": null,
+              "type": "EXTERNAL",
+              "href": ""
+            },
+            "open_in_new_tab": false,
+            "no_follow": false
+          },
+          "text": "READ MORE"
+        }
+      },
+      {
+        "card_image": {
+          "size_type": "exact",
+          "src": "https://tvscientific.com/hubfs/CTACARDS/flexible-engagement-models-combo.webp",
+          "alt": "Flexible engagement models",
+          "loading": "lazy",
+          "width": 818,
+          "height": 278
+        },
+        "card_title": "Flexible engagement models",
+        "card_description": "Buy on a CPM or CPA (Guaranteed Outcomes) basis. Drive the outcome you want, and pay only when it’s achieved.",
+        "cta": {
+          "link": {
+            "url": {
+              "content_id": null,
+              "type": "EXTERNAL",
+              "href": ""
+            },
+            "open_in_new_tab": false,
+            "no_follow": false
+          },
+          "text": "READ MORE"
+        }
+      }
+    ]
+  }
+]

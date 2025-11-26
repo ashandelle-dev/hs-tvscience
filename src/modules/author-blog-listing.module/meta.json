@@ -1,0 +1,15 @@
+{
+  "label": "Author Blog Listing",
+  "external_js": [],
+  "global": false,
+  "content_types" : [ "LANDING_PAGE", "SITE_PAGE", "BLOG_POST" ],
+  "other_assets": [],
+  "smart_type": "NOT_SMART",
+  "tags": [
+    "blog",
+    "author",
+    "listing",
+    "pagination"
+  ],
+  "is_available_for_new_content": true
+}

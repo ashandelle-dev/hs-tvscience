@@ -10,19 +10,27 @@
         justify-content: {{ module.styles.alignment.horizontal_align|replace('left', 'flex-start')|replace('right', 'flex-end')|replace('center', 'center') }};
     }
     .tvsci-heading .heading {
+        text-align: {{ module.styles.alignment.horizontal_align }};
         {% if module.styles.text_color %}
         color: {{ module.styles.text_color.css }};
         {% endif %}
         {% if module.heading_size != 0 %}
         font-size: {{ module.heading_size }}px !important;
-        line-height: 1.225 !important;
         {% endif %}
+        line-height: 1.2 !important;
     }
+    {% if module.heading_size_mobile != 0 %}
+    @media (max-width: 768px) {
+        .tvsci-heading .heading {
+            font-size: {{ module.heading_size_mobile }}px !important;
+        }
+    }
+    {% endif %}
     {% end_scope_css %}
 </style>
 {% end_require_css %}
 
-<span class="tvsci-heading flex  gap-2"">
+<span class="tvsci-heading flex  gap-2">
     {% if module.image.src %}
     {% set sizeAttrs = 'width="{{ module.image.width|escape_attr }}" height="{{ module.image.height|escape_attr }}"' %}
     {% if module.image.size_type == 'auto' %}

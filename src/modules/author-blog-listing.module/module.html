@@ -1,0 +1,134 @@
+{% if widget_data.id %}
+  {% set module_id = 'author-blog-listing-' ~ widget_data.id %}
+{% else %}
+  {% set module_id = 'author-blog-listing-default' %}
+{% endif %}
+{% set all_author_posts = blog_recent_author_posts(module.blog.id, module.author_slug, 200) %}
+{% set year_filter = module.year_filter|int if module.year_filter else null %}
+{% set filtered_count = 0 %}
+{% if year_filter %}
+  {% for post in all_author_posts %}
+    {% set post_year = post.publish_date|datetimeformat('%Y')|int %}
+    {% if post_year >= year_filter %}
+      {% set filtered_count = filtered_count + 1 %}
+    {% endif %}
+  {% endfor %}
+{% else %}
+  {% set filtered_count = all_author_posts|length %}
+{% endif %}
+{% set posts_per_page = 12 %}
+{% set total_posts = filtered_count %}
+{% set total_pages = (total_posts / posts_per_page)|round(0, 'ceil') %}
+
+<div class="author-blog-listing-module" data-module-id="{{ module_id }}" data-posts-per-page="{{ posts_per_page }}" data-total-posts="{{ total_posts }}" data-total-pages="{{ total_pages }}">
+
+  {# Header Section #}
+  <div class="">
+    {% if module.back_button_link.url.href %}
+    <div class="mb-12">
+      <a href="{{ module.back_button_link.url.href }}"
+        class="flex relative items-center hover:no-underline group">
+        <div class="w-4 text-center group-hover:-translate-x-0.5 duration-200 transition-transform">
+          <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9.55957 5L6.55957 8L9.55957 11" stroke="#009061" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="px-3">
+          <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-[#009061]">
+            {% if module.back_button_text %}
+              {{ module.back_button_text }}
+            {% else %}
+              Back to Resources
+            {% endif %}
+          </p>
+        </div>
+      </a>
+    </div>
+    {% endif %}
+    <div class="">
+      <h1 class="text-[#1C4633]">{{ module.header_title }}</h1>
+      {% if module.subhead %}
+      <p class="mt-4 text-[#31373D]">{{ module.subhead }}</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="py-12">
+    <div class="relative">
+      <div class="absolute -left-3 top-0 -translate-y-[6px]">
+        <div class="w-[12px] h-[12px] rounded-full bg-[#C0E7D8]"></div>
+      </div>
+      <div class="absolute -right-3 top-0 -translate-y-[6px]">
+        <div class="w-[12px] h-[12px]  rounded-full bg-[#C0E7D8]"></div>
+      </div>
+      <hr class="border-[#C0E7D8]">
+    </div>
+  </div>
+  {# End Header Section #}
+
+  {# Blog Posts Grid #}
+  <section class="author-blog-listing__posts grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-2 gap-y-4 md:gap-x-4 md:gap-y-8 mb-12">
+    {% for content in all_author_posts %}
+    {% set post_year = content.publish_date|datetimeformat('%Y')|int %}
+    {% set show_post = true %}
+    {% if year_filter and post_year < year_filter %}
+      {% set show_post = false %}
+    {% endif %}
+    {% if show_post %}
+    {# the following picks up information from news posts #}
+    {% set pub_logo = content.widgets.publication_logo.body.src if content.widgets.publication_logo else null %}
+    {% set out_link = content.widgets.title_link.body.value if content.widgets.title_link else null %}
+
+    <article class="author-blog-listing__post h-full" data-post-index="{{ loop.index0 }}">
+      <div class="rounded-lg border h-full border-[#009061] overflow-hidden relative group">
+        {% unless out_link %}
+        <a href="{{ content.absolute_url }}" class="absolute top-0 left-0 w-full h-full z-10"></a>
+        {% else %}
+        <a href="{{out_link}}" target="_blank" class="absolute top-0 left-0 w-full h-full z-10"></a>
+        {% endunless %}
+        {% unless pub_logo %}
+        <div class="h-[170px]">
+          {% if content.widgets.card_image.body.src %}
+           <img alt="{{ content.widgets.card_image.body.alt }} thumbnail graphic" class="w-full h-full object-cover" src="{{ content.widgets.card_image.body.src }}" alt="" loading="lazy">
+          {% elif content.featured_image %}
+           <img alt="{{ content.name }} thumbnail graphic" class="w-full h-full object-cover" src="{{ content.featured_image }}" alt="" loading="lazy">
+          {% endif %}
+        </div>
+        {% else %}
+        <div class="h-[170px] flex">
+          <img alt="{{ content.name }} thumbnail graphic" class="p-6" src="{{ pub_logo }}" alt="" loading="lazy">
+        </div>
+        {% endunless %}
+
+        <div class="p-6">
+          <p class="mb-3 uppercase text-[#009061] font-medium">{{ content.publish_date | datetimeformat('%b %e, %Y') }}</p>
+          <h2 class="!text-[22px] !leading-[28px] mb-6 font-medium text-[#31373D]">{{ content.name }}</h2>
+          {% unless out_link %}
+          <a href="{{ content.absolute_url }}" class="flex absolute bottom-3 left-0 px-6 items-center hover:no-underline">
+          {% else %}
+          <a href="{{ out_link }}" class="flex absolute bottom-3 left-0 px-6 items-center hover:no-underline" target="_blank">
+          {% endunless %}
+            <div>
+              <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-[#009061]">Read now</p>
+            </div>
+            <div class="w-4 text-center group-hover:translate-x-0.5 duration-200 transition-transform">
+              <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7 5L10 8L7 11" stroke="#009061" stroke-width="1.5"></path></svg>
+            </div>
+          </a>
+        </div>
+      </div>
+    </article>
+    {% endif %}
+    {% endfor %}
+  </section>
+  {# End Blog Posts Grid #}
+
+  {# JavaScript Pagination #}
+  {% if total_pages > 1 %}
+  <div class="author-blog-listing__pagination blog-pagination" data-module-id="{{ module_id }}">
+    {# Pagination will be rendered by JavaScript #}
+  </div>
+  {% endif %}
+  {# End JavaScript Pagination #}
+
+</div>

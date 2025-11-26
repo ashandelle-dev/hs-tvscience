@@ -8,6 +8,8 @@
 {% global_partial path="../partials/header.html" %}
 {% require_css %}
 <style>
+  {% if request.query_dict.font == 'ibm' %}
+  {% else %}
   @font-face {
     font-family: 'BricolageGrotesque';
     src: url(https://www.tvscientific.com/hubfs/fonts/BricolageGrotesque-VariableFont.ttf);
@@ -16,25 +18,29 @@
     font-family: 'Rubik';
     src: url(https://www.tvscientific.com/hubfs/fonts/Rubik-VariableFont.ttf);
   }
-
-  html {
-    scroll-behavior: smooth;
-  }
-
   body .multi-column-new-nav {
     font-family: 'Rubik';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 150%;
   }
-
   main h1, main h2, main h3,
   main h4, main h5, main h6,
   main .h1, main .h2, main .h3,
   main .h4, main .h5, main .h6 {
     font-family: BricolageGrotesque !important;
   }
+  {% endif %}
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body .multi-column-new-nav {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 150%;
+  }
+
+
   .body-wrapper {
     overflow-x: initial !important;
   }

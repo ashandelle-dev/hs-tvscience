@@ -1,0 +1,141 @@
+.logo-slider-wrapper {
+  width: 100%;
+  padding: 3rem 0;
+  overflow: hidden;
+  border-bottom: 1px solid #345F93;
+}
+
+.logo-slider-header {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 20px 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.logo-slider-pill {
+  background: #121C2C;
+  padding: 12px 12px;
+  color: #fff;
+  border: 1px solid #23E596;
+  backdrop-filter: blur(4px);
+  font-size: 24px;
+  font-weight: 500;
+  border-radius: 4px;
+  letter-spacing: 0.28px;
+  line-height: 1;
+}
+
+.logo-slider-link {
+  color: #23E596;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.logo-slider-link:hover {
+  color: #7ce4c6;
+}
+
+.logo-slider-link svg {
+  width: 16px;
+  height: 16px;
+}
+
+.logo-slider-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+}
+
+.logo-slider-track {
+  display: flex;
+  width: fit-content;
+  animation: scroll-left var(--scroll-duration, 30s) linear infinite;
+}
+
+.logo-slider-container[data-scroll-direction="right"] .logo-slider-track {
+  animation-name: scroll-right;
+}
+
+.logo-slider-container:hover .logo-slider-track {
+  animation-play-state: paused;
+}
+
+.logo-slide {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3rem;
+  min-width: 200px;
+}
+
+.logo-slide img {
+  max-height: 70px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+.logo-slide:hover img {
+  opacity: 1;
+  filter: grayscale(0%) brightness(1) invert(0);
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% / 4));
+  }
+}
+
+@keyframes scroll-right {
+  0% {
+    transform: translateX(calc(-100% / 4));
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .logo-slide {
+    padding: 0 2rem;
+    min-width: 150px;
+  }
+
+  .logo-slide img {
+    max-height: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-slider-pill,
+  .logo-slider-link {
+    font-size: 0.75rem;
+  }
+
+  .logo-slide {
+    padding: 0 1.5rem;
+    min-width: 120px;
+  }
+
+  .logo-slide img {
+    max-height: 40px;
+  }
+}

@@ -6,6 +6,8 @@
 {% extends "../layouts/base.html" %}
 {% block header %}
   {% global_partial path="../partials/header.html" %}
+  {% if request.query_dict.font == 'ibm' %}
+  {% else %}
   {% require_css %}
   <style>
     @font-face {
@@ -41,6 +43,7 @@
     }
   </style>
   {% end_require_css %}
+  {% endif %}
 {% endblock header %}
 {% block body %}
 <main>

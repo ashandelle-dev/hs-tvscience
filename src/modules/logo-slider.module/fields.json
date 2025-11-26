@@ -1,0 +1,66 @@
+[
+  {
+    "name": "category_label",
+    "label": "Category Label",
+    "type": "text",
+    "default": "Streaming"
+  },
+  {
+    "name": "inventory_link",
+    "label": "View Inventory Link",
+    "type": "group",
+    "children": [
+      {
+        "name": "text",
+        "label": "Link Text",
+        "type": "text",
+        "default": "VIEW FULL INVENTORY"
+      },
+      {
+        "name": "url",
+        "label": "Link URL",
+        "type": "url",
+        "default": {
+          "href": "#"
+        }
+      }
+    ]
+  },
+  {
+    "name": "logos",
+    "label": "Logos",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": 20,
+      "default": 8
+    },
+    "children": [
+      {
+        "name": "logo",
+        "label": "Logo Image",
+        "type": "image",
+        "default": {
+          "src": "https://tvscientific.com/hubfs/logos/Disney%2B%20Grey-dark-blue%201.png",
+          "alt": "Partner Logo"
+        }
+      }
+    ]
+  },
+  {
+    "name": "scroll_speed",
+    "label": "Scroll Speed (seconds)",
+    "type": "number",
+    "default": 30
+  },
+  {
+    "name": "scroll_direction",
+    "label": "Scroll Direction",
+    "type": "choice",
+    "choices": [
+      ["left", "Left"],
+      ["right", "Right"]
+    ],
+    "default": "left"
+  }
+]
