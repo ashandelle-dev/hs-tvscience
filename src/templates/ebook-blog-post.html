@@ -157,29 +157,9 @@
 {% else %}
 {# Layout B #}
 <style>
-  {% if request.query_dict.font == 'ibm' %}
-  {% else %}
-   @font-face {
-    font-family: 'BricolageGrotesque';
-    src: url(https://www.tvscientific.com/hubfs/fonts/BricolageGrotesque-VariableFont.ttf);
-  }
-  @font-face {
-    font-family: 'Rubik';
-    src: url(https://www.tvscientific.com/hubfs/fonts/Rubik-VariableFont.ttf);
-  }
-  main h1, main h2, main h3 {
-    font-family: BricolageGrotesque !important;
-  }
-  .jump-menu p {
-    font-family: BricolageGrotesque !important;
-  }
-  {% endif %}
   html {
     scroll-behavior: smooth;
   }
-
-
-
   .cta-group {
     justify-content: center;
   }
@@ -189,8 +169,6 @@
   .kl-social-link {
     margin: 0;
   }
-
-
   .jump-menu a {
     color: #132430;
     font-size: 18px;

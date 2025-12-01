@@ -9,25 +9,9 @@
 {% block body %}
 
 <style>
-  /*BW - reusable styles*/
-  @font-face {
-    font-family: 'BricolageGrotesque';
-    src: url(https://www.tvscientific.com/hubfs/fonts/BricolageGrotesque-VariableFont.ttf);
-  }
-
-  @font-face {
-    font-family: 'Rubik';
-    src: url(https://www.tvscientific.com/hubfs/fonts/Rubik-VariableFont.ttf);
-  }
 
   html {
     scroll-behavior: smooth;
-  }
-
-  main h1,
-  main h2,
-  main h3 {
-    font-family: BricolageGrotesque !important;
   }
 
   main h1 {
@@ -49,10 +33,6 @@
 
   main h3 {
     font-size: clamp(2.25rem, 1.707rem + 1.739vw, 3rem) !important;
-  }
-
-  main p {
-    font-family: Rubik !important;
   }
 
   main .container {
@@ -105,7 +85,7 @@
     display: flex;
     justify-content: center;
   }
-  
+
   .touch-button {
   }
 
@@ -257,7 +237,7 @@
     border: 1px solid #23E596;
     color: #0F2D29;
   }
-  
+
   #hs-button_getintouch_button {
     font-size: 12px;
   }
@@ -446,7 +426,7 @@
     <div class="container mx-auto flex flex-col justify-center items-center mt-10">
       <p class="text-white font-regular text-[18px] mt-6 mb-6">Have questions about our patents or platform?</p
        {% module "getintouch_button" path="@hubspot/button", label="Get Button", button_text="Get In Touch", extra_classes="get-button" %}
-      
+
     </div>
   </section>
 

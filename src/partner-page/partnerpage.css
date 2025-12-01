@@ -453,14 +453,6 @@ p {
     padding-bottom: 5rem;
 }
 
-.font-body {
-    font-family: "Rubik", sans-serif;
-}
-
-.font-heading {
-    font-family: "Bricolage Grotesque", sans-serif;
-}
-
 .text-2xl {
     font-size: 1.5rem;
     line-height: 2rem;
