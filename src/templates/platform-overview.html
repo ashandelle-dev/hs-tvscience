@@ -9,22 +9,9 @@
 {% block body %}
 
 <style>
-  /*BW - reusable styles*/
-   @font-face {
-    font-family: 'BricolageGrotesque';
-    src: url(https://www.tvscientific.com/hubfs/fonts/BricolageGrotesque-VariableFont.ttf);
-  }
-  @font-face {
-    font-family: 'Rubik';
-    src: url(https://www.tvscientific.com/hubfs/fonts/Rubik-VariableFont.ttf);
-  }
-  
+
   html {
     scroll-behavior: smooth;
-  }
-
-  main h1, main h2, main h3 {
-    font-family: BricolageGrotesque !important;
   }
 
   main h1 {
@@ -47,10 +34,6 @@
     font-size: clamp(2.25rem, 1.707rem + 1.739vw, 3rem) !important;
   }
 
-  main p {
-    font-family: Rubik !important;
-  }
-
   main .container {
     max-width: 1240px;
   }
@@ -70,7 +53,7 @@
   }
 
   /* End reusable */
-  
+
 
   .hero {
     background: url(https://www.tvscientific.com/hubfs/2025%20tvScientific%20AI/ai-hero-bg.webp) no-repeat bottom left/cover;
@@ -135,7 +118,7 @@
     background: url('https://www.tvscientific.com/hubfs/2025%20GO%20Page/Guaranteed-Outcomes.svg') no-repeat left center/114px 114px;
     padding-left: 114px;
   }
-  
+
   @media screen and (max-width: 997px) {
     .go-icon {
       background: url('https://www.tvscientific.com/hubfs/2025%20GO%20Page/Guaranteed-Outcomes.svg') no-repeat left top/95px 95px;
@@ -197,7 +180,7 @@
     letter-spacing: 0.24px;
   }
 
-  
+
   @keyframes fade-slide-up {
     0% { opacity: 0; transform: translateY(40px); }
     100% { opacity: 1; transform: translateY(0); }
@@ -256,19 +239,19 @@
       </div>
       <div class="w-full lg:w-2/3 flex flex-col lg:flex-row flex-nowrap lg:flex-wrap lg:py-32 xl:py-40 gap-y-6 gap-x-6 lg:gap-y-20 justify-between connections-bg">
         <div class="w-full lg:w-[275px] xl:w-[365px] lg:mt-1.5 xl:mt-0 hover:bg-[#55b8ff] hover:bg-opacity-10 rounded-lg">
-          
+
             {% module "graph_1" path="@hubspot/linked_image", label="Graph 1", src="https://www.tvscientific.com/hubfs/2025%20Platform%20Overview/brightside-graph.svg", link="#" %}
         </div>
         <div class="w-full lg:w-[275px] xl:w-[365px] hover:bg-[#d1b2ff] lg:mt-1.5 xl:mt-0 hover:bg-opacity-10 rounded-lg">
-          
+
             {% module "graph_2" path="@hubspot/linked_image", label="Graph 2", src="https://www.tvscientific.com/hubfs/2025%20Platform%20Overview/brightside-graph.svg", link="#" %}
         </div>
         <div class="w-full lg:w-[275px] xl:w-[365px] hover:bg-[#23E596] lg:mt-1.5 xl:mt-0 hover:bg-opacity-10 rounded-lg">
-          
+
             {% module "graph_3" path="@hubspot/linked_image", label="Graph 3", src="https://www.tvscientific.com/hubfs/2025%20Platform%20Overview/brightside-graph.svg", link="#" %}
         </div>
         <div class="w-full lg:w-[275px] xl:w-[365px] hover:bg-[#F96EB4] lg:mt-1.5 xl:mt-0 hover:bg-opacity-10 rounded-lg">
-          
+
             {% module "graph_4" path="@hubspot/linked_image", label="Graph 4", src="https://www.tvscientific.com/hubfs/2025%20Platform%20Overview/brightside-graph.svg", link="https://www.tvscientific.com/customers/y-central-maryland" %}
         </div>
       </div>
