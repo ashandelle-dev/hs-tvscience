@@ -512,7 +512,7 @@
 </section>
 
 </main>
-{% if gated == 'yes' %}
+{% if gated == 'yes' && !contact.hs_object_id %}
 <section id="gated-form" class="py-[120px] border border-t border-[#D9E2EB]">
   <div class="container max-w-[700px] mx-auto">
     {% module "gated_text" path="@hubspot/rich_text", label="Gate Form Text", html="<h2 class='text-center'>The Rise of Performance TV</h2><p class='text-center'>Sign up below to get the full report.</p>" %}
