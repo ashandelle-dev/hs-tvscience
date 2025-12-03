@@ -276,16 +276,20 @@
       margin: 0;
     }
 
-    #gated-form {
-      background: url(https://www.tvscientific.com/hubfs/Gated%20Content%20Moda%20background.webp) no-repeat top center/cover;
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
+    #gated-form input[type=email] {
+      min-height: 46px
+    }
+
+    #gated-form .hs_email  {
+      flex: 1
     }
 
     form {
-    display: flex;
-    margin: 0 auto !important;
-  }
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin: 0 auto !important;
+    }
 
   @media screen and (max-width: 440px) {
     form {
@@ -687,3 +691,5 @@ Util.toggleClass = function(el, className, bool) {
 </script>
 {% endif %}
 {% endblock body %}
+
+
