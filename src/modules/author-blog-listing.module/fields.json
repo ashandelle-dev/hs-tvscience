@@ -8,7 +8,6 @@
     "locked": false,
     "display_width": null
   },
-
   {
     "id": "header_title",
     "name": "header_title",
@@ -30,6 +29,59 @@
     "help_text": "Subhead text displayed below the header title",
     "locked": false,
     "display_width": null
+  },
+  {
+    "name": "button",
+    "label": "Button",
+    "required": false,
+    "locked": false,
+    "children": [
+      {
+        "name": "button_text",
+        "label": "Button Text",
+        "required": false,
+        "locked": false,
+        "validation_regex": "",
+        "validation_error_message": "",
+        "allow_new_line": false,
+        "show_emoji_picker": false,
+        "type": "text",
+        "placeholder": "",
+        "inline_help_text": "",
+        "help_text": "",
+        "default": null
+      },
+      {
+        "id": "button_link",
+        "name": "button_link",
+        "label": "Button Link",
+        "type": "link",
+        "required": false,
+        "locked": false,
+        "supported_types": [
+          "EXTERNAL",
+          "CONTENT",
+          "FILE",
+          "EMAIL_ADDRESS",
+          "BLOG"
+        ],
+        "show_advanced_rel_options": false,
+        "display_width": null,
+        "default": {
+          "url": {
+            "type": "EXTERNAL",
+            "href": "https://www.tvscientific.com/resources",
+            "content_id": null
+          },
+          "open_in_new_tab": false,
+          "no_follow": false
+        }
+      }
+    ],
+    "type": "group",
+    "inline_help_text": "",
+    "help_text": "",
+    "default": {}
   },
   {
     "id": "year_filter",
@@ -71,7 +123,13 @@
     "type": "link",
     "required": false,
     "locked": false,
-    "supported_types": ["EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG"],
+    "supported_types": [
+      "EXTERNAL",
+      "CONTENT",
+      "FILE",
+      "EMAIL_ADDRESS",
+      "BLOG"
+    ],
     "show_advanced_rel_options": false,
     "display_width": null,
     "default": {
