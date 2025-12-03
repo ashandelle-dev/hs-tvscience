@@ -535,6 +535,12 @@
       container.removeAttribute('style');
       gatedForm.style.display = 'none';
     });
+    window.addEventListener('message', (event) => {
+      if(event.data.type === "hsFormCallback" && event.data.eventName === "onFormSubmitted") {
+        container.removeAttribute('style');
+        gatedForm.style.display = 'none';
+      }
+    });
   });
 
 </script>
