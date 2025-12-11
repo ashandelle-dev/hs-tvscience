@@ -1,0 +1,14 @@
+{
+  "label": "Video Hero",
+  "css_assets": [],
+  "external_js": [],
+  "global": false,
+  "help_text": "A hero section with video background, customizable title, optional image, and optional email signup form.",
+  "content_types": ["LANDING_PAGE", "SITE_PAGE"],
+  "js_assets": [],
+  "other_assets": [],
+  "smart_type": "NOT_SMART",
+  "tags": ["hero", "video", "form"],
+  "is_available_for_new_content": true,
+  "icon": "../images/module-icons/video-hero.svg"
+}

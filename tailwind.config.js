@@ -35,6 +35,22 @@ module.exports = {
                 "primary-darker": "#1C4633",
                 "primary-dark": "#1F252B",
                 "black": "#000000",
+                // tvScientific 2025 Brand Colors
+                "tvs": {
+                    "green": "#23E596",
+                    "green-accessible": "#198960",
+                    "green-dark": "#0F2D29",
+                    "green-light": "#91F2CB",
+                    "green-pastel": "#F3FFF6",
+                    "black": "#1F252B",
+                    "grey": "#46515B",
+                    "grey-accessible": "#46515B",
+                    "grey-light": "#D9E2EB",
+                    "grey-pastel": "#F9FAFC",
+                    "yellow": "#FFCD40",
+                    "yellow-light": "#FFE6A0",
+                    "white": "#FFFFFF",
+                },
             },
         },
         container: {

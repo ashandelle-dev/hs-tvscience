@@ -53,6 +53,16 @@
         }
       },
       {
+      "name": "border_field",
+      "label": "Border field",
+      "required": false,
+      "locked": false,
+      "inline_help_text": "",
+      "help_text": "",
+      "type": "border",
+      "allow_custom_border_sides": true
+      },
+      {
         "name": "padding",
         "label": "Padding",
         "type": "spacing",
@@ -95,21 +105,33 @@
         "max": 40,
         "suffix": "px"
       },
-      {
-        "name": "bar_border_radius",
-        "label": "Bar Border Radius",
-        "type": "number",
-        "default": 8,
-        "min": 0,
-        "max": 20,
-        "suffix": "px"
-      },
-      {
-        "name": "animate",
-        "label": "Animate on scroll",
-        "type": "boolean",
-        "default": true
-      }
+{
+    "name": "bar_border_radius",
+    "label": "Bar Border Radius",
+    "type": "number",
+    "default": 8,
+    "min": 0,
+    "max": 20,
+    "suffix": "px"
+  },
+  {
+    "name": "bar_position",
+    "label": "Bar Position",
+    "required": true,
+    "type": "choice",
+    "display": "select",
+    "default": "bottom",
+    "choices": [
+      ["bottom", "Below Number"],
+      ["top", "Above Number"]
+    ]
+  },
+  {
+    "name": "animate",
+    "label": "Animate on scroll",
+    "type": "boolean",
+    "default": true
+  }
     ]
   }
 ]

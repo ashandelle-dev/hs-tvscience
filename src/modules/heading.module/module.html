@@ -41,5 +41,5 @@
     {% set loadingAttr = module.image.loading != 'disabled' ? 'loading="{{ module.image.loading|escape_attr }}"' : '' %}
     <img class="tvsci-heading-image m-0 mb-0" src="{{ module.image.src|escape_url }}" alt="{{ module.image.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
     {% endif %}
-    <{{ module.header_tag }} class="heading !m-0">{{ module.value }}</{{ module.header_tag }}>
+    <{{ module.header_tag }} class="heading font-{{ module.font_weight }} !m-0">{{ module.value }}</{{ module.header_tag }}>
 </span>

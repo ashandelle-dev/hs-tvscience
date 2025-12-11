@@ -18,6 +18,28 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 {% end_require_js %}
 {% endif %}
+
+<!-- testbrad -->
+{# Delay functionality - only applies when autoplay is enabled and delay > 0 #}
+{% if module.autoplay and module.delay %}
+{% require_js %}
+<script>
+  // testbrad2
+document.addEventListener("DOMContentLoaded", function() {
+    var lottieId = "{{ module.custom_id|default('lottie-' ~ name, true) }}";
+    var player = document.getElementById(lottieId);
+    if (player) {
+        player.addEventListener('ready', function() {
+            player.stop();
+            setTimeout(function() {
+                player.play();
+            }, {{ module.delay * 1000 }});
+        });
+    }
+});
+</script>
+{% end_require_js %}
+{% endif %}
 {% set attrs = {} %}
 
 {% if module.play_mode == 'bounce' %}
@@ -47,6 +69,10 @@ document.addEventListener("DOMContentLoaded", function() {
   {% do attrs.update({ autoplay: true }) %}
 {% endif %}
 
+{% if module.delay %}
+  {% do attrs.update({ delay: module.delay }) %}
+{% endif %}
+
 {% if module.loop %}
   {% do attrs.update({ loop: true }) %}
 {% endif %}
@@ -66,8 +92,9 @@ document.addEventListener("DOMContentLoaded", function() {
 </div>
 {% else %}
 <!-- Live Site -->
+{% set player_id = module.custom_id|default('lottie-' ~ name, true) %}
 <lottie-player
-    {%if module.custom_id%} id="{{module.custom_id}}" {% endif %}
+    id="{{ player_id }}"
     {% if module.custom_class %} class="{{module.custom_class}}" {% endif %}
     src="{{ module.source }}"
     {{ attrs|xmlattr }}>

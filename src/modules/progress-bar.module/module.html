@@ -11,13 +11,14 @@
     font-size: {{ module.styles.font_size }}px;
     font-weight: 700;
     line-height: 1;
-    margin: 0 0 16px 0;
+    margin: {% if module.styles.bar_position == "top" %}16px 0 0 0{% else %}0 0 16px 0{% endif %};
   }
 
   .progress-bar-single__track {
     width: 100%;
     height: {{ module.styles.bar_height }}px;
     background-color: {{ module.styles.bar_background_color.css }};
+    {{ module.styles.border_field.css }}
     border-radius: 4px;
     overflow: hidden;
   }
@@ -42,8 +43,15 @@
 {% end_require_css %}
 
 <div class="progress-bar-single{% if module.styles.animate %} animate{% endif %}" data-percentage="{{ module.percentage }}">
+  {% if module.styles.bar_position == "top" %}
+  <div class="progress-bar-single__track">
+    <div class="progress-bar-single__fill"></div>
+  </div>
+  <p class="progress-bar-single__percentage">{{ module.percentage }}%</p>
+  {% else %}
   <p class="progress-bar-single__percentage">{{ module.percentage }}%</p>
   <div class="progress-bar-single__track">
     <div class="progress-bar-single__fill"></div>
   </div>
+  {% endif %}
 </div>

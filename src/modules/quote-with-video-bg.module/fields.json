@@ -1,0 +1,87 @@
+[
+  {
+    "id": "video_url",
+    "name": "video_url",
+    "label": "Background Video URL",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "https://tvscientific.com/hubfs/State%20of%20Performance%20TV/videos/tvGrid_background.mp4"
+  },
+  {
+    "id": "quote_text",
+    "name": "quote_text",
+    "label": "Quote",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "allow_new_line": true,
+    "default": "\"Performance TV is different than social media. People aren't mindlessly scrolling; they are half-watching TV, maybe they're grazing or talking to someone, or on their phone. [And] we didn't make anything new. Everything was repurposed from Meta. The [tvScientific] team helped us edit and build it into something that worked for TV. That was a huge unlock.\""
+  },
+  {
+    "id": "headshot",
+    "name": "headshot",
+    "label": "Headshot",
+    "required": false,
+    "locked": false,
+    "responsive": true,
+    "resizable": true,
+    "show_loading": false,
+    "type": "image",
+    "default": {
+      "size_type": "exact",
+      "src": "",
+      "alt": "Author headshot",
+      "loading": "lazy",
+      "width": 100,
+      "height": 100
+    }
+  },
+  {
+    "id": "author_name",
+    "name": "author_name",
+    "label": "Author Name",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "Rose Hopkins"
+  },
+  {
+    "id": "author_title",
+    "name": "author_title",
+    "label": "Author Title",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "Growth Marketing Lead"
+  },
+  {
+    "id": "company_logo",
+    "name": "company_logo",
+    "label": "Company Logo",
+    "required": false,
+    "locked": false,
+    "responsive": true,
+    "resizable": true,
+    "show_loading": false,
+    "type": "image",
+    "default": {
+      "size_type": "auto",
+      "src": "",
+      "alt": "Company logo",
+      "loading": "lazy",
+      "width": 150,
+      "height": 40
+    }
+  },
+  {
+    "id": "company_name",
+    "name": "company_name",
+    "label": "Company Name (if no logo)",
+    "help_text": "Displayed if no company logo is provided",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "WILDGRAIN"
+  }
+]
