@@ -1,0 +1,184 @@
+[
+  {
+    "name": "items",
+    "label": "Progress Items",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": 20,
+      "default": 9,
+      "sorting_label_field": "title"
+    },
+    "default": [
+      {
+        "title": "Performance TV",
+        "percentage_label": "25%",
+        "fill_percentage": 100
+      },
+      {
+        "title": "Social Media",
+        "percentage_label": "25%",
+        "fill_percentage": 100
+      },
+      {
+        "title": "Search",
+        "percentage_label": "11%",
+        "fill_percentage": 44
+      },
+      {
+        "title": "Mobile Apps",
+        "percentage_label": "9%",
+        "fill_percentage": 36
+      },
+      {
+        "title": "Linear TV",
+        "percentage_label": "8%",
+        "fill_percentage": 32
+      },
+      {
+        "title": "Streaming Radio/Podcasts",
+        "percentage_label": "7%",
+        "fill_percentage": 28
+      },
+      {
+        "title": "Linear Radio",
+        "percentage_label": "6%",
+        "fill_percentage": 24
+      },
+      {
+        "title": "Sponsored Content/Newsletters",
+        "percentage_label": "6%",
+        "fill_percentage": 24
+      },
+      {
+        "title": "Print",
+        "percentage_label": "3%",
+        "fill_percentage": 12
+      }
+    ],
+    "children": [
+      {
+        "name": "title",
+        "label": "Title",
+        "type": "text",
+        "default": "Item Title",
+        "required": true
+      },
+      {
+        "name": "percentage_label",
+        "label": "Percentage Label",
+        "type": "text",
+        "default": "25%",
+        "help_text": "The percentage text shown on the right (e.g., 25%)"
+      },
+      {
+        "name": "fill_percentage",
+        "label": "Bar Fill Percentage",
+        "type": "number",
+        "default": 50,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "suffix": "%",
+        "help_text": "How full the progress bar appears (0-100)"
+      }
+    ]
+  },
+  {
+  "name": "styles",
+  "label": "Styles",
+  "children": [
+      {
+        "name": "background_color",
+        "label": "Background Color",
+        "type": "color",
+        "default": {
+          "color": "#1a2e28",
+          "opacity": 0
+        }
+      },
+      {
+        "name": "text_color",
+        "label": "Text Color",
+        "type": "color",
+        "default": {
+          "color": "#ffffff",
+          "opacity": 100
+        }
+      },
+      {
+        "name": "bar_color",
+        "label": "Progress Bar Color",
+        "type": "color",
+        "default": {
+          "color": "#71E09D",
+          "opacity": 100
+        }
+      },
+      {
+        "name": "bar_background_color",
+        "label": "Progress Bar Background",
+        "type": "color",
+        "default": {
+          "color": "#2a4a42",
+          "opacity": 0
+        }
+      },
+      {
+        "name": "padding",
+        "label": "Padding",
+        "type": "spacing",
+        "default": {
+          "padding": {
+            "top": {
+              "value": 0,
+              "units": "px"
+            },
+            "bottom": {
+              "value": 0,
+              "units": "px"
+            },
+            "left": {
+              "value": 0,
+              "units": "px"
+            },
+            "right": {
+              "value": 0,
+              "units": "px"
+            }
+          }
+        }
+      },
+      {
+        "name": "item_spacing",
+        "label": "Item Spacing",
+        "type": "number",
+        "default": 32,
+        "min": 0,
+        "max": 100,
+        "suffix": "px"
+      },
+      {
+        "name": "bar_height",
+        "label": "Bar Height",
+        "type": "number",
+        "default": 16,
+        "min": 4,
+        "max": 40,
+        "suffix": "px"
+      },
+      {
+        "name": "animation_delay",
+        "label": "Animation Stagger Delay",
+        "type": "number",
+        "default": 100,
+        "min": 0,
+        "max": 500,
+        "suffix": "ms",
+        "help_text": "Delay between each item's animation"
+      }
+    ],
+  "type": "group",
+  "tab": "STYLE"
+  }
+]

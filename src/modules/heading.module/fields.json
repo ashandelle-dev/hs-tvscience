@@ -107,6 +107,32 @@
     "default": 0
   },
   {
+  "name": "font_weight",
+  "label": "Font Weight",
+  "required": false,
+  "locked": false,
+  "display": "select",
+  "inline_help_text": "",
+  "help_text": "",
+  "choices": [
+  [
+    "normal",
+    "Normal"
+  ],
+  [
+    "semibold",
+    "Semibold"
+  ],
+  [
+    "bold",
+    "Bold"
+  ]
+  ],
+  "type": "choice",
+  "placeholder": "",
+  "default": "normal"
+  },
+  {
     "id": "styles",
     "name": "styles",
     "label": "Styles",

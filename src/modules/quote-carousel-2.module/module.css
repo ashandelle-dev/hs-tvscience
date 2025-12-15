@@ -1,0 +1,38 @@
+/* Additional base styles for Quote Carousel 2 */
+/* Most styles are in the scoped CSS within module.html */
+
+.quote-carousel-2 {
+  box-sizing: border-box;
+}
+
+.quote-carousel-2 *,
+.quote-carousel-2 *::before,
+.quote-carousel-2 *::after {
+  box-sizing: inherit;
+}
+
+/* Smooth focus styles for accessibility */
+.quote-carousel-2:focus {
+  outline: none;
+}
+
+.quote-carousel-2__dot:focus {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .quote-carousel-2__track {
+    transition: none;
+  }
+
+  .quote-carousel-2__slide {
+    transition: none;
+  }
+
+  .quote-carousel-2__dot {
+    transition: none;
+  }
+}
+

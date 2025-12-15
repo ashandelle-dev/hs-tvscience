@@ -1,0 +1,57 @@
+{% require_css %}
+<style>
+  {% scope_css %}
+  .progress-bar-single {
+    background-color: {{ module.styles.background_color.css }};
+    {{ module.styles.padding.css }}
+  }
+
+  .progress-bar-single__percentage {
+    color: {{ module.styles.text_color.css }};
+    font-size: {{ module.styles.font_size }}px;
+    font-weight: 700;
+    line-height: 1;
+    margin: {% if module.styles.bar_position == "top" %}16px 0 0 0{% else %}0 0 16px 0{% endif %};
+  }
+
+  .progress-bar-single__track {
+    width: 100%;
+    height: {{ module.styles.bar_height }}px;
+    background-color: {{ module.styles.bar_background_color.css }};
+    {{ module.styles.border_field.css }}
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .progress-bar-single__fill {
+    height: 100%;
+    background-color: {{ module.styles.bar_color.css }};
+    border-radius: 4px;
+    transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .progress-bar-single.animate .progress-bar-single__fill {
+    width: 0;
+  }
+
+  .progress-bar-single.animate.is-visible .progress-bar-single__fill,
+  .progress-bar-single:not(.animate) .progress-bar-single__fill {
+    width: {{ module.percentage }}%;
+  }
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+<div class="progress-bar-single{% if module.styles.animate %} animate{% endif %}" data-percentage="{{ module.percentage }}">
+  {% if module.styles.bar_position == "top" %}
+  <div class="progress-bar-single__track">
+    <div class="progress-bar-single__fill"></div>
+  </div>
+  <p class="progress-bar-single__percentage">{{ module.percentage }}%</p>
+  {% else %}
+  <p class="progress-bar-single__percentage">{{ module.percentage }}%</p>
+  <div class="progress-bar-single__track">
+    <div class="progress-bar-single__fill"></div>
+  </div>
+  {% endif %}
+</div>

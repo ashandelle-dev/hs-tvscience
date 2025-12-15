@@ -1,0 +1,128 @@
+[
+  {
+    "id": "video_group",
+    "name": "video_group",
+    "label": "Video Background",
+    "type": "group",
+    "children": [
+      {
+        "id": "video_url",
+        "name": "video_url",
+        "label": "Video URL",
+        "type": "text",
+        "default": "https://www.tvscientific.com/hubfs/State%20of%20Performance%20TV/videos/tvGrid_background.mp4",
+        "required": true
+      }
+    ]
+  },
+  {
+    "id": "content_group",
+    "name": "content_group",
+    "label": "Content",
+    "type": "group",
+    "children": [
+      {
+        "id": "title_text",
+        "name": "title_text",
+        "label": "Title Text",
+        "type": "text",
+        "default": "The State of Performance TV",
+        "required": true
+      },
+      {
+        "id": "title_highlight",
+        "name": "title_highlight",
+        "label": "Highlighted Text (appears in green)",
+        "type": "text",
+        "default": "in 2026",
+        "required": false
+      },
+      {
+        "id": "hero_image",
+        "name": "hero_image",
+        "label": "Hero Image",
+        "type": "image",
+        "default": {
+          "src": "https://tvscientific.com/hubfs/State%20of%20Performance%20TV/images/graph.png",
+          "alt": "Performance TV Chart",
+          "width": 347,
+          "height": 308
+        },
+        "required": false
+      },
+      {
+        "id": "show_image",
+        "name": "show_image",
+        "label": "Show Image",
+        "type": "boolean",
+        "default": true
+      }
+    ]
+  },
+  {
+    "id": "form_group",
+    "name": "form_group",
+    "label": "Form Settings",
+    "type": "group",
+    "children": [
+      {
+        "id": "show_form",
+        "name": "show_form",
+        "label": "Show Form",
+        "type": "boolean",
+        "default": false
+      },
+      {
+        "id": "form_heading",
+        "name": "form_heading",
+        "label": "Form Heading",
+        "type": "text",
+        "default": "Sign up below to get the full report.",
+        "required": false,
+        "visibility": {
+          "controlling_field_path": "form_group.show_form",
+          "controlling_value_regex": "true",
+          "operator": "EQUAL"
+        }
+      },
+      {
+        "id": "form_placeholder",
+        "name": "form_placeholder",
+        "label": "Email Placeholder Text",
+        "type": "text",
+        "default": "Business Email",
+        "required": false,
+        "visibility": {
+          "controlling_field_path": "form_group.show_form",
+          "controlling_value_regex": "true",
+          "operator": "EQUAL"
+        }
+      },
+      {
+        "id": "form_button_text",
+        "name": "form_button_text",
+        "label": "Button Text",
+        "type": "text",
+        "default": "SUBMIT",
+        "required": false,
+        "visibility": {
+          "controlling_field_path": "form_group.show_form",
+          "controlling_value_regex": "true",
+          "operator": "EQUAL"
+        }
+      },
+      {
+        "id": "hubspot_form",
+        "name": "hubspot_form",
+        "label": "HubSpot Form",
+        "type": "form",
+        "required": false,
+        "visibility": {
+          "controlling_field_path": "form_group.show_form",
+          "controlling_value_regex": "true",
+          "operator": "EQUAL"
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "label": "Progress Bar",
+  "css_assets": [],
+  "external_js": [],
+  "global": false,
+  "help_text": "Single progress bar with large percentage display",
+  "js_assets": [],
+  "other_assets": [],
+  "smart_type": "NOT_SMART",
+  "tags": [],
+  "content_types": ["LANDING_PAGE", "SITE_PAGE"],
+  "host_template_types": ["PAGE"],
+  "is_available_for_new_content": true
+}

@@ -1,0 +1,137 @@
+[
+  {
+    "name": "percentage",
+    "label": "Percentage",
+    "type": "number",
+    "default": 90,
+    "min": 0,
+    "max": 100,
+    "step": 1,
+    "suffix": "%",
+    "help_text": "The percentage to display and fill the bar"
+  },
+  {
+    "name": "styles",
+    "label": "Styles",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "background_color",
+        "label": "Background Color",
+        "type": "color",
+        "default": {
+          "color": "#e8f5ec",
+          "opacity": 0
+        }
+      },
+      {
+        "name": "text_color",
+        "label": "Text Color",
+        "type": "color",
+        "default": {
+          "color": "#1a2e28",
+          "opacity": 100
+        }
+      },
+      {
+        "name": "bar_color",
+        "label": "Progress Bar Color",
+        "type": "color",
+        "default": {
+          "color": "#438663",
+          "opacity": 100
+        }
+      },
+      {
+        "name": "bar_background_color",
+        "label": "Bar Track Color",
+        "type": "color",
+        "default": {
+          "color": "#DDF9E8",
+          "opacity": 100
+        }
+      },
+      {
+      "name": "border_field",
+      "label": "Border field",
+      "required": false,
+      "locked": false,
+      "inline_help_text": "",
+      "help_text": "",
+      "type": "border",
+      "allow_custom_border_sides": true
+      },
+      {
+        "name": "padding",
+        "label": "Padding",
+        "type": "spacing",
+        "default": {
+          "padding": {
+            "top": {
+              "value": 0,
+              "units": "px"
+            },
+            "bottom": {
+              "value": 0,
+              "units": "px"
+            },
+            "left": {
+              "value": 0,
+              "units": "px"
+            },
+            "right": {
+              "value": 0,
+              "units": "px"
+            }
+          }
+        }
+      },
+      {
+        "name": "font_size",
+        "label": "Percentage Font Size",
+        "type": "number",
+        "default": 96,
+        "min": 24,
+        "max": 200,
+        "suffix": "px"
+      },
+      {
+        "name": "bar_height",
+        "label": "Bar Height",
+        "type": "number",
+        "default": 16,
+        "min": 4,
+        "max": 40,
+        "suffix": "px"
+      },
+{
+    "name": "bar_border_radius",
+    "label": "Bar Border Radius",
+    "type": "number",
+    "default": 8,
+    "min": 0,
+    "max": 20,
+    "suffix": "px"
+  },
+  {
+    "name": "bar_position",
+    "label": "Bar Position",
+    "required": true,
+    "type": "choice",
+    "display": "select",
+    "default": "bottom",
+    "choices": [
+      ["bottom", "Below Number"],
+      ["top", "Above Number"]
+    ]
+  },
+  {
+    "name": "animate",
+    "label": "Animate on scroll",
+    "type": "boolean",
+    "default": true
+  }
+    ]
+  }
+]

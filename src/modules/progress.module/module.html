@@ -1,0 +1,100 @@
+{% require_css %}
+<style>
+  {% scope_css %}
+  .progress-bars {
+    background-color: {{ module.styles.background_color.css }};
+    {{ module.styles.padding.css }}
+  }
+
+  .progress-bars__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: {{ module.styles.item_spacing }}px;
+  }
+
+  .progress-bars__item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .progress-bars__item.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .progress-bars__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+  }
+
+  .progress-bars__title {
+    color: {{ module.styles.text_color.css }};
+    font-size: 1.25rem;
+    font-weight: 400;
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  .progress-bars__percentage {
+    color: {{ module.styles.text_color.css }};
+    font-size: 1.5rem;
+    margin: 0;
+    line-height: 1;
+  }
+
+  .progress-bars__track {
+    width: 100%;
+    height: {{ module.styles.bar_height }}px;
+    background-color: {{ module.styles.bar_background_color.css }};
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .progress-bars__fill {
+    height: 100%;
+    background-color: {{ module.styles.bar_color.css }};
+    border-radius: 4px;
+    width: 0;
+    transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .progress-bars__item.is-visible .progress-bars__fill {
+    /* Width is set inline via data attribute */
+  }
+
+  @media (max-width: 768px) {
+    .progress-bars__title {
+      font-size: 1rem;
+    }
+    .progress-bars__percentage {
+      font-size: 1.25rem;
+    }
+  }
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+{% if module.items %}
+<div class="progress-bars" data-animation-delay="{{ module.styles.animation_delay }}">
+  <ul class="progress-bars__list">
+    {% for item in module.items %}
+    <li class="progress-bars__item" data-fill="{{ item.fill_percentage }}" style="transition-delay: {{ loop.index0 * module.styles.animation_delay }}ms;">
+      <div class="progress-bars__header">
+        <h3 class="progress-bars__title">{{ item.title }}</h3>
+        <span class="progress-bars__percentage">{{ item.percentage_label }}</span>
+      </div>
+      <div class="progress-bars__track">
+        <div class="progress-bars__fill" data-fill="{{ item.fill_percentage }}"></div>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
