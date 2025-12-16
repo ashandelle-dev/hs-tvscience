@@ -1,0 +1,45 @@
+/* Only styles that Tailwind doesn't handle */
+
+.partner-card.hidden {
+  display: none !important;
+}
+
+/* Hide cards after the 9th by default */
+.partner-grid .partner-card:nth-child(n+10) {
+  display: none;
+}
+
+/* Show all cards when grid has show-all class */
+.partner-grid.show-all .partner-card:nth-child(n+10) {
+  display: flex;
+}
+
+/* Re-hide filtered cards even when show-all is active */
+.partner-grid.show-all .partner-card.hidden {
+  display: none !important;
+}
+
+.partner-description p {
+  font-size: 14px;
+}
+
+
+/* Filter button active state */
+.filter-button.active, .filter-button:hover, .filter-button:focus {
+  background-color: #F5FEF7;
+  border-color: #23E596;
+  color: #0F2D29;
+}
+
+/* Mobile filter improvements */
+@media (max-width: 1023px) {
+  .partner-filters {
+    border-bottom: 2px solid #D9E2EB;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .filter-group {
+    margin-bottom: 1.5rem;
+  }
+}

@@ -1,0 +1,16 @@
+[
+  {
+    "type": "hubdbtable",
+    "id": "0c7fabce-fcb5-4640-a038-bff44c77408b",
+    "label": "HubDB Publishers Table",
+    "name": "hubdb_table_publishers",
+    "default": 145848190
+  },
+  {
+    "type": "hubdbtable",
+    "id": "0c7fabce-fcb5-4640-a038-bff44c77408c",
+    "label": "HubDB table",
+    "name": "hubdb_table",
+    "default": 136413080
+  }
+]

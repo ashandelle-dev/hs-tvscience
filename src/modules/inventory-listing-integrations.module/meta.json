@@ -1,0 +1,12 @@
+{
+  "label": "Inventory Listing with Filters",
+  "css_assets": [],
+  "external_js": [],
+  "global": false,
+  "content_types": [ "LANDING_PAGE", "SITE_PAGE" ],
+  "js_assets": [],
+  "other_assets": [],
+  "smart_type": "NOT_SMART",
+  "tags": ["inventory", "listing", "filters", "hubdb"],
+  "is_available_for_new_content": true
+}

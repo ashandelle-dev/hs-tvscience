@@ -1,0 +1,133 @@
+<!-- Inventory Listing Module -->
+{% set publishers_table = module.hubdb_table_publishers %}
+{% set channels_table = module.hubdb_table %}
+{% set publishers = hubdb_table_rows(publishers_table, "orderBy=name") %}
+{% set channels = hubdb_table_rows(channels_table, "orderBy=name") %}
+
+<div class="partner-listing-wrapper">
+  <div class="partner-listing-container py-8 lg:py-12">
+    <div class="flex flex-col lg:flex-row gap-8">
+
+      <!-- Left Sidebar - Filters -->
+      <aside class="partner-filters w-full lg:w-64 flex-shrink-0">
+        <div class="filter-group mb-10">
+          <p class="text-sm mb-2 text-[#202223] font-semibold">Filters</p>
+          <div class="filter-options flex flex-wrap gap-3">
+            <div class="w-full">
+              <button
+                class="type-filter rounded-md filter-button px-3 py-1 text-sm border-2 border-[#10b981] bg-[#10b981] text-white cursor-pointer hover:border-[#10b981] hover:bg-[#10b981] hover:text-white transition-all active"
+                data-filter-type="all"
+              >
+                All
+              </button>
+            </div>
+
+            <div class="w-full">
+              <button
+                class="type-filter rounded-md filter-button px-3 py-1 text-sm border-2 border-[#D9E2EB] bg-white text-[#0F2D29] cursor-pointer hover:border-[#10b981] hover:bg-[#10b981] hover:text-white transition-all"
+                data-filter-type="publishers"
+              >
+                Publishers
+              </button>
+            </div>
+            <div class="w-full">
+              <button
+                class="type-filter rounded-md filter-button px-3 py-1 text-sm border-2 border-[#D9E2EB] bg-white text-[#0F2D29] cursor-pointer hover:border-[#10b981] hover:bg-[#10b981] hover:text-white transition-all"
+                data-filter-type="channels"
+              >
+                Channels
+              </button>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Right Content - Inventory Cards Grid -->
+      <main class="partner-grid-container flex-1 w-full">
+        <div class="all-integrations-section">
+          <h2 class="text-2xl font-bold text-[#1F252B] mb-6">All Inventory</h2>
+
+          <div class="partner-grid grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-6">
+            {% for publisher in publishers %}
+            <!-- Publisher Card -->
+            <div
+              class="flex flex-col partner-card publisher-card bg-white rounded-lg shadow-sm border border-gray-200 p-4 lg:p-6"
+              data-card-type="publisher"
+              data-publisher="{{ publisher.name }}"
+            >
+              <div class="flex items-center gap-4 mb-3">
+                <div class="partner-logo w-[50px] h-[50px] bg-[#F4F7F9] rounded-full overflow-hidden flex items-center justify-center flex-shrink-0">
+                  {% if publisher.logo.url %}
+                  <img
+                    src="{{ publisher.logo.url }}"
+                    alt="{{ publisher.logo.altText or publisher.name }}"
+                    class="w-full h-full object-contain"
+                  >
+                  {% else %}
+                  <span class="text-lg font-bold text-[#1F252B]">{{ publisher.name|truncate(1, True, '') }}</span>
+                  {% endif %}
+                </div>
+                <h4 class="text-base text-[#1F252B] font-bold mb-0">
+                  {{ publisher.name }}
+                </h4>
+              </div>
+              <div class="partner-tags flex flex-wrap gap-2 mt-4">
+                <span class="category-tag py-1 px-2 font-semibold text-xs rounded bg-[#DBE2EA] border border-[#DBE2EA] text-[#20252B]">
+                  Publisher
+                </span>
+              </div>
+            </div>
+            {% for channel in channels %}
+            {% if (channel.publisher|first).name == publisher.name %}
+            <div
+              class="flex flex-col partner-card channel-card bg-white rounded-lg shadow-sm border border-gray-200 p-4 lg:p-6"
+              data-card-type="channel"
+              data-publisher="{{ (channel.publisher|first).name }}"
+              data-channel="{{ channel.name }}"
+            >
+              <div class="flex items-center gap-4 mb-3">
+                <div class="partner-logo w-[50px] h-[50px] bg-[#F4F7F9] rounded-full overflow-hidden flex items-center justify-center flex-shrink-0">
+                  {% if channel.logo.url %}
+                  <img
+                    src="{{ channel.logo.url }}"
+                    alt="{{ channel.logo.altText or channel.name }}"
+                    class="w-full h-full object-contain"
+                  >
+                  {% else %}
+                  <span class="text-lg font-bold text-[#1F252B]">{{ channel.name|truncate(1, True, '') }}</span>
+                  {% endif %}
+                </div>
+                <h4 class="text-base text-[#1F252B] font-bold mb-0">
+                  {{ channel.name }}
+                </h4>
+              </div>
+              <div class="partner-tags flex flex-wrap gap-2 mt-4">
+                <span class="category-tag py-1 px-2 font-semibold text-xs rounded bg-transparent border border-[#DBE2EA] text-[#20252B]">
+                  Publisher: {{ (channel.publisher|first).name }}
+                </span>
+              </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+            {% endfor %}
+
+          </div>
+
+          <!-- Load More Button -->
+          <div class="load-more-container text-center mt-8">
+            <button class="load-more-btn py-1 px-2 font-semibold text-xs rounded bg-transparent border border-[#DBE2EA] text-[#20252B] cursor-pointer hover:bg-[#DBE2EA] transition-all">
+              Load More
+            </button>
+          </div>
+
+        </div>
+
+        <!-- No Results Message -->
+        <div class="no-results hidden text-center py-12">
+          <p class="text-gray-500 text-lg">No inventory found matching your filters.</p>
+        </div>
+      </main>
+
+    </div>
+  </div>
+</div>
