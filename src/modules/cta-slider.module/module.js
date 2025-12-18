@@ -18,6 +18,8 @@
       this.startX = 0;
       this.currentTranslate = 0;
       this.prevTranslate = 0;
+      this.hasDragged = false; // Track if user actually dragged vs clicked
+      this.clickThreshold = 10; // Pixels of movement allowed before considering it a drag
 
       this.init();
     }
@@ -201,7 +203,9 @@
 
     dragStart(e) {
       this.isDragging = true;
+      this.hasDragged = false;
       this.startX = this.getPositionX(e);
+      this.dragStartTarget = e.target.closest('.cta-slide');
       this.track.style.transition = 'none';
       this.stopAutoPlay();
     }
@@ -212,22 +216,75 @@
 
       const currentX = this.getPositionX(e);
       const diff = currentX - this.startX;
+
+      // Mark as dragged if movement exceeds threshold
+      if (Math.abs(diff) > this.clickThreshold) {
+        this.hasDragged = true;
+      }
+
       this.currentTranslate = this.prevTranslate + diff;
 
       this.track.style.transform = `translateX(${this.currentTranslate}px)`;
     }
 
-    dragEnd() {
+    dragEnd(e) {
       if (!this.isDragging) return;
 
       this.isDragging = false;
       const movedBy = this.currentTranslate - this.prevTranslate;
 
-      if (movedBy < -50) {
-        this.next();
-      } else if (movedBy > 50) {
-        this.prev();
+      // If user didn't drag (just clicked), handle click actions
+      if (!this.hasDragged && this.dragStartTarget) {
+        const slide = this.dragStartTarget;
+        const link = slide.dataset.link;
+
+        // If clicked on the active slide with a link, navigate to the link
+        if (link && slide.classList.contains('active')) {
+          const openInNewTab = slide.dataset.linkNewTab === 'true';
+          if (openInNewTab) {
+            window.open(link, '_blank', 'noopener,noreferrer');
+          } else {
+            window.location.href = link;
+          }
+          return;
+        }
+
+        // If clicked on a non-active slide, scroll to it
+        if (!slide.classList.contains('active')) {
+          const clickedActualIndex = this.slides.indexOf(slide);
+          if (clickedActualIndex !== -1) {
+            const logicalIndex = parseInt(slide.dataset.slideIndex, 10);
+            this.actualIndex = clickedActualIndex;
+            this.realIndex = logicalIndex;
+            this.updateActiveStates();
+            this.positionSlider(true);
+          }
+          return;
+        }
+      }
+
+      // Calculate how many slides to move based on drag distance
+      const slideWidth = this.slides[0]?.offsetWidth || this.slideWidth;
+      const threshold = 50; // Minimum drag distance to trigger a slide change
+
+      if (Math.abs(movedBy) < threshold) {
+        // Minimal movement, snap back to current slide
+        this.positionSlider(true);
       } else {
+        // Calculate slides to move (minimum 1 if we passed threshold)
+        const slidesToMove = Math.max(1, Math.round(Math.abs(movedBy) / slideWidth));
+
+        if (movedBy < 0) {
+          // Dragged left, go forward
+          this.actualIndex += slidesToMove;
+          this.realIndex = (this.realIndex + slidesToMove) % this.totalSlides;
+        } else {
+          // Dragged right, go backward
+          this.actualIndex -= slidesToMove;
+          this.realIndex = ((this.realIndex - slidesToMove) % this.totalSlides + this.totalSlides) % this.totalSlides;
+        }
+
+        this.updateActiveStates();
         this.positionSlider(true);
       }
 

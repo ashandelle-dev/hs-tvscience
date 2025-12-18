@@ -4,19 +4,9 @@
   display: none !important;
 }
 
-/* Hide cards after the 9th by default */
-.partner-grid .partner-card:nth-child(n+10) {
+/* Hide cards after the 30th by default (prevents flash before JS loads) */
+.partner-grid:not(.js-loaded) .partner-card:nth-child(n+31) {
   display: none;
-}
-
-/* Show all cards when grid has show-all class */
-.partner-grid.show-all .partner-card:nth-child(n+10) {
-  display: flex;
-}
-
-/* Re-hide filtered cards even when show-all is active */
-.partner-grid.show-all .partner-card.hidden {
-  display: none !important;
 }
 
 .partner-description p {

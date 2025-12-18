@@ -2,7 +2,7 @@
 (function() {
   'use strict';
 
-  const CARDS_TO_SHOW = 9;
+  const CARDS_TO_SHOW = 30;
 
   // Wait for DOM to be ready
   if (document.readyState === 'loading') {
@@ -21,14 +21,23 @@
     const loadMoreBtn = document.querySelector('.load-more-btn');
     const loadMoreContainer = document.querySelector('.load-more-container');
 
+    let currentFilter = 'all';
+    let isShowingAll = false;
+
     if (!filterButtons.length || !partnerGrid) return;
 
-    // Check initial load more visibility
-    updateLoadMoreVisibility();
+    // Initial display
+    applyVisibility();
+    // Mark grid as JS-loaded so CSS initial hiding rule no longer applies
+    partnerGrid.classList.add('js-loaded');
 
     // Handle filter button clicks
     function handleFilterClick(clickedButton) {
       const filterType = clickedButton.dataset.filterType;
+      currentFilter = filterType;
+
+      // Reset to showing first 30 when changing filters
+      isShowingAll = false;
 
       // Update active button styles
       filterButtons.forEach(btn => {
@@ -38,46 +47,75 @@
       clickedButton.classList.add('active', 'border-[#10b981]', 'bg-[#10b981]', 'text-white');
       clickedButton.classList.remove('border-[#D9E2EB]', 'bg-white', 'text-[#0F2D29]');
 
-      // Show/hide cards based on filter type
-      allCards.forEach(card => card.classList.remove('hidden'));
-
-      if (filterType === 'channels') {
-        publisherCards.forEach(card => card.classList.add('hidden'));
-      } else if (filterType === 'publishers') {
-        channelCards.forEach(card => card.classList.add('hidden'));
-      }
-
-      // Update load more button visibility
-      updateLoadMoreVisibility();
-
-      // Check for no results
-      updateNoResultsMessage();
+      applyVisibility();
     }
 
     function handleLoadMore() {
-      partnerGrid.classList.add('show-all');
+      isShowingAll = true;
+      applyVisibility();
+    }
+
+    function applyVisibility() {
+      // First, determine which cards match the current filter
+      let matchingCards = [];
+
+      allCards.forEach(card => {
+        const cardType = card.dataset.cardType;
+        let matchesFilter = false;
+
+        if (currentFilter === 'all') {
+          matchesFilter = true;
+        } else if (currentFilter === 'channels' && cardType === 'channel') {
+          matchesFilter = true;
+        } else if (currentFilter === 'publishers' && cardType === 'publisher') {
+          matchesFilter = true;
+        }
+
+        if (matchesFilter) {
+          matchingCards.push(card);
+        }
+      });
+
+      // Now show/hide cards based on filter and pagination
+      let visibleCount = 0;
+      allCards.forEach(card => {
+        const cardType = card.dataset.cardType;
+        let matchesFilter = false;
+
+        if (currentFilter === 'all') {
+          matchesFilter = true;
+        } else if (currentFilter === 'channels' && cardType === 'channel') {
+          matchesFilter = true;
+        } else if (currentFilter === 'publishers' && cardType === 'publisher') {
+          matchesFilter = true;
+        }
+
+        if (!matchesFilter) {
+          // Card doesn't match filter - hide it
+          card.classList.add('hidden');
+        } else {
+          // Card matches filter - show based on pagination
+          visibleCount++;
+          if (isShowingAll || visibleCount <= CARDS_TO_SHOW) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        }
+      });
+
+      // Update load more button visibility
       if (loadMoreContainer) {
-        loadMoreContainer.classList.add('hidden');
+        if (isShowingAll || matchingCards.length <= CARDS_TO_SHOW) {
+          loadMoreContainer.classList.add('hidden');
+        } else {
+          loadMoreContainer.classList.remove('hidden');
+        }
       }
-    }
 
-    function updateLoadMoreVisibility() {
-      if (!loadMoreContainer) return;
-
-      const visibleCards = document.querySelectorAll('.partner-card:not(.hidden)');
-      const isShowingAll = partnerGrid.classList.contains('show-all');
-
-      if (isShowingAll || visibleCards.length <= CARDS_TO_SHOW) {
-        loadMoreContainer.classList.add('hidden');
-      } else {
-        loadMoreContainer.classList.remove('hidden');
-      }
-    }
-
-    function updateNoResultsMessage() {
-      const visibleCards = document.querySelectorAll('.partner-card:not(.hidden)');
+      // Check for no results
       if (noResultsMsg) {
-        if (visibleCards.length === 0) {
+        if (matchingCards.length === 0) {
           noResultsMsg.classList.remove('hidden');
         } else {
           noResultsMsg.classList.add('hidden');
