@@ -3,7 +3,7 @@
   <div class="cta-slider-container">
     <div class="cta-slider-track" id="ctaSliderTrack">
       {% for card in module.slider_cards %}
-      <div class="cta-slide" data-slide-index="{{ loop.index0 }}">
+      <div class="cta-slide" data-slide-index="{{ loop.index0 }}" {% if card.cta.link.url.href %}data-link="{{ card.cta.link.url.href }}" data-link-new-tab="{{ card.cta.link.open_in_new_tab }}"{% endif %}>
         <div class="cta-slide-inner">
           <div class="cta-slide-image h-[185px]">
             {% if card.card_image.src %}

@@ -1,0 +1,35 @@
+/* Only styles that Tailwind doesn't handle */
+
+.partner-card.hidden {
+  display: none !important;
+}
+
+/* Hide cards after the 30th by default (prevents flash before JS loads) */
+.partner-grid:not(.js-loaded) .partner-card:nth-child(n+31) {
+  display: none;
+}
+
+.partner-description p {
+  font-size: 14px;
+}
+
+
+/* Filter button active state */
+.filter-button.active, .filter-button:hover, .filter-button:focus {
+  background-color: #F5FEF7;
+  border-color: #23E596;
+  color: #0F2D29;
+}
+
+/* Mobile filter improvements */
+@media (max-width: 1023px) {
+  .partner-filters {
+    border-bottom: 2px solid #D9E2EB;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .filter-group {
+    margin-bottom: 1.5rem;
+  }
+}
