@@ -141,6 +141,18 @@
     "default": true
   },
   {
+    "id": "c7f3a92d-4e81-5b6f-a123-9d8e7f6c5b4a",
+    "name": "activate_in_view",
+    "label": "Activate when in view",
+    "inline_help_text": "Animation will only start when scrolled into the viewport",
+    "required": false,
+    "locked": false,
+    "display": "checkbox",
+    "type": "boolean",
+    "display_width": null,
+    "default": false
+  },
+  {
     "id": "b3d72a1e-5f89-4c12-9a6b-7e8f2c4d5a90",
     "name": "delay",
     "label": "Delay",

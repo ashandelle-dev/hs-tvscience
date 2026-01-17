@@ -37,6 +37,13 @@
     background: linear-gradient(90deg, rgba(15, 45, 41, 0.95) 0%, rgba(15, 45, 41, 0.85) 40%, rgba(15, 45, 41, 0.6) 70%, rgba(15, 45, 41, 0.4) 100%);
   }
 
+  /* Mobile: stronger gradient overlay for better text readability */
+  @media (max-width: 767px) {
+    .sop-hero .hero-overlay {
+      background: linear-gradient(180deg, rgba(15, 45, 41, 0.95) 0%, rgba(15, 45, 41, 0.9) 50%, rgba(15, 45, 41, 0.7) 100%);
+    }
+  }
+
   .sop-hero .hero-blur {
     position: absolute;
     bottom: 0;
@@ -164,7 +171,7 @@
 
         <!-- Right: Chart Graphic - Image -->
         <div class="w-full md:w-1/2 flex justify-center">
-          <img  src="https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/State%20of%20Performance%20TV/Updated-Hero-1.webp" width="347" height="308" alt="Performance TV Chart" class="mx-0 max-w-full h-auto" />
+          <img  src="https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/Updated-Hero.webp" width="347" height="308" alt="Performance TV Chart" class="mx-0 max-w-full h-auto" />
         </div>
       </div>
     </div>
@@ -179,13 +186,13 @@
         <!-- Left column: Intro text -->
         <div class="w-full md:w-1/2 space-y-4 flex flex-col justify-end">
           <p class="text-tvs-black text-lg leading-relaxed mb-0">
-            Distraction is the default. TV is the exception.
+            Attention is the hardest thing to buy. And everyone else is bidding too.
           </p>
           <p class="text-tvs-black text-lg leading-relaxed mb-0">
-            That’s why TV stands out. It offers a rare, uninterrupted moment your message can actually land.
+            People are scrolling, skipping, swiping, and split-screening their way through the day
           </p>
           <p class="text-tvs-black text-lg leading-relaxed mb-0">
-            And that moment matters – it’s what captures <strong> the high-quality customers that 73% of marketers say they're struggling to find.</strong> This pain point has nearly doubled since <a target="_blank" href="https://www.tvscientific.com/resources/reports/2025-state-of-performance-tv" class="underline text-[#198960]">2025</a>, when it stood at just 45%.
+            Which is exactly why TV stands out. It offers a rare, uninterrupted moment where your audience is truly paying attention.
           </p>
         </div>
 
@@ -206,15 +213,19 @@
 
       <!-- Body text -->
 
+      <p class="text-tvs-black text-lg leading-relaxed mb-4">
+        And that moment matters. It’s what captures <strong> the high-quality customers that 73% of marketers say they're struggling to find.</strong> This pain point has nearly doubled since <a target="_blank" href="https://www.tvscientific.com/resources/reports/2025-state-of-performance-tv" class="underline text-tvs-green-accessible font-semibold">2025</a>, when it stood at just 45%.
+      </p>
+
       <p class="text-tvs-black text-lg leading-relaxed mb-8">
-        But finding quality customers is just one of the pressures marketers are facing right now. Marketers' stress about AI has skyrocketed since 2025 as they face mounting pressure to <a target="_blank" href="https://www.tvscientific.com/insight/future-proofing-brand-discovery-ctv-ai" class="underline text-[#198960]">adapt to a landscape that changes by the minute</a>.
+        But finding quality customers is just one of the pressures marketers are facing right now. Marketers' stress about AI has skyrocketed since 2025 as they face mounting pressure to <a target="_blank" href="https://www.tvscientific.com/insight/future-proofing-brand-discovery-ctv-ai" class="underline text-tvs-green-accessible font-semibold">adapt to a landscape that changes by the minute</a>.
       </p>
 
       <!-- Bar Chart: Top Marketer Stressors - 3 Column Lotties -->
       <div class="bg-tvs-grey-pastel rounded-lg p-2 md:p-8">
         <div class="px-4 md:px-12 pt-4 pb-4 text-center">
           <h3 class="text-tvs-black text-[28px] font-semibold leading-[33px] mb-1">
-            Top Marketers stressors heading into 2026
+            Marketers' top stressors in 2026
           </h3>
           <p class="text-tvs-black text-2xl font-light leading-[31px] mb-0">
             Compared to 2025
@@ -224,29 +235,9 @@
         <!-- 3 Column Lottie Bar Charts -->
         <div class="py-8">
           <div class="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8">
-            <!-- Column 1: Finding Customers -->
-            <div class="text-center flex flex-col h-full">
-              <p class="text-tvs-black font-semibold leading-tight text-2xl mb-6">Finding high-quality<br> customers</p>
-
-              <div class="px-20 md:px-8 mt-auto">
-              {% module "stressors_lottie_1" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player", label="Stressors - Finding Customers",
-autoplay="true" source="https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/State%20of%20Performance%20TV/lottie/Lottie-Graph-TWO.json" %}
-              </div>
-            </div>
-            <!-- Column 2: AI Impact -->
-            <div class="text-center flex flex-col h-full">
-              <p class="text-tvs-black font-semibold leading-tight text-2xl mb-6">The impact of AI</p>
-
-              <div class="px-20 md:px-8 mt-auto">
-              {% module "stressors_lottie_2" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player", label="Stressors - AI Impact"
-              autoplay="true"
-              source="https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/State%20of%20Performance%20TV/lottie/Lottie-Graph-THREE.json"
-%}
-              </div>
-            </div>
             <!-- Column 3: Industry Change -->
             <div class="text-center flex flex-col h-full">
-              <p class="text-tvs-black font-semibold leading-tight text-2xl mb-6">Constant change in the<br>industry</p>
+              <p class="text-tvs-black font-semibold leading-tight text-2xl mb-6">Struggle to find high-quality customers</p>
               <div class="px-20 md:px-8 mt-auto">
               {% module "stressors_lottie_3" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
               label="Stressors - Industry Change"
@@ -255,6 +246,27 @@ autoplay="true" source="https://8975772.fs1.hubspotusercontent-na1.net/hubfs/897
               %}
               </div>
             </div>
+            <!-- Column 1: Finding Customers -->
+            <div class="text-center flex flex-col h-full">
+              <p class="text-tvs-black font-semibold leading-tight text-2xl mb-6">Concerned about the impact of AI</p>
+
+              <div class="px-20 md:px-8 mt-auto">
+              {% module "stressors_lottie_1" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player", label="Stressors - Finding Customers",
+autoplay="true" source="https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/State%20of%20Performance%20TV/lottie/Lottie-Graph-TWO.json" %}
+              </div>
+            </div>
+            <!-- Column 2: AI Impact -->
+            <div class="text-center flex flex-col h-full">
+              <p class="text-tvs-black font-semibold leading-tight text-2xl mb-6">Constant change in the industry</p>
+
+              <div class="px-20 md:px-8 mt-auto">
+              {% module "stressors_lottie_2" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player", label="Stressors - AI Impact"
+              autoplay="true"
+              source="https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/State%20of%20Performance%20TV/lottie/Lottie-Graph-THREE.json"
+%}
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
@@ -275,7 +287,7 @@ autoplay="true" source="https://8975772.fs1.hubspotusercontent-na1.net/hubfs/897
 
       <!-- Section header -->
       <h2 class="text-white !text-[32px] md:!text-[52px] !font-medium !leading-[36px] md:!leading-[58px] !mb-8">
-        Performance TV will lead in media spend for 2026
+        Performance TV will lead in media spend.
       </h2>
       <p class="text-white text-lg leading-relaxed mb-4">
         <strong>Performance TV and social media are neck-and-neck as the most effective marketing channels,</strong> each earning 25% of marketers' confidence.
@@ -549,7 +561,7 @@ autoplay="true" source="https://8975772.fs1.hubspotusercontent-na1.net/hubfs/897
 
       <p class="text-tvs-black text-lg leading-relaxed mb-8">
         The rules for earning attention are changing across every major channel. Marketers are responding by leaning into a channel built to
-        <a target="_blank" href="https://www.tvscientific.com/insight/future-proofing-brand-discovery-ctv-ai" class="underline text-[#198960]">amplify the rest of the mix</a>
+        <a target="_blank" href="https://www.tvscientific.com/insight/future-proofing-brand-discovery-ctv-ai" class="underline text-tvs-green-accessible font-semibold">amplify the rest of the mix</a>
         and meet customers where attention holds strong.
       </p>
 
@@ -692,7 +704,7 @@ autoplay="true" source="https://8975772.fs1.hubspotusercontent-na1.net/hubfs/897
 
       <div class="flex flex-wrap justify-center border-none md:border-l border-tvs-green-light py-6 gap-20 md:gap-8">
         <!-- Icon 1: People - 49% -->
-        <div class="flex-1 min-w-full md:min-w-[225px] md:max-w-[225px]  px-4 border-none md:border-r border-tvs-green-light">
+        <div class="flex-1 min-w-full md:min-w-[225px] md:max-w-[225px] px-4 border-none md:border-r border-tvs-green-light flex flex-col">
 
           <div class="w-16 h-16">
             {% module "icon_people_lottie" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player", label="People Icon"
@@ -702,15 +714,17 @@ autoplay="true" source="https://8975772.fs1.hubspotusercontent-na1.net/hubfs/897
 autoplay="true"
           %}
           </div>
-          <p class="text-tvs-black text-lg  mt-2">Access to attentive, engaged viewers</p>
-          <div class="h-2 bg-[rgba(35,229,150,0.1)] rounded my-2">
-            <div class="h-full bg-tvs-green-accessible rounded sop-progress-bar" data-width="49%"></div>
+          <p class="text-tvs-black text-lg mt-2">Access to attentive, engaged viewers</p>
+          <div class="mt-auto">
+            <div class="h-2 bg-[rgba(35,229,150,0.1)] rounded my-2">
+              <div class="h-full bg-tvs-green-accessible rounded sop-progress-bar" data-width="49%"></div>
+            </div>
+            <span class="text-tvs-black text-[40px] font-semibold leading-[40px]">49%</span>
           </div>
-          <span class="text-tvs-black text-[40px] font-semibold leading-[40px]">49%</span>
         </div>
 
         <!-- Icon 2: Rocket - 45% -->
-        <div class="flex-1 min-w-full md:min-w-[225px] md:max-w-[225px]  px-4 border-none md:border-r border-tvs-green-light">
+        <div class="flex-1 min-w-full md:min-w-[225px] md:max-w-[225px] px-4 border-none md:border-r border-tvs-green-light flex flex-col">
 
           <div class="w-16 h-16">
             {% module "icon_rocket_lottie" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player", label="Rocket Icon"
@@ -720,15 +734,17 @@ autoplay="true"
             autoplay="true"
           %}
           </div>
-          <p class="text-tvs-black text-lg  mt-2">Scalability across audiences and platforms</p>
-          <div class="h-2 bg-[rgba(35,229,150,0.1)] rounded my-2">
-            <div class="h-full bg-tvs-green-accessible rounded sop-progress-bar" data-width="45%"></div>
+          <p class="text-tvs-black text-lg mt-2">Scalability across audiences and platforms</p>
+          <div class="mt-auto">
+            <div class="h-2 bg-[rgba(35,229,150,0.1)] rounded my-2">
+              <div class="h-full bg-tvs-green-accessible rounded sop-progress-bar" data-width="45%"></div>
+            </div>
+            <span class="text-tvs-black text-[40px] font-semibold leading-[40px]">45%</span>
           </div>
-          <span class="text-tvs-black text-[40px] font-semibold leading-[40px]">45%</span>
         </div>
 
         <!-- Icon 3: Spike - 44% -->
-        <div class="flex-1 min-w-full md:min-w-[225px] md:max-w-[225px]  px-4 border-none md:border-r border-tvs-green-light">
+        <div class="flex-1 min-w-full md:min-w-[225px] md:max-w-[225px] px-4 border-none md:border-r border-tvs-green-light flex flex-col">
           <div class="w-16 h-16">
             {% module "icon_spike_lottie" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player", label="Spike Icon"
             source="https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/State%20of%20Performance%20TV/lottie/3-Spike.json"
@@ -737,15 +753,17 @@ autoplay="true"
             autoplay="true"
           %}
           </div>
-          <p class="text-tvs-black text-lg  mt-2">Ability to connect TV spend to measurable outcomes</p>
-          <div class="h-2 bg-[rgba(35,229,150,0.1)] rounded my-2">
-            <div class="h-full bg-tvs-green-accessible rounded sop-progress-bar" data-width="44%"></div>
+          <p class="text-tvs-black text-lg mt-2">Ability to connect TV spend to measurable outcomes</p>
+          <div class="mt-auto">
+            <div class="h-2 bg-[rgba(35,229,150,0.1)] rounded my-2">
+              <div class="h-full bg-tvs-green-accessible rounded sop-progress-bar" data-width="44%"></div>
+            </div>
+            <span class="text-tvs-black text-[40px] font-semibold leading-[40px]">44%</span>
           </div>
-          <span class="text-tvs-black text-[40px] font-semibold leading-[40px]">44%</span>
         </div>
 
         <!-- Icon 4: Target - 40% -->
-        <div class="flex-1 min-w-full md:min-w-[225px] md:max-w-[225px]  px-4 border-none md:border-r border-tvs-green-light">
+        <div class="flex-1 min-w-full md:min-w-[225px] md:max-w-[225px] px-4 border-none md:border-r border-tvs-green-light flex flex-col">
           <div class="w-16 h-16">
             {% module "icon_target_lottie" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player", label="Target Icon"
            source="https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/State%20of%20Performance%20TV/lottie/4-Gear.json"
@@ -754,15 +772,17 @@ autoplay="true"
             autoplay="true"
           %}
           </div>
-          <p class="text-tvs-black text-lg  mt-2">Precise audience targeting</p>
-          <div class="h-2 bg-[rgba(35,229,150,0.1)] rounded my-2">
-            <div class="h-full bg-tvs-green-accessible rounded sop-progress-bar" data-width="40%"></div>
+          <p class="text-tvs-black text-lg mt-2">Precise audience targeting</p>
+          <div class="mt-auto">
+            <div class="h-2 bg-[rgba(35,229,150,0.1)] rounded my-2">
+              <div class="h-full bg-tvs-green-accessible rounded sop-progress-bar" data-width="40%"></div>
+            </div>
+            <span class="text-tvs-black text-[40px] font-semibold leading-[40px]">40%</span>
           </div>
-          <span class="text-tvs-black text-[40px] font-semibold leading-[40px]">40%</span>
         </div>
 
         <!-- Icon 5: Dial - 31% -->
-        <div class="flex-1 min-w-full md:min-w-[225px] md:max-w-[225px]  px-4 border-none md:border-r border-tvs-green-light">
+        <div class="flex-1 min-w-full md:min-w-[225px] md:max-w-[225px] px-4 border-none md:border-r border-tvs-green-light flex flex-col">
           <div class="w-16 h-16">
             {% module "icon_dial_lottie" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player", label="Dial Icon"
            source="https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/State%20of%20Performance%20TV/lottie/5-Ticker.json"
@@ -771,18 +791,20 @@ autoplay="true"
 autoplay="true"
           %}
           </div>
-          <p class="text-tvs-black text-lg  mt-2">Built-in optimization for campaign performance</p>
-          <div class="h-2 bg-[rgba(35,229,150,0.1)] rounded my-2">
-            <div class="h-full bg-tvs-green-accessible rounded sop-progress-bar" data-width="31%"></div>
+          <p class="text-tvs-black text-lg mt-2">Built-in optimization for campaign performance</p>
+          <div class="mt-auto">
+            <div class="h-2 bg-[rgba(35,229,150,0.1)] rounded my-2">
+              <div class="h-full bg-tvs-green-accessible rounded sop-progress-bar" data-width="31%"></div>
+            </div>
+            <span class="text-tvs-black text-[40px] font-semibold leading-[40px]">31%</span>
           </div>
-          <span class="text-tvs-black text-[40px] font-semibold leading-[40px]">31%</span>
         </div>
       </div>
     </div>
 
     <div class="max-w-[1072px] mx-auto px-4 mt-8">
       <p class="text-tvs-black text-lg leading-relaxed">
-        This means the technology behind Performance TV really matters. <a target="_blank" href="https://www.tvscientific.com/resources/reports/evaluation-guide-for-performance-tv-advertising-platforms" class="underline text-[#198960]">The right platform doesn't just precisely target.</a> It <strong>continuously optimizes behind the scenes</strong> so you're always bringing in the people who are most likely to convert.
+        This means the technology behind Performance TV really matters. <a target="_blank" href="https://www.tvscientific.com/resources/reports/evaluation-guide-for-performance-tv-advertising-platforms" class="underline text-tvs-green-accessible font-semibold">The right platform doesn't just precisely target.</a> It <strong>continuously optimizes behind the scenes</strong> so you're always bringing in the people who are most likely to convert.
       </p>
     </div>
   </section>
@@ -837,7 +859,7 @@ autoplay="true"
         Over half of marketers feel their career growth depends on proving results with AI.
       </p>
       <p class="text-tvs-black text-lg leading-relaxed mb-4">
-        This solidifies that in 2026, saying "I use AI" is like bragging about having Netflix in 2005. <em>Everyone</em> is using AI. So unless you can demonstrate that it's actually helping you drive results, it's nothing to brag about.
+        This solidifies that in 2026, saying "I use AI" is like bragging about having Netflix DVDs delivered in 2005. <em>Everyone</em> is using AI. So unless you can demonstrate that it's actually helping you drive results, it's nothing to brag about.
       </p>
       <p class="text-tvs-black text-lg leading-relaxed mb-8">
         Marketers feel this pressure to their core.
@@ -927,7 +949,7 @@ autoplay="true"
         </div>
 
         <p class="text-tvs-black text-lg leading-relaxed italic text-center md:text-left">
-          AI is ushering in a new era of campaign optimization: one where advertisers can drive directly towards their outcomes, automatically optimizing across audiences, inventory, creative, and more.
+          AI is ushering in a new era of campaign optimization: one where advertisers can drive directly toward their outcomes, automatically optimizing across audiences, inventory, creative, and more.
         </p>
       </div>
 
@@ -968,7 +990,7 @@ autoplay="true"
       </div>
 
       <p class="text-tvs-black text-lg leading-relaxed">
-        The key is finding AI tools that go beyond automation. The most effective platforms, like tvScientific, <a target="_blank" href="https://www.tvscientific.com/tvscientific-ai" class="underline text-[#198960]">use AI</a> to continuously learn and optimize in real time, driving measurable improvements across outcomes such as sales, installs, return on ad spend, website traffic, and clicks.
+        The key is finding AI tools that go beyond automation. The most effective platforms, like tvScientific, <a target="_blank" href="https://www.tvscientific.com/tvscientific-ai" class="underline text-tvs-green-accessible font-semibold">use AI</a> to continuously learn and optimize in real time, driving measurable improvements across outcomes such as sales, installs, return on ad spend, website traffic, and clicks.
       </p>
     </div>
   </section>
@@ -1017,7 +1039,7 @@ autoplay="true"
         TV is a channel for both brand and performance (and nothing will be the same).
       </h2>
       <p class="text-tvs-black text-lg leading-relaxed mb-8">
-        Marketers today are using Performance TV to <a target="_blank" href="https://www.tvscientific.com/insight/real-results-from-lg-wildgrain-and-rockerbox-tvscientific" class="underline text-[#198960]">drive <em>real</em> outcomes.</a>
+        Marketers today are using Performance TV to <a target="_blank" href="https://www.tvscientific.com/insight/real-results-from-lg-wildgrain-and-rockerbox-tvscientific" class="underline text-tvs-green-accessible font-semibold">drive <em>real</em> outcomes.</a>
       </p>
 
       <!-- Two stat boxes -->
@@ -1108,7 +1130,7 @@ autoplay="true"
       </p>
       <div class="bg-[rgba(35,229,150,0.05)] rounded-lg p-8 mb-8">
         <div class="flex flex-col md:flex-row items-center gap-8">
-          <div class="text-tvs-black text-[100px] md:text-[120px] font-medium leading-none">44%</div>
+          <div class="text-tvs-black text-[100px] md:text-[120px] font-semibold leading-none">44%</div>
           <div class="flex-1">
             <p class="text-tvs-black text-lg leading-relaxed mb-2">
               of marketers say <strong>connecting TV spend to measurable outcomes is what they value most</strong> about Performance TV.
@@ -1183,7 +1205,7 @@ autoplay="true"
   <section class="bg-tvs-green-pastel py-16 md:py-16">
     <div class="max-w-[1072px] mx-auto px-4">
       <p class="text-tvs-black text-lg leading-relaxed mb-4">
-        This is a major shift from 2025, when engagement, reach and frequency ranked in the top 3 outcomes in order of importance. While sales, revenue, subscribers, and <a target="_blank" href="https://www.tvscientific.com/insight/incrementality-the-key-to-measuring-true-campaign-impact" class="underline text-[#198960]">incrementality</a> made the cut in 2026, what's also notable is that impressions also increased its importance to marketers from 17% in 2025 to 35% in 2026.
+        This is a major shift from 2025, when engagement, reach and frequency ranked in the top 3 outcomes in order of importance. While sales, revenue, subscribers, and <a target="_blank" href="https://www.tvscientific.com/insight/incrementality-the-key-to-measuring-true-campaign-impact" class="underline text-tvs-green-accessible font-semibold">incrementality</a> made the cut in 2026, what's also notable is that impressions also increased its importance to marketers from 17% in 2025 to 35% in 2026.
       </p>
       <p class="text-tvs-black text-lg leading-relaxed">
         The data shows that TV's role in marketing has changed for good. TV is no longer just a branding channel, it's a performance engine. For marketers, the opportunity now lies in finding a platform that can flex to their goals, optimizing toward outcomes while offering the freedom to buy the way they want: CPA, CPM, or a mix of both.
@@ -1238,7 +1260,7 @@ autoplay="true"
         The next frontier of measurement is radical transparency and cross-channel impact.
       </h2>
       <p class="text-tvs-black text-lg leading-relaxed mb-4">
-        The era of TV measurement as a mysterious <a target="_blank" href="https://www.tvscientific.com/insight/black-boxes-arent-a-necessary-tradeoff-for-performance" class="underline text-[#198960]">black box</a> is over. This year, marketers are done with isolated channel reporting and lack of transparency.
+        The era of TV measurement as a mysterious <a target="_blank" href="https://www.tvscientific.com/insight/black-boxes-arent-a-necessary-tradeoff-for-performance" class="underline text-tvs-green-accessible font-semibold">black box</a> is over. This year, marketers are done with isolated channel reporting and lack of transparency.
       </p>
       <p class="text-tvs-black text-lg leading-relaxed mb-4">
         Marketers want clarity on what's actually working.
@@ -1613,28 +1635,28 @@ autoplay="true"
 
           <div class="border-t border-tvs-green-light pt-6">
             <!-- 47% -->
-            <div class="md:flex items-center gap-6 mb-6">
-              <div class="shrink-0">
+            <div class="md:flex items-start gap-6 mb-6">
+              <div class="shrink-0 w-full md:w-auto">
                 <span class="text-tvs-black text-[40px] font-semibold leading-[40px] block">47%</span>
-                <div class="h-4 w-[87px] bg-[rgba(35,229,150,0.1)] rounded mt-2 relative">
+                <div class="h-4 w-full md:w-[87px] bg-[rgba(35,229,150,0.1)] rounded mt-2 relative">
                   <div class="h-full bg-tvs-green-accessible rounded absolute left-0 top-0 sop-progress-bar" data-width="47%"></div>
                 </div>
               </div>
-              <p class="text-tvs-black text-lg leading-relaxed mt-4 md:mt-0">
+              <p class="text-tvs-black text-lg leading-relaxed mt-4 md:mt-0 md:pt-3">
                 will expand to new campaign objectives (e.g., performance outcomes)
               </p>
             </div>
 
             <div class="border-t border-tvs-green-light pt-6">
               <!-- 44% -->
-              <div class="md:flex items-center gap-6 mb-6">
-                <div class="shrink-0">
+              <div class="md:flex items-start gap-6 mb-6">
+                <div class="shrink-0 w-full md:w-auto">
                   <span class="text-tvs-black text-[40px] font-semibold leading-[40px] block">44%</span>
-                  <div class="h-4 w-[87px] bg-[rgba(35,229,150,0.1)] rounded mt-2 relative">
+                  <div class="h-4 w-full md:w-[87px] bg-[rgba(35,229,150,0.1)] rounded mt-2 relative">
                     <div class="h-full bg-tvs-green-accessible rounded absolute left-0 top-0 sop-progress-bar" data-width="44%"></div>
                   </div>
                 </div>
-                <p class="text-tvs-black text-lg leading-relaxed mt-4 md:mt-0">
+                <p class="text-tvs-black text-lg leading-relaxed mt-4 md:mt-0 md:pt-3">
                   will treat Performance TV as the core driver of both performance and brand campaigns
                 </p>
               </div>
@@ -1642,14 +1664,14 @@ autoplay="true"
 
             <div class="border-t border-tvs-green-light pt-6">
               <!-- 40% -->
-              <div class="md:flex items-center gap-6">
-                <div class="shrink-0">
+              <div class="md:flex items-start gap-6">
+                <div class="shrink-0 w-full md:w-auto">
                   <span class="text-tvs-black text-[40px] font-semibold leading-[40px] block">40%</span>
-                  <div class="h-4 w-[87px] bg-[rgba(35,229,150,0.1)] rounded mt-2 relative">
+                  <div class="h-4 w-full md:w-[87px] bg-[rgba(35,229,150,0.1)] rounded mt-2 relative">
                     <div class="h-full bg-tvs-green-accessible rounded absolute left-0 top-0 sop-progress-bar" data-width="40%"></div>
                   </div>
                 </div>
-                <p class="text-tvs-black text-lg leading-relaxed mt-4 md:mt-0">
+                <p class="text-tvs-black text-lg leading-relaxed mt-4 md:mt-0 md:pt-3">
                   will test new audience segments
                 </p>
               </div>

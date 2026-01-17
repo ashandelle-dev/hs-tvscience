@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8">
     <title>{{ page_meta.html_title }}</title>
-    {% if site_settings.favicon_src %}<link rel="shortcut icon" href="{{ site_settings.favicon_src }}" />{% endif %}
+    {% if brand_settings.favicon.src %}<link rel="shortcut icon" href="{{ brand_settings.favicon.src }}" />{% endif %}
     <meta name="description" content="{{ page_meta.meta_description }}">
     {{ require_css('https://unpkg.com/aos@2.3.1/dist/aos.css') }}
     {{ require_css(get_asset_url("../css/styles.css")) }}
@@ -15,7 +15,7 @@
     {{ require_css(get_asset_url('../css/fonts.css')) }}
 
 	{# This will include the responsive css only if the option has been checked in the theme settings #}
-	{% if theme.typography.if_mobile_typography %}	
+	{% if theme.typography.if_mobile_typography %}
 		{{ require_css(get_asset_url('../../css/responsive.css'))}}
 	{% endif %}
 
@@ -49,6 +49,6 @@
       {% endblock footer %}
     </div>
     {{ standard_footer_includes }}
-    
+
   </body>
 </html>

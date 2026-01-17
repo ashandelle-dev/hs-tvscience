@@ -4,8 +4,23 @@
   class CTASlider {
     constructor(element) {
       this.container = element;
-      this.track = this.container.querySelector('#ctaSliderTrack');
+      // Use class selector as fallback since IDs may not be unique in HubSpot modules
+      this.track = this.container.querySelector('.cta-slider-track');
+
+      // Bail out if required elements don't exist
+      if (!this.track) {
+        console.warn('CTASlider: Track element .cta-slider-track not found');
+        return;
+      }
+
       this.originalSlides = Array.from(this.track.querySelectorAll('.cta-slide'));
+
+      // Bail out if no slides
+      if (this.originalSlides.length === 0) {
+        console.warn('CTASlider: No slides found');
+        return;
+      }
+
       this.dots = Array.from(this.container.querySelectorAll('.dot'));
 
       // Configuration
@@ -138,6 +153,10 @@
       });
     }
 
+    isMobile() {
+      return window.innerWidth <= 768;
+    }
+
     positionSlider(animate = true) {
       const containerWidth = this.container.offsetWidth;
       const actualSlideWidth = this.slides[0]?.offsetWidth || this.slideWidth;
@@ -145,20 +164,27 @@
       const slideCenter = actualSlideWidth / 2;
       const containerCenter = containerWidth / 2;
 
-      // Calculate offset with negative margins
-      let totalOffset = 0;
-      for (let i = 0; i < this.actualIndex; i++) {
-        totalOffset += actualSlideWidth + this.slideGap;
+      let translateX;
 
-        const distance = this.actualIndex - i;
-        if (distance === 1) {
-          totalOffset -= 10;
-        } else if (distance >= 2) {
-          totalOffset -= 50;
+      if (this.isMobile()) {
+        // On mobile: position slide flush left, accounting for 16px gap between slides
+        const mobileGap = 16;
+        translateX = -(this.actualIndex * (actualSlideWidth + mobileGap));
+      } else {
+        // Desktop: calculate offset with negative margins
+        let totalOffset = 0;
+        for (let i = 0; i < this.actualIndex; i++) {
+          totalOffset += actualSlideWidth + this.slideGap;
+
+          const distance = this.actualIndex - i;
+          if (distance === 1) {
+            totalOffset -= 10;
+          } else if (distance >= 2) {
+            totalOffset -= 50;
+          }
         }
+        translateX = containerCenter - slideCenter - totalOffset;
       }
-
-      const translateX = containerCenter - slideCenter - totalOffset;
 
       if (animate) {
         this.track.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
@@ -312,17 +338,21 @@
     }
   }
 
-  // Initialize slider when DOM is ready
-  function initSlider() {
-    const sliderElement = document.querySelector('.cta-slider-wrapper');
-    if (sliderElement) {
-      new CTASlider(sliderElement);
-    }
+  // Initialize all sliders when DOM is ready
+  function initSliders() {
+    const sliderElements = document.querySelectorAll('.cta-slider-wrapper');
+    sliderElements.forEach(el => {
+      // Avoid re-initializing
+      if (!el.dataset.sliderInitialized) {
+        el.dataset.sliderInitialized = 'true';
+        new CTASlider(el);
+      }
+    });
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initSlider);
+    document.addEventListener('DOMContentLoaded', initSliders);
   } else {
-    initSlider();
+    initSliders();
   }
 })();

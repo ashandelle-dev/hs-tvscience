@@ -118,7 +118,10 @@
   font-size: 15px;
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.6;
-  margin-bottom: 20px;
+}
+
+.cta-slide-description p:last-child {
+  margin-bottom: 0;
 }
 
 .cta-slide-link {
@@ -196,12 +199,16 @@
 }
 
 @media (max-width: 768px) {
+  .cta-slider-container {
+    overflow: hidden;
+  }
+
   .cta-slider-track {
     margin-left: 0;
+    gap: 16px;
   }
-  .cta-slider-wrapper {
-    padding: 40px 15px;
-  }
+
+
 
   .cta-slider-title {
     font-size: 28px;
@@ -209,7 +216,21 @@
   }
 
   .cta-slide {
-    width: 380px;
+    width: calc(100vw - 30px);
+    max-width: 100%;
+    transform: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .cta-slide.active {
+    transform: none !important;
+  }
+
+
+  .cta-slide.active .cta-slide-inner {
+    border-color: #00d9a3;
+    box-shadow: 0 0 20px rgba(0, 217, 163, 0.2);
   }
 
   .cta-slide-title {

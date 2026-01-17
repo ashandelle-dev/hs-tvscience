@@ -1,0 +1,481 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: State of Performance TV 2026
+  screenshotPath: ../images/template-previews/state-of-performance.png
+-->
+{% extends "../layouts/base.html" %}
+
+{% block body %}
+
+<style>
+  /* Minimal custom CSS - only for things Tailwind can't handle */
+
+  /* Hero Section with Video */
+  .sop-hero {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .sop-hero .video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+  .sop-hero .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: linear-gradient(90deg, rgba(15, 45, 41, 0.95) 0%, rgba(15, 45, 41, 0.85) 40%, rgba(15, 45, 41, 0.6) 70%, rgba(15, 45, 41, 0.4) 100%);
+  }
+
+  /* Mobile: stronger gradient overlay for better text readability */
+  @media (max-width: 767px) {
+    .sop-hero .hero-overlay {
+      background: linear-gradient(180deg, rgba(15, 45, 41, 0.95) 0%, rgba(15, 45, 41, 0.9) 50%, rgba(15, 45, 41, 0.7) 100%);
+    }
+  }
+
+  .sop-hero .hero-blur {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50%;
+    height: 60%;
+    z-index: 2;
+    background: radial-gradient(ellipse at bottom left, rgba(15, 45, 41, 0.9) 0%, transparent 70%);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    mask-image: radial-gradient(ellipse at bottom left, black 0%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse at bottom left, black 0%, transparent 70%);
+  }
+
+  .sop-hero .hero-content {
+    position: relative;
+    z-index: 3;
+  }
+
+  /* Video Quote Sections */
+  .video-quote-section {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .video-quote-section .video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+  .video-quote-section .video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: linear-gradient(90deg, rgba(15, 45, 41, 0.7) 0%, rgba(15, 45, 41, 0.96) 40%, rgba(15, 45, 41, 0.96) 60%, rgba(15, 45, 41, 0.7) 100%);
+  }
+
+  .video-quote-section .quote-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Animated Progress Bars */
+  .sop-progress-bar {
+    transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 0;
+  }
+
+  /* Stat boxes animation */
+  .sop-stat-box {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+      transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .sop-stat-box.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Animated percentage counter */
+  .sop-percentage {
+    transition: opacity 0.3s ease;
+  }
+
+  .container-fluid.dnd-empty .row-fluid-wrapper:last-child,
+  .container-fluid.dnd-empty .span12.span12.widget-span.widget-type-cell.dnd-column {
+    position: relative;
+  }
+
+  .container-fluid.dnd-empty .span12.span12.widget-span.widget-type-cell.dnd-column::before {
+    content: url('https://tvscientific.com/hubfs/plus-accent-L.png');
+    position: absolute;
+    bottom: -50px;
+    left: -55px;
+    z-index: 0;
+  }
+
+  .container-fluid.dnd-empty .span12.span12.widget-span.widget-type-cell.dnd-column::after {
+    content: url('https://tvscientific.com/hubfs/plus-accent-R.png');
+    position: absolute;
+    top: -45px;
+    right: -55px;
+    z-index: 0;
+  }
+
+  .container-fluid.dnd-empty .row-fluid-wrapper:last-child [class*="background-layers"] {
+    border-radius: 12px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Inline Form Styling for State of Performance TV */
+  .sop-inline-form .hs-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0;
+  }
+
+  .sop-inline-form .hs-form fieldset {
+    max-width: 100%;
+  }
+
+  .sop-inline-form .hs-form-field {
+    margin-bottom: 0;
+  }
+
+  .sop-inline-form .hs-form .hs-input {
+    width: 100%;
+    min-width: 280px;
+    padding: 16px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    outline: none;
+    background: white;
+    color: #1a1a1a;
+  }
+
+  .sop-inline-form .hs-form .hs-input::placeholder {
+    color: #666;
+  }
+
+  .sop-inline-form .hs-form .hs-submit {
+    margin: 0;
+  }
+
+  .sop-inline-form .hs-form .hs-button {
+    padding: 16px 28px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background-color: #23e596;
+    color: #0F2D29;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .sop-inline-form fieldset.form-columns-1 {
+    flex: 1;
+}
+
+  .sop-inline-form .hs-form .hs-button:hover {
+    background-color: #2dd49d;
+  }
+
+  .sop-inline-form .hs-form .hs-error-msgs {
+    position: absolute;
+    margin-top: 8px;
+    color: #ff6b6b;
+    font-size: 14px;
+  }
+
+  /* Hide form labels */
+  .sop-inline-form .hs-form label:not(.hs-error-msg) {
+    display: none;
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 640px) {
+    .sop-inline-form .hs-form {
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .sop-inline-form .hs-form .hs-input {
+      min-width: 100%;
+      border-radius: 4px;
+    }
+
+    .sop-inline-form .hs-form .hs-button {
+      width: 100%;
+      border-radius: 4px;
+    }
+  }
+
+</style>
+
+<main class="font-plex">
+
+  <!-- ===== HERO SECTION ===== -->
+  <section id="sop-hero" class="sop-hero relative overflow-hidden py-16 md:py-28">
+    <!-- Video Background -->
+    <video class="video-bg" autoplay muted loop playsinline>
+      <source src="https://www.tvscientific.com/hubfs/State%20of%20Performance%20TV/videos/tvGrid_background.mp4" type="video/mp4">
+    </video>
+    <!-- Overlay -->
+    <div class="hero-overlay"></div>
+    <!-- Blur effect on left side -->
+    <div class="hero-blur"></div>
+
+    <div class="hero-content max-w-[1072px] mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center gap-8 md:gap-[110px]">
+        <!-- Left: Title -->
+        <div class="w-full md:w-1/2">
+          <h1 class="text-white !text-[40px] lg:!text-7xl !leading-[1.08] !mb-0">
+            The State of Performance TV <span class="text-tvs-green">in 2026</span>
+          </h1>
+        </div>
+
+        <!-- Right: Chart Graphic - Image -->
+        <div class="w-full md:w-1/2 flex justify-center">
+          <img  src="https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/Updated-Hero.webp" width="347" height="308" alt="Performance TV Chart" class="mx-0 max-w-full h-auto" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== INTRO SECTION ===== -->
+  <section id="sop-intro" class="bg-white py-16 md:py-16">
+    <div class="max-w-[1072px] mx-auto px-4">
+
+      <!-- Two column intro -->
+      <div class="flex flex-col md:flex-row gap-8 md:gap-12 mb-4">
+        <!-- Left column: Intro text -->
+        <div class="w-full md:w-1/2 space-y-4 flex flex-col justify-end">
+          <p class="text-tvs-black text-lg leading-relaxed mb-0">
+            Attention is the hardest thing to buy. And everyone else is bidding too.
+          </p>
+          <p class="text-tvs-black text-lg leading-relaxed mb-0">
+            People are scrolling, skipping, swiping, and split-screening their way through the day
+          </p>
+          <p class="text-tvs-black text-lg leading-relaxed mb-0">
+            Which is exactly why TV stands out. It offers a rare, uninterrupted moment where your audience is truly paying attention.
+          </p>
+        </div>
+
+        <!-- Right column: Definition box -->
+        <div class="w-full md:w-[521px]">
+          <div class="bg-tvs-green-pastel border border-tvs-green-light rounded-lg p-6">
+            <img src="https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/State%20of%20Performance%20TV/images/tvLightBG.png"
+                 alt="tvScientific"
+                 width="71"
+                 height="53"
+                 class="mb-4 mx-0" />
+            <p class="text-tvs-black text-lg leading-relaxed mb-0">
+              <strong>Performance TV</strong> combines the power of TV advertising with the precision of digital marketing, enabling brands to easily launch Connected TV and linear TV ad campaigns, optimize them with AI technology, and measure true business outcomes in real time.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Body text -->
+
+      <p class="text-tvs-black text-lg leading-relaxed mb-4">
+        And that moment matters. It’s what captures <strong> the high-quality customers that 73% of marketers say they're struggling to find.</strong> This pain point has nearly doubled since <a target="_blank" href="https://www.tvscientific.com/resources/reports/2025-state-of-performance-tv" class="underline text-tvs-green-accessible font-semibold">2025</a>, when it stood at just 45%.
+      </p>
+
+      <p class="text-tvs-black text-lg leading-relaxed mb-8">
+        But finding quality customers is just one of the pressures marketers are facing right now. Marketers' stress about AI has skyrocketed since 2025 as they face mounting pressure to <a target="_blank" href="https://www.tvscientific.com/insight/future-proofing-brand-discovery-ctv-ai" class="underline text-tvs-green-accessible font-semibold">adapt to a landscape that changes by the minute</a>.
+      </p>
+
+      <!-- Bar Chart: Top Marketer Stressors - 3 Column Lotties -->
+      <div class="bg-tvs-grey-pastel rounded-lg p-2 md:p-8">
+        <div class="px-4 md:px-12 pt-4 pb-4 text-center">
+          <h3 class="text-tvs-black text-[28px] font-semibold leading-[33px] mb-1">
+            Marketers' top stressors in 2026
+          </h3>
+          <p class="text-tvs-black text-2xl font-light leading-[31px] mb-0">
+            Compared to 2025
+          </p>
+        </div>
+
+        <!-- 3 Column Lottie Bar Charts -->
+        <div class="py-8">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8">
+            <!-- Column 3: Industry Change -->
+            <div class="text-center flex flex-col h-full">
+              <p class="text-tvs-black font-semibold leading-tight text-2xl mb-6">Struggle to find high-quality customers</p>
+              <div class="px-20 md:px-8 mt-auto">
+              {% module "stressors_lottie_3" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+              label="Stressors - Industry Change"
+              autoplay="true"
+              source="https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/State%20of%20Performance%20TV/lottie/Lottie-Graph-ONE.json"
+              %}
+              </div>
+            </div>
+            <!-- Column 1: Finding Customers -->
+            <div class="text-center flex flex-col h-full">
+              <p class="text-tvs-black font-semibold leading-tight text-2xl mb-6">Concerned about the impact of AI</p>
+
+              <div class="px-20 md:px-8 mt-auto">
+              {% module "stressors_lottie_1" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player", label="Stressors - Finding Customers",
+autoplay="true" source="https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/State%20of%20Performance%20TV/lottie/Lottie-Graph-TWO.json" %}
+              </div>
+            </div>
+            <!-- Column 2: AI Impact -->
+            <div class="text-center flex flex-col h-full">
+              <p class="text-tvs-black font-semibold leading-tight text-2xl mb-6">Constant change in the industry</p>
+
+              <div class="px-20 md:px-8 mt-auto">
+              {% module "stressors_lottie_2" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player", label="Stressors - AI Impact"
+              autoplay="true"
+              source="https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/State%20of%20Performance%20TV/lottie/Lottie-Graph-THREE.json"
+%}
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Transition text -->
+      <p class="text-tvs-black text-lg leading-relaxed mt-8 mb-4">
+        <strong>These are signs of an industry in rapid transformation.</strong> This is why tvScientific surveyed <strong>600+ marketers</strong> across brands and agencies: to uncover the shifts reshaping advertising, from how budgets are moving to what's keeping marketers up at night.
+      </p>
+      <p class="text-tvs-black text-lg leading-relaxed font-bold">
+        Let's take a closer look.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ===== Form Section ===== -->
+  <section id="sop-form" class="bg-tvs-green-dark py-20 md:py-28">
+    <div class="max-w-[720px] mx-auto px-4 text-center">
+      <!-- Heading -->
+      <h2 class="text-white !text-[32px] md:!text-[48px] !leading-[1.1] font-bold !mb-4">
+        The state of Performance TV
+      </h2>
+
+      <!-- Subtext -->
+      <p class="text-white text-lg md:text-xl mb-8">
+        Sign up below to get the full report.
+      </p>
+
+      <!-- HubSpot Form -->
+      <div class="sop-inline-form">
+        {% module "sop_form"
+          path="/tvScientific 2022 Atlas Pro/cli-build/modules/single-input-form",
+          label="State of Performance TV Form"
+        %}
+      </div>
+    </div>
+  </section>
+
+
+  {% dnd_area "dnd_area" class='dnd-empty', label='Drag and Drop Area' %}
+
+
+  {% end_dnd_area %}
+
+</main>
+
+<script>
+  (function() {
+    'use strict';
+
+    function initProgressBars() {
+      const progressBars = document.querySelectorAll('.sop-progress-bar');
+      const statBoxes = document.querySelectorAll('.sop-stat-box');
+
+      if (!progressBars.length && !statBoxes.length) return;
+
+      // Observer for progress bars
+      const barObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            const bar = entry.target;
+            const targetWidth = bar.getAttribute('data-width');
+
+            // Small delay for better visual effect
+            setTimeout(function() {
+              bar.classList.add('is-visible');
+              bar.style.width = targetWidth;
+            }, 100);
+
+            barObserver.unobserve(bar);
+          }
+        });
+      }, {
+        threshold: 0.2,
+        rootMargin: '0px 0px -50px 0px'
+      });
+
+      // Observer for stat boxes
+      const boxObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+
+            // Trigger child progress bars
+            const childBars = entry.target.querySelectorAll('.sop-progress-bar');
+            childBars.forEach(function(bar, index) {
+              const targetWidth = bar.getAttribute('data-width');
+              setTimeout(function() {
+                bar.classList.add('is-visible');
+                bar.style.width = targetWidth;
+              }, 200 + (index * 100));
+            });
+
+            boxObserver.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.2,
+        rootMargin: '0px 0px -50px 0px'
+      });
+
+      // Observe progress bars not inside stat boxes
+      progressBars.forEach(function(bar) {
+        if (!bar.closest('.sop-stat-box')) {
+          barObserver.observe(bar);
+        }
+      });
+
+      // Observe stat boxes
+      statBoxes.forEach(function(box) {
+        boxObserver.observe(box);
+      });
+    }
+
+    // Initialize on DOM ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initProgressBars);
+    } else {
+      initProgressBars();
+    }
+  })();
+</script>
+
+{% endblock body %}
