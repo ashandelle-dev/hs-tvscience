@@ -8,24 +8,30 @@
 
 {% block body %}
 
-<main class="font-plex scroll-smooth">
+<main class="font-plex scroll-smooth bg-[#0f1c2d] ">
 
   <!-- Hero Section -->
   <section class="relative min-h-[500px] lg:min-h-[700px] flex flex-col justify-end overflow-hidden bg-[#0f1c2d]">
     <!-- Background image -->
     <div class="absolute inset-0">
       <img
-        src="https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/summit-background.jpg"
+        src="https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/hero-section.jpg"
         alt=""
-        class="w-full h-full object-cover object-center"
+        class="w-full h-full object-cover object-top hidden lg:block"
       />
+      <img
+        src="https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/Exec-summit-hero-mobile.webp"
+        alt=""
+        class="w-full h-full object-contain object-top block lg:hidden"
+      />
+
       <!-- Gradient overlay for text readability -->
       <div class="absolute inset-0 bg-gradient-to-t from-[#0f1c2d] via-[#0f1c2d]/60 to-transparent"></div>
     </div>
 
     <!-- Content -->
-    <div class="relative z-10 container mx-auto px-6 lg:px-20 pb-12 lg:pb-16">
-      <div class="max-w-5xl">
+    <div class="relative z-10 container mx-auto px-10 pb-6 lg:pb-16">
+      <div class="">
         <h1 class="text-4xl md:text-6xl lg:!text-8xl xl:text-[102px] font-bold text-white leading-none mb-6">
           Peak Performance TV Executive Summit
         </h1>
@@ -37,7 +43,7 @@
   </section>
 
   <!-- Agenda Section -->
-  <section class="bg-[#0f1c2d] px-6 lg:px-[120px] py-16 lg:py-20">
+  <section class="px-10 pt-0 pb-16 lg:py-20 container mx-auto">
 
     <!-- Day Navigation Buttons -->
     <div class="flex flex-wrap gap-4 lg:gap-6 mb-10">
@@ -210,15 +216,14 @@
   </section>
 
   <!-- Contact Section -->
-  <section class="relative bg-[#0f1c2d] px-6 lg:px-[120px] py-24 lg:py-40 overflow-hidden">
+  <section class="relative bg-[#0f1c2d] px-6  py-24 lg:py-40 overflow-hidden">
     <!-- Background image -->
     <div class="absolute inset-0">
       <img
         src="https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/section-banner.jpg"
         alt=""
-        class="w-full h-full object-cover object-center opacity-40"
+        class="w-full h-full  object-center opacity-40"
       />
-      <div class="absolute inset-0 bg-[#0f1c2d]/70"></div>
     </div>
 
     <!-- Content -->

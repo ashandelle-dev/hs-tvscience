@@ -1,0 +1,46 @@
+<div class="hs-search-results">
+  <template class="hs-search-results__template">
+    <article class="h-full">
+      <div class="rounded-lg border h-full border-[#009061] overflow-hidden relative group bg-white transition-shadow hover:shadow-lg">
+        <a href="#" class="absolute top-0 left-0 w-full h-full z-10 hs-search-results__link"></a>
+
+        {% if module.display_featured_images %}
+        <div class="h-[180px] hs-search-results__featured-image">
+          <img src="" alt="" class="w-full h-full object-cover">
+        </div>
+        {% endif %}
+
+        <div class="p-6 flex flex-col md:min-h-[200px]">
+          <p class="mb-3 uppercase text-[#009061] font-medium text-sm hs-search-results__date"></p>
+          <h2 class="!text-[20px] !leading-[28px] mb-auto font-medium text-[#31373D] hs-search-results__title">Content Title</h2>
+
+          <div class="mt-4">
+            <a href="#" class="flex items-center hover:no-underline group/link hs-search-results__link-bottom">
+              <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-[#009061]">Read now</p>
+              <div class="w-5 text-center group-hover/link:translate-x-0.5 duration-200 transition-transform ml-2">
+                <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7 5L10 8L7 11" stroke="#009061" stroke-width="1.5"></path>
+                </svg>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+  </template>
+
+  <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8 hs-search-results__listing" id="hsresults"></section>
+
+  <div class="hs-search-results__pagination flex justify-center items-center gap-2 my-12" data-search-path="{{ request.path|escape_url }}">
+    <a href="" class="w-10 h-10 flex items-center justify-center rounded border border-[#009061] text-[#31373D] hover:bg-[#009061] hover:text-white transition-colors hs-search-results__prev-page">&lt;</a>
+    <a href="" class="w-10 h-10 flex items-center justify-center rounded border border-[#009061] text-[#31373D] hover:bg-[#009061] hover:text-white transition-colors hs-search-results__next-page">&gt;</a>
+  </div>
+</div>
+
+{% require_js position="head" %}
+  <script data-search_results-config="config_{{ name|escape_attr }}" type="application/json">
+  {
+    "no_results_message": "{{ module.group_default_text.no_results_message|escapejson }}"
+  }
+  </script>
+{% end_require_js %}

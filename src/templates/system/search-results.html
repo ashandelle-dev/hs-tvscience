@@ -1,0 +1,204 @@
+<!--
+  templateType: search_results_page
+  isAvailableForNewContent: true
+  label: TV Scientific - search results
+-->
+{% extends "../../layouts/base.html" %}
+
+{% include '../../../modules/macros.html' %}
+
+{% block body %}
+
+<style>
+  /* Author Filter Sidebar Styling */
+  .author-filter-sidebar {
+    position: sticky;
+    top: 32px;
+  }
+
+  .author-filter-sidebar details {
+    background: #EEF1F5;
+    border-radius: 8px;
+    padding: 2px 8px
+  }
+
+  .author-filter-sidebar summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 18px;
+    font-weight: 400;
+    color: #47505D;
+    padding: 16px 0;
+    margin: 0;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .author-filter-sidebar summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .author-filter-sidebar summary::after {
+    content: '';
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    background-color: #DDE3EA;
+    background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%235A6470' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: transform 0.2s ease;
+  }
+
+  .author-filter-sidebar details[open] summary::after {
+    transform: rotate(180deg);
+  }
+
+  .author-filter-sidebar details[open] summary {
+    border-bottom: 1px solid #D8DEE6;
+  }
+
+  .author-filter-sidebar details[open] ul {
+    margin-top: 16px;
+  }
+
+  .author-filter-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .author-filter-sidebar li {
+    margin-bottom: 16px;
+  }
+
+  .hs-search-field input[type=text] {
+    padding-right: 48px;
+    height: 48px;
+    border: 2px solid #71E09D;
+    border-radius: 8px;
+    color: #1C4633;
+  }
+
+  .hs-search-field__bar button {
+    content: '';
+    background-image: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.2533 11.2652L17 17M13.0396 7.00734C13.0396 10.3251 10.3444 13.0147 7.0198 13.0147C3.69516 13.0147 1 10.3251 1 7.00734C1 3.68958 3.69516 1 7.0198 1C10.3444 1 13.0396 3.68958 13.0396 7.00734Z' stroke='%230F2D29' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    width: 48px;
+    height: 48px;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    background-color: #71E09D;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+  }
+
+  .hs-search-field__bar button:hover {
+    background-color: #198960;
+  }
+
+  .hs-search-field__bar:after,
+  .hs-search-field__bar button span {
+    display: none;
+  }
+
+  .author-filter-sidebar a {
+    display: block;
+    padding-left: 16px;
+    border-left: 3px solid #71E09D;
+    font-weight: 500;
+    color: #31373D;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .author-filter-sidebar a:hover,
+  .author-filter-sidebar a.active {
+    border-left-color: #198960;
+    color: #198960;
+  }
+</style>
+
+<main class="body-container-wrapper container">
+  <div class="body-container body-container--blog-index">
+
+    {# Search Results header #}
+    <div class="md:py-20 py-12">
+      <div class="md:mb-12 mb-8">
+        <a href="https://www.tvscientific.com/resources"
+          class="flex relative items-center hover:no-underline group">
+          <div class="w-4 text-center group-hover:-translate-x-0.5 duration-200 transition-transform">
+            <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9.55957 5L6.55957 8L9.55957 11" stroke="#009061" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <div class="px-3">
+            <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-[#009061]">Back to Resources</p>
+          </div>
+        </a>
+      </div>
+      <div class="content-wrapper !px-0">
+        <div class="flex md:justify-between justify-start md:items-center gap-6 md:flex-row flex-col">
+          <h1 class="text-[#1C4633] mb-0">
+            {% if request.query_dict.term %}
+              Searching for "{{ request.query_dict.term }}"
+            {% else %}
+              Search Results
+            {% endif %}
+          </h1>
+
+          <div class="flex justify-end">
+            <div class="relative w-full md:min-w-[388px]">
+              {% module 'site_search' path='@hubspot/search_input', label='Search', placeholder='Search Blogs', include_search_button=true %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {# End search results header #}
+
+    {# Search Results listing with sidebar #}
+    <div class="flex md:flex-row flex-col gap-8 mb-12">
+      {# Left sidebar - Author filter #}
+      <aside class="md:w-64 w-full flex-shrink-0 border-t border-[#C0E7D8] pt-6">
+        <div class="author-filter-sidebar">
+          <details>
+            <summary>Filter by author</summary>
+            <ul class="md:columns-1 columns-2">
+              {% for author in blog_authors('default', 250) %}
+              <li>
+                <a href="{{ blog_author_url('default', author.slug) }}">
+                  {{ author.display_name }}
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+          </details>
+        </div>
+      </aside>
+
+      {# Main content area #}
+      <div class="flex-1">
+        {# Search Results Module #}
+        {% module "module_17702602477614" path="/tvScientific 2022 Atlas Pro/cli-build/modules/search-results", label="search-results" display_featured_images=true %}
+      </div>
+    </div>
+
+    <section class="py-40">
+      {% module "cta_section" path="../modules/cta-section.module", label="CTA Section" cta_section_label="Learn More" cta_section_header="See how tvScientific can empower you" cta_section_button={
+        link: {
+          url: {
+            href: "https://www.tvscientific.com/contact"
+          }
+        }
+      } %}
+    </section>
+  </div>
+</main>
+
+{% endblock body %}

@@ -1,0 +1,436 @@
+<!--
+  templateType: blog_listing
+  isAvailableForNewContent: true
+  label: New Blog listing
+  screenshotPath: ../images/template-previews/blog-index.png
+-->
+{% extends "./../layouts/base.html" %}
+
+{% include './../../modules/macros.html' %}
+
+{% block body %}
+
+<style>
+  /* Author Filter Sidebar Styling */
+  .author-filter-sidebar {
+    position: sticky;
+    top: 32px;
+  }
+
+  .author-filter-sidebar details {
+    background: #EEF1F5;
+    border-radius: 8px;
+    padding: 2px 8px
+  }
+
+  .author-filter-sidebar summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 18px;
+    font-weight: 400;
+    color: #47505D;
+    padding: 8px 0;
+    margin: 0;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .author-filter-sidebar summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .author-filter-sidebar summary::after {
+    content: '';
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    background-color: #DDE3EA;
+    background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%235A6470' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: transform 0.2s ease;
+  }
+
+  .author-filter-sidebar details[open] summary::after {
+    transform: rotate(180deg);
+  }
+
+  .author-filter-sidebar details[open] summary {
+    border-bottom: 1px solid #D8DEE6;
+  }
+
+  .author-filter-sidebar details[open] ul {
+    margin-top: 12px;
+  }
+
+  .author-filter-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .author-filter-sidebar li {
+    margin-bottom: 16px;
+  }
+
+  .hs-search-field input[type=text] {
+    padding-right: 48px;
+    height: 48px;
+    border: 2px solid #71E09D;
+    border-radius: 8px;
+    color: #1C4633;
+}
+
+.hs-search-field__bar button {
+    content: '';
+    background-image: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.2533 11.2652L17 17M13.0396 7.00734C13.0396 10.3251 10.3444 13.0147 7.0198 13.0147C3.69516 13.0147 1 10.3251 1 7.00734C1 3.68958 3.69516 1 7.0198 1C10.3444 1 13.0396 3.68958 13.0396 7.00734Z' stroke='%230F2D29' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    width: 48px;
+    height: 48px;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    background-color: #71E09D;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+}
+
+.hs-search-field__bar button:hover {
+    background-color: #198960;
+}
+.hs-search-field__bar:after,
+.hs-search-field__bar button  span {
+display: none;
+}
+  .author-filter-sidebar a {
+    display: block;
+    padding-left: 16px;
+    border-left: 3px solid #71E09D;
+    color: #31373D;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .author-filter-sidebar a:hover,
+  .author-filter-sidebar a.active {
+    border-left-color: #198960;
+    color: #198960;
+  }
+</style>
+
+<main class="body-container-wrapper container">
+  <div class="body-container body-container--blog-index">
+
+    {% if blog_author %}
+    {# Blog author listing #}
+    <div class="pt-20">
+      <div class="content-wrapper">
+        <div class="">
+
+          {% if blog_author.avatar %}
+          <div class="blog-header__avatar" style="background-image: url('{{ blog_author.avatar }}');"></div>
+          {% endif %}
+
+          <div class="blog-header__author">
+            <span class="blog-header__preheader">AUTHOR</span>
+            <h1 class="text-[#1C4633]">{{ blog_author.display_name }}</h1>
+            {% if blog_author.bio %}
+            <p class="blog-header__author-bio">{{ blog_author.bio }}</p>
+            {% endif %}
+
+            {% if blog_author.has_social_profiles %}
+            <div class="blog-header__author-social-links">
+              {% if blog_author.website %}
+              <a href="{{ blog_author.website }}" target="_blank" rel="noopener">
+                {% icon name='link',
+                  purpose='semantic',
+                  style='SOLID',
+                  title='Follow me on my website',
+                  width='10' %}
+              </a>
+              {% endif %}
+              {% if blog_author.facebook %}
+              <a href="{{ blog_author.facebook }}" target="_blank" rel="noopener">
+                {% icon name='facebook-f',
+                  purpose='semantic',
+                  style='SOLID',
+                  title='Follow me on Facebook',
+                  width='10' %}
+              </a>
+              {% endif %}
+              {% if blog_author.linkedin %}
+              <a href="{{ blog_author.linkedin }}" target="_blank" rel="noopener">
+                {% icon name='linkedin',
+                  purpose='semantic',
+                  style='SOLID',
+                  title='Follow me on LinkedIn',
+                  width='10' %}
+              </a>
+              {% endif %}
+              {% if blog_author.twitter %}
+              <a href="{{ blog_author.twitter }}" target="_blank" rel="noopener">
+                {% icon name='twitter',
+                  purpose='semantic',
+                  style='SOLID',
+                  title='Follow me on Twitter',
+                  width='10' %}
+              </a>
+              {% endif %}
+            </div>
+            {% endif %}
+          </div>
+
+        </div>
+        <div class="blog-index__author">
+          <h2>Stories by {{ blog_author.display_name | split(' ') | first }}</h2>
+        </div>
+      </div>
+
+
+
+    </div>
+    {# End blog author listing #}
+
+    {% elif tag %}
+
+      {% if tag == "webinar" %}
+        {% set tag_id = "Webinars" %}
+      {% endif %}
+
+      {% if tag == "blog" %}
+        {% set tag_id = "Blogs" %}
+      {% endif %}
+
+      {% if tag == "event" %}
+        {% set tag_id = "Events" %}
+      {% endif %}
+
+      {% if tag == "reports" %}
+        {% set tag_id = "Ebooks" %}
+      {% endif %}
+
+      {% if tag == "news" %}
+        {% set tag_id = "News" %}
+      {% endif %}
+      {% if tag == "press-release" %}
+        {% set tag_id = "Press Releases" %}
+      {% endif %}
+
+    {# Blog tag listing #}
+    <div class=" pt-20">
+      <div class="mb-12">
+        <a href="https://www.tvscientific.com/resources"
+          class="flex relative items-center hover:no-underline group">
+          <div class="w-4 text-center group-hover:-translate-x-0.5 duration-200 transition-transform">
+            <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9.55957 5L6.55957 8L9.55957 11" stroke="#009061" stroke-width="1.5"/>
+              </svg>
+          </div>
+          <div class="px-3">
+            <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-[#009061]">Back to Resources</p>
+          </div>
+        </a>
+      </div>
+      <div class="">
+        <h1 class="text-[#1C4633] capitalize">{{ "All" if blog.public_title != "Blog" }}
+          {% if tag_id %}
+            {{ tag_id }}
+          {% elif %}
+            {{ tag }}
+          {% else %}
+            {{blog.public_title}}
+          {% endif %}</h1>
+      </div>
+      {% if theme.blog.header_image.src %}
+      <div class="blog-header__image">
+        {{ render_image(theme.blog.header_image) }}
+      </div>
+      {% endif %}
+    </div>
+
+    {# End blog tag listing #}
+
+    {% else %}
+    {# Blog header #}
+    <div class="md:py-20 py-12">
+      <div class="md:mb-12 mb-8">
+        <a href="https://www.tvscientific.com/press"
+          class="flex relative items-center hover:no-underline group">
+          <div class="w-4 text-center group-hover:-translate-x-0.5 duration-200 transition-transform">
+            <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9.55957 5L6.55957 8L9.55957 11" stroke="#009061" stroke-width="1.5"/>
+              </svg>
+          </div>
+          <div class="px-3">
+            <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-[#009061]">Back to Resources</p>
+          </div>
+        </a>
+      </div>
+      <div class="content-wrapper !px-0">
+        <div class="flex md:justify-between justify-start md:items-center gap-6 md:flex-row flex-col">
+          <h1 class="text-[#1C4633] mb-0">{{"All" if group.public_title != "Blog" }} {{ group.public_title }}</h1>
+
+          <div class="flex justify-end">
+            <div class="relative w-full md:min-w-[388px]">
+              {% module "module_17702575210181" path="@hubspot/search_input", label="search_input.module" placeholder="Search Blogs" include_search_button=true %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {# End blog header #}
+    {% endif %}
+
+    {# Blog listing with sidebar #}
+    <div class="flex md:flex-row flex-col gap-8 mb-12">
+        {# Left sidebar - Author filter #}
+        <aside class="md:w-64 w-full flex-shrink-0 border-t border-[#C0E7D8] pt-6">
+          <div class="author-filter-sidebar">
+            <details {% if blog_author %}open{% endif %}>
+              <summary>Filter by author</summary>
+              <ul class="md:columns-1 columns-2">
+                  {% for author in blog_authors(group.id, 250) %}
+                  <li>
+                  <a href="{{ blog_author_url(group.id, author.slug) }}"
+                      {% if blog_author and blog_author.slug == author.slug %}class="active"{% endif %}>
+                      {{ author.display_name }}
+                  </a>
+                  </li>
+                  {% endfor %}
+              </ul>
+            </details>
+            </div>
+        </aside>
+
+        {# Main content area #}
+        <div class="flex-1">
+
+            {# Search box #}
+
+            {# Blog grid #}
+            <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8">
+
+            {# Blog listing #}
+            {% for content in contents %}
+            {# the following picks up information from news posts #}
+            {% set pub_logo = content.widgets.publication_logo.body.src %}
+            {% set out_link = content.widgets.title_link.body.value %}
+            {# On the blog listing page, the first post will be featured above older posts #}
+            <article class="h-full">
+                <div class="rounded-lg border h-full border-[#009061] overflow-hidden relative group bg-white transition-shadow hover:shadow-lg">
+                {% unless out_link %}
+                <a href="{{ content.absolute_url }}" class="absolute top-0 left-0 w-full h-full z-10"></a>
+                {% else %}
+                <a href="{{out_link}}" target="_blank" class="absolute top-0 left-0 w-full h-full z-10"></a>
+                {% endunless %}
+                {% unless pub_logo %}
+                <div class="h-[180px]">
+                    {% if content.widgets.card_image.body.src %}
+                    <img alt="{{ content.widgets.card_image.body.alt }} thumbnail graphic" class="w-full h-full object-cover" src="{{ content.widgets.card_image.body.src }}" alt="" {{ loadingAttr }} >
+                    {% elif content.featured_image %}
+                    <img alt="{{ content.name }} thumbnail graphic" class="w-full h-full object-cover" src="{{ content.featured_image }}" alt="" {{ loadingAttr }} >
+                    {% endif %}
+                </div>
+                {% else %}
+                <div class="h-[180px] flex">
+                    <img alt="{{ content.name }} thumbnail graphic" class="p-6" src="{{ pub_logo }}" alt="" {{ loadingAttr }} >
+                </div>
+                {% endunless %}
+
+                <div class="p-6 flex flex-col md:min-h-[200px]">
+
+                    {% if tag != "reports" or group.public_title not "Reports"  %}
+                    <p class="mb-3 uppercase text-[#009061] font-medium text-sm">{{ content.publish_date | datetimeformat('%b %e, %Y') }}</p>
+                    {% endif  %}
+                    <h2 class="!text-[20px] !leading-[28px] mb-auto font-medium text-[#31373D]">{{ content.name }}</h2>
+
+                    <div class="mt-4">
+                    {% unless out_link %}
+                    <a href="{{ content.absolute_url }}" class="flex items-center hover:no-underline group/link">
+                    {% else %}
+                    <a href="{{ out_link }}" class="flex items-center hover:no-underline group/link" target="_blank">
+                    {% endunless %}
+                        <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-[#009061]">Read now</p>
+                        <div class="w-5 text-center group-hover/link:translate-x-0.5 duration-200 transition-transform ml-2">
+                        <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7 5L10 8L7 11" stroke="#009061" stroke-width="1.5"></path></svg>
+                        </div>
+                    </a>
+                    </div>
+                </div>
+                </div>
+            </article>
+
+            {% endfor %}
+            {# End blog listing #}
+
+            </section>
+        </div>
+    </div>
+    {# Blog pagination #}
+    {% if contents.total_page_count > 1 %}
+    {% set page_index = current_page_num > 0 ? current_page_num : 1 %}
+    <div class="flex justify-center items-center gap-2 my-12">
+    {# Previous button #}
+
+    {# First #}
+    {% if page_index >= 3 %}
+    <a href="{{ blog_page_link(1) }}" class="w-10 h-10 flex items-center justify-center rounded border border-[#009061] text-[#31373D] hover:bg-[#009061] hover:text-white transition-colors">1</a>
+    {% endif %}
+
+    {% if page_index > 2 %}
+    <span class="px-2 text-[#31373D]">...</span>
+    {% endif %}
+
+    {% if page_index > 1 %}
+    <a href="{{ blog_page_link(page_index - 1) }}"
+        class="w-10 h-10 flex items-center justify-center rounded border border-[#009061] text-[#31373D] hover:bg-[#009061] hover:text-white transition-colors">
+        {{ page_index - 1 }}
+    </a>
+    {% endif %}
+
+    <a href="{{ blog_page_link(page_index) }}"
+        class="w-10 h-10 flex items-center justify-center rounded bg-[#009061] text-white font-medium">
+        {{ page_index }}
+    </a>
+
+    {% if page_index != contents.total_page_count %}
+    <a href="{{ blog_page_link(page_index + 1) }}"
+        class="w-10 h-10 flex items-center justify-center rounded border border-[#009061] text-[#31373D] hover:bg-[#009061] hover:text-white transition-colors" >
+        {{ page_index + 1 }}
+    </a>
+    {% endif %}
+
+    {# Last #}
+    {% if contents.total_page_count - page_index > 1 %}
+        {% if contents.total_page_count - page_index > 2 %}
+        <span class="px-2 text-[#31373D]">...</span>
+        {% endif %}
+        <a href="{{ blog_page_link(contents.total_page_count) }}"
+            class="w-10 h-10 flex items-center justify-center rounded border border-[#009061] text-[#31373D] hover:bg-[#009061] hover:text-white transition-colors" >
+            {{ contents.total_page_count }}
+        </a>
+    {% endif %}
+
+    {# Next button #}
+    </div>
+    {% endif %}
+    {# End blog pagination #}
+
+    <section class="py-40">
+    {% module "cta_section" path="../modules/cta-section.module", label="CTA Section" cta_section_label="Learn More" cta_section_header="See how tvScientific can  empower you" cta_section_button={
+      link: {
+        url: {
+          href: "https://www.tvscientific.com/contact"
+        }
+      }
+    } %}
+    </section>
+  </div>
+</main>
+
+{% endblock body %}
+

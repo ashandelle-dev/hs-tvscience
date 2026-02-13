@@ -1,0 +1,49 @@
+.hs-search-results #hsresults {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hs-search-results__listing {
+  display: grid !important;
+}
+
+.hs-search-results #hsresults article {
+  margin: 0;
+  padding: 0;
+}
+
+.hs-search-highlight {
+  font-weight: bold;
+  background-color: #FEF3C7;
+  padding: 2px 4px;
+  border-radius: 2px;
+}
+
+.hs-search-results__pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 48px 0;
+}
+
+.hs-search-results__prev-page,
+.hs-search-results__next-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.hs-search-results__prev-page:hover,
+.hs-search-results__next-page:hover {
+  text-decoration: none;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

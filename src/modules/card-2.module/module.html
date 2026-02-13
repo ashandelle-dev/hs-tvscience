@@ -21,7 +21,6 @@
 </style>
 {% end_require_css %}
 
-
 <div class="grid
 {% if module.cards|length == 2 %}
     md:grid-cols-2
@@ -32,9 +31,9 @@
 {% else %}
     grid-cols-1
 {% endif %}
-gap-3">
+{{ 'gap-3' if module.styles.padding.css is not string_containing ': rem' else 'gap-8' }}">
     {% for item in module.cards %}
-    <div class="card rounded p-4 shadow-sm border border-primary transition-shadow">
+    <div class="card rounded {{ 'shadow-smborder border-primary' if module.styles.padding.css is not string_containing ': rem' }} transition-shadow">
         <div class=" mb-6">
             {% if item.image.src %}
                 {% set sizeAttrs = 'width="{{ item.image.width|escape_attr }}" height="{{ item.image.height|escape_attr }}"' %}
@@ -77,5 +76,3 @@ gap-3">
     </div>
     {% endfor %}
 </div>
-
-

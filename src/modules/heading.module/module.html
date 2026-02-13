@@ -17,7 +17,11 @@
         {% if module.heading_size != 0 %}
         font-size: {{ module.heading_size }}px !important;
         {% endif %}
+        {% if module.header_tag == "p" %}
+        line-height: 1.6 !important;
+        {% else %}
         line-height: 1.2 !important;
+        {% endif %}
     }
     {% if module.heading_size_mobile != 0 %}
     @media (max-width: 768px) {
