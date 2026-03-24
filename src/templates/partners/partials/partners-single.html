@@ -1,0 +1,523 @@
+<!--
+templateType: page
+isAvailableForNewContent: false
+-->
+{# Level 1: Individual partner page (/partners/[partner]) #}
+
+{% if is_in_editor %}
+	{# Editor preview: load first row from partners table #}
+	{# TODO: Update table ID with your actual HubDB partners table ID #}
+	{% set partner = hubdb_table_rows(136413080)|first %}
+{% else %}
+	{% set partner = dynamic_page_hubdb_row %}
+{% endif %}
+
+<style>
+	/* ========================================
+   PARTNER SINGLE PAGE STYLES
+   Based on Figma Design System
+   ======================================== */
+
+	.partner-page {
+		background: #fff;
+	}
+
+	.partner-outer {
+		padding: 0 112px;
+	}
+
+	.partner-container {
+		max-width: 900px;
+		margin: 0 auto;
+	}
+
+	/* Breadcrumb */
+	.partner-breadcrumb {
+		padding: 40px 0 32px;
+	}
+
+	.partner-breadcrumb a {
+		font-family: 'IBM Plex Sans', sans-serif;
+		font-weight: 500;
+		font-size: 16px;
+		line-height: 1.35;
+		letter-spacing: 1.5px;
+		text-transform: uppercase;
+		color: #198960;
+		text-decoration: none;
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		transition: opacity 0.2s ease;
+	}
+
+	.partner-breadcrumb a:hover {
+		opacity: 0.8;
+	}
+
+	.partner-breadcrumb svg {
+		width: 16px;
+		height: 16px;
+	}
+
+	/* Header Section */
+	.partner-header {
+		display: flex;
+		align-items: flex-end;
+		justify-content: space-between;
+		margin-bottom: 32px;
+		gap: 40px;
+	}
+
+	.partner-logo-wrapper {
+		flex: 1;
+		display: flex;
+		justify-content: flex-start;
+	}
+
+	.partner-logo {
+		margin: 0;
+		display: block;
+	}
+
+	.partner-cta {
+		flex-shrink: 0;
+	}
+
+	.btn-partner-cta {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		font-family: 'IBM Plex Sans', sans-serif;
+		font-weight: 500;
+		font-size: 16px;
+		line-height: 1.35;
+		letter-spacing: 1.5px;
+		text-transform: uppercase;
+		color: #198960;
+		text-decoration: none;
+		transition: opacity 0.2s ease;
+		background: transparent;
+		border: none;
+		padding: 0;
+	}
+
+	.btn-partner-cta:hover {
+		opacity: 0.8;
+		color: #198960;
+	}
+
+	/* Content Section */
+	.partner-content {
+		padding-bottom: 64px;
+	}
+
+	.partner-intro {
+		font-family: 'IBM Plex Sans', sans-serif;
+		font-weight: 400;
+		font-size: 18px;
+		line-height: 1.5;
+		color: #1f252b;
+		margin: 0 0 40px;
+	}
+
+	.partner-main-content {
+		font-family: 'IBM Plex Sans', sans-serif;
+		font-weight: 400;
+		font-size: 18px;
+		line-height: 1.5;
+		color: #31373D;
+	}
+
+	.partner-main-content h1,
+	.partner-main-content h2 {
+		font-family: 'IBM Plex Sans', sans-serif;
+		font-weight: 600;
+		font-size: 60px;
+		line-height: 1.2;
+		color: #1f252b;
+		margin: 0 0 32px;
+		letter-spacing: 0;
+	}
+
+	.partner-main-content h3 {
+		font-family: 'IBM Plex Sans', sans-serif;
+		font-weight: 500;
+		font-size: 32px;
+		line-height: 1.25;
+		color: #1f252b;
+		margin: 40px 0 16px;
+		letter-spacing: 0;
+	}
+
+	.partner-main-content h4 {
+		font-family: 'IBM Plex Sans', sans-serif;
+		font-weight: 500;
+		font-size: 24px;
+		line-height: 1.33;
+		color: #1f252b;
+		margin: 32px 0 16px;
+		letter-spacing: 0;
+	}
+
+	.partner-main-content p {
+		margin: 0 0 16px;
+	}
+
+	.partner-main-content ul,
+	.partner-main-content ol {
+		margin: 0 0 24px;
+		padding-left: 24px;
+	}
+
+	.partner-main-content li {
+		margin-bottom: 12px;
+		line-height: 1.7;
+	}
+
+	.partner-main-content a {
+		color: #198960;
+		text-decoration: none;
+		font-weight: 600;
+	}
+
+	.partner-main-content a:hover {
+		text-decoration: underline;
+	}
+
+	.partner-main-content strong {
+		font-weight: 600;
+		color: #1f252b;
+	}
+
+	/* More Partners Section */
+	.more-partners-section {
+		background: #fff;
+		padding: 64px 112px 80px;
+		border-top: 1px solid #e5e7eb;
+	}
+
+	.more-partners-container {
+		max-width: 1216px;
+		margin: 0 auto;
+	}
+
+	.more-partners-header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 32px;
+	}
+
+	.more-partners-title {
+		font-family: 'IBM Plex Sans', sans-serif;
+		font-weight: 500;
+		font-size: 32px;
+		line-height: 1.25;
+		color: #1f252b;
+		margin: 0;
+		letter-spacing: 0;
+	}
+
+	.view-all-link {
+		font-family: 'IBM Plex Sans', sans-serif;
+		font-weight: 500;
+		font-size: 16px;
+		line-height: 1.35;
+		letter-spacing: 1.5px;
+		text-transform: uppercase;
+		color: #198960;
+		text-decoration: none;
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		transition: opacity 0.2s ease;
+	}
+
+	.view-all-link:hover {
+		opacity: 0.8;
+	}
+
+	.view-all-link svg {
+		width: 16px;
+		height: 16px;
+	}
+
+	.partners-grid {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 24px;
+	}
+
+	.partner-card {
+		background: #fff;
+		border: 1px solid #23e596;
+		border-radius: 12px;
+		padding: 0 16px 20px;
+		display: flex;
+		flex-direction: column;
+		text-decoration: none;
+		transition: all 0.2s ease;
+	}
+
+	.partner-card:hover {
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+	}
+
+	.partner-card-logo-wrapper {
+		height: 200px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 20px 0;
+	}
+
+	.partner-card-logo {
+		max-width: 100%;
+		max-height: 70px;
+		width: auto;
+		height: auto;
+		object-fit: contain;
+	}
+
+	.partner-card-content {
+		display: flex;
+		flex-direction: column;
+		gap: 40px;
+	}
+
+	.partner-card-text {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+	}
+
+	.partner-card-content h3 {
+		font-family: 'IBM Plex Sans', sans-serif;
+		font-weight: 500;
+		font-size: 16px;
+		line-height: 1.5;
+		letter-spacing: 1.28px;
+		text-transform: uppercase;
+		color: #1f252b;
+		margin: 0;
+	}
+
+	.partner-card-content p {
+		font-family: 'IBM Plex Sans', sans-serif;
+		font-weight: 400;
+		font-size: 18px;
+		line-height: 1.5;
+		color: #31373d;
+		margin: 0;
+	}
+
+	.partner-card-link {
+		font-family: 'IBM Plex Mono', monospace;
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 1.4;
+		letter-spacing: 1.4px;
+		text-transform: uppercase;
+		color: #009061;
+		display: inline-flex;
+		align-items: center;
+		gap: 10px;
+	}
+
+	.partner-card-link svg {
+		width: 16px;
+		height: 16px;
+	}
+
+	/* Responsive */
+	@media (max-width: 1200px) {
+		.partner-outer {
+			padding: 0 40px;
+		}
+
+		.more-partners-section {
+			padding: 64px 40px 80px;
+		}
+
+		.partners-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (max-width: 768px) {
+		.partner-outer {
+			padding: 0 20px;
+		}
+
+		.more-partners-section {
+			padding: 48px 20px 60px;
+		}
+
+		.partner-header {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+
+		.partner-logo {
+			max-width: 250px;
+		}
+
+		.partner-intro {
+			font-size: 16px;
+		}
+
+		.partner-main-content h1,
+		.partner-main-content h2 {
+			font-size: 48px;
+		}
+
+		.partner-main-content h3 {
+			font-size: 28px;
+		}
+
+		.partner-main-content h4 {
+			font-size: 20px;
+		}
+
+		.more-partners-header {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 16px;
+		}
+
+		.more-partners-title {
+			font-size: 28px;
+		}
+
+		.partners-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
+
+<div class="partner-page">
+	<div class="partner-outer">
+		<!-- Breadcrumb -->
+		<div class="partner-container">
+			<nav class="partner-breadcrumb">
+				<a href="/partners">
+					<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+						<path d="M10 4L6 8L10 12" />
+					</svg>
+					Back to Integrations
+				</a>
+			</nav>
+		</div>
+
+		<!-- Header with Logo and CTA -->
+		<div class="partner-container">
+			<div class="partner-header">
+				<div class="partner-logo-wrapper">
+					{% if partner.logo_full %}
+						<img src="{{ partner.logo_full.url }}" alt="{{ partner.name }}" class="partner-logo">
+					{% endif %}
+				</div>
+			</div>
+		</div>
+
+		<!-- Main Content -->
+		<div class="partner-container">
+			<div class="partner-content">
+				{% if partner.intro %}
+				<div class="partner-intro">
+					{{ partner.intro }}
+				</div>
+				{% endif %}
+
+				{% if partner.main_content %}
+				<div class="partner-main-content">
+					{{ partner.main_content }}
+				</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+
+	<!-- More Partners Section -->
+	<div class="more-partners-section">
+		<div class="more-partners-container">
+			<div class="more-partners-header">
+				<h2 class="more-partners-title">See more integrations</h2>
+				<a href="/partners" class="view-all-link">
+					View All
+					<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+						<path d="M6 4L10 8L6 12" />
+					</svg>
+				</a>
+			</div>
+
+			<div class="partners-grid">
+				{# Query partners for "See more" section - filter by matching categories #}
+				{% set all_partners = hubdb_table_rows(136413080) %}
+				{% set related_partners = [] %}
+				{% set fallback_partners = [] %}
+				
+				{# Get current partner's categories #}
+				{% set current_categories = partner.integration_categories %}
+				
+				{% for p in all_partners %}
+					{% if p.hs_id != partner.hs_id %}
+						{# Check if this partner shares any categories with current partner #}
+						{% if current_categories and p.integration_categories %}
+							{% set has_match = false %}
+							{% for cat in current_categories %}
+								{% if cat in p.integration_categories %}
+									{% set has_match = true %}
+								{% endif %}
+							{% endfor %}
+							
+							{% if has_match %}
+								{% do related_partners.append(p) %}
+							{% else %}
+								{% do fallback_partners.append(p) %}
+							{% endif %}
+						{% else %}
+							{# No categories - add to fallback #}
+							{% do fallback_partners.append(p) %}
+						{% endif %}
+					{% endif %}
+				{% endfor %}
+				
+				{# Combine related partners first, then fallback if needed to reach 4 #}
+				{% set display_partners = related_partners + fallback_partners %}
+				
+				{# Show up to 4 partners #}
+				{% for p in display_partners[:4] %}
+				<a href="/partners/{{ p.hs_path }}" class="partner-card">
+					<div class="partner-card-logo-wrapper">
+						{% if p.logo_full %}
+						<img src="{{ p.logo_full.url }}" alt="{{ p.name }}" class="partner-card-logo">
+						{% endif %}
+					</div>
+					
+					<div class="partner-card-content">
+						<div class="partner-card-text">
+							<h3>{{ p.name|upper }}</h3>
+							{% if p.description %}
+							<p>{{ p.description|striptags|truncate(120) }}</p>
+							{% endif %}
+						</div>
+						
+						<span class="partner-card-link">
+							Read Now
+							<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+								<path d="M6 4L10 8L6 12" />
+							</svg>
+						</span>
+					</div>
+				</a>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>
+{% dnd_area "dnd_area_single" class='dnd-empty', label='Drag and Drop Area' %}
+
+
+{% end_dnd_area %}

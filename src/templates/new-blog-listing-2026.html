@@ -16,6 +16,10 @@
     position: sticky;
     top: 32px;
   }
+  
+  [href="https://www.tvscientific.com/insight/author/tvscientific"] {
+    display: none !important;
+}
 
   .author-filter-sidebar details {
     background: #EEF1F5;
@@ -120,20 +124,35 @@ display: none;
     border-left-color: #198960;
     color: #198960;
   }
+  
+  .hs-search-field__suggestions {
+        z-index: 111;
+  }
 </style>
 
 <main class="body-container-wrapper container">
   <div class="body-container body-container--blog-index">
 
     {% if blog_author %}
+    <div class="w-full md:w-1/4 flex flex-row md:flex-wrap md:py-20 py-12">
+      <a href="https://www.tvscientific.com/insight"
+          class="flex relative items-center hover:no-underline group w-full self-start">
+          <div class="w-4 text-center group-hover:-translate-x-0.5 duration-200 transition-transform">
+            <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9.55957 5L6.55957 8L9.55957 11" stroke="#009061" stroke-width="1.5"/>
+              </svg>
+          </div>
+          <div class="px-3">
+            <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-[#009061] back-to-all-blogs">Back to All Blogs</p>
+          </div>
+        </a>
+    </div>
     {# Blog author listing #}
-    <div class="pt-20">
+    <div class="">
       <div class="content-wrapper">
         <div class="">
 
-          {% if blog_author.avatar %}
-          <div class="blog-header__avatar" style="background-image: url('{{ blog_author.avatar }}');"></div>
-          {% endif %}
+  
 
           <div class="blog-header__author">
             <span class="blog-header__preheader">AUTHOR</span>
@@ -184,9 +203,6 @@ display: none;
             {% endif %}
           </div>
 
-        </div>
-        <div class="blog-index__author">
-          <h2>Stories by {{ blog_author.display_name | split(' ') | first }}</h2>
         </div>
       </div>
 
