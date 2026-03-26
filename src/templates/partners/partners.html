@@ -1,0 +1,47 @@
+<!--
+templateType: page
+isAvailableForNewContent: true
+label: Partners s
+screenshotPath: ../images/partner-page.jpg
+-->
+
+{% extends "../../layouts/base.html" %}
+
+{% block header %}
+  {% global_partial path="../../partials/header.html" %}
+  {% require_css %}
+  <style>
+    html {
+        scroll-behavior: smooth;
+    }
+    .body-wrapper {
+        overflow-x: initial !important;
+    }
+  </style>
+  {% end_require_css %}
+{% endblock header %}
+
+{% block body %}
+<main>
+	{# Choice field for editor preview switching #}
+	{% choice "view" label="Preview Level", value="level0", choices="[[\"level0\", \"/partners\"], [\"level1\", \"/partners/{partner}\"]]", export_to_template_context=True, required=true %}
+
+	{% if is_in_editor %}
+		{# In editor: use choice field to preview different levels #}
+		{% set effective_level =
+			widget_data.view.value == "level1" ? 1 :
+			widget_data.view.value == "level0" ? 0 :
+			dynamic_page_route_level
+		%}
+	{% else %}
+		{# Live site: always use actual route level #}
+		{% set effective_level = dynamic_page_route_level %}
+	{% endif %}
+
+	{% if effective_level == 0 %}
+		{% include "./partials/partners-root.html" %}
+	{% elif effective_level == 1 %}
+		{% include "./partials/partners-single.html" %}
+	{% endif %}
+</main>
+{% endblock body %}
