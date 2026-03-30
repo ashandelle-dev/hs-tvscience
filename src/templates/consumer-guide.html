@@ -98,7 +98,7 @@
     transition: top 0.1s linear;
   }
 
-    @media (max-width: 767px) {
+    @media (max-width: 992px) {
     .streaming-scroll-container,
     .shopping-scroll-container {
       height: auto !important;
@@ -169,12 +169,17 @@
     height: 100%;
     width: 0;
     transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    border-right: 2px solid #D9D9D9;
   }
 
   .cg-aurora-bg {
     background-image: url('https://tvscientific.com/hubfs/consumer-guide/Quote%20Block.png');
     background-size: cover;
     background-position: center;
+  }
+
+  .cg-funnel-panel {
+    background: linear-gradient(269deg, rgba(255,255,255,0.2) 1%, rgba(145,242,203,0.2) 50%, rgba(255,255,255,1) 100%);
   }
 
   /* Shopping moments stacked list */
@@ -278,7 +283,7 @@
   }
 </style>
 
-<main class="font-plex">
+<main class="font-plex overflow-x-hidden">
 
   <!-- ===== S1 + S2: HERO + SUBTITLE + INTRO (single dashed border container) ===== -->
   <div class="relative">
@@ -286,12 +291,12 @@
     <div class="cg-dashed-border-overlay"></div>
 
     <!-- HERO TITLE AREA -->
-    <section id="cg-hero" class="cg-hero relative overflow-hidden py-20 md:py-32 min-h-[200px] md:min-h-[700px] bg-white">
+    <section id="cg-hero" class="cg-hero relative overflow-hidden py-20 md:py-28 bg-white">
       <video class="video-bg" autoplay muted loop playsinline>
         <source src="https://tvscientific.com/hubfs/consumer-guide/tvSci-Consumers-Hero.mp4?hsCacheBuster=9353" type="video/mp4">
       </video>
       <div class="hero-content max-w-[1200px] mx-auto px-4 md:px-[52px]">
-        <div class="flex flex-col justify-center min-h-[100px] md:min-h-[600px]">
+        <div class="flex flex-col justify-center">
           <p class="text-[#198960] text-[40px] md:text-[59px] font-extralight uppercase !leading-[1.05] !mb-2">2026</p>
           <h1 class="text-[#1f252b] !text-[60px] md:!text-[140px] lg:!text-[187px] !font-extralight uppercase !leading-[0.9] !mb-0">
             Consumer<br>Trends <span class="!text-[40px] md:!text-[54px] lg:!text-[72px] font-extralight uppercase align-baseline">report</span>
@@ -303,7 +308,7 @@
     <!-- SUBTITLE BAND (solid green borders top & bottom, full width) -->
     <div class="border-t border-b border-[#198960] py-8 md:py-12 bg-white relative z-[1]">
       <div class="max-w-[1200px] mx-auto px-4 md:px-[52px]">
-        <p class="text-[#1f252b] text-[28px] md:text-[44px] lg:text-[64px] font-extralight uppercase tracking-wide !leading-[1.2] !mb-0">
+        <p class="text-[#1f252b] text-[28px] md:text-[44px] lg:text-[60px] font-extralight uppercase tracking-wide !leading-[1.2] !mb-0">
           How TV Shapes Modern Behavior
         </p>
       </div>
@@ -443,41 +448,36 @@
         <div class="hidden md:flex justify-center gap-8">
           <div class="flex-1 max-w-[228px] text-center">
             <div class="relative mx-auto w-full max-w-[128px]" style="height: 178px;">
-              <div class="absolute bottom-0 left-0 right-0 flex items-end justify-center rounded-md cg-vertical-bar bg-[#91f2cb]" style="--bar-height: 178px;">
-                <span class="text-[#0f2d29] text-[22px] font-semibold pb-3">34%</span>
-              </div>
+              <div class="absolute bottom-0 left-0 right-0 rounded-md cg-vertical-bar bg-[#91f2cb]" style="--bar-height: 178px;"></div>
+              <span class="absolute bottom-3 left-0 right-0 text-center text-[#0f2d29] text-[22px] font-semibold">34%</span>
             </div>
             <p class="text-[#0f2d29] text-[16px] leading-tight mt-2 mb-0">A mix of streaming and live TV</p>
           </div>
           <div class="flex-1 max-w-[228px] text-center">
             <div class="relative mx-auto w-full max-w-[128px]" style="height: 178px;">
-              <div class="absolute bottom-0 left-0 right-0 flex items-end justify-center rounded-md cg-vertical-bar bg-tvs-green" style="--bar-height: 174px;">
-                <span class="text-[#0f2d29] text-[22px] font-semibold pb-3">34%</span>
-              </div>
+              <div class="absolute bottom-0 left-0 right-0 rounded-md cg-vertical-bar bg-tvs-green" style="--bar-height: 174px;"></div>
+              <span class="absolute bottom-3 left-0 right-0 text-center text-[#0f2d29] text-[22px] font-semibold">34%</span>
             </div>
             <p class="text-[#0f2d29] text-[16px] leading-tight mt-2 mb-0">Only streaming apps (i.e., Netflix, Prime Video)</p>
           </div>
           <div class="flex-1 max-w-[228px] text-center">
             <div class="relative mx-auto w-full max-w-[128px]" style="height: 178px;">
-              <div class="absolute bottom-0 left-0 right-0 flex items-end justify-center rounded-md cg-vertical-bar bg-tvs-green" style="--bar-height: 94px;">
-                <span class="text-[#0f2d29] text-[22px] font-semibold pb-3">15%</span>
-              </div>
+              <div class="absolute bottom-0 left-0 right-0 rounded-md cg-vertical-bar bg-tvs-green" style="--bar-height: 94px;"></div>
+              <span class="absolute bottom-3 left-0 right-0 text-center text-[#0f2d29] text-[22px] font-semibold">15%</span>
             </div>
             <p class="text-[#0f2d29] text-[16px] leading-tight mt-2 mb-0">Mostly streaming apps</p>
           </div>
           <div class="flex-1 max-w-[228px] text-center">
             <div class="relative mx-auto w-full max-w-[128px]" style="height: 178px;">
-              <div class="absolute bottom-0 left-0 right-0 flex items-end justify-center rounded-md cg-vertical-bar bg-tvs-green-accessible" style="--bar-height: 74px;">
-                <span class="text-white text-[22px] font-semibold pb-3">13%</span>
-              </div>
+              <div class="absolute bottom-0 left-0 right-0 rounded-md cg-vertical-bar bg-tvs-green-accessible" style="--bar-height: 74px;"></div>
+              <span class="absolute bottom-3 left-0 right-0 text-center text-white text-[22px] font-semibold">13%</span>
             </div>
             <p class="text-[#0f2d29] text-[16px] leading-tight mt-2 mb-0">Mostly live TV</p>
           </div>
           <div class="flex-1 max-w-[228px] text-center">
             <div class="relative mx-auto w-full max-w-[128px]" style="height: 178px;">
-              <div class="absolute bottom-0 left-0 right-0 flex items-end justify-center rounded-md cg-vertical-bar bg-tvs-green-accessible" style="--bar-height: 44px;">
-                <span class="text-white text-[22px] font-semibold pb-3">6%</span>
-              </div>
+              <div class="absolute bottom-0 left-0 right-0 rounded-md cg-vertical-bar bg-tvs-green-accessible" style="--bar-height: 44px;"></div>
+              <span class="absolute bottom-2 left-0 right-0 text-center text-white text-[22px] font-semibold">6%</span>
             </div>
             <p class="text-[#0f2d29] text-[16px] leading-tight mt-2 mb-0">Only live TV</p>
           </div>
@@ -491,7 +491,7 @@
     <div class="max-w-[1200px] mx-auto px-4">
       <div class="flex flex-col md:flex-row gap-8 md:gap-16 items-center">
         <!-- Left: Stats (funnel gradient backgrounds) -->
-        <div class="w-full md:w-[420px] shrink-0 bg-[#FBFCFD] border border-[#91F2CB]">
+        <div class="w-full md:w-[420px] shrink-0 border border-[#91F2CB] rounded-2xl overflow-hidden cg-funnel-panel">
           <div class="sop-stat-box rounded-t-lg p-6 md:p-8" style="background: linear-gradient(180deg, rgba(145,242,203,0.35) 0%, rgba(145,242,203,0.25) 100%);">
             <span class="text-[#0f1c2d] text-[80px] md:text-[131px] font-semibold leading-none block">70%</span>
             <p class="text-tvs-black text-[21px] mt-2 mb-2">subscribe to 3+ streaming services</p>
@@ -537,17 +537,22 @@
     </div>
   </section>
 
+  <!-- Aurora transition between sections -->
+  <div class="relative h-0 overflow-visible z-0 pointer-events-none">
+    <div class="absolute right-0 -translate-y-1/2 opacity-70" style="width: 100%;height:1000px;background-image:url('https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/consumer-guide/transparentAurora.png');background-repeat:no-repeat;background-position: 250% center;background-size:contain;" aria-hidden="true"></div>
+  </div>
+
   <!-- ===== S5: TOP 5 STREAMING APPS (SCROLL ANIMATION) + AD-SUPPORTED ===== -->
-  <section id="cg-top5" class="bg-tvs-green-pastel py-8 md:py-12">
-    <div class="streaming-scroll-container" style="height: 350vh;">
+  <section id="cg-top5" class="bg-tvs-green-pastel py-8 md:py-12 relative z-[1]">
+    <div class="streaming-scroll-container mx-auto relative z-[1]" style="height: 350vh;">
       <div class="streaming-sticky max-w-[1200px] mx-auto px-4 ">
-        <div class="rounded-xl px-8 py-12 max-w-[1200px] mx-auto bg-white border border-[#91F2CB]">          <h3 class="text-tvs-black text-[28px] md:text-[40px] font-semibold leading-[33px] text-center mb-10">Top 5 streaming apps</h3>
+        <div class="rounded-xl px-8 py-12 max-w-[1200px] relative z-[2] bg-white border border-[#91F2CB]">          <h3 class="text-tvs-black text-[28px] md:text-[40px] font-semibold leading-[33px] text-center mb-10">Top 5 streaming apps</h3>
 
           <!-- Logos above bar (hidden until active, hidden on mobile) -->
           <div class="streaming-row-logos-above relative max-w-[798px] mx-auto mb-2" style="height: 50px;">
-            <img src="https://tvscientific.com/hubfs/consumer-guide/Paramount_Global.svg.svg" alt="Paramount+" class="absolute mx-0 streaming-logo transition-opacity duration-500 opacity-0 z-[1]" data-index="4" style="left: 72px; top: 2px; height: 34px; width: auto; max-width: 112px;" />
-            <img src="https://tvscientific.com/hubfs/consumer-guide/Amazon_Prime_Video_logo%201.svg" alt="Prime Video" class="absolute mx-0 streaming-logo transition-opacity duration-500 opacity-0 z-[3]" data-index="2" style="left: 285px; top: 0; height: 36px; width: 114px;" />
-            <img src="https://tvscientific.com/hubfs/consumer-guide/Netflix_Logo_RGB%202.svg" alt="Netflix" class="absolute mx-0 streaming-logo transition-opacity duration-500 opacity-0 z-[5]" data-index="0" style="left: 608px; top: 0; height: 43px; width: 83px;" />
+            <img src="https://tvscientific.com/hubfs/consumer-guide/Paramount_Global.svg.svg" alt="Paramount+" class="absolute -translate-x-1/2 mx-0 streaming-logo transition-opacity duration-500 opacity-0 z-[1]" data-index="4" style="left: 30%; top: 2px; height: 34px; width: auto; max-width: 112px;" />
+            <img src="https://tvscientific.com/hubfs/consumer-guide/Amazon_Prime_Video_logo%201.svg" alt="Prime Video" class="absolute -translate-x-1/2 mx-0 streaming-logo transition-opacity duration-500 opacity-0 z-[3]" data-index="2" style="left: 50.5%; top: 0; height: 36px; width: 114px;" />
+            <img src="https://tvscientific.com/hubfs/consumer-guide/Netflix_Logo_RGB%202.svg" alt="Netflix" class="absolute -translate-x-1/2 mx-0 streaming-logo transition-opacity duration-500 opacity-0 z-[5]" data-index="0" style="left: 70.5%; top: 0; height: 43px; width: 83px;" />
           </div>
 
           <!-- Progress bar with overlapping fills -->
@@ -556,13 +561,13 @@
             <div class="streaming-bar-fill" data-index="1" data-pct="63" style="background: #1CE783; z-index: 2; --mobile-pct: 63%;"></div>
             <div class="streaming-bar-fill" data-index="2" data-pct="55" style="background: #00A8E1; z-index: 3; --mobile-pct: 55%;"></div>
             <div class="streaming-bar-fill" data-index="3" data-pct="46" style="background: #000000; z-index: 4; --mobile-pct: 46%;"></div>
-            <div class="streaming-bar-fill" data-index="4" data-pct="40" style="background: #000A3B; z-index: 5; --mobile-pct: 40%;"></div>
+            <div class="streaming-bar-fill" data-index="4" data-pct="40" style="background: #03186D; z-index: 5; --mobile-pct: 40%;"></div>
           </div>
 
           <!-- Logos below bar: Disney+ under black/cyan zone (from step 3); Hulu centered under cyan–green (from step 1) -->
           <div class="streaming-row-logo-below relative max-w-[798px] mx-auto mb-8 h-[40px]">
-            <img src="https://tvscientific.com/hubfs/consumer-guide/disneyplus.svg" alt="Disney+" class="absolute top-0 left-[36%] -translate-x-1/2 mx-0 streaming-logo transition-opacity duration-500 opacity-0 z-[4]" data-index="3" style="height: 28px; width: auto; max-width: 118px;" />
-            <img src="https://tvscientific.com/hubfs/consumer-guide/Hulu_2019.svg.svg" alt="Hulu" class="absolute top-0 left-1/2 -translate-x-1/2 mx-0 streaming-logo transition-opacity duration-500 opacity-0 z-[3]" data-index="1" style="height: 27px; width: 83px;" />
+            <img src="https://tvscientific.com/hubfs/consumer-guide/disneyplus.svg" alt="Disney+" class="absolute top-0 -translate-x-1/2 mx-0 streaming-logo transition-opacity duration-500 opacity-0 z-[4]" data-index="3" style="left: 43%; height: 28px; width: auto; max-width: 118px;" />
+            <img src="https://tvscientific.com/hubfs/consumer-guide/Hulu_2019.svg.svg" alt="Hulu" class="absolute top-0 -translate-x-1/2 mx-0 streaming-logo transition-opacity duration-500 opacity-0 z-[3]" data-index="1" style="left: 59%; height: 27px; width: 83px;" />
           </div>
 
           <!-- Streaming rows with logos -->
@@ -577,25 +582,25 @@
               <div class="w-auto md:w-[187px] flex items-center justify-center shrink-0">
                 <img src="https://tvscientific.com/hubfs/consumer-guide/Hulu_2019.svg.svg" alt="Hulu" class="mx-0 max-w-[120px] md:max-w-none" style="height: auto; width: 167px;" />
               </div>
-              <p class="text-tvs-black text-[52px] md:text-[80px] font-normal leading-none uppercase mb-0">63%</p>
+              <p class="text-tvs-black text-[52px] md:text-[80px] font-semibold leading-none uppercase mb-0">63%</p>
             </div>
             <div class="streaming-row flex items-center justify-center gap-4 md:gap-[148px] px-4" data-index="2">
               <div class="w-auto md:w-[187px] flex items-center justify-center shrink-0">
                 <img src="https://tvscientific.com/hubfs/consumer-guide/Amazon_Prime_Video_logo%201.svg" alt="Prime Video" class="mx-0 max-w-[120px] md:max-w-none" style="height: auto; width: 154px;" />
               </div>
-              <p class="text-tvs-black text-[52px] md:text-[80px] font-normal leading-none uppercase mb-0">55%</p>
+              <p class="text-tvs-black text-[52px] md:text-[80px] font-semibold leading-none uppercase mb-0">55%</p>
             </div>
             <div class="streaming-row flex items-center justify-center gap-4 md:gap-[148px] px-4" data-index="3">
               <div class="w-auto md:w-[187px] flex items-center justify-center shrink-0">
                 <img src="https://tvscientific.com/hubfs/consumer-guide/disneyplus.svg" alt="Disney+" class="mx-0 max-w-[120px] md:max-w-none" style="height: 76px; width: 138px;" />
               </div>
-              <p class="text-tvs-black text-[52px] md:text-[80px] font-normal leading-none uppercase mb-0">46%</p>
+              <p class="text-tvs-black text-[52px] md:text-[80px] font-semibold leading-none uppercase mb-0">46%</p>
             </div>
             <div class="streaming-row flex items-center justify-center gap-4 md:gap-[148px] px-4" data-index="4">
               <div class="w-auto md:w-[187px] flex items-center justify-center shrink-0">
                 <img src="https://tvscientific.com/hubfs/consumer-guide/Paramount_Global.svg.svg" alt="Paramount+" class="mx-0 max-w-[120px] md:max-w-none" style="height: 96px; width: 138px;" />
               </div>
-              <p class="text-tvs-black text-[52px] md:text-[80px] font-normal leading-none uppercase mb-0">40%</p>
+              <p class="text-tvs-black text-[52px] md:text-[80px] font-semibold leading-none uppercase mb-0">40%</p>
             </div>
           </div>
         </div>
@@ -798,7 +803,7 @@
       <div class="flex flex-col md:flex-row gap-8 md:gap-[164px] items-center">
         <!-- Left: Stats -->
         <div class="w-full md:w-[409px] shrink-0 ">
-          <div class="rounded-2xl border border-[#91F2CB] p-6 bg-cover bg-left-bottom" style="background: linear-gradient(269deg, rgba(255,255,255,0.2) 1%, rgba(145,242,203,0.2) 50%, rgba(255,255,255,1) 100%)">
+          <div class="rounded-2xl border border-[#91F2CB] p-6 bg-cover bg-left-bottom cg-funnel-panel">
             <h3 class="text-tvs-black text-[21px] font-medium leading-[1.33] mb-4">
               And this trust response connects directly to where discovery begins.
             </h3>
@@ -835,7 +840,7 @@
         <div class="flex-1 flex flex-col gap-16">
           <div class="space-y-4">
             <p class="text-tvs-black text-lg leading-relaxed mb-0">
-              Discovery is a three-way split, with no single channel dominating the top of the funnel. Together, <a href="https://www.tvscientific.com/insight/the-next-chapter-for-performance-tv" class="underline text-tvs-black" target="_blank">these behaviors show a clear pattern</a>: social and search spark discovery, while TV strengthens credibility and helps those early impressions take hold.
+              Discovery is a three-way split, with no single channel dominating the top of the funnel. Together, <a href="https://www.tvscientific.com/insight/the-next-chapter-for-performance-tv" class="underline text-tvs-green-accessible font-semibold" target="_blank">these behaviors show a clear pattern</a>: social and search spark discovery, while TV strengthens credibility and helps those early impressions take hold.
             </p>
             <p class="text-tvs-black text-lg leading-relaxed mb-0">
               <strong>Social media is especially important for Gen Z, with 43% discovering new products there.</strong> However, it&rsquo;s clear that across audiences, these channels work together. Discovery often starts on social or search, while TV provides a trusted environment that helps those impressions stick.
@@ -975,10 +980,10 @@
     <div class="max-w-[1200px] mx-auto px-4 mb-12">
       <div class="relative md:pt-[60px] md:pl-[60px] md:min-h-[900px]">
         <!-- Background: faded "Where people watch TV" chart, offset top-left, cover -->
-        <img src="https://tvscientific.com/hubfs/consumer-guide/dual-screen-bg.webp" alt="" class="hidden md:block absolute inset-0 w-full h-full object-contain object-top rounded-2xl mx-0" style="z-index: 0;" />
+        <img src="https://tvscientific.com/hubfs/consumer-guide/dual-screen-bg.webp" alt="" class="hidden md:block absolute inset-0 w-full h-full xl:object-contain object-cover object-left-top object-top rounded-2xl mx-0" style="z-index: 0;" />
 
         <!-- Foreground card, offset bottom-right, no bg color (bg image shows through) -->
-        <div class="relative px-0 md:pl-6 md:pr-9 py-10 space-y-8" style="z-index: 1;">
+        <div class="relative px-6 md:px-0 md:pl-6 md:pr-9 py-10 space-y-8 border border-[#91F2CB] rounded-xl bg-[rgba(145,242,203,0.1)] md:border-0 md:rounded-none md:bg-transparent" style="z-index: 1;">
           <h3 class="text-tvs-black text-[32px] md:text-[40px] font-semibold leading-[33px] mb-8">The dual-screen reality</h3>
         <div class="space-y-3">
           <div class="py-1">
@@ -1078,7 +1083,7 @@
           These behaviors matter because they turn TV exposure into immediate action. When a brand appears on TV, consumers search, compare, read reviews, and visit websites in real time.
         </p>
         <p class="text-tvs-black text-lg leading-relaxed mb-0 mt-0">
-          <a class="underline text-[#198960]" href="https://www.tvscientific.com/measurement-and-attribution">Performance TV connects these behaviors into measurable outcomes.</a>
+          <a class="underline text-tvs-green-accessible font-semibold" href="https://www.tvscientific.com/measurement-and-attribution">Performance TV connects these behaviors into measurable outcomes.</a>
 
         </p>
       </div>
@@ -1092,9 +1097,9 @@
         <p class="text-tvs-black text-[18px] md:text-[28px] !leading-[1.6] mb-8">
           &ldquo;Working with tvScientific completely changed how we measure TV success. The Spike Lift report proved people were taking action, we saw a 7x spike in site traffic within minutes and a 13% lift in purchases overall. We reached over 4 million households and generated 15 million impressions.&rdquo;<sup>4</sup>
         </p>
-        <div class="flex items-center justify-center gap-6">
+        <div class="flex items-center justify-center gap-6 md:flex-row flex-col">
           <img src="https://tvscientific.com/hubfs/consumer-guide/Stretch_Logo_-_Grey-Orange_1_c50a9f82-e6f0-42ae-8aa8-c977d6533d7a%201.png" alt="MTN OPS" class="h-10 md:h-12 w-auto mx-0" />
-          <div class="text-left">
+          <div class="md:text-left text-center">
             <p class="text-tvs-black text-lg font-semibold mb-0">Neal Didonna</p>
             <p class="text-tvs-black text-lg mb-0">Vice President of eCommerce, MTN OPS</p>
           </div>
@@ -1227,7 +1232,7 @@
       <div class="shopping-scroll-container mb-12" style="height: 350vh;">
         <div class="streaming-sticky">
           <div class=" border border-[#91F2CB] rounded-xl p-6 md:p-8" style="background: linear-gradient(98deg, rgba(255,255,255,0) 5%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 95%), linear-gradient(90deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.5) 100%);">
-            <h3 class="text-tvs-black text-[28px] md:text-[40px] font-semibold leading-[33px] text-center mb-6">
+            <h3 class="text-tvs-black text-[28px] md:text-[34px] lg:text-[40px] font-semibold leading-[1.15] lg:leading-[33px] text-center mb-6">
               Top 5 shopping moments consumers pay attention to the most:
             </h3>
 
@@ -1240,25 +1245,25 @@
             </div>
 
             <div class="border-l border-r border-dashed border-tvs-green-accessible max-w-[798px] mx-auto space-y-8 py-4">
-              <div class="streaming-row shopping-row flex items-center flex-col md:flex-row md:justify-between justify-center gap-2 md:gap-0 px-6" data-index="0">
-                <p class="text-[#0f2d29] text-[22px] md:text-[42px] font-medium leading-[1.05] text-center md:text-right md:w-[300px] shrink-0 mb-0">Black Friday/<br>Cyber Monday</p>
-                <p class="text-tvs-black text-[52px] md:text-[80px] font-semibold leading-none uppercase mb-0">65%</p>
+              <div class="streaming-row shopping-row flex items-center flex-col lg:flex-row lg:justify-between justify-center gap-2 lg:gap-0 px-6" data-index="0">
+                <p class="text-[#0f2d29] text-[22px] md:text-[34px] lg:text-[42px] font-medium leading-[1.05] text-center lg:text-right lg:w-[300px] shrink-0 mb-0">Black Friday/<br>Cyber Monday</p>
+                <p class="text-tvs-black text-[52px] md:text-[64px] lg:text-[80px] font-semibold leading-none uppercase mb-0">65%</p>
               </div>
-              <div class="streaming-row shopping-row flex items-center flex-col md:flex-row md:justify-between justify-center gap-2 md:gap-0 px-6" data-index="1">
-                <p class="text-[#0f2d29] text-[22px] md:text-[42px] font-medium leading-[1.05] text-center md:text-right md:w-[300px] shrink-0 mb-0">Holiday<br>Season</p>
-                <p class="text-tvs-black text-[52px] md:text-[80px] font-normal leading-none uppercase mb-0">56%</p>
+              <div class="streaming-row shopping-row flex items-center flex-col lg:flex-row lg:justify-between justify-center gap-2 lg:gap-0 px-6" data-index="1">
+                <p class="text-[#0f2d29] text-[22px] md:text-[34px] lg:text-[42px] font-medium leading-[1.05] text-center lg:text-right lg:w-[300px] shrink-0 mb-0">Holiday<br>Season</p>
+                <p class="text-tvs-black text-[52px] md:text-[64px] lg:text-[80px] font-semibold leading-none uppercase mb-0">56%</p>
               </div>
-              <div class="streaming-row shopping-row flex items-center flex-col md:flex-row md:justify-between justify-center gap-2 md:gap-0 px-6" data-index="2">
-                <p class="text-[#0f2d29] text-[22px] md:text-[42px] font-medium leading-[1.05] text-center md:text-right md:w-[300px] shrink-0 mb-0">Prime<br>Day</p>
-                <p class="text-tvs-black text-[52px] md:text-[80px] font-normal leading-none uppercase mb-0">35%</p>
+              <div class="streaming-row shopping-row flex items-center flex-col lg:flex-row lg:justify-between justify-center gap-2 lg:gap-0 px-6" data-index="2">
+                <p class="text-[#0f2d29] text-[22px] md:text-[34px] lg:text-[42px] font-medium leading-[1.05] text-center lg:text-right lg:w-[300px] shrink-0 mb-0">Prime<br>Day</p>
+                <p class="text-tvs-black text-[52px] md:text-[64px] lg:text-[80px] font-semibold leading-none uppercase mb-0">35%</p>
               </div>
-              <div class="streaming-row shopping-row flex items-center flex-col md:flex-row md:justify-between justify-center gap-2 md:gap-0 px-6" data-index="3">
-                <p class="text-[#0f2d29] text-[22px] md:text-[42px] font-medium leading-[1.05] text-center md:text-right md:w-[300px] shrink-0 mb-0">Fourth<br>of July</p>
-                <p class="text-tvs-black text-[52px] md:text-[80px] font-normal leading-none uppercase mb-0">23%</p>
+              <div class="streaming-row shopping-row flex items-center flex-col lg:flex-row lg:justify-between justify-center gap-2 lg:gap-0 px-6" data-index="3">
+                <p class="text-[#0f2d29] text-[22px] md:text-[34px] lg:text-[42px] font-medium leading-[1.05] text-center lg:text-right lg:w-[300px] shrink-0 mb-0">Fourth<br>of July</p>
+                <p class="text-tvs-black text-[52px] md:text-[64px] lg:text-[80px] font-semibold leading-none uppercase mb-0">23%</p>
               </div>
-              <div class="streaming-row shopping-row flex items-center flex-col md:flex-row md:justify-between justify-center gap-2 md:gap-0 px-6" data-index="4">
-                <p class="text-[#0f2d29] text-[22px] md:text-[42px] font-medium leading-[1.05] text-center md:text-right md:w-[300px] shrink-0 mb-0">Back to<br>School</p>
-                <p class="text-tvs-black text-[52px] md:text-[80px] font-normal leading-none uppercase mb-0">22%</p>
+              <div class="streaming-row shopping-row flex items-center flex-col lg:flex-row lg:justify-between justify-center gap-2 lg:gap-0 px-6" data-index="4">
+                <p class="text-[#0f2d29] text-[22px] md:text-[34px] lg:text-[42px] font-medium leading-[1.05] text-center lg:text-right lg:w-[300px] shrink-0 mb-0">Back to<br>School</p>
+                <p class="text-tvs-black text-[52px] md:text-[64px] lg:text-[80px] font-semibold leading-none uppercase mb-0">22%</p>
               </div>
             </div>
 
@@ -1291,9 +1296,9 @@
         <p class="text-tvs-black text-[18px] md:text-[28px] !leading-[1.6] mb-8">
           &ldquo;Every channel started performing better. Search picked up. Social picked up. Even organic traffic moved. And we could tie it all back to that CTV lift.&rdquo;<sup>5</sup>
         </p>
-        <div class="flex items-center justify-center gap-6">
+        <div class="flex items-center justify-center gap-6 md:flex-row flex-col">
           <img src="https://tvscientific.com/hubfs/consumer-guide/playbooklogo-2%201.png" alt="Playbook Media" class="h-10 md:h-12 w-auto mx-0" />
-          <div class="text-left">
+          <div class="md:text-left text-center">
             <p class="text-tvs-black text-lg font-semibold mb-0">Bryan Karas</p>
             <p class="text-tvs-black text-lg mb-0">CEO of Playbook Media</p>
           </div>
@@ -1320,7 +1325,7 @@
             However, environmental preference breaks along generational lines. <strong>Baby Boomers stand apart as the only generation where cable TV ranks as the top-performing environment, at 32%.</strong> Gen Z, Millennials, and Gen X all point to streaming apps as the environment where TV ads perform best, consistent with where those audiences spend the majority of their viewing time.
           </p>
           <p class="text-tvs-black text-lg leading-relaxed mb-0">
-            The implication for advertisers is straightforward: creative and placement are inseparable. <a href="https://www.tvscientific.com/insight/best-bidding-strategies-programmatic-tv-ads" class="underline text-tvs-black" target="_blank">The most effective TV strategy</a> matches the right message to the right format, delivered in the environment where each audience is most engaged and most receptive.
+            The implication for advertisers is straightforward: creative and placement are inseparable. <a href="https://www.tvscientific.com/insight/best-bidding-strategies-programmatic-tv-ads" class="underline text-tvs-green-accessible font-semibold" target="_blank">The most effective TV strategy</a> matches the right message to the right format, delivered in the environment where each audience is most engaged and most receptive.
           </p>
         </div>
       </div>
@@ -1474,9 +1479,9 @@
         <p class="text-tvs-black text-[18px] md:text-[28px] !leading-[1.6] mb-8">
           &ldquo;We saw a 354% increase in 2023 YOY, a 1100% YoY increase in 2024, and another 62% lift already this year so far which is well above the normal program averages. tvScientific has also shot up in the ranks from 16th to a top 5 publisher this year. We look forward to continuing the partnership.&rdquo;<sup>6</sup>
         </p>
-        <div class="flex items-center justify-center gap-6">
+        <div class="flex items-center justify-center gap-6 md:flex-row flex-col">
           <img src="https://tvscientific.com/hubfs/consumer-guide/Rectangle%204110.png" alt="LG" class="h-10 md:h-12 w-auto mx-0" />
-          <div class="text-left">
+          <div class="md:text-left text-center">
             <p class="text-tvs-black text-lg font-semibold mb-0">Brian Robbins</p>
             <p class="text-tvs-black text-lg mb-0">Head of Affiliate Marketing, LG</p>
           </div>
@@ -1953,7 +1958,7 @@
     }
 
     function initStreamingScroll() {
-      if (window.innerWidth < 768) return;
+      if (window.innerWidth < 993) return;
       initScrollOverlapAnimation('.streaming-scroll-container', '.streaming-bar-fill');
       initScrollOverlapAnimation('.shopping-scroll-container', '.shopping-bar-fill');
     }
