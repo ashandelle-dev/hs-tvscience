@@ -1,0 +1,476 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Consumer Guide LP
+  screenshotPath: ../images/template-previews/consumer-guide.png
+-->
+{% extends "../layouts/base.html" %}
+
+{% block body %}
+
+<style>
+  /*
+   * Global theme sets html,body { overflow-x: hidden }, which in Chromium makes
+   * position:sticky ineffective (sticky never “pins” while scrolling). clip
+   * still trims horizontal bleed without that scroll-containment side effect.
+   */
+  html,
+  body {
+    overflow-x: clip !important;
+  }
+
+  .cg-hero {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cg-hero .video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+  .cg-hero .hero-content {
+    position: relative;
+    z-index: 3;
+  }
+
+  .cg-vertical-bar {
+    height: var(--bar-height);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .cg-vertical-bar.is-visible {
+    transform: scaleY(1);
+  }
+
+  .cg-horizontal-bar {
+    width: var(--bar-width);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .cg-horizontal-bar.is-visible {
+    transform: scaleX(1);
+  }
+
+  .cg-dashed-border-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  .cg-dashed-border-overlay::before,
+  .cg-dashed-border-overlay::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: repeating-linear-gradient(
+      to bottom,
+      #198960 0px, #198960 16px,
+      transparent 16px, transparent 28px
+    );
+  }
+
+  .cg-dashed-border-overlay::before { left: calc(50% - 656px); }
+  .cg-dashed-border-overlay::after { right: calc(50% - 656px); }
+
+  .cg-dashed-line-h {
+    height: 1px;
+    background: repeating-linear-gradient(
+      to right,
+      #198960 0px, #198960 16px,
+      transparent 16px, transparent 28px
+    );
+  }
+
+  .container-fluid.dnd-empty .row-fluid-wrapper:last-child,
+  .container-fluid.dnd-empty .span12.span12.widget-span.widget-type-cell.dnd-column {
+    position: relative;
+  }
+
+  .container-fluid.dnd-empty .span12.span12.widget-span.widget-type-cell.dnd-column::before {
+    content: url('https://tvscientific.com/hubfs/plus-accent-L.png');
+    position: absolute;
+    bottom: -50px;
+    left: -55px;
+    z-index: 0;
+  }
+
+  .container-fluid.dnd-empty .span12.span12.widget-span.widget-type-cell.dnd-column::after {
+    content: url('https://tvscientific.com/hubfs/plus-accent-R.png');
+    position: absolute;
+    top: -45px;
+    right: -55px;
+    z-index: 0;
+  }
+
+  .container-fluid.dnd-empty .row-fluid-wrapper:last-child [class*="background-layers"] {
+    border-radius: 12px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .sop-inline-form .hs-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0;
+  }
+
+  .sop-inline-form .hs-form fieldset {
+    max-width: 100%;
+  }
+
+  .sop-inline-form .hs-form-field {
+    margin-bottom: 0;
+  }
+
+  .sop-inline-form .hs-form .hs-input {
+    width: 100%;
+    min-width: 280px;
+    padding: 16px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    outline: none;
+    background: white;
+    color: #1a1a1a;
+  }
+
+  .sop-inline-form .hs-form .hs-input::placeholder {
+    color: #666;
+  }
+
+  .sop-inline-form .hs-form .hs-submit {
+    margin: 0;
+  }
+
+  .sop-inline-form .hs-form .hs-button {
+    padding: 16px 28px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background-color: #23e596;
+    color: #0F2D29;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .sop-inline-form fieldset.form-columns-1 {
+    flex: 1;
+  }
+
+  .sop-inline-form .hs-form .hs-button:hover {
+    background-color: #2dd49d;
+  }
+
+  .sop-inline-form .hs-form .hs-error-msgs {
+    position: absolute;
+    margin-top: 8px;
+    color: #ff6b6b;
+    font-size: 14px;
+  }
+
+  /* Hide form labels */
+  .sop-inline-form .hs-form label:not(.hs-error-msg) {
+    display: none;
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 640px) {
+    .sop-inline-form .hs-form {
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .sop-inline-form .hs-form .hs-input {
+      min-width: 100%;
+      border-radius: 4px;
+    }
+
+    .sop-inline-form .hs-form .hs-button {
+      width: 100%;
+      border-radius: 4px;
+    }
+  }
+</style>
+
+<main class="font-plex">
+
+  <!-- ===== S1 + S2: HERO + SUBTITLE + INTRO (single dashed border container) ===== -->
+  <div class="relative">
+    <!-- Single continuous dashed border lines overlaid at 1312px -->
+    <div class="cg-dashed-border-overlay"></div>
+
+    <!-- HERO TITLE AREA -->
+    <section id="cg-hero" class="cg-hero relative overflow-hidden py-20 md:py-28 bg-white">
+      <video class="video-bg" autoplay muted loop playsinline>
+        <source src="https://tvscientific.com/hubfs/consumer-guide/tvSci-Consumers-Hero.mp4?hsCacheBuster=9353" type="video/mp4">
+      </video>
+      <div class="hero-content max-w-[1200px] mx-auto px-4 md:px-[52px]">
+        <div class="flex flex-col justify-center">
+          <p class="text-[#198960] text-[40px] md:text-[59px] font-extralight uppercase !leading-[1.05] !mb-2">2026</p>
+          <h1 class="text-[#1f252b] !text-[60px] md:!text-[140px] lg:!text-[187px] !font-extralight uppercase !leading-[0.9] !mb-0">
+            Consumer<br>Trends <span class="!text-[40px] md:!text-[54px] lg:!text-[72px] font-extralight uppercase align-baseline">report</span>
+          </h1>
+        </div>
+      </div>
+    </section>
+
+    <!-- SUBTITLE BAND (solid green borders top & bottom, full width) -->
+    <div class="border-t border-b border-[#198960] py-8 md:py-12 bg-white relative z-[1]">
+      <div class="max-w-[1200px] mx-auto px-4 md:px-[52px]">
+        <p class="text-[#1f252b] text-[28px] md:text-[44px] lg:text-[60px] font-extralight uppercase tracking-wide !leading-[1.2] !mb-0">
+          How TV Shapes Modern Behavior
+        </p>
+      </div>
+    </div>
+
+    <!-- INTRO COPY + GENERATIONAL ILLUSTRATIONS -->
+    <section id="cg-intro" class="bg-white py-16 md:py-20">
+      <div class="max-w-[1072px] mx-auto px-4">
+        <div class="max-w-[800px] mx-auto space-y-4 mb-16">
+        <p class="text-tvs-black text-lg leading-relaxed mb-0">
+          The way consumers experience TV has fundamentally changed.<sup>1</sup>
+        </p>
+        <p class="text-tvs-black text-lg leading-relaxed mb-0">
+          They watch everywhere &ndash; on the couch, on their phones, on the go &ndash; while scrolling, shopping, and searching. TV is no longer a single device or a single moment. It&rsquo;s a constant presence, woven into the way people discover brands, evaluate products or services, and buy.
+        </p>
+        <p class="text-tvs-black text-lg leading-relaxed mb-0">
+          At the same time, digital feeds have become crowded and chaotic. <a href="https://www.ana.net/miccontent/show/id/98172" class="underline text-tvs-green-accessible font-semibold" target="_blank" rel="noopener">Attention is fragmented</a>. Trust is harder to earn. And in the middle of that noise, consumers are turning to TV in ways that are more dynamic, more interactive, and more influential than ever before.
+        </p>
+        <p class="text-tvs-black text-lg leading-relaxed mb-0">
+          tvScientific&rsquo;s first-ever 2026 Consumer Trends Report<sup>2</sup> draws from 600+ consumers across four generations <strong>&mdash; Gen Z (18&ndash;27), Millennials (28&ndash;43), Gen X (44&ndash;59), and Baby Boomers (60&ndash;78) &mdash;</strong> to understand how they experience TV, discover new products, and make purchase decisions.
+        </p>
+        <p class="text-tvs-black text-lg leading-relaxed mb-0">
+          What emerges is not a story about TV alone, but about consumer behavior across screens: how streaming has become the default gateway to TV, how multi&#8209;screen habits turn exposure into instant action, how trust is built across channels, and how interactive formats are reshaping expectations.
+        </p>
+        <p class="text-tvs-black text-lg leading-relaxed mb-0">
+          These insights reveal the real reason <a href="https://www.tvscientific.com/insight/state-of-performance-tv-in-2026-performance-tv-is-officially-the-1-spend-channel" class="underline text-tvs-green-accessible font-semibold" target="_blank">Performance TV is the #1 channel for media spend</a><sup>3</sup>: <strong>because consumers are already using TV as a full&#8209;funnel, action&#8209;driving channel.</strong>
+        </p>
+      </div>
+
+      <!-- Generational Illustrations -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+        <div class="text-center">
+          <img src="https://tvscientific.com/hubfs/consumer-guide/genz-consumer-experience.webp" alt="Gen Z" class="w-full rounded-lg mb-4 mx-0" width="256" height="232" />
+          <p class="text-tvs-black text-sm font-bold mb-0">Gen Z</p>
+        </div>
+        <div class="text-center">
+          <img src="https://tvscientific.com/hubfs/consumer-guide/millenial-consumer-experience.webp" alt="Millennials" class="w-full rounded-lg mb-4 mx-0" width="256" height="232" />
+          <p class="text-tvs-black text-sm font-bold mb-0">Millennials</p>
+        </div>
+        <div class="text-center">
+          <img src="https://tvscientific.com/hubfs/consumer-guide/genx-consumer-experience.webp" alt="Gen X" class="w-full rounded-lg mb-4 mx-0" width="256" height="232" />
+          <p class="text-tvs-black text-sm font-bold mb-0">Gen X</p>
+        </div>
+        <div class="text-center">
+          <img src="https://tvscientific.com/hubfs/consumer-guide/boomers-consumer-experience.webp" alt="Boomers" class="w-full rounded-lg mb-4 mx-0" width="256" height="232" />
+          <p class="text-tvs-black text-sm font-bold mb-0">Boomers</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  </div><!-- end single hero+subtitle+intro dashed border container -->
+
+  <!-- Full-width dashed bottom line -->
+  <div class="cg-dashed-line-h"></div>
+
+  <!-- ===== S3: TV TRUST + HOW CONSUMERS WATCH CHART ===== -->
+  <section id="cg-trust" class="bg-white py-16 md:py-20">
+    <div class="max-w-[1200px] mx-auto px-4">
+      <div class="max-w-[800px] mx-auto mb-12">
+        <h2 class="text-tvs-black !text-[32px] md:!text-[52px] lg:!text-[80px] !font-semibold !leading-[0.9] !mb-8">
+          TV&rsquo;s credibility <span class="text-[#198960]">edge</span>
+        </h2>
+        <p class="text-tvs-black text-lg leading-relaxed mb-4">
+          TV remains one of the most trusted screens in consumers&rsquo; lives. It&rsquo;s familiar, immersive, and grounded in decades of viewer confidence.
+        </p>
+        <p class="text-tvs-black text-lg leading-relaxed mb-0">
+          As viewing has expanded beyond traditional cable into streaming apps, connected devices, and live digital environments, TV has retained something other media channels struggle to replicate: credibility.
+        </p>
+      </div>
+
+      <!-- How consumers watch bar chart -->
+      <div class="rounded-lg p-6 md:p-10 bg-[#FBFCFD] border border-[#91F2CB]" >
+        <div class="flex flex-wrap items-start justify-between gap-4 mb-8">
+          <h3 class="text-tvs-black text-[24px] md:text-[32px] font-semibold leading-[33px] mb-0">How consumers watch TV today</h3>
+          <div class="flex items-center gap-4 rounded px-4 py-2 border border-[#91F2CB]" style="background: linear-gradient(90deg, rgba(35,229,150,0.05) 22.12%, rgba(174,228,255,0.05) 73.56%), linear-gradient(180deg, rgba(35,229,150,0.04) 0%, rgba(243,255,246,0.05) 61.06%, rgba(19,127,83,0.04) 100%), rgba(174,228,255,0.20);">
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded bg-tvs-green inline-block"></span>
+              <span class="text-tvs-black text-base">Streaming</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded bg-tvs-green-accessible inline-block"></span>
+              <span class="text-tvs-black text-base">Live</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile: horizontal bars -->
+        <div class="flex flex-col gap-5 md:hidden">
+          <div>
+            <div class="flex items-baseline justify-between mb-1.5">
+              <span class="text-[#0f2d29] text-[15px] leading-snug">A mix of streaming and live TV</span>
+              <span class="text-[#0f2d29] text-[20px] font-semibold ml-3 shrink-0">34%</span>
+            </div>
+            <div class="h-9 bg-[#e8f5ef] rounded-md overflow-hidden">
+              <div class="h-full bg-[#91f2cb] rounded-md cg-horizontal-bar" style="--bar-width: 100%;"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex items-baseline justify-between mb-1.5">
+              <span class="text-[#0f2d29] text-[15px] leading-snug">Only streaming apps (i.e., Netflix, Prime Video)</span>
+              <span class="text-[#0f2d29] text-[20px] font-semibold ml-3 shrink-0">34%</span>
+            </div>
+            <div class="h-9 bg-[#e8f5ef] rounded-md overflow-hidden">
+              <div class="h-full bg-tvs-green rounded-md cg-horizontal-bar" style="--bar-width: 100%;"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex items-baseline justify-between mb-1.5">
+              <span class="text-[#0f2d29] text-[15px] leading-snug">Mostly streaming apps</span>
+              <span class="text-[#0f2d29] text-[20px] font-semibold ml-3 shrink-0">15%</span>
+            </div>
+            <div class="h-9 bg-[#e8f5ef] rounded-md overflow-hidden">
+              <div class="h-full bg-tvs-green rounded-md cg-horizontal-bar" style="--bar-width: 44%;"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex items-baseline justify-between mb-1.5">
+              <span class="text-[#0f2d29] text-[15px] leading-snug">Mostly live TV</span>
+              <span class="text-[#0f2d29] text-[20px] font-semibold ml-3 shrink-0">13%</span>
+            </div>
+            <div class="h-9 bg-[#e8f5ef] rounded-md overflow-hidden">
+              <div class="h-full bg-tvs-green-accessible rounded-md cg-horizontal-bar" style="--bar-width: 38%;"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex items-baseline justify-between mb-1.5">
+              <span class="text-[#0f2d29] text-[15px] leading-snug">Only live TV</span>
+              <span class="text-[#0f2d29] text-[20px] font-semibold ml-3 shrink-0">6%</span>
+            </div>
+            <div class="h-9 bg-[#e8f5ef] rounded-md overflow-hidden">
+              <div class="h-full bg-tvs-green-accessible rounded-md cg-horizontal-bar" style="--bar-width: 18%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Desktop: vertical bars -->
+        <div class="hidden md:flex justify-center gap-8">
+          <div class="flex-1 max-w-[228px] text-center">
+            <div class="relative mx-auto w-full max-w-[128px]" style="height: 178px;">
+              <div class="absolute bottom-0 left-0 right-0 rounded-md cg-vertical-bar bg-[#91f2cb]" style="--bar-height: 178px;"></div>
+              <span class="absolute bottom-3 left-0 right-0 text-center text-[#0f2d29] text-[22px] font-semibold">34%</span>
+            </div>
+            <p class="text-[#0f2d29] text-[16px] leading-tight mt-2 mb-0">A mix of streaming and live TV</p>
+          </div>
+          <div class="flex-1 max-w-[228px] text-center">
+            <div class="relative mx-auto w-full max-w-[128px]" style="height: 178px;">
+              <div class="absolute bottom-0 left-0 right-0 rounded-md cg-vertical-bar bg-tvs-green" style="--bar-height: 174px;"></div>
+              <span class="absolute bottom-3 left-0 right-0 text-center text-[#0f2d29] text-[22px] font-semibold">34%</span>
+            </div>
+            <p class="text-[#0f2d29] text-[16px] leading-tight mt-2 mb-0">Only streaming apps (i.e., Netflix, Prime Video)</p>
+          </div>
+          <div class="flex-1 max-w-[228px] text-center">
+            <div class="relative mx-auto w-full max-w-[128px]" style="height: 178px;">
+              <div class="absolute bottom-0 left-0 right-0 rounded-md cg-vertical-bar bg-tvs-green" style="--bar-height: 94px;"></div>
+              <span class="absolute bottom-3 left-0 right-0 text-center text-[#0f2d29] text-[22px] font-semibold">15%</span>
+            </div>
+            <p class="text-[#0f2d29] text-[16px] leading-tight mt-2 mb-0">Mostly streaming apps</p>
+          </div>
+          <div class="flex-1 max-w-[228px] text-center">
+            <div class="relative mx-auto w-full max-w-[128px]" style="height: 178px;">
+              <div class="absolute bottom-0 left-0 right-0 rounded-md cg-vertical-bar bg-tvs-green-accessible" style="--bar-height: 74px;"></div>
+              <span class="absolute bottom-3 left-0 right-0 text-center text-white text-[22px] font-semibold">13%</span>
+            </div>
+            <p class="text-[#0f2d29] text-[16px] leading-tight mt-2 mb-0">Mostly live TV</p>
+          </div>
+          <div class="flex-1 max-w-[228px] text-center">
+            <div class="relative mx-auto w-full max-w-[128px]" style="height: 178px;">
+              <div class="absolute bottom-0 left-0 right-0 rounded-md cg-vertical-bar bg-tvs-green-accessible" style="--bar-height: 44px;"></div>
+              <span class="absolute bottom-2 left-0 right-0 text-center text-white text-[22px] font-semibold">6%</span>
+            </div>
+            <p class="text-[#0f2d29] text-[16px] leading-tight mt-2 mb-0">Only live TV</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sop-form" class="bg-tvs-green-dark py-20 md:py-28">
+    <div class="max-w-[720px] mx-auto px-4 text-center">
+      <!-- Heading -->
+      <h2 class="text-white !text-[32px] md:!text-[48px] !leading-[1.1] font-bold !mb-4">
+        Consumer Trends Report
+      </h2>
+
+      <!-- Subtext -->
+      <p class="text-white text-lg md:text-xl mb-8">
+        Sign up below to get the full report.
+      </p>
+
+      <!-- HubSpot Form -->
+      <div class="sop-inline-form">
+        {% module "sop_form"
+          path="/tvScientific 2022 Atlas Pro/cli-build/modules/single-input-form",
+          label="State of Performance TV Form"
+        %}
+      </div>
+    </div>
+  </section>
+
+  {% dnd_area "dnd_area" class='dnd-empty', label='Drag and Drop Area' %}
+
+  {% end_dnd_area %}
+
+</main>
+
+<script>
+  (function() {
+    'use strict';
+
+    function initChartBars() {
+      var bars = document.querySelectorAll('.cg-vertical-bar, .cg-horizontal-bar');
+      if (!bars.length) return;
+
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
+
+      bars.forEach(function(bar) {
+        observer.observe(bar);
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initChartBars);
+    } else {
+      initChartBars();
+    }
+  })();
+</script>
+
+{% endblock body %}
