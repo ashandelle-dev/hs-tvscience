@@ -1,0 +1,164 @@
+{% set bg_color     = module.style.background_color.css %}
+{% set bg_image     = module.style.background_image.src %}
+{% set text_color   = module.style.text_color.css %}
+{% set accent_color = module.style.accent_color.css %}
+
+{% require_css %}
+<style>
+  {% scope_css %}
+    .tvsci-twoct__quote {
+      {% if module.quote.heading_size %}font-size: {{ module.quote.heading_size }}px !important;{% endif %}
+      line-height: 1.25;
+      letter-spacing: 0.01em;
+      margin: 0 !important;
+      padding: 0 !important;
+      border: 0 !important;
+      quotes: none;
+      max-width: 100%;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+    }
+    .tvsci-twoct__quote p {
+      margin: 0;
+    }
+    .tvsci-twoct__quote::before,
+    .tvsci-twoct__quote::after {
+      content: none !important;
+    }
+    {% if module.quote.heading_size_mobile %}
+    @media (max-width: 768px) {
+      .tvsci-twoct__quote { font-size: {{ module.quote.heading_size_mobile }}px !important; }
+    }
+    {% endif %}
+
+    .tvsci-twoct__logo {
+      align-self: flex-start;
+      margin-left: 0 !important;
+      margin-right: auto !important;
+      text-align: left !important;
+      width: auto !important;
+      max-width: 100%;
+    }
+    .tvsci-twoct__logo img {
+      display: block !important;
+      margin-left: 0 !important;
+      margin-right: auto !important;
+    }
+
+    .tvsci-twoct__divider {
+      {% if accent_color %}border-left-color: {{ accent_color }};{% endif %}
+    }
+    .tvsci-twoct__name {
+      {% if accent_color %}color: {{ accent_color }};{% endif %}
+    }
+
+    .tvsci-twoct__media-placeholder {
+      width: 100%;
+      aspect-ratio: 398 / 346;
+      background: repeating-linear-gradient(
+        45deg,
+        rgba(217, 226, 235, 0.18) 0 12px,
+        rgba(217, 226, 235, 0.34) 12px 24px
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #77858c;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 12px;
+    }
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+<section
+  class="tvsci-twoct font-plex relative overflow-hidden"
+  style="
+    {% if bg_color %}background-color: {{ bg_color }};{% endif %}
+    {% if bg_image %}background-image: url('{{ bg_image|escape_url }}'); background-size: cover; background-position: center;{% endif %}
+    {{ module.style.padding.css }}
+  ">
+
+  <div class="tvsci-container">
+
+    <div class="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center justify-center">
+
+      <div class="tvsci-twoct__media w-full lg:w-[398px] lg:shrink-0">
+        {% if module.testimonial_image.src %}
+          <img
+            class="block w-full h-auto"
+            src="{{ module.testimonial_image.src|escape_url }}"
+            alt="{{ module.testimonial_image.alt|escape_attr }}"
+            {% if module.testimonial_image.loading != 'disabled' %}loading="{{ module.testimonial_image.loading|escape_attr }}"{% endif %}
+            {% if module.testimonial_image.width %}width="{{ module.testimonial_image.width|escape_attr }}"{% endif %}
+            {% if module.testimonial_image.height %}height="{{ module.testimonial_image.height|escape_attr }}"{% endif %}>
+        {% else %}
+          <div class="tvsci-twoct__media-placeholder">Upload testimonial image</div>
+        {% endif %}
+      </div>
+
+      <div class="tvsci-twoct__content w-full lg:flex-1 lg:max-w-[647px] min-w-0 flex flex-col items-start gap-12">
+
+        {% if module.logo.src %}
+        <div class="tvsci-twoct__logo" style="text-align: left;">
+          <img
+            class="block"
+            src="{{ module.logo.src|escape_url }}"
+            alt="{{ module.logo.alt|escape_attr }}"
+            width="{{ module.logo.width|default(89)|escape_attr }}"
+            height="{{ module.logo.height|default(34)|escape_attr }}"
+            style="margin-left: 0; margin-right: auto; display: block;"
+            {% if module.logo.loading != 'disabled' %}loading="{{ module.logo.loading|escape_attr }}"{% endif %}>
+        </div>
+        {% endif %}
+
+        {% if module.quote.value %}
+        <{{ module.quote.header_tag }}
+          class="tvsci-twoct__quote font-{{ module.quote.font_weight }} !m-0"
+          style="{% if text_color %}color: {{ text_color }};{% endif %}">
+          {{ module.quote.value }}
+        </{{ module.quote.header_tag }}>
+        {% endif %}
+
+        {% if module.author_name or module.author_title or module.author_avatar.src %}
+        <div class="tvsci-twoct__author flex flex-col items-start gap-4 md:flex-row md:items-end md:gap-[22px]">
+
+          {% if module.author_avatar.src %}
+          <div class="tvsci-twoct__avatar shrink-0">
+            <img
+              class="block rounded-[5px] object-cover"
+              src="{{ module.author_avatar.src|escape_url }}"
+              alt="{{ module.author_avatar.alt|escape_attr }}"
+              width="{{ module.author_avatar.width|default(70)|escape_attr }}"
+              height="{{ module.author_avatar.height|default(70)|escape_attr }}"
+              style="width: 70px; height: 70px;"
+              {% if module.author_avatar.loading != 'disabled' %}loading="{{ module.author_avatar.loading|escape_attr }}"{% endif %}>
+          </div>
+          {% endif %}
+
+          <div class="tvsci-twoct__divider flex flex-col gap-0.5 justify-center min-w-0 flex-1 md:border-l md:border-tvs-green md:pl-4">
+            {% if module.author_name %}
+            <p class="tvsci-twoct__name font-semibold text-tvs-green-accessible !m-0"
+               style="font-size: 24px; line-height: 1.4; letter-spacing: 0.01em;">
+              {{ module.author_name }}
+            </p>
+            {% endif %}
+
+            {% if module.author_title %}
+            <p class="tvsci-twoct__title text-tvs-grey-accessible !m-0"
+               style="font-size: 18px; line-height: 1.5;">
+              {{ module.author_title }}
+            </p>
+            {% endif %}
+          </div>
+        </div>
+        {% endif %}
+
+      </div>
+    </div>
+
+  </div>
+</section>

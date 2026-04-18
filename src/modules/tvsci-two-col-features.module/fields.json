@@ -1,0 +1,191 @@
+[
+  {
+    "name": "heading",
+    "label": "Heading",
+    "type": "group",
+    "tab": "CONTENT",
+    "children": [
+      {
+        "name": "value",
+        "label": "Heading content",
+        "type": "text",
+        "allow_new_line": false,
+        "default": "The tvScientific difference"
+      },
+      {
+        "name": "header_tag",
+        "label": "Heading level",
+        "type": "choice",
+        "required": true,
+        "display": "select",
+        "choices": [
+          ["h1", "H1"], ["h2", "H2"], ["h3", "H3"], ["h4", "H4"], ["h5", "H5"], ["h6", "H6"], ["p", "P"]
+        ],
+        "default": "h2"
+      },
+      {
+        "name": "heading_size",
+        "label": "Heading Size",
+        "type": "number",
+        "suffix": "px",
+        "inline_help_text": "Set to 0 to use the default size",
+        "default": 32
+      },
+      {
+        "name": "heading_size_mobile",
+        "label": "Heading Size Mobile",
+        "type": "number",
+        "suffix": "px",
+        "inline_help_text": "Set to 0 to use the default size",
+        "default": 28
+      },
+      {
+        "name": "font_weight",
+        "label": "Font Weight",
+        "type": "choice",
+        "display": "select",
+        "choices": [["normal", "Normal"], ["semibold", "Semibold"], ["bold", "Bold"]],
+        "default": "bold"
+      }
+    ]
+  },
+
+  {
+    "name": "subheading",
+    "label": "Subheading",
+    "type": "richtext",
+    "default": "<p>The most effective performance CTV platform purpose built to deliver outcomes.</p>"
+  },
+
+  {
+    "name": "left_image",
+    "label": "Left side image (dashboard / product screenshot)",
+    "type": "image",
+    "responsive": true,
+    "resizable": true,
+    "inline_help_text": "Composited dashboard screenshot. Default points to the production HubFS asset.",
+    "default": {
+      "size_type": "auto",
+      "src": "https://tvscientific.com/hubfs/product%20dashboards.png",
+      "alt": "tvScientific product dashboards",
+      "loading": "lazy",
+      "width": 0,
+      "height": 0
+    }
+  },
+
+  {
+    "name": "features",
+    "label": "Features",
+    "type": "group",
+    "tab": "CONTENT",
+    "occurrence": {
+      "min": 1,
+      "max": 8,
+      "sorting_label_field": "heading_value",
+      "default": 4
+    },
+    "children": [
+      {
+        "name": "icon",
+        "label": "Icon",
+        "type": "image",
+        "responsive": false,
+        "resizable": true,
+        "default": {
+          "size_type": "exact",
+          "src": "",
+          "alt": "",
+          "loading": "lazy",
+          "width": 29,
+          "height": 29
+        }
+      },
+      {
+        "name": "heading_value",
+        "label": "Feature heading",
+        "type": "text",
+        "allow_new_line": false,
+        "default": "Feature heading"
+      },
+      {
+        "name": "body_copy",
+        "label": "Feature description",
+        "type": "richtext",
+        "default": "<p>Short description of this feature.</p>"
+      }
+    ],
+    "default": [
+      {
+        "icon": { "size_type": "exact", "src": "", "alt": "Target icon", "loading": "lazy", "width": 29, "height": 29 },
+        "heading_value": "Results Delivered",
+        "body_copy": "<p>The best activation, measurement, and optimization technology to deliver desired outcomes.</p>"
+      },
+      {
+        "icon": { "size_type": "exact", "src": "", "alt": "Checkbox icon", "loading": "lazy", "width": 29, "height": 29 },
+        "heading_value": "Total control",
+        "body_copy": "<p>We&rsquo;ll recommend optimal inventory, but you control where to activate, # of days, audiences to leverage, etc.</p>"
+      },
+      {
+        "icon": { "size_type": "exact", "src": "", "alt": "Bar chart icon", "loading": "lazy", "width": 29, "height": 29 },
+        "heading_value": "Radical transparency",
+        "body_copy": "<p>360&deg; views in real-time into your ad campaign&rsquo;s performance, targeting, attribution, all with dashboards.</p>"
+      },
+      {
+        "icon": { "size_type": "exact", "src": "", "alt": "Unified UI icon", "loading": "lazy", "width": 29, "height": 29 },
+        "heading_value": "Unified UI",
+        "body_copy": "<p>A user interface that&rsquo;s as simple to use as paid search and social media with familiar controls and levers.</p>"
+      }
+    ]
+  },
+
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "background_color",
+        "label": "Section background color",
+        "type": "color",
+        "default": { "color": "#FFFFFF", "opacity": 100 }
+      },
+      {
+        "name": "background_image",
+        "label": "Section background image",
+        "type": "image",
+        "default": { "size_type": "auto", "src": "", "alt": "", "loading": "lazy" }
+      },
+      {
+        "name": "text_color",
+        "label": "Text color",
+        "type": "color",
+        "default": { "color": null, "opacity": 100 }
+      },
+      {
+        "name": "card_background_color",
+        "label": "Inner card background color",
+        "type": "color",
+        "default": { "color": "#F9FAFC", "opacity": 100 }
+      },
+      {
+        "name": "card_border_color",
+        "label": "Inner card border color",
+        "type": "color",
+        "default": { "color": "#D9E2EB", "opacity": 100 }
+      },
+      {
+        "name": "padding",
+        "label": "Section padding",
+        "type": "spacing",
+        "default": {
+          "padding": {
+            "top": { "value": 64, "units": "px" },
+            "bottom": { "value": 32, "units": "px" }
+          }
+        }
+      }
+    ]
+  }
+]

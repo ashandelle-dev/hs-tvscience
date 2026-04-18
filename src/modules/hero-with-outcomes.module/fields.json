@@ -1,0 +1,195 @@
+[
+  {
+    "name": "heading",
+    "label": "Heading",
+    "type": "group",
+    "tab": "CONTENT",
+    "children": [
+      {
+        "name": "value",
+        "label": "Heading content",
+        "type": "text",
+        "allow_new_line": false,
+        "default": "TV That Drives Outcomes"
+      },
+      {
+        "name": "header_tag",
+        "label": "Heading level",
+        "type": "choice",
+        "required": true,
+        "display": "select",
+        "choices": [
+          ["h1", "H1"], ["h2", "H2"], ["h3", "H3"], ["h4", "H4"], ["h5", "H5"], ["h6", "H6"], ["p", "P"]
+        ],
+        "default": "h1"
+      },
+      {
+        "name": "heading_size",
+        "label": "Heading Size",
+        "type": "number",
+        "suffix": "px",
+        "inline_help_text": "Set to 0 to use the default size",
+        "default": 80
+      },
+      {
+        "name": "heading_size_mobile",
+        "label": "Heading Size Mobile",
+        "type": "number",
+        "suffix": "px",
+        "inline_help_text": "Set to 0 to use the default size",
+        "default": 44
+      },
+      {
+        "name": "font_weight",
+        "label": "Font Weight",
+        "type": "choice",
+        "display": "select",
+        "choices": [["normal", "Normal"], ["semibold", "Semibold"], ["bold", "Bold"]],
+        "default": "bold"
+      }
+    ]
+  },
+
+  {
+    "name": "body_copy",
+    "label": "Body",
+    "type": "richtext",
+    "default": "<p>Premium inventory. AI-powered optimization. Radical transparency.</p>"
+  },
+
+  {
+    "name": "outcomes_label",
+    "label": "Outcomes label",
+    "type": "text",
+    "allow_new_line": false,
+    "default": "Drive any outcome:"
+  },
+
+  {
+    "name": "outcomes",
+    "label": "Outcome chips",
+    "type": "group",
+    "tab": "CONTENT",
+    "occurrence": { "min": 0, "max": 12, "default": 3, "sorting_label_field": "outcomes.text" },
+    "children": [
+      {
+        "name": "icon",
+        "label": "Icon",
+        "type": "image",
+        "responsive": true,
+        "resizable": false,
+        "default": {
+          "size_type": "exact",
+          "src": "",
+          "alt": "",
+          "loading": "lazy",
+          "width": 17,
+          "height": 17
+        }
+      },
+      {
+        "name": "text",
+        "label": "Label",
+        "type": "text",
+        "allow_new_line": false,
+        "default": "Traffic"
+      },
+      {
+        "name": "border_color",
+        "label": "Border color",
+        "type": "color",
+        "default": { "color": "#FFE6A0", "opacity": 100 }
+      }
+    ],
+    "default": [
+      {
+        "icon": { "size_type": "exact", "src": "", "alt": "", "loading": "lazy", "width": 17, "height": 17 },
+        "text": "Traffic",
+        "border_color": { "color": "#FFE6A0", "opacity": 100 }
+      },
+      {
+        "icon": { "size_type": "exact", "src": "", "alt": "", "loading": "lazy", "width": 17, "height": 17 },
+        "text": "Installs",
+        "border_color": { "color": "#FDBFAA", "opacity": 100 }
+      },
+      {
+        "icon": { "size_type": "exact", "src": "", "alt": "", "loading": "lazy", "width": 17, "height": 17 },
+        "text": "Sales",
+        "border_color": { "color": "#FDBFAA", "opacity": 100 }
+      }
+    ]
+  },
+
+  {
+    "name": "outcomes_suffix",
+    "label": "Outcomes suffix",
+    "type": "text",
+    "allow_new_line": false,
+    "default": "and more."
+  },
+
+  {
+    "name": "cta",
+    "label": "Button",
+    "type": "group",
+    "tab": "CONTENT",
+    "children": [
+      {
+        "name": "link",
+        "label": "Link",
+        "type": "link",
+        "supported_types": ["EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION"],
+        "default": {
+          "url": { "type": "EXTERNAL", "href": "/contact" },
+          "open_in_new_tab": false,
+          "no_follow": false
+        }
+      },
+      {
+        "name": "text",
+        "label": "Button text",
+        "type": "text",
+        "allow_new_line": false,
+        "default": "Request a demo"
+      }
+    ]
+  },
+
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "background_color",
+        "label": "Background color",
+        "type": "color",
+        "default": { "color": null, "opacity": 100 }
+      },
+      {
+        "name": "background_image",
+        "label": "Background image",
+        "type": "image",
+        "default": { "size_type": "auto", "src": "", "alt": "", "loading": "lazy" }
+      },
+      {
+        "name": "text_color",
+        "label": "Text color",
+        "type": "color",
+        "default": { "color": null, "opacity": 100 }
+      },
+      {
+        "name": "padding",
+        "label": "Padding",
+        "type": "spacing",
+        "default": {
+          "padding": {
+            "top": { "value": 160, "units": "px" },
+            "bottom": { "value": 48, "units": "px" }
+          }
+        }
+      }
+    ]
+  }
+]

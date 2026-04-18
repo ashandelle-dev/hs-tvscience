@@ -1,0 +1,188 @@
+{% set bg_color    = module.style.background_color.css %}
+{% set bg_image    = module.style.background_image.src %}
+{% set text_color  = module.style.text_color.css %}
+{% set tab_count   = module.tabs|length %}
+{% set vh_per_tab  = module.behavior.scroll_distance_per_tab|default(100) %}
+{% set pin_enabled = module.behavior.pin_enabled %}
+{% set heading_max = module.heading.max_width|default(600) %}
+
+{% require_css %}
+<style>
+  {% scope_css %}
+    .ftscroll-heading {
+      {% if module.heading.heading_size %}font-size: {{ module.heading.heading_size }}px !important;{% endif %}
+      line-height: 1.25;
+      text-wrap: balance;
+      {% if heading_max %}max-width: {{ heading_max }}px;{% endif %}
+      text-align: center !important;
+    }
+    {% if module.heading.heading_size_mobile %}
+    @media (max-width: 768px) {
+      .ftscroll-heading {
+        font-size: {{ module.heading.heading_size_mobile }}px !important;
+        margin-bottom: 48px !important;
+      }
+    }
+    {% endif %}
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+<section
+  class="ftscroll font-plex relative"
+  style="
+    {% if bg_color %}background-color: {{ bg_color }};{% endif %}
+    {% if bg_image %}background-image: url('{{ bg_image }}'); background-size: cover; background-position: center;{% endif %}
+    {% if text_color %}color: {{ text_color }};{% endif %}
+    {{ module.style.padding.css }}
+  ">
+
+  {% if module.heading.value %}
+  <div class="tvsci-container lg:hidden">
+    <{{ module.heading.header_tag }}
+      class="ftscroll-heading font-{{ module.heading.font_weight }} text-tvs-black">
+      {{ module.heading.value }}
+    </{{ module.heading.header_tag }}>
+  </div>
+  {% endif %}
+
+  <div
+    class="ftscroll-desktop hidden lg:block{% if not pin_enabled %} ftscroll-desktop--no-pin{% endif %}"
+    data-ftscroll
+    data-tabs-count="{{ tab_count }}"
+    data-pin-enabled="{% if pin_enabled %}true{% else %}false{% endif %}"
+    data-vh-per-tab="{{ vh_per_tab }}">
+
+    <div
+      class="ftscroll-track"
+      {% if pin_enabled %}style="height: {{ tab_count * vh_per_tab }}vh;"{% endif %}>
+
+      <div class="ftscroll-pin" data-pin-state="top">
+        <div class="tvsci-container ftscroll-pin-inner">
+
+          {% if module.heading.value %}
+          <{{ module.heading.header_tag }}
+            class="ftscroll-heading font-{{ module.heading.font_weight }} text-tvs-black">
+            {{ module.heading.value }}
+          </{{ module.heading.header_tag }}>
+          {% endif %}
+
+          <div class="ftscroll-grid">
+
+            <ul class="ftscroll-labels" role="tablist">
+              {% for tab in module.tabs %}
+              <li
+                class="ftscroll-label"
+                role="tab"
+                data-tab-index="{{ loop.index0 }}"
+                {% if loop.index0 == 0 %}data-active="true"{% endif %}>
+                <span class="ftscroll-label-icon" aria-hidden="true">
+                  {% if tab.tab_icon.src %}
+                    <img
+                      src="{{ tab.tab_icon.src|escape_url }}"
+                      alt=""
+                      width="{{ tab.tab_icon.width|default(35) }}"
+                      height="{{ tab.tab_icon.height|default(35) }}"
+                      loading="lazy">
+                  {% endif %}
+                </span>
+                <span class="ftscroll-label-text">{{ tab.tab_label|escape_attr }}</span>
+              </li>
+              {% endfor %}
+            </ul>
+
+            <div class="ftscroll-panels">
+              {% for tab in module.tabs %}
+              <div
+                class="ftscroll-panel"
+                data-tab-index="{{ loop.index0 }}"
+                {% if loop.index0 == 0 %}data-active="true"{% endif %}>
+
+                {% if tab.tab_image.src %}
+                <img
+                  class="ftscroll-panel-image"
+                  src="{{ tab.tab_image.src|escape_url }}"
+                  alt="{{ tab.tab_image.alt|escape_attr }}"
+                  loading="lazy">
+                {% endif %}
+
+                {% if tab.body_copy %}
+                <div class="ftscroll-panel-body tvsci-lead text-tvs-grey-accessible mt-6">{{ tab.body_copy }}</div>
+                {% endif %}
+
+                {% if tab.cta.show %}
+                  {% set cta_href = tab.cta.link.url.href %}
+                  {% if tab.cta.link.url.type is equalto "EMAIL_ADDRESS" %}
+                    {% set cta_href = "mailto:" + cta_href %}
+                  {% endif %}
+                  {% if cta_href and tab.cta.text %}
+                  <a
+                    href="{{ cta_href|escape_url }}"
+                    {% if tab.cta.link.open_in_new_tab %}target="_blank"{% endif %}
+                    {% if tab.cta.link.rel %}rel="{{ tab.cta.link.rel }}"{% endif %}
+                    class="hs-button mt-6">
+                    {{ tab.cta.text|escape_attr }}
+                  </a>
+                  {% endif %}
+                {% endif %}
+
+              </div>
+              {% endfor %}
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ftscroll-mobile lg:hidden">
+    <div class="tvsci-container">
+      {% for tab in module.tabs %}
+      <article class="ftscroll-mobile-tab">
+        <div class="ftscroll-mobile-header">
+          {% if tab.tab_icon.src %}
+            <img
+              class="ftscroll-mobile-icon"
+              src="{{ tab.tab_icon.src|escape_url }}"
+              alt=""
+              width="{{ tab.tab_icon.width|default(35) }}"
+              height="{{ tab.tab_icon.height|default(35) }}"
+              loading="lazy">
+          {% endif %}
+          <h3 class="ftscroll-mobile-label font-semibold text-tvs-black !m-0">{{ tab.tab_label|escape_attr }}</h3>
+        </div>
+
+        {% if tab.tab_image.src %}
+        <img
+          class="ftscroll-mobile-image"
+          src="{{ tab.tab_image.src|escape_url }}"
+          alt="{{ tab.tab_image.alt|escape_attr }}"
+          loading="lazy">
+        {% endif %}
+
+        {% if tab.body_copy %}
+        <div class="ftscroll-mobile-body tvsci-lead text-tvs-grey-accessible">{{ tab.body_copy }}</div>
+        {% endif %}
+
+        {% if tab.cta.show %}
+          {% set cta_href_m = tab.cta.link.url.href %}
+          {% if tab.cta.link.url.type is equalto "EMAIL_ADDRESS" %}
+            {% set cta_href_m = "mailto:" + cta_href_m %}
+          {% endif %}
+          {% if cta_href_m and tab.cta.text %}
+          <a
+            href="{{ cta_href_m|escape_url }}"
+            {% if tab.cta.link.open_in_new_tab %}target="_blank"{% endif %}
+            {% if tab.cta.link.rel %}rel="{{ tab.cta.link.rel }}"{% endif %}
+            class="hs-button mt-4">
+            {{ tab.cta.text|escape_attr }}
+          </a>
+          {% endif %}
+        {% endif %}
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+
+</section>

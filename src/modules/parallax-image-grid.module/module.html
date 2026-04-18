@@ -1,0 +1,174 @@
+{# ==========================================================================
+   Parallax Image Grid
+   - 3-column CSS grid (narrow | wide | narrow), stacks on mobile
+   - Left + right columns translate up on scroll; center drifts down
+   - JS computes progress from section's position in the viewport and writes
+     --parallax-side (px) + --parallax-center (%) on the container
+   ========================================================================== #}
+
+{% set bg_color   = module.style.background_color.css %}
+{% set bg_image   = module.style.background_image.src %}
+{% set text_color = module.style.text_color.css %}
+
+{% set parallax_enabled = module.style.parallax.enabled %}
+{% set side_offset      = module.style.parallax.side_offset or 90 %}
+{% set center_drift     = module.style.parallax.center_drift or 5 %}
+{% set mobile_layout    = module.style.mobile.layout or 'two-col' %}
+
+{% require_css %}
+<style>
+  {% scope_css %}
+    .parallax-image-grid-heading {
+      {% if module.heading.heading_size %}font-size: {{ module.heading.heading_size }}px !important;{% endif %}
+      line-height: 1.08;
+    }
+    {% if module.heading.heading_size_mobile %}
+    @media (max-width: 993px) {
+      .parallax-image-grid-heading { font-size: {{ module.heading.heading_size_mobile }}px !important; }
+    }
+    {% endif %}
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+<section
+  class="parallax-image-grid parallax-image-grid--mobile-{{ mobile_layout }} font-plex relative overflow-hidden"
+  data-parallax-grid
+  data-parallax-enabled="{{ parallax_enabled }}"
+  data-parallax-offset="{{ side_offset }}"
+  data-parallax-center-drift="{{ center_drift }}"
+  style="
+    {% if bg_color %}background-color: {{ bg_color }};{% endif %}
+    {% if bg_image %}background-image: url('{{ bg_image|escape_url }}'); background-size: cover; background-position: center;{% endif %}
+    {% if text_color %}color: {{ text_color }};{% endif %}
+    {{ module.style.padding.css }}
+  ">
+
+  <div class="tvsci-container">
+
+    {% if module.show_header %}
+    <div class="parallax-image-grid__header flex flex-col items-center text-center gap-4 mb-10 md:mb-14 max-w-[760px] mx-auto">
+      {% if module.eyebrow %}
+      <p class="tvsci-eyebrow !m-0">{{ module.eyebrow }}</p>
+      {% endif %}
+
+      {% if module.heading.value %}
+      <{{ module.heading.header_tag }}
+        class="parallax-image-grid-heading font-{{ module.heading.font_weight }} text-tvs-green-dark !m-0">
+        {{ module.heading.value }}
+      </{{ module.heading.header_tag }}>
+      {% endif %}
+
+      {% if module.body_copy %}
+      <div class="tvsci-lead">{{ module.body_copy }}</div>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    <div class="parallax-image-grid__grid">
+
+      {# ---------- LEFT COLUMN ---------- #}
+      <div class="parallax-image-grid__col parallax-image-grid__col--left">
+        {% for card in module.left_cards %}
+          {% set ratio = card.aspect_ratio %}
+          <figure class="parallax-image-grid__card" style="{% if ratio and ratio != 'auto' %}aspect-ratio: {{ ratio }};{% endif %}">
+            {% if card.image.src %}
+            <img
+              class="parallax-image-grid__img"
+              src="{{ card.image.src|escape_url }}"
+              alt="{{ card.image.alt|escape_attr }}"
+              {% if card.image.loading != 'disabled' %}loading="{{ card.image.loading|escape_attr }}"{% endif %}
+              {% if card.image.width %}width="{{ card.image.width|escape_attr }}"{% endif %}
+              {% if card.image.height %}height="{{ card.image.height|escape_attr }}"{% endif %}>
+            {% endif %}
+
+            {% if card.overlay_heading or card.overlay_value %}
+            <figcaption class="parallax-image-grid__overlay">
+              {% if card.overlay_heading %}
+              <span class="parallax-image-grid__overlay-heading">{{ card.overlay_heading }}</span>
+              {% endif %}
+              {% if card.overlay_value or card.overlay_delta %}
+              <span class="parallax-image-grid__overlay-row">
+                {% if card.overlay_value %}
+                <span class="parallax-image-grid__overlay-value">{{ card.overlay_value }}</span>
+                {% endif %}
+                {% if card.overlay_delta %}
+                <span class="parallax-image-grid__overlay-delta">{{ card.overlay_delta }}</span>
+                {% endif %}
+              </span>
+              {% endif %}
+            </figcaption>
+            {% endif %}
+          </figure>
+        {% endfor %}
+      </div>
+
+      {# ---------- CENTER COLUMN ---------- #}
+      <div class="parallax-image-grid__col parallax-image-grid__col--center">
+        {% set ratio = module.center_card.aspect_ratio %}
+        <figure class="parallax-image-grid__card parallax-image-grid__card--center" style="{% if ratio and ratio != 'auto' %}aspect-ratio: {{ ratio }};{% endif %}">
+          {% if module.center_card.image.src %}
+          <img
+            class="parallax-image-grid__img"
+            src="{{ module.center_card.image.src|escape_url }}"
+            alt="{{ module.center_card.image.alt|escape_attr }}"
+            {% if module.center_card.image.loading != 'disabled' %}loading="{{ module.center_card.image.loading|escape_attr }}"{% endif %}
+            {% if module.center_card.image.width %}width="{{ module.center_card.image.width|escape_attr }}"{% endif %}
+            {% if module.center_card.image.height %}height="{{ module.center_card.image.height|escape_attr }}"{% endif %}>
+          {% endif %}
+
+          {% if module.center_card.overlay_heading or module.center_card.overlay_value %}
+          <figcaption class="parallax-image-grid__overlay parallax-image-grid__overlay--center">
+            {% if module.center_card.overlay_heading %}
+            <span class="parallax-image-grid__overlay-heading">
+              <span class="parallax-image-grid__overlay-check" aria-hidden="true">&#10003;</span>
+              {{ module.center_card.overlay_heading }}
+            </span>
+            {% endif %}
+            {% if module.center_card.overlay_value %}
+            <span class="parallax-image-grid__overlay-subtext">{{ module.center_card.overlay_value }}</span>
+            {% endif %}
+          </figcaption>
+          {% endif %}
+        </figure>
+      </div>
+
+      {# ---------- RIGHT COLUMN ---------- #}
+      <div class="parallax-image-grid__col parallax-image-grid__col--right">
+        {% for card in module.right_cards %}
+          {% set ratio = card.aspect_ratio %}
+          <figure class="parallax-image-grid__card" style="{% if ratio and ratio != 'auto' %}aspect-ratio: {{ ratio }};{% endif %}">
+            {% if card.image.src %}
+            <img
+              class="parallax-image-grid__img"
+              src="{{ card.image.src|escape_url }}"
+              alt="{{ card.image.alt|escape_attr }}"
+              {% if card.image.loading != 'disabled' %}loading="{{ card.image.loading|escape_attr }}"{% endif %}
+              {% if card.image.width %}width="{{ card.image.width|escape_attr }}"{% endif %}
+              {% if card.image.height %}height="{{ card.image.height|escape_attr }}"{% endif %}>
+            {% endif %}
+
+            {% if card.overlay_heading or card.overlay_value %}
+            <figcaption class="parallax-image-grid__overlay">
+              {% if card.overlay_heading %}
+              <span class="parallax-image-grid__overlay-heading">{{ card.overlay_heading }}</span>
+              {% endif %}
+              {% if card.overlay_value or card.overlay_delta %}
+              <span class="parallax-image-grid__overlay-row">
+                {% if card.overlay_value %}
+                <span class="parallax-image-grid__overlay-value">{{ card.overlay_value }}</span>
+                {% endif %}
+                {% if card.overlay_delta %}
+                <span class="parallax-image-grid__overlay-delta">{{ card.overlay_delta }}</span>
+                {% endif %}
+              </span>
+              {% endif %}
+            </figcaption>
+            {% endif %}
+          </figure>
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+</section>

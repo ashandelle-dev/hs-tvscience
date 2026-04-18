@@ -1,0 +1,386 @@
+[
+  {
+    "name": "show_header",
+    "label": "Show heading above grid",
+    "type": "boolean",
+    "display": "toggle",
+    "default": false
+  },
+
+  {
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "type": "text",
+    "allow_new_line": false,
+    "visibility": {
+      "controlling_field": "show_header",
+      "controlling_value_regex": "true",
+      "operator": "EQUAL"
+    },
+    "default": "Performance at scale"
+  },
+
+  {
+    "name": "heading",
+    "label": "Heading",
+    "type": "group",
+    "tab": "CONTENT",
+    "visibility": {
+      "controlling_field": "show_header",
+      "controlling_value_regex": "true",
+      "operator": "EQUAL"
+    },
+    "children": [
+      {
+        "name": "value",
+        "label": "Heading content",
+        "type": "text",
+        "allow_new_line": false,
+        "default": "See every outcome that matters"
+      },
+      {
+        "name": "header_tag",
+        "label": "Heading level",
+        "type": "choice",
+        "required": true,
+        "display": "select",
+        "choices": [
+          ["h1", "H1"], ["h2", "H2"], ["h3", "H3"], ["h4", "H4"], ["h5", "H5"], ["h6", "H6"], ["p", "P"]
+        ],
+        "default": "h2"
+      },
+      {
+        "name": "heading_size",
+        "label": "Heading Size",
+        "type": "number",
+        "suffix": "px",
+        "inline_help_text": "Set to 0 to use the default size",
+        "default": 48
+      },
+      {
+        "name": "heading_size_mobile",
+        "label": "Heading Size Mobile",
+        "type": "number",
+        "suffix": "px",
+        "inline_help_text": "Set to 0 to use the default size",
+        "default": 36
+      },
+      {
+        "name": "font_weight",
+        "label": "Font Weight",
+        "type": "choice",
+        "display": "select",
+        "choices": [["normal", "Normal"], ["semibold", "Semibold"], ["bold", "Bold"]],
+        "default": "semibold"
+      }
+    ]
+  },
+
+  {
+    "name": "body_copy",
+    "label": "Body",
+    "type": "richtext",
+    "visibility": {
+      "controlling_field": "show_header",
+      "controlling_value_regex": "true",
+      "operator": "EQUAL"
+    },
+    "default": "<p>Every campaign, every household, every outcome — measured.</p>"
+  },
+
+  {
+    "name": "left_cards",
+    "label": "Left column cards",
+    "type": "group",
+    "tab": "CONTENT",
+    "occurrence": { "min": 1, "max": 6, "default": 3, "sorting_label_field": "left_cards.overlay_heading" },
+    "children": [
+      {
+        "name": "image",
+        "label": "Image",
+        "type": "image",
+        "responsive": true,
+        "resizable": true,
+        "show_loading": true,
+        "default": { "size_type": "exact", "src": "", "alt": "", "loading": "lazy", "width": 800, "height": 600 }
+      },
+      {
+        "name": "aspect_ratio",
+        "label": "Card aspect ratio",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["16/9", "16:9 (wide)"],
+          ["4/3", "4:3"],
+          ["1/1", "1:1 (square)"],
+          ["3/4", "3:4 (tall)"],
+          ["auto", "Use image natural size"]
+        ],
+        "default": "4/3"
+      },
+      {
+        "name": "overlay_heading",
+        "label": "Overlay label (optional)",
+        "type": "text",
+        "allow_new_line": false,
+        "default": ""
+      },
+      {
+        "name": "overlay_value",
+        "label": "Overlay value (optional)",
+        "type": "text",
+        "allow_new_line": false,
+        "default": ""
+      },
+      {
+        "name": "overlay_delta",
+        "label": "Overlay delta badge (optional)",
+        "type": "text",
+        "allow_new_line": false,
+        "inline_help_text": "E.g. \"▴ 1.2%\". Displays a small pill next to the value.",
+        "default": ""
+      }
+    ],
+    "default": [
+      {
+        "image": { "size_type": "exact", "src": "https://tvscientific.com/hubfs/convertion-rate.png", "alt": "Conversion rate: 6%, up 1.2%", "loading": "lazy", "width": 800, "height": 600 },
+        "aspect_ratio": "auto",
+        "overlay_heading": "",
+        "overlay_value": "",
+        "overlay_delta": ""
+      },
+      {
+        "image": { "size_type": "exact", "src": "https://tvscientific.com/hubfs/retargeting.png", "alt": "Retargeting toggle on a phone", "loading": "lazy", "width": 800, "height": 600 },
+        "aspect_ratio": "auto",
+        "overlay_heading": "",
+        "overlay_value": "",
+        "overlay_delta": ""
+      },
+      {
+        "image": { "size_type": "exact", "src": "https://tvscientific.com/hubfs/app-downloads.png", "alt": "App downloads trending up", "loading": "lazy", "width": 800, "height": 600 },
+        "aspect_ratio": "auto",
+        "overlay_heading": "",
+        "overlay_value": "",
+        "overlay_delta": ""
+      }
+    ]
+  },
+
+  {
+    "name": "center_card",
+    "label": "Center column card",
+    "type": "group",
+    "tab": "CONTENT",
+    "children": [
+      {
+        "name": "image",
+        "label": "Image",
+        "type": "image",
+        "responsive": true,
+        "resizable": true,
+        "show_loading": true,
+        "default": { "size_type": "exact", "src": "https://tvscientific.com/hubfs/purchase.png", "alt": "Purchase Complete — Audience Detail", "loading": "lazy", "width": 960, "height": 1200 }
+      },
+      {
+        "name": "aspect_ratio",
+        "label": "Card aspect ratio",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["16/9", "16:9 (wide)"],
+          ["4/3", "4:3"],
+          ["1/1", "1:1 (square)"],
+          ["3/4", "3:4 (tall)"],
+          ["auto", "Use image natural size"]
+        ],
+        "default": "auto"
+      },
+      {
+        "name": "overlay_heading",
+        "label": "Overlay label (optional)",
+        "type": "text",
+        "allow_new_line": false,
+        "default": ""
+      },
+      {
+        "name": "overlay_value",
+        "label": "Overlay subtext (optional)",
+        "type": "text",
+        "allow_new_line": false,
+        "default": ""
+      },
+      {
+        "name": "overlay_delta",
+        "label": "Overlay delta badge (optional)",
+        "type": "text",
+        "allow_new_line": false,
+        "default": ""
+      }
+    ]
+  },
+
+  {
+    "name": "right_cards",
+    "label": "Right column cards",
+    "type": "group",
+    "tab": "CONTENT",
+    "occurrence": { "min": 1, "max": 6, "default": 2, "sorting_label_field": "right_cards.overlay_heading" },
+    "children": [
+      {
+        "name": "image",
+        "label": "Image",
+        "type": "image",
+        "responsive": true,
+        "resizable": true,
+        "show_loading": true,
+        "default": { "size_type": "exact", "src": "", "alt": "", "loading": "lazy", "width": 800, "height": 600 }
+      },
+      {
+        "name": "aspect_ratio",
+        "label": "Card aspect ratio",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["16/9", "16:9 (wide)"],
+          ["4/3", "4:3"],
+          ["1/1", "1:1 (square)"],
+          ["3/4", "3:4 (tall)"],
+          ["auto", "Use image natural size"]
+        ],
+        "default": "3/4"
+      },
+      {
+        "name": "overlay_heading",
+        "label": "Overlay label (optional)",
+        "type": "text",
+        "allow_new_line": false,
+        "default": ""
+      },
+      {
+        "name": "overlay_value",
+        "label": "Overlay value (optional)",
+        "type": "text",
+        "allow_new_line": false,
+        "default": ""
+      },
+      {
+        "name": "overlay_delta",
+        "label": "Overlay delta badge (optional)",
+        "type": "text",
+        "allow_new_line": false,
+        "default": ""
+      }
+    ],
+    "default": [
+      {
+        "image": { "size_type": "exact", "src": "https://tvscientific.com/hubfs/household-reach.png", "alt": "Household reach: 36.7M", "loading": "lazy", "width": 800, "height": 600 },
+        "aspect_ratio": "auto",
+        "overlay_heading": "",
+        "overlay_value": "",
+        "overlay_delta": ""
+      },
+      {
+        "image": { "size_type": "exact", "src": "https://tvscientific.com/hubfs/inventory.png", "alt": "Inventory units: 120, up 12.89%", "loading": "lazy", "width": 800, "height": 600 },
+        "aspect_ratio": "auto",
+        "overlay_heading": "",
+        "overlay_value": "",
+        "overlay_delta": ""
+      }
+    ]
+  },
+
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "parallax",
+        "label": "Parallax motion",
+        "type": "group",
+        "children": [
+          {
+            "name": "enabled",
+            "label": "Enable scroll parallax",
+            "type": "boolean",
+            "display": "toggle",
+            "default": true
+          },
+          {
+            "name": "side_offset",
+            "label": "Left / right rise (px)",
+            "type": "number",
+            "suffix": "px",
+            "min": 0,
+            "max": 400,
+            "inline_help_text": "How far side columns translate upward at full scroll progress.",
+            "default": 90
+          },
+          {
+            "name": "center_drift",
+            "label": "Center drift (%)",
+            "type": "number",
+            "suffix": "%",
+            "min": 0,
+            "max": 50,
+            "inline_help_text": "How far the center column drifts downward at full scroll progress.",
+            "default": 5
+          }
+        ]
+      },
+      {
+        "name": "mobile",
+        "label": "Mobile layout",
+        "type": "group",
+        "children": [
+          {
+            "name": "layout",
+            "label": "Mobile layout",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              ["stack", "Stack — single column, all cards"],
+              ["two-col", "2 columns — half the height"],
+              ["center-only", "Center only — hide side cards"]
+            ],
+            "inline_help_text": "How the grid collapses on screens <= 768px wide.",
+            "default": "two-col"
+          }
+        ]
+      },
+      {
+        "name": "background_color",
+        "label": "Background color",
+        "type": "color",
+        "default": { "color": null, "opacity": 100 }
+      },
+      {
+        "name": "background_image",
+        "label": "Background image",
+        "type": "image",
+        "responsive": true,
+        "resizable": true,
+        "show_loading": true,
+        "default": { "size_type": "exact", "src": "", "alt": "", "loading": "lazy", "width": 1920, "height": 1080 }
+      },
+      {
+        "name": "text_color",
+        "label": "Text color",
+        "type": "color",
+        "default": { "color": null, "opacity": 100 }
+      },
+      {
+        "name": "padding",
+        "label": "Padding",
+        "type": "spacing",
+        "default": {
+          "padding": {
+            "top": { "value": 64, "units": "px" },
+            "bottom": { "value": 64, "units": "px" }
+          }
+        }
+      }
+    ]
+  }
+]

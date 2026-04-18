@@ -32,6 +32,19 @@
     height: 100%;
     object-fit: cover;
     z-index: 0;
+    pointer-events: none;
+  }
+
+  .cg-hero .video-bg::-webkit-media-controls {
+    display: none !important;
+  }
+
+  .cg-hero .video-bg::-webkit-media-controls-enclosure {
+    display: none !important;
+  }
+
+  .cg-hero .video-bg::-webkit-media-controls-start-playback-button {
+    display: none !important;
   }
 
   .cg-hero .hero-content {
@@ -149,6 +162,7 @@
     outline: none;
     background: white;
     color: #1a1a1a;
+    border: 2px solid #71E09D;
   }
 
   .sop-inline-form .hs-form .hs-input::placeholder {
@@ -221,7 +235,7 @@
 
     <!-- HERO TITLE AREA -->
     <section id="cg-hero" class="cg-hero relative overflow-hidden py-20 md:py-28 bg-white">
-      <video class="video-bg" autoplay muted loop playsinline>
+      <video class="video-bg" autoplay muted loop playsinline webkit-playsinline disablePictureInPicture preload="auto" aria-hidden="true">
         <source src="https://tvscientific.com/hubfs/consumer-guide/tvSci-Consumers-Hero.mp4?hsCacheBuster=9353" type="video/mp4">
       </video>
       <div class="hero-content max-w-[1200px] mx-auto px-4 md:px-[52px]">
@@ -293,137 +307,15 @@
   <!-- Full-width dashed bottom line -->
   <div class="cg-dashed-line-h"></div>
 
-  <!-- ===== S3: TV TRUST + HOW CONSUMERS WATCH CHART ===== -->
-  <section id="cg-trust" class="bg-white py-16 md:py-20">
-    <div class="max-w-[1200px] mx-auto px-4">
-      <div class="max-w-[800px] mx-auto mb-12">
-        <h2 class="text-tvs-black !text-[32px] md:!text-[52px] lg:!text-[80px] !font-semibold !leading-[0.9] !mb-8">
-          TV&rsquo;s credibility <span class="text-[#198960]">edge</span>
-        </h2>
-        <p class="text-tvs-black text-lg leading-relaxed mb-4">
-          TV remains one of the most trusted screens in consumers&rsquo; lives. It&rsquo;s familiar, immersive, and grounded in decades of viewer confidence.
-        </p>
-        <p class="text-tvs-black text-lg leading-relaxed mb-0">
-          As viewing has expanded beyond traditional cable into streaming apps, connected devices, and live digital environments, TV has retained something other media channels struggle to replicate: credibility.
-        </p>
-      </div>
-
-      <!-- How consumers watch bar chart -->
-      <div class="rounded-lg p-6 md:p-10 bg-[#FBFCFD] border border-[#91F2CB]" >
-        <div class="flex flex-wrap items-start justify-between gap-4 mb-8">
-          <h3 class="text-tvs-black text-[24px] md:text-[32px] font-semibold leading-[33px] mb-0">How consumers watch TV today</h3>
-          <div class="flex items-center gap-4 rounded px-4 py-2 border border-[#91F2CB]" style="background: linear-gradient(90deg, rgba(35,229,150,0.05) 22.12%, rgba(174,228,255,0.05) 73.56%), linear-gradient(180deg, rgba(35,229,150,0.04) 0%, rgba(243,255,246,0.05) 61.06%, rgba(19,127,83,0.04) 100%), rgba(174,228,255,0.20);">
-            <div class="flex items-center gap-2">
-              <span class="w-5 h-5 rounded bg-tvs-green inline-block"></span>
-              <span class="text-tvs-black text-base">Streaming</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <span class="w-5 h-5 rounded bg-tvs-green-accessible inline-block"></span>
-              <span class="text-tvs-black text-base">Live</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Mobile: horizontal bars -->
-        <div class="flex flex-col gap-5 md:hidden">
-          <div>
-            <div class="flex items-baseline justify-between mb-1.5">
-              <span class="text-[#0f2d29] text-[15px] leading-snug">A mix of streaming and live TV</span>
-              <span class="text-[#0f2d29] text-[20px] font-semibold ml-3 shrink-0">34%</span>
-            </div>
-            <div class="h-9 bg-[#e8f5ef] rounded-md overflow-hidden">
-              <div class="h-full bg-[#91f2cb] rounded-md cg-horizontal-bar" style="--bar-width: 100%;"></div>
-            </div>
-          </div>
-          <div>
-            <div class="flex items-baseline justify-between mb-1.5">
-              <span class="text-[#0f2d29] text-[15px] leading-snug">Only streaming apps (i.e., Netflix, Prime Video)</span>
-              <span class="text-[#0f2d29] text-[20px] font-semibold ml-3 shrink-0">34%</span>
-            </div>
-            <div class="h-9 bg-[#e8f5ef] rounded-md overflow-hidden">
-              <div class="h-full bg-tvs-green rounded-md cg-horizontal-bar" style="--bar-width: 100%;"></div>
-            </div>
-          </div>
-          <div>
-            <div class="flex items-baseline justify-between mb-1.5">
-              <span class="text-[#0f2d29] text-[15px] leading-snug">Mostly streaming apps</span>
-              <span class="text-[#0f2d29] text-[20px] font-semibold ml-3 shrink-0">15%</span>
-            </div>
-            <div class="h-9 bg-[#e8f5ef] rounded-md overflow-hidden">
-              <div class="h-full bg-tvs-green rounded-md cg-horizontal-bar" style="--bar-width: 44%;"></div>
-            </div>
-          </div>
-          <div>
-            <div class="flex items-baseline justify-between mb-1.5">
-              <span class="text-[#0f2d29] text-[15px] leading-snug">Mostly live TV</span>
-              <span class="text-[#0f2d29] text-[20px] font-semibold ml-3 shrink-0">13%</span>
-            </div>
-            <div class="h-9 bg-[#e8f5ef] rounded-md overflow-hidden">
-              <div class="h-full bg-tvs-green-accessible rounded-md cg-horizontal-bar" style="--bar-width: 38%;"></div>
-            </div>
-          </div>
-          <div>
-            <div class="flex items-baseline justify-between mb-1.5">
-              <span class="text-[#0f2d29] text-[15px] leading-snug">Only live TV</span>
-              <span class="text-[#0f2d29] text-[20px] font-semibold ml-3 shrink-0">6%</span>
-            </div>
-            <div class="h-9 bg-[#e8f5ef] rounded-md overflow-hidden">
-              <div class="h-full bg-tvs-green-accessible rounded-md cg-horizontal-bar" style="--bar-width: 18%;"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Desktop: vertical bars -->
-        <div class="hidden md:flex justify-center gap-8">
-          <div class="flex-1 max-w-[228px] text-center">
-            <div class="relative mx-auto w-full max-w-[128px]" style="height: 178px;">
-              <div class="absolute bottom-0 left-0 right-0 rounded-md cg-vertical-bar bg-[#91f2cb]" style="--bar-height: 178px;"></div>
-              <span class="absolute bottom-3 left-0 right-0 text-center text-[#0f2d29] text-[22px] font-semibold">34%</span>
-            </div>
-            <p class="text-[#0f2d29] text-[16px] leading-tight mt-2 mb-0">A mix of streaming and live TV</p>
-          </div>
-          <div class="flex-1 max-w-[228px] text-center">
-            <div class="relative mx-auto w-full max-w-[128px]" style="height: 178px;">
-              <div class="absolute bottom-0 left-0 right-0 rounded-md cg-vertical-bar bg-tvs-green" style="--bar-height: 174px;"></div>
-              <span class="absolute bottom-3 left-0 right-0 text-center text-[#0f2d29] text-[22px] font-semibold">34%</span>
-            </div>
-            <p class="text-[#0f2d29] text-[16px] leading-tight mt-2 mb-0">Only streaming apps (i.e., Netflix, Prime Video)</p>
-          </div>
-          <div class="flex-1 max-w-[228px] text-center">
-            <div class="relative mx-auto w-full max-w-[128px]" style="height: 178px;">
-              <div class="absolute bottom-0 left-0 right-0 rounded-md cg-vertical-bar bg-tvs-green" style="--bar-height: 94px;"></div>
-              <span class="absolute bottom-3 left-0 right-0 text-center text-[#0f2d29] text-[22px] font-semibold">15%</span>
-            </div>
-            <p class="text-[#0f2d29] text-[16px] leading-tight mt-2 mb-0">Mostly streaming apps</p>
-          </div>
-          <div class="flex-1 max-w-[228px] text-center">
-            <div class="relative mx-auto w-full max-w-[128px]" style="height: 178px;">
-              <div class="absolute bottom-0 left-0 right-0 rounded-md cg-vertical-bar bg-tvs-green-accessible" style="--bar-height: 74px;"></div>
-              <span class="absolute bottom-3 left-0 right-0 text-center text-white text-[22px] font-semibold">13%</span>
-            </div>
-            <p class="text-[#0f2d29] text-[16px] leading-tight mt-2 mb-0">Mostly live TV</p>
-          </div>
-          <div class="flex-1 max-w-[228px] text-center">
-            <div class="relative mx-auto w-full max-w-[128px]" style="height: 178px;">
-              <div class="absolute bottom-0 left-0 right-0 rounded-md cg-vertical-bar bg-tvs-green-accessible" style="--bar-height: 44px;"></div>
-              <span class="absolute bottom-2 left-0 right-0 text-center text-white text-[22px] font-semibold">6%</span>
-            </div>
-            <p class="text-[#0f2d29] text-[16px] leading-tight mt-2 mb-0">Only live TV</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="sop-form" class="bg-tvs-green-dark py-20 md:py-28">
+  <section id="sop-form" class="bg-[#F3FFF6] py-20 md:py-28">
     <div class="max-w-[720px] mx-auto px-4 text-center">
       <!-- Heading -->
-      <h2 class="text-white !text-[32px] md:!text-[48px] !leading-[1.1] font-bold !mb-4">
+      <h2 class="!text-[32px] md:!text-[48px] !leading-[1.1] font-bold !mb-4 text-[#20252B]">
         Consumer Trends Report
       </h2>
 
       <!-- Subtext -->
-      <p class="text-white text-lg md:text-xl mb-8">
+      <p class="text-lg md:text-xl mb-8 text-[#20252B]">
         Sign up below to get the full report.
       </p>
 
@@ -437,6 +329,7 @@
     </div>
   </section>
 
+
   {% dnd_area "dnd_area" class='dnd-empty', label='Drag and Drop Area' %}
 
   {% end_dnd_area %}
@@ -446,6 +339,27 @@
 <script>
   (function() {
     'use strict';
+
+    function initHeroBackgroundVideo() {
+      var heroVideo = document.querySelector('#cg-hero .video-bg');
+      if (!heroVideo) return;
+
+      function tryPlay() {
+        heroVideo.muted = true;
+        var p = heroVideo.play();
+        if (p && typeof p.then === 'function') {
+          p.catch(function() {});
+        }
+      }
+
+      tryPlay();
+      if (heroVideo.readyState < 2) {
+        heroVideo.addEventListener('loadeddata', tryPlay, { once: true });
+      }
+      document.addEventListener('visibilitychange', function() {
+        if (!document.hidden) tryPlay();
+      });
+    }
 
     function initChartBars() {
       var bars = document.querySelectorAll('.cg-vertical-bar, .cg-horizontal-bar');
@@ -465,10 +379,15 @@
       });
     }
 
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initChartBars);
-    } else {
+    function init() {
+      initHeroBackgroundVideo();
       initChartBars();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
     }
   })();
 </script>

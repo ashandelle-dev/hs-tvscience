@@ -36,6 +36,20 @@
     height: 100%;
     object-fit: cover;
     z-index: 0;
+    /* Decorative background: don’t let taps focus the native video layer (iOS play overlay). */
+    pointer-events: none;
+  }
+
+  .cg-hero .video-bg::-webkit-media-controls {
+    display: none !important;
+  }
+
+  .cg-hero .video-bg::-webkit-media-controls-enclosure {
+    display: none !important;
+  }
+
+  .cg-hero .video-bg::-webkit-media-controls-start-playback-button {
+    display: none !important;
   }
 
   .cg-hero .hero-overlay {
@@ -56,6 +70,43 @@
   .sop-progress-bar {
     transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
     width: 0;
+  }
+
+  /*
+   * Progress rows: mobile = % → copy → bar (DOM is copy then %; flex order swaps on small screens).
+   * md+ = copy left, stat on the right, bar below.
+   */
+  .cg-progress-label-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding-top: 0.125rem;
+    padding-bottom: 0.125rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .cg-progress-label-row > :first-child {
+    order: 2;
+  }
+
+  .cg-progress-label-row > :last-child {
+    order: 1;
+  }
+
+  @media (min-width: 768px) {
+    .cg-progress-label-row {
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 0;
+      margin-bottom: 0.5rem;
+    }
+
+    .cg-progress-label-row > :first-child,
+    .cg-progress-label-row > :last-child {
+      order: unset;
+    }
   }
 
   .sop-stat-box {
@@ -303,7 +354,7 @@
 
     <!-- HERO TITLE AREA -->
     <section id="cg-hero" class="cg-hero relative overflow-hidden py-20 md:py-28 bg-white">
-      <video class="video-bg" autoplay muted loop playsinline>
+      <video class="video-bg" autoplay muted loop playsinline webkit-playsinline disablePictureInPicture preload="auto" aria-hidden="true">
         <source src="https://tvscientific.com/hubfs/consumer-guide/tvSci-Consumers-Hero.mp4?hsCacheBuster=9353" type="video/mp4">
       </video>
       <div class="hero-content max-w-[1200px] mx-auto px-4 md:px-[52px]">
@@ -761,11 +812,11 @@
       </div>
 
       <div class=" border border-[#91F2CB] rounded-xl p-8 md:p-12 mb-12" style="background: linear-gradient(269deg, rgba(255,255,255,0.2) 1%, rgba(145,242,203,0.2) 50%, rgba(255,255,255,0.2) 100%);">
-        <div class="space-y-3">
+        <div class="space-y-6 md:space-y-3">
           <div class="flex md:items-center gap-3 md:gap-4 py-3 md:flex-row flex-col">
             <span class="text-tvs-black text-[36px] md:text-[52px] font-medium leading-none shrink-0 w-[113px]">42%</span>
             <div class="flex-1">
-              <p class="text-tvs-black text-[18px] md:text-[22px] font-medium leading-snug tracking-wide mb-3">say seeing a brand on TV makes them trust it more</p>
+              <p class="text-tvs-black text-[18px] md:text-[22px] font-medium leading-snug tracking-wide mb-4 md:mb-3">say seeing a brand on TV makes them trust it more</p>
               <div class="h-4 bg-white rounded">
                 <div class="h-full bg-tvs-green rounded sop-progress-bar" data-width="42%"></div>
               </div>
@@ -774,7 +825,7 @@
           <div class="flex md:items-center gap-3 md:gap-4 py-3 md:flex-row flex-col">
             <span class="text-tvs-black text-[36px] md:text-[52px] font-medium leading-none shrink-0 w-[113px]">43%</span>
             <div class="flex-1">
-              <p class="text-tvs-black text-[18px] md:text-[22px] font-medium leading-snug tracking-wide mb-3">say seeing a brand on TV makes them trust it more when they see it <strong>again on social</strong></p>
+              <p class="text-tvs-black text-[18px] md:text-[22px] font-medium leading-snug tracking-wide mb-4 md:mb-3">say seeing a brand on TV makes them trust it more when they see it <strong>again on social</strong></p>
               <div class="h-4 bg-white rounded">
                 <div class="h-full bg-tvs-green rounded sop-progress-bar" data-width="43%"></div>
               </div>
@@ -783,7 +834,7 @@
           <div class="flex md:items-center gap-3 md:gap-4 py-3 md:flex-row flex-col">
             <span class="text-tvs-black text-[36px] md:text-[52px] font-medium leading-none shrink-0 w-[113px]">43%</span>
             <div class="flex-1">
-              <p class="text-tvs-black text-[18px] md:text-[22px] font-medium leading-snug tracking-wide mb-3">say <strong>seeing a brand on social first</strong> makes the TV ad feel more legitimate</p>
+              <p class="text-tvs-black text-[18px] md:text-[22px] font-medium leading-snug tracking-wide mb-4 md:mb-3">say <strong>seeing a brand on social first</strong> makes the TV ad feel more legitimate</p>
               <div class="h-4 bg-white rounded">
                 <div class="h-full bg-tvs-green rounded sop-progress-bar" data-width="43%"></div>
               </div>
@@ -889,12 +940,12 @@
       <div class="bg-[rgba(145,242,203,0.1)] rounded-[32px] md:p-12 p-6 border border-[#91F2CB]">
         <h3 class="text-tvs-black text-[28px] md:text-[40px] font-semibold leading-[1.2] mb-2">Where people watch TV</h3>
         <div class="md:space-y-2 space-y-8">
-          <div class="flex md:items-center md:flex-row flex-col md:gap-6 gap-1 py-3">
+          <div class="flex md:items-center md:flex-row flex-col md:gap-6 gap-4 py-3">
             <div class="w-[56px] h-[56px] md:w-[72px] md:h-[72px] rounded-2xl border border-white flex items-center justify-center shrink-0" style="background: linear-gradient(90deg, rgba(255,255,255,0.2) 0%, rgba(174,228,255,0.2) 50%, rgba(255,255,255,0.2) 100%), linear-gradient(90deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.3) 100%);">
               {% module "cg_lottie_smarttv" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player", label="Smart TV", source="https://tvscientific.com/hubfs/consumer-guide/lottie/5-SmartTV.json", loop="true", autoplay="true" %}
             </div>
             <div class="flex-1">
-              <div class="flex md:items-end md:flex-row flex-col justify-between py-0.5 mb-2">
+              <div class="cg-progress-label-row">
                 <span class="text-tvs-black text-[18px] md:text-[24px] leading-snug">Smart TVs</span>
                 <span class="text-tvs-black text-[32px] md:text-[42px] font-medium leading-none">68%</span>
               </div>
@@ -903,12 +954,12 @@
               </div>
             </div>
           </div>
-          <div class="flex md:items-center md:flex-row flex-col md:gap-6 gap-1 py-3">
+          <div class="flex md:items-center md:flex-row flex-col md:gap-6 gap-4 py-3">
             <div class="w-[56px] h-[56px] md:w-[72px] md:h-[72px] rounded-2xl border border-white flex items-center justify-center shrink-0" style="background: linear-gradient(90deg, rgba(255,255,255,0.2) 0%, rgba(174,228,255,0.2) 50%, rgba(255,255,255,0.2) 100%), linear-gradient(90deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.3) 100%);">
               {% module "cg_lottie_mobile" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player", label="Mobile", source="https://tvscientific.com/hubfs/consumer-guide/lottie/6-Mobile.json", loop="true", autoplay="true" %}
             </div>
             <div class="flex-1">
-              <div class="flex md:items-end md:flex-row flex-col justify-between py-0.5 mb-2">
+              <div class="cg-progress-label-row">
                 <span class="text-tvs-black text-[18px] md:text-[24px] leading-snug">Mobile</span>
                 <span class="text-tvs-black text-[32px] md:text-[42px] font-medium leading-none">54%</span>
               </div>
@@ -917,12 +968,12 @@
               </div>
             </div>
           </div>
-          <div class="flex md:items-center md:flex-row flex-col md:gap-6 gap-1 py-3">
+          <div class="flex md:items-center md:flex-row flex-col md:gap-6 gap-4 py-3">
             <div class="w-[56px] h-[56px] md:w-[72px] md:h-[72px] rounded-2xl border border-white flex items-center justify-center shrink-0" style="background: linear-gradient(90deg, rgba(255,255,255,0.2) 0%, rgba(174,228,255,0.2) 50%, rgba(255,255,255,0.2) 100%), linear-gradient(90deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.3) 100%);">
               {% module "cg_lottie_streaming" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player", label="Streaming", source="https://tvscientific.com/hubfs/consumer-guide/lottie/7-Streaming.json", loop="true", autoplay="true" %}
             </div>
             <div class="flex-1">
-              <div class="flex md:items-end md:flex-row flex-col justify-between py-0.5 mb-2">
+              <div class="cg-progress-label-row">
                 <span class="text-tvs-black text-[18px] md:text-[24px] leading-snug">Streaming devices</span>
                 <span class="text-tvs-black text-[32px] md:text-[42px] font-medium leading-none">41%</span>
               </div>
@@ -931,12 +982,12 @@
               </div>
             </div>
           </div>
-          <div class="flex md:items-center md:flex-row flex-col md:gap-6 gap-1 py-3">
+          <div class="flex md:items-center md:flex-row flex-col md:gap-6 gap-4 py-3">
             <div class="w-[56px] h-[56px] md:w-[72px] md:h-[72px] rounded-2xl border border-white flex items-center justify-center shrink-0" style="background: linear-gradient(90deg, rgba(255,255,255,0.2) 0%, rgba(174,228,255,0.2) 50%, rgba(255,255,255,0.2) 100%), linear-gradient(90deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.3) 100%);">
               {% module "cg_lottie_laptop" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player", label="Laptop", source="https://tvscientific.com/hubfs/consumer-guide/lottie/8-Laptop.json", loop="true", autoplay="true" %}
             </div>
             <div class="flex-1">
-              <div class="flex md:items-end md:flex-row flex-col justify-between py-0.5 mb-2">
+              <div class="cg-progress-label-row">
                 <span class="text-tvs-black text-[18px] md:text-[24px] leading-snug">Laptops</span>
                 <span class="text-tvs-black text-[32px] md:text-[42px] font-medium leading-none">32%</span>
               </div>
@@ -945,12 +996,12 @@
               </div>
             </div>
           </div>
-          <div class="flex md:items-center md:flex-row flex-col md:gap-6 gap-1 py-3">
+          <div class="flex md:items-center md:flex-row flex-col md:gap-6 gap-4 py-3">
             <div class="w-[56px] h-[56px] md:w-[72px] md:h-[72px] rounded-2xl border border-white flex items-center justify-center shrink-0" style="background: linear-gradient(90deg, rgba(255,255,255,0.2) 0%, rgba(174,228,255,0.2) 50%, rgba(255,255,255,0.2) 100%), linear-gradient(90deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.3) 100%);">
               {% module "cg_lottie_tablet" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player", label="Tablet", source="https://tvscientific.com/hubfs/consumer-guide/lottie/9-Tablet.json", loop="true", autoplay="true" %}
             </div>
             <div class="flex-1">
-              <div class="flex md:items-end md:flex-row flex-col justify-between py-0.5 mb-2">
+              <div class="cg-progress-label-row">
                 <span class="text-tvs-black text-[18px] md:text-[24px] leading-snug">Tablets</span>
                 <span class="text-tvs-black text-[32px] md:text-[42px] font-medium leading-none">23%</span>
               </div>
@@ -959,12 +1010,12 @@
               </div>
             </div>
           </div>
-          <div class="flex md:items-center md:flex-row flex-col md:gap-6 gap-1 py-3">
+          <div class="flex md:items-center md:flex-row flex-col md:gap-6 gap-4 py-3">
             <div class="w-[56px] h-[56px] md:w-[72px] md:h-[72px] rounded-2xl border border-white flex items-center justify-center shrink-0" style="background: linear-gradient(90deg, rgba(255,255,255,0.2) 0%, rgba(174,228,255,0.2) 50%, rgba(255,255,255,0.2) 100%), linear-gradient(90deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.3) 100%);">
               {% module "cg_lottie_gaming" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player", label="Gaming", source="https://tvscientific.com/hubfs/consumer-guide/lottie/10-Gaming.json", loop="true", autoplay="true" %}
             </div>
             <div class="flex-1">
-              <div class="flex md:items-end md:flex-row flex-col justify-between py-0.5 mb-2">
+              <div class="cg-progress-label-row">
                 <span class="text-tvs-black text-[18px] md:text-[24px] leading-snug">Gaming consoles</span>
                 <span class="text-tvs-black text-[32px] md:text-[42px] font-medium leading-none">14%</span>
               </div>
@@ -997,9 +1048,9 @@
         <!-- Foreground card, offset bottom-right, no bg color (bg image shows through) -->
         <div class="relative px-6 md:px-0 md:pl-6 md:pr-9 py-10 space-y-8 border border-[#91F2CB] rounded-xl bg-[rgba(145,242,203,0.1)] md:border-0 md:rounded-none md:bg-transparent" style="z-index: 1;">
           <h3 class="text-tvs-black text-[32px] md:text-[40px] font-semibold leading-[33px] mb-8">The dual-screen reality</h3>
-        <div class="space-y-3">
-          <div class="py-1">
-            <div class="flex md:items-end md:flex-row flex-col justify-between py-0.5 mb-2">
+        <div class="space-y-6 md:space-y-3">
+          <div class="py-2 md:py-1">
+            <div class="cg-progress-label-row">
               <span class="text-tvs-black text-[20px] md:text-[24px] leading-snug">Text or message someone while watching TV</span>
               <span class="text-tvs-black text-[36px] md:text-[42px] font-medium leading-none shrink-0 md:ml-4">83%</span>
             </div>
@@ -1007,8 +1058,8 @@
               <div class="h-full bg-tvs-green rounded sop-progress-bar" data-width="83%"></div>
             </div>
           </div>
-          <div class="py-1">
-            <div class="flex md:items-end md:flex-row flex-col justify-between py-0.5 mb-2">
+          <div class="py-2 md:py-1">
+            <div class="cg-progress-label-row">
               <span class="text-tvs-black text-[20px] md:text-[24px] leading-snug">Scroll social media while watching TV</span>
               <span class="text-tvs-black text-[36px] md:text-[42px] font-medium leading-none shrink-0 md:ml-4">78%</span>
             </div>
@@ -1016,8 +1067,8 @@
               <div class="h-full bg-tvs-green rounded sop-progress-bar" data-width="78%"></div>
             </div>
           </div>
-          <div class="py-1">
-            <div class="flex md:items-end md:flex-row flex-col justify-between py-0.5 mb-2">
+          <div class="py-2 md:py-1">
+            <div class="cg-progress-label-row">
               <span class="text-tvs-black text-[20px] md:text-[24px] leading-snug">Search for something related while watching TV</span>
               <span class="text-tvs-black text-[36px] md:text-[42px] font-medium leading-none shrink-0 md:ml-4">74%</span>
             </div>
@@ -1025,8 +1076,8 @@
               <div class="h-full bg-tvs-green rounded sop-progress-bar" data-width="74%"></div>
             </div>
           </div>
-          <div class="py-1">
-            <div class="flex md:items-end md:flex-row flex-col justify-between py-0.5 mb-2">
+          <div class="py-2 md:py-1">
+            <div class="cg-progress-label-row">
               <span class="text-tvs-black text-[20px] md:text-[24px] leading-snug">Browse online shopping while watching TV</span>
               <span class="text-tvs-black text-[36px] md:text-[42px] font-medium leading-none shrink-0 md:ml-4">69%</span>
             </div>
@@ -1034,8 +1085,8 @@
               <div class="h-full bg-tvs-green rounded sop-progress-bar" data-width="69%"></div>
             </div>
           </div>
-          <div class="py-1">
-            <div class="flex md:items-end md:flex-row flex-col justify-between py-0.5 mb-2">
+          <div class="py-2 md:py-1">
+            <div class="cg-progress-label-row">
               <span class="text-tvs-black text-[20px] md:text-[24px] leading-snug">Look up a product they saw in an ad while watching TV</span>
               <span class="text-tvs-black text-[36px] md:text-[42px] font-medium leading-none shrink-0 md:ml-4">68%</span>
             </div>
@@ -1043,8 +1094,8 @@
               <div class="h-full bg-tvs-green rounded sop-progress-bar" data-width="68%"></div>
             </div>
           </div>
-          <div class="py-1">
-            <div class="flex md:items-end md:flex-row flex-col justify-between py-0.5 mb-2">
+          <div class="py-2 md:py-1">
+            <div class="cg-progress-label-row">
               <span class="text-tvs-black text-[20px] md:text-[24px] leading-snug">Game while watching TV</span>
               <span class="text-tvs-black text-[36px] md:text-[42px] font-medium leading-none shrink-0 md:ml-4">59%</span>
             </div>
@@ -1056,7 +1107,7 @@
       </div>
     </div>
 
-    <div class="max-w-[1072px] mx-auto px-4 mb-20">
+    <div class="max-w-[1072px] mx-auto px-4 mb-20 mt-4">
       <div class="max-w-[800px] mx-auto space-y-4">
         <p class="text-tvs-black text-lg leading-relaxed mb-0">
           It&rsquo;s clear that dual&#8209;screening is now the norm, turning TV viewing into an always&#8209;connected, action&#8209;ready moment.
@@ -1247,7 +1298,7 @@
             <div class="h-3 bg-[rgba(35,229,150,0.1)] rounded my-3">
               <div class="h-full bg-[#23e596] rounded sop-progress-bar" data-width="50%"></div>
             </div>
-            <p class="text-[#0f1c2d] text-[16px] leading-relaxed mb-0">of consumers TV ads help them feel more confident before buying</p>
+            <p class="text-[#0f1c2d] text-[16px] leading-relaxed mb-0">say TV ads help them feel more confident before buying</p>
           </div>
         </div>
       </div>
@@ -1352,7 +1403,7 @@
   <section id="cg-creative" class="bg-white py-16 md:py-20">
     <div class="max-w-[1072px] mx-auto px-4">
       <div class="max-w-[800px] mx-auto mb-16">
-        <h2 class="text-tvs-black !text-[40px] md:!text-[60px] lg:!text-[80px] !font-medium !leading-[1.2] !mb-12">
+        <h2 class="text-tvs-black !text-[40px] md:!text-[60px] lg:!text-[80px] !font-semibold !leading-[1.2] !mb-12">
           Where creative becomes <span class="text-[#198960]">conversion</span>
         </h2>
         <p class="text-tvs-black text-lg leading-relaxed mb-8">
@@ -1366,9 +1417,9 @@
       <!-- What people remember -->
       <div class=" border border-[#91F2CB] rounded-2xl px-6 py-10 space-y-8" style="background: linear-gradient(130deg, rgba(243,255,246,0.2) 25%, rgba(145,242,203,0.2) 58%, rgba(243,255,246,0.2) 91%), linear-gradient(90deg, rgba(243,255,246,0.3) 0%, rgba(243,255,246,0.3) 100%);">
         <h3 class="text-tvs-black text-[28px] md:text-[40px] font-semibold leading-[33px] mb-4">What people remember</h3>
-        <div class="space-y-3">
-          <div class="py-1">
-            <div class="flex md:items-end md:flex-row flex-col justify-between py-0.5 mb-2">
+        <div class="space-y-6 md:space-y-3">
+          <div class="py-2 md:py-1">
+            <div class="cg-progress-label-row">
               <span class="text-tvs-black text-[18px] md:text-[24px] leading-snug">Humor</span>
               <span class="text-tvs-black text-[32px] md:text-[42px] font-medium leading-none shrink-0 md:ml-4">77%</span>
             </div>
@@ -1376,8 +1427,8 @@
               <div class="h-full bg-tvs-green rounded sop-progress-bar" data-width="77%"></div>
             </div>
           </div>
-          <div class="py-1">
-            <div class="flex md:items-end md:flex-row flex-col justify-between py-0.5 mb-2">
+          <div class="py-2 md:py-1">
+            <div class="cg-progress-label-row">
               <span class="text-tvs-black text-[18px] md:text-[24px] leading-snug">Emotional storytelling</span>
               <span class="text-tvs-black text-[32px] md:text-[42px] font-medium leading-none shrink-0 md:ml-4">26%</span>
             </div>
@@ -1385,8 +1436,8 @@
               <div class="h-full bg-tvs-green rounded sop-progress-bar" data-width="26%"></div>
             </div>
           </div>
-          <div class="py-1">
-            <div class="flex md:items-end md:flex-row flex-col justify-between py-0.5 mb-2">
+          <div class="py-2 md:py-1">
+            <div class="cg-progress-label-row">
               <span class="text-tvs-black text-[18px] md:text-[24px] leading-snug">Celebrity cameos</span>
               <span class="text-tvs-black text-[32px] md:text-[42px] font-medium leading-none shrink-0 md:ml-4">23%</span>
             </div>
@@ -1394,8 +1445,8 @@
               <div class="h-full bg-tvs-green rounded sop-progress-bar" data-width="23%"></div>
             </div>
           </div>
-          <div class="py-1">
-            <div class="flex md:items-end md:flex-row flex-col justify-between py-0.5 mb-2">
+          <div class="py-2 md:py-1">
+            <div class="cg-progress-label-row">
               <span class="text-tvs-black text-[18px] md:text-[24px] leading-snug">Product demo/explanations</span>
               <span class="text-tvs-black text-[32px] md:text-[42px] font-medium leading-none shrink-0 md:ml-4">21%</span>
             </div>
@@ -1403,8 +1454,8 @@
               <div class="h-full bg-tvs-green rounded sop-progress-bar" data-width="21%"></div>
             </div>
           </div>
-          <div class="py-1">
-            <div class="flex md:items-end md:flex-row flex-col justify-between py-0.5 mb-2">
+          <div class="py-2 md:py-1">
+            <div class="cg-progress-label-row">
               <span class="text-tvs-black text-[18px] md:text-[24px] leading-snug">Limited‑time offers</span>
               <span class="text-tvs-black text-[32px] md:text-[42px] font-medium leading-none shrink-0 md:ml-4">20%</span>
             </div>
@@ -1418,9 +1469,9 @@
       <!-- What drives action -->
       <div class=" border border-[#91F2CB] rounded-2xl px-6 py-10 space-y-8" style="background: linear-gradient(135deg, rgba(243,255,246,0.2) 25%, rgba(145,242,203,0.2) 58%, rgba(243,255,246,0.2) 91%), linear-gradient(90deg, rgba(243,255,246,0.3) 0%, rgba(243,255,246,0.3) 100%);">
         <h3 class="text-tvs-black text-[28px] md:text-[40px] font-semibold leading-[33px] mb-4">What drives action</h3>
-        <div class="space-y-3">
-          <div class="py-1">
-            <div class="flex md:items-end md:flex-row flex-col justify-between py-0.5 mb-2">
+        <div class="space-y-6 md:space-y-3">
+          <div class="py-2 md:py-1">
+            <div class="cg-progress-label-row">
               <span class="text-tvs-black text-[18px] md:text-[24px] leading-snug">Clear offer or discount</span>
               <span class="text-tvs-black text-[32px] md:text-[42px] font-medium leading-none shrink-0 md:ml-4">52%</span>
             </div>
@@ -1428,8 +1479,8 @@
               <div class="h-full bg-tvs-green rounded sop-progress-bar" data-width="52%"></div>
             </div>
           </div>
-          <div class="py-1">
-            <div class="flex md:items-end md:flex-row flex-col justify-between py-0.5 mb-2">
+          <div class="py-2 md:py-1">
+            <div class="cg-progress-label-row">
               <span class="text-tvs-black text-[18px] md:text-[24px] leading-snug">Short and to the point</span>
               <span class="text-tvs-black text-[32px] md:text-[42px] font-medium leading-none shrink-0 md:ml-4">41%</span>
             </div>
@@ -1437,8 +1488,8 @@
               <div class="h-full bg-tvs-green rounded sop-progress-bar" data-width="43%"></div>
             </div>
           </div>
-          <div class="py-1">
-            <div class="flex md:items-end md:flex-row flex-col justify-between py-0.5 mb-2">
+          <div class="py-2 md:py-1">
+            <div class="cg-progress-label-row">
               <span class="text-tvs-black text-[18px] md:text-[24px] leading-snug">Personalized to interests</span>
               <span class="text-tvs-black text-[32px] md:text-[42px] font-medium leading-none shrink-0 md:ml-4">36%</span>
             </div>
@@ -1446,8 +1497,8 @@
               <div class="h-full bg-tvs-green rounded sop-progress-bar" data-width="36%"></div>
             </div>
           </div>
-          <div class="py-1">
-            <div class="flex md:items-end md:flex-row flex-col justify-between py-0.5 mb-2">
+          <div class="py-2 md:py-1">
+            <div class="cg-progress-label-row">
               <span class="text-tvs-black text-[18px] md:text-[24px] leading-snug">Real people using the product</span>
               <span class="text-tvs-black text-[32px] md:text-[42px] font-medium leading-none shrink-0 md:ml-4">35%</span>
             </div>
@@ -1487,10 +1538,10 @@
           &ldquo;We saw a 354% increase in 2023 YOY, a 1100% YoY increase in 2024, and another 62% lift already this year so far which is well above the normal program averages. tvScientific has also shot up in the ranks from 16th to a top 5 publisher this year. We look forward to continuing the partnership.&rdquo;
         </p>
         <div class="flex items-center justify-center gap-6 md:flex-row flex-col">
-          <img src="https://tvscientific.com/hubfs/consumer-guide/Rectangle%204110.png" alt="LG" class="h-10 md:h-12 w-auto mx-0" />
+          <img src="https://tvscientific.com/hubfs/lg-1.svg" alt="LG" class="h-10 md:h-12 w-auto mx-0" />
           <div class="md:text-left text-center">
             <p class="text-tvs-black text-lg font-semibold mb-0">Brian Robbins</p>
-            <p class="text-tvs-black text-lg mb-0">Head of Affiliate Marketing, LG<sup>6</sup></p>
+            <p class="text-tvs-black text-lg mb-0">Head of Affiliate Marketing, <a href="https://www.tvscientific.com/customers/lg" target="_blank" class="underline text-tvs-green-accessible font-semibold">LG</a><sup>6</sup></p>
           </div>
         </div>
       </div>
@@ -1516,7 +1567,7 @@
         <h3 class="text-tvs-black text-[24px] md:text-[40px] font-semibold leading-[1.2] mb-8">Interest in interactive formats</h3>
         <div class="md:space-y-4 space-y-12">
           <!-- 40% personalized -->
-          <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-6">
+          <div class="flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
             <div class="w-[56px] h-[56px] md:w-[72px] md:h-[72px] rounded-2xl border border-white flex items-center justify-center shrink-0" style="background: linear-gradient(90deg, rgba(255,255,255,0.2) 0%, rgba(174,228,255,0.2) 50%, rgba(255,255,255,0.2) 100%), linear-gradient(90deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.3) 100%);">
               <div class="w-10 h-10 md:w-14 md:h-14">
                 {% module "cg_icon_personalized" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
@@ -1525,7 +1576,7 @@
               </div>
             </div>
             <div class="flex-1">
-              <div class="flex md:items-end md:flex-row flex-col md:justify-between py-0.5 mb-2">
+              <div class="cg-progress-label-row">
                 <span class="text-tvs-black text-lg md:text-[24px] leading-snug">want ads personalized to recent searches or purchases</span>
                 <span class="text-tvs-black text-[28px] md:text-[42px] font-medium leading-none shrink-0 md:ml-4">40%</span>
               </div>
@@ -1535,7 +1586,7 @@
             </div>
           </div>
           <!-- 33% live shopping -->
-          <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-6">
+          <div class="flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
             <div class="w-[56px] h-[56px] md:w-[72px] md:h-[72px] rounded-2xl border border-white flex items-center justify-center shrink-0" style="background: linear-gradient(90deg, rgba(255,255,255,0.2) 0%, rgba(174,228,255,0.2) 50%, rgba(255,255,255,0.2) 100%), linear-gradient(90deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.3) 100%);">
               <div class="w-10 h-10 md:w-14 md:h-14">
                 {% module "cg_icon_livesports" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
@@ -1544,7 +1595,7 @@
               </div>
             </div>
             <div class="flex-1">
-              <div class="flex md:items-end md:flex-row flex-col md:justify-between py-0.5 mb-2">
+              <div class="cg-progress-label-row">
                 <span class="text-tvs-black text-lg md:text-[24px] leading-snug">want live shopping during sports/events</span>
                 <span class="text-tvs-black text-[28px] md:text-[42px] font-medium leading-none shrink-0 md:ml-4">33%</span>
               </div>
@@ -1554,7 +1605,7 @@
             </div>
           </div>
           <!-- 33% click to learn more -->
-          <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-6">
+          <div class="flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
             <div class="w-[56px] h-[56px] md:w-[72px] md:h-[72px] rounded-2xl border border-white flex items-center justify-center shrink-0" style="background: linear-gradient(90deg, rgba(255,255,255,0.2) 0%, rgba(174,228,255,0.2) 50%, rgba(255,255,255,0.2) 100%), linear-gradient(90deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.3) 100%);">
               <div class="w-10 h-10 md:w-14 md:h-14">
                 {% module "cg_icon_clicklearn" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
@@ -1563,7 +1614,7 @@
               </div>
             </div>
             <div class="flex-1">
-              <div class="flex md:items-end md:flex-row flex-col md:justify-between py-0.5 mb-2">
+              <div class="cg-progress-label-row">
                 <span class="text-tvs-black text-lg md:text-[24px] leading-snug">want click-to-learn-more remote ads</span>
                 <span class="text-tvs-black text-[28px] md:text-[42px] font-medium leading-none shrink-0 md:ml-4">33%</span>
               </div>
@@ -1573,7 +1624,7 @@
             </div>
           </div>
           <!-- 32% shoppable pause -->
-          <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-6">
+          <div class="flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
             <div class="w-[56px] h-[56px] md:w-[72px] md:h-[72px] rounded-2xl border border-white flex items-center justify-center shrink-0" style="background: linear-gradient(90deg, rgba(255,255,255,0.2) 0%, rgba(174,228,255,0.2) 50%, rgba(255,255,255,0.2) 100%), linear-gradient(90deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.3) 100%);">
               <div class="w-10 h-10 md:w-14 md:h-14">
                 {% module "cg_icon_shoppable" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
@@ -1582,7 +1633,7 @@
               </div>
             </div>
             <div class="flex-1">
-              <div class="flex md:items-end md:flex-row flex-col md:justify-between py-0.5 mb-2">
+              <div class="cg-progress-label-row">
                 <span class="text-tvs-black text-lg md:text-[24px] leading-snug">want shoppable pause ads</span>
                 <span class="text-tvs-black text-[28px] md:text-[42px] font-medium leading-none shrink-0 md:ml-4">32%</span>
               </div>
@@ -1592,7 +1643,7 @@
             </div>
           </div>
           <!-- 28% QR code -->
-          <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-6">
+          <div class="flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
             <div class="w-[56px] h-[56px] md:w-[72px] md:h-[72px] rounded-2xl border border-white flex items-center justify-center shrink-0" style="background: linear-gradient(90deg, rgba(255,255,255,0.2) 0%, rgba(174,228,255,0.2) 50%, rgba(255,255,255,0.2) 100%), linear-gradient(90deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.3) 100%);">
               <div class="w-10 h-10 md:w-14 md:h-14">
                 {% module "cg_icon_qrcode" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
@@ -1601,7 +1652,7 @@
               </div>
             </div>
             <div class="flex-1">
-              <div class="flex md:items-end md:flex-row flex-col md:justify-between py-0.5 mb-2">
+              <div class="cg-progress-label-row">
                 <span class="text-tvs-black text-lg md:text-[24px] leading-snug">want QR-code-enabled ads</span>
                 <span class="text-tvs-black text-[28px] md:text-[42px] font-medium leading-none shrink-0 md:ml-4">28%</span>
               </div>
@@ -2022,7 +2073,30 @@
       });
     }
 
+    /** iOS Safari: reinforce muted inline autoplay so the default play affordance does not linger. */
+    function initHeroBackgroundVideo() {
+      var heroVideo = document.querySelector('#cg-hero .video-bg');
+      if (!heroVideo) return;
+
+      function tryPlay() {
+        heroVideo.muted = true;
+        var p = heroVideo.play();
+        if (p && typeof p.then === 'function') {
+          p.catch(function() {});
+        }
+      }
+
+      tryPlay();
+      if (heroVideo.readyState < 2) {
+        heroVideo.addEventListener('loadeddata', tryPlay, { once: true });
+      }
+      document.addEventListener('visibilitychange', function() {
+        if (!document.hidden) tryPlay();
+      });
+    }
+
     function init() {
+      initHeroBackgroundVideo();
       initProgressBars();
       fitStickyToViewport();
       initStreamingScroll();

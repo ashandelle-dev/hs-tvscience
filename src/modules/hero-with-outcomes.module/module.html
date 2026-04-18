@@ -1,0 +1,97 @@
+{% set bg_color   = module.style.background_color.css %}
+{% set bg_image   = module.style.background_image.src %}
+{% set text_color = module.style.text_color.css %}
+
+{% require_css %}
+<style>
+  {% scope_css %}
+    .hero-outcomes-heading {
+      {% if module.heading.heading_size %}font-size: {{ module.heading.heading_size }}px !important;{% endif %}
+      line-height: 1 !important;
+      text-wrap: balance;
+    }
+    {% if module.heading.heading_size_mobile %}
+    @media (max-width: 768px) {
+      .hero-outcomes-heading { font-size: {{ module.heading.heading_size_mobile }}px !important; }
+    }
+    {% endif %}
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+<section
+  class="font-plex relative"
+  style="
+    {% if bg_color %}background-color: {{ bg_color }};{% endif %}
+    {% if bg_image %}background-image: url('{{ bg_image }}'); background-size: cover; background-position: center;{% endif %}
+    {% if text_color %}color: {{ text_color }};{% endif %}
+    {{ module.style.padding.css }}
+  ">
+
+  <div class="tvsci-container flex flex-col items-center gap-8 text-center">
+
+    <div class="flex flex-col items-center gap-3 w-full">
+
+      {% if module.heading.value %}
+      <{{ module.heading.header_tag }}
+        class="hero-outcomes-heading font-{{ module.heading.font_weight }} text-tvs-green-dark !m-0 max-w-[760px]">
+        {{ module.heading.value }}
+      </{{ module.heading.header_tag }}>
+      {% endif %}
+
+      <div class="flex flex-col items-center gap-4 max-w-[740px] w-full">
+
+        {% if module.body_copy %}
+        <div class="tvsci-lead text-center">{{ module.body_copy }}</div>
+        {% endif %}
+
+        {% if module.outcomes_label or module.outcomes or module.outcomes_suffix %}
+        <div class="flex flex-wrap items-center justify-center gap-[10px] text-[18px] leading-[1.5] text-tvs-black">
+
+          {% if module.outcomes_label %}
+          <span class="font-bold whitespace-nowrap">{{ module.outcomes_label }}</span>
+          {% endif %}
+
+          {% for outcome in module.outcomes %}
+          <span
+            class="inline-flex items-center gap-2 h-[30px] px-3 rounded border bg-transparent"
+            style="border-color: {{ outcome.border_color.color }};">
+            {% if outcome.icon.src %}
+            <img
+              class="block w-[17px] h-[17px] shrink-0 !m-0"
+              src="{{ outcome.icon.src|escape_url }}"
+              alt="{{ outcome.icon.alt|escape_attr }}"
+              width="17" height="17" loading="lazy">
+            {% endif %}
+            <span class="font-plex font-medium leading-[1.33] text-[18px] text-tvs-green-dark whitespace-nowrap">
+              {{ outcome.text }}
+            </span>
+          </span>
+          {% endfor %}
+
+          {% if module.outcomes_suffix %}
+          <span class="whitespace-nowrap">{{ module.outcomes_suffix }}</span>
+          {% endif %}
+
+        </div>
+        {% endif %}
+
+      </div>
+    </div>
+
+    {% set cta_href = module.cta.link.url.href %}
+    {% if module.cta.link.url.type is equalto "EMAIL_ADDRESS" %}
+      {% set cta_href = "mailto:" + cta_href %}
+    {% endif %}
+    {% if cta_href and module.cta.text %}
+    <a
+      href="{{ cta_href }}"
+      {% if module.cta.link.open_in_new_tab %}target="_blank"{% endif %}
+      {% if module.cta.link.rel %}rel="{{ module.cta.link.rel }}"{% endif %}
+      class="hs-button">
+      {{ module.cta.text }}
+    </a>
+    {% endif %}
+
+  </div>
+</section>

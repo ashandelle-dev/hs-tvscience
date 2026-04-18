@@ -42,3 +42,103 @@
         letter-spacing: 1px;
     }
 }
+
+.heading-s {
+    @apply font-medium;
+    font-size: clamp(1.25rem, 0.94rem + 1.03vw, 1.5rem) !important;
+    line-height: clamp(1.75rem, 1.44rem + 1.03vw, 2rem) !important;
+}
+
+.heading-xs {
+    @apply font-medium;
+    font-size: clamp(1rem, 0.82rem + 0.59vw, 1.25rem) !important;
+    line-height: clamp(1.5rem, 1.32rem + 0.59vw, 1.75rem) !important;
+}
+
+.tvsci-container {
+    @apply max-w-[1072px] mx-auto px-4;
+}
+
+.tvsci-eyebrow {
+    @apply font-plex-mono tracking-widest uppercase text-[14px] text-tvs-green-accessible;
+}
+
+.tvsci-lead {
+    @apply font-plex text-lg leading-relaxed text-tvs-black;
+}
+
+.tvsci-lead > :last-child,
+.tvsci-lead p:last-child {
+    margin-bottom: 0;
+}
+
+.tvsci-multicol {
+    --multicol-gap: 32px;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    row-gap: 24px;
+    width: 100%;
+}
+
+.tvsci-multicol--valign-top     { align-items: start; }
+.tvsci-multicol--valign-center  { align-items: center; }
+.tvsci-multicol--valign-bottom  { align-items: end; }
+.tvsci-multicol--valign-stretch { align-items: stretch; }
+
+.tvsci-col {
+    grid-column: span var(--span-xl, 12);
+    display: var(--display-xl, block);
+    min-width: 0;
+    padding-top: var(--col-padding-top, 0);
+    padding-left: calc(var(--multicol-gap) / 2);
+    padding-right: calc(var(--multicol-gap) / 2);
+}
+
+.tvsci-col:first-child { padding-left: 0; }
+.tvsci-col:last-child  { padding-right: 0; }
+
+@media (max-width: 767.99px) {
+    .tvsci-col {
+        padding-top: 0;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+.tvsci-col--valign-top     { align-self: start; }
+.tvsci-col--valign-center  { align-self: center; }
+.tvsci-col--valign-bottom  { align-self: end; }
+.tvsci-col--valign-stretch { align-self: stretch; }
+
+.tvsci-col--text-left   { text-align: left; }
+.tvsci-col--text-center { text-align: center; }
+.tvsci-col--text-right  { text-align: right; }
+
+.tvsci-col .tvsci-col-heading {
+    font-size: var(--col-heading-size, inherit) !important;
+    line-height: 1.1;
+}
+
+@media (max-width: 1279.99px) {
+    .tvsci-col {
+        grid-column: span var(--span-lg, var(--span-xl, 12));
+        display: var(--display-lg, var(--display-xl, block));
+    }
+}
+
+@media (max-width: 1023.99px) {
+    .tvsci-col {
+        grid-column: span var(--span-md, var(--span-lg, var(--span-xl, 12)));
+        display: var(--display-md, var(--display-lg, var(--display-xl, block)));
+    }
+}
+
+@media (max-width: 767.99px) {
+    .tvsci-col {
+        grid-column: span var(--span-sm, var(--span-md, var(--span-lg, var(--span-xl, 12))));
+        display: var(--display-sm, var(--display-md, var(--display-lg, var(--display-xl, block))));
+    }
+    .tvsci-col .tvsci-col-heading {
+        font-size: var(--col-heading-size-mobile, var(--col-heading-size, inherit)) !important;
+    }
+}
