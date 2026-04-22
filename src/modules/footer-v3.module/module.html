@@ -1,0 +1,126 @@
+{# Footer V3 — Figma 359:1291.
+   Light theme, 5 link columns + Contact stack under the About column,
+   logo + social row above the divider, optional aurora bg image. #}
+
+{% set bg_color      = module.style.background_color.css %}
+{% set bg_image      = module.style.background_image.src %}
+{% set text_color    = module.style.text_color.css %}
+{% set heading_color = module.style.heading_color.css %}
+{% set divider_color = module.style.divider_color.css %}
+
+{% set logo_href = module.logo.link.url.href %}
+{% if module.logo.link.url.type is equalto "EMAIL_ADDRESS" %}
+  {% set logo_href = "mailto:" + logo_href %}
+{% endif %}
+
+<footer class="footer-v3 font-plex relative overflow-hidden"
+  style="
+    {% if bg_color %}background-color: {{ bg_color }};{% endif %}
+    {% if text_color %}color: {{ text_color }};{% endif %}
+    {{ module.style.padding.css }}
+  ">
+
+  {% if bg_image %}
+    <div class="footer-v3__aurora" aria-hidden="true"
+      style="background-image: url('{{ bg_image }}');"></div>
+  {% endif %}
+
+  <div class="container relative z-10">
+
+    {# Logo + social row, ABOVE the divider #}
+    <div class="footer-v3__top flex items-center justify-between pb-6"
+      style="border-bottom: 1px solid {{ divider_color }};">
+
+      <div class="footer-v3__logo">
+        {% if module.logo.image.src %}
+          <a href="{{ logo_href|default('/', true) }}"
+            {% if module.logo.link.open_in_new_tab %}target="_blank" rel="noopener"{% endif %}
+            class="inline-block">
+            <img src="{{ module.logo.image.src }}"
+              alt="{{ module.logo.image.alt }}"
+              {% if module.logo.image.width %}width="{{ module.logo.image.width }}"{% endif %}
+              {% if module.logo.image.height %}height="{{ module.logo.image.height }}"{% endif %}
+              loading="lazy"
+              style="display:block;">
+          </a>
+        {% endif %}
+      </div>
+
+      {% if module.social %}
+        <ul class="footer-v3__social flex items-center gap-x-2 m-0 p-0 list-none">
+          {% for s in module.social %}
+            <li>
+              <a href="{{ s.link }}" class="footer-v3__social-link text-black inline-flex items-center justify-center"
+                aria-label="{{ s.icon.name }}">
+                {% icon name="{{ s.icon.name }}", style="{{ s.icon.type }}", unicode="{{ s.icon.unicode }}" %}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+
+    {# 5-column grid: Product / Solutions / Resources / Legal / About+Contact #}
+    <div class="footer-v3__cols grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-y-10 gap-x-8 pt-10">
+      {% for group in module.groups %}
+        <div class="footer-v3__col">
+          <h3 class="footer-v3__col-title text-[14px] font-semibold tracking-[1px] m-0"
+            style="color: {{ heading_color }};">{{ group.title }}</h3>
+          {% if group.menu %}
+            <ul class="m-0 p-0 list-none space-y-4">
+              {% for item in group.menu %}
+                <li>
+                  <a href="{{ item.linkUrl }}"
+                    {% if item.linkTarget %}target="{{ item.linkTarget }}"{% endif %}
+                    class="footer-v3__col-link text-[14px] leading-5 tracking-[1px] no-underline hover:underline"
+                    style="color: {{ text_color }};">{{ item.linkLabel }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+
+          {# Contact stack under the LAST column (About) #}
+          {% if loop.last and (module.address) %}
+            <h3 class="footer-v3__col-title text-[14px] font-semibold tracking-[1px] m-0 mt-10"
+              style="color: {{ heading_color }};">Contact</h3>
+            <div class="footer-v3__address text-[14px] leading-5 tracking-[1px]"
+              style="color: {{ text_color }};">
+              {{ module.address }}
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</footer>
+
+{% require_css %}
+<style>
+{% scope_css %}
+.footer-v3 ul { list-style: none; }
+.footer-v3__aurora {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: cover;
+  pointer-events: none;
+  z-index: 0;
+}
+.footer-v3__address p { margin: 0 0 16px; font-size: 14px; }
+.footer-v3__address p:last-child { margin-bottom: 0; }
+.footer-v3__address a { color: inherit; text-decoration: none; }
+.footer-v3__address a:hover { text-decoration: underline; }
+.footer-v3__social-link svg {
+  display: block;
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+  transition: opacity .2s ease;
+}
+.footer-v3__social-link:hover svg { opacity: 0.7; }
+{% end_scope_css %}
+</style>
+{% end_require_css %}

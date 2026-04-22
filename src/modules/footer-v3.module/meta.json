@@ -1,0 +1,8 @@
+{
+  "global" : true,
+  "content_types" : [ "LANDING_PAGE", "SITE_PAGE", "BLOG_POST" ],
+  "smart_type" : "NOT_SMART",
+  "host_template_types" : [ "PAGE", "BLOG_POST" ],
+  "label" : "Footer V3",
+  "is_available_for_new_content" : true
+}
