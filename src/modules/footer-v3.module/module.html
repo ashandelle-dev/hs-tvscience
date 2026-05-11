@@ -61,7 +61,7 @@
     </div>
 
     {# 5-column grid: Product / Solutions / Resources / Legal / About+Contact #}
-    <div class="footer-v3__cols grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-y-10 gap-x-8 pt-10">
+    <div class="footer-v3__cols grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-y-10 gap-x-8 pt-10 pb-10">
       {% for group in module.groups %}
         <div class="footer-v3__col">
           <h3 class="footer-v3__col-title text-[14px] font-semibold tracking-[1px] m-0"
@@ -70,7 +70,7 @@
             <ul class="m-0 p-0 list-none space-y-4">
               {% for item in group.menu %}
                 <li>
-                  <a href="{{ item.linkUrl }}"
+                  <a href="{{ item.url }}"
                     {% if item.linkTarget %}target="{{ item.linkTarget }}"{% endif %}
                     class="footer-v3__col-link text-[14px] leading-5 tracking-[1px] no-underline hover:underline"
                     style="color: {{ text_color }};">{{ item.linkLabel }}</a>
@@ -91,6 +91,35 @@
         </div>
       {% endfor %}
     </div>
+
+    {% set show_disclaimer_block = module.show_disclaimer and module.disclaimer %}
+    {% set show_copyright_block  = module.show_copyright  and module.copyright  %}
+
+    {% if show_disclaimer_block or show_copyright_block %}
+      {% set current_year = local_dt|format_datetime("yyyy", "America/Los_Angeles") %}
+
+      <div class="footer-v3__bottom flex flex-col md:flex-row md:items-start md:justify-between gap-y-2 pt-6 text-[12px] leading-5 tracking-[1px]"
+        style="
+          border-top: 1px solid {{ divider_color }};
+          color: {{ text_color }};
+        ">
+
+        {% if show_disclaimer_block %}
+          <div class="footer-v3__disclaimer">
+            {{ module.disclaimer }}
+          </div>
+        {% else %}
+          <div class="footer-v3__disclaimer" aria-hidden="true"></div>
+        {% endif %}
+
+        {% if show_copyright_block %}
+          <div class="footer-v3__copyright md:text-right">
+            {{ module.copyright|replace("{{ year }}", current_year) }}
+          </div>
+        {% endif %}
+
+      </div>
+    {% endif %}
 
   </div>
 </footer>
@@ -121,6 +150,14 @@
   transition: opacity .2s ease;
 }
 .footer-v3__social-link:hover svg { opacity: 0.7; }
+.footer-v3__disclaimer,
+.footer-v3__copyright { font-size: 12px; line-height: 20px; letter-spacing: 1px; }
+.footer-v3__disclaimer p,
+.footer-v3__copyright p { margin: 0; font-size: 12px; line-height: 20px; }
+.footer-v3__disclaimer p + p,
+.footer-v3__copyright p + p { margin-top: 8px; }
+.footer-v3__disclaimer a,
+.footer-v3__copyright a { color: inherit; text-decoration: underline; }
 {% end_scope_css %}
 </style>
 {% end_require_css %}

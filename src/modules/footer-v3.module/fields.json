@@ -183,6 +183,54 @@
   "type" : "richtext",
   "default" : "<p>1720 South Catalina Ave, #210<br>Redondo Beach, CA 90277</p><p><a href=\"mailto:hello@tvscientific.com\">hello@tvscientific.com</a></p>"
 }, {
+  "id" : "c4e7a912-3a8d-4f6b-9c2e-1f0a4b6d8e01",
+  "name" : "show_disclaimer",
+  "label" : "Show disclaimer text",
+  "help_text" : "Toggle the disclaimer text on the left of the bottom row. The bottom row (and divider) still renders if a copyright is shown.",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "default" : true
+}, {
+  "id" : "c4e7a912-3a8d-4f6b-9c2e-1f0a4b6d8e02",
+  "name" : "disclaimer",
+  "label" : "Disclaimer",
+  "help_text" : "Small print rendered on the left of the bottom row, below the divider.",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "show_disclaimer",
+    "controlling_value_regex" : "true",
+    "operator" : "EQUAL"
+  },
+  "type" : "richtext",
+  "default" : "<p>Disclaimer: All data for illustrative purposes.</p>"
+}, {
+  "id" : "c4e7a912-3a8d-4f6b-9c2e-1f0a4b6d8e03",
+  "name" : "show_copyright",
+  "label" : "Show copyright",
+  "help_text" : "Toggle the copyright text on the right of the bottom row.",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "default" : true
+}, {
+  "id" : "c4e7a912-3a8d-4f6b-9c2e-1f0a4b6d8e04",
+  "name" : "copyright",
+  "label" : "Copyright",
+  "help_text" : "Right-aligned copyright line on the bottom row. Use {{ year }} (with double braces) to insert the current year automatically.",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "show_copyright",
+    "controlling_value_regex" : "true",
+    "operator" : "EQUAL"
+  },
+  "type" : "richtext",
+  "default" : "<p>&copy; {{ year }} tvScientific | All rights reserved</p>"
+}, {
   "id" : "a1b2c3d4-e5f6-1234-5678-9abcdef00001",
   "name" : "style",
   "label" : "Style",

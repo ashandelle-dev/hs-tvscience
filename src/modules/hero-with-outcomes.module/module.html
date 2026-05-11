@@ -28,13 +28,13 @@
     {{ module.style.padding.css }}
   ">
 
-  <div class="tvsci-container flex flex-col items-center gap-8 text-center">
+  <div class="tvsci-container flex flex-col items-center gap-8 text-center hero-outcomes-module">
 
     <div class="flex flex-col items-center gap-3 w-full">
 
       {% if module.heading.value %}
       <{{ module.heading.header_tag }}
-        class="hero-outcomes-heading font-{{ module.heading.font_weight }} text-tvs-green-dark !m-0 max-w-[760px]">
+        class="hero-outcomes-heading font-{{ module.heading.font_weight }} text-tvs-green-dark !m-0">
         {{ module.heading.value }}
       </{{ module.heading.header_tag }}>
       {% endif %}
@@ -79,18 +79,35 @@
       </div>
     </div>
 
-    {% set cta_href = module.cta.link.url.href %}
-    {% if module.cta.link.url.type is equalto "EMAIL_ADDRESS" %}
-      {% set cta_href = "mailto:" + cta_href %}
-    {% endif %}
-    {% if cta_href and module.cta.text %}
-    <a
-      href="{{ cta_href }}"
-      {% if module.cta.link.open_in_new_tab %}target="_blank"{% endif %}
-      {% if module.cta.link.rel %}rel="{{ module.cta.link.rel }}"{% endif %}
-      class="hs-button">
-      {{ module.cta.text }}
-    </a>
+    {% if module.cta_type == "form" %}
+      {% if module.form.form.form_id %}
+      <div class="hero-outcomes-form w-full">
+        {% form
+          form_key="hero_outcomes_form_{{ name }}",
+          form_to_use="{{ module.form.form.form_id }}",
+          response_response_type="{{ module.form.form.response_type }}",
+          response_message="{{ module.form.form.message }}",
+          response_redirect_id="{{ module.form.form.redirect_id }}",
+          response_redirect_url="{{ module.form.form.redirect_url }}",
+          gotowebinar_webinar_key="{{ module.form.form.gotowebinar_webinar_key }}",
+          sfdc_campaign="{{ module.form.sfdc_campaign }}"
+        %}
+      </div>
+      {% endif %}
+    {% else %}
+      {% set cta_href = module.cta.link.url.href %}
+      {% if module.cta.link.url.type is equalto "EMAIL_ADDRESS" %}
+        {% set cta_href = "mailto:" + cta_href %}
+      {% endif %}
+      {% if cta_href and module.cta.text %}
+      <a
+        href="{{ cta_href }}"
+        {% if module.cta.link.open_in_new_tab %}target="_blank"{% endif %}
+        {% if module.cta.link.rel %}rel="{{ module.cta.link.rel }}"{% endif %}
+        class="hs-button">
+        {{ module.cta.text }}
+      </a>
+      {% endif %}
     {% endif %}
 
   </div>

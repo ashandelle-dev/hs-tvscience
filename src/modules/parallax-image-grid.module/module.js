@@ -29,7 +29,11 @@
     function measure() {
       var rect = section.getBoundingClientRect();
       var vh = window.innerHeight || document.documentElement.clientHeight;
-      var raw = (vh - rect.top) / (vh + rect.height);
+      // Progress is 0 until the section's bottom edge reaches the viewport bottom
+      // (i.e. the entire module is in view). It then ramps linearly to 1 as the
+      // bottom edge scrolls up to the top of the viewport — giving the parallax
+      // exactly one viewport-height of scroll to play out.
+      var raw = (vh - rect.bottom) / vh;
       if (raw < 0) raw = 0;
       if (raw > 1) raw = 1;
       target = raw;

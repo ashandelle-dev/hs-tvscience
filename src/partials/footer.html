@@ -3,8 +3,4 @@
   label: Footer
 -->
 
-{% if Query.footer_v3 || Query.nav_v3 %}
-  {% module "Footer V3" path="../modules/footer-v3.module", label="Footer V3" %}
-{% else %}
-  {% module "New Footer" path="../modules/new-footer.module", label="New Footer" %}
-{% endif %}
+{% module "Footer V3" path="../modules/footer-v3.module", label="Footer V3" %}

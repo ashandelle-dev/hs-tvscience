@@ -129,10 +129,29 @@
   },
 
   {
+    "name": "cta_type",
+    "label": "Call-to-action type",
+    "type": "choice",
+    "required": true,
+    "display": "radio",
+    "choices": [
+      ["button", "Button"],
+      ["form", "Inline form"]
+    ],
+    "default": "button",
+    "inline_help_text": "Choose between a single linked button or an inline HubSpot form (assumes one visible field)."
+  },
+
+  {
     "name": "cta",
     "label": "Button",
     "type": "group",
     "tab": "CONTENT",
+    "visibility": {
+      "controlling_field": "cta_type",
+      "controlling_value_regex": "button",
+      "operator": "EQUAL"
+    },
     "children": [
       {
         "name": "link",
@@ -151,6 +170,41 @@
         "type": "text",
         "allow_new_line": false,
         "default": "Request a demo"
+      }
+    ]
+  },
+
+  {
+    "name": "form",
+    "label": "Inline form",
+    "type": "group",
+    "tab": "CONTENT",
+    "visibility": {
+      "controlling_field": "cta_type",
+      "controlling_value_regex": "form",
+      "operator": "EQUAL"
+    },
+    "children": [
+      {
+        "name": "form",
+        "label": "Form",
+        "type": "form",
+        "embed_versions": ["v2", "v4"],
+        "support_all_webinar_types": true,
+        "inline_help_text": "Pick a HubSpot form. The form should have one visible field (e.g. Email) plus the submit button — additional fields will stack and break the inline layout.",
+        "default": {
+          "form_id": "",
+          "response_type": "inline",
+          "message": "Thanks! We'll be in touch shortly.",
+          "redirect_id": null,
+          "redirect_url": ""
+        }
+      },
+      {
+        "name": "sfdc_campaign",
+        "label": "Salesforce campaign",
+        "type": "salesforcecampaign",
+        "required": false
       }
     ]
   },
