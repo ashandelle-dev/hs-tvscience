@@ -15,3 +15,55 @@
   width: auto;
   white-space: nowrap;
 }
+
+
+
+nav.nav_v3 { background: #fff !important; }
+
+/* Suppress the browser's default focus ring on click for nav anchors
+   (logo, dropdown parents like Resources/About that have no href, CTA).
+   :focus-visible still shows a subtle dark ring for keyboard a11y. */
+nav.nav_v3 a:focus { outline: none; box-shadow: none; }
+nav.nav_v3 a:focus:not(:focus-visible) { outline: none; box-shadow: none; }
+nav.nav_v3 a:focus-visible {
+  outline: 2px solid #1F252B;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.nav-v3 .menu-item > div > a {
+  font-family: 'IBM Plex Sans', sans-serif !important;
+  color: #1F252B !important;
+}
+.nav-v3 .menu-item:hover > div > a,
+.nav-v3 .menu-item > div > a:hover { color: #198960 !important; }
+.nav-v3 .child-dropdown p[class*="text-[#1C4633]"] { color: #1F252B; }
+.nav-v3 .menu-item svg,
+.nav-v3 .menu-item svg path { stroke: #1F252B !important; }
+
+@media (min-width: 1024px) {
+  .nav-v3 ul { justify-content: flex-start; gap: 1rem; }
+  .nav-v3 .menu-item { margin: 0; padding-left: 0; padding-right: 0; }
+
+  .nav-v3 .menu-item > div > a {
+    font-weight: 400 !important;
+    font-size: 16px !important;
+    line-height: 20px !important;
+    letter-spacing: 0.32px !important;
+    padding-top: 16px !important;
+    padding-bottom: 20px !important;
+  }
+
+  .nav-v3 .child-dropdown {
+    top: 55px;
+    box-shadow: none !important;
+    border: 1px solid #D9E2EB;
+  }
+
+  .nav-v3 .child-dropdown a {
+    margin-bottom: 0 !important;
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+  }
+  .nav-v3 .child-dropdown a:hover { background-color: #F3FFF6; }
+}

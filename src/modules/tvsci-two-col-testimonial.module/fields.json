@@ -1,0 +1,162 @@
+[
+  {
+    "name": "testimonial_image",
+    "label": "Left side composited image (phone / dashboard / charts)",
+    "type": "image",
+    "responsive": true,
+    "resizable": true,
+    "default": {
+      "size_type": "auto",
+      "src": "https://tvscientific.com/hubfs/Testimonials%20img.png",
+      "alt": "Customer testimonial dashboard preview",
+      "loading": "lazy",
+      "width": 0,
+      "height": 0
+    }
+  },
+
+  {
+    "name": "logo",
+    "label": "Customer logo",
+    "type": "image",
+    "responsive": false,
+    "resizable": true,
+    "default": {
+      "size_type": "exact",
+      "src": "https://tvscientific.com/hubfs/logo-earnin.svg",
+      "alt": "Earnin",
+      "loading": "lazy",
+      "width": 89,
+      "height": 34
+    }
+  },
+
+  {
+    "name": "quote",
+    "label": "Quote",
+    "type": "group",
+    "tab": "CONTENT",
+    "children": [
+      {
+        "name": "value",
+        "label": "Quote content",
+        "type": "text",
+        "allow_new_line": true,
+        "default": "\"We turned off CTV for a couple of days and saw a decrease in performance. That prompted us to quickly devote 18% of our media spend on CTV with tvScientific.\""
+      },
+      {
+        "name": "header_tag",
+        "label": "Heading level",
+        "type": "choice",
+        "required": true,
+        "display": "select",
+        "choices": [
+          ["h1", "H1"], ["h2", "H2"], ["h3", "H3"], ["h4", "H4"], ["h5", "H5"], ["h6", "H6"], ["p", "P"], ["blockquote", "Blockquote"]
+        ],
+        "default": "blockquote"
+      },
+      {
+        "name": "heading_size",
+        "label": "Quote Size",
+        "type": "number",
+        "suffix": "px",
+        "inline_help_text": "Set to 0 to use the default size",
+        "default": 32
+      },
+      {
+        "name": "heading_size_mobile",
+        "label": "Quote Size Mobile",
+        "type": "number",
+        "suffix": "px",
+        "inline_help_text": "Set to 0 to use the default size",
+        "default": 22
+      },
+      {
+        "name": "font_weight",
+        "label": "Font Weight",
+        "type": "choice",
+        "display": "select",
+        "choices": [["normal", "Normal"], ["semibold", "Semibold"], ["bold", "Bold"]],
+        "default": "normal"
+      }
+    ]
+  },
+
+  {
+    "name": "author_avatar",
+    "label": "Author photo",
+    "type": "image",
+    "responsive": false,
+    "resizable": true,
+    "inline_help_text": "Square headshot. ~70x70. Will be rendered with rounded corners.",
+    "default": {
+      "size_type": "exact",
+      "src": "https://tvscientific.com/hubfs/brittanie.png",
+      "alt": "Brittanie Williams",
+      "loading": "lazy",
+      "width": 70,
+      "height": 70
+    }
+  },
+
+  {
+    "name": "author_name",
+    "label": "Author name",
+    "type": "text",
+    "allow_new_line": false,
+    "default": "Brittanie Williams"
+  },
+
+  {
+    "name": "author_title",
+    "label": "Author title",
+    "type": "text",
+    "allow_new_line": false,
+    "default": "Chief Marketing Officer, Earnin"
+  },
+
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "background_color",
+        "label": "Section background color",
+        "type": "color",
+        "default": { "color": "#FFFFFF", "opacity": 100 }
+      },
+      {
+        "name": "background_image",
+        "label": "Section background image",
+        "type": "image",
+        "inline_help_text": "Optional decorative gradient/aurora behind the testimonial. Renders cover-fit, center-aligned.",
+        "default": { "size_type": "auto", "src": "", "alt": "", "loading": "lazy" }
+      },
+      {
+        "name": "text_color",
+        "label": "Quote text color",
+        "type": "color",
+        "default": { "color": "#132430", "opacity": 100 }
+      },
+      {
+        "name": "accent_color",
+        "label": "Accent color (author name + divider)",
+        "type": "color",
+        "default": { "color": "#198960", "opacity": 100 }
+      },
+      {
+        "name": "padding",
+        "label": "Section padding",
+        "type": "spacing",
+        "default": {
+          "padding": {
+            "top": { "value": 0, "units": "px" },
+            "bottom": { "value": 80, "units": "px" }
+          }
+        }
+      }
+    ]
+  }
+]

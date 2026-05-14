@@ -1,0 +1,208 @@
+/* ==========================================================================
+   parallax-image-grid.module
+   ========================================================================== */
+
+.parallax-image-grid__grid {
+  display: grid;
+  grid-template-columns: minmax(180px, 224px) minmax(0, 1fr) minmax(180px, 224px);
+  gap: 16px;
+  align-items: start;
+}
+
+.parallax-image-grid__col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+  will-change: transform;
+}
+
+.parallax-image-grid__col--center {
+  align-self: center;
+}
+
+/* ---------- Card ---------- */
+.parallax-image-grid__card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  margin: 0;
+  background-color: #f9fafc; /* tvs-grey-pastel fallback while image loads */
+}
+
+.parallax-image-grid__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* When a fixed aspect-ratio is set on the card, let the img fill it */
+.parallax-image-grid__card[style*="aspect-ratio"] .parallax-image-grid__img {
+  height: 100%;
+}
+
+/* ---------- Overlay ---------- */
+.parallax-image-grid__overlay {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  background-color: rgba(31, 37, 43, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: #ffffff;
+  max-width: max-content;
+}
+
+.parallax-image-grid__overlay-heading {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.1;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.parallax-image-grid__overlay-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.parallax-image-grid__overlay-value {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1;
+  color: #f3fff6; /* greens/pastel */
+}
+
+.parallax-image-grid__overlay-delta {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background-color: #ecfdf5;
+  color: #005e36;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 1.1;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+.parallax-image-grid__overlay-subtext {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 1.3;
+  color: #d9e2eb; /* gray/light */
+}
+
+/* Center overlay: larger pill with a green check */
+.parallax-image-grid__overlay--center {
+  left: auto;
+  right: 16px;
+  bottom: 16px;
+  padding: 10px 14px;
+  background-color: rgba(31, 37, 43, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.parallax-image-grid__overlay--center .parallax-image-grid__overlay-heading {
+  font-size: 15px;
+  color: #f3fff6;
+}
+
+.parallax-image-grid__overlay-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  background-color: #23e596; /* tvs-green */
+  color: #0f2d29;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* ==========================================================================
+   Mobile layouts (<= 993px). Editor picks one of three variants.
+   ========================================================================== */
+@media (max-width: 993px) {
+  /* Kill parallax transforms on mobile in every variant */
+  .parallax-image-grid .parallax-image-grid__col--left,
+  .parallax-image-grid .parallax-image-grid__col--right,
+  .parallax-image-grid .parallax-image-grid__col--center {
+    transform: none !important;
+  }
+
+  /* ---------- Variant: stack (1 column, all cards) ---------- */
+  .parallax-image-grid--mobile-stack .parallax-image-grid__grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .parallax-image-grid--mobile-stack .parallax-image-grid__col--center {
+    align-self: stretch;
+  }
+
+  /* ---------- Variant: two-col (cards in 2-up grid, ~half height) ----------
+     - Flatten the 3 column wrappers with display: contents so all cards
+       become direct grid items.
+     - Hero card spans full width and is forced to row 1 via order: -1.
+     - Side cards take uniform 4:3 so rows align cleanly.
+     - The last side card spans full width to absorb the orphan slot
+       (default content has 3 + 2 = 5 side cards = always odd). */
+  .parallax-image-grid--mobile-two-col .parallax-image-grid__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    align-items: stretch;
+  }
+  .parallax-image-grid--mobile-two-col .parallax-image-grid__col {
+    display: contents;
+  }
+  .parallax-image-grid--mobile-two-col .parallax-image-grid__card {
+    aspect-ratio: 4 / 3;
+  }
+  .parallax-image-grid--mobile-two-col .parallax-image-grid__card--center {
+    order: -1;
+    grid-column: 1 / -1;
+    aspect-ratio: 16 / 10;
+  }
+  .parallax-image-grid--mobile-two-col
+    .parallax-image-grid__col--right
+    .parallax-image-grid__card:last-child {
+    grid-column: 1 / -1;
+    aspect-ratio: 16 / 9;
+  }
+  .parallax-image-grid--mobile-two-col .parallax-image-grid__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* ---------- Variant: center-only (hide side cards) ---------- */
+  .parallax-image-grid--mobile-center-only .parallax-image-grid__grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .parallax-image-grid--mobile-center-only .parallax-image-grid__col--left,
+  .parallax-image-grid--mobile-center-only .parallax-image-grid__col--right {
+    display: none;
+  }
+  .parallax-image-grid--mobile-center-only .parallax-image-grid__col--center {
+    align-self: stretch;
+  }
+}

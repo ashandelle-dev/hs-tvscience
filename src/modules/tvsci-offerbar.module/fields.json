@@ -1,0 +1,158 @@
+[
+  {
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "type": "text",
+    "tab": "CONTENT",
+    "allow_new_line": false,
+    "default": "Get Started Today"
+  },
+
+  {
+    "name": "heading",
+    "label": "Heading",
+    "type": "group",
+    "tab": "CONTENT",
+    "children": [
+      {
+        "name": "value",
+        "label": "Heading content",
+        "type": "text",
+        "allow_new_line": true,
+        "default": "See how you can boost lift and ROAS with CTV"
+      },
+      {
+        "name": "header_tag",
+        "label": "Heading level",
+        "type": "choice",
+        "required": true,
+        "display": "select",
+        "choices": [
+          ["h1", "H1"], ["h2", "H2"], ["h3", "H3"], ["h4", "H4"], ["h5", "H5"], ["h6", "H6"], ["p", "P"]
+        ],
+        "default": "h2"
+      },
+      {
+        "name": "heading_size",
+        "label": "Heading Size",
+        "type": "number",
+        "suffix": "px",
+        "inline_help_text": "Set to 0 to use the default size",
+        "default": 36
+      },
+      {
+        "name": "heading_size_mobile",
+        "label": "Heading Size Mobile",
+        "type": "number",
+        "suffix": "px",
+        "inline_help_text": "Set to 0 to use the default size",
+        "default": 28
+      },
+      {
+        "name": "font_weight",
+        "label": "Font Weight",
+        "type": "choice",
+        "display": "select",
+        "choices": [["normal", "Normal"], ["semibold", "Semibold"], ["bold", "Bold"]],
+        "default": "bold"
+      }
+    ]
+  },
+
+  {
+    "name": "cta",
+    "label": "Button",
+    "type": "group",
+    "tab": "CONTENT",
+    "children": [
+      {
+        "name": "link",
+        "label": "Link",
+        "type": "link",
+        "supported_types": ["EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION"],
+        "default": {
+          "url": { "type": "EXTERNAL", "href": "/contact" },
+          "open_in_new_tab": false,
+          "no_follow": false
+        }
+      },
+      {
+        "name": "text",
+        "label": "Button text",
+        "type": "text",
+        "allow_new_line": false,
+        "default": "Request a demo"
+      }
+    ]
+  },
+
+  {
+    "name": "media",
+    "label": "Right-side image",
+    "type": "image",
+    "tab": "CONTENT",
+    "responsive": true,
+    "resizable": true,
+    "inline_help_text": "Decorative illustration shown on the right side of the offer bar (e.g. TV/laptop chart). Hidden on mobile.",
+    "default": {
+      "size_type": "exact",
+      "src": "https://tvscientific.com/hubfs/graphs.png",
+      "alt": "TV and laptop showing rising performance graphs",
+      "loading": "lazy",
+      "width": 357,
+      "height": 223
+    }
+  },
+
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "card_background_color",
+        "label": "Card background color",
+        "type": "color",
+        "inline_help_text": "Background color of the rounded offer bar card. Defaults to tvs-green-pastel.",
+        "default": { "color": "#F3FFF6", "opacity": 100 }
+      },
+      {
+        "name": "eyebrow_color",
+        "label": "Eyebrow text color",
+        "type": "color",
+        "default": { "color": "#198960", "opacity": 100 }
+      },
+      {
+        "name": "heading_color",
+        "label": "Heading text color",
+        "type": "color",
+        "default": { "color": "#1F252B", "opacity": 100 }
+      },
+      {
+        "name": "background_color",
+        "label": "Section background color",
+        "type": "color",
+        "inline_help_text": "Background color of the outer section behind the card.",
+        "default": { "color": null, "opacity": 100 }
+      },
+      {
+        "name": "background_image",
+        "label": "Section background image",
+        "type": "image",
+        "default": { "size_type": "auto", "src": "", "alt": "", "loading": "lazy" }
+      },
+      {
+        "name": "padding",
+        "label": "Section padding",
+        "type": "spacing",
+        "default": {
+          "padding": {
+            "top": { "value": 64, "units": "px" },
+            "bottom": { "value": 64, "units": "px" }
+          }
+        }
+      }
+    ]
+  }
+]

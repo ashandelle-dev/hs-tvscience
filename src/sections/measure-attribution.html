@@ -1,0 +1,68 @@
+<!--
+ templateType: section
+ label: Measure & Attribution (icon + 2 col)
+ isAvailableForNewContent: true
+-->
+{% dnd_section
+    background_color="#FFFFFF",
+    padding={
+      "default": {
+        "top":    "120px",
+        "bottom": "80px"
+      }
+    }
+%}
+
+  {% dnd_column offset=0, width=12 %}
+    {% dnd_row %}
+      {% dnd_module
+        path="/tvScientific 2022 Atlas Pro/cli-build/modules/multi-col",
+        offset=0,
+        width=12,
+        style={
+          "section_vertical_align": "top",
+          "section_text_align": "left",
+          "column_gap": 170,
+          "padding": {
+            "padding": {
+              "top":    { "value": 0, "units": "px" },
+              "bottom": { "value": 0, "units": "px" }
+            }
+          }
+        },
+        columns=[
+          {
+            "column_image":          { "size_type": "exact", "src": "https://www.figma.com/api/mcp/asset/1bf98e52-fe27-4e21-905c-0f0373ff42db", "alt": "Measurement chart icon", "loading": "lazy", "width": 35, "height": 35 },
+            "column_image_position": "above",
+            "column_heading":        { "value": "Measure campaign performance and attribution with clarity", "header_tag": "h2", "heading_size": 32, "heading_size_mobile": 26, "font_weight": "semibold" },
+            "column_content":        "",
+            "column_cta":            { "show": false, "link": { "url": { "type": "EXTERNAL", "href": "" }, "open_in_new_tab": false, "no_follow": false }, "text": "Learn more", "button_style": "primary" },
+            "column_size_xl":        "5",
+            "column_size_lg":        "inherit",
+            "column_size_md":        "inherit",
+            "column_size_sm":        "12",
+            "column_vertical_align": "top",
+            "column_text_align":     "left",
+            "column_padding_top":    0
+          },
+          {
+            "column_image":          { "size_type": "auto", "src": "", "alt": "", "loading": "lazy", "width": 0, "height": 0 },
+            "column_image_position": "above",
+            "column_heading":        { "value": "", "header_tag": "h3", "heading_size": 0, "heading_size_mobile": 0, "font_weight": "semibold" },
+            "column_content":        "<p>Impressions are good, but tangible business outcomes are better. Track lift across your media mix, make real-time optimizations, and understand campaign impact on performance metrics that matter all from one, comprehensive dashboard.</p>",
+            "column_cta":            { "show": true, "link": { "url": { "type": "EXTERNAL", "href": "/contact" }, "open_in_new_tab": false, "no_follow": false }, "text": "Learn more", "button_style": "none" },
+            "column_size_xl":        "7",
+            "column_size_lg":        "inherit",
+            "column_size_md":        "inherit",
+            "column_size_sm":        "12",
+            "column_vertical_align": "top",
+            "column_text_align":     "left",
+            "column_padding_top":    37
+          }
+        ]
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+
+{% end_dnd_section %}

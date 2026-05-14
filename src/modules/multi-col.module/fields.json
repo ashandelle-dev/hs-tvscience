@@ -1,0 +1,321 @@
+[
+  {
+    "name": "columns",
+    "label": "Columns",
+    "type": "group",
+    "tab": "CONTENT",
+    "occurrence": {
+      "min": 1,
+      "max": 6,
+      "default": 2,
+      "sorting_label_field": "columns.column_heading.value"
+    },
+    "children": [
+      {
+        "name": "column_image",
+        "label": "Image / icon",
+        "type": "image",
+        "responsive": true,
+        "resizable": true,
+        "default": {
+          "size_type": "auto",
+          "src": "",
+          "alt": "",
+          "loading": "lazy",
+          "width": 0,
+          "height": 0
+        }
+      },
+      {
+        "name": "column_image_position",
+        "label": "Image position",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["above", "Above heading"],
+          ["inline", "Inline with heading"]
+        ],
+        "default": "above"
+      },
+      {
+        "name": "column_heading",
+        "label": "Heading",
+        "type": "group",
+        "children": [
+          {
+            "name": "value",
+            "label": "Heading content",
+            "type": "text",
+            "allow_new_line": true,
+            "default": ""
+          },
+          {
+            "name": "header_tag",
+            "label": "Heading level",
+            "type": "choice",
+            "display": "select",
+            "choices": [["h1", "H1"], ["h2", "H2"], ["h3", "H3"], ["h4", "H4"], ["h5", "H5"], ["h6", "H6"], ["p", "P"]],
+            "default": "h3"
+          },
+          {
+            "name": "heading_size",
+            "label": "Heading Size",
+            "type": "number",
+            "suffix": "px",
+            "inline_help_text": "Set to 0 to use the default size",
+            "default": 0
+          },
+          {
+            "name": "heading_size_mobile",
+            "label": "Heading Size Mobile",
+            "type": "number",
+            "suffix": "px",
+            "inline_help_text": "Set to 0 to use the default size",
+            "default": 0
+          },
+          {
+            "name": "font_weight",
+            "label": "Font Weight",
+            "type": "choice",
+            "display": "select",
+            "choices": [["normal", "Normal"], ["semibold", "Semibold"], ["bold", "Bold"]],
+            "default": "semibold"
+          }
+        ]
+      },
+      {
+        "name": "column_content",
+        "label": "Content",
+        "type": "richtext",
+        "default": ""
+      },
+      {
+        "name": "column_cta",
+        "label": "Button",
+        "type": "group",
+        "children": [
+          {
+            "name": "show",
+            "label": "Show button",
+            "type": "boolean",
+            "display": "checkbox",
+            "default": false
+          },
+          {
+            "name": "link",
+            "label": "Link",
+            "type": "link",
+            "supported_types": ["EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION"],
+            "default": {
+              "url": { "type": "EXTERNAL", "href": "" },
+              "open_in_new_tab": false,
+              "no_follow": false
+            },
+            "visibility": { "controlling_field": "columns.column_cta.show", "controlling_value_regex": "true", "operator": "EQUAL" }
+          },
+          {
+            "name": "text",
+            "label": "Button text",
+            "type": "text",
+            "allow_new_line": false,
+            "default": "Learn more",
+            "visibility": { "controlling_field": "columns.column_cta.show", "controlling_value_regex": "true", "operator": "EQUAL" }
+          },
+          {
+            "name": "button_style",
+            "label": "Button style",
+            "type": "choice",
+            "display": "select",
+            "choices": [["primary", "Primary"], ["secondary", "Secondary / Outline"], ["none", "None (text link)"]],
+            "default": "primary",
+            "visibility": { "controlling_field": "columns.column_cta.show", "controlling_value_regex": "true", "operator": "EQUAL" }
+          }
+        ]
+      },
+
+      {
+        "name": "column_size_xl",
+        "label": "Column width — XL (≥1280px)",
+        "type": "choice",
+        "display": "select",
+        "tab": "STYLE",
+        "choices": [
+          ["auto", "Auto (equal split)"], ["none", "Hidden"],
+          ["1", "1 / 12"], ["2", "2 / 12"], ["3", "3 / 12 (quarter)"], ["4", "4 / 12 (third)"],
+          ["5", "5 / 12"], ["6", "6 / 12 (half)"], ["7", "7 / 12"], ["8", "8 / 12 (two-thirds)"],
+          ["9", "9 / 12 (three-quarters)"], ["10", "10 / 12"], ["11", "11 / 12"], ["12", "12 / 12 (full)"]
+        ],
+        "default": "auto"
+      },
+      {
+        "name": "column_size_lg",
+        "label": "Column width — Desktop (≥1024px)",
+        "type": "choice",
+        "display": "select",
+        "tab": "STYLE",
+        "choices": [
+          ["inherit", "Inherit from XL"], ["auto", "Auto"], ["none", "Hidden"],
+          ["1", "1 / 12"], ["2", "2 / 12"], ["3", "3 / 12"], ["4", "4 / 12"],
+          ["5", "5 / 12"], ["6", "6 / 12"], ["7", "7 / 12"], ["8", "8 / 12"],
+          ["9", "9 / 12"], ["10", "10 / 12"], ["11", "11 / 12"], ["12", "12 / 12"]
+        ],
+        "default": "inherit"
+      },
+      {
+        "name": "column_size_md",
+        "label": "Column width — Tablet (≥768px)",
+        "type": "choice",
+        "display": "select",
+        "tab": "STYLE",
+        "choices": [
+          ["inherit", "Inherit from Desktop"], ["auto", "Auto"], ["none", "Hidden"],
+          ["1", "1 / 12"], ["2", "2 / 12"], ["3", "3 / 12"], ["4", "4 / 12"],
+          ["5", "5 / 12"], ["6", "6 / 12"], ["7", "7 / 12"], ["8", "8 / 12"],
+          ["9", "9 / 12"], ["10", "10 / 12"], ["11", "11 / 12"], ["12", "12 / 12"]
+        ],
+        "default": "inherit"
+      },
+      {
+        "name": "column_size_sm",
+        "label": "Column width — Mobile (<768px)",
+        "type": "choice",
+        "display": "select",
+        "tab": "STYLE",
+        "choices": [
+          ["inherit", "Inherit from Tablet"], ["none", "Hidden"],
+          ["1", "1 / 12"], ["2", "2 / 12"], ["3", "3 / 12"], ["4", "4 / 12"],
+          ["5", "5 / 12"], ["6", "6 / 12"], ["7", "7 / 12"], ["8", "8 / 12"],
+          ["9", "9 / 12"], ["10", "10 / 12"], ["11", "11 / 12"], ["12", "12 / 12"]
+        ],
+        "default": "12"
+      },
+
+      {
+        "name": "column_vertical_align",
+        "label": "Vertical align",
+        "type": "choice",
+        "display": "select",
+        "tab": "STYLE",
+        "choices": [
+          ["inherit", "Inherit from section"], ["top", "Top"], ["center", "Center"], ["bottom", "Bottom"], ["stretch", "Stretch"]
+        ],
+        "default": "inherit"
+      },
+      {
+        "name": "column_text_align",
+        "label": "Text align",
+        "type": "choice",
+        "display": "select",
+        "tab": "STYLE",
+        "choices": [
+          ["inherit", "Inherit from section"], ["left", "Left"], ["center", "Center"], ["right", "Right"]
+        ],
+        "default": "inherit"
+      },
+      {
+        "name": "column_padding_top",
+        "label": "Column top offset (px)",
+        "help_text": "Push this column down from the top of the row. Useful for aligning text with a heading in a sibling column that has an icon above it.",
+        "type": "number",
+        "tab": "STYLE",
+        "min": 0,
+        "max": 400,
+        "step": 1,
+        "suffix": "px",
+        "default": 0
+      }
+    ],
+    "default": [
+      {
+        "column_image": { "size_type": "exact", "src": "", "alt": "Guaranteed outcomes icon", "loading": "lazy", "width": 76, "height": 86 },
+        "column_image_position": "inline",
+        "column_heading": { "value": "Guaranteed<br>Outcomes", "header_tag": "h2", "heading_size": 44, "heading_size_mobile": 32, "font_weight": "semibold" },
+        "column_content": "",
+        "column_cta": { "show": false, "link": { "url": { "type": "EXTERNAL", "href": "" }, "open_in_new_tab": false, "no_follow": false }, "text": "Learn more", "button_style": "primary" },
+        "column_size_xl": "5",
+        "column_size_lg": "inherit",
+        "column_size_md": "inherit",
+        "column_size_sm": "12",
+        "column_vertical_align": "center",
+        "column_text_align": "inherit",
+        "column_padding_top": 0
+      },
+      {
+        "column_image": { "size_type": "auto", "src": "", "alt": "", "loading": "lazy", "width": 0, "height": 0 },
+        "column_image_position": "above",
+        "column_heading": { "value": "TV ads, meet guaranteed outcomes.", "header_tag": "h2", "heading_size": 32, "heading_size_mobile": 26, "font_weight": "bold" },
+        "column_content": "<p>With tvScientific, you decide what outcome matters most for your business \u2014 sales, installs, and more \u2014 and only pay when you get results.</p><p>Can your search and social campaigns do that?</p>",
+        "column_cta": { "show": true, "link": { "url": { "type": "EXTERNAL", "href": "/contact" }, "open_in_new_tab": false, "no_follow": false }, "text": "Learn more", "button_style": "primary" },
+        "column_size_xl": "7",
+        "column_size_lg": "inherit",
+        "column_size_md": "inherit",
+        "column_size_sm": "12",
+        "column_vertical_align": "center",
+        "column_text_align": "inherit",
+        "column_padding_top": 0
+      }
+    ]
+  },
+
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "background_color",
+        "label": "Background color",
+        "type": "color",
+        "default": { "color": null, "opacity": 100 }
+      },
+      {
+        "name": "background_image",
+        "label": "Background image",
+        "type": "image",
+        "default": { "size_type": "auto", "src": "", "alt": "", "loading": "lazy" }
+      },
+      {
+        "name": "text_color",
+        "label": "Text color",
+        "type": "color",
+        "default": { "color": null, "opacity": 100 }
+      },
+      {
+        "name": "padding",
+        "label": "Padding",
+        "type": "spacing",
+        "default": {
+          "padding": {
+            "top": { "value": 120, "units": "px" },
+            "bottom": { "value": 80, "units": "px" }
+          }
+        }
+      },
+      {
+        "name": "column_gap",
+        "label": "Column gap",
+        "type": "number",
+        "suffix": "px",
+        "inline_help_text": "Horizontal gutter between visible columns. Applied as padding inside each column (not grid gap), so it never causes the row to overflow the container.",
+        "default": 32
+      },
+      {
+        "name": "section_vertical_align",
+        "label": "Column vertical align (default)",
+        "type": "choice",
+        "display": "select",
+        "choices": [["top", "Top"], ["center", "Center"], ["bottom", "Bottom"], ["stretch", "Stretch"]],
+        "default": "center"
+      },
+      {
+        "name": "section_text_align",
+        "label": "Column text align (default)",
+        "type": "choice",
+        "display": "select",
+        "choices": [["left", "Left"], ["center", "Center"], ["right", "Right"]],
+        "default": "left"
+      }
+    ]
+  }
+]

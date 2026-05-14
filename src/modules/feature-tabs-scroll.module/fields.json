@@ -1,0 +1,236 @@
+[
+  {
+    "name": "heading",
+    "label": "Heading",
+    "type": "group",
+    "tab": "CONTENT",
+    "children": [
+      {
+        "name": "value",
+        "label": "Heading content",
+        "type": "text",
+        "allow_new_line": false,
+        "default": "Finally — a TV advertising platform that empowers you (and your ads) to perform"
+      },
+      {
+        "name": "header_tag",
+        "label": "Heading level",
+        "type": "choice",
+        "required": true,
+        "display": "select",
+        "choices": [["h1", "H1"], ["h2", "H2"], ["h3", "H3"], ["h4", "H4"], ["h5", "H5"], ["h6", "H6"], ["p", "P"]],
+        "default": "h2"
+      },
+      {
+        "name": "heading_size",
+        "label": "Heading Size",
+        "type": "number",
+        "suffix": "px",
+        "inline_help_text": "Set to 0 to use the default size",
+        "default": 32
+      },
+      {
+        "name": "heading_size_mobile",
+        "label": "Heading Size Mobile",
+        "type": "number",
+        "suffix": "px",
+        "inline_help_text": "Set to 0 to use the default size",
+        "default": 26
+      },
+      {
+        "name": "font_weight",
+        "label": "Font Weight",
+        "type": "choice",
+        "display": "select",
+        "choices": [["normal", "Normal"], ["medium", "Medium"], ["semibold", "Semibold"], ["bold", "Bold"]],
+        "default": "medium"
+      },
+      {
+        "name": "max_width",
+        "label": "Heading max-width (px)",
+        "type": "number",
+        "suffix": "px",
+        "inline_help_text": "Caps the heading text wrap so it forms a tighter block. Set to 0 for full width.",
+        "default": 600
+      }
+    ]
+  },
+
+  {
+    "name": "tabs",
+    "label": "Tabs / Pillars",
+    "type": "group",
+    "tab": "CONTENT",
+    "occurrence": {
+      "min": 2,
+      "max": 5,
+      "default": 3,
+      "sorting_label_field": "tabs.tab_label"
+    },
+    "children": [
+      {
+        "name": "tab_label",
+        "label": "Tab label",
+        "type": "text",
+        "allow_new_line": false,
+        "default": "Scalability"
+      },
+      {
+        "name": "tab_icon",
+        "label": "Tab icon (shown when active, ~35×35)",
+        "type": "image",
+        "responsive": false,
+        "resizable": true,
+        "default": {
+          "size_type": "exact",
+          "src": "",
+          "alt": "",
+          "loading": "lazy",
+          "width": 35,
+          "height": 35
+        }
+      },
+      {
+        "name": "tab_image",
+        "label": "Right-side composite image",
+        "type": "image",
+        "responsive": true,
+        "resizable": true,
+        "default": {
+          "size_type": "auto",
+          "src": "",
+          "alt": "",
+          "loading": "lazy",
+          "width": 0,
+          "height": 0
+        }
+      },
+      {
+        "name": "body_copy",
+        "label": "Body copy",
+        "type": "richtext",
+        "default": "<p>Spend your ad dollars more effectively, optimize in real time, and jump quickly on new opportunities.</p>"
+      },
+      {
+        "name": "cta",
+        "label": "Button",
+        "type": "group",
+        "children": [
+          {
+            "name": "show",
+            "label": "Show button",
+            "type": "boolean",
+            "display": "toggle",
+            "default": true
+          },
+          {
+            "name": "link",
+            "label": "Link",
+            "type": "link",
+            "supported_types": ["EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION"],
+            "default": {
+              "url": { "type": "EXTERNAL", "href": "/contact" },
+              "open_in_new_tab": false,
+              "no_follow": false
+            }
+          },
+          {
+            "name": "text",
+            "label": "Button text",
+            "type": "text",
+            "allow_new_line": false,
+            "default": "Learn more"
+          }
+        ]
+      }
+    ],
+    "default": [
+      {
+        "tab_label": "Scalability",
+        "tab_icon": { "size_type": "exact", "src": "https://tvscientific.com/hubfs/Performance%20marketers.svg", "alt": "Scalability icon", "loading": "lazy", "width": 35, "height": 35 },
+        "tab_image": { "size_type": "auto", "src": "https://tvscientific.com/hubfs/ScalabilityImage.png", "alt": "Scalability dashboard composite", "loading": "lazy", "width": 0, "height": 0 },
+        "body_copy": "<p>Spend your ad dollars more effectively, optimize in real time, and jump quickly on new opportunities.</p>",
+        "cta": { "show": true, "link": { "url": { "type": "EXTERNAL", "href": "/contact" }, "open_in_new_tab": false, "no_follow": false }, "text": "Learn more" }
+      },
+      {
+        "tab_label": "Measurement",
+        "tab_icon": { "size_type": "exact", "src": "https://tvscientific.com/hubfs/Optimization.svg", "alt": "Measurement icon", "loading": "lazy", "width": 35, "height": 35 },
+        "tab_image": { "size_type": "auto", "src": "https://tvscientific.com/hubfs/MeasurementImage.png", "alt": "Measurement dashboard composite", "loading": "lazy", "width": 0, "height": 0 },
+        "body_copy": "<p>Advertising is about business outcomes, not impressions. Generate lift across your media mix, make real-time optimizations faster than you.</p>",
+        "cta": { "show": true, "link": { "url": { "type": "EXTERNAL", "href": "/contact" }, "open_in_new_tab": false, "no_follow": false }, "text": "Learn more" }
+      },
+      {
+        "tab_label": "Brand Safety",
+        "tab_icon": { "size_type": "exact", "src": "https://tvscientific.com/hubfs/Shield.svg", "alt": "Brand Safety icon", "loading": "lazy", "width": 35, "height": 35 },
+        "tab_image": { "size_type": "auto", "src": "https://tvscientific.com/hubfs/BrandSafetyImage.png", "alt": "Brand Safety dashboard composite", "loading": "lazy", "width": 0, "height": 0 },
+        "body_copy": "<p>Ensure the inventory you can access aligns to the brand values you've worked hard to uphold.</p>",
+        "cta": { "show": true, "link": { "url": { "type": "EXTERNAL", "href": "/contact" }, "open_in_new_tab": false, "no_follow": false }, "text": "Learn more" }
+      }
+    ]
+  },
+
+  {
+    "name": "behavior",
+    "label": "Scroll behavior",
+    "type": "group",
+    "tab": "CONTENT",
+    "children": [
+      {
+        "name": "pin_enabled",
+        "label": "Pin to viewport on desktop",
+        "type": "boolean",
+        "display": "toggle",
+        "inline_help_text": "When on, the section sticks while user scrolls through each state. Disable for in-flow click-to-switch behavior.",
+        "default": true
+      },
+      {
+        "name": "scroll_distance_per_tab",
+        "label": "Scroll distance per tab (vh)",
+        "type": "number",
+        "suffix": "vh",
+        "min": 50,
+        "max": 200,
+        "inline_help_text": "How many viewport heights of scrolling each tab takes. 100 = 1 full screen of scrolling per tab. Lower = faster transitions.",
+        "default": 100
+      }
+    ]
+  },
+
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "background_color",
+        "label": "Background color",
+        "type": "color",
+        "default": { "color": "#FFFFFF", "opacity": 100 }
+      },
+      {
+        "name": "background_image",
+        "label": "Background image",
+        "type": "image",
+        "default": { "size_type": "auto", "src": "", "alt": "", "loading": "lazy" }
+      },
+      {
+        "name": "text_color",
+        "label": "Text color",
+        "type": "color",
+        "default": { "color": null, "opacity": 100 }
+      },
+      {
+        "name": "padding",
+        "label": "Padding",
+        "type": "spacing",
+        "default": {
+          "padding": {
+            "top":    { "value": 80, "units": "px" },
+            "bottom": { "value": 80, "units": "px" }
+          }
+        }
+      }
+    ]
+  }
+]

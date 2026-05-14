@@ -3,15 +3,15 @@
 <style>
 {% scope_css %}
 
-  {% if module.styles.background.color.color %}
+  {% if module.styles.background.color.css %}
   .sticky-scroller {
-    background-color: rgba({{ module.styles.background.color.color|convert_rgb }}, {{ module.styles.background.color.opacity / 100 }});
+    background-color: rgba({{ module.styles.background.color.css|convert_rgb }}, {{ module.styles.background.color.opacity / 100 }});
   }
   {% endif %}
-    
-  {% if module.styles.eyebrow_text.text.color.color %}
+
+  {% if module.styles.eyebrow_text.text.color.css %}
   .sticky-scroller__eyebrow-text {
-    color: {{ module.styles.eyebrow_text.text.color.color }};
+    color: {{ module.styles.eyebrow_text.text.color.css }};
   }
   {% endif %}
 
@@ -52,23 +52,23 @@
               {% set loadingAttr = item.image.loading != 'disabled' ? 'loading="{{ item.image.loading|escape_attr }}"' : '' %}
               <img src="{{ item.image.src|escape_url }}" alt="{{ item.image.alt|escape_attr }}" {{ loadingAttr }} width="{{ item.image.width|escape_attr }}" height="{{ item.image.height|escape_attr }}">
             {% elif item.image_type == "lottie" %}
-    
+
               {# Lottie Player #}
-    
+
               {# Set File #}
               {% if item.lottie.animation.animation_location == "file" %}
                 {% set lottie_url = item.lottie.animation.lottie_file %}
               {% else if item.lottie.animation.animation_location == "url" %}
                 {% set lottie_url = item.lottie.animation.lottie_animation_url.href %}
               {% endif %}
-              
+
               {# Set Background #}
               {% if item.lottie.lottie_player_settings.background_color == "transparent" %}
                 {% set lottie_background = "transparent" %}
               {% else if item.lottie.lottie_player_settings.background_color == "color" %}
                 {% set lottie_background = item.lottie.lottie_player_settings.color.color %}
               {% endif %}
-              
+
               <div class="flex items-center justify-center max-w-full">
                 {% set href = item.lottie.link.link.url.href %}
                 {% if item.lottie.link.link.url.type is equalto "EMAIL_ADDRESS" %}
@@ -77,12 +77,12 @@
                 {% if href %}
                 <a href="{{ href }}" {% if item.lottie.link.link.open_in_new_tab %}target="_blank"{% endif %} {% if item.lottie.link.link.rel %}rel="{{ item.lottie.link.link.rel }}"{% endif %}>
                 {% endif %}
-                  <lottie-player 
-                              class="sticky-scroller__lottie" 
-                              src="{{ lottie_url }}" 
-                              background="{{ lottie_background }}"  
-                              speed="{{ item.lottie.lottie_player_settings.speed }}"  
-                              style="{{ item.lottie.lottie_player_settings.style }}" 
+                  <lottie-player
+                              class="sticky-scroller__lottie"
+                              src="{{ lottie_url }}"
+                              background="{{ lottie_background }}"
+                              speed="{{ item.lottie.lottie_player_settings.speed }}"
+                              style="{{ item.lottie.lottie_player_settings.style }}"
                               {% if item.lottie.lottie_player_settings.autoplay %}autoplay {% endif %}
                               {% if item.lottie.lottie_player_settings.loop %}loop {% endif %}
                               {% if item.lottie.lottie_player_settings.show_controls %}controls {% endif %}
@@ -92,7 +92,7 @@
                 </a>
                 {% endif %}
               </div>
-    
+
             {% endif %}
           </div>
           <div class="sticky-scroller__eyebrow-text inline-block uppercase font-bold text-[16px]]{% if !module.styles.eyebrow_text.text.color.color %} text-[#2A7991]{% endif %} tracking-[.004em]">{{ item.eyebrow_text }}</div>
@@ -133,14 +133,14 @@
           {% else if item.lottie.animation.animation_location == "url" %}
             {% set lottie_url = item.lottie.animation.lottie_animation_url.href %}
           {% endif %}
-          
+
           {# Set Background #}
           {% if item.lottie.lottie_player_settings.background_color == "transparent" %}
             {% set lottie_background = "transparent" %}
           {% else if item.lottie.lottie_player_settings.background_color == "color" %}
             {% set lottie_background = item.lottie.lottie_player_settings.color.color %}
           {% endif %}
-          
+
           <div class="flex items-center justify-center max-w-full">
             {% set href = item.lottie.link.link.url.href %}
             {% if item.lottie.link.link.url.type is equalto "EMAIL_ADDRESS" %}
@@ -149,13 +149,13 @@
             {% if href %}
             <a href="{{ href }}" {% if item.lottie.link.link.open_in_new_tab %}target="_blank"{% endif %} {% if item.lottie.link.link.rel %}rel="{{ item.lottie.link.link.rel }}"{% endif %}>
             {% endif %}
-              <lottie-player 
-                           id="stickyScrollerLottie{{ loop.index }}" 
-                           class="sticky-scroller__lottie" 
-                           src="{{ lottie_url }}" 
-                           background="{{ lottie_background }}"  
-                           speed="{{ item.lottie.lottie_player_settings.speed }}"  
-                           style="{{ item.lottie.lottie_player_settings.style }}" 
+              <lottie-player
+                           id="stickyScrollerLottie{{ loop.index }}"
+                           class="sticky-scroller__lottie"
+                           src="{{ lottie_url }}"
+                           background="{{ lottie_background }}"
+                           speed="{{ item.lottie.lottie_player_settings.speed }}"
+                           style="{{ item.lottie.lottie_player_settings.style }}"
                            {% if item.lottie.lottie_player_settings.autoplay %}autoplay {% endif %}
                            {% if item.lottie.lottie_player_settings.loop %}loop {% endif %}
                            {% if item.lottie.lottie_player_settings.show_controls %}controls {% endif %}

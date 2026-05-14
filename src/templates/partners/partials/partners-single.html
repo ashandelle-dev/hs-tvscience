@@ -13,11 +13,6 @@ isAvailableForNewContent: false
 {% endif %}
 
 <style>
-	/* ========================================
-   PARTNER SINGLE PAGE STYLES
-   Based on Figma Design System
-   ======================================== */
-
 	.partner-page {
 		background: #fff;
 	}
@@ -457,10 +452,10 @@ isAvailableForNewContent: false
 				{% set all_partners = hubdb_table_rows(136413080) %}
 				{% set related_partners = [] %}
 				{% set fallback_partners = [] %}
-				
+
 				{# Get current partner's categories #}
 				{% set current_categories = partner.integration_categories %}
-				
+
 				{% for p in all_partners %}
 					{% if p.hs_id != partner.hs_id %}
 						{# Check if this partner shares any categories with current partner #}
@@ -471,7 +466,7 @@ isAvailableForNewContent: false
 									{% set has_match = true %}
 								{% endif %}
 							{% endfor %}
-							
+
 							{% if has_match %}
 								{% do related_partners.append(p) %}
 							{% else %}
@@ -483,10 +478,10 @@ isAvailableForNewContent: false
 						{% endif %}
 					{% endif %}
 				{% endfor %}
-				
+
 				{# Combine related partners first, then fallback if needed to reach 4 #}
 				{% set display_partners = related_partners + fallback_partners %}
-				
+
 				{# Show up to 4 partners #}
 				{% for p in display_partners[:4] %}
 				<a href="/partners/{{ p.hs_path }}" class="partner-card">
@@ -495,7 +490,7 @@ isAvailableForNewContent: false
 						<img src="{{ p.logo_full.url }}" alt="{{ p.name }}" class="partner-card-logo">
 						{% endif %}
 					</div>
-					
+
 					<div class="partner-card-content">
 						<div class="partner-card-text">
 							<h3>{{ p.name|upper }}</h3>
@@ -503,7 +498,7 @@ isAvailableForNewContent: false
 							<p>{{ p.description|striptags|truncate(120) }}</p>
 							{% endif %}
 						</div>
-						
+
 						<span class="partner-card-link">
 							Read Now
 							<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">

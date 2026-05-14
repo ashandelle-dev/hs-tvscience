@@ -1,0 +1,105 @@
+{% set bg_color   = module.style.background_color.css %}
+{% set bg_image   = module.style.background_image.src %}
+{% set text_color = module.style.text_color.css %}
+
+{% require_css %}
+<style>
+  {% scope_css %}
+    .tvsci-resources__heading {
+      {% if module.heading.heading_size %}font-size: {{ module.heading.heading_size }}px !important;{% endif %}
+      line-height: 1.2;
+      text-align: {{ module.heading.alignment }};
+      {% if text_color %}color: {{ text_color }};{% endif %}
+    }
+    {% if module.heading.heading_size_mobile %}
+    @media (max-width: 768px) {
+      .tvsci-resources__heading { font-size: {{ module.heading.heading_size_mobile }}px !important; }
+    }
+    {% endif %}
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+<section
+  class="font-plex relative"
+  style="
+    {% if bg_color %}background-color: {{ bg_color }};{% endif %}
+    {% if bg_image %}background-image: url('{{ bg_image }}'); background-size: cover; background-position: center;{% endif %}
+    {{ module.style.padding.css }}
+  ">
+
+  <div class="tvsci-container flex flex-col items-center gap-10">
+
+    {% if module.heading.value %}
+    <{{ module.heading.header_tag }}
+      class="tvsci-resources__heading font-{{ module.heading.font_weight }} text-tvs-black !m-0 w-full">
+      {{ module.heading.value }}
+    </{{ module.heading.header_tag }}>
+    {% endif %}
+
+    {% if module.cards %}
+    <ul class="list-none m-0 p-0 grid gap-6 w-full grid-cols-1 sm:grid-cols-3 lg:grid-cols-3">
+      {% for card in module.cards %}
+        {% set href = card.cta.link.url.href %}
+        {% if card.cta.link.url.type is equalto "EMAIL_ADDRESS" %}
+          {% set href = "mailto:" + href %}
+        {% endif %}
+
+        {% set sizeAttrs = 'width="' ~ card.image.width ~ '" height="' ~ card.image.height ~ '"' %}
+        {% if card.image.size_type == 'auto' %}
+          {% set sizeAttrs = 'width="' ~ card.image.width ~ '" height="' ~ card.image.height ~ '" style="max-width: 100%; height: auto;"' %}
+        {% elif card.image.size_type == 'auto_custom_max' %}
+          {% set sizeAttrs = 'width="' ~ card.image.max_width ~ '" height="' ~ card.image.max_height ~ '" style="max-width: 100%; height: auto;"' %}
+        {% endif %}
+        {% set loadingAttr = card.image.loading != 'disabled' ? 'loading="' ~ card.image.loading ~ '"' : '' %}
+
+        <li class="m-0">
+          <a
+            {% if href %}href="{{ href|escape_url }}"{% endif %}
+            {% if card.cta.link.open_in_new_tab %}target="_blank"{% endif %}
+            {% if card.cta.link.no_follow %}rel="nofollow"{% endif %}
+            class="group flex h-full flex-col overflow-hidden rounded-lg border border-tvs-grey-light bg-tvs-white no-underline hover:no-underline transition-shadow hover:shadow-md">
+
+            {% if card.image.src %}
+            <div class="aspect-[330/173] w-full overflow-hidden bg-tvs-grey-pastel">
+              <img
+                class="block w-full h-full object-cover m-0"
+                src="{{ card.image.src|escape_url }}"
+                alt="{{ card.image.alt|escape_attr }}"
+                {{ loadingAttr|safe }}>
+            </div>
+            {% else %}
+            <div class="aspect-[330/173] w-full bg-tvs-grey-pastel"></div>
+            {% endif %}
+
+            <div class="flex flex-1 flex-col gap-3 p-5">
+              {% if card.eyebrow %}
+              <p class="m-0 font-plex font-medium text-[16px] uppercase tracking-[0.08em] text-[#a7b2be]">
+                {{ card.eyebrow }}
+              </p>
+              {% endif %}
+
+              {% if card.title %}
+              <p class="m-0 text-[22px] leading-[32px] tracking-[0.01em] font-medium text-[#31373d] ">
+                {{ card.title }}
+              </p>
+              {% endif %}
+
+              {% if card.cta.text %}
+              <span class="mt-auto inline-flex items-center gap-2 pt-4 font-plex-mono text-[14px] uppercase tracking-[0.1em] text-tvs-black">
+                {{ card.cta.text }}
+                <svg class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+                </svg>
+              </span>
+              {% endif %}
+            </div>
+
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+  </div>
+</section>
