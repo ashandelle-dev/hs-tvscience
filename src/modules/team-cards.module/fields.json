@@ -1,0 +1,109 @@
+[
+  {
+    "name": "members",
+    "label": "Team Members",
+    "type": "group",
+    "tab": "CONTENT",
+    "occurrence": { "min": 1, "max": 12 },
+    "default": [
+      {
+        "photo": { "size_type": "exact", "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/jason.png", "alt": "Jason Fairchild", "loading": "lazy", "width": 234, "height": 220 },
+        "person_name": "Jason Fairchild",
+        "role": "Co-Founder + CEO",
+        "linkedin": { "url": { "type": "EXTERNAL", "href": "" }, "open_in_new_tab": true, "no_follow": false }
+      },
+      {
+        "photo": { "size_type": "exact", "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/jason.png", "alt": "Team Member", "loading": "lazy", "width": 234, "height": 220 },
+        "person_name": "Team Member",
+        "role": "Title / Role",
+        "linkedin": { "url": { "type": "EXTERNAL", "href": "" }, "open_in_new_tab": true, "no_follow": false }
+      },
+      {
+        "photo": { "size_type": "exact", "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/jason.png", "alt": "Team Member", "loading": "lazy", "width": 234, "height": 220 },
+        "person_name": "Team Member",
+        "role": "Title / Role",
+        "linkedin": { "url": { "type": "EXTERNAL", "href": "" }, "open_in_new_tab": true, "no_follow": false }
+      },
+      {
+        "photo": { "size_type": "exact", "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/jason.png", "alt": "Team Member", "loading": "lazy", "width": 234, "height": 220 },
+        "person_name": "Team Member",
+        "role": "Title / Role",
+        "linkedin": { "url": { "type": "EXTERNAL", "href": "" }, "open_in_new_tab": true, "no_follow": false }
+      }
+    ],
+    "children": [
+      {
+        "name": "photo",
+        "label": "Photo",
+        "type": "image",
+        "responsive": true,
+        "resizable": true,
+        "show_loading": true,
+        "default": {
+          "size_type": "exact",
+          "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/jason.png",
+          "alt": "",
+          "loading": "lazy",
+          "width": 234,
+          "height": 220
+        }
+      },
+      {
+        "name": "person_name",
+        "label": "Name",
+        "type": "text",
+        "allow_new_line": false,
+        "default": "Team Member"
+      },
+      {
+        "name": "role",
+        "label": "Title / Role",
+        "type": "text",
+        "allow_new_line": false,
+        "default": "Title / Role"
+      },
+      {
+        "name": "linkedin",
+        "label": "LinkedIn URL",
+        "type": "link",
+        "supported_types": ["EXTERNAL"],
+        "default": {
+          "url": { "type": "EXTERNAL", "href": "" },
+          "open_in_new_tab": true,
+          "no_follow": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "background_color",
+        "label": "Background color",
+        "type": "color",
+        "default": { "color": null, "opacity": 100 }
+      },
+      {
+        "name": "background_image",
+        "label": "Background image",
+        "type": "image",
+        "default": { "size_type": "auto", "src": "", "alt": "", "loading": "lazy" }
+      },
+      {
+        "name": "padding",
+        "label": "Padding",
+        "type": "spacing",
+        "default": {
+          "padding": {
+            "top": { "value": 120, "units": "px" },
+            "bottom": { "value": 80, "units": "px" }
+          }
+        }
+      }
+    ]
+  }
+]

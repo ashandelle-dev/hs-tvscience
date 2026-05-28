@@ -1,5 +1,11 @@
 [
   {
+  "name": "class_name",
+  "label": "Class name",
+  "type": "text",
+  "default": ""
+  },
+  {
     "name": "columns",
     "label": "Columns",
     "type": "group",
@@ -223,6 +229,34 @@
         "step": 1,
         "suffix": "px",
         "default": 0
+      },
+      {
+        "name": "column_offset_top",
+        "label": "Column vertical offset (px)",
+        "help_text": "Shift this column up (negative) or down (positive) relative to the row. Negative values create staggered / overlapping layouts.",
+        "type": "number",
+        "tab": "STYLE",
+        "min": -400,
+        "max": 400,
+        "step": 1,
+        "suffix": "px",
+        "default": 0
+      },
+      {
+        "name": "column_offset_left",
+        "label": "Column offset left — XL (≥1280px)",
+        "help_text": "Bootstrap-style horizontal offset. Shifts the column right by N/12 of the row width. Resets to 0 below 1280px.",
+        "type": "choice",
+        "display": "select",
+        "tab": "STYLE",
+        "choices": [
+          ["0", "None"],
+          ["1", "1 / 12"], ["2", "2 / 12"], ["3", "3 / 12 (quarter)"],
+          ["4", "4 / 12 (third)"], ["5", "5 / 12"], ["6", "6 / 12 (half)"],
+          ["7", "7 / 12"], ["8", "8 / 12"], ["9", "9 / 12"],
+          ["10", "10 / 12"], ["11", "11 / 12"]
+        ],
+        "default": "0"
       }
     ],
     "default": [
@@ -238,7 +272,9 @@
         "column_size_sm": "12",
         "column_vertical_align": "center",
         "column_text_align": "inherit",
-        "column_padding_top": 0
+        "column_padding_top": 0,
+        "column_offset_top": 0,
+        "column_offset_left": "0"
       },
       {
         "column_image": { "size_type": "auto", "src": "", "alt": "", "loading": "lazy", "width": 0, "height": 0 },
@@ -252,7 +288,9 @@
         "column_size_sm": "12",
         "column_vertical_align": "center",
         "column_text_align": "inherit",
-        "column_padding_top": 0
+        "column_padding_top": 0,
+        "column_offset_top": 0,
+        "column_offset_left": "0"
       }
     ]
   },
@@ -315,6 +353,53 @@
         "display": "select",
         "choices": [["left", "Left"], ["center", "Center"], ["right", "Right"]],
         "default": "left"
+      },
+      {
+        "name": "container_max_width",
+        "label": "Container max width",
+        "type": "number",
+        "suffix": "px",
+        "min": 0,
+        "inline_help_text": "Override the default 1072px container width. Set to 0 to use the theme default.",
+        "default": 0
+      },
+      {
+        "name": "row_background_color",
+        "label": "Card background color",
+        "type": "color",
+        "inline_help_text": "Fill color for the inner column-row card wrapper.",
+        "default": { "color": null, "opacity": 100 }
+      },
+      {
+        "name": "row_border_color",
+        "label": "Card border color",
+        "type": "color",
+        "inline_help_text": "Border color for the column-row card wrapper. Leave empty for no border.",
+        "default": { "color": null, "opacity": 100 }
+      },
+      {
+        "name": "row_border_radius",
+        "label": "Card border radius",
+        "type": "number",
+        "suffix": "px",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "default": 0
+      },
+      {
+        "name": "row_inner_padding",
+        "label": "Card inner padding",
+        "type": "spacing",
+        "inline_help_text": "Inner padding inside the column-row card wrapper.",
+        "default": {
+          "padding": {
+            "top":    { "value": 0, "units": "px" },
+            "bottom": { "value": 0, "units": "px" },
+            "left":   { "value": 0, "units": "px" },
+            "right":  { "value": 0, "units": "px" }
+          }
+        }
       }
     ]
   }

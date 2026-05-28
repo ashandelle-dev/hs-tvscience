@@ -1,6 +1,9 @@
-{% set bg_color   = module.style.background_color.css %}
-{% set bg_image   = module.style.background_image.src %}
-{% set text_color = module.style.text_color.css %}
+{% set bg_color    = module.style.background_color.css %}
+{% set bg_image    = module.style.background_image.src %}
+{% set text_color  = module.style.text_color.css %}
+{% set row_bg      = module.style.row_background_color.css %}
+{% set row_border  = module.style.row_border_color.css %}
+{% set row_radius  = module.style.row_border_radius %}
 
 {% set col_count  = module.columns | length %}
 {% set equal_span = col_count > 0 ? (12 / col_count)|int : 12 %}
@@ -33,12 +36,17 @@
       font-size: 18px;
       line-height: 1;
     }
+    @media (min-width: 1280px) {
+      .tvsci-col {
+        margin-left: calc(var(--col-offset-left, 0) / 12 * 100%);
+      }
+    }
   {% end_scope_css %}
 </style>
 {% end_require_css %}
 
 <section
-  class="font-plex relative"
+  class="font-plex relative {{ module.class_name }}"
   style="
     {% if bg_color %}background-color: {{ bg_color }};{% endif %}
     {% if bg_image %}background-image: url('{{ bg_image }}'); background-size: cover; background-position: center;{% endif %}
@@ -46,10 +54,16 @@
     {{ module.style.padding.css }}
   ">
 
-  <div class="tvsci-container">
+  <div class="tvsci-container" {% if module.style.container_max_width %}style="max-width: {{ module.style.container_max_width }}px;"{% endif %}>
     <div
       class="tvsci-multicol tvsci-multicol--valign-{{ module.style.section_vertical_align }}"
-      style="--multicol-gap: {{ module.style.column_gap|default(32) }}px;">
+      style="
+        --multicol-gap: {{ module.style.column_gap|default(32) }}px;
+        {% if row_bg %}background-color: {{ row_bg }};{% endif %}
+        {% if row_border %}border: 1px solid {{ row_border }};{% endif %}
+        {% if row_radius %}border-radius: {{ row_radius }}px;{% endif %}
+        {{ module.style.row_inner_padding.css }}
+      ">
 
       {% for col in module.columns %}
 
@@ -89,6 +103,8 @@
           {% if col.column_heading.heading_size %}--col-heading-size: {{ col.column_heading.heading_size }}px;{% endif %}
           {% if col.column_heading.heading_size_mobile %}--col-heading-size-mobile: {{ col.column_heading.heading_size_mobile }}px;{% endif %}
           {% if col.column_padding_top %}--col-padding-top: {{ col.column_padding_top }}px;{% endif %}
+          {% if col.column_offset_top %}margin-top: {{ col.column_offset_top }}px;{% endif %}
+          --col-offset-left: {{ col.column_offset_left|default('0') }};
         ">
 
         {% if col.column_image.src and col.column_image_position == 'above' %}

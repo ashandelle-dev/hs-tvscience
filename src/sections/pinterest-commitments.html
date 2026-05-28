@@ -1,0 +1,128 @@
+<!--
+ templateType: section
+ label: Our commitments
+ isAvailableForNewContent: true
+-->
+{% dnd_section
+    background_color="#f9fafc",
+    padding={
+      "default": {
+        "top":    "80px",
+        "bottom": "80px"
+      }
+    }
+%}
+
+  {% dnd_column offset=0, width=12 %}
+
+    {% dnd_row %}
+      {% dnd_module
+        path="/tvScientific 2022 Atlas Pro/cli-build/modules/heading",
+        offset=0,
+        width=12,
+        value="Our commitments",
+        header_tag="h2",
+        heading_size=48,
+        heading_size_mobile=36,
+        font_weight="semibold",
+        image={ "src": "" },
+        styles={
+          "alignment": {
+            "horizontal_align": "center"
+          },
+          "text_color": {
+            "color":   "#1F252B",
+            "opacity": 100
+          },
+          "padding": {
+            "padding": {
+              "top":    { "value": 0,  "units": "px" },
+              "bottom": { "value": 48, "units": "px" }
+            }
+          }
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+
+    {% dnd_row %}
+      {% dnd_module
+        path="/tvScientific 2022 Atlas Pro/cli-build/modules/multi-col",
+        offset=0,
+        width=12,
+        style={
+          "section_vertical_align": "top",
+          "section_text_align": "left",
+          "column_gap": 30,
+          "padding": {
+            "padding": {
+              "top":    { "value": 0, "units": "px" },
+              "bottom": { "value": 0, "units": "px" }
+            }
+          }
+        },
+        columns=[
+          {
+            "column_image": { "size_type": "exact", "src": "", "alt": "", "loading": "lazy", "width": 36, "height": 36 },
+            "column_image_position": "above",
+            "column_heading": { "value": "Performance", "header_tag": "h3", "heading_size": 22, "heading_size_mobile": 20, "font_weight": "semibold" },
+            "column_content": '<p>We build for measurable, repeatable outcomes.</p>',
+            "column_cta": { "show": false, "link": { "url": { "type": "EXTERNAL", "href": "" }, "open_in_new_tab": false, "no_follow": false }, "text": "Learn more", "button_style": "primary" },
+            "column_size_xl": "auto",
+            "column_size_lg": "inherit",
+            "column_size_md": "6",
+            "column_size_sm": "12",
+            "column_vertical_align": "top",
+            "column_text_align": "left",
+            "column_padding_top": 0
+          },
+          {
+            "column_image": { "size_type": "exact", "src": "", "alt": "", "loading": "lazy", "width": 36, "height": 36 },
+            "column_image_position": "above",
+            "column_heading": { "value": "Transparency", "header_tag": "h3", "heading_size": 22, "heading_size_mobile": 20, "font_weight": "semibold" },
+            "column_content": '<p>We believe marketers should understand what is working and why.</p>',
+            "column_cta": { "show": false, "link": { "url": { "type": "EXTERNAL", "href": "" }, "open_in_new_tab": false, "no_follow": false }, "text": "Learn more", "button_style": "primary" },
+            "column_size_xl": "auto",
+            "column_size_lg": "inherit",
+            "column_size_md": "6",
+            "column_size_sm": "12",
+            "column_vertical_align": "top",
+            "column_text_align": "left",
+            "column_padding_top": 0
+          },
+          {
+            "column_image": { "size_type": "exact", "src": "", "alt": "", "loading": "lazy", "width": 36, "height": 36 },
+            "column_image_position": "above",
+            "column_heading": { "value": "Innovation", "header_tag": "h3", "heading_size": 22, "heading_size_mobile": 20, "font_weight": "semibold" },
+            "column_content": '<p>We advance the science of TV through optimization, measurement, and real-time learning.</p>',
+            "column_cta": { "show": false, "link": { "url": { "type": "EXTERNAL", "href": "" }, "open_in_new_tab": false, "no_follow": false }, "text": "Learn more", "button_style": "primary" },
+            "column_size_xl": "auto",
+            "column_size_lg": "inherit",
+            "column_size_md": "6",
+            "column_size_sm": "12",
+            "column_vertical_align": "top",
+            "column_text_align": "left",
+            "column_padding_top": 0
+          },
+          {
+            "column_image": { "size_type": "exact", "src": "", "alt": "", "loading": "lazy", "width": 36, "height": 36 },
+            "column_image_position": "above",
+            "column_heading": { "value": "Accessibility", "header_tag": "h3", "heading_size": 22, "heading_size_mobile": 20, "font_weight": "semibold" },
+            "column_content": '<p>We make Performance TV more usable and impactful for businesses of all sizes.</p>',
+            "column_cta": { "show": false, "link": { "url": { "type": "EXTERNAL", "href": "" }, "open_in_new_tab": false, "no_follow": false }, "text": "Learn more", "button_style": "primary" },
+            "column_size_xl": "auto",
+            "column_size_lg": "inherit",
+            "column_size_md": "6",
+            "column_size_sm": "12",
+            "column_vertical_align": "top",
+            "column_text_align": "left",
+            "column_padding_top": 0
+          }
+        ]
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+
+  {% end_dnd_column %}
+
+{% end_dnd_section %}

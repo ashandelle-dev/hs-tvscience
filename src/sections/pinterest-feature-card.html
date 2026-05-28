@@ -1,0 +1,96 @@
+<!--
+ templateType: section
+ label: Pinterest feature card (3-col)
+ isAvailableForNewContent: true
+-->
+{% dnd_section
+    background_color="#FFFFFF",
+    padding={
+      "default": {
+        "top":    "80px",
+        "bottom": "80px"
+      }
+    }
+%}
+
+  {% dnd_column offset=0, width=12 %}
+
+    {% dnd_row %}
+      {% dnd_module
+        path="/tvScientific 2022 Atlas Pro/cli-build/modules/multi-col",
+        offset=0,
+        width=12,
+        style={
+          "container_max_width": 1200,
+          "section_vertical_align": "top",
+          "section_text_align": "left",
+          "column_gap": 32,
+          "padding": {
+            "padding": {
+              "top":    { "value": 0, "units": "px" },
+              "bottom": { "value": 0, "units": "px" }
+            }
+          },
+          "row_background_color": { "color": null, "opacity": 100 },
+          "row_border_color":     { "color": "#d9e2eb", "opacity": 100 },
+          "row_border_radius":    16,
+          "row_inner_padding": {
+            "padding": {
+              "top":    { "value": 56, "units": "px" },
+              "bottom": { "value": 56, "units": "px" },
+              "left":   { "value": 80, "units": "px" },
+              "right":  { "value": 80, "units": "px" }
+            }
+          }
+        },
+        columns=[
+          {
+            "column_image": { "size_type": "exact", "src": "", "alt": "", "loading": "lazy", "width": 36, "height": 36 },
+            "column_image_position": "above",
+            "column_heading": { "value": "Reach customers earlier in their decision-making journey", "header_tag": "h3", "heading_size": 24, "heading_size_mobile": 20, "font_weight": "semibold" },
+            "column_content": '<p>Most CTV targeting still relies on the same three sources: past behavior, broad demographics, and purchase signals. Useful, but backward-looking. We help advertisers reach people earlier in the decision-making process using high-intent data.</p>',
+            "column_cta": { "show": false, "link": { "url": { "type": "EXTERNAL", "href": "" }, "open_in_new_tab": false, "no_follow": false }, "text": "Learn more", "button_style": "primary" },
+            "column_size_xl": "auto",
+            "column_size_lg": "inherit",
+            "column_size_md": "inherit",
+            "column_size_sm": "12",
+            "column_vertical_align": "top",
+            "column_text_align": "left",
+            "column_padding_top": 0
+          },
+          {
+            "column_image": { "size_type": "exact", "src": "", "alt": "", "loading": "lazy", "width": 36, "height": 36 },
+            "column_image_position": "above",
+            "column_heading": { "value": "Optimize toward real outcomes", "header_tag": "h3", "heading_size": 24, "heading_size_mobile": 20, "font_weight": "semibold" },
+            "column_content": '<p>Our AI-powered platform is built to drive the business results that matter most, from purchases and installs to subscriptions and incremental growth.</p>',
+            "column_cta": { "show": false, "link": { "url": { "type": "EXTERNAL", "href": "" }, "open_in_new_tab": false, "no_follow": false }, "text": "Learn more", "button_style": "primary" },
+            "column_size_xl": "auto",
+            "column_size_lg": "inherit",
+            "column_size_md": "inherit",
+            "column_size_sm": "12",
+            "column_vertical_align": "top",
+            "column_text_align": "left",
+            "column_padding_top": 0
+          },
+          {
+            "column_image": { "size_type": "exact", "src": "", "alt": "", "loading": "lazy", "width": 36, "height": 36 },
+            "column_image_position": "above",
+            "column_heading": { "value": "Prove TV&#39;s full impact", "header_tag": "h3", "heading_size": 24, "heading_size_mobile": 20, "font_weight": "semibold" },
+            "column_content": '<p>We help marketers understand how TV contributes across the funnel and across the broader media mix, not just within a single channel.</p>',
+            "column_cta": { "show": false, "link": { "url": { "type": "EXTERNAL", "href": "" }, "open_in_new_tab": false, "no_follow": false }, "text": "Learn more", "button_style": "primary" },
+            "column_size_xl": "auto",
+            "column_size_lg": "inherit",
+            "column_size_md": "inherit",
+            "column_size_sm": "12",
+            "column_vertical_align": "top",
+            "column_text_align": "left",
+            "column_padding_top": 0
+          }
+        ]
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+
+  {% end_dnd_column %}
+
+{% end_dnd_section %}

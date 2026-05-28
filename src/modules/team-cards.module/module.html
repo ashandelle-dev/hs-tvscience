@@ -1,0 +1,61 @@
+{% set bg_color  = module.style.background_color.css %}
+{% set bg_image  = module.style.background_image.src %}
+
+<section class="font-plex py-16"
+  style="
+    {% if bg_color %}background-color: {{ bg_color }};{% endif %}
+    {% if bg_image %}background-image: url('{{ bg_image }}'); background-size: cover; background-position: center;{% endif %}
+    {{ module.style.padding.css }}
+  ">
+  <div class="tvsci-container">
+
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
+      {% for member in module.members %}
+      <div class="bg-tvs-white border border-tvs-grey-light rounded-xl p-3.5 flex flex-col gap-3">
+
+        <div class="w-full aspect-square rounded-lg overflow-hidden bg-tvs-grey-pastel">
+          {% if member.photo.src %}
+            <img
+              class="w-full h-full object-cover object-top"
+              src="{{ member.photo.src|escape_url }}"
+              alt="{{ member.photo.alt|escape_attr }}"
+              {% if member.photo.loading != 'disabled' %}loading="{{ member.photo.loading|escape_attr }}"{% endif %}
+            >
+          {% endif %}
+        </div>
+
+        <div class="flex flex-col gap-1.5 flex-1">
+          <p class="!m-0 font-medium text-[22px] leading-[1.38] tracking-[0.01em]" style="color: #31373d;">
+            {{ member.person_name }}
+          </p>
+          <p class="!m-0 text-[12px] leading-none" style="color: #77858c;">
+            {{ member.role }}
+          </p>
+        </div>
+
+        {% if member.linkedin.url.href %}
+          <a
+            href="{{ member.linkedin.url.href }}"
+            {% if member.linkedin.open_in_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
+            class="block w-5 h-5 shrink-0"
+            aria-label="{{ member.person_name }} on LinkedIn"
+          >
+          <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
+            <g clip-path="url(#clip0_935_3823)">
+              <path d="M20.1611 20.1611H0V0H20.1611V20.1611ZM3.27637 7.8125C2.85885 7.8125 2.52055 8.15085 2.52051 8.56836V16.8848C2.52051 17.3023 2.85882 17.6406 3.27637 17.6406H5.54395C5.96149 17.6406 6.2998 17.3023 6.2998 16.8848V8.56836C6.29977 8.15085 5.96147 7.8125 5.54395 7.8125H3.27637ZM12.7266 7.05664C10.0218 7.04825 7.82115 9.23182 7.8125 11.9365V16.8848C7.8125 17.3048 8.14836 17.6406 8.56836 17.6406H10.332C10.752 17.6406 11.0889 17.3048 11.0889 16.8848V11.9453C11.0889 11.0466 11.8191 10.3156 12.7178 10.3154C12.7766 10.3154 12.8357 10.3158 12.8945 10.3242C13.7429 10.4334 14.3725 11.1556 14.3643 12.0039V16.8848C14.3643 17.3048 14.7011 17.6406 15.1211 17.6406H16.8848C17.3048 17.6406 17.6406 17.3048 17.6406 16.8848V11.9453C17.6406 9.24055 15.4401 7.04844 12.7354 7.05664C12.7354 7.05664 12.735 7.05664 12.7266 7.05664ZM4.41016 2.52051C3.36633 2.52052 2.52054 3.36633 2.52051 4.41016C2.52051 5.45401 3.36631 6.30077 4.41016 6.30078C5.45402 6.30078 6.2998 5.45402 6.2998 4.41016C6.29977 3.36632 5.454 2.52051 4.41016 2.52051Z" fill="black"/>
+            </g>
+            <defs>
+              <clipPath id="clip0_935_3823">
+                <rect width="20.1608" height="20.1608" fill="white"/>
+              </clipPath>
+            </defs>
+          </svg>
+          </a>
+        {% endif %}
+
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>

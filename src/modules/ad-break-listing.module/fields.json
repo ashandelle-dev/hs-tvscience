@@ -1,0 +1,143 @@
+[
+  {
+    "name": "heading",
+    "label": "Heading",
+    "type": "group",
+    "tab": "CONTENT",
+    "children": [
+      {
+        "name": "value",
+        "label": "Heading content",
+        "type": "text",
+        "allow_new_line": false,
+        "default": "Read The Ad Break"
+      },
+      {
+        "name": "header_tag",
+        "label": "Heading level",
+        "type": "choice",
+        "required": true,
+        "display": "select",
+        "choices": [
+          ["h1", "H1"], ["h2", "H2"], ["h3", "H3"],
+          ["h4", "H4"], ["h5", "H5"], ["h6", "H6"], ["p", "P"]
+        ],
+        "default": "h2"
+      },
+      {
+        "name": "heading_size",
+        "label": "Heading Size",
+        "type": "number",
+        "suffix": "px",
+        "inline_help_text": "Set to 0 to use the default size",
+        "default": 48
+      },
+      {
+        "name": "heading_size_mobile",
+        "label": "Heading Size Mobile",
+        "type": "number",
+        "suffix": "px",
+        "inline_help_text": "Set to 0 to use the default size",
+        "default": 32
+      },
+      {
+        "name": "font_weight",
+        "label": "Font Weight",
+        "type": "choice",
+        "display": "select",
+        "choices": [["normal", "Normal"], ["semibold", "Semibold"], ["bold", "Bold"]],
+        "default": "semibold"
+      }
+    ]
+  },
+
+  {
+    "name": "blog_id",
+    "label": "Blog ID",
+    "type": "text",
+    "allow_new_line": false,
+    "inline_help_text": "HubSpot blog ID to pull posts from.",
+    "default": "55261321759"
+  },
+
+  {
+    "name": "tag_slug",
+    "label": "Tag slug",
+    "type": "text",
+    "allow_new_line": false,
+    "inline_help_text": "Only show posts with this tag slug (e.g. the-ad-break).",
+    "default": "the-ad-break"
+  },
+
+  {
+    "name": "post_count",
+    "label": "Number of posts",
+    "type": "number",
+    "inline_help_text": "Maximum number of posts to display.",
+    "default": 8
+  },
+
+  {
+    "name": "read_more_text",
+    "label": "\"Read more\" link label",
+    "type": "text",
+    "allow_new_line": false,
+    "default": "Read More"
+  },
+
+  {
+    "name": "fallback_image",
+    "label": "Fallback thumbnail",
+    "type": "image",
+    "responsive": true,
+    "resizable": true,
+    "show_loading": true,
+    "inline_help_text": "Shown when a post has no featured image.",
+    "default": {
+      "size_type": "exact",
+      "src": "https://tvscientific.com/hubfs/SOPTV%20hero-1%201.png",
+      "alt": "The Ad Break",
+      "loading": "lazy",
+      "width": 282,
+      "height": 148
+    }
+  },
+
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "background_color",
+        "label": "Background color",
+        "type": "color",
+        "default": { "color": null, "opacity": 100 }
+      },
+      {
+        "name": "background_image",
+        "label": "Background image",
+        "type": "image",
+        "default": { "size_type": "auto", "src": "", "alt": "", "loading": "lazy" }
+      },
+      {
+        "name": "text_color",
+        "label": "Text color",
+        "type": "color",
+        "default": { "color": null, "opacity": 100 }
+      },
+      {
+        "name": "padding",
+        "label": "Padding",
+        "type": "spacing",
+        "default": {
+          "padding": {
+            "top": { "value": 120, "units": "px" },
+            "bottom": { "value": 80, "units": "px" }
+          }
+        }
+      }
+    ]
+  }
+]

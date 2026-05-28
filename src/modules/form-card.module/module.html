@@ -1,0 +1,80 @@
+{% set bg_color    = module.style.background_color.css %}
+{% set bg_image    = module.style.background_image.src %}
+{% set text_color  = module.style.text_color.css %}
+{% set card_bg     = module.style.card_background_color.css %}
+{% set card_border = module.style.card_border_color.css %}
+{% set card_radius = module.style.card_border_radius %}
+{% set h_size      = module.heading.heading_size %}
+{% set h_size_mob  = module.heading.heading_size_mobile %}
+
+{% require_css %}
+<style>
+  {% scope_css %}
+    .form-card-heading {
+      {% if h_size %}font-size: {{ h_size }}px;{% endif %}
+      line-height: 1.33;
+      margin: 0;
+    }
+    @media (max-width: 767px) {
+      .form-card-heading {
+        {% if h_size_mob %}font-size: {{ h_size_mob }}px;{% endif %}
+      }
+    }
+    form input[type="submit"],
+    form .hs-button {
+      width: 100%;
+      color: #0F2D29;
+      background: var(--button-bg-primary, #23E596);
+      border-color: var(--button-bg-primary, #23E596);
+    }
+    input[type=text], input[type=email], input[type=password], input[type=tel], input[type=number], input[type=file], select, textarea {
+      border-radius: 8px;
+      border: 2px solid var(--gray-light, #D9E2EB);
+    }
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+<section
+  class="font-plex"
+  style="
+    {% if bg_color %}background-color: {{ bg_color }};{% endif %}
+    {% if bg_image %}background-image: url('{{ bg_image }}'); background-size: cover; background-position: center;{% endif %}
+    {% if text_color %}color: {{ text_color }};{% endif %}
+    {{ module.style.padding.css }}
+  ">
+
+  <div
+    class="tvsci-container"
+    {% if module.style.container_max_width %}style="max-width: {{ module.style.container_max_width }}px;"{% endif %}>
+
+    <div
+      class="flex flex-col md:flex-row items-start gap-8 md:gap-16"
+      style="
+        {% if card_bg %}background-color: {{ card_bg }};{% endif %}
+        {% if card_border %}border: 1px solid {{ card_border }};{% endif %}
+        {% if card_radius %}border-radius: {{ card_radius }}px;{% endif %}
+        {{ module.style.card_inner_padding.css }}
+      ">
+
+      <div class="w-full md:w-[36%] shrink-0">
+        <{{ module.heading.header_tag }}
+          class="form-card-heading font-{{ module.heading.font_weight }} text-tvs-black">
+          {{ module.heading.value }}
+        </{{ module.heading.header_tag }}>
+      </div>
+
+      <div class="w-full md:flex-1 min-w-0">
+        {% form
+          form_to_use="{{ module.form.form_id }}"
+          response_response_type="{{ module.form.response_type }}"
+          response_message="{{ module.form.message }}"
+          response_redirect_id="{{ module.form.redirect_id }}"
+          response_redirect_url="{{ module.form.redirect_url }}"
+          gotowebinar_webinar_key="{{ module.form.gotowebinar_webinar_key }}"
+        %}
+      </div>
+
+    </div>
+  </div>
+</section>

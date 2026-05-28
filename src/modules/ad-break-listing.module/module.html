@@ -1,0 +1,93 @@
+{% set bg_color   = module.style.background_color.css %}
+{% set bg_image   = module.style.background_image.src %}
+{% set text_color = module.style.text_color.css %}
+
+{% set fetch_count = module.post_count if module.post_count > 0 else 200 %}
+{% set posts = blog_recent_tag_posts(module.blog_id, module.tag_slug, fetch_count) %}
+
+{% require_css %}
+<style>
+  {% scope_css %}
+    .ad-break-listing__heading {
+      {% if module.heading.heading_size %}font-size: {{ module.heading.heading_size }}px;{% endif %}
+      line-height: 1.2;
+    }
+    @media (max-width: 768px) {
+      .ad-break-listing__heading {
+        {% if module.heading.heading_size_mobile %}font-size: {{ module.heading.heading_size_mobile }}px;{% endif %}
+      }
+    }
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+<section
+  class="font-plex relative"
+  style="
+    {% if bg_color %}background-color: {{ bg_color }};{% endif %}
+    {% if bg_image %}background-image: url('{{ bg_image }}'); background-size: cover; background-position: center;{% endif %}
+    {% if text_color %}color: {{ text_color }};{% endif %}
+    {{ module.style.padding.css }}
+  ">
+
+  <div class="max-w-[1240px] mx-auto px-4">
+
+    {% if module.heading.value %}
+    <div class="border-b border-tvs-grey-light pb-6 mb-10">
+      <{{ module.heading.header_tag }}
+        class="ad-break-listing__heading font-{{ module.heading.font_weight }} text-tvs-black !m-0">
+        {{ module.heading.value }}
+      </{{ module.heading.header_tag }}>
+    </div>
+    {% endif %}
+
+    {% if posts %}
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {% for post in posts %}
+
+        {% set thumb_src = post.featured_image if post.featured_image else module.fallback_image.src %}
+        {% set thumb_alt = post.featured_image_alt_text if post.featured_image_alt_text else post.name %}
+
+        <article class="flex flex-col overflow-hidden rounded-lg border border-tvs-grey-light bg-white">
+
+          <a href="{{ post.absolute_url }}" class="block flex-shrink-0">
+            <img
+              src="{{ thumb_src|escape_url }}"
+              alt="{{ thumb_alt|escape_attr }}"
+              class="w-full object-cover rounded-t-lg"
+              style="height: 148px;"
+              loading="lazy"
+              width="282"
+              height="148">
+          </a>
+
+          <div class="flex flex-col flex-1 px-5 pt-5 pb-6 gap-4">
+
+            {% if post.publish_date %}
+            <p class="font-plex-mono text-base tracking-[1.28px] uppercase text-tvs-green-accessible leading-6 m-0">
+              {{ post.publish_date|datetimeformat('%b %-d, %Y') }}
+            </p>
+            {% endif %}
+
+            <p class="font-plex text-[22px] leading-8 tracking-[0.01em] flex-1 m-0" style="color: #31373D;">
+              {{ post.name }}
+            </p>
+
+            <a
+              href="{{ post.absolute_url }}"
+              class="inline-flex items-center gap-2 font-plex-mono text-[14px] tracking-[1.4px] uppercase text-tvs-green-accessible mt-2">
+              {{ module.read_more_text }}
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
+                <path d="M6.5 11L9.5 8L6.5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+
+          </div>
+        </article>
+
+      {% endfor %}
+    </div>
+    {% endif %}
+
+  </div>
+</section>
