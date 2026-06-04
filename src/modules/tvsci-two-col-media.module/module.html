@@ -1,0 +1,138 @@
+{% set bg_color        = module.style.background_color.css %}
+{% set bg_image        = module.style.background_image.src %}
+{% set text_color      = module.style.text_color.css %}
+{% set heading_color   = module.style.heading_color.css %}
+{% set card_bg         = module.style.card_background_color.css %}
+{% set card_border     = module.style.card_border_color.css %}
+{% set card_radius     = module.style.card_border_radius %}
+{% set h_size          = module.heading.heading_size %}
+{% set h_size_mob      = module.heading.heading_size_mobile %}
+
+{% require_css %}
+<style>
+  {% scope_css %}
+    .tvsci-tcm__heading {
+      {% if h_size != 0 %}font-size: {{ h_size }}px !important;{% endif %}
+      {% if heading_color %}color: {{ heading_color }} !important;{% endif %}
+      line-height: 1.2 !important;
+      margin: 0 0 8px;
+    }
+    {% if h_size_mob != 0 %}
+    @media (max-width: 767px) {
+      .tvsci-tcm__heading { font-size: {{ h_size_mob }}px !important; }
+    }
+    {% endif %}
+
+    .tvsci-tcm__body p {
+      margin: 0 0 16px;
+      font-size: 18px;
+      line-height: 1.5;
+      {% if text_color %}color: {{ text_color }};{% endif %}
+    }
+    .tvsci-tcm__body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .tvsci-tcm__grid {
+      align-items: stretch;
+    }
+
+    @media (min-width: 768px) {
+      .tvsci-tcm__media {
+        position: relative;
+        min-height: 0;
+      }
+
+      .tvsci-tcm__media img {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        height: 100%;
+        width: auto;
+        max-width: 100%;
+        object-fit: contain;
+        object-position: left center;
+      }
+    }
+
+    .tvsci-tcm__image-placeholder {
+      width: 100%;
+      min-height: 200px;
+      background: repeating-linear-gradient(
+        45deg,
+        rgba(217, 226, 235, 0.18) 0 12px,
+        rgba(217, 226, 235, 0.34) 12px 24px
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #77858c;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+<section
+  class="font-plex"
+  style="
+    {% if bg_color %}background-color: {{ bg_color }};{% endif %}
+    {% if bg_image %}background-image: url('{{ bg_image|escape_url }}'); background-size: cover; background-position: center;{% endif %}
+    {% if text_color %}color: {{ text_color }};{% endif %}
+    {{ module.style.padding.css }}
+  ">
+
+  <div class="mx-auto px-4">
+
+    <div
+      class="overflow-hidden mx-auto w-full"
+      style="
+        max-width: {% if module.style.container_max_width %}{{ module.style.container_max_width }}{% else %}1072{% endif %}px;
+        {% if card_bg %}background-color: {{ card_bg }};{% endif %}
+        {% if card_border %}border: 1px solid {{ card_border }};{% endif %}
+        {% if card_radius %}border-radius: {{ card_radius }}px;{% endif %}
+      ">
+
+      <div class="tvsci-tcm__grid grid grid-cols-1 md:grid-cols-12">
+
+        <div
+          class="md:col-span-6 lg:col-span-6 flex flex-col gap-2 text-tvs-black"
+          style="{{ module.style.card_inner_padding.css }}">
+          {% if module.heading.value %}
+          <{{ module.heading.header_tag }}
+            class="tvsci-tcm__heading font-{{ module.heading.font_weight }}{% if not heading_color %} text-tvs-black{% endif %}">
+            {{ module.heading.value }}
+          </{{ module.heading.header_tag }}>
+          {% endif %}
+
+          {% if module.body_copy %}
+          <div class="tvsci-tcm__body{% if not text_color %} text-tvs-black{% endif %}">{{ module.body_copy }}</div>
+          {% endif %}
+        </div>
+
+        <div class="tvsci-tcm__media md:col-span-5 md:col-start-8 relative overflow-hidden">
+          {% if module.media_image.src %}
+            {% set sizeAttrs = 'width="{{ module.media_image.width|escape_attr }}" height="{{ module.media_image.height|escape_attr }}"' %}
+            {% if module.media_image.size_type == 'auto_custom_max' %}
+              {% set sizeAttrs = 'width="{{ module.media_image.max_width|escape_attr }}" height="{{ module.media_image.max_height|escape_attr }}"' %}
+            {% endif %}
+            {% set loadingAttr = module.media_image.loading != 'disabled' ? 'loading="{{ module.media_image.loading|escape_attr }}"' : '' %}
+            <img
+              class="block w-full h-auto md:h-full md:w-auto md:max-w-full"
+              src="{{ module.media_image.src|escape_url }}"
+              alt="{{ module.media_image.alt|escape_attr }}"
+              {{ loadingAttr }}
+              {{ sizeAttrs }}>
+          {% else %}
+            <div class="tvsci-tcm__image-placeholder">Upload composite media image</div>
+          {% endif %}
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,3 +1,6 @@
+{% set card_border = module.styles.card_border_color.css %}
+{% set heading_size = module.styles.card_heading_size %}
+
 {% require_css %}
 <style>
   {% scope_css %}
@@ -10,7 +13,19 @@
         {% if module.styles.color.css %}
             color: {{ module.styles.color.css }};
         {% endif %}
+        {% if card_border %}
+        border: 1px solid {{ card_border }};
+        {% endif %}
+        {% if module.styles.border_radius %}
         border-radius: {{ module.styles.border_radius }}px;
+        {% endif %}
+    }
+    .card-heading--small {
+        font-family: var(--font-plex, "IBM Plex Sans", sans-serif);
+        font-size: 22px;
+        font-weight: 500;
+        line-height: 1.38;
+        letter-spacing: 0.22px;
     }
     {% if module.styles.color.css %}
     .card *:not(a) {
@@ -33,7 +48,7 @@
 {% endif %}
 {{ 'gap-3' if module.styles.padding.css is not string_containing ': rem' else 'gap-8' }}">
     {% for item in module.cards %}
-    <div class="card rounded {{ 'shadow-smborder border-primary' if module.styles.padding.css is not string_containing ': rem' }} transition-shadow">
+    <div class="card rounded transition-shadow">
         <div class=" mb-6">
             {% if item.image.src %}
                 {% set sizeAttrs = 'width="{{ item.image.width|escape_attr }}" height="{{ item.image.height|escape_attr }}"' %}
@@ -46,8 +61,8 @@
                 <img class="inline-block" src="{{ item.image.src|escape_url }}" alt="{{ item.image.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
             {% endif %}
         </div>
-        <h3 class="font-bricolage-grotesque font-semibold text-gray-900 mb-2 leading-none tracking-wider"> {{ item.heading }} </h3>
-        <p class="text-gray-600 font-normal leading-relaxed text-sm"> {{ item.description }} </p>
+        <h3 class="mb-2 text-gray-900 {% if heading_size == 'small' %}card-heading--small{% else %}font-bricolage-grotesque font-semibold leading-none tracking-wider{% endif %}">{{ item.heading }}</h3>
+        <div class="text-gray-600 font-normal leading-relaxed text-sm">{{ item.description }}</div>
 
         {% if item.button.text %}
         {% set href = item.button.link.url.href %}

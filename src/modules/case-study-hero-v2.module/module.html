@@ -1,13 +1,16 @@
 <!-- module html  -->
+{% set label_color = module.style.label_color.css %}
+{% set heading_color = module.style.heading_color.css %}
+{% set paragraph_color = module.style.paragraph_color.css %}
 <div class="relative py-[24px] md:py-[100px] z-0 ">
   <div class="container grid grid-cols-1 lg:grid-cols-2 gap-10">
     <div class="w-full">
       <div class="px-5">
         <div class="flex items-center pl-[24px] lg:pl-[40px] mb-6">
           <div class="py-2">
-            <a href="/customers/" class="m-0 text-[#0FBF84] text-[14px] uppercase tracking-widest font-bold">{{ module.label_text }}</a>
+            <a href="/customers/" class="m-0 text-[14px] uppercase tracking-widest font-bold"{% if label_color %} style="color: {{ label_color }};"{% endif %}>{{ module.label_text }}</a>
           </div>
-          <div class=" h-full  w-[1px] bg-[#0FBF84]  mx-6">
+          <div class=" h-full  w-[1px]  mx-6"{% if label_color %} style="background-color: {{ label_color }};"{% endif %}>
             &nbsp;
           </div>
           <div class="w-24">
@@ -24,14 +27,14 @@
 
           </div>
         </div>
-        <div class="border-l-4 border-[#0FBF84] pl-[24px] lg:pl-[40px]">
-          <h1 class="text-white lg:!text-[50px]">
+        <div class="border-l-4 pl-[24px] lg:pl-[40px]"{% if label_color %} style="border-color: {{ label_color }};"{% endif %}>
+          <h1 class="lg:!text-[50px]"{% if heading_color %} style="color: {{ heading_color }};"{% endif %}>
             {{ module.h1 }}
           </h1>
 
         </div>
         <div class="pl-[24px] lg:pl-[40px]">
-          <p class="text-[18px] text-white">
+          <p class="text-[18px]"{% if paragraph_color %} style="color: {{ paragraph_color }};"{% endif %}>
             {{ module.paragraph }}
           </p>
         </div>

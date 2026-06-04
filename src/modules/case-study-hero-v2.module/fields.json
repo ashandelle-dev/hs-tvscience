@@ -75,5 +75,72 @@
       "max_width": 824,
       "max_height": 824
     }
+  },
+  {
+    "id": "b1f7c3a2-4d6e-49a1-8c2b-7e0f5a912d34",
+    "name": "style",
+    "label": "Style",
+    "required": false,
+    "locked": false,
+    "children": [
+      {
+        "id": "c2a8d4b3-5e7f-4ab2-9d3c-8f1a6b023e45",
+        "name": "label_color",
+        "label": "Label & Accent Color",
+        "required": false,
+        "locked": false,
+        "type": "color",
+        "display_width": null,
+        "default": {
+          "color": "#0FBF84",
+          "opacity": 100
+        }
+      },
+      {
+        "id": "d3b9e5c4-6f80-4bc3-ae4d-9a2b7c134f56",
+        "name": "heading_color",
+        "label": "Heading Color",
+        "required": false,
+        "locked": false,
+        "type": "color",
+        "display_width": null,
+        "default": {
+          "color": "#ffffff",
+          "opacity": 100
+        }
+      },
+      {
+        "id": "e4c0f6d5-7091-4cd4-bf5e-ab3c8d245067",
+        "name": "paragraph_color",
+        "label": "Paragraph Color",
+        "required": false,
+        "locked": false,
+        "type": "color",
+        "display_width": null,
+        "default": {
+          "color": "#ffffff",
+          "opacity": 100
+        }
+      }
+    ],
+    "tab": "STYLE",
+    "expanded": false,
+    "group_occurrence_meta": null,
+    "type": "group",
+    "display_width": null,
+    "default": {
+      "label_color": {
+        "color": "#0FBF84",
+        "opacity": 100
+      },
+      "heading_color": {
+        "color": "#ffffff",
+        "opacity": 100
+      },
+      "paragraph_color": {
+        "color": "#ffffff",
+        "opacity": 100
+      }
+    }
   }
 ]

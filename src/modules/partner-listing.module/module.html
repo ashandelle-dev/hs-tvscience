@@ -1,14 +1,21 @@
 <!-- Partner Listing Module -->
 {% set table = module.hubdb_table %}
+{% set collections_filters = hubdb_table_column(table, "collections") %}
 {% set categories_filters = hubdb_table_column(table, "partner_categories") %}
 {% set capabilities_filters = hubdb_table_column(table, "capabilities") %}
 {% set partners = hubdb_table_rows(table, "orderBy=name") %}
 
-{# Build arrays of used categories and capabilities from partners #}
+{# Build arrays of used collections, categories, and capabilities from partners #}
+{% set used_collections = [] %}
 {% set used_categories = [] %}
 {% set used_capabilities = [] %}
 
 {% for partner in partners %}
+  {% for collection in partner.collections %}
+    {% if collection.name not in used_collections %}
+      {% do used_collections.append(collection.name) %}
+    {% endif %}
+  {% endfor %}
   {% for category in partner.partner_categories %}
     {% if category.name not in used_categories %}
       {% do used_categories.append(category.name) %}
@@ -21,6 +28,16 @@
   {% endfor %}
 {% endfor %}
 
+{% set featured_partners = [] %}
+{% set regular_partners = [] %}
+{% for partner in partners %}
+  {% if partner.partner %}
+    {% do featured_partners.append(partner) %}
+  {% else %}
+    {% do regular_partners.append(partner) %}
+  {% endif %}
+{% endfor %}
+
 <div class="partner-listing-wrapper">
   <div class="partner-listing-container py-8 lg:py-12">
     <div class="flex flex-col lg:flex-row gap-8">
@@ -29,6 +46,37 @@
       <aside class="partner-filters w-full lg:w-64 flex-shrink-0">
 
         <!-- Collections Filter -->
+        <div class="filter-group mb-10">
+          <p class="text-sm mb-2 text-[#202223] font-semibold">Collections</p>
+          <div class="filter-options space-y-4">
+            {% if featured_partners|length > 0 %}
+            <label class="flex items-center cursor-pointer group">
+              <input
+                type="checkbox"
+                class="collection-filter mt-0.5 mr-3 w-[18px] h-[20px] cursor-pointer rounded border-2 border-gray-300"
+                data-filter-type="collection"
+                data-filter-value="featured_partner"
+              >
+              <span class="text-sm text-[#202223] group-hover:text-[#198960] select-none leading-none">Featured Partner</span>
+            </label>
+            {% endif %}
+            {% for option in collections_filters.options %}
+            {% if option.name in used_collections %}
+            <label class="flex items-center cursor-pointer group">
+              <input
+                type="checkbox"
+                class="collection-filter mt-0.5 mr-3 w-[18px] h-[20px] cursor-pointer rounded border-2 border-gray-300"
+                data-filter-type="collection"
+                data-filter-value="{{ option.name }}"
+              >
+              <span class="text-sm text-[#202223] group-hover:text-[#198960] select-none leading-none">{{ option.label }}</span>
+            </label>
+            {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- Categories Filter -->
         <div class="filter-group mb-10">
           <p class="text-sm mb-2 text-[#202223] font-semibold">Categories</p>
           <div class="filter-options space-y-4">
@@ -48,7 +96,7 @@
           </div>
         </div>
 
-        <!-- Categories Filter -->
+        <!-- Capabilities Filter -->
         <div class="filter-group mb-6 border-b border-[#D9E2EB] pb-6 lg:border-b-0">
           <p class="text-sm mb-2 text-[#202223] font-semibold">Capabilities</p>
           <div class="filter-options space-y-4">
@@ -81,64 +129,137 @@
 
       <!-- Right Content - Partner Cards Grid -->
       <main class="partner-grid-container flex-1 w-full">
-        <div class="partner-grid grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-6">
 
-          {% for partner in partners %}
-          <{% if partner.url %}a{% else %}div{% endif %}
-            {% if partner.url %}
-            href="{{ partner.url }}"
-            target="_blank"
-            rel="noopener noreferrer"
-            {% endif %}
-            class="flex flex-col partner-card bg-white rounded-lg shadow-sm border border-gray-200 p-4 lg:p-6 hover:shadow-md transition-shadow no-underline hover:no-underline hover:border-[#23E596]"
-            data-categories="{% for cat in partner.partner_categories %}{{ cat.name }}{% if not loop.last %},{% endif %}{% endfor %}"
-            data-capabilities="{% for cap in partner.capabilities %}{{ cap.name }}{% if not loop.last %},{% endif %}{% endfor %}"
-          >
-
-            <!-- Partner Logo -->
-            <div class="partner-logo mb-6">
-              {% if partner.logo_full.url %}
-              <img
-                src="{{ partner.logo_full.url }}"
-                alt="{{ partner.logo_full.altText or partner.name }}"
-                width="{{ partner.logo_full.width }}"
-                height="{{ partner.logo_full.height }}"
-                class="inline-block"
-              >
-              {% else %}
-              <div class="w-full h-full bg-gray-200 rounded"></div>
+        {% if featured_partners %}
+        <div class="featured-section mb-12">
+          {% if module.featured_heading %}
+          <h2 class="text-2xl font-bold text-[#1F252B] mb-6">{{ module.featured_heading }}</h2>
+          {% endif %}
+          <div class="partner-grid grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-6">
+            {% for partner in featured_partners %}
+            <{% if partner.url %}a{% else %}div{% endif %}
+              {% if partner.url %}
+              href="{{ partner.url }}"
+              target="_blank"
+              rel="noopener noreferrer"
               {% endif %}
-            </div>
+              class="flex flex-col partner-card partner bg-white rounded-lg shadow-sm border border-gray-200 p-4 lg:p-6 hover:shadow-md transition-shadow no-underline hover:no-underline hover:border-[#23E596]"
+              data-collections="{% for col in partner.collections %}{{ col.name }}{% if not loop.last %},{% endif %}{% endfor %}"
+              data-categories="{% for cat in partner.partner_categories %}{{ cat.name }}{% if not loop.last %},{% endif %}{% endfor %}"
+              data-capabilities="{% for cap in partner.capabilities %}{{ cap.name }}{% if not loop.last %},{% endif %}{% endfor %}"
+              data-featured="true"
+            >
 
-            <!-- Partner Name -->
-            <h3 class="partner-name text-base text-[#1F252B] font-bold mb-3">
-              {{ partner.name }}
-            </h3>
+              <div class="partner-logo mb-6">
+                {% if partner.logo_full.url %}
+                <img
+                  src="{{ partner.logo_full.url }}"
+                  alt="{{ partner.logo_full.altText or partner.name }}"
+                  width="{{ partner.logo_full.width }}"
+                  height="{{ partner.logo_full.height }}"
+                  class="inline-block"
+                >
+                {% else %}
+                <div class="w-full h-full bg-gray-200 rounded"></div>
+                {% endif %}
+              </div>
 
-            <!-- Partner Description -->
-            {% if module.show_card_description %}
-            <div class="partner-description text-gray-600 text-[14px] ">
-              {{ partner.description }}
-            </div>
-            {% endif %}
+              <h3 class="partner-name text-base text-[#1F252B] font-bold mb-3">
+                {{ partner.name }}
+              </h3>
 
-            <!-- Category Tags -->
-            <div class="partner-tags flex flex-wrap gap-2 mt-4">
-              {% for category in partner.partner_categories %}
-              <span class="category-tag p-1 text-[#1F252B] text-xs rounded border-[#D9E2EB] border">
-                {{ category.label }}
-              </span>
-              {% endfor %}
-              {% for capability in partner.capabilities %}
-              <span class="capability-tag p-1 text-[#1F252B] text-xs rounded border-[#D9E2EB] border">
-                {{ capability.label }}
-              </span>
-              {% endfor %}
-            </div>
+              {% if module.show_card_description %}
+              <div class="partner-description text-gray-600 text-[14px]">
+                {{ partner.description }}
+              </div>
+              {% endif %}
 
-          </{% if partner.url %}a{% else %}div{% endif %}>
-          {% endfor %}
+              <div class="partner-tags flex flex-wrap gap-2 mt-4">
+                {% for category in partner.partner_categories %}
+                <span class="category-tag p-1 text-[#1F252B] text-xs rounded border-[#D9E2EB] border">
+                  {{ category.label }}
+                </span>
+                {% endfor %}
+                {% for capability in partner.capabilities %}
+                <span class="capability-tag p-1 text-[#1F252B] text-xs rounded border-[#D9E2EB] border">
+                  {{ capability.label }}
+                </span>
+                {% endfor %}
+              </div>
 
+              <img
+                class="partner-badge mt-4"
+                src="https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/Partner-badge-1-light.svg"
+                alt="tvScientific Certified Partner"
+                width="69"
+                height="66"
+                loading="lazy">
+
+            </{% if partner.url %}a{% else %}div{% endif %}>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+
+        <div class="all-partners-section">
+          {% if module.all_partners_heading %}
+          <h2 class="text-2xl font-bold text-[#1F252B] mb-6">{{ module.all_partners_heading }}</h2>
+          {% endif %}
+          <div class="partner-grid grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-6">
+            {% for partner in regular_partners %}
+            <{% if partner.url %}a{% else %}div{% endif %}
+              {% if partner.url %}
+              href="{{ partner.url }}"
+              target="_blank"
+              rel="noopener noreferrer"
+              {% endif %}
+              class="flex flex-col partner-card bg-white rounded-lg shadow-sm border border-gray-200 p-4 lg:p-6 hover:shadow-md transition-shadow no-underline hover:no-underline hover:border-[#23E596]"
+              data-collections="{% for col in partner.collections %}{{ col.name }}{% if not loop.last %},{% endif %}{% endfor %}"
+              data-categories="{% for cat in partner.partner_categories %}{{ cat.name }}{% if not loop.last %},{% endif %}{% endfor %}"
+              data-capabilities="{% for cap in partner.capabilities %}{{ cap.name }}{% if not loop.last %},{% endif %}{% endfor %}"
+              data-featured="false"
+            >
+
+              <div class="partner-logo mb-6">
+                {% if partner.logo_full.url %}
+                <img
+                  src="{{ partner.logo_full.url }}"
+                  alt="{{ partner.logo_full.altText or partner.name }}"
+                  width="{{ partner.logo_full.width }}"
+                  height="{{ partner.logo_full.height }}"
+                  class="inline-block"
+                >
+                {% else %}
+                <div class="w-full h-full bg-gray-200 rounded"></div>
+                {% endif %}
+              </div>
+
+              <h3 class="partner-name text-base text-[#1F252B] font-bold mb-3">
+                {{ partner.name }}
+              </h3>
+
+              {% if module.show_card_description %}
+              <div class="partner-description text-gray-600 text-[14px]">
+                {{ partner.description }}
+              </div>
+              {% endif %}
+
+              <div class="partner-tags flex flex-wrap gap-2 mt-4">
+                {% for category in partner.partner_categories %}
+                <span class="category-tag p-1 text-[#1F252B] text-xs rounded border-[#D9E2EB] border">
+                  {{ category.label }}
+                </span>
+                {% endfor %}
+                {% for capability in partner.capabilities %}
+                <span class="capability-tag p-1 text-[#1F252B] text-xs rounded border-[#D9E2EB] border">
+                  {{ capability.label }}
+                </span>
+                {% endfor %}
+              </div>
+
+            </{% if partner.url %}a{% else %}div{% endif %}>
+            {% endfor %}
+          </div>
         </div>
 
         <!-- No Results Message -->

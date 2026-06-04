@@ -178,11 +178,41 @@
         "default": null
       },
       {
+        "name": "card_heading_size",
+        "label": "Card heading size",
+        "required": false,
+        "locked": false,
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["default", "Default"],
+          ["small", "Small"]
+        ],
+        "default": "default",
+        "inline_help_text": "Small uses heading-xs (22px medium).",
+        "help_text": ""
+      },
+      {
+        "name": "card_border_color",
+        "label": "Card border color",
+        "required": false,
+        "locked": false,
+        "type": "color",
+        "inline_help_text": "Leave empty for no border.",
+        "help_text": "",
+        "default": {
+          "color": null,
+          "opacity": 100
+        }
+      },
+      {
         "name": "border_radius",
         "label": "Border radius",
         "required": false,
         "locked": false,
         "type": "number",
+        "suffix": "px",
+        "min": 0,
         "default": null,
         "inline_help_text": "",
         "help_text": ""

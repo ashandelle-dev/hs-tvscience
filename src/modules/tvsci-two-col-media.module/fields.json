@@ -1,0 +1,164 @@
+[
+  {
+    "name": "heading",
+    "label": "Heading",
+    "type": "group",
+    "tab": "CONTENT",
+    "children": [
+      {
+        "name": "value",
+        "label": "Heading content",
+        "type": "text",
+        "allow_new_line": false,
+        "default": "Certified Partners. Proven Success."
+      },
+      {
+        "name": "header_tag",
+        "label": "Heading level",
+        "type": "choice",
+        "required": true,
+        "display": "select",
+        "choices": [
+          ["h1", "H1"], ["h2", "H2"], ["h3", "H3"], ["h4", "H4"], ["h5", "H5"], ["h6", "H6"], ["p", "P"]
+        ],
+        "default": "h2"
+      },
+      {
+        "name": "heading_size",
+        "label": "Heading Size",
+        "type": "number",
+        "suffix": "px",
+        "inline_help_text": "Set to 0 to use the default size",
+        "default": 48
+      },
+      {
+        "name": "heading_size_mobile",
+        "label": "Heading Size Mobile",
+        "type": "number",
+        "suffix": "px",
+        "inline_help_text": "Set to 0 to use the default size",
+        "default": 32
+      },
+      {
+        "name": "font_weight",
+        "label": "Font Weight",
+        "type": "choice",
+        "display": "select",
+        "choices": [["normal", "Normal"], ["semibold", "Semibold"], ["bold", "Bold"]],
+        "default": "semibold"
+      }
+    ]
+  },
+  {
+    "name": "body_copy",
+    "label": "Body copy",
+    "type": "richtext",
+    "default": "<p>The tvScientific by Pinterest Certified Measurement Partner Program recognizes measurement partners that meet our high standards for accuracy, transparency, and performance.</p><p>By combining our optimization technology with trusted partner integrations, we help advertisers connect Performance TV exposure to real business outcomes, with clear attribution, proven incrementality, and faster optimization.</p>"
+  },
+  {
+    "name": "media_image",
+    "label": "Media image",
+    "type": "image",
+    "show_loading": true,
+    "responsive": true,
+    "resizable": true,
+    "inline_help_text": "Composite graphic for the right column.",
+    "default": {
+      "size_type": "auto",
+      "src": "",
+      "alt": "Certified Measurement Partner Program",
+      "loading": "lazy",
+      "width": 438,
+      "height": 739
+    }
+  },
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "background_color",
+        "label": "Section background color",
+        "type": "color",
+        "default": { "color": "#FFFFFF", "opacity": 100 }
+      },
+      {
+        "name": "background_image",
+        "label": "Section background image",
+        "type": "image",
+        "default": { "size_type": "auto", "src": "", "alt": "", "loading": "lazy" }
+      },
+      {
+        "name": "text_color",
+        "label": "Body text color",
+        "type": "color",
+        "default": { "color": null, "opacity": 100 }
+      },
+      {
+        "name": "heading_color",
+        "label": "Heading color",
+        "type": "color",
+        "default": { "color": null, "opacity": 100 }
+      },
+      {
+        "name": "card_background_color",
+        "label": "Card background color",
+        "type": "color",
+        "default": { "color": "#F9FAFC", "opacity": 100 }
+      },
+      {
+        "name": "card_border_color",
+        "label": "Card border color",
+        "type": "color",
+        "inline_help_text": "Leave empty for no border.",
+        "default": { "color": "#D9E2EB", "opacity": 100 }
+      },
+      {
+        "name": "card_border_radius",
+        "label": "Card border radius",
+        "type": "number",
+        "suffix": "px",
+        "min": 0,
+        "max": 48,
+        "step": 1,
+        "default": 16
+      },
+      {
+        "name": "container_max_width",
+        "label": "Container max width",
+        "type": "number",
+        "suffix": "px",
+        "min": 0,
+        "inline_help_text": "Max width of the inner card. Set to 0 to use the theme default (1072px).",
+        "default": 1240
+      },
+      {
+        "name": "card_inner_padding",
+        "label": "Left column padding",
+        "type": "spacing",
+        "inline_help_text": "Controls card height. Increase top and bottom padding to make the card taller.",
+        "default": {
+          "padding": {
+            "top":    { "value": 56, "units": "px" },
+            "bottom": { "value": 56, "units": "px" },
+            "left":   { "value": 80, "units": "px" },
+            "right":  { "value": 0,  "units": "px" }
+          }
+        }
+      },
+      {
+        "name": "padding",
+        "label": "Section padding",
+        "type": "spacing",
+        "default": {
+          "padding": {
+            "top":    { "value": 80, "units": "px" },
+            "bottom": { "value": 80, "units": "px" }
+          }
+        }
+      }
+    ]
+  }
+]

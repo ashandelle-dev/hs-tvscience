@@ -1,0 +1,54 @@
+{% set button_size   = module.style.style_options.button_size %}
+{% set override      = module.style.style_options.override_default_style %}
+{% set bg_color      = module.style.style_options.background_color.css %}
+{% set text_color    = module.style.style_options.text_color.css %}
+{% set border_color  = module.style.style_options.border_color.css %}
+{% set align         = module.style.alignment.horizontal_align %}
+
+{% set href = module.link.url.href %}
+{% if module.link.url.type is equalto "EMAIL_ADDRESS" %}
+  {% set href = "mailto:" + href %}
+{% elif module.link.url.type is equalto "PHONE_NUMBER" %}
+  {% set href = "tel:" + href %}
+{% endif %}
+
+{% require_css %}
+<style>
+  {% scope_css %}
+    .tvsci-button-wrap {
+      {{ module.style.padding.css }}
+      display: flex;
+      justify-content: {{ align|replace('left', 'flex-start')|replace('right', 'flex-end')|replace('center', 'center') }};
+    }
+
+    .tvsci-button.hs-button--large {
+      padding: 16px 32px !important;
+      border-radius: 6px !important;
+      font-size: 16px !important;
+      font-weight: 500 !important;
+      line-height: 1.35 !important;
+      letter-spacing: 1.5px !important;
+      min-width: 0 !important;
+    }
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+{% if module.text %}
+<div class="tvsci-button-wrap font-plex">
+  <a
+    href="{{ href|escape_url }}"
+    class="tvsci-button hs-button{% if button_size == 'large' %} hs-button--large{% endif %}{% if module.button_style == 'secondary' %} hs-button--secondary{% endif %}"
+    {% if module.link.open_in_new_tab %}target="_blank"{% endif %}
+    {% if module.link.rel %}rel="{{ module.link.rel|escape_attr }}"{% endif %}
+    {% if override %}
+    style="
+      {% if bg_color %}background-color: {{ bg_color }};{% endif %}
+      {% if text_color %}color: {{ text_color }};{% endif %}
+      {% if border_color %}border-color: {{ border_color }};{% endif %}
+    "
+    {% endif %}>
+    {{ module.text }}
+  </a>
+</div>
+{% endif %}

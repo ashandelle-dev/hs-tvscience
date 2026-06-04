@@ -9,6 +9,7 @@
 {% block body %}
 
 {% choice "layout" label='Layout', choices=[["layout-a","Layout A"],["layout-b","Layout B"]], multiple='False', display='radio',export_to_template_context=True %}
+{% text "title_link" label='Title Link', export_to_template_context=True %}
 {% text "webinar_date" label='Date', export_to_template_context=True %}
 {% text "webinar_time" label='Time', export_to_template_context=True %}
 {% image "webinar_hero" label='Hero Background', export_to_template_context=True %}
@@ -96,12 +97,12 @@
 <main class="body-container-wrapper container test">
   <div class="body-container body-container--blog-post">
 
-    
+
     {# Blog post #}
     <div class="py-16 gap-8 flex sticky-section relative flex-wrap md:flex-nowrap">
       {% if page_layout == "layout_a" %}
       <div class="w-full md:w-2/3">
-      {% else %} 
+      {% else %}
         {%if has_form != "true" %}
           <div class="w-full md:w-2/3 mx-auto my-0">
         {% else %}
@@ -137,7 +138,7 @@
             </div>
              <div class="blog-post__social-sharing w-full md:w-1/3">
 
-                {% module "Social Sharing" path="/tvScientific 2022 Atlas Pro/modules/Social Sharing.module" 
+                {% module "Social Sharing" path="/tvScientific 2022 Atlas Pro/modules/Social Sharing.module"
                 facebook={
                   "enabled": true
                 }
@@ -157,7 +158,7 @@
           {% endif %}
           {{ content.post_body }}
 
-          
+
 
         </article>
 
@@ -190,7 +191,7 @@
               <p class="tracking-widest m-0 uppercase" style="color: #9aa0a6; font-size: 14px;"><strong>Share</strong></p>
             </div>
             <div class="w-2/3">
-              {% module "Social Sharing" path="/tvScientific 2022 Atlas Pro/modules/Social Sharing.module" 
+              {% module "Social Sharing" path="/tvScientific 2022 Atlas Pro/modules/Social Sharing.module"
                     facebook={
                       "enabled": true
                     }
@@ -208,11 +209,11 @@
           </div>
         {% endif %}
       </div>
-      
+
     </div>
     {# End blog post #}
 
-    
+
   </div>
 </main>
 <div class="container pb-20">
@@ -228,9 +229,9 @@
     <div class="w-4 text-center group-hover:translate-x-0.5 duration-200 transition-transform"><svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7 5L10 8L7 11" stroke="#009061" stroke-width="1.5"></path> </svg></div>
   </a>
   </div>
-  
-  
-  <div class="flex flex-wrap items-stretch card-swiper relative overflow-hidden">  
+
+
+  <div class="flex flex-wrap items-stretch card-swiper relative overflow-hidden">
     <div class="swiper-wrapper h-full border-[#C0E7D8] flex items-stretch">
       {% set webinar_posts = blog_recent_posts(130283509831, 6) %}
       {% for post in webinar_posts %}
@@ -241,10 +242,10 @@
           <a href="{{ href }}" class="absolute top-0 left-0 w-full h-full z-10"></a>
           <div class="h-[310px]">
             {% if post.featured_image %}
-            
+
               <img class="w-full h-full object-cover" src="{{ post.featured_image }}" alt="{{ blog_tag.featured_image_alt_text }}" >
             {% endif %}
-            
+
           </div>
           <div class=" p-6">
             {% if post.widgets.event_date.body.value %}
@@ -253,7 +254,7 @@
               <p class="mb-1 uppercase">{{ post.publish_date | datetimeformat('%b %e, %Y') }}</p>
             {% endif %}
             <h2 class="!text-[28px] !leading-[38px] ">{{ post.name }}</h2>
-          
+
             <a href="{{ href }}"
             class="flex relative items-center hover:no-underline">
               <div>
@@ -312,7 +313,7 @@
     forceToAxis: true,
   },
   breakpoints: {
-  
+
     480: {
       slidesPerView: 1.5,
       spaceBetween: 0

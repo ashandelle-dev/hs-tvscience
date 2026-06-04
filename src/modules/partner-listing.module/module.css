@@ -1,6 +1,8 @@
 /* Only styles that Tailwind doesn't handle */
 
-.partner-card.hidden {
+.partner-card.hidden,
+.featured-section.hidden,
+.all-partners-section.hidden {
   display: none !important;
 }
 
@@ -13,6 +15,12 @@
   margin-bottom: 0;
 }
 
+.partner-badge {
+  flex-shrink: 0;
+  height: auto;
+  width: 69px;
+  margin: 1rem 0;
+}
 
 .filter-options input[type="checkbox"] {
   accent-color: #10b981;

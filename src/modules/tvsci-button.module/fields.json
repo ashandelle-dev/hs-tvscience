@@ -1,0 +1,117 @@
+[
+  {
+    "name": "text",
+    "label": "Button text",
+    "type": "text",
+    "allow_new_line": false,
+    "default": "Become a Partner"
+  },
+  {
+    "name": "link",
+    "label": "Link",
+    "type": "link",
+    "supported_types": ["EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION", "PHONE_NUMBER"],
+    "default": {
+      "url": { "type": "EXTERNAL", "href": "" },
+      "open_in_new_tab": false,
+      "no_follow": false
+    }
+  },
+  {
+    "name": "button_style",
+    "label": "Button style",
+    "type": "choice",
+    "display": "select",
+    "choices": [
+      ["primary", "Primary"],
+      ["secondary", "Secondary / Outline"]
+    ],
+    "default": "primary"
+  },
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "style_options",
+        "label": "Style options",
+        "type": "group",
+        "children": [
+          {
+            "name": "button_size",
+            "label": "Button size",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              ["default", "Default"],
+              ["large", "Large"]
+            ],
+            "default": "default"
+          },
+          {
+            "name": "override_default_style",
+            "label": "Override default style",
+            "type": "boolean",
+            "display": "toggle",
+            "default": false
+          },
+          {
+            "name": "background_color",
+            "label": "Background color",
+            "type": "color",
+            "default": { "color": "#23E596", "opacity": 100 },
+            "visibility": {
+              "controlling_field": "style.style_options.override_default_style",
+              "controlling_value_regex": "true",
+              "operator": "EQUAL"
+            }
+          },
+          {
+            "name": "text_color",
+            "label": "Text color",
+            "type": "color",
+            "default": { "color": "#0F2D29", "opacity": 100 },
+            "visibility": {
+              "controlling_field": "style.style_options.override_default_style",
+              "controlling_value_regex": "true",
+              "operator": "EQUAL"
+            }
+          },
+          {
+            "name": "border_color",
+            "label": "Border color",
+            "type": "color",
+            "default": { "color": "#23E596", "opacity": 100 },
+            "visibility": {
+              "controlling_field": "style.style_options.override_default_style",
+              "controlling_value_regex": "true",
+              "operator": "EQUAL"
+            }
+          }
+        ]
+      },
+      {
+        "name": "alignment",
+        "label": "Alignment",
+        "type": "alignment",
+        "alignment_direction": "HORIZONTAL",
+        "default": {
+          "horizontal_align": "LEFT"
+        }
+      },
+      {
+        "name": "padding",
+        "label": "Padding",
+        "type": "spacing",
+        "default": {
+          "padding": {
+            "top": { "value": 0, "units": "px" },
+            "bottom": { "value": 0, "units": "px" }
+          }
+        }
+      }
+    ]
+  }
+]

@@ -7,6 +7,22 @@
     "default": 136413080
   },
   {
+    "name": "featured_heading",
+    "label": "Featured section heading",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "Featured Certified Measurement Partners"
+  },
+  {
+    "name": "all_partners_heading",
+    "label": "All partners section heading",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "All Partners"
+  },
+  {
     "name": "show_card_description",
     "label": "Show card description",
     "required": false,
