@@ -1,0 +1,242 @@
+/* ==========================================================================
+   form-image-cta.module
+   ========================================================================== */
+
+.form-image-cta__card {
+  display: grid;
+  /* Figma: 545px content + 546px image within 1196px card */
+  grid-template-columns: minmax(0, 545fr) minmax(0, 546fr);
+  align-items: start;
+  overflow: hidden;
+}
+
+.form-image-cta__content {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  z-index: 1;
+}
+
+.form-image-cta__body {
+  margin: 0;
+}
+
+.form-image-cta__body p {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.form-image-cta__media {
+  position: relative;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.form-image-cta__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+/* ---------- Button CTA ---------- */
+
+.form-image-cta__button .hs-button {
+  width: auto !important;
+  min-height: 40px !important;
+  height: auto !important;
+  padding: 8px 32px !important;
+  margin: 0 !important;
+  background-color: #23E596 !important;
+  color: #1F252B !important;
+  border: none !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 24px !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.form-image-cta__button .hs-button:hover {
+  background-color: #23E596 !important;
+  color: #1F252B !important;
+  border: none !important;
+  opacity: 0.9;
+}
+
+.form-image-cta__button .hs-button--secondary {
+  background-color: transparent !important;
+  color: #1F252B !important;
+  border: 2px solid #23E596 !important;
+}
+
+.form-image-cta__button .hs-button--secondary:hover {
+  background-color: transparent !important;
+  color: #1F252B !important;
+  border-color: #23E596 !important;
+  opacity: 0.9;
+}
+
+/* ---------- HubSpot form (stacked email + submit) ---------- */
+
+.form-image-cta-form {
+  width: 100%;
+  max-width: 379px;
+}
+
+.form-image-cta-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: flex-start;
+  width: 100%;
+  margin: 0;
+}
+
+.form-image-cta-form fieldset {
+  margin: 0 !important;
+  max-width: none !important;
+  width: 100% !important;
+  border: 0;
+  padding: 0;
+}
+
+.form-image-cta-form fieldset:has([type="hidden"]) {
+  display: none;
+}
+
+.form-image-cta-form form > .hs_error_rollup,
+.form-image-cta-form form > .legal-consent-container,
+.form-image-cta-form form > .hs-recaptcha,
+.form-image-cta-form form > .hs_recaptcha,
+.form-image-cta-form form > .hs-richtext {
+  width: 100%;
+}
+
+.form-image-cta-form .hs-form-field {
+  margin-bottom: 0 !important;
+  padding: 0 !important;
+  width: 100%;
+}
+
+.form-image-cta-form .hs-form-field > label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.form-image-cta-form .input {
+  margin: 0 !important;
+  width: 100%;
+}
+
+.form-image-cta-form input[type="email"],
+.form-image-cta-form input[type="text"],
+.form-image-cta-form input[type="tel"] {
+  min-height: 48px;
+  width: 100% !important;
+  border: 2px solid #23E596 !important;
+  border-radius: 8px !important;
+  background: #fff !important;
+  color: #1F252B !important;
+  padding: 10px 13px !important;
+  font-size: 15px;
+}
+
+.form-image-cta-form input::placeholder {
+  color: #a7b2be;
+  opacity: 1;
+}
+
+.form-image-cta-form .hs_submit {
+  margin: 0;
+  padding: 0;
+}
+
+.form-image-cta-form .hs_submit .actions {
+  margin: 0;
+  padding: 0;
+}
+
+.form-image-cta-form .hs-button,
+.form-image-cta-form input[type="submit"],
+.form-image-cta-form .hs_submit .hs-button,
+.form-image-cta-form .hs_submit input[type="submit"] {
+  width: auto !important;
+  min-height: 40px !important;
+  height: auto !important;
+  padding: 8px 32px !important;
+  margin: 0 !important;
+  background-color: #23E596 !important;
+  color: #1F252B !important;
+  border: none !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 24px !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.form-image-cta-form .hs-button:hover,
+.form-image-cta-form input[type="submit"]:hover,
+.form-image-cta-form .hs_submit .hs-button:hover,
+.form-image-cta-form .hs_submit input[type="submit"]:hover {
+  background-color: #23E596 !important;
+  color: #1F252B !important;
+  border: none !important;
+  opacity: 0.9;
+}
+
+.form-image-cta-form .hs-error-msgs {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0 0;
+}
+
+.form-image-cta-form .hs-error-msg {
+  color: #c0392b;
+  font-size: 14px;
+}
+
+.form-image-cta-form .hs_error_rollup .hs-main-font-element {
+  display: none !important;
+}
+
+/* ==========================================================================
+   Mobile
+   ========================================================================== */
+@media (max-width: 993px) {
+  .form-image-cta__card {
+    grid-template-columns: 1fr;
+  }
+
+  .form-image-cta__media {
+    order: -1;
+    aspect-ratio: 16 / 10;
+  }
+
+  .form-image-cta-form {
+    max-width: 100%;
+  }
+}

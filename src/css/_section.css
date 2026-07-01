@@ -15,6 +15,7 @@
 }
 
 .dnd-section:has(.gradient-bg),
+.dnd-section:has(.gradient-bottom),
 .dnd-section:has(.tvsci-twoct) {
     position: relative;
     /* Split backgrounds: handled by ::before and ::after */
@@ -24,6 +25,8 @@
 /* Pin each half to the left / right of the *viewport* (50vw), not the section width */
 .dnd-section:has(.gradient-bg)::before,
 .dnd-section:has(.gradient-bg)::after,
+.dnd-section:has(.gradient-bottom)::before,
+.dnd-section:has(.gradient-bottom)::after,
 .dnd-section:has(.tvsci-twoct)::before,
 .dnd-section:has(.tvsci-twoct)::after {
     content: "";
@@ -52,8 +55,22 @@
     background-position: right center;
 }
 
+.dnd-section:has(.gradient-bottom)::before {
+    left: 50%;
+    margin-left: -50vw;
+    background-image: url("https://tvscientific.com/hubfs/Background-left.webp");
+    background-position: left bottom;
+}
+
+.dnd-section:has(.gradient-bottom)::after {
+    left: 50%;
+    background-image: url("https://tvscientific.com/hubfs/Background-right.webp");
+    background-position: right bottom;
+}
+
 /* Keep dnd content above the split backgrounds */
 .dnd-section:has(.gradient-bg) > *,
+.dnd-section:has(.gradient-bottom) > *,
 .dnd-section:has(.tvsci-twoct) > * {
     position: relative;
     z-index: 1;
@@ -63,12 +80,14 @@
    center dissolves into the section background instead of meeting hard. */
 @media (max-width: 768px) {
     .dnd-section:has(.gradient-bg)::before,
+    .dnd-section:has(.gradient-bottom)::before,
     .dnd-section:has(.tvsci-twoct)::before {
         -webkit-mask-image: linear-gradient(to right, #000 0%, #000 4%, transparent 28%);
                 mask-image: linear-gradient(to right, #000 0%, #000 4%, transparent 28%);
     }
 
     .dnd-section:has(.gradient-bg)::after,
+    .dnd-section:has(.gradient-bottom)::after,
     .dnd-section:has(.tvsci-twoct)::after {
         -webkit-mask-image: linear-gradient(to left, #000 0%, #000 4%, transparent 28%);
                 mask-image: linear-gradient(to left, #000 0%, #000 4%, transparent 28%);

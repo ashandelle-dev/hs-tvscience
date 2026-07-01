@@ -1,0 +1,293 @@
+[
+  {
+    "name": "show_header",
+    "label": "Show heading above cards",
+    "type": "boolean",
+    "display": "toggle",
+    "default": false
+  },
+
+  {
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "type": "text",
+    "allow_new_line": false,
+    "visibility": {
+      "controlling_field": "show_header",
+      "controlling_value_regex": "true",
+      "operator": "EQUAL"
+    },
+    "default": ""
+  },
+
+  {
+    "name": "heading",
+    "label": "Heading",
+    "type": "group",
+    "tab": "CONTENT",
+    "visibility": {
+      "controlling_field": "show_header",
+      "controlling_value_regex": "true",
+      "operator": "EQUAL"
+    },
+    "children": [
+      {
+        "name": "value",
+        "label": "Heading content",
+        "type": "text",
+        "allow_new_line": false,
+        "default": ""
+      },
+      {
+        "name": "header_tag",
+        "label": "Heading level",
+        "type": "choice",
+        "required": true,
+        "display": "select",
+        "choices": [
+          ["h1", "H1"], ["h2", "H2"], ["h3", "H3"], ["h4", "H4"], ["h5", "H5"], ["h6", "H6"], ["p", "P"]
+        ],
+        "default": "h2"
+      },
+      {
+        "name": "heading_size",
+        "label": "Heading Size",
+        "type": "number",
+        "suffix": "px",
+        "inline_help_text": "Set to 0 to use the default size",
+        "default": 48
+      },
+      {
+        "name": "heading_size_mobile",
+        "label": "Heading Size Mobile",
+        "type": "number",
+        "suffix": "px",
+        "inline_help_text": "Set to 0 to use the default size",
+        "default": 36
+      },
+      {
+        "name": "font_weight",
+        "label": "Font Weight",
+        "type": "choice",
+        "display": "select",
+        "choices": [["normal", "Normal"], ["semibold", "Semibold"], ["bold", "Bold"]],
+        "default": "semibold"
+      }
+    ]
+  },
+
+  {
+    "name": "body_copy",
+    "label": "Body",
+    "type": "richtext",
+    "visibility": {
+      "controlling_field": "show_header",
+      "controlling_value_regex": "true",
+      "operator": "EQUAL"
+    },
+    "default": ""
+  },
+
+  {
+    "name": "cards",
+    "label": "Cards",
+    "type": "group",
+    "tab": "CONTENT",
+    "occurrence": { "min": 2, "max": 6, "default": 4, "sorting_label_field": "cards.image.alt" },
+    "children": [
+      {
+        "name": "image",
+        "label": "Image",
+        "type": "image",
+        "responsive": true,
+        "resizable": true,
+        "show_loading": true,
+        "default": { "size_type": "exact", "src": "", "alt": "", "loading": "lazy", "width": 560, "height": 780 }
+      },
+      {
+        "name": "vertical_offset",
+        "label": "Vertical offset",
+        "type": "number",
+        "suffix": "px",
+        "min": 0,
+        "max": 120,
+        "inline_help_text": "Static top stagger — matches Figma card positions.",
+        "default": 0
+      },
+      {
+        "name": "parallax_direction",
+        "label": "Parallax direction",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["up", "Rise on scroll"],
+          ["down", "Drift down on scroll"],
+          ["none", "No motion"]
+        ],
+        "default": "up"
+      }
+    ],
+    "default": [
+      {
+        "image": {
+          "size_type": "exact",
+          "src": "https://tvscientific.com/hubfs/Creative%20libraries.png",
+          "alt": "Creative Library — search and score creative assets",
+          "loading": "lazy",
+          "width": 560,
+          "height": 780
+        },
+        "vertical_offset": 35,
+        "parallax_direction": "up"
+      },
+      {
+        "image": {
+          "size_type": "exact",
+          "src": "https://tvscientific.com/hubfs/Recommendations.png",
+          "alt": "Recommendations — AI-powered creative suggestions",
+          "loading": "lazy",
+          "width": 560,
+          "height": 780
+        },
+        "vertical_offset": 48,
+        "parallax_direction": "down"
+      },
+      {
+        "image": {
+          "size_type": "exact",
+          "src": "https://tvscientific.com/hubfs/Technician%20checklist.png",
+          "alt": "Technical Checklist — 17 of 17 passed",
+          "loading": "lazy",
+          "width": 560,
+          "height": 780
+        },
+        "vertical_offset": 63,
+        "parallax_direction": "up"
+      },
+      {
+        "image": {
+          "size_type": "exact",
+          "src": "https://tvscientific.com/hubfs/Scorecard.png",
+          "alt": "Full scorecard — summary, audio, and branding scores",
+          "loading": "lazy",
+          "width": 560,
+          "height": 780
+        },
+        "vertical_offset": 0,
+        "parallax_direction": "down"
+      }
+    ]
+  },
+
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "parallax",
+        "label": "Parallax motion",
+        "type": "group",
+        "children": [
+          {
+            "name": "enabled",
+            "label": "Enable scroll parallax",
+            "type": "boolean",
+            "display": "toggle",
+            "default": true
+          },
+          {
+            "name": "rise_offset",
+            "label": "Rise amount (px)",
+            "type": "number",
+            "suffix": "px",
+            "min": 0,
+            "max": 400,
+            "inline_help_text": "How far \"rise\" cards translate upward at full scroll progress.",
+            "default": 90
+          },
+          {
+            "name": "drift_percent",
+            "label": "Drift amount (%)",
+            "type": "number",
+            "suffix": "%",
+            "min": 0,
+            "max": 50,
+            "inline_help_text": "How far \"drift down\" cards move at full scroll progress.",
+            "default": 5
+          }
+        ]
+      },
+      {
+        "name": "mobile",
+        "label": "Mobile layout",
+        "type": "group",
+        "children": [
+          {
+            "name": "layout",
+            "label": "Mobile layout",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              ["stack", "Stack — single column"],
+              ["two-col", "2×2 grid"]
+            ],
+            "inline_help_text": "How cards collapse on screens <= 993px wide.",
+            "default": "two-col"
+          }
+        ]
+      },
+      {
+        "name": "container_max_width",
+        "label": "Container max width",
+        "type": "number",
+        "suffix": "px",
+        "min": 0,
+        "inline_help_text": "Override the default 1072px container width. Set to 0 to use the theme default.",
+        "default": 1200
+      },
+      {
+        "name": "card_radius",
+        "label": "Card corner radius",
+        "type": "number",
+        "suffix": "px",
+        "min": 0,
+        "max": 40,
+        "default": 20
+      },
+      {
+        "name": "background_color",
+        "label": "Background color",
+        "type": "color",
+        "default": { "color": null, "opacity": 100 }
+      },
+      {
+        "name": "background_image",
+        "label": "Background image",
+        "type": "image",
+        "responsive": true,
+        "resizable": true,
+        "show_loading": true,
+        "default": { "size_type": "exact", "src": "", "alt": "", "loading": "lazy", "width": 1920, "height": 1080 }
+      },
+      {
+        "name": "text_color",
+        "label": "Text color",
+        "type": "color",
+        "default": { "color": null, "opacity": 100 }
+      },
+      {
+        "name": "padding",
+        "label": "Padding",
+        "type": "spacing",
+        "default": {
+          "padding": {
+            "top": { "value": 64, "units": "px" },
+            "bottom": { "value": 64, "units": "px" }
+          }
+        }
+      }
+    ]
+  }
+]

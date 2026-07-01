@@ -1,0 +1,97 @@
+{% set bg_color = module.style.background_color.css %}
+{% set page_index = current_page_num > 0 ? current_page_num : 1 %}
+
+<section
+  class="font-plex"
+  style="
+    {% if bg_color %}background-color: {{ bg_color }};{% endif %}
+    {{ module.style.padding.css }}
+  ">
+  <div class="max-w-[1216px] mx-auto px-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+
+      {% for content in contents %}
+      {% set out_link = content.widgets.title_link.body.value %}
+      {% set first_tag = content.tag_list | first %}
+
+      <article class="flex flex-col rounded-[8px] border border-[#d1d5d8] overflow-hidden relative group bg-white transition-shadow hover:shadow-md">
+
+        {% unless out_link %}
+        <a href="{{ content.absolute_url }}" class="absolute inset-0 z-10" aria-label="{{ content.name | escape_attr }}"></a>
+        {% else %}
+        <a href="{{ out_link }}" target="_blank" rel="noopener" class="absolute inset-0 z-10" aria-label="{{ content.name | escape_attr }}"></a>
+        {% endunless %}
+
+        <div class="h-[151px] border-b border-[#d1d5d8] overflow-hidden flex-shrink-0 flex items-center justify-center bg-white p-4">
+          <img
+            class="max-h-full max-w-full object-contain"
+            src="{{ content.featured_image if content.featured_image else 'https://tvscientific.com/hubfs/tvsci-pintrest-featured.png' }}"
+            alt="{{ content.name | escape_attr }}"
+            loading="lazy">
+        </div>
+
+        <div class="flex flex-col gap-8 px-4 pb-8 pt-4 flex-1">
+          <div class="flex flex-col gap-3 flex-1">
+            <div class="flex items-center justify-between gap-2">
+              <p class="m-0 font-medium text-base text-[#a7b2be] uppercase tracking-[1.28px] leading-[24px]">
+                {{ content.publish_date | datetimeformat('%b %e, %Y') }}
+              </p>
+              {% if first_tag %}
+              <span class="bg-white border border-[#d9e2eb] rounded px-1 py-1 text-[10px] text-[#1f252b] leading-none whitespace-nowrap">
+                {{ first_tag.name }}
+              </span>
+              {% endif %}
+            </div>
+            <p class="m-0 font-medium text-[#31373d] text-[18px] leading-[24px] tracking-[0.18px]">{{ content.name }}</p>
+          </div>
+
+          <div class="flex items-center gap-[10px]">
+            <span class="font-plex-mono uppercase tracking-[1.4px] text-[14px] text-[#1f252b] leading-[20px]">
+              {{ module.read_more_text }}
+            </span>
+            <div class="w-4 group-hover:translate-x-0.5 transition-transform duration-200">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6.5 5L9.5 8L6.5 11" stroke="#1f252b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+      </article>
+      {% endfor %}
+
+    </div>
+
+    {% if contents.total_page_count > 1 %}
+    <div class="flex justify-end items-center gap-5 mt-12 font-plex font-bold text-[16px] tracking-[0.32px] uppercase">
+
+      {% if page_index >= 3 %}
+      <a href="{{ blog_page_link(1) }}" class="text-[#1f252b] hover:text-[#198960] transition-colors no-underline">1</a>
+      {% endif %}
+
+      {% if page_index > 2 %}
+      <span class="text-[#1f252b]">...</span>
+      {% endif %}
+
+      {% if page_index > 1 %}
+      <a href="{{ blog_page_link(page_index - 1) }}" class="text-[#1f252b] hover:text-[#198960] transition-colors no-underline">{{ page_index - 1 }}</a>
+      {% endif %}
+
+      <a href="{{ blog_page_link(page_index) }}" class="text-[#198960] no-underline">{{ page_index }}</a>
+
+      {% if page_index != contents.total_page_count %}
+      <a href="{{ blog_page_link(page_index + 1) }}" class="text-[#1f252b] hover:text-[#198960] transition-colors no-underline">{{ page_index + 1 }}</a>
+      {% endif %}
+
+      {% if contents.total_page_count - page_index > 1 %}
+        {% if contents.total_page_count - page_index > 2 %}
+        <span class="text-[#1f252b]">...</span>
+        {% endif %}
+        <a href="{{ blog_page_link(contents.total_page_count) }}" class="text-[#1f252b] hover:text-[#198960] transition-colors no-underline">{{ contents.total_page_count }}</a>
+      {% endif %}
+
+    </div>
+    {% endif %}
+
+  </div>
+</section>

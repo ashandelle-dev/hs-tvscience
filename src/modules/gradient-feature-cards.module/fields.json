@@ -1,0 +1,280 @@
+[
+  {
+    "name": "cards",
+    "label": "Cards",
+    "type": "group",
+    "tab": "CONTENT",
+    "occurrence": { "min": 1, "max": 6, "default": 3, "sorting_label_field": "cards.heading.value" },
+    "children": [
+      {
+        "name": "icon",
+        "label": "Icon / image",
+        "type": "image",
+        "responsive": true,
+        "resizable": true,
+        "show_loading": true,
+        "default": { "size_type": "exact", "src": "", "alt": "", "loading": "lazy", "width": 60, "height": 60 }
+      },
+      {
+        "name": "heading",
+        "label": "Heading",
+        "type": "group",
+        "children": [
+          {
+            "name": "value",
+            "label": "Heading content",
+            "type": "text",
+            "allow_new_line": false,
+            "default": ""
+          },
+          {
+            "name": "header_tag",
+            "label": "Heading level",
+            "type": "choice",
+            "required": true,
+            "display": "select",
+            "choices": [
+              ["h1", "H1"], ["h2", "H2"], ["h3", "H3"], ["h4", "H4"], ["h5", "H5"], ["h6", "H6"], ["p", "P"]
+            ],
+            "default": "h3"
+          },
+          {
+            "name": "heading_size",
+            "label": "Heading size",
+            "type": "number",
+            "suffix": "px",
+            "inline_help_text": "Set to 0 to use the default size",
+            "default": 36
+          },
+          {
+            "name": "heading_size_mobile",
+            "label": "Heading size (mobile)",
+            "type": "number",
+            "suffix": "px",
+            "inline_help_text": "Set to 0 to use the default size",
+            "default": 28
+          },
+          {
+            "name": "font_weight",
+            "label": "Font weight",
+            "type": "choice",
+            "display": "select",
+            "choices": [["normal", "Normal"], ["semibold", "Semibold"], ["bold", "Bold"]],
+            "default": "semibold"
+          }
+        ]
+      },
+      {
+        "name": "body_copy",
+        "label": "Description",
+        "type": "richtext",
+        "default": ""
+      },
+      {
+        "name": "cta",
+        "label": "Button",
+        "type": "group",
+        "children": [
+          {
+            "name": "show",
+            "label": "Show button",
+            "type": "boolean",
+            "display": "toggle",
+            "default": false
+          },
+          {
+            "name": "link",
+            "label": "Link",
+            "type": "link",
+            "supported_types": ["EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION"],
+            "visibility": {
+              "controlling_field": "cards.cta.show",
+              "controlling_value_regex": "true",
+              "operator": "EQUAL"
+            },
+            "default": {
+              "url": { "type": "EXTERNAL", "href": "" },
+              "open_in_new_tab": false,
+              "no_follow": false
+            }
+          },
+          {
+            "name": "text",
+            "label": "Button text",
+            "type": "text",
+            "allow_new_line": false,
+            "visibility": {
+              "controlling_field": "cards.cta.show",
+              "controlling_value_regex": "true",
+              "operator": "EQUAL"
+            },
+            "default": ""
+          }
+        ]
+      },
+      {
+        "name": "background_image",
+        "label": "Card background image",
+        "type": "image",
+        "responsive": true,
+        "resizable": true,
+        "show_loading": true,
+        "default": {
+          "size_type": "exact",
+          "src": "https://www.tvscientific.com/hubfs/card-bg-1-1.webp",
+          "alt": "",
+          "loading": "lazy",
+          "width": 800,
+          "height": 600
+        }
+      }
+    ],
+    "default": [
+      {
+        "background_image": {
+          "size_type": "exact",
+          "src": "https://www.tvscientific.com/hubfs/card-bg-1-1.webp",
+          "alt": "",
+          "loading": "lazy",
+          "width": 800,
+          "height": 600
+        },
+        "icon": { "size_type": "exact", "src": "", "alt": "", "loading": "lazy", "width": 60, "height": 60 },
+        "heading": {
+          "value": "Hundreds of thousands of creatives",
+          "header_tag": "h3",
+          "heading_size": 36,
+          "heading_size_mobile": 28,
+          "font_weight": "semibold"
+        },
+        "body_copy": "",
+        "cta": { "show": false, "link": { "url": { "type": "EXTERNAL", "href": "" }, "open_in_new_tab": false, "no_follow": false }, "text": "" }
+      },
+      {
+        "background_image": {
+          "size_type": "exact",
+          "src": "https://www.tvscientific.com/hubfs/card-bg-1-1.webp",
+          "alt": "",
+          "loading": "lazy",
+          "width": 800,
+          "height": 600
+        },
+        "icon": { "size_type": "exact", "src": "", "alt": "", "loading": "lazy", "width": 60, "height": 60 },
+        "heading": {
+          "value": "Millions of household impressions.",
+          "header_tag": "h3",
+          "heading_size": 36,
+          "heading_size_mobile": 28,
+          "font_weight": "semibold"
+        },
+        "body_copy": "",
+        "cta": { "show": false, "link": { "url": { "type": "EXTERNAL", "href": "" }, "open_in_new_tab": false, "no_follow": false }, "text": "" }
+      },
+      {
+        "background_image": {
+          "size_type": "exact",
+          "src": "https://www.tvscientific.com/hubfs/card-bg-1-1.webp",
+          "alt": "",
+          "loading": "lazy",
+          "width": 800,
+          "height": 600
+        },
+        "icon": { "size_type": "exact", "src": "", "alt": "", "loading": "lazy", "width": 60, "height": 60 },
+        "heading": {
+          "value": "Millions of creative elements",
+          "header_tag": "h3",
+          "heading_size": 36,
+          "heading_size_mobile": 28,
+          "font_weight": "semibold"
+        },
+        "body_copy": "",
+        "cta": { "show": false, "link": { "url": { "type": "EXTERNAL", "href": "" }, "open_in_new_tab": false, "no_follow": false }, "text": "" }
+      }
+    ]
+  },
+
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "card_background_color",
+        "label": "Card background color (fallback)",
+        "type": "color",
+        "inline_help_text": "Shows behind the card background image while it loads.",
+        "default": { "color": "#f3fff6", "opacity": 100 }
+      },
+      {
+        "name": "card_border_radius",
+        "label": "Card border radius",
+        "type": "number",
+        "suffix": "px",
+        "min": 0,
+        "max": 48,
+        "default": 20
+      },
+      {
+        "name": "card_gap",
+        "label": "Gap between cards",
+        "type": "number",
+        "suffix": "px",
+        "min": 0,
+        "max": 120,
+        "default": 40
+      },
+      {
+        "name": "icon_content_gap",
+        "label": "Icon to content gap",
+        "type": "number",
+        "suffix": "px",
+        "min": 0,
+        "max": 200,
+        "inline_help_text": "Minimum space between the icon and heading block.",
+        "default": 110
+      },
+      {
+        "name": "background_color",
+        "label": "Section background color",
+        "type": "color",
+        "default": { "color": "#ffffff", "opacity": 100 }
+      },
+      {
+        "name": "background_image",
+        "label": "Section background image",
+        "type": "image",
+        "responsive": true,
+        "resizable": true,
+        "show_loading": true,
+        "default": { "size_type": "exact", "src": "", "alt": "", "loading": "lazy", "width": 1920, "height": 1080 }
+      },
+      {
+        "name": "text_color",
+        "label": "Text color",
+        "type": "color",
+        "default": { "color": null, "opacity": 100 }
+      },
+      {
+        "name": "padding",
+        "label": "Section padding",
+        "type": "spacing",
+        "default": {
+          "padding": {
+            "top": { "value": 80, "units": "px" },
+            "bottom": { "value": 80, "units": "px" }
+          }
+        }
+      },
+      {
+        "name": "container_max_width",
+        "label": "Container max width",
+        "type": "number",
+        "suffix": "px",
+        "min": 0,
+        "inline_help_text": "Override the default 1072px container width. Set to 0 to use the theme default.",
+        "default": 1200
+      }
+    ]
+  }
+]

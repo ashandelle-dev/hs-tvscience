@@ -48,7 +48,31 @@
 {% endif %}
 {{ 'gap-3' if module.styles.padding.css is not string_containing ': rem' else 'gap-8' }}">
     {% for item in module.cards %}
-    <div class="card rounded transition-shadow">
+    {% set href = item.button.link.url.href %}
+    {% if item.button.link.url.type is equalto "EMAIL_ADDRESS" %}
+    {% set href = "mailto:" + href %}
+    {% elif item.button.link.url.type is equalto "PHONE_NUMBER" %}
+    {% set href = "tel:" + href %}
+    {% endif %}
+    {% set is_linkable_card = item.button.display_as == 'linkable_card' and href %}
+
+    <{% if is_linkable_card %}a{% else %}div{% endif %}
+        class="card rounded transition-shadow{% if is_linkable_card %} block no-underline hover:no-underline hover:shadow-md cursor-pointer{% endif %}"
+        {% if is_linkable_card %}
+        {% if item.button.link.url.type is equalto "CALL_TO_ACTION" %}
+            href="{{ href }}"
+        {% else %}
+            href="{{ href|escape_url }}"
+        {% endif %}
+        aria-label="{{ item.heading|escape_attr }}"
+        {% if item.button.link.open_in_new_tab %}
+            target="_blank"
+        {% endif %}
+        {% if item.button.link.rel %}
+            rel="{{ item.button.link.rel|escape_attr }}"
+        {% endif %}
+        {% endif %}
+    >
         <div class=" mb-6">
             {% if item.image.src %}
                 {% set sizeAttrs = 'width="{{ item.image.width|escape_attr }}" height="{{ item.image.height|escape_attr }}"' %}
@@ -64,13 +88,7 @@
         <h3 class="mb-2 text-gray-900 {% if heading_size == 'small' %}card-heading--small{% else %}font-bricolage-grotesque font-semibold leading-none tracking-wider{% endif %}">{{ item.heading }}</h3>
         <div class="text-gray-600 font-normal leading-relaxed text-sm">{{ item.description }}</div>
 
-        {% if item.button.text %}
-        {% set href = item.button.link.url.href %}
-        {% if item.button.link.url.type is equalto "EMAIL_ADDRESS" %}
-        {% set href = "mailto:" + href %}
-        {% elif item.button.link.url.type is equalto "PHONE_NUMBER" %}
-        {% set href = "tel:" + href %}
-        {% endif %}
+        {% if item.button.display_as != 'linkable_card' and item.button.text %}
         <a
         class="bg-transparent text-[#23e596] font-bold tracking-[1.5px] text-sm"
         {% if item.button.link.url.type is equalto "CALL_TO_ACTION"  %}
@@ -88,6 +106,6 @@
         {{ item.button.text }}
         </a>
         {% endif %}
-    </div>
+    </{% if is_linkable_card %}a{% else %}div{% endif %}>
     {% endfor %}
 </div>

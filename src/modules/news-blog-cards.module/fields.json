@@ -1,0 +1,34 @@
+[
+  {
+    "name": "read_more_text",
+    "label": "Read More label",
+    "type": "text",
+    "allow_new_line": false,
+    "default": "Read More"
+  },
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "background_color",
+        "label": "Background color",
+        "type": "color",
+        "default": { "color": null, "opacity": 100 }
+      },
+      {
+        "name": "padding",
+        "label": "Padding",
+        "type": "spacing",
+        "default": {
+          "padding": {
+            "top": { "value": 64, "units": "px" },
+            "bottom": { "value": 64, "units": "px" }
+          }
+        }
+      }
+    ]
+  }
+]

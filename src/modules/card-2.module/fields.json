@@ -60,12 +60,32 @@
         "locked": false,
         "children": [
           {
+            "name": "display_as",
+            "label": "Display as",
+            "required": false,
+            "locked": false,
+            "type": "choice",
+            "display": "radio",
+            "choices": [
+              ["button", "Button"],
+              ["linkable_card", "Linkable card"]
+            ],
+            "default": "button",
+            "inline_help_text": "Linkable card makes the entire card clickable without showing a button.",
+            "help_text": ""
+          },
+          {
             "name": "text",
             "label": "Text",
             "required": false,
             "locked": false,
             "type": "text",
-            "default": ""
+            "default": "",
+            "visibility": {
+              "controlling_field": "cards.button.display_as",
+              "controlling_value_regex": "button",
+              "operator": "EQUAL"
+            }
           },
           {
             "name": "link",
@@ -77,7 +97,8 @@
               "CONTENT",
               "FILE",
               "EMAIL_ADDRESS",
-              "BLOG"
+              "BLOG",
+              "CALL_TO_ACTION"
             ],
             "type": "link",
             "inline_help_text": "",

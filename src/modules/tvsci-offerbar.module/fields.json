@@ -60,6 +60,14 @@
   },
 
   {
+    "name": "description",
+    "label": "Description",
+    "type": "richtext",
+    "tab": "CONTENT",
+    "default": ""
+  },
+
+  {
     "name": "cta",
     "label": "Button",
     "type": "group",

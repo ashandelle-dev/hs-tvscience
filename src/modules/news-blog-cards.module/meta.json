@@ -2,7 +2,7 @@
   "global": false,
   "content_types": ["LANDING_PAGE", "SITE_PAGE", "BLOG_POST", "BLOG_LISTING"],
   "host_template_types": ["PAGE", "BLOG_POST", "BLOG_LISTING"],
-  "label": "tvSci Two Col Testimonial",
-  "icon": "https://www.kalungi.com/hubfs/Atlas/Module%20Logos/testimonial-module.svg",
+  "label": "News Blog Cards",
+  "icon": "https://www.kalungi.com/hubfs/Atlas/Module%20Logos/callout-module.svg",
   "is_available_for_new_content": true
 }

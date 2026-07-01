@@ -1,0 +1,93 @@
+{# ==========================================================================
+   Staggered Parallax Cards
+   - 4-up horizontal grid with per-card vertical stagger (Figma Pinterest frame)
+   - Alternating rise / drift-down scroll parallax (same engine as parallax-image-grid)
+   ========================================================================== #}
+
+{% set bg_color   = module.style.background_color.css %}
+{% set bg_image   = module.style.background_image.src %}
+{% set text_color = module.style.text_color.css %}
+
+{% set parallax_enabled = module.style.parallax.enabled %}
+{% set rise_offset      = module.style.parallax.rise_offset or 90 %}
+{% set drift_percent    = module.style.parallax.drift_percent or 5 %}
+{% set mobile_layout    = module.style.mobile.layout or 'two-col' %}
+{% set card_radius      = module.style.card_radius or 20 %}
+
+{% require_css %}
+
+<style>
+  {% scope_css %}
+    .staggered-parallax-cards-heading {
+      {% if module.heading.heading_size %}font-size: {{ module.heading.heading_size }}px !important;{% endif %}
+      line-height: 1.08;
+    }
+    {% if module.heading.heading_size_mobile %}
+    @media (max-width: 993px) {
+      .staggered-parallax-cards-heading { font-size: {{ module.heading.heading_size_mobile }}px !important; }
+    }
+    {% endif %}
+    .staggered-parallax-cards__card {
+      border-radius: {{ card_radius }}px;
+    }
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+<section
+  class="staggered-parallax-cards staggered-parallax-cards--mobile-{{ mobile_layout }} font-plex relative overflow-hidden"
+  data-staggered-parallax
+  data-parallax-enabled="{{ parallax_enabled }}"
+  data-parallax-rise="{{ rise_offset }}"
+  data-parallax-drift="{{ drift_percent }}"
+  style="
+    {% if bg_color %}background-color: {{ bg_color }};{% endif %}
+    {% if bg_image %}background-image: url('{{ bg_image|escape_url }}'); background-size: cover; background-position: center;{% endif %}
+    {% if text_color %}color: {{ text_color }};{% endif %}
+    {{ module.style.padding.css }}
+  ">
+
+  <div
+    class="tvsci-container"
+    {% if module.style.container_max_width %}style="max-width: {{ module.style.container_max_width }}px;"{% endif %}>
+
+    {% if module.show_header %}
+    <div class="staggered-parallax-cards__header flex flex-col items-center text-center gap-4 mb-10 md:mb-14 max-w-[760px] mx-auto">
+      {% if module.eyebrow %}
+      <p class="tvsci-eyebrow !m-0">{{ module.eyebrow }}</p>
+      {% endif %}
+
+      {% if module.heading.value %}
+      <{{ module.heading.header_tag }}
+        class="staggered-parallax-cards-heading font-{{ module.heading.font_weight }} text-tvs-green-dark !m-0">
+        {{ module.heading.value }}
+      </{{ module.heading.header_tag }}>
+      {% endif %}
+
+      {% if module.body_copy %}
+      <div class="tvsci-lead">{{ module.body_copy }}</div>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    <div class="staggered-parallax-cards__grid">
+      {% for card in module.cards %}
+      <figure
+        class="staggered-parallax-cards__card"
+        data-parallax-direction="{{ card.parallax_direction or 'up' }}"
+        style="{% if card.vertical_offset %}margin-top: {{ card.vertical_offset }}px;{% endif %}">
+        {% if card.image.src %}
+        <img
+          class="staggered-parallax-cards__img"
+          src="{{ card.image.src|escape_url }}"
+          alt="{{ card.image.alt|escape_attr }}"
+          {% if card.image.loading != 'disabled' %}loading="{{ card.image.loading|escape_attr }}"{% endif %}
+          {% if card.image.width %}width="{{ card.image.width|escape_attr }}"{% endif %}
+          {% if card.image.height %}height="{{ card.image.height|escape_attr }}"{% endif %}>
+        {% endif %}
+      </figure>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>

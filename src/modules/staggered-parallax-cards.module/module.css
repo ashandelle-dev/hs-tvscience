@@ -1,0 +1,50 @@
+/* ==========================================================================
+   staggered-parallax-cards.module
+   ========================================================================== */
+
+.staggered-parallax-cards__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(16px, 3.5vw, 44px);
+  align-items: start;
+}
+
+.staggered-parallax-cards__card {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  will-change: transform;
+  aspect-ratio: 280 / 390;
+  background-color: #f9fafc; /* tvs-grey-pastel fallback */
+}
+
+.staggered-parallax-cards__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ==========================================================================
+   Mobile (<= 993px)
+   ========================================================================== */
+@media (max-width: 993px) {
+  .staggered-parallax-cards__card {
+    transform: none !important;
+    margin-top: 0 !important;
+  }
+
+  .staggered-parallax-cards--mobile-stack .staggered-parallax-cards__grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .staggered-parallax-cards--mobile-two-col .staggered-parallax-cards__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .staggered-parallax-cards--mobile-two-col .staggered-parallax-cards__card {
+    aspect-ratio: 280 / 390;
+  }
+}

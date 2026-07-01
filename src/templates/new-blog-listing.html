@@ -295,7 +295,13 @@
               <a href="{{ out_link }}" class="flex absolute bottom-3 left-0 px-6 items-center hover:no-underline" target="_blank">
               {% endunless %}
                 <div>
-                  <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-[#009061]">Read now</p>
+                  <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-[#009061]">
+                    {% if group.public_title == "Webinars" %}
+                    Watch now
+                    {% else %}
+                    Read now
+                    {% endif %}
+                  </p>
                 </div>
                 <div class="w-4 text-center group-hover:translate-x-0.5 duration-200 transition-transform">
                   <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7 5L10 8L7 11" stroke="#009061" stroke-width="1.5"></path></svg>
@@ -370,4 +376,3 @@
 </main>
 
 {% endblock body %}
-

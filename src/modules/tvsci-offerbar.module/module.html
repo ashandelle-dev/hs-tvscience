@@ -58,6 +58,10 @@
           </{{ module.heading.header_tag }}>
           {% endif %}
 
+          {% if module.description %}
+          <div class="tvsci-lead mb-6">{{ module.description }}</div>
+          {% endif %}
+
           {% if cta_href and module.cta.text %}
           <a
             href="{{ cta_href }}"

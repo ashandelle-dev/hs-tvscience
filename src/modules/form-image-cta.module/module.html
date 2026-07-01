@@ -1,0 +1,113 @@
+{% set bg_color     = module.style.background_color.css %}
+{% set bg_image     = module.style.background_image.src %}
+{% set text_color   = module.style.text_color.css %}
+{% set card_bg      = module.style.card_background_color.css %}
+{% set card_radius  = module.style.card_border_radius or 20 %}
+{% set h_size       = module.heading.heading_size %}
+{% set h_size_mob   = module.heading.heading_size_mobile %}
+
+{% require_css %}
+<style>
+  {% scope_css %}
+    .form-image-cta-heading {
+      {% if h_size %}font-size: {{ h_size }}px !important;{% endif %}
+      margin: 0;
+    }
+    @media (max-width: 767px) {
+      .form-image-cta-heading {
+        {% if h_size_mob %}font-size: {{ h_size_mob }}px !important;{% endif %}
+      }
+    }
+    .form-image-cta__card {
+      {% if card_bg %}background-color: {{ card_bg }};{% endif %}
+      border-radius: {{ card_radius }}px;
+    }
+    .form-image-cta__media {
+      border-radius: 0 {{ card_radius }}px {{ card_radius }}px 0;
+    }
+    @media (max-width: 993px) {
+      .form-image-cta__media {
+        border-radius: 0 0 {{ card_radius }}px {{ card_radius }}px;
+      }
+    }
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+<section
+  class="form-image-cta font-plex"
+  style="
+    {% if bg_color %}background-color: {{ bg_color }};{% endif %}
+    {% if bg_image %}background-image: url('{{ bg_image|escape_url }}'); background-size: cover; background-position: center;{% endif %}
+    {% if text_color %}color: {{ text_color }};{% endif %}
+    {{ module.style.padding.css }}
+  ">
+
+  <div
+    class="tvsci-container"
+    {% if module.style.container_max_width %}style="max-width: {{ module.style.container_max_width }}px;"{% endif %}>
+
+    <div class="form-image-cta__card">
+
+      <div class="form-image-cta__content" style="{{ module.style.card_content_padding.css }}">
+
+        {% if module.heading.value %}
+        <{{ module.heading.header_tag }}
+          class="form-image-cta-heading font-{{ module.heading.font_weight }} text-tvs-black ">
+          {{ module.heading.value }}
+        </{{ module.heading.header_tag }}>
+        {% endif %}
+
+        {% if module.body_copy %}
+        <div class="form-image-cta__body tvsci-lead text-tvs-black">{{ module.body_copy }}</div>
+        {% endif %}
+
+        {% if module.cta_type == "form" and module.form.form_id %}
+        <div class="form-image-cta-form">
+          {% form
+            form_key="form_image_cta_{{ name }}",
+            form_to_use="{{ module.form.form_id }}",
+            response_response_type="{{ module.form.response_type }}",
+            response_message="{{ module.form.message }}",
+            response_redirect_id="{{ module.form.redirect_id }}",
+            response_redirect_url="{{ module.form.redirect_url }}",
+            gotowebinar_webinar_key="{{ module.form.gotowebinar_webinar_key }}"
+          %}
+        </div>
+        {% elif module.cta_type == "button" %}
+          {% set cta_href = module.cta.link.url.href %}
+          {% if module.cta.link.url.type is equalto "EMAIL_ADDRESS" %}
+            {% set cta_href = "mailto:" + cta_href %}
+          {% elif module.cta.link.url.type is equalto "PHONE_NUMBER" %}
+            {% set cta_href = "tel:" + cta_href %}
+          {% endif %}
+          {% if cta_href and module.cta.text %}
+          <div class="form-image-cta__button">
+            <a
+              href="{{ cta_href|escape_url }}"
+              class="tvsci-button hs-button{% if module.cta.button_style == 'secondary' %} hs-button--secondary{% endif %}"
+              {% if module.cta.link.open_in_new_tab %}target="_blank"{% endif %}
+              {% if module.cta.link.rel %}rel="{{ module.cta.link.rel|escape_attr }}"{% endif %}>
+              {{ module.cta.text }}
+            </a>
+          </div>
+          {% endif %}
+        {% endif %}
+
+      </div>
+
+      {% if module.media.src %}
+      <figure class="form-image-cta__media">
+        <img
+          class="form-image-cta__img"
+          src="{{ module.media.src|escape_url }}"
+          alt="{{ module.media.alt|escape_attr }}"
+          {% if module.media.loading != 'disabled' %}loading="{{ module.media.loading|escape_attr }}"{% endif %}
+          {% if module.media.width %}width="{{ module.media.width|escape_attr }}"{% endif %}
+          {% if module.media.height %}height="{{ module.media.height|escape_attr }}"{% endif %}>
+      </figure>
+      {% endif %}
+
+    </div>
+  </div>
+</section>

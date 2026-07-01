@@ -1,0 +1,26 @@
+<!--
+  templateType: blog_listing
+  isAvailableForNewContent: true
+  label: 2026 News Blog Listing
+-->
+
+{% extends "./../layouts/base.html" %}
+
+{% block body %}
+<main>
+  {% dnd_area "dnd_area" class="dnd-empty" label="Drag and Drop Area" %}
+    {% dnd_section %}
+      {% dnd_column %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/tvScientific 2022 Atlas Pro/cli-build/modules/news-blog-cards",
+            offset=0,
+            width=12
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+  {% end_dnd_area %}
+</main>
+{% endblock body %}

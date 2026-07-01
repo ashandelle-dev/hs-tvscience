@@ -1,0 +1,119 @@
+{% set bg_color        = module.style.background_color.css %}
+{% set bg_image        = module.style.background_image.src %}
+{% set text_color      = module.style.text_color.css %}
+{% set card_bg         = module.style.card_background_color.css %}
+{% set card_radius     = module.style.card_border_radius or 20 %}
+{% set card_gap        = module.style.card_gap or 40 %}
+{% set icon_content_gap = module.style.icon_content_gap or 110 %}
+
+{% require_css %}
+<style>
+  {% scope_css %}
+    .gradient-feature-cards__grid {
+      gap: {{ card_gap }}px;
+    }
+    .gradient-feature-cards__card {
+      {% if card_bg %}--gfc-card-bg: {{ card_bg }};{% endif %}
+      border-radius: {{ card_radius }}px;
+    }
+    .gradient-feature-cards__card-bg {
+      border-radius: {{ card_radius }}px;
+    }
+    .gradient-feature-cards__inner {
+      gap: {{ icon_content_gap }}px;
+    }
+    {% for card in module.cards %}
+    .gradient-feature-cards__heading--{{ loop.index }} {
+      {% if card.heading.heading_size %}font-size: {{ card.heading.heading_size }}px !important;{% endif %}
+      line-height: 1.1 !important;
+      margin: 0;
+    }
+    {% if card.heading.heading_size_mobile %}
+    @media (max-width: 767px) {
+      .gradient-feature-cards__heading--{{ loop.index }} {
+        font-size: {{ card.heading.heading_size_mobile }}px !important;
+      }
+    }
+    {% endif %}
+    {% endfor %}
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+<section
+  class="gradient-feature-cards font-plex"
+  style="
+    {% if bg_color %}background-color: {{ bg_color }};{% endif %}
+    {% if bg_image %}background-image: url('{{ bg_image|escape_url }}'); background-size: cover; background-position: center;{% endif %}
+    {% if text_color %}color: {{ text_color }};{% endif %}
+    {{ module.style.padding.css }}
+  ">
+
+  <div
+    class="tvsci-container"
+    {% if module.style.container_max_width %}style="max-width: {{ module.style.container_max_width }}px;"{% endif %}>
+
+    <div class="gradient-feature-cards__grid">
+      {% for card in module.cards %}
+      <article class="gradient-feature-cards__card">
+
+        <div
+          class="gradient-feature-cards__card-bg"
+          style="
+            {% if card_bg %}background-color: {{ card_bg }};{% endif %}
+            {% if card.background_image.src %}background-image: url('{{ card.background_image.src|escape_url }}'); background-size: cover; background-position: center bottom;{% endif %}
+          "
+          aria-hidden="true"></div>
+
+        <div class="gradient-feature-cards__inner">
+
+          {% if card.icon.src %}
+          <figure class="gradient-feature-cards__icon">
+            <img
+              class="gradient-feature-cards__icon-img"
+              src="{{ card.icon.src|escape_url }}"
+              alt="{{ card.icon.alt|escape_attr }}"
+              {% if card.icon.loading != 'disabled' %}loading="{{ card.icon.loading|escape_attr }}"{% endif %}
+              {% if card.icon.width %}width="{{ card.icon.width|escape_attr }}"{% endif %}
+              {% if card.icon.height %}height="{{ card.icon.height|escape_attr }}"{% endif %}>
+          </figure>
+          {% endif %}
+
+          <div class="gradient-feature-cards__content">
+
+            {% if card.heading.value %}
+            <{{ card.heading.header_tag }}
+              class="gradient-feature-cards__heading gradient-feature-cards__heading--{{ loop.index }} font-{{ card.heading.font_weight }} text-tvs-black">
+              {{ card.heading.value }}
+            </{{ card.heading.header_tag }}>
+            {% endif %}
+
+            {% if card.body_copy %}
+            <div class="gradient-feature-cards__body tvsci-lead text-tvs-black">{{ card.body_copy }}</div>
+            {% endif %}
+
+            {% if card.cta.show %}
+              {% set cta_href = card.cta.link.url.href %}
+              {% if card.cta.link.url.type is equalto "EMAIL_ADDRESS" %}
+                {% set cta_href = "mailto:" + cta_href %}
+              {% endif %}
+              {% if cta_href and card.cta.text %}
+              <a
+                href="{{ cta_href|escape_url }}"
+                {% if card.cta.link.open_in_new_tab %}target="_blank"{% endif %}
+                {% if card.cta.link.rel %}rel="{{ card.cta.link.rel }}"{% endif %}
+                class="hs-button">
+                {{ card.cta.text }}
+              </a>
+              {% endif %}
+            {% endif %}
+
+          </div>
+
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
