@@ -47,7 +47,7 @@
 
         <!-- Collections Filter -->
         <div class="filter-group mb-10">
-          <p class="text-sm mb-2 text-[#202223] font-semibold">Collections</p>
+          <p class="text-sm mb-2 text-[#202223] font-semibold">{{ module.filter_1 }}</p>
           <div class="filter-options space-y-4">
             {% if featured_partners|length > 0 %}
             <label class="flex items-center cursor-pointer group">
@@ -57,7 +57,7 @@
                 data-filter-type="collection"
                 data-filter-value="featured_partner"
               >
-              <span class="text-sm text-[#202223] group-hover:text-[#198960] select-none leading-none">Featured Partner</span>
+              <span class="text-sm text-[#202223] group-hover:text-[#198960] select-none leading-none">Certified Measurement Partner</span>
             </label>
             {% endif %}
             {% for option in collections_filters.options %}
@@ -78,7 +78,7 @@
 
         <!-- Categories Filter -->
         <div class="filter-group mb-10">
-          <p class="text-sm mb-2 text-[#202223] font-semibold">Categories</p>
+          <p class="text-sm mb-2 text-[#202223] font-semibold">{{ module.filter_2 }}</p>
           <div class="filter-options space-y-4">
             {% for option in categories_filters.options %}
             {% if option.name in used_categories %}
@@ -98,7 +98,7 @@
 
         <!-- Capabilities Filter -->
         <div class="filter-group mb-6 border-b border-[#D9E2EB] pb-6 lg:border-b-0">
-          <p class="text-sm mb-2 text-[#202223] font-semibold">Capabilities</p>
+          <p class="text-sm mb-2 text-[#202223] font-semibold">{{ module.filter_3 }}</p>
           <div class="filter-options space-y-4">
             {% for option in capabilities_filters.options %}
             {% if option.name in used_capabilities %}
@@ -189,10 +189,10 @@
 
               <img
                 class="partner-badge mt-4"
-                src="https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/Partner-badge-1-light.svg"
+                src="https://www.tvscientific.com/hubfs/Partner-badge.svg"
                 alt="tvScientific Certified Partner"
-                width="69"
-                height="66"
+                width="156"
+                height="36"
                 loading="lazy">
 
             </{% if partner.url %}a{% else %}div{% endif %}>

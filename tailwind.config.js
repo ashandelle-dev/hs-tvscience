@@ -50,6 +50,9 @@ module.exports = {
                     "yellow": "#FFCD40",
                     "yellow-light": "#FFE6A0",
                     "white": "#FFFFFF",
+                    // Holiday Trends Report 2026 accents (Figma: blues/medium, purples/medium)
+                    "blue": "#55B8FF",
+                    "purple": "#B888FF",
                 },
             },
         },
