@@ -21,11 +21,11 @@
     {# Blog header #}
     {% if content.widgets.hero_image.body.src %}
       <div class="blog-header blog-header--post"
-         style="background-image: url('{{ content.widgets.hero_image.body.src }}');" 
+         style="background-image: url('{{ content.widgets.hero_image.body.src }}');"
          ></div>
     {% else %}
     <div class="blog-header blog-header--post"
-         style="background-image: url('{{ content.featured_image }}');" 
+         style="background-image: url('{{ content.featured_image }}');"
          ></div>
     {% endif %}
     {# End blog header #}
@@ -44,7 +44,7 @@
     <div class="blog-post__meta">
       <div class="blog-post__bio">
         {% if content.blog_post_author.avatar %}
-        <div class="blog-post__avatar" 
+        <div class="blog-post__avatar"
            style="background-image: url('{{ content.blog_post_author.avatar }}');">
         </div>
         {% endif %}
@@ -59,7 +59,7 @@
         </div>
       </div>
        <div class="blog-post__social-sharing">
-          {% module "Social Sharing" path="../modules/Social Sharing.module" 
+          {% module "Social Sharing" path="../modules/Social Sharing.module"
           facebook={
             "enabled": true
           }
@@ -79,7 +79,7 @@
         <hr class="blog-post__divider" />
         {% if group.public_title == "Ebooks" %}
         <div class="blog-post__body-wrapper w-full" style="max-width: max-content;">
-          
+
             <div class="blog-post__body flex">
               <div class="pr-4 w-full md:w-1/2">
                 {{ content.post_body }}
@@ -88,7 +88,7 @@
                 {% module "gated_form" path="@hubspot/form", label="form.module" %}
               </div>
             </div>
-        
+
           {% else %}
          <div class="blog-post__body-wrapper">
             <div class="blog-post__body">
@@ -125,8 +125,8 @@
     <article class="blog-more-posts__post-wrapper">
       <div class="blog-more-posts__post">
         {% if post.featured_image and group.use_featured_image_in_summary %}
-        <a class="blog-more-posts__post-image" 
-           style="background-image: url('{{ post.featured_image }}');" 
+        <a class="blog-more-posts__post-image"
+           style="background-image: url('{{ post.featured_image }}');"
            href="{{ post.absolute_url }}">
         </a>
         {% endif %}
@@ -183,7 +183,7 @@
     font-size: 18px;
     font-weight: 400;
     border-left: 2px solid #C0E7D8;
-    
+
     padding-left: 0.75rem;
     flex-grow: 1;
     margin-bottom: 1.25rem;
@@ -205,7 +205,7 @@
   .blog-post__body h3, .blog-post__body h3 span {
     color: #1C4633 !important;
     font-size: 36px !important;
-  } 
+  }
 </style>
 <main class="container pt-4 md:pt-16 arrow">
   <div class="blog-header flex flex-col md:flex-row gap-4 md:gap-12">
@@ -227,31 +227,31 @@
     </div>
 
 
-    
+
     <div class="w-full md:w-3/4">
       <h1 class="blog-post__title text-[#1C4633]">{{ content.name }}</h1>
-      
+
     </div>
   </div>
   <div class="blog-body flex flex-col md:flex-row gap-4 md:gap-12">
     <div class="w-full md:w-1/4 relative">
 
         {% module "module_16958355586771" path="/tvScientific 2022 Atlas Pro/cli-build/modules/author-byline", label="Author Byline" %}
-      
+
       <div class="sticky top-6">
         {% if content.widgets.jump_menu.body.value == 'Yes' %}
         <div class="border-t border-[#C0E7D8] py-4">
           <div class="read-time">Read Time: <span id="reading-time"></span></div>
-          
+
         </div>
         <div class="jump-menu flex flex-wrap hidden border-t border-[#C0E7D8] pt-4">
           <p class="uppercase text-[#009061] opacity-[.88]">Jump to a section…</p>
-          
+
         </div>
         {% endif %}
         <div class="blog-post__social-sharing">
           <p class="uppercase text-[#132430]">Share</p>
-            {% module "Social Sharing" path="/tvScientific 2022 Atlas Pro/modules/Social Sharing.module" 
+            {% module "Social Sharing" path="/tvScientific 2022 Atlas Pro/modules/Social Sharing.module"
                   facebook={
                     "enabled": true
                   }
@@ -269,7 +269,7 @@
        </div>
     </div>
     <div class="w-full md:w-3/4">
-    
+
 
     {# Blog post #}
     <article>
@@ -277,11 +277,11 @@
         {# Blog header #}
         {% if content.widgets.hero_image.body.src %}
           <div class="blog-header--post border rounded-lg border-[#0FBF84] mb-12"
-             style="background-image: url('{{ content.widgets.hero_image.body.src }}');" 
+             style="background-image: url('{{ content.widgets.hero_image.body.src }}');"
              ></div>
         {% else %}
         <div class="blog-header--post border rounded-lg border-[#0FBF84] mb-12"
-             style="background-image: url('{{ content.featured_image }}');" 
+             style="background-image: url('{{ content.featured_image }}');"
              ></div>
         {% endif %}
         {# End blog header #}
@@ -294,10 +294,10 @@
           {{ content.post_body }}
         </div>
 
-        
+
          <div class="blog-post__body-wrapper">
-            
-          
+
+
           {% if content.tag_list %}
           <div class="blog-post__tags">
             {% for tag in content.tag_list %}
@@ -309,7 +309,7 @@
         </div>
 
       </article>
-    
+
     {# End blog post #}
 
 
@@ -326,7 +326,7 @@
         <a href="{{ post.absolute_url }}" class="absolute top-0 left-0 w-full h-full z-10"></a>
         <div class="h-[240px] bg-[#1c4633]">
           {% if post.widgets.card_image.body.src %}
-            <img alt="{{ post.widgets.card_image.body.alt }} thumbnail graphic" class="w-full h-full object-cover" src="{{ content.widgets.card_image.body.src }}" alt="" {{ loadingAttr }} >
+            <img alt="{{ post.widgets.card_image.body.alt }} thumbnail graphic" class="w-full h-full object-cover" src="{{ post.widgets.card_image.body.src }}" {{ loadingAttr }} >
           {% else %}
             <img alt="{{ post.name }} thumbnail graphic" class="w-full h-full object-cover" src="{{ post.featured_image }}" alt="" {{ loadingAttr }} >
           {% endif %}
@@ -334,7 +334,7 @@
         <div class=" p-6">
           <p class="mb-1 uppercase text-[#009061]">{{ post.publish_date | datetimeformat('%b %e, %Y') }}</p>
           <h2 class="!text-[22px] !leading-[28px] ">{{ post.name }}</h2>
-        
+
           <a href="{{ post.absolute_url }}"
            class="flex relative items-center hover:no-underline">
             <div>
@@ -360,7 +360,7 @@
         <h2 style="margin: 0px; font-weight: bold;"><span style="color: #1c4633;">Similar posts</span></h2>
         </div>
         </div>
-        
+
   <a href="/insight/tag/blog?hsLang=en" class="flex relative items-center group hover:no-underline mb-10" rel="noopener">
   <div>
   <p class="m-0 font-plex-mono tracking-widest text-[#009061] uppercase ">View all BLOGS</p>
@@ -370,7 +370,7 @@
         <div class="blog-similar-posts grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 grid-rows-auto md:grid-rows-2 lg:grid-rows-1 gap-x-0 gap-y-6 md:gap-x-6">
           {#remove blog ID before going live#}
           {% related_blog_posts blog_ids="55261321759", tags="Blog", limit=4, no_wrapper=True, post_formatter="recent_post" %}
-          
+
         </div>
       </div>
     </div>
@@ -381,7 +381,7 @@
   </div>
 </main>
 <script>
-  
+
   var isInViewport = function(elem) {
     var distance = elem.getBoundingClientRect();
     return (
@@ -406,7 +406,7 @@
     window.addEventListener('scroll', function(event) {
     // add event on scroll
     currentAnchors.forEach(element => {
-        
+
         if (isInViewport(element)) {
           //if in Viewport
           var dataName = '#'+element.id;
@@ -420,29 +420,29 @@
           } else {
             sideNavButton.classList.add('current');
           }
-          
+
         }
     });
-    }, false); 
+    }, false);
 
 
     function calculateTime(text) {
       const wordsPerMinute = 200; // Average reading speed
-      const words = text.split(/\s+/).length; 
+      const words = text.split(/\s+/).length;
       const time = Math.ceil(words / wordsPerMinute);
       return time;
     }
 
-    const blogPost = document.getElementById('hs_cos_wrapper_post_body').innerText; 
+    const blogPost = document.getElementById('hs_cos_wrapper_post_body').innerText;
     const readingTime = calculateTime(blogPost);
-    document.getElementById('reading-time').innerText = `${readingTime} mins`; 
+    document.getElementById('reading-time').innerText = `${readingTime} mins`;
 
 
   });
 
-  
 
-  
+
+
 </script>
 {% endif %}
 {% endblock body %}

@@ -9,24 +9,60 @@ document.addEventListener("DOMContentLoaded", function() {
     var lottieId = "{{ module.custom_id|default('lottie-' ~ name, true) }}";
     var player = document.getElementById(lottieId);
     if (player) {
+        var isReady = false;
+        var isInView = false;
+        var hasPlayed = false;
+
+        function tryPlay() {
+            if (!isReady || !isInView || hasPlayed) return;
+            hasPlayed = true;
+            {% if module.delay %}
+            setTimeout(function() {
+                player.play();
+            }, {{ module.delay * 1000 }});
+            {% else %}
+            player.play();
+            {% endif %}
+        }
+
         player.addEventListener('ready', function() {
+            isReady = true;
             player.stop();
+            tryPlay();
         });
 
+        // Short Lotties: wait until mostly in view (~85%).
+        // Tall Lotties (taller than ~90% of viewport): play earlier when a
+        // meaningful portion is on screen — otherwise threshold 1 is unreachable
+        // on mobile and the user scrolls past blank space before playback.
+        // Height is read from the entry (not DOMContentLoaded) so layout/Lottie
+        // size is accurate when the callback fires.
         var observer = new IntersectionObserver(function(entries) {
             entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    {% if module.delay %}
-                    setTimeout(function() {
-                        player.play();
-                    }, {{ module.delay * 1000 }});
-                    {% else %}
-                    player.play();
-                    {% endif %}
+                if (!entry.isIntersecting) return;
+
+                var vh = window.innerHeight || document.documentElement.clientHeight || 0;
+                var elHeight = entry.boundingClientRect.height;
+                var ratio = entry.intersectionRatio;
+                var top = entry.boundingClientRect.top;
+                var isTall = vh > 0 && elHeight > vh * 0.9;
+                var shouldPlay = false;
+
+                if (isTall) {
+                    // ~35% visible, or top has entered the upper viewport with
+                    // at least 20% on screen (covers very tall / above-the-fold).
+                    shouldPlay = ratio >= 0.35 || (top < vh * 0.3 && ratio > 0.2);
+                } else {
+                    shouldPlay = ratio >= 0.85;
+                }
+
+                if (shouldPlay) {
+                    isInView = true;
+                    tryPlay();
                     observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.2 });
+        }, { threshold: [0, 0.2, 0.25, 0.35, 0.5, 0.75, 0.85, 1] });
 
         observer.observe(player);
     }

@@ -1,0 +1,2305 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Holiday Trends Report 2026
+  screenshotPath: ../images/template-previews/holiday-trends-report.png
+-->
+{% extends "../layouts/base.html" %}
+
+{% block body %}
+
+<style>
+  /* ===== Grid-paper backgrounds (hero, separators, CTA) =====
+     Figma Grid Separator (e.g. 27:1919): Green Gradient wash + #23E596
+     grid lines @ 50% opacity / 50px / 2px stroke + White Gradient overlay.
+     Band is full-bleed, 240px tall. */
+  .htr-grid {
+    background-image:
+      linear-gradient(to right, rgba(35, 229, 150, 0.5) 2px, transparent 2px),
+      linear-gradient(to bottom, rgba(35, 229, 150, 0.5) 2px, transparent 2px);
+    background-size: 50px 50px;
+  }
+
+  .htr-hero {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .htr-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.7) 50%, rgba(255, 255, 255, 0) 100%);
+  }
+
+  .htr-hero .htr-hero-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Closing CTA band: pastel green with grid + solid mint wash from the top
+     (mirrors .htr-hero white fade so headline/CTA sit on solid color). */
+  .htr-cta {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .htr-cta::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    /* Slightly deeper mint than #F3FFF6; solid band held longer before grid shows */
+    background: linear-gradient(
+      180deg,
+      #dff5e8 0%,
+      rgba(223, 245, 232, 0.96) 48%,
+      rgba(223, 245, 232, 0.58) 70%,
+      rgba(223, 245, 232, 0) 90%
+    );
+  }
+
+  .htr-cta .htr-hero-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Chapter separator: green wash (280px, bottom-aligned) + grid + white fade */
+  .htr-grid-sep {
+    position: relative;
+    height: 240px;
+    overflow: hidden;
+    background-color: #ffffff;
+    background-image:
+      linear-gradient(to right, rgba(35, 229, 150, 0.5) 2px, transparent 2px),
+      linear-gradient(to bottom, rgba(35, 229, 150, 0.5) 2px, transparent 2px),
+      linear-gradient(
+        to top,
+        rgba(35, 229, 150, 0.18) 0%,
+        rgba(35, 229, 150, 0.10) 35%,
+        rgba(35, 229, 150, 0.05) 65%,
+        rgba(35, 229, 150, 0) 100%
+      );
+    background-size: 50px 50px, 50px 50px, 100% 280px;
+    background-position: 0 0, 0 0, center bottom;
+    background-repeat: repeat, repeat, no-repeat;
+  }
+
+  .htr-grid-sep::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.7) 50%, rgba(255, 255, 255, 0) 100%);
+  }
+
+  /* Quote icon clamp — HubSpot wraps Lottie modules in hs_cos_wrapper; without
+     overflow + explicit Lottie size the player can expand past 50px. */
+  .htr-quote-icon {
+    width: 50px;
+    height: 50px;
+    margin-top: -12px;
+    margin-bottom: 36px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .htr-quote-icon .hs_cos_wrapper,
+  .htr-quote-icon lottie-player {
+    display: block;
+    width: 50px !important;
+    height: 50px !important;
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  /* Mobile: shorter seps + denser grid so the white fade reads over several
+     cells (50px pitch in a ~96–120px band left only 1–2 cells visible).
+     Quote-adjacent seps stay short and skip the fade — they must show the
+     green grid immediately under pastel quote cards. */
+  @media (max-width: 767px) {
+    .htr-grid-sep {
+      height: 120px;
+      background-size: 28px 28px, 28px 28px, 100% 140px;
+    }
+
+    .htr-grid-sep::before {
+      background: linear-gradient(
+        180deg,
+        #ffffff 0%,
+        rgba(255, 255, 255, 0.55) 28%,
+        rgba(255, 255, 255, 0.15) 55%,
+        rgba(255, 255, 255, 0) 78%
+      );
+    }
+
+    /* Prefer explicit class; keep adjacent sibling as fallback */
+    .htr-quote + .htr-grid-sep,
+    .htr-grid-sep--after-quote {
+      height: 56px;
+      background-size: 28px 28px, 28px 28px, 100% 72px;
+      background-color: #f3fff6;
+    }
+
+    .htr-quote + .htr-grid-sep::before,
+    .htr-grid-sep--after-quote::before {
+      display: none;
+    }
+
+    /* Carousel: track collapses to active slide; no stretch equalization */
+    #htr-quote-carousel {
+      padding-bottom: 1.5rem;
+    }
+
+    #htr-quote-carousel .htr-carousel-dots {
+      margin-top: 1rem;
+    }
+
+    #htr-quote-carousel .htr-carousel-track {
+      align-items: flex-start;
+    }
+
+    #htr-quote-carousel .htr-carousel-slide {
+      height: auto;
+    }
+  }
+
+  /* ===== Decorative patterned stat numerals =====
+     62%: inline SVG from Figma (node 358:1068) — purple + blue dots masked
+     to the letterforms. Do not use background-clip text; that distorted the
+     pattern vs Figma's custom paths.
+     94%: CSS dot pattern clipped to live text (no Figma vector asset yet). */
+  .htr-stat-62 {
+    display: block;
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+  }
+
+  @media (min-width: 768px) {
+    .htr-stat-62 {
+      max-width: 325px;
+    }
+  }
+
+  .htr-stat-pattern {
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .htr-stat-94 {
+    background-color: #198960;
+    background-image: radial-gradient(circle at 10px 10px, #23e596 12px, rgba(35, 229, 150, 0) 13px);
+    background-size: 38px 38px;
+  }
+
+  /* ===== Ranked-list fills (bar lists) + cascade (outcomes only) ===== */
+  .htr-fill {
+    width: 0;
+    transition: width 0.88s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Cascade animation: md+ only; mobile shows all rows fully visible */
+  @media (min-width: 768px) {
+    .htr-ranked-list--cascade .htr-ranked-row {
+      transition: opacity 0.55s ease, transform 0.55s ease;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .htr-ranked-list--cascade .htr-ranked-row.revealed {
+      transform: translateY(0);
+      opacity: 0.25;
+    }
+
+    .htr-ranked-list--cascade .htr-ranked-row.active {
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .htr-ranked-list--cascade .htr-ranked-row {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    .htr-fill {
+      transition: none;
+    }
+  }
+
+  /* ===== Quote carousel ===== */
+  #htr-quote-carousel .overflow-hidden {
+    cursor: grab;
+    touch-action: pan-y;
+  }
+
+  #htr-quote-carousel.is-dragging .overflow-hidden {
+    cursor: grabbing;
+    touch-action: none;
+    user-select: none;
+  }
+
+  #htr-quote-carousel.is-dragging .htr-carousel-track {
+    transition: none;
+  }
+
+  .htr-carousel-track {
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .htr-carousel-track.is-instant {
+    transition: none !important;
+  }
+
+  .htr-carousel-dot {
+    width: 24px;
+    height: 6px;
+    border-radius: 3px;
+    background-color: #91f2cb;
+    transition: background-color 0.3s ease;
+  }
+
+  .htr-carousel-dot.is-active {
+    background-color: #0f2d29;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .htr-carousel-track {
+      transition: none;
+    }
+  }
+
+  .container-fluid.dnd-empty .row-fluid-wrapper:last-child,
+  .container-fluid.dnd-empty .span12.span12.widget-span.widget-type-cell.dnd-column {
+    position: relative;
+  }
+
+  /* Inline content links in narrative copy */
+  .htr-link {
+    color: #198960;
+    text-decoration: underline;
+    font-weight: inherit;
+  }
+</style>
+
+<main class="font-plex text-tvs-green-dark">
+
+  <!-- ===== HERO ===== -->
+  <section id="htr-hero" class="htr-hero htr-grid bg-white">
+    <div class="htr-hero-content max-w-[1312px] mx-auto px-4 pt-16 md:pt-[120px] text-center">
+      <p class="text-tvs-green-accessible text-[26px] md:text-[42px] font-semibold tracking-[-0.05em] leading-none mb-4">
+        The 2026
+      </p>
+      <h1 class="text-tvs-green-dark !text-[44px] md:!text-[90px] !font-medium !leading-[0.95] tracking-[-0.05em] !mb-0 text-balance">
+        Holiday &amp; Seasonal Shopping Trends Report
+      </h1>
+
+      <!-- Gift boxes / shopping bags illustration (Lottie) -->
+      <div class="max-w-[1200px] mx-auto mt-10 md:mt-16 md:min-h-[210px]">
+        {% module "htr_hero_gifts" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+          label="Hero - Gift Boxes",
+          loop="true",
+          source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/_Hero-1.json"
+        %}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== INTRO ===== -->
+  <section id="htr-intro" class="bg-white py-16 md:py-[120px]">
+    <div class="max-w-[1080px] mx-auto px-4">
+      <div class="flex flex-col md:flex-row gap-8 md:gap-16">
+        <div class="w-full md:w-5/12">
+          <h2 class="text-tvs-green-dark !text-[32px] md:!text-[42px] !font-medium !leading-[1.2] tracking-[-0.05em] !mb-0">
+            The holiday season is no longer won in a single sales weekend.
+          </h2>
+        </div>
+        <div class="w-full md:w-7/12 space-y-4">
+          <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+            By the time Black Friday Cyber Monday arrives, consumers have already been exploring options, comparing brands, saving ideas, and deciding which ones feel worth choosing.
+          </p>
+          <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+            That is exactly what makes holiday and seasonal advertising so high stakes in 2026. From Labor Day and Prime Day to fall football and the final December rush, the year&rsquo;s biggest shopping season is now shaped by a series of connected, high-intent moments.
+          </p>
+          <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+            But, the pressure is not just to show up in these peak moments. It&rsquo;s to show up early enough, clearly enough, and convincingly enough to shape the decision before intent gets crowded.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 62% STAT ===== -->
+  <section class="bg-white pb-6 md:pb-[120px]">
+    <div class="max-w-[1312px] mx-auto px-4">
+      <div class="bg-tvs-green-pastel rounded-[32px] px-8 md:px-28 py-12 md:py-16">
+        <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
+          <div class="w-full lg:w-[340px] shrink-0 flex justify-center lg:justify-start">
+            {# Figma 358:1068 — purple #B888FF + #55B8FF dots, masked to letterforms #}
+            <svg class="htr-stat-62" xmlns="http://www.w3.org/2000/svg" viewBox="6 9 326 119" fill="none" role="img" aria-label="62%">
+              <defs>
+                <clipPath id="htrStat62Clip">
+                  <path d="M49.856 127.968C40.7813 127.968 33.0187 126.109 26.568 122.392C20.2267 118.675 15.3613 113.427 11.972 106.648C8.58267 99.76 6.888 91.724 6.888 82.54C6.888 74.4493 8.09067 66.8507 10.496 59.744C12.9013 52.6373 16.072 46.0773 20.008 40.064C24.0533 33.9413 28.4813 28.4747 33.292 23.664C38.1027 18.8533 42.968 14.808 47.888 11.528H81.836C72.5427 18.1973 64.5067 24.5387 57.728 30.552C50.9493 36.456 45.428 42.524 41.164 48.756C37.0093 54.8787 34.1667 61.6027 32.636 68.928L34.112 69.42C35.424 66.468 37.1187 63.68 39.196 61.056C41.2733 58.432 43.952 56.3 47.232 54.66C50.512 53.02 54.5573 52.2 59.368 52.2C65.7093 52.2 71.3947 53.676 76.424 56.628C81.4533 59.4707 85.444 63.5707 88.396 68.928C91.348 74.2853 92.824 80.572 92.824 87.788C92.824 95.5507 91.02 102.493 87.412 108.616C83.9133 114.629 78.9387 119.385 72.488 122.884C66.1467 126.273 58.6027 127.968 49.856 127.968ZM49.856 108.78C53.464 108.78 56.5253 108.124 59.04 106.812C61.664 105.391 63.6867 103.423 65.108 100.908C66.5293 98.284 67.24 95.1133 67.24 91.396V88.444C67.24 84.7267 66.5293 81.6107 65.108 79.096C63.6867 76.472 61.664 74.504 59.04 73.192C56.5253 71.7707 53.464 71.06 49.856 71.06C46.248 71.06 43.132 71.7707 40.508 73.192C37.9933 74.504 36.0253 76.472 34.604 79.096C33.1827 81.6107 32.472 84.7267 32.472 88.444V91.396C32.472 95.1133 33.1827 98.284 34.604 100.908C36.0253 103.423 37.9933 105.391 40.508 106.812C43.132 108.124 46.248 108.78 49.856 108.78ZM180.5 105.336V126H99.4839V103.532L134.744 73.356C141.195 67.8893 145.677 63.2427 148.192 59.416C150.707 55.48 151.964 51.1067 151.964 46.296V44C151.964 39.6267 150.379 36.3467 147.208 34.16C144.037 31.9733 140.593 30.88 136.876 30.88C131.519 30.88 127.419 32.4653 124.576 35.636C121.733 38.8067 119.711 42.5787 118.508 46.952L97.0239 38.752C98.7733 33.3947 101.397 28.5293 104.896 24.156C108.504 19.7827 113.151 16.284 118.836 13.66C124.521 10.9267 131.3 9.55999 139.172 9.55999C147.481 9.55999 154.533 11.0907 160.328 14.152C166.123 17.104 170.551 21.1493 173.612 26.288C176.673 31.4267 178.204 37.3307 178.204 44C178.204 50.56 176.783 56.4093 173.94 61.548C171.207 66.5773 167.489 71.2787 162.788 75.652C158.196 79.916 153.167 84.2347 147.7 88.608L126.38 105.336H180.5ZM231.276 126H209.628L289.004 11.528H310.652L231.276 126ZM217.992 74.504C211.651 74.504 206.293 73.3013 201.92 70.896C197.547 68.3813 194.212 64.7187 191.916 59.908C189.62 55.0973 188.472 49.1387 188.472 42.032C188.472 34.9253 189.62 28.9667 191.916 24.156C194.212 19.3453 197.547 15.7373 201.92 13.332C206.293 10.8173 211.651 9.55999 217.992 9.55999C224.333 9.55999 229.691 10.8173 234.064 13.332C238.437 15.7373 241.772 19.3453 244.068 24.156C246.364 28.9667 247.512 34.9253 247.512 42.032C247.512 49.1387 246.364 55.0973 244.068 59.908C241.772 64.7187 238.437 68.3813 234.064 70.896C229.691 73.3013 224.333 74.504 217.992 74.504ZM217.992 60.4C219.851 60.4 221.381 59.908 222.584 58.924C223.896 57.94 224.88 56.4093 225.536 54.332C226.192 52.2547 226.52 49.576 226.52 46.296V37.768C226.52 34.488 226.192 31.8093 225.536 29.732C224.88 27.6547 223.896 26.124 222.584 25.14C221.381 24.156 219.851 23.664 217.992 23.664C216.133 23.664 214.548 24.156 213.236 25.14C212.033 26.124 211.104 27.6547 210.448 29.732C209.792 31.8093 209.464 34.488 209.464 37.768V46.296C209.464 49.576 209.792 52.2547 210.448 54.332C211.104 56.4093 212.033 57.94 213.236 58.924C214.548 59.908 216.133 60.4 217.992 60.4ZM302.288 127.968C295.947 127.968 290.589 126.765 286.216 124.36C281.843 121.845 278.508 118.183 276.212 113.372C273.916 108.561 272.768 102.603 272.768 95.496C272.768 88.3893 273.916 82.4307 276.212 77.62C278.508 72.8093 281.843 69.2013 286.216 66.796C290.589 64.2813 295.947 63.024 302.288 63.024C308.629 63.024 313.987 64.2813 318.36 66.796C322.733 69.2013 326.068 72.8093 328.364 77.62C330.66 82.4307 331.808 88.3893 331.808 95.496C331.808 102.603 330.66 108.561 328.364 113.372C326.068 118.183 322.733 121.845 318.36 124.36C313.987 126.765 308.629 127.968 302.288 127.968ZM302.288 113.864C304.147 113.864 305.677 113.372 306.88 112.388C308.192 111.404 309.176 109.873 309.832 107.796C310.488 105.719 310.816 103.04 310.816 99.76V91.232C310.816 87.952 310.488 85.2733 309.832 83.196C309.176 81.1187 308.192 79.588 306.88 78.604C305.677 77.62 304.147 77.128 302.288 77.128C300.429 77.128 298.844 77.62 297.532 78.604C296.329 79.588 295.4 81.1187 294.744 83.196C294.088 85.2733 293.76 87.952 293.76 91.232V99.76C293.76 103.04 294.088 105.719 294.744 107.796C295.4 109.873 296.329 111.404 297.532 112.388C298.844 113.372 300.429 113.864 302.288 113.864Z"/>
+                </clipPath>
+              </defs>
+              <g clip-path="url(#htrStat62Clip)">
+                <rect y="-17" width="340" height="163" fill="#B888FF"/>
+                <circle cx="65.794" cy="120.17" r="13.0882" fill="#55B8FF"/>
+                <circle cx="65.794" cy="8.92031" r="13.0882" fill="#55B8FF"/>
+                <circle cx="39.6178" cy="63.4547" r="13.0882" fill="#55B8FF"/>
+                <circle cx="118.147" cy="120.17" r="13.0882" fill="#55B8FF"/>
+                <circle cx="118.147" cy="8.92031" r="13.0882" fill="#55B8FF"/>
+                <circle cx="91.9706" cy="63.4547" r="13.0882" fill="#55B8FF"/>
+                <circle cx="170.5" cy="120.17" r="13.0882" fill="#55B8FF"/>
+                <circle cx="170.5" cy="8.92031" r="13.0882" fill="#55B8FF"/>
+                <circle cx="144.324" cy="63.4547" r="13.0882" fill="#55B8FF"/>
+                <circle cx="13.4413" cy="120.17" r="13.0882" fill="#55B8FF"/>
+                <circle cx="13.4413" cy="8.92031" r="13.0882" fill="#55B8FF"/>
+                <circle cx="275.206" cy="120.17" r="13.0882" fill="#55B8FF"/>
+                <circle cx="275.206" cy="8.92031" r="13.0882" fill="#55B8FF"/>
+                <circle cx="249.029" cy="63.4547" r="13.0882" fill="#55B8FF"/>
+                <circle cx="327.559" cy="120.17" r="13.0882" fill="#55B8FF"/>
+                <circle cx="327.559" cy="8.92031" r="13.0882" fill="#55B8FF"/>
+                <circle cx="301.382" cy="63.4547" r="13.0882" fill="#55B8FF"/>
+                <circle cx="222.853" cy="120.17" r="13.0882" fill="#55B8FF"/>
+                <circle cx="222.853" cy="8.92031" r="13.0882" fill="#55B8FF"/>
+                <circle cx="196.676" cy="63.4547" r="13.0882" fill="#55B8FF"/>
+              </g>
+            </svg>
+          </div>
+          <p class="w-full text-xl md:text-[32px] font-medium leading-snug md:tracking-[-0.05em] mb-0">
+            of marketers are starting their holiday campaigns earlier because there&rsquo;s more pressure to prove ROAS / revenue impact
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TOP STRESSORS CHART ===== -->
+  <section class="bg-white pb-[120px]">
+    <div class="max-w-[1312px] mx-auto px-4">
+      <div class="bg-tvs-green-pastel rounded-[32px] px-8 md:px-12 py-12 md:py-16">
+        <h3 class="text-tvs-green-dark !text-[28px] md:!text-[42px] !font-medium !leading-[1.25] tracking-[-0.05em] mb-10 max-w-[820px]">
+          Marketers&rsquo; top stressors heading into the 2026 holiday and seasonal shopping season
+        </h3>
+
+        {# Graphics row: items-end for shared baseline; border-b on parent for one continuous line #}
+        <div class="grid grid-cols-1 gap-12 md:grid-cols-3 md:gap-x-[6rem] md:items-end md:border-b-2 md:border-tvs-green-dark">
+          <div class="text-center">
+            <span class="block text-2xl md:text-[32px] font-medium text-tvs-green-dark md:tracking-[-0.05em] mb-2">30%</span>
+            <div class="px-10 md:px-8">
+              {% module "htr_stressor_1" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+                label="Stressors - Reaching High-Intent Shoppers (30%)",
+                activate_in_view="true",
+                loop="false",
+                source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S1-Present1.json"
+              %}
+            </div>
+            <p class="md:hidden text-lg font-medium leading-snug border-t-2 border-tvs-green-dark pt-4 mt-4 mb-0">Reaching high-intent shoppers</p>
+          </div>
+          <div class="text-center">
+            <span class="block text-2xl md:text-[32px] font-medium text-tvs-green-dark md:tracking-[-0.05em] mb-2">37%</span>
+            <div class="px-10 md:px-8">
+              {% module "htr_stressor_2" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+                label="Stressors - New Product Launches (37%)",
+                activate_in_view="true",
+                loop="false",
+                source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S1-Present2.json"
+              %}
+            </div>
+            <p class="md:hidden text-lg font-medium leading-snug border-t-2 border-tvs-green-dark pt-4 mt-4 mb-0">New product launches or business priorities</p>
+          </div>
+          <div class="text-center">
+            <span class="block text-2xl md:text-[32px] font-medium text-tvs-green-dark md:tracking-[-0.05em] mb-2">38%</span>
+            <div class="px-10 md:px-8">
+              {% module "htr_stressor_3" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+                label="Stressors - Rising Media Costs (38%)",
+                activate_in_view="true",
+                loop="false",
+                source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S1-Present3.json"
+              %}
+            </div>
+            <p class="md:hidden text-lg font-medium leading-snug border-t-2 border-tvs-green-dark pt-4 mt-4 mb-0">Rising media costs</p>
+          </div>
+        </div>
+        {# Labels under the continuous baseline (desktop); mobile labels stay in the column above #}
+        <div class="hidden md:grid md:grid-cols-3 md:gap-x-[6rem] pt-8">
+          <p class="text-center text-lg md:text-2xl font-medium md:tracking-[-0.05em] leading-snug mb-0">Reaching <br>high-intent shoppers</p>
+          <p class="text-center text-lg md:text-2xl font-medium md:tracking-[-0.05em] leading-snug mb-0">New product launches or <br>business priorities</p>
+          <p class="text-center text-lg md:text-2xl font-medium md:tracking-[-0.05em] leading-snug mb-0">Rising <br>media costs</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== INTRO NARRATIVE ===== -->
+  <section class="bg-white">
+    <div class="max-w-[866px] mx-auto px-4 space-y-4">
+      <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+        The old seasonal playbook focused on the final conversion moment. The new one is about reaching shoppers sooner, shaping intent earlier, and tying that influence to real business outcomes.
+      </p>
+      <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+        <span class="font-semibold">tvScientific by Pinterest surveyed 600+ marketers about their plans for the 2026 holiday and seasonal shopping season, spanning key moments such as Labor Day, Prime Day, fall football season, Black Friday Cyber Monday, the year-end holiday rush, and New Year&rsquo;s.</span>
+        This year&rsquo;s report goes beyond marketers&rsquo; plans alone, pairing their strategies with <a href="https://www.tvscientific.com/ty-2026-consumer-trends-report" class="htr-link">consumer behavior</a> to show how consumers actually discover, evaluate, and buy across screens during the year&rsquo;s highest-stakes shopping moments.
+      </p>
+      <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0 font-semibold">
+        What emerges is a clearer picture of what it takes to win the holiday and seasonal moments in 2026.
+      </p>
+    </div>
+  </section>
+
+  <div class="htr-grid htr-grid-sep"></div>
+
+  <!-- ===== CHAPTER 01 ===== -->
+  <section id="htr-chapter-1" class="bg-white py-16 md:py-[120px]">
+    <div class="max-w-[866px] mx-auto px-4">
+      <p class="text-tvs-green-accessible text-xl md:text-[28px] font-medium tracking-[-0.05em] leading-none mb-6">01</p>
+      <h2 class="text-tvs-green-dark !text-[36px] md:!text-[64px] !font-medium !leading-[1.1] md:!leading-[0.95] tracking-[-0.05em] !mb-10">
+        Performance TV is a priority investment during the holiday season and across peak shopping moments
+      </h2>
+      <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-4">
+        Performance TV is no longer a side bet for the holidays.
+      </p>
+      <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+        It has become a priority investment across the seasonal calendar, because marketers increasingly see it as a measurable growth driver during the biggest shopping periods of the year.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== CHANNELS RANKED LIST (CSS bars) ===== -->
+  <section class="bg-white mb-16 md:mb-[120px]">
+    <div class="max-w-[1312px] mx-auto px-4 border-y-2 border-tvs-grey-light py-16 md:py-[120px]">
+      <h3 class="text-tvs-green-dark !text-[28px] md:!text-[42px] !font-medium !leading-[1.25] tracking-[-0.05em] mb-10 max-w-[760px]">
+        Channels receiving the largest share of media budget during the 2026 holiday season and peak shopping moments
+      </h3>
+
+      <div class="htr-ranked-list space-y-8 ">
+        {% set channel_budget = [
+          { "rank": "1", "label": "Social", "pct": "68" },
+          { "rank": "2", "label": "Performance TV / Connected TV", "pct": "54" },
+          { "rank": "3", "label": "Online video", "pct": "44" },
+          { "rank": "4", "label": "Influencer / creator marketing", "pct": "32" },
+          { "rank": "5", "label": "Search", "pct": "23" },
+          { "rank": "6", "label": "Audio / podcasts", "pct": "16" },
+          { "rank": "7", "label": "Email / CRM", "pct": "14" },
+          { "rank": "8", "label": "Display", "pct": "14" },
+          { "rank": "9", "label": "Print / out-of-home", "pct": "3" }
+        ] %}
+        {% for row in channel_budget %}
+        <div class="htr-ranked-row relative bg-tvs-green-pastel rounded-2xl h-[80px] md:h-[90px]" data-index="{{ loop.index0 }}">
+          <div class="htr-fill absolute left-0 top-[-5px] h-[calc(100%+10px)] bg-tvs-green rounded-2xl" data-index="{{ loop.index0 }}" data-width="{{ row.pct }}%"></div>
+          <div class="relative z-10 h-full flex items-center justify-between px-4 md:px-8">
+            <div class="flex items-center gap-4">
+              <span class="w-9 h-9 md:w-[42px] md:h-[42px] rounded-full bg-tvs-green-accessible text-tvs-green-pastel flex items-center justify-center text-lg md:text-2xl font-medium md:tracking-[-0.05em] shrink-0">{{ row.rank }}</span>
+              <span class="text-xl md:text-2xl font-medium md:tracking-[-0.05em]">{{ row.label }}</span>
+            </div>
+            <span class="text-2xl md:text-[42px] font-bold md:tracking-[-0.05em] text-tvs-green-accessible whitespace-nowrap shrink-0">{{ row.pct }}%</span>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NARRATIVE ===== -->
+  <section class="bg-white pb-[120px]">
+    <div class="max-w-[866px] mx-auto px-4">
+      <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+        Performance TV is now being treated as a core performance channel in moments where revenue expectations are at their highest, second only to social in share of seasonal media budget. That momentum is also accelerating:
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== 81% / 71% YOY CHARTS ===== -->
+  <section class="bg-white pb-[120px]">
+    <div class="max-w-[1312px] mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+        <div class="bg-tvs-green-pastel rounded-[32px] p-8 md:p-16 flex flex-col h-full">
+          <div class="flex flex-col lg:flex-row items-start gap-4 lg:gap-6">
+            <span class="text-tvs-green-accessible text-[56px] md:text-[64px] font-semibold leading-none shrink-0">81%</span>
+            <p class="text-lg md:text-2xl font-medium md:tracking-[-0.05em] leading-snug mb-0 lg:pt-1 w-full">
+              of marketers plan to run ads on Performance TV during the 2026 holiday season and peak seasonal shopping moments
+            </p>
+          </div>
+          <div class="mt-auto pt-12 md:pt-16">
+            {% module "htr_yoy_81" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+              label="YoY Chart - Plan to Run Ads (35/52/81)",
+              activate_in_view="true",
+              loop="false",
+              source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S2-Graph1.json"
+            %}
+          </div>
+        </div>
+
+        <div class="bg-tvs-green-pastel rounded-[32px] p-8 md:p-16 flex flex-col h-full">
+          <div class="flex flex-col lg:flex-row items-start gap-4 lg:gap-6">
+            <span class="text-tvs-green-accessible text-[56px] md:text-[64px] font-semibold leading-none shrink-0">71%</span>
+            <p class="text-lg md:text-2xl font-medium md:tracking-[-0.05em] leading-snug mb-0 lg:pt-1 w-full">
+              say their Performance TV budget for holiday and seasonal shopping moments has increased
+            </p>
+          </div>
+          <div class="mt-auto pt-12 md:pt-16">
+            {% module "htr_yoy_71" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+              label="YoY Chart - Budget Increased (57/71)",
+              activate_in_view="true",
+              loop="false",
+              source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S2-Graph2.json"
+            %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NARRATIVE ===== -->
+  <section class="bg-white pb-[120px]">
+    <div class="max-w-[866px] mx-auto px-4">
+      <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+        The shift is not limited to one tentpole event either. Marketers are planning to use Performance TV across the broader seasonal calendar, from Prime Day promotions to the fall football season.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== DONUT: TOP SEASONAL MOMENTS BY BUDGET ===== -->
+  <section class="bg-white pb-[120px]">
+    <div class="max-w-[1312px] mx-auto px-4">
+      <div class="border-t-2 border-b-2 border-tvs-grey-light py-16 md:py-[120px]">
+        <h3 class="text-tvs-green-dark !text-[28px] md:!text-[42px] !font-medium !leading-[1.25] tracking-[-0.05em] text-center mb-10 max-w-[644px] mx-auto">
+          Top seasonal shopping moments by advertising budget in 2026
+        </h3>
+        <div>
+          <div class="hidden md:block">
+            {% module "htr_donut_moments" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+              label="Donut - Seasonal Moments by Budget (Web, with labels)",
+              activate_in_view="true",
+              loop="false",
+              source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S3-Pie-2.json"
+            %}
+          </div>
+          <div class="md:hidden max-w-[480px] mx-auto">
+            {% module "htr_donut_moments_mobile" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+              label="Donut - Seasonal Moments by Budget (Mobile, no labels)",
+              activate_in_view="true",
+              loop="false",
+              source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S3-Pie_NoText-2.json"
+            %}
+            <ul class="list-none p-0 mt-8 space-y-3 text-base">
+              <li class="flex items-center gap-3"><span class="w-4 h-4 rounded-full bg-tvs-green shrink-0"></span>Black Friday Cyber Monday &mdash; 35%</li>
+              <li class="flex items-center gap-3"><span class="w-4 h-4 rounded-full bg-tvs-green-accessible shrink-0"></span>Holiday season (Nov &ndash; Dec) &mdash; 24%</li>
+              <li class="flex items-center gap-3"><span class="w-4 h-4 rounded-full bg-tvs-blue shrink-0"></span>Fall football season &mdash; 16%</li>
+              <li class="flex items-center gap-3"><span class="w-4 h-4 rounded-full bg-tvs-purple shrink-0"></span>Prime Day &mdash; 12%</li>
+              <li class="flex items-center gap-3"><span class="w-4 h-4 rounded-full bg-tvs-green-light shrink-0"></span>Labor Day &mdash; 9%</li>
+              <li class="flex items-center gap-3"><span class="w-4 h-4 rounded-full bg-tvs-green-dark shrink-0"></span>New Year&rsquo;s &mdash; 4%</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NARRATIVE ===== -->
+  <section class="bg-white pb-[120px]">
+    <div class="max-w-[866px] mx-auto px-4 space-y-4">
+      <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+        Black Friday Cyber Monday still matters, but it is no longer the only moment driving Performance TV investment. tvScientific&rsquo;s internal data underscores that shift, with Prime Day spend running 250% above the daily average spend, while Black Friday and Cyber Monday spend ran 87% and 88% above average in 2025.
+      </p>
+      <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+        As marketers use Performance TV across more seasonal moments, they are also expecting it to drive strong business outcomes.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== 94% STAT ===== -->
+  <section class="bg-white mb-16">
+    <div class="max-w-[866px] mx-auto px-4 border-y-2 border-tvs-grey-light py-12 md:py-14">
+      <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
+        <div class="w-full lg:w-[340px] shrink-0 text-center lg:text-left">
+          <span class="htr-stat-pattern htr-stat-94 text-tvs-green-accessible text-[110px] md:text-[150px] font-semibold leading-none">94%</span>
+        </div>
+        <p class="w-full text-xl md:text-2xl font-medium leading-snug md:tracking-[-0.05em] mb-0">
+          of marketers expect Performance TV to help them achieve revenue growth during the 2026 holiday and seasonal shopping season
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NARRATIVE ===== -->
+  <section class="bg-white pb-[120px]">
+    <div class="max-w-[866px] mx-auto px-4 space-y-4">
+      <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+        That is a major signal. In the highest-pressure shopping windows of the year, marketers increasingly believe Performance TV helps move the metric that matters most: revenue.
+      </p>
+      <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+        This is also part of a broader industry evolution. TV is no longer just about maintaining presence or driving top-of-funnel awareness. It&rsquo;s about reaching consumers in high-attention environments, influencing them before the market gets crowded, and connecting exposure to measurable business outcomes.
+      </p>
+      <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+        Performance TV is not just present in the holiday seasonal plan anymore. It is central to it.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== QUOTE 1 ===== -->
+  <section class="htr-quote bg-white pb-0 md:pb-12">
+    <div class="max-w-[866px] mx-auto px-4">
+      <div class="bg-tvs-green-pastel rounded-[32px] p-8 md:p-16">
+        <div class="htr-quote-icon">
+          {% module "htr_quote_icon_1" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+            label="Quote Icon 1",
+            activate_in_view="true",
+            loop="false",
+            width="50px",
+            height="50px",
+            source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/_Quotes.json"
+          %}
+        </div>
+        <p class="text-xl md:text-2xl md:tracking-[-0.05em] leading-normal mb-10">
+          Performance TV is no longer a holiday awareness play. It is a priority investment across the season because it helps us reach shoppers earlier and connect media spend to measurable business outcomes.
+        </p>
+        <p class="text-lg font-semibold mb-0">Customer Name</p>
+        <p class="text-base mb-4">Director of Affiliate Marketing + Partnerships</p>
+        <img src="https://tvscientific.com/hubfs/LG-Logo-Black.svg" alt="LG" width="73" height="32" class="h-8 w-auto mx-0" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <div class="htr-grid htr-grid-sep htr-grid-sep--after-quote"></div>
+
+  <!-- ===== CHAPTER 02 ===== -->
+  <section id="htr-chapter-2" class="bg-white py-16 md:py-[120px]">
+    <div class="max-w-[866px] mx-auto px-4">
+      <p class="text-tvs-green-accessible text-xl md:text-[28px] font-medium tracking-[-0.05em] leading-none mb-6">02</p>
+      <h2 class="text-tvs-green-dark !text-[36px] md:!text-[64px] !font-medium !leading-[1.1] md:!leading-[0.95] tracking-[-0.05em] !mb-10">
+        High-intent seasonal shoppers are won before the last click
+      </h2>
+      <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-4">
+        The last click often gets the credit. But it doesn&rsquo;t tell the full story.
+      </p>
+      <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-4">
+        By the time a shopper is actively comparing products during Prime Day or Black Friday Cyber Monday, much of the real work has already happened. They have already researched the brands, formed preferences, and started building a mental shortlist before the final conversion moment arrives.
+      </p>
+      <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+        That&rsquo;s why Performance TV matters earlier in the journey.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== JOURNEY FLOW ===== -->
+  <section class="bg-white pb-[120px]">
+    <div class="max-w-[1312px] mx-auto px-4">
+      <div class="bg-tvs-green-pastel rounded-[32px] p-8 md:p-16">
+        <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+          <p class="w-full md:w-7/12 text-[26px] md:text-[42px] leading-[140%] tracking-[-0.05em] font-medium mb-0">
+            <span class="text-tvs-green-accessible">The majority</span> of marketers say the
+            <span class="text-tvs-green-accessible">'planning and consideration'</span> stage of the shopping journey is when Performance TV is the most valuable during the holiday and seasonal moments
+          </p>
+          <div class="w-full md:w-5/12 max-w-[390px] mx-auto">
+            {% module "htr_journey_pills" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+              label="Journey Flow - Shopping Stage Pills",
+              activate_in_view="true",
+              loop="false",
+              source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/_Pills.json"
+            %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NARRATIVE ===== -->
+  <section class="bg-white pb-[120px]">
+    <div class="max-w-[866px] mx-auto px-4 space-y-4">
+      <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+        The implication is clear: Performance TV is increasingly valued as a way to shape consideration before shoppers become overwhelmed by price comparisons, promotions, and marketplace competition.
+      </p>
+      <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+        Once the shortlist starts to form, winning gets harder and more expensive.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== 76% / 54% STATS ===== -->
+  <section class="bg-white pb-[120px]">
+    <div class="max-w-[1312px] mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-tvs-green-pastel rounded-[32px] p-8 md:p-12">
+          <span class="htr-count text-tvs-green-accessible text-[90px] md:text-[72px] lg:text-[164px] font-bold leading-none whitespace-nowrap block mb-8" data-target="76">0%</span>
+          <p class="text-lg md:text-[28px] text-tvs-green-dark md:tracking-[-0.05em] leading-relaxed md:leading-[1.2] mb-0">
+            of marketers say it is extremely or very critical to reach shoppers <span class="text-tvs-green-accessible">before they begin actively searching</span> or comparing products.
+          </p>
+        </div>
+        <div class="bg-tvs-green-pastel rounded-[32px] p-8 md:p-12">
+          <span class="htr-count text-tvs-green-accessible text-[90px] md:text-[72px] lg:text-[164px] font-bold leading-none whitespace-nowrap block mb-8" data-target="54">0%</span>
+          <p class="text-lg md:text-[28px] text-tvs-green-dark md:tracking-[-0.05em] leading-relaxed md:leading-[1.2] mb-0">
+            of marketers prioritize <span class="text-tvs-green-accessible">high-intent shoppers</span> on Performance TV during holiday and seasonal shopping moments.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NARRATIVE ===== -->
+  <section class="bg-white pb-[120px]">
+    <div class="max-w-[866px] mx-auto px-4 space-y-4">
+      <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+        This is where <a href="https://www.tvscientific.com/insight/the-new-playbook-for-performance-tv" class="htr-link">high-intent environments become especially powerful</a>. It&rsquo;s about finding consumers when they are actively planning what to buy, evaluating possibilities, and moving from inspiration toward intent.
+      </p>
+      <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+        Consumer behavior strongly supports that approach, especially when watching TV is no longer a single-screen experience, but a connected one.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== DUAL-SCREEN CIRCLES (78/69/68) ===== -->
+  <section class="bg-white pb-[120px]">
+    <div class="max-w-[1312px] mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-tvs-green-pastel rounded-[32px] p-8 md:p-12 text-center">
+          <div class="max-w-[326px] mx-auto mb-8">
+            {% module "htr_dualscreen_78" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+              label="Circle - 78% Scroll Social Media (dotted purple)",
+              activate_in_view="true",
+              loop="false",
+              source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S4-Pie1.json"
+            %}
+          </div>
+          <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-snug mb-0">of consumers scroll <span class="text-tvs-green-accessible font-medium">social media</span> while watching TV</p>
+        </div>
+        <div class="bg-tvs-green-pastel rounded-[32px] p-8 md:p-12 text-center">
+          <div class="max-w-[326px] mx-auto mb-8">
+            {% module "htr_dualscreen_69" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+              label="Circle - 69% Browse Online Shopping (solid green)",
+              activate_in_view="true",
+              loop="false",
+              source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S4-Pie2.json"
+            %}
+          </div>
+          <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-snug mb-0">of consumers <span class="text-tvs-green-accessible font-medium">browse online shopping</span> while watching TV</p>
+        </div>
+        <div class="bg-tvs-green-pastel rounded-[32px] p-8 md:p-12 text-center">
+          <div class="max-w-[326px] mx-auto mb-8">
+            {% module "htr_dualscreen_68" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+              label="Circle - 68% Look Up a Product (striped green)",
+              activate_in_view="true",
+              loop="false",
+              source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S4-Pie3.json"
+            %}
+          </div>
+          <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-snug mb-0">of consumers <span class="text-tvs-green-accessible font-medium">look up a product</span> they saw while watching TV</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NARRATIVE ===== -->
+  <section class="bg-white pb-[120px]">
+    <div class="max-w-[866px] mx-auto px-4 space-y-4">
+      <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+        That dual-screen behavior turns Performance TV into an action-ready channel. This matters even more during the holiday season because the competition only intensifies as peak shopping dates get closer.
+      </p>
+      <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+        The strongest seasonal strategies recognize that the goal is not simply to convert existing intent. It is to help create it. That&rsquo;s why intent signals matter so much. With <a href="https://newsroom.pinterest.com/en-gb/#news" class="htr-link">Pinterest audiences now available on Performance TV</a> brands can reach future customers earlier, using Pinterest&rsquo;s signal from consumers who are actively planning, saving, and searching for what they may want next.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== QUOTE 2 ===== -->
+  <section class="htr-quote bg-white pb-0 md:pb-12">
+    <div class="max-w-[866px] mx-auto px-4">
+      <div class="bg-tvs-green-pastel rounded-[32px] p-8 md:p-16">
+        <div class="htr-quote-icon">
+          {% module "htr_quote_icon_2" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+            label="Quote Icon 2",
+            activate_in_view="true",
+            loop="false",
+            width="50px",
+            height="50px",
+            source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/_Quotes.json"
+          %}
+        </div>
+        <p class="text-xl md:text-2xl md:tracking-[-0.05em] leading-normal mb-10">
+          [Testing Pinterest Audiences on Performance TV] showed that we can expand beyond our existing audience strategy without sacrificing efficiency. The incremental reach and performance were both strong.
+        </p>
+        <p class="text-lg font-semibold mb-4">LG Marketing Team</p>
+        <img src="https://tvscientific.com/hubfs/LG-Logo-Black.svg" alt="LG" width="73" height="32" class="h-8 w-auto mx-0" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <div class="htr-grid htr-grid-sep htr-grid-sep--after-quote"></div>
+
+  <!-- ===== CHAPTER 03 ===== -->
+  <section id="htr-chapter-3" class="bg-white py-16 md:py-[120px]">
+    <div class="max-w-[866px] mx-auto px-4">
+      <p class="text-tvs-green-accessible text-xl md:text-[28px] font-medium tracking-[-0.05em] leading-none mb-6">03</p>
+      <h2 class="text-tvs-green-dark !text-[36px] md:!text-[64px] !font-medium !leading-[1.1] md:!leading-[0.95] tracking-[-0.05em] !mb-10">
+        Seasonal performance demands personalized ads built for the moment
+      </h2>
+      <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-4">
+        Seasonal shopping does not unfold as one uniform event. It unfolds in waves.
+      </p>
+      <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-4">
+        Each seasonal moment comes with its own mindset, timing, and buying behavior. And consumers do not all begin researching and buying on the same schedule.
+      </p>
+      <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+        That&rsquo;s why seasonal performance demands more than a single generic holiday campaign. It demands creative, messaging, offers, timing, and calls to action that are built for each moment.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== WHEN MARKETERS PLAN TO USE PTV (vertical bars) ===== -->
+  <section class="bg-white pb-[60px]">
+    <div class="max-w-[1312px] mx-auto px-4">
+      <div class="bg-tvs-green-pastel rounded-[32px] px-6 md:px-12 py-12 md:py-16">
+        <h3 class="text-tvs-green-dark !text-[28px] md:!text-[42px] !font-medium !leading-[1.25] tracking-[-0.05em] mb-10 max-w-[600px]">
+          When marketers plan to use Performance TV in 2026
+        </h3>
+
+        <div class="hidden md:block">
+          {% module "htr_planuse_chart" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+            label="Plan to Use PTV - Full Bar Chart (Web)",
+            activate_in_view="true",
+            loop="false",
+            source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S5-BarGraph_Web.json"
+          %}
+        </div>
+        <div class="md:hidden max-w-[400px] mx-auto">
+          {% module "htr_planuse_chart_mobile" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+            label="Plan to Use PTV - Full Bar Chart (Mobile)",
+            activate_in_view="true",
+            loop="false",
+            source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S5-BarGraph_Mobile.json"
+          %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TOP WAYS MARKETERS TAILOR CAMPAIGNS ===== -->
+  <section class="bg-white">
+    <div class="max-w-[1312px] mx-auto px-4">
+      <div class="bg-tvs-green-pastel rounded-[32px] px-6 md:px-12 py-12 md:py-16">
+        <h3 class="text-tvs-green-dark !text-[28px] md:!text-[42px] !font-medium !leading-[1.25] tracking-[-0.05em] mb-10 max-w-[707px]">
+          Top ways marketers tailor campaigns <br>for different seasonal moments
+        </h3>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-x-4 md:gap-x-[6rem] gap-y-12">
+          <div class="text-center">
+            <div class="rounded-[24px] overflow-hidden">
+              {% module "htr_tailor_audience" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+                label="Tailor - Audience Targeting (54%, green stripes)",
+                activate_in_view="true",
+                loop="false",
+                source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S6-Bar1.json"
+              %}
+            </div>
+            <p class="text-lg md:text-xl font-medium mt-4 mb-0">Audience targeting</p>
+          </div>
+          <div class="text-center">
+            <div class="rounded-[24px] overflow-hidden">
+              {% module "htr_tailor_offers" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+                label="Tailor - Offers / Promotions (53%, blue dots)",
+                activate_in_view="true",
+                loop="false",
+                source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S6-Bar2.json"
+              %}
+            </div>
+            <p class="text-lg md:text-xl font-medium mt-4 mb-0">Offers / promotions</p>
+          </div>
+          <div class="text-center">
+            <div class="rounded-[24px] overflow-hidden">
+              {% module "htr_tailor_creative" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+                label="Tailor - Creative Assets / Visuals (51%, purple stripes)",
+                activate_in_view="true",
+                loop="false",
+                source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S6-Bar3.json"
+              %}
+            </div>
+            <p class="text-lg md:text-xl font-medium mt-4 mb-0">Creative assets / visuals</p>
+          </div>
+          <div class="text-center">
+            <div class="rounded-[24px] overflow-hidden">
+              {% module "htr_tailor_timing" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+                label="Tailor - Timing / Flighting (34%, solid green)",
+                activate_in_view="true",
+                loop="false",
+                source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S6-Bar4.json"
+              %}
+            </div>
+            <p class="text-lg md:text-xl font-medium mt-4 mb-0">Timing / flighting</p>
+          </div>
+          <div class="text-center">
+            <div class="rounded-[24px] overflow-hidden">
+              {% module "htr_tailor_copy" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+                label="Tailor - Copy / Messaging (33%, solid blue)",
+                activate_in_view="true",
+                loop="false",
+                source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S6-Bar5.json"
+              %}
+            </div>
+            <p class="text-lg md:text-xl font-medium mt-4 mb-0">Copy / messaging</p>
+          </div>
+          <div class="text-center">
+            <div class="rounded-[24px] overflow-hidden">
+              {% module "htr_tailor_cta" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+                label="Tailor - Calls to Action (29%, solid green)",
+                activate_in_view="true",
+                loop="false",
+                source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S6-Bar6.json"
+              %}
+            </div>
+            <p class="text-lg md:text-xl font-medium mt-4 mb-0">Calls to action</p>
+          </div>
+          <div class="text-center">
+            <div class="rounded-[24px] overflow-hidden">
+              {% module "htr_tailor_landing" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+                label="Tailor - Landing Pages (21%, bright green)",
+                activate_in_view="true",
+                loop="false",
+                source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S7-Bar7.json"
+              %}
+            </div>
+            <p class="text-lg md:text-xl font-medium mt-4 mb-0">Landing pages</p>
+          </div>
+          <div class="text-center">
+            <div class="rounded-[24px] overflow-hidden">
+              {% module "htr_tailor_measurement" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+                label="Tailor - Measurement / KPIs (16%, purple)",
+                activate_in_view="true",
+                loop="false",
+                source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S8-Bar8.json"
+              %}
+            </div>
+            <p class="text-lg md:text-xl font-medium mt-4 mb-0">Measurement / KPIs</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NARRATIVE ===== -->
+  <section class="bg-white">
+    <div class="max-w-[866px] mx-auto px-4 pt-16 md:pt-[60px] pb-16 md:pb-[120px] space-y-4">
+      <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+        That kind of adaptation is not just best practice. It is increasingly necessary because consumer behavior is far from uniform.
+      </p>
+      <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+        From the consumer side, the biggest shopping moments still command the most attention.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== CONSUMER ATTENTION RANKED LIST (CSS bars) ===== -->
+  <section class="bg-white">
+    <div class="max-w-[1312px] mx-auto px-4 border-y-2 border-tvs-grey-light py-16 md:py-[120px]">
+      <h3 class="text-tvs-green-dark !text-[28px] md:!text-[42px] !font-medium !leading-[1.25] tracking-[-0.05em] mb-10 max-w-[560px]">
+        Shopping moments consumers pay attention to the most<sup>2</sup>
+      </h3>
+
+      <div class="htr-ranked-list space-y-8">
+        {% set attention_moments = [
+          { "rank": "1", "label": "Black Friday Cyber Monday", "pct": "65" },
+          { "rank": "2", "label": "Holiday season (Nov — Dec)", "pct": "56" },
+          { "rank": "3", "label": "Prime Day", "pct": "35" },
+          { "rank": "4", "label": "Labor Day", "pct": "17" },
+          { "rank": "5", "label": "Fall football season", "pct": "15" },
+          { "rank": "6", "label": "New Year&rsquo;s", "pct": "9" }
+        ] %}
+        {% for row in attention_moments %}
+        <div class="htr-ranked-row relative bg-tvs-green-pastel rounded-2xl h-[80px] md:h-[90px]" data-index="{{ loop.index0 }}">
+          <div class="htr-fill absolute left-0 top-[-5px] h-[calc(100%+10px)] bg-tvs-green rounded-2xl" data-index="{{ loop.index0 }}" data-width="{{ row.pct }}%"></div>
+          <div class="relative z-10 h-full flex items-center justify-between px-4 md:px-8">
+            <div class="flex items-center gap-4">
+              <span class="w-9 h-9 md:w-[42px] md:h-[42px] rounded-full bg-tvs-green-accessible text-tvs-green-pastel flex items-center justify-center text-lg md:text-2xl font-medium md:tracking-[-0.05em] shrink-0">{{ row.rank }}</span>
+              <span class="text-xl md:text-2xl font-medium md:tracking-[-0.05em]">{{ row.label }}</span>
+            </div>
+            <span class="text-2xl md:text-[42px] font-bold md:tracking-[-0.05em] text-tvs-green-accessible whitespace-nowrap shrink-0">{{ row.pct }}%</span>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NARRATIVE ===== -->
+  <section class="bg-white">
+    <div class="max-w-[866px] mx-auto px-4 py-[120px] space-y-4">
+      <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+        That alignment is striking. Across the biggest moments of the season, marketer budget and consumer attention track closely, suggesting that brands are largely investing where interest is already concentrated.
+      </p>
+      <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+        But attention alone does not tell the whole story. <strong>Timing does.</strong>
+      </p>
+      <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+        By the time the season&rsquo;s biggest shopping moments arrive, many shoppers have already narrowed their choices.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== RESEARCH VS PURCHASE GROUPED BARS (Lottie) ===== -->
+  <section class="bg-white pb-8 md:pb-16">
+    <div class="max-w-[1312px] mx-auto px-4">
+      <div class="bg-tvs-green-pastel rounded-[32px] p-8 md:p-12 flex flex-col items-center gap-8">
+        <div class="border-2 border-tvs-green rounded-[24px] px-4 py-4 md:p-6 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-8 shrink-0">
+          <div class="flex items-center gap-2.5 md:gap-3">
+            <span class="w-5 h-5 md:w-6 md:h-6 bg-tvs-purple shrink-0" aria-hidden="true"></span>
+            <span class="text-sm md:text-lg font-medium text-tvs-green-dark tracking-[-0.05em] text-center sm:text-left md:whitespace-nowrap">When consumers start <span class="text-tvs-green-accessible">researching</span> gifts</span>
+          </div>
+          <div class="flex items-center gap-2.5 md:gap-3">
+            <span class="w-5 h-5 md:w-6 md:h-6 bg-tvs-green shrink-0" aria-hidden="true"></span>
+            <span class="text-sm md:text-lg font-medium text-tvs-green-dark tracking-[-0.05em] text-center sm:text-left md:whitespace-nowrap">When consumers start <span class="text-tvs-green-accessible">purchasing</span> gifts</span>
+          </div>
+        </div>
+
+        <div class="hidden md:block w-full">
+          {% module "htr_research_purchase" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+            label="Research vs Purchase Timing - Double Bars (Web)",
+            activate_in_view="true",
+            loop="false",
+            source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S7-DoubleBars_Web.json"
+          %}
+        </div>
+        <div class="md:hidden max-w-[400px] mx-auto w-full">
+          {% module "htr_research_purchase_mobile" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+            label="Research vs Purchase Timing - Double Bars (Mobile)",
+            activate_in_view="true",
+            loop="false",
+            source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S7-DoubleBars_Mobile.json"
+          %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NARRATIVE ===== -->
+  <section class="bg-white pt-8 pb-10 md:py-16">
+    <div class="max-w-[866px] mx-auto px-4">
+      <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+        This varies meaningfully by generation:
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== GENERATION RINGS (Lottie) ===== -->
+  <section class="bg-white">
+    <div class="max-w-[1312px] mx-auto px-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="bg-tvs-green-pastel rounded-[32px] p-8 text-center overflow-hidden">
+          <div class="w-[214px] h-[214px] max-w-full mx-auto mb-8 overflow-hidden">
+            {% module "htr_gen_z" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+              label="Generation Ring - Gen Z (26%)",
+              activate_in_view="true",
+              loop="false",
+              source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S8-Pie1.json"
+            %}
+          </div>
+          <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-snug mb-0 break-words hyphens-none">of <span class="text-tvs-green-accessible font-medium">Gen Z</span> wait to purchase gifts for Black Friday Cyber Monday<sup>2</sup></p>
+        </div>
+        <div class="bg-tvs-green-pastel rounded-[32px] p-8 text-center overflow-hidden">
+          <div class="w-[214px] h-[214px] max-w-full mx-auto mb-8 overflow-hidden">
+            {% module "htr_gen_millennials" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+              label="Generation Ring - Millennials (28%)",
+              activate_in_view="true",
+              loop="false",
+              source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S8-Pie2.json"
+            %}
+          </div>
+          <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-snug mb-0 break-words hyphens-none">of <span class="text-tvs-green-accessible font-medium">Millennials</span> start purchasing gifts in October<sup>2</sup></p>
+        </div>
+        <div class="bg-tvs-green-pastel rounded-[32px] p-8 text-center overflow-hidden">
+          <div class="w-[214px] h-[214px] max-w-full mx-auto mb-8 overflow-hidden">
+            {% module "htr_gen_x" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+              label="Generation Ring - Gen X (28%)",
+              activate_in_view="true",
+              loop="false",
+              source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S8-Pie2.json"
+            %}
+          </div>
+          <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-snug mb-0 break-words hyphens-none">of <span class="text-tvs-green-accessible font-medium">Gen X</span> start purchasing gifts in November<sup>2</sup></p>
+        </div>
+        <div class="bg-tvs-green-pastel rounded-[32px] p-8 text-center overflow-hidden">
+          <div class="w-[214px] h-[214px] max-w-full mx-auto mb-8 overflow-hidden">
+            {% module "htr_gen_boomers" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+              label="Generation Ring - Baby Boomers (24%)",
+              activate_in_view="true",
+              loop="false",
+              source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S8-Pie3.json"
+            %}
+          </div>
+          <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-snug mb-0 break-words hyphens-none">of <span class="text-tvs-green-accessible font-medium">Baby Boomers</span> start purchasing gifts in November<sup>2</sup></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NARRATIVE ===== -->
+  <section class="bg-white">
+    <div class="max-w-[1312px] mx-auto px-4">
+      <div class="border-b-2 border-tvs-grey-light py-16 md:py-[120px]">
+        <div class="max-w-[866px] mx-auto">
+          <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+            These differences matter because they reveal just how limited a one-size-fits-all holiday creative strategy really is. Some audiences are waiting for the biggest discount moment. Others are shopping well before it.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LAUNCH TIMING CARDS ===== -->
+  <section class="bg-white py-16 md:py-[120px]">
+    <div class="max-w-[1312px] mx-auto px-4">
+      <h3 class="text-tvs-green-dark !text-[28px] md:!text-[42px] !font-medium !leading-[1.25] tracking-[-0.05em] mb-2">
+        When marketers first launch TV campaigns for each moment
+      </h3>
+      <p class="text-xl md:text-3xl mb-10">Most campaigns launch close to the peak shopping window</p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div class="bg-tvs-green-pastel rounded-[32px] p-8 md:p-12 flex flex-col">
+          <p class="text-2xl md:text-[28px] font-semibold leading-snug min-h-[2.75em] mb-8">Labor Day</p>
+          <div class="rounded-2xl overflow-hidden mb-8">
+            {% module "htr_launch_laborday" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+              label="Launch Timing - Labor Day (48% Sep)",
+              activate_in_view="true",
+              loop="false",
+              source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S9-Bar1.json"
+            %}
+          </div>
+          <p class="text-lg md:text-2xl md:tracking-[-0.05em] mb-0">Most launch in <span class="text-tvs-green-accessible font-medium">September</span></p>
+        </div>
+        <div class="bg-tvs-green-pastel rounded-[32px] p-8 md:p-12 flex flex-col">
+          <p class="text-2xl md:text-[28px] font-semibold leading-snug min-h-[2.75em] mb-8">Fall football season</p>
+          <div class="rounded-2xl overflow-hidden mb-8">
+            {% module "htr_launch_football" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+              label="Launch Timing - Fall Football Season (37% Sep)",
+              activate_in_view="true",
+              loop="false",
+              source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S9-Bar2.json"
+            %}
+          </div>
+          <p class="text-lg md:text-2xl md:tracking-[-0.05em] mb-0">Most launch in <span class="text-tvs-green-accessible font-medium">September</span></p>
+        </div>
+        <div class="bg-tvs-green-pastel rounded-[32px] p-8 md:p-12 flex flex-col">
+          <p class="text-2xl md:text-[28px] font-semibold leading-snug min-h-[2.75em] mb-8">Prime Day</p>
+          <div class="rounded-2xl overflow-hidden mb-8">
+            {% module "htr_launch_primeday" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+              label="Launch Timing - Prime Day (30% Sep)",
+              activate_in_view="true",
+              loop="false",
+              source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S9-Bar3.json"
+            %}
+          </div>
+          <p class="text-lg md:text-2xl md:tracking-[-0.05em] mb-0">Most launch in <span class="text-tvs-green-accessible font-medium">September</span></p>
+        </div>
+        <div class="bg-tvs-green-pastel rounded-[32px] p-8 md:p-12 flex flex-col">
+          <p class="text-2xl md:text-[28px] font-semibold leading-snug min-h-[2.75em] mb-8">Black Friday Cyber Monday</p>
+          <div class="rounded-2xl overflow-hidden mb-8">
+            {% module "htr_launch_bfcm" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+              label="Launch Timing - Black Friday Cyber Monday (47% Nov)",
+              activate_in_view="true",
+              loop="false",
+              source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S9-Bar4.json"
+            %}
+          </div>
+          <p class="text-lg md:text-2xl md:tracking-[-0.05em] mb-0">Most launch in <span class="text-tvs-green-accessible font-medium">November</span></p>
+        </div>
+        <div class="bg-tvs-green-pastel rounded-[32px] p-8 md:p-12 flex flex-col">
+          <p class="text-2xl md:text-[28px] font-semibold leading-snug min-h-[2.75em] mb-8">Holiday season<br>(Nov &ndash; Dec)</p>
+          <div class="rounded-2xl overflow-hidden mb-8">
+            {% module "htr_launch_holiday" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+              label="Launch Timing - Holiday Season (34% Nov)",
+              activate_in_view="true",
+              loop="false",
+              source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S9-Bar5.json"
+            %}
+          </div>
+          <p class="text-lg md:text-2xl md:tracking-[-0.05em] mb-0">Most launch in <span class="text-tvs-green-accessible font-medium">November</span></p>
+        </div>
+        <div class="bg-tvs-green-pastel rounded-[32px] p-8 md:p-12 flex flex-col">
+          <p class="text-2xl md:text-[28px] font-semibold leading-snug min-h-[2.75em] mb-8">New Year&rsquo;s</p>
+          <div class="rounded-2xl overflow-hidden mb-8">
+            {% module "htr_launch_newyears" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+              label="Launch Timing - New Years (55% Dec)",
+              activate_in_view="true",
+              loop="false",
+              source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S9-Bar6.json"
+            %}
+          </div>
+          <p class="text-lg md:text-2xl md:tracking-[-0.05em] mb-0">Most launch in <span class="text-tvs-green-accessible font-medium">December</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NARRATIVE ===== -->
+  <section class="bg-white">
+    <div class="max-w-[1312px] mx-auto px-4">
+      <div class="border-t-2 border-tvs-grey-light py-16 md:py-[120px]">
+        <div class="max-w-[866px] mx-auto space-y-4">
+          <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+            For advertisers focused mainly on Black Friday Cyber Monday or the broader holiday season, waiting until November to launch ads means entering the market after many consumers have already begun researching, and in some cases purchasing, in October or earlier. The seasonal moments leading into the holiday rush, from Labor Day to Prime Day, create earlier opportunities to connect with shoppers while they are still exploring options and deciding what makes the shortlist.
+          </p>
+          <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+            This is exactly what makes seasonal creative harder to manage. Teams need more versions, more relevance, more ways to adapt one campaign idea across multiple tentpoles without losing speed &mdash; and a way to make sure their ads are actually impactful. This is where <a href="https://www.tvscientific.com/creative-advisor" class="htr-link">tvScientific by Pinterest&rsquo;s Creative Advisor</a> can help, using tvScientific AI to predict how TV creative is likely to perform and surface recommendations before media dollars are spent.
+          </p>
+          <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+            Because in 2026, seasonal performance is not just about launching campaigns. It is about having the right creative at the right moment, before the opportunity passes.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== QUOTE 3 ===== -->
+  <section class="htr-quote bg-white pb-0 md:pb-12">
+    <div class="max-w-[866px] mx-auto px-4">
+      <div class="bg-tvs-green-pastel rounded-[32px] p-8 md:p-16">
+        <div class="htr-quote-icon">
+          {% module "htr_quote_icon_3" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+            label="Quote Icon 3",
+            activate_in_view="true",
+            loop="false",
+            width="50px",
+            height="50px",
+            source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/_Quotes.json"
+          %}
+        </div>
+        <p class="text-xl md:text-2xl md:tracking-[-0.05em] leading-normal mb-10">
+          Creative Advisor quickly analyzed our existing creative and provided recommendations we could implement quickly. By making small changes to the visibility of our branding throughout the ad, we drove more site visits without rebuilding the entire spot.
+        </p>
+        <p class="text-lg font-semibold mb-0">Anastasia Jenkin</p>
+        <p class="text-base mb-4">Head of Affiliate Marketing + Partnerships</p>
+        <img src="https://tvscientific.com/hubfs/higherdose-logo.svg" alt="HigherDose" width="170" height="24" class="h-6 w-auto mx-0" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <div class="htr-grid htr-grid-sep htr-grid-sep--after-quote"></div>
+
+  <!-- ===== CHAPTER 04 ===== -->
+  <section id="htr-chapter-4" class="bg-white py-16 md:py-[120px]">
+    <div class="max-w-[866px] mx-auto px-4">
+      <p class="text-tvs-green-accessible text-xl md:text-[28px] font-medium tracking-[-0.05em] leading-none mb-6">04</p>
+      <h2 class="text-tvs-green-dark !text-[36px] md:!text-[64px] !font-medium !leading-[1.1] md:!leading-[0.95] tracking-[-0.05em] !mb-10">
+        The best holiday and seasonal strategies connect campaigns across moments and channels
+      </h2>
+      <div class="space-y-4">
+        <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+          The traditional marketing funnel assumes consumers behave with remarkable discipline. First, they become aware, then they research, consider, and after a thoughtful and orderly journey, they purchase.
+        </p>
+        <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+          But consumers do not move that neatly. They jump from one channel to another, and often make the purchase elsewhere.
+        </p>
+        <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+          That&rsquo;s why the strongest seasonal strategies do not treat TV as an isolated channel or each shopping moment as a separate campaign. They connect both. And marketers are actively coordinating TV with the rest of the media mix during high-stakes shopping periods.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CHANNEL COORDINATION CIRCLES ===== -->
+  <section class="bg-white">
+    <div class="max-w-[1312px] mx-auto px-4">
+      <div class="border-t-2 border-tvs-grey-light py-16 md:py-[120px]">
+        <h3 class="text-tvs-green-dark !text-[28px] md:!text-[42px] !font-medium !leading-[1.25] tracking-[-0.05em] text-center mb-12 max-w-[866px] mx-auto">
+          Channels marketers actively coordinate with TV during holiday and seasonal campaigns
+        </h3>
+
+        <div class="flex flex-wrap justify-center gap-x-8 gap-y-12">
+          <div class="w-[240px] text-center">
+            <div class="w-[214px] h-[214px] mx-auto mb-6">
+              {% module "htr_coord_social" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+                label="Coordinate - Social (74%)",
+                activate_in_view="true",
+                loop="false",
+                source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S10-Pie1.json"
+              %}
+            </div>
+            <p class="text-lg md:text-xl font-medium mb-0">Social</p>
+          </div>
+          <div class="w-[240px] text-center">
+            <div class="w-[214px] h-[214px] mx-auto mb-6">
+              {% module "htr_coord_influencer" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+                label="Coordinate - Influencer / Creator Marketing (44%)",
+                activate_in_view="true",
+                loop="false",
+                source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S10-Pie2.json"
+              %}
+            </div>
+            <p class="text-lg md:text-xl font-medium mb-0">Influence / creator marketing</p>
+          </div>
+          <div class="w-[240px] text-center">
+            <div class="w-[214px] h-[214px] mx-auto mb-6">
+              {% module "htr_coord_email" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+                label="Coordinate - Email / CRM (36%)",
+                activate_in_view="true",
+                loop="false",
+                source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S10-Pie3.json"
+              %}
+            </div>
+            <p class="text-lg md:text-xl font-medium mb-0">Email / CRM</p>
+          </div>
+          <div class="w-[240px] text-center">
+            <div class="w-[214px] h-[214px] mx-auto mb-6">
+              {% module "htr_coord_search" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+                label="Coordinate - Search (36%)",
+                activate_in_view="true",
+                loop="false",
+                source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S10-Pie4.json"
+              %}
+            </div>
+            <p class="text-lg md:text-xl font-medium mb-0">Search</p>
+          </div>
+          <div class="w-[240px] text-center">
+            <div class="w-[214px] h-[214px] mx-auto mb-6">
+              {% module "htr_coord_display" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+                label="Coordinate - Display (35%)",
+                activate_in_view="true",
+                loop="false",
+                source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S10-Pie5.json"
+              %}
+            </div>
+            <p class="text-lg md:text-xl font-medium mb-0">Display</p>
+          </div>
+          <div class="w-[240px] text-center">
+            <div class="w-[214px] h-[214px] mx-auto mb-6">
+              {% module "htr_coord_instore" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+                label="Coordinate - In-store / Offline Media (32%)",
+                activate_in_view="true",
+                loop="false",
+                source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S10-Pie6.json"
+              %}
+            </div>
+            <p class="text-lg md:text-xl font-medium mb-0">In-store / offline media</p>
+          </div>
+          <div class="w-[240px] text-center">
+            <div class="w-[214px] h-[214px] mx-auto mb-6">
+              {% module "htr_coord_affiliate" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+                label="Coordinate - Affiliate (20%)",
+                activate_in_view="true",
+                loop="false",
+                source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S10-Pie7.json"
+              %}
+            </div>
+            <p class="text-lg md:text-xl font-medium mb-0">Affiliate</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NARRATIVE ===== -->
+  <section class="bg-white">
+    <div class="max-w-[866px] mx-auto px-4">
+      <div class="border-t-2 border-tvs-grey-light py-16 md:py-[120px] space-y-4">
+        <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+          That coordination mirrors how consumers actually behave. <strong>46% of consumers say they are more likely to buy if they have seen the brand on social media before seeing it on TV. 46% say the same if they have seen the brand in search before seeing it on TV.</strong>
+        </p>
+        <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+          This means cross-channel strategy is not just a media planning preference. It is a consumer reality.
+        </p>
+        <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+          TV works especially well when it strengthens what consumers are already encountering elsewhere. It brings legitimacy to the brand, increases confidence, and helps other channels perform harder.
+        </p>
+        <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+          That is why the best marketing teams are not only connecting TV with other channels. They are also applying key learnings and carrying over campaign components from one seasonal moment into the next.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CARRY-FORWARD CHART ===== -->
+  <section class="bg-white pb-[120px]">
+    <div class="max-w-[1312px] mx-auto px-4">
+      <div class="bg-tvs-green-pastel rounded-[32px] px-6 md:px-12 py-12 md:py-16">
+        <h3 class="text-tvs-green-dark !text-[28px] md:!text-[42px] !font-medium !leading-[1.25] tracking-[-0.05em] mb-10 max-w-[820px]">
+          What marketers intentionally carry forward from one shopping moment to the next
+        </h3>
+
+        <div class="hidden md:block">
+          {% module "htr_carryforward_chart" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+            label="Carry Forward - Full Bar Chart (Web)",
+            activate_in_view="true",
+            loop="false",
+            source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S11-BarChart_Web.json"
+          %}
+        </div>
+        <div class="md:hidden max-w-[400px] mx-auto">
+          {% module "htr_carryforward_chart_mobile" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+            label="Carry Forward - Full Bar Chart (Mobile)",
+            activate_in_view="true",
+            loop="false",
+            source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S11-BarChart_Mobile.json"
+          %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NARRATIVE ===== -->
+  <section class="bg-white pb-[120px]">
+    <div class="max-w-[866px] mx-auto px-4 space-y-4">
+      <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+        This is a major shift away from planning each tentpole in isolation. Instead of reinventing everything for Prime Day, then starting over for Black Friday Cyber Monday, then starting over again for New Year&rsquo;s, marketers are building connected systems. They are using earlier moments to learn faster, refine audiences, sharpen messaging, and enter the next shopping window smarter.
+      </p>
+      <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+        Measurement is what makes that possible.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== TOP 5 OUTCOMES ===== -->
+  <section class="bg-white pb-[120px]">
+    <div class="max-w-[866px] mx-auto px-4 border-y-2 border-tvs-grey-light py-16">
+      <h3 class="text-tvs-green-dark !text-[28px] md:!text-[42px] !font-medium !leading-[1.25] tracking-[-0.05em] mb-12">
+        Top 5 outcomes marketers care about most when evaluating Performance TV during holiday and seasonal shopping moments
+      </h3>
+
+      {% set top_outcomes = [
+        { "rank": "1", "pct": "63", "label": "Sales / revenue", "badge": "&uarr; from #4 in 2025" },
+        { "rank": "2", "pct": "40", "label": "Website traffic", "badge": "" },
+        { "rank": "3", "pct": "36", "label": "Impressions", "badge": "" },
+        { "rank": "4", "pct": "29", "label": "Reach", "badge": "&darr; from #1 in 2025" },
+        { "rank": "5", "pct": "25", "label": "Frequency", "badge": "&darr; from #2 in 2025" }
+      ] %}
+      <div class="htr-ranked-list htr-ranked-list--cascade space-y-8 md:space-y-3">
+        {% for row in top_outcomes %}
+        <div class="htr-ranked-row flex flex-col gap-3 md:flex-row md:items-center md:gap-16" data-index="{{ loop.index0 }}">
+          <div class="flex items-center gap-4 shrink-0">
+            <span class="w-12 h-12 md:w-16 md:h-16 rounded-full bg-tvs-green-pastel text-tvs-green-accessible flex items-center justify-center text-xl md:text-2xl font-medium shrink-0">{{ row.rank }}</span>
+            <span class="text-tvs-green-accessible text-[56px] md:text-[120px] font-bold tracking-[-0.05em] leading-none md:w-[250px] shrink-0 whitespace-nowrap">{{ row.pct }}%</span>
+          </div>
+          <div class="pl-16 md:pl-0 min-w-0 flex-1 flex flex-wrap items-center gap-x-2 gap-y-1">
+            <span class="text-xl md:text-2xl font-medium md:tracking-[-0.05em] hyphens-none whitespace-nowrap">{{ row.label }}</span>
+            {% if row.badge %}
+            <span class="bg-tvs-green-pastel text-tvs-green-accessible text-xs font-medium rounded-full px-3 py-1 whitespace-nowrap shrink-0">{{ row.badge }}</span>
+            {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NARRATIVE ===== -->
+  <section class="bg-white pb-[120px]">
+    <div class="max-w-[866px] mx-auto px-4 space-y-4">
+      <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+        These priorities show that marketers want more than broad reach. Compared with 2025, they are placing much greater weight on direct business outcomes like sales, revenue, and traffic. And delivering those outcomes requires a more connected view of performance.
+      </p>
+      <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+        The most effective holiday strategies do two things well: they connect campaigns across moments, and they connect measurement across channels.
+      </p>
+      <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+        Anything less leaves performance undervalued and opportunity on the table.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== QUOTE 4 ===== -->
+  <section class="htr-quote bg-white pb-0 md:pb-12">
+    <div class="max-w-[866px] mx-auto px-4">
+      <div class="bg-tvs-green-pastel rounded-[32px] p-8 md:p-16">
+        <div class="htr-quote-icon">
+          {% module "htr_quote_icon_4" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+            label="Quote Icon 4",
+            activate_in_view="true",
+            loop="false",
+            width="50px",
+            height="50px",
+            source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/_Quotes.json"
+          %}
+        </div>
+        <p class="text-xl md:text-2xl md:tracking-[-0.05em] leading-normal mb-10">
+          Advertisers are under increasing pressure to prove the business impact of every media dollar spent, especially as streaming becomes a larger part of the media mix. By partnering with tvScientific by Pinterest, we&rsquo;re helping brands better understand the true impact of Performance TV and optimize around measurable business outcomes with greater precision and transparency.
+        </p>
+        <p class="text-lg font-semibold mb-0">Alex Roucourt</p>
+        <p class="text-base mb-4">Chief Partnerships Officer</p>
+        <img src="https://tvscientific.com/hubfs/workmagic.png" alt="" width="134" height="27" class="h-7 w-auto mx-0" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <div class="htr-grid htr-grid-sep htr-grid-sep--after-quote"></div>
+
+  <!-- ===== CHAPTER 05 ===== -->
+  <section id="htr-chapter-5" class="bg-white py-16 md:py-[120px]">
+    <div class="max-w-[866px] mx-auto px-4">
+      <p class="text-tvs-green-accessible text-xl md:text-[28px] font-medium tracking-[-0.05em] leading-none mb-6">05</p>
+      <h2 class="text-tvs-green-dark !text-[36px] md:!text-[64px] !font-medium !leading-[1.1] md:!leading-[0.95] tracking-[-0.05em] !mb-10">
+        AI is the new edge in peak shopping moments
+      </h2>
+      <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-4">
+        Peak shopping moments put more pressure on every decision.
+      </p>
+      <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+        Shopping windows are compressed. Consumer behavior shifts quickly. Promotions change. Competition intensifies. Creative needs to multiply. And teams are expected to make faster decisions with less room for error. That is where AI is starting to play a much bigger role.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== AI USAGE CHART ===== -->
+  <section class="bg-white pb-[120px]">
+    <div class="max-w-[1312px] mx-auto px-4">
+      <div class="bg-tvs-green-pastel rounded-[32px] px-6 md:px-12 py-12 md:py-16">
+        <h3 class="text-tvs-green-dark !text-[28px] md:!text-[42px] !font-medium !leading-[1.25] tracking-[-0.05em] mb-10 max-w-[820px]">
+          Where marketers are using AI in holiday and seasonal shopping campaigns in 2026
+        </h3>
+
+        <div class="hidden md:block">
+          {% module "htr_ai_usage_chart" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+            label="AI Usage - Full Bar Chart (Web)",
+            activate_in_view="true",
+            loop="false",
+            source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S12-BarGraph_Web.json"
+          %}
+        </div>
+        <div class="md:hidden max-w-[400px] mx-auto">
+          {% module "htr_ai_usage_chart_mobile" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+            label="AI Usage - Full Bar Chart (Mobile)",
+            activate_in_view="true",
+            loop="false",
+            source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S12-BarGraph_Mobile.json"
+          %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NARRATIVE ===== -->
+  <section class="bg-white">
+    <div class="max-w-[866px] mx-auto px-4">
+      <div class="border-b-2 border-tvs-grey-light pb-16 md:pb-[120px]">
+        <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+          Marketers are not using AI just to save time. They are using it to handle the growing complexity of seasonal performance: more moments, more audiences, more creative variants, more channels, and more pressure to optimize in real time.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== AI IMPACT RANKED LIST (CSS bars) ===== -->
+  <section class="bg-white pt-16 md:pt-[120px] pb-[120px]">
+    <div class="max-w-[1312px] mx-auto px-4">
+      <h3 class="text-tvs-green-dark !text-[28px] md:!text-[42px] !font-medium !leading-[1.25] tracking-[-0.05em] mb-10 max-w-[540px]">
+        AI&rsquo;s impact during the holiday and seasonal campaign
+      </h3>
+
+      <div class="htr-ranked-list space-y-8">
+        {% set ai_impact = [
+          { "rank": "1", "label": "Faster creative development", "pct": "42" },
+          { "rank": "2", "label": "Faster campaign launch", "pct": "39" },
+          { "rank": "3", "label": "More creative variations", "pct": "36" },
+          { "rank": "4", "label": "More measurable business outcomes", "pct": "33" },
+          { "rank": "5", "label": "Faster optimization while campaigns are live", "pct": "28" },
+          { "rank": "6", "label": "Better personalization by moment", "pct": "25" }
+        ] %}
+        {% for row in ai_impact %}
+        <div class="htr-ranked-row relative bg-tvs-green-pastel rounded-2xl h-[80px] md:h-[90px]" data-index="{{ loop.index0 }}">
+          <div class="htr-fill absolute left-0 top-[-5px] h-[calc(100%+10px)] bg-tvs-green rounded-2xl" data-index="{{ loop.index0 }}" data-width="{{ row.pct }}%"></div>
+          <div class="relative z-10 h-full flex items-center justify-between px-4 md:px-8">
+            <div class="flex items-center gap-4">
+              <span class="w-9 h-9 md:w-[42px] md:h-[42px] rounded-full bg-tvs-green-accessible text-tvs-green-pastel flex items-center justify-center text-lg md:text-2xl font-medium md:tracking-[-0.05em] shrink-0">{{ row.rank }}</span>
+              <span class="text-xl md:text-2xl font-medium md:tracking-[-0.05em]">{{ row.label }}</span>
+            </div>
+            <span class="text-2xl md:text-[42px] font-bold md:tracking-[-0.05em] text-tvs-green-accessible whitespace-nowrap shrink-0">{{ row.pct }}%</span>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NARRATIVE ===== -->
+  <section class="bg-white">
+    <div class="max-w-[866px] mx-auto px-4">
+      <div class="border-t-2 border-tvs-grey-light py-16 md:py-[120px] space-y-4">
+        <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+          The message is clear. AI&rsquo;s value during seasonal shopping is not novelty. It is speed, adaptability, and <a href="https://www.tvscientific.com/press/tvscientific-by-pinterest-debuts-creative-advisor" class="htr-link">the ability to act on performance signals</a> before the moment is gone.
+        </p>
+        <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+          That is especially important in a holiday environment where creative fatigue sets in quickly and audience behavior can shift from one week to the next. Teams need to test faster, adapt faster, and optimize faster.
+        </p>
+        <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+          This is also where AI begins to close one of the biggest operational gaps in seasonal marketing: the distance between insight and execution.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== QUOTE CAROUSEL ===== -->
+  <section id="htr-quote-carousel" class="bg-white pb-[120px]" aria-roledescription="carousel" aria-label="Marketer quotes">
+    <div class="overflow-hidden">
+      <div class="htr-carousel-track flex gap-6 items-start md:items-stretch">
+        <div class="htr-carousel-slide shrink-0 w-[88%] max-w-[866px]" data-quote-index="0">
+          <div class="bg-tvs-green-pastel rounded-[32px] p-8 md:p-16 md:h-full">
+            <div class="htr-quote-icon">
+              {% module "htr_quote_icon_5" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+                label="Quote Icon - Carousel Slide 1",
+                activate_in_view="true",
+                loop="false",
+                width="50px",
+                height="50px",
+                source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/_Quotes.json"
+              %}
+            </div>
+            <p class="italic text-xl md:text-2xl md:tracking-[-0.05em] leading-normal mb-10">
+              I would like AI to help us better identify high-intent shoppers and optimize campaigns in real time. This would help improve ad performance, increase conversions, and make marketing efforts more efficient during the holiday season.
+            </p>
+            <p class="text-lg mb-0">&mdash; Anonymous Marketer in the Financial Services / Fintech industry</p>
+          </div>
+        </div>
+        <div class="htr-carousel-slide shrink-0 w-[88%] max-w-[866px]" data-quote-index="1">
+          <div class="bg-tvs-green-pastel rounded-[32px] p-8 md:p-16 md:h-full">
+            <div class="htr-quote-icon">
+              {% module "htr_quote_icon_6" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+                label="Quote Icon - Carousel Slide 2",
+                activate_in_view="true",
+                loop="false",
+                width="50px",
+                height="50px",
+                source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/_Quotes.json"
+              %}
+            </div>
+            <p class="italic text-xl md:text-2xl md:tracking-[-0.05em] leading-normal mb-10">
+              I would like AI to better connect audience insights, creative personalization, and media optimization so campaigns can automatically adapt in real time and maximize revenue during peak periods
+            </p>
+            <p class="text-lg mb-0">&mdash; Anonymous Marketer at an Agency</p>
+          </div>
+        </div>
+        <div class="htr-carousel-slide shrink-0 w-[88%] max-w-[866px]" data-quote-index="2">
+          <div class="bg-tvs-green-pastel rounded-[32px] p-8 md:p-16 md:h-full">
+            <div class="htr-quote-icon">
+              {% module "htr_quote_icon_7" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+                label="Quote Icon - Carousel Slide 3",
+                activate_in_view="true",
+                loop="false",
+                width="50px",
+                height="50px",
+                source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/_Quotes.json"
+              %}
+            </div>
+            <p class="italic text-xl md:text-2xl md:tracking-[-0.05em] leading-normal mb-10">
+              Automatically unify cross-channel measurement data including Performance TV, search and social, and generate real-time ROAS comparison reports for different seasonal shopping moments to speed up budget adjustment decisions.
+            </p>
+            <p class="text-lg mb-0">&mdash; Anonymous Marketer in the Retail industry</p>
+          </div>
+        </div>
+        <div class="htr-carousel-slide shrink-0 w-[88%] max-w-[866px]" data-quote-index="3">
+          <div class="bg-tvs-green-pastel rounded-[32px] p-8 md:p-16 md:h-full">
+            <div class="htr-quote-icon">
+              {% module "htr_quote_icon_8" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+                label="Quote Icon - Carousel Slide 4",
+                activate_in_view="true",
+                loop="false",
+                width="50px",
+                height="50px",
+                source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/_Quotes.json"
+              %}
+            </div>
+            <p class="italic text-xl md:text-2xl md:tracking-[-0.05em] leading-normal mb-10">
+              I wish AI could optimize our holiday ad budgets and targeting in real time.
+            </p>
+            <p class="text-lg mb-0">&mdash; Anonymous Marketer in the Food &amp; Beverage industry</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="htr-carousel-dots flex justify-center gap-2.5 mt-6 md:mt-8" role="tablist" aria-label="Quote slides"></div>
+  </section>
+
+  <!-- ===== NARRATIVE ===== -->
+  <section class="bg-white pb-8 md:pb-[120px]">
+    <div class="max-w-[866px] mx-auto px-4 space-y-4">
+      <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+        Ultimately, the best use of AI during peak shopping periods is not simply automation for its own sake. It is using AI to make better performance decisions faster, from audience targeting and creative personalization to campaign optimization and measurement.
+      </p>
+      <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+        That is the real edge.
+      </p>
+    </div>
+  </section>
+
+  <div class="htr-grid htr-grid-sep"></div>
+
+  <!-- ===== CHAPTER 06 / CONCLUSION ===== -->
+  <section id="htr-chapter-6" class="bg-white py-16 md:py-[120px]">
+    <div class="max-w-[866px] mx-auto px-4">
+      <p class="text-tvs-green-accessible text-xl md:text-[28px] font-medium tracking-[-0.05em] leading-none mb-6">06</p>
+      <h2 class="text-tvs-green-dark !text-[36px] md:!text-[64px] !font-medium !leading-[1.1] md:!leading-[0.95] tracking-[-0.05em] !mb-10">
+        Seasonal shopping is won before the biggest sale
+      </h2>
+      <div class="space-y-4 mb-10">
+        <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+          The brands that win the 2026 holiday season will not be the ones that simply spend the most during Black Friday Cyber Monday, fall football season, or Prime Day.
+        </p>
+        <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+          They will be the ones that understand a more important truth: by the time the biggest sale begins, the consumer decision is often already in motion.
+        </p>
+        <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+          Shoppers are discovering earlier. Researching earlier. Narrowing options earlier. Buying earlier. And moving across TV, search, social, and mobile in ways that make last-click thinking feel increasingly outdated.
+        </p>
+        <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+          That is why the most effective seasonal strategies now follow a different playbook:
+        </p>
+      </div>
+
+      <ul class="list-none p-0 m-0 space-y-6 mb-10">
+        {% set playbook = [
+          "Reach high-intent shoppers before comparison gets crowded",
+          "Treat Performance TV as a priority investment, not a seasonal add-on",
+          "Personalize creative for each shopping moment",
+          "Connect strategy and measurement across channels and across tentpoles",
+          "Use AI to move faster when speed matters most"
+        ] %}
+        {% for item in playbook %}
+        <li class="flex items-center gap-4">
+          <span class="w-8 h-8 rounded-full bg-tvs-green flex items-center justify-center shrink-0" aria-hidden="true">
+            <svg width="16" height="16" viewBox="8 8 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 16H23M16 23L23 16L16 9" stroke="#0F2D29" stroke-width="2"/></svg>
+          </span>
+          <span class="text-lg md:text-2xl md:tracking-[-0.05em]">{{ item }}</span>
+        </li>
+        {% endfor %}
+      </ul>
+
+      <div class="space-y-4">
+        <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+          Performance TV is rising in seasonal importance because it matches how consumers actually behave today: fluid across screens, influenced early, and ready to act in real time.
+        </p>
+        <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+          For marketers, the opportunity is not just to show up in the biggest moments. It is to shape them before they peak.
+        </p>
+        <div class="space-y-0">
+          <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+            That is how seasonal shopping performance gets smarter.
+          </p>
+          <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+            That is how holiday revenue gets stronger.
+          </p>
+          <p class="text-lg md:text-2xl md:tracking-[-0.05em] leading-relaxed md:leading-[1.4] mb-0">
+            And that is how brands win before the last click.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CLOSING CTA ===== -->
+  <section id="htr-cta" class="htr-cta htr-grid bg-tvs-green-pastel overflow-hidden">
+    <div class="htr-hero-content max-w-[866px] mx-auto px-4 pt-20 md:pt-28 text-center">
+      <h2 class="text-tvs-green-dark !text-[36px] md:!text-[64px] !font-medium !leading-[1.15] tracking-[-0.05em] !mb-12 text-balance">
+        See how you can supercharge your Performance TV during the 2026 holiday season.
+      </h2>
+      <a href="https://www.tvscientific.com/contact" class="hs-button !text-[16px] !font-medium !tracking-[1.5px] !leading-[1.35] !rounded-[6px] !px-8 !py-4 !border-0 !bg-tvs-green !text-tvs-green-dark uppercase">Request a Demo</a>
+
+      <!-- Gift boxes illustration (Lottie) -->
+      <div class="max-w-[450px] mx-auto mt-16">
+        {% module "htr_cta_gifts" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+          label="CTA - Gift Boxes",
+          activate_in_view="true",
+          loop="false",
+          source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/_Footer.json"
+        %}
+      </div>
+    </div>
+  </section>
+
+  {% dnd_area "dnd_area" class='dnd-empty', label='Drag and Drop Area' %}
+  {% end_dnd_area %}
+
+  <section id="htr-footnotes" class="bg-white pt-8">
+    <div class="container text-left">
+      <!-- Sources -->
+      <div class="pb-20 space-y-3">
+        <p class="text-tvs-black text-sm mb-0 text-left font-semibold">Sources:</p>
+        <p class="text-tvs-black text-sm mb-0 text-left"><sup>1</sup>tvScientific by Pinterest, 2026 Holiday &amp; Seasonal Shopping Trends Report (N=487), US, July 2026 &ndash; all data in this report except where a different source is cited.</p>
+        <p class="text-tvs-black text-sm mb-0 text-left italic">*For all year over year trends, this was compared to results from 2025 Holiday Report data: <a href="https://www.tvscientific.com/ty-2025-holiday-report" class="htr-link">https://www.tvscientific.com/ty-2025-holiday-report</a></p>
+        <p class="text-tvs-black text-sm mb-0 text-left"><sup>2</sup>tvScientific by Pinterest, 2026 Consumer Trends Report, US, February 2026, n=600 people that watch tv</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  (function () {
+    'use strict';
+
+    /**
+     * Bar ranked lists: grow fills to data-width once when the list enters view.
+     * Cascade list (--cascade): CG-style revealed/active opacity step (outcomes only).
+     * Solid stat cards (.htr-count): count from 0 to data-target once when in view.
+     */
+    function initHtrAnimations() {
+      var STEP_DURATION = 770;
+      var COUNT_DURATION = 1200;
+      var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      function animateCountUps() {
+        var els = document.querySelectorAll('.htr-count[data-target]');
+        if (!els.length) return;
+
+        function easeOutCubic(t) {
+          return 1 - Math.pow(1 - t, 3);
+        }
+
+        function setFinal(el) {
+          var target = parseInt(el.getAttribute('data-target'), 10) || 0;
+          el.textContent = target + '%';
+        }
+
+        function runCount(el) {
+          var target = parseInt(el.getAttribute('data-target'), 10) || 0;
+          if (reduceMotion) {
+            setFinal(el);
+            return;
+          }
+          var start = null;
+          el.textContent = '0%';
+          function frame(ts) {
+            if (start === null) start = ts;
+            var t = Math.min(1, (ts - start) / COUNT_DURATION);
+            el.textContent = Math.round(easeOutCubic(t) * target) + '%';
+            if (t < 1) {
+              requestAnimationFrame(frame);
+            } else {
+              el.textContent = target + '%';
+            }
+          }
+          requestAnimationFrame(frame);
+        }
+
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              runCount(entry.target);
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.5 });
+
+        els.forEach(function (el) {
+          if (reduceMotion) {
+            setFinal(el);
+          } else {
+            el.textContent = '0%';
+            observer.observe(el);
+          }
+        });
+      }
+
+      function animateFills(list) {
+        var fills = list.querySelectorAll('.htr-fill');
+        if (!fills.length) return;
+
+        function grow() {
+          fills.forEach(function (fill) {
+            fill.style.width = fill.getAttribute('data-width');
+          });
+        }
+
+        if (reduceMotion) {
+          grow();
+          return;
+        }
+
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              grow();
+              observer.unobserve(list);
+            }
+          });
+        }, { threshold: 0.2 });
+
+        observer.observe(list);
+      }
+
+      function animateCascade(list) {
+        var rows = list.querySelectorAll('.htr-ranked-row');
+        var totalSteps = rows.length;
+        if (!totalSteps) return;
+
+        function revealAll() {
+          list.dataset.animComplete = '1';
+          rows.forEach(function (row) {
+            row.classList.add('revealed', 'active');
+          });
+        }
+
+        /* Mobile (< md): skip cascade — show all rows fully visible */
+        var isMobile = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
+        if (isMobile || reduceMotion) {
+          revealAll();
+          return;
+        }
+
+        var playing = false;
+        var completed = false;
+        var currentStep = -1;
+        var intervalId = null;
+
+        function applyStep(index) {
+          rows.forEach(function (row, i) {
+            if (i <= index) {
+              row.classList.add('revealed');
+            } else {
+              row.classList.remove('revealed');
+            }
+            if (i === index) {
+              row.classList.add('active');
+            } else {
+              row.classList.remove('active');
+            }
+          });
+        }
+
+        function finishAnimation() {
+          completed = true;
+          playing = false;
+          revealAll();
+        }
+
+        function startPlay() {
+          if (playing || completed) return;
+          playing = true;
+          currentStep = 0;
+          applyStep(0);
+          if (totalSteps === 1) {
+            setTimeout(finishAnimation, STEP_DURATION);
+            return;
+          }
+          intervalId = setInterval(function () {
+            currentStep++;
+            if (currentStep >= totalSteps - 1) {
+              clearInterval(intervalId);
+              applyStep(totalSteps - 1);
+              setTimeout(finishAnimation, STEP_DURATION);
+            } else {
+              applyStep(currentStep);
+            }
+          }, STEP_DURATION);
+        }
+
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting && !playing && !completed) {
+              startPlay();
+              observer.unobserve(list);
+            }
+          });
+        }, { threshold: 0.2 });
+
+        observer.observe(list);
+      }
+
+      animateCountUps();
+      document.querySelectorAll('.htr-ranked-list--cascade').forEach(animateCascade);
+      document.querySelectorAll('.htr-ranked-list:not(.htr-ranked-list--cascade)').forEach(animateFills);
+    }
+
+    function initHtrCarousel() {
+      var section = document.getElementById('htr-quote-carousel');
+      if (!section) return;
+
+      var track = section.querySelector('.htr-carousel-track');
+      var viewport = track && track.parentElement;
+      var originals = Array.prototype.slice.call(
+        section.querySelectorAll('.htr-carousel-slide:not(.htr-carousel-clone)')
+      );
+      var dotsWrap = section.querySelector('.htr-carousel-dots');
+      if (!track || !viewport || !originals.length) return;
+
+      var count = originals.length;
+      var TRANSITION_MS = 600;
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      /*
+       * Approach A — triple copy infinite slider:
+       *   [set0 clones] [set1 originals] [set2 clones]
+       * Live in the middle set; after animating into a buffer set, silently
+       * recenter to the equivalent middle index with transition disabled.
+       * No transitionend. No single end-clone jump.
+       */
+      var current = count;
+      var autoTimer = null;
+      var settleTimer = null;
+      var isAnimating = false;
+      var drag = {
+        active: false,
+        pointerId: null,
+        startX: 0,
+        startY: 0,
+        lastX: 0,
+        baseOffset: 0,
+        locked: false,
+        horizontal: false
+      };
+
+      function makeBufferSlide(source) {
+        var clone = source.cloneNode(true);
+        clone.classList.add('htr-carousel-clone');
+        clone.setAttribute('aria-hidden', 'true');
+        clone.removeAttribute('data-quote-index');
+        /* HubSpot Lottie / custom elements do not survive cloneNode — strip them
+           so wrap frames show quote text with a stable icon slot, never blank. */
+        var icon = clone.querySelector('.htr-quote-icon');
+        if (icon) {
+          icon.classList.add('htr-quote-icon--static');
+          icon.innerHTML = '';
+        }
+        Array.prototype.forEach.call(clone.querySelectorAll('script'), function (s) {
+          s.parentNode.removeChild(s);
+        });
+        return clone;
+      }
+
+      /* Prepend set0 (reverse insert), append set2. Originals stay as set1. */
+      var i;
+      for (i = count - 1; i >= 0; i--) {
+        track.insertBefore(makeBufferSlide(originals[i]), track.firstChild);
+      }
+      for (i = 0; i < count; i++) {
+        track.appendChild(makeBufferSlide(originals[i]));
+      }
+
+      var slides = Array.prototype.slice.call(track.querySelectorAll('.htr-carousel-slide'));
+
+      originals.forEach(function (_, logical) {
+        var dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'htr-carousel-dot border-0 p-0 cursor-pointer';
+        dot.setAttribute('aria-label', 'Go to quote ' + (logical + 1));
+        dot.setAttribute('role', 'tab');
+        dot.addEventListener('click', function () {
+          goToLogical(logical, true);
+          restartAuto();
+        });
+        dotsWrap.appendChild(dot);
+      });
+
+      var dots = dotsWrap.querySelectorAll('.htr-carousel-dot');
+
+      function isMobile() {
+        return window.matchMedia('(max-width: 767px)').matches;
+      }
+
+      function logicalIndex(trackIndex) {
+        return ((trackIndex % count) + count) % count;
+      }
+
+      function middleIndex(logical) {
+        return logical + count;
+      }
+
+      function slideOffset(trackIndex) {
+        var slide = slides[trackIndex];
+        if (!slide) return 0;
+        var viewportWidth = viewport.clientWidth || section.clientWidth;
+        return slide.offsetLeft - (viewportWidth - slide.offsetWidth) / 2;
+      }
+
+      /* Instant moves keep is-instant on until the next animated goTo — re-enabling
+         transition in the same frame as a recenter was the prior flash source. */
+      function setTransform(offset, mode) {
+        if (mode === 'animate') {
+          track.classList.remove('is-instant');
+        } else {
+          track.classList.add('is-instant');
+        }
+        track.style.transform = 'translateX(' + (-offset) + 'px)';
+        if (mode !== 'animate') {
+          void track.offsetHeight;
+        }
+      }
+
+      /* Always measure height from the middle-set original (working Lottie + full copy). */
+      function syncViewportHeight() {
+        if (!isMobile()) {
+          viewport.style.height = '';
+          return;
+        }
+        var src = slides[middleIndex(logicalIndex(current))];
+        if (!src) return;
+        viewport.style.height = src.offsetHeight + 'px';
+      }
+
+      function syncDots() {
+        var logical = logicalIndex(current);
+        dots.forEach(function (d, i) {
+          d.classList.toggle('is-active', i === logical);
+          d.setAttribute('aria-selected', i === logical ? 'true' : 'false');
+        });
+      }
+
+      function clearSettleTimer() {
+        if (settleTimer) {
+          clearTimeout(settleTimer);
+          settleTimer = null;
+        }
+      }
+
+      /* If we landed in a buffer set, jump to the identical middle-set slide. */
+      function recenterToMiddle() {
+        if (current >= count && current < count * 2) {
+          isAnimating = false;
+          return;
+        }
+        current = middleIndex(logicalIndex(current));
+        setTransform(slideOffset(current), 'jump');
+        syncDots();
+        syncViewportHeight();
+        isAnimating = false;
+      }
+
+      function goToTrack(trackIndex, animate) {
+        if (animate === undefined) animate = true;
+        if (trackIndex < 0 || trackIndex >= slides.length) return;
+
+        var shouldAnimate = animate && !reduceMotion;
+        current = trackIndex;
+        clearSettleTimer();
+        syncDots();
+
+        if (shouldAnimate) {
+          isAnimating = true;
+          setTransform(slideOffset(current), 'animate');
+          syncViewportHeight();
+          settleTimer = setTimeout(function () {
+            settleTimer = null;
+            recenterToMiddle();
+          }, TRANSITION_MS);
+        } else {
+          isAnimating = false;
+          current = middleIndex(logicalIndex(trackIndex));
+          setTransform(slideOffset(current), 'jump');
+          syncDots();
+          syncViewportHeight();
+        }
+      }
+
+      /* Shortest-path target among the three copies of a logical slide. */
+      function goToLogical(logical, animate) {
+        logical = ((logical % count) + count) % count;
+        if (!(animate && !reduceMotion)) {
+          goToTrack(middleIndex(logical), false);
+          return;
+        }
+        var candidates = [logical, logical + count, logical + count * 2];
+        var best = candidates[0];
+        var bestDist = Math.abs(best - current);
+        for (var c = 1; c < candidates.length; c++) {
+          var dist = Math.abs(candidates[c] - current);
+          if (dist < bestDist) {
+            bestDist = dist;
+            best = candidates[c];
+          }
+        }
+        goToTrack(best, true);
+      }
+
+      function stopAuto() {
+        clearInterval(autoTimer);
+        autoTimer = null;
+      }
+
+      function restartAuto() {
+        stopAuto();
+        if (reduceMotion) return;
+        autoTimer = setInterval(function () {
+          if (drag.active || isAnimating) return;
+          goToTrack(current + 1, true);
+        }, 6000);
+      }
+
+      function onPointerDown(e) {
+        if (e.pointerType === 'mouse' && e.button !== 0) return;
+        if (isAnimating) {
+          clearSettleTimer();
+          setTransform(slideOffset(current), 'jump');
+          recenterToMiddle();
+        }
+        drag.active = true;
+        drag.pointerId = e.pointerId;
+        drag.startX = e.clientX;
+        drag.startY = e.clientY;
+        drag.lastX = e.clientX;
+        drag.baseOffset = slideOffset(current);
+        drag.locked = false;
+        drag.horizontal = false;
+        section.classList.add('is-dragging');
+        stopAuto();
+        try { viewport.setPointerCapture(e.pointerId); } catch (err) { /* ignore */ }
+      }
+
+      function onPointerMove(e) {
+        if (!drag.active || e.pointerId !== drag.pointerId) return;
+        var dx = e.clientX - drag.startX;
+        var dy = e.clientY - drag.startY;
+
+        if (!drag.locked) {
+          if (Math.abs(dx) < 6 && Math.abs(dy) < 6) return;
+          drag.locked = true;
+          drag.horizontal = Math.abs(dx) >= Math.abs(dy);
+          if (!drag.horizontal) {
+            drag.active = false;
+            section.classList.remove('is-dragging');
+            try { viewport.releasePointerCapture(e.pointerId); } catch (err) { /* ignore */ }
+            restartAuto();
+            return;
+          }
+        }
+
+        if (!drag.horizontal) return;
+        e.preventDefault();
+        drag.lastX = e.clientX;
+        setTransform(drag.baseOffset - dx, 'drag');
+      }
+
+      function onPointerUp(e) {
+        if (!drag.active || e.pointerId !== drag.pointerId) return;
+        var dx = e.clientX - drag.startX;
+        var wasHorizontal = drag.horizontal;
+        drag.active = false;
+        section.classList.remove('is-dragging');
+        try { viewport.releasePointerCapture(e.pointerId); } catch (err) { /* ignore */ }
+
+        if (wasHorizontal) {
+          var threshold = Math.min(80, section.clientWidth * 0.15);
+          if (dx <= -threshold) goToTrack(current + 1, true);
+          else if (dx >= threshold) goToTrack(current - 1, true);
+          else goToTrack(current, true);
+        } else {
+          goToTrack(current, false);
+        }
+        restartAuto();
+      }
+
+      viewport.addEventListener('pointerdown', onPointerDown);
+      viewport.addEventListener('pointermove', onPointerMove);
+      viewport.addEventListener('pointerup', onPointerUp);
+      viewport.addEventListener('pointercancel', onPointerUp);
+
+      window.addEventListener('resize', function () {
+        goToTrack(current, false);
+      });
+
+      goToTrack(middleIndex(0), false);
+      restartAuto();
+    }
+
+    function init() {
+      initHtrAnimations();
+      initHtrCarousel();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+</script>
+
+{% endblock body %}

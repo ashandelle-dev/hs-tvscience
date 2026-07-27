@@ -293,8 +293,8 @@ Above-the-fold / LCP heroes may use `"loading": "eager"` or `"disabled"` with `i
 ```json
 {
   "global": false,
-  "content_types": ["LANDING_PAGE", "SITE_PAGE"],
-  "host_template_types": ["PAGE"],
+  "content_types": ["LANDING_PAGE", "SITE_PAGE", "BLOG_POST", "BLOG_LISTING"],
+  "host_template_types": ["PAGE", "BLOG_POST", "BLOG_LISTING"],
   "label": "<Human-readable label>",
   "icon": "https://www.kalungi.com/hubfs/Atlas/Module%20Logos/callout-module.svg",
   "is_available_for_new_content": true

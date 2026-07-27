@@ -18,8 +18,8 @@
 .partner-badge {
   flex-shrink: 0;
   height: auto;
-  width: 69px;
-  margin: 1rem 0;
+  width: 156px;
+  margin: 2rem 0 1rem
 }
 
 .filter-options input[type="checkbox"] {

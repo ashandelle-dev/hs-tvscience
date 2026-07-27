@@ -7,6 +7,30 @@
     "default": 136413080
   },
   {
+    "name": "filter_1",
+    "label": "Filter 1",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "Programs"
+  },
+  {
+    "name": "filter_2",
+    "label": "Filter 2",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "Categories"
+  },
+  {
+    "name": "filter_3",
+    "label": "Filter 3",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "Capabilities"
+  },
+  {
     "name": "featured_heading",
     "label": "Featured section heading",
     "required": false,
