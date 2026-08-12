@@ -44,6 +44,15 @@
         "default": "above"
       },
       {
+        "name": "column_image_radius",
+        "label": "Image corner radius",
+        "type": "number",
+        "suffix": "px",
+        "min": 0,
+        "max": 48,
+        "default": 0
+      },
+      {
         "name": "column_heading",
         "label": "Heading",
         "type": "group",
@@ -263,6 +272,7 @@
       {
         "column_image": { "size_type": "exact", "src": "", "alt": "Guaranteed outcomes icon", "loading": "lazy", "width": 76, "height": 86 },
         "column_image_position": "inline",
+        "column_image_radius": 0,
         "column_heading": { "value": "Guaranteed<br>Outcomes", "header_tag": "h2", "heading_size": 44, "heading_size_mobile": 32, "font_weight": "semibold" },
         "column_content": "",
         "column_cta": { "show": false, "link": { "url": { "type": "EXTERNAL", "href": "" }, "open_in_new_tab": false, "no_follow": false }, "text": "Learn more", "button_style": "primary" },
@@ -279,6 +289,7 @@
       {
         "column_image": { "size_type": "auto", "src": "", "alt": "", "loading": "lazy", "width": 0, "height": 0 },
         "column_image_position": "above",
+        "column_image_radius": 0,
         "column_heading": { "value": "TV ads, meet guaranteed outcomes.", "header_tag": "h2", "heading_size": 32, "heading_size_mobile": 26, "font_weight": "bold" },
         "column_content": "<p>With tvScientific, you decide what outcome matters most for your business \u2014 sales, installs, and more \u2014 and only pay when you get results.</p><p>Can your search and social campaigns do that?</p>",
         "column_cta": { "show": true, "link": { "url": { "type": "EXTERNAL", "href": "/contact" }, "open_in_new_tab": false, "no_follow": false }, "text": "Learn more", "button_style": "primary" },

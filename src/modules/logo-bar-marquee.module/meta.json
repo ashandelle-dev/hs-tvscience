@@ -1,0 +1,14 @@
+{
+  "label": "Logo Bar Marquee",
+  "css_assets": [],
+  "external_js": [],
+  "global": false,
+  "help_text": "Dark infinite-scroll logo bar. Edit the logo list once; three clones share the same logos.",
+  "content_types": ["LANDING_PAGE", "SITE_PAGE"],
+  "host_template_types": ["PAGE", "BLOG_LISTING", "BLOG_POST"],
+  "js_assets": [],
+  "other_assets": [],
+  "smart_type": "NOT_SMART",
+  "tags": ["logos", "marquee", "logo bar"],
+  "is_available_for_new_content": true
+}

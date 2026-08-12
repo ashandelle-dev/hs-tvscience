@@ -1,0 +1,847 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Holiday Trends Retail LP
+  screenshotPath: ../images/template-previews/holiday-trends-report.png
+-->
+{% extends "../layouts/base.html" %}
+
+{% block body %}
+
+{#
+  Figma Retail LP 472:88 — type locked to design tokens below.
+  Lottie slots: hero + 3 features (placeholders) + CTA (_Footer.json from report).
+  Stat numbers are in-place {% text %} fields (click-to-edit). Enter digits only;
+  CSS ::after adds %; count-up JS reads textContent for the target.
+#}
+
+<style>
+  /* ===== Type scale (Figma desktop) — win over HubSpot / rich_text defaults ===== */
+  #htrlp-hero .htrlp-type-h1,
+  #htrlp-hero .htrlp-type-h1 h1,
+  #htrlp-hero .htrlp-type-h1 p {
+    font-size: 64px !important;
+    font-weight: 600 !important;
+    line-height: 0.95 !important;
+    letter-spacing: -3.2px !important;
+    color: #1f252b !important;
+    margin: 0 !important;
+  }
+
+  #htrlp-hero .htrlp-type-lede,
+  #htrlp-hero .htrlp-type-lede p {
+    font-size: 28px !important;
+    font-weight: 500 !important;
+    line-height: 1.2 !important;
+    letter-spacing: -1.12px !important;
+    color: #1f252b !important;
+    margin: 0 !important;
+  }
+
+  #htrlp-stats .htrlp-type-stats-h,
+  #htrlp-stats .htrlp-type-stats-h h2,
+  #htrlp-stats .htrlp-type-stats-h p {
+    font-size: 42px !important;
+    font-weight: 500 !important;
+    line-height: 1.2 !important;
+    letter-spacing: -2.1px !important;
+    color: #0f2d29 !important;
+    margin: 0 !important;
+    text-align: center;
+  }
+
+  #htrlp-stats .htrlp-count {
+    font-size: 120px !important;
+    font-weight: 600 !important;
+    line-height: 1.2 !important;
+    letter-spacing: -6px !important;
+    color: #198960 !important;
+  }
+
+  #htrlp-stats .htrlp-count::after,
+  .htrlp-feature .htrlp-pill-count::after {
+    content: '%';
+  }
+
+  /* HubSpot text wrappers must inherit type locks + stay inline for click-to-edit */
+  #htrlp-stats .htrlp-count .hs_cos_wrapper,
+  .htrlp-feature .htrlp-pill-count .hs_cos_wrapper,
+  #htrlp-case-studies .htrlp-case-num .hs_cos_wrapper {
+    display: inline !important;
+    font: inherit !important;
+    font-size: inherit !important;
+    font-weight: inherit !important;
+    line-height: inherit !important;
+    letter-spacing: inherit !important;
+    color: inherit !important;
+  }
+
+  #htrlp-stats .htrlp-type-stat-copy,
+  #htrlp-stats .htrlp-type-stat-copy p {
+    font-size: 24px !important;
+    font-weight: 500 !important;
+    line-height: 1.2 !important;
+    letter-spacing: -1.2px !important;
+    color: #0f2d29 !important;
+    margin: 0 !important;
+  }
+
+  #htrlp-stats .htrlp-type-stat-copy sup {
+    color: #198960 !important;
+    font-size: 0.75em;
+  }
+
+  /* Case studies (Figma screenshot 472:540 / timed tabs) */
+  #htrlp-case-studies .htrlp-case-num {
+    font-size: 24px !important;
+    font-weight: 600 !important;
+    letter-spacing: -1.2px !important;
+    color: #198960 !important;
+    margin: 0 0 16px !important;
+  }
+
+  #htrlp-case-studies .htrlp-type-case-h,
+  #htrlp-case-studies .htrlp-type-case-h h2,
+  #htrlp-case-studies .htrlp-type-case-h p {
+    font-size: 56px !important;
+    font-weight: 600 !important;
+    line-height: 1.1 !important;
+    letter-spacing: -2.8px !important;
+    color: #1f252b !important;
+    margin: 0 !important;
+  }
+
+  #htrlp-case-studies .htrlp-type-case-h .text-tvs-green,
+  #htrlp-case-studies .htrlp-type-case-h span {
+    color: #23e596 !important;
+  }
+
+  #htrlp-case-studies .htrlp-type-case-sub,
+  #htrlp-case-studies .htrlp-type-case-sub p {
+    font-size: 24px !important;
+    font-weight: 500 !important;
+    line-height: 1.2 !important;
+    letter-spacing: -1.2px !important;
+    color: #46515b !important;
+    margin: 16px 0 0 !important;
+  }
+
+  /* Feature blocks — headings 42 / body 24 / callout 20 */
+  .htrlp-feature .htrlp-type-feat-h,
+  .htrlp-feature .htrlp-type-feat-h h2,
+  .htrlp-feature .htrlp-type-feat-h p {
+    font-size: 42px !important;
+    font-weight: 600 !important;
+    line-height: 1.15 !important;
+    letter-spacing: -2.1px !important;
+    color: #1f252b !important;
+    margin: 0 !important;
+  }
+
+  .htrlp-feature .htrlp-type-feat-body,
+  .htrlp-feature .htrlp-type-feat-body p {
+    font-size: 24px !important;
+    font-weight: 500 !important;
+    line-height: 1.2 !important;
+    letter-spacing: -1.2px !important;
+    color: #46515b !important;
+    margin: 0 !important;
+  }
+
+  .htrlp-feature .htrlp-type-feat-callout,
+  .htrlp-feature .htrlp-type-feat-callout p {
+    font-size: 20px !important;
+    font-weight: 500 !important;
+    line-height: 1.2 !important;
+    letter-spacing: -1px !important;
+    color: #46515b !important;
+    margin: 0 !important;
+  }
+
+  .htrlp-feature .htrlp-pill-count {
+    font-size: 24px !important;
+    font-weight: 600 !important;
+    line-height: 1.2 !important;
+    letter-spacing: -1.2px !important;
+    color: #1f252b !important;
+  }
+
+  #htrlp-footnotes .htrlp-type-sources,
+  #htrlp-footnotes .htrlp-type-sources p,
+  #htrlp-footnotes .htrlp-sources-label {
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    line-height: 1.7 !important;
+    letter-spacing: 0 !important;
+    color: #000 !important;
+    margin: 0 !important;
+    text-align: left !important;
+  }
+
+  #htrlp-footnotes .htrlp-sources-label {
+    font-weight: 600 !important;
+  }
+
+  #htrlp-footnotes .htrlp-type-sources p + p {
+    margin-top: 8px !important;
+  }
+
+  @media (max-width: 767px) {
+    #htrlp-hero .htrlp-type-h1,
+    #htrlp-hero .htrlp-type-h1 h1,
+    #htrlp-hero .htrlp-type-h1 p {
+      font-size: 40px !important;
+      letter-spacing: -2px !important;
+    }
+
+    #htrlp-hero .htrlp-type-lede,
+    #htrlp-hero .htrlp-type-lede p {
+      font-size: 20px !important;
+      letter-spacing: -0.8px !important;
+    }
+
+    #htrlp-stats .htrlp-type-stats-h,
+    #htrlp-stats .htrlp-type-stats-h h2,
+    #htrlp-stats .htrlp-type-stats-h p {
+      font-size: 28px !important;
+      letter-spacing: -1.4px !important;
+      text-align: left !important;
+    }
+
+    #htrlp-stats .htrlp-count {
+      font-size: 72px !important;
+      letter-spacing: -3.6px !important;
+    }
+
+    #htrlp-stats .htrlp-type-stat-copy,
+    #htrlp-stats .htrlp-type-stat-copy p {
+      font-size: 18px !important;
+      letter-spacing: -0.9px !important;
+      text-align: left !important;
+    }
+
+    #htrlp-case-studies .htrlp-type-case-h,
+    #htrlp-case-studies .htrlp-type-case-h h2,
+    #htrlp-case-studies .htrlp-type-case-h p {
+      font-size: 36px !important;
+      letter-spacing: -1.8px !important;
+    }
+
+    #htrlp-case-studies .htrlp-type-case-sub,
+    #htrlp-case-studies .htrlp-type-case-sub p {
+      font-size: 18px !important;
+    }
+
+    .htrlp-feature .htrlp-type-feat-h,
+    .htrlp-feature .htrlp-type-feat-h h2,
+    .htrlp-feature .htrlp-type-feat-h p {
+      font-size: 32px !important;
+      letter-spacing: -1.6px !important;
+    }
+
+    .htrlp-feature .htrlp-type-feat-body,
+    .htrlp-feature .htrlp-type-feat-body p {
+      font-size: 20px !important;
+    }
+
+    .htrlp-feature .htrlp-type-feat-callout,
+    .htrlp-feature .htrlp-type-feat-callout p {
+      font-size: 16px !important;
+    }
+  }
+
+  /* ===== Layout chrome ===== */
+  /* Closing CTA — copied from holiday-trends-report.html (.htr-grid / .htr-cta) */
+  .htr-grid {
+    background-image:
+      linear-gradient(to right, rgba(35, 229, 150, 0.5) 2px, transparent 2px),
+      linear-gradient(to bottom, rgba(35, 229, 150, 0.5) 2px, transparent 2px);
+    background-size: 50px 50px;
+  }
+
+  /* Closing CTA band (Figma 27:2694): pastel base + grid + two top-aligned
+     green washes (saturated #23E596 overlay + mint hold under the headline). */
+  .htr-cta {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .htr-cta::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(
+      180deg,
+      #dff5e8 0%,
+      rgba(223, 245, 232, 0.96) 48%,
+      rgba(223, 245, 232, 0.58) 70%,
+      rgba(223, 245, 232, 0) 90%
+    );
+}
+
+  .htr-cta .htr-hero-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .htrlp-hero-fade {
+    position: relative;
+  }
+
+  .htrlp-hero-fade::after {
+    content: "";
+    display: block;
+    height: 100px;
+    width: 100%;
+    background: linear-gradient(180deg, rgba(243, 255, 246, 0) 0%, #f3fff6 100%);
+    pointer-events: none;
+  }
+
+  /* HubSpot form — Figma 2×2 */
+  .htrlp-form form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px 24px;
+    margin: 0;
+    max-width: 644px;
+  }
+
+  .htrlp-form fieldset {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px 24px;
+    max-width: none !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0;
+  }
+
+  .htrlp-form fieldset.form-columns-1 .hs-form-field {
+    width: 100% !important;
+  }
+
+  .htrlp-form fieldset:has([type="hidden"]) {
+    display: none;
+  }
+
+  .htrlp-form .hs-form-field {
+    width: calc(50% - 12px) !important;
+    float: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .htrlp-form .hs-form-field > label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .htrlp-form .input {
+    margin: 0 !important;
+  }
+
+  .htrlp-form input[type="text"],
+  .htrlp-form input[type="email"],
+  .htrlp-form input[type="tel"],
+  .htrlp-form select {
+    min-height: 44px !important;
+    width: 100% !important;
+    border: 2px solid #23e596 !important;
+    border-radius: 8px !important;
+    background: #fff !important;
+    color: #1f252b !important;
+    padding: 10px 16px !important;
+    font-family: inherit;
+    font-size: 14px !important;
+    font-weight: 500;
+    letter-spacing: -0.7px;
+  }
+
+  .htrlp-form input::placeholder {
+    color: #a7b2be;
+    opacity: 1;
+  }
+
+  .htrlp-form .hs_submit {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .htrlp-form .hs_submit .actions {
+    margin: 0;
+    padding: 0;
+  }
+
+  .htrlp-form .hs-button,
+  .htrlp-form input[type="submit"] {
+    width: auto !important;
+    min-height: 49px !important;
+    padding: 14px 29px !important;
+    margin: 0 !important;
+    background-color: #23e596 !important;
+    color: #0f2d29 !important;
+    border: none !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+    font-size: 14.5px !important;
+    font-weight: 500 !important;
+    line-height: 1.35 !important;
+    letter-spacing: 1.5px !important;
+    text-transform: uppercase !important;
+    cursor: pointer;
+  }
+
+  .htrlp-form .hs-button:hover,
+  .htrlp-form input[type="submit"]:hover {
+    opacity: 0.9;
+  }
+
+  .htrlp-form .hs-error-msgs {
+    list-style: none;
+    padding: 0;
+    margin: 6px 0 0;
+  }
+
+  .htrlp-form .hs-error-msg {
+    color: #c0392b;
+    font-size: 13px;
+  }
+
+  @media (max-width: 767px) {
+    .htrlp-form .hs-form-field {
+      width: 100% !important;
+    }
+  }
+
+  #htrlp-case-studies .timed-tabs {
+    margin-top: 48px;
+  }
+
+  /* Lottie slots — fill their column */
+  .htrlp-lottie {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .htrlp-lottie--hero {
+    aspect-ratio: 557 / 573;
+  }
+
+  .htrlp-lottie--feature {
+    aspect-ratio: 1;
+  }
+
+  .htrlp-lottie--feature-wide {
+    aspect-ratio: 4 / 3;
+  }
+
+  .htrlp-lottie .hs_cos_wrapper,
+  .htrlp-lottie lottie-player {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100%;
+  }
+</style>
+
+<main class="font-plex text-tvs-green-dark">
+
+  <!-- ===== HERO — Figma 472:147 (~644 copy / ~557 media) ===== -->
+  <section id="htrlp-hero" class="htrlp-hero-fade bg-white">
+    <div class="max-w-[1312px] mx-auto px-4 pt-16 md:pt-[100px] pb-10">
+      <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,7fr)_minmax(0,6fr)] gap-10 lg:gap-16 xl:gap-24 items-center">
+        <div class="flex flex-col gap-8 md:gap-10 items-start min-w-0">
+          <div class="htrlp-type-h1 w-full">
+            {% module "htrlp_hero_heading"
+              path="@hubspot/rich_text",
+              label="Hero - Heading",
+              html="<h1>Reach holiday shoppers before they’ve filled their carts</h1>"
+            %}
+          </div>
+          <div class="htrlp-type-lede w-full">
+            {% module "htrlp_hero_body"
+              path="@hubspot/rich_text",
+              label="Hero - Body",
+              html="<p>People are already pinning their holiday wishlists.</p><p>Use Performance TV with tvScientific by Pinterest to reach high-intent shoppers earlier and influence what makes the cart.</p>"
+            %}
+          </div>
+          <div class="htrlp-form w-full pt-2">
+            {% module "htrlp_hero_form"
+              path="@hubspot/form",
+              label="Hero - Form"
+            %}
+          </div>
+        </div>
+
+        <div class="htrlp-lottie htrlp-lottie--hero mx-auto lg:mx-0 w-full min-w-0">
+          {% module "htrlp_hero_lottie"
+            path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+            label="Hero - Lottie",
+            activate_in_view="true",
+            loop="false",
+            source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S3-Pie-2.json"
+          %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STATS — Figma 472:187 ===== -->
+  <section id="htrlp-stats" class="bg-white pt-16 md:pt-[120px] pb-16 md:pb-[160px]">
+    <div class="max-w-[1312px] mx-auto px-4 flex flex-col gap-12 md:gap-20 items-start md:items-center">
+      <div class="htrlp-type-stats-h max-w-[561px] w-full">
+        {% module "htrlp_stats_heading"
+          path="@hubspot/rich_text",
+          label="Stats - Heading",
+          html="<h2>Retail is betting big on Performance TV this holiday</h2>"
+        %}
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-6 w-full text-left md:text-center">
+        <div class="px-4 flex flex-col gap-6 items-start md:items-center">
+          <span class="htrlp-count block">{% text "stat_1_value" label="Stats - Value 1 (e.g. 89)", value="89" %}</span>
+          <div class="htrlp-type-stat-copy w-full">
+            {% module "htrlp_stat_1_copy"
+              path="@hubspot/rich_text",
+              label="Stats - Copy 1",
+              html="<p>of retail marketers plan to run ads on Performance TV during the 2026 holiday season and peak seasonal shopping moments<sup>1</sup></p>"
+            %}
+          </div>
+        </div>
+        <div class="px-4 flex flex-col gap-6 items-start md:items-center">
+          <span class="htrlp-count block">{% text "stat_2_value" label="Stats - Value 2 (e.g. 97)", value="97" %}</span>
+          <div class="htrlp-type-stat-copy w-full">
+            {% module "htrlp_stat_2_copy"
+              path="@hubspot/rich_text",
+              label="Stats - Copy 2",
+              html="<p>of retail marketers expect Performance TV to help them achieve revenue growth during the 2026 holiday and seasonal shopping season<sup>1</sup></p>"
+            %}
+          </div>
+        </div>
+        <div class="px-4 flex flex-col gap-6 items-start md:items-center">
+          <span class="htrlp-count block">{% text "stat_3_value" label="Stats - Value 3 (e.g. 75)", value="75" %}</span>
+          <div class="htrlp-type-stat-copy w-full">
+            {% module "htrlp_stat_3_copy"
+              path="@hubspot/rich_text",
+              label="Stats - Copy 3",
+              html="<p>of retail marketers say their Performance TV budget for holiday and seasonal shopping moments has increased year over year<sup>1</sup></p>"
+            %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CASE STUDIES — timed tabs (Figma 472:540) ===== -->
+  <section id="htrlp-case-studies" class="bg-tvs-green-pastel py-16 md:py-[120px]">
+    <div class="max-w-[1312px] mx-auto px-4">
+      <p class="htrlp-case-num">{% text "case_section_num" label="Case studies - Section number", value="02" %}</p>
+      <div class="htrlp-type-case-h max-w-[900px]">
+        {% module "htrlp_case_heading"
+          path="@hubspot/rich_text",
+          label="Case studies - Heading",
+          html="<h2>Big claims, backed by <span class='text-tvs-green'>real campaigns.</span></h2>"
+        %}
+      </div>
+      <div class="htrlp-type-case-sub max-w-[640px]">
+        {% module "htrlp_case_subhead"
+          path="@hubspot/rich_text",
+          label="Case studies - Subhead",
+          html="<p>Don’t take our word for it. Hear it from the brands themselves.</p>"
+        %}
+      </div>
+
+      {% module "htrlp_case_studies_v2"
+        path="../modules/timed tabs.module",
+        label="Case studies - Timed Tabs"
+      %}
+    </div>
+  </section>
+
+  <!-- ===== FEATURE 1 — Figma 472:202 ===== -->
+  <section class="htrlp-feature bg-white pt-16 md:pt-[120px] pb-16 md:pb-20">
+    <div class="max-w-[1312px] mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] gap-10 lg:gap-16 xl:gap-20 items-center">
+        <div class="flex flex-col gap-12">
+          <div class="flex flex-col gap-6">
+            <div class="htrlp-type-feat-h">
+              {% module "htrlp_f1_heading"
+                path="@hubspot/rich_text",
+                label="Feature 1 - Heading",
+                html="<h2>Capture demand before holiday competition peaks</h2>"
+              %}
+            </div>
+            <div class="htrlp-type-feat-body">
+              {% module "htrlp_f1_body"
+                path="@hubspot/rich_text",
+                label="Feature 1 - Body",
+                html="<p>By the time your biggest promotion hits, retail shoppers have already been browsing, pinning, and shortlisting what they want.</p>"
+              %}
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-6">
+            <div class="flex gap-6 items-center">
+              <div class="bg-tvs-green-pastel rounded-2xl w-[86px] h-[86px] shrink-0 flex items-center justify-center">
+                <span class="htrlp-count htrlp-pill-count">{% text "f1_stat_a_value" label="Feature 1 - Callout A value (e.g. 73)", value="73" %}</span>
+              </div>
+              <div class="htrlp-type-feat-callout min-w-0">
+                {% module "htrlp_f1_stat_a"
+                  path="@hubspot/rich_text",
+                  label="Feature 1 - Callout A copy",
+                  html="<p>of retail marketers plan to advertise using Performance TV for Black Friday Cyber Monday in 2026, with most launching in November<sup>1</sup></p>"
+                %}
+              </div>
+            </div>
+            <div class="flex gap-6 items-center">
+              <div class="bg-tvs-green-pastel rounded-2xl w-[86px] h-[86px] shrink-0 flex items-center justify-center">
+                <span class="htrlp-count htrlp-pill-count">{% text "f1_stat_b_value" label="Feature 1 - Callout B value (e.g. 79)", value="79" %}</span>
+              </div>
+              <div class="htrlp-type-feat-callout min-w-0">
+                {% module "htrlp_f1_stat_b"
+                  path="@hubspot/rich_text",
+                  label="Feature 1 - Callout B copy",
+                  html="<p>say it’s critical to reach shoppers before they begin actively searching or comparing products during the holiday and seasonal shopping season<sup>1</sup></p>"
+                %}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="htrlp-lottie htrlp-lottie--feature mx-auto lg:mx-0">
+          {% module "htrlp_f1_lottie"
+            path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+            label="Feature 1 - Lottie (wishlist / bag)",
+            activate_in_view="true",
+            loop="false",
+            source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S3-Pie-2.json"
+          %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FEATURE 2 — Figma 472:231 ===== -->
+  <section class="htrlp-feature bg-white border-y border-tvs-grey-light py-16 md:py-20">
+    <div class="max-w-[1312px] mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] gap-10 lg:gap-16 xl:gap-20 items-center">
+        <div class="flex flex-col gap-12">
+          <div class="flex flex-col gap-6">
+            <div class="htrlp-type-feat-h">
+              {% module "htrlp_f2_heading"
+                path="@hubspot/rich_text",
+                label="Feature 2 - Heading",
+                html="<h2>Turn early seasonal moments into holiday momentum</h2>"
+              %}
+            </div>
+            <div class="htrlp-type-feat-body">
+              {% module "htrlp_f2_body"
+                path="@hubspot/rich_text",
+                label="Feature 2 - Body",
+                html="<p>Reach shoppers earlier across the seasonal moments that shape holiday buying behavior.</p>"
+              %}
+            </div>
+          </div>
+
+          <div class="flex gap-6 items-center">
+            <div class="bg-tvs-green-pastel rounded-2xl w-[86px] h-[86px] shrink-0 flex items-center justify-center text-tvs-black" aria-hidden="true">
+              <svg width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 12h18M14 4l8 8-8 8" stroke="#1F252B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="htrlp-type-feat-callout min-w-0">
+              {% module "htrlp_f2_callout"
+                path="@hubspot/rich_text",
+                label="Feature 2 - Callout",
+                html="<p>From Labor Day and October Prime Day to fall football and Black Friday Cyber Monday, activate Pinterest intent signals on Performance TV to connect with future customers before the most competitive shopping weeks begin.</p>"
+              %}
+            </div>
+          </div>
+        </div>
+
+        <div class="htrlp-lottie htrlp-lottie--feature-wide mx-auto lg:mx-0">
+          {% module "htrlp_f2_lottie"
+            path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+            label="Feature 2 - Lottie (timeline)",
+            activate_in_view="true",
+            loop="false",
+            source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S3-Pie-2.json"
+          %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FEATURE 3 — Figma 472:264 ===== -->
+  <section class="htrlp-feature bg-white pt-16 md:pt-20 pb-16 md:pb-[120px]">
+    <div class="max-w-[1312px] mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] gap-10 lg:gap-16 xl:gap-20 items-center">
+        <div class="flex flex-col gap-12">
+          <div class="flex flex-col gap-6">
+            <div class="htrlp-type-feat-h">
+              {% module "htrlp_f3_heading"
+                path="@hubspot/rich_text",
+                label="Feature 3 - Heading",
+                html="<h2>Prove holiday TV’s impact on retail performance</h2>"
+              %}
+            </div>
+            <div class="htrlp-type-feat-body">
+              {% module "htrlp_f3_body"
+                path="@hubspot/rich_text",
+                label="Feature 3 - Body",
+                html="<p>Optimize TV toward the retail outcomes that matter most, from impressions and site visits to sales.</p>"
+              %}
+            </div>
+          </div>
+
+          <div class="flex gap-6 items-center">
+            <div class="bg-tvs-green-pastel rounded-2xl w-[86px] h-[86px] shrink-0 flex items-center justify-center">
+              <span class="htrlp-count htrlp-pill-count">{% text "f3_stat_value" label="Feature 3 - Callout value (e.g. 27)", value="27" %}</span>
+            </div>
+            <div class="htrlp-type-feat-callout min-w-0">
+              {% module "htrlp_f3_stat"
+                path="@hubspot/rich_text",
+                label="Feature 3 - Callout copy",
+                html="<p>increase in outcomes per $100 spent, on average, with tvScientific AI enriched by Pinterest’s high-intent signals<sup>2</sup></p>"
+              %}
+            </div>
+          </div>
+        </div>
+
+        <div class="htrlp-lottie htrlp-lottie--feature-wide mx-auto lg:mx-0">
+          {% module "htrlp_f3_lottie"
+            path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+            label="Feature 3 - Lottie (outcomes)",
+            activate_in_view="true",
+            loop="false",
+            source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/S3-Pie-2.json"
+          %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CLOSING CTA ===== -->
+  <section id="htr-cta" class="htr-cta htr-grid bg-tvs-green-pastel overflow-hidden">
+    <div class="htr-hero-content max-w-[866px] mx-auto px-4 pt-20 md:pt-28 text-center">
+      <h2 class="text-tvs-green-dark !text-[36px] md:!text-[64px] !font-medium !leading-[1.15] tracking-[-0.05em] !mb-12 text-balance">
+        See how you can supercharge your Performance TV during the 2026 holiday season.
+      </h2>
+      <a href="https://www.tvscientific.com/contact" class="hs-button !text-[16px] !font-medium !tracking-[1.5px] !leading-[1.35] !rounded-[6px] !px-8 !py-4 !border-0 !bg-tvs-green !text-tvs-green-dark uppercase">Request a Demo</a>
+
+      <!-- Gift boxes illustration (Lottie) -->
+      <div class="max-w-[450px] mx-auto mt-16">
+        {% module "htr_cta_gifts" path="/tvScientific 2022 Atlas Pro/cli-build/modules/Lottie Animation Player",
+          label="CTA - Gift Boxes",
+          activate_in_view="true",
+          loop="false",
+          source="https://tvscientific.com/hubfs/HolidayTrendsReport2026/_Footer.json"
+        %}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SOURCES — left-aligned like holiday-trends-report.html ===== -->
+  <section id="htrlp-footnotes" class="bg-white border-b border-tvs-grey-light pt-12 pb-20 md:pb-[160px]">
+    <div class="max-w-[1312px] mx-auto px-4 text-left">
+      <div class="space-y-3">
+        <p class="htrlp-sources-label mb-0 font-semibold">Sources:</p>
+        <div class="htrlp-type-sources">
+          {% module "htrlp_sources"
+            path="@hubspot/rich_text",
+            label="Sources",
+            html="<p>1 - tvScientific by Pinterest, 2026 Holiday &amp; Seasonal Shopping Trends Report (Retail (apparel / beauty / home / etc.) marketers, N=155), US, July 2026</p><p>2 - tvScientific by Pinterest Internal Data, US, 3/27/26 - 4/7/26. N= &gt;300 advertisers. Outcomes evaluated were purchases, website visits, installs, and registration.</p>"
+          %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% dnd_area "dnd_area" class='dnd-empty', label='Drag and Drop Area' %}
+  {% end_dnd_area %}
+
+</main>
+
+<script>
+  (function () {
+    function initCountUps() {
+      var els = document.querySelectorAll('.htrlp-count');
+      if (!els.length) return;
+
+      var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* Prefer HubSpot text wrapper so click-to-edit overlay stays intact */
+      function getAnimEl(el) {
+        return el.querySelector('.hs_cos_wrapper') || el;
+      }
+
+      function parseTarget(el) {
+        var raw = (el.getAttribute('data-target') || getAnimEl(el).textContent || '0').toString();
+        var n = parseInt(raw.replace(/[^\d-]/g, ''), 10);
+        return isNaN(n) ? 0 : n;
+      }
+
+      function setFinal(el) {
+        getAnimEl(el).textContent = String(parseTarget(el));
+      }
+
+      function animate(el) {
+        var animEl = getAnimEl(el);
+        var target = parseTarget(el);
+        var duration = 1200;
+        var start = performance.now();
+
+        function frame(now) {
+          var t = Math.min(1, (now - start) / duration);
+          var eased = 1 - Math.pow(1 - t, 3);
+          animEl.textContent = String(Math.round(target * eased));
+          if (t < 1) requestAnimationFrame(frame);
+          else setFinal(el);
+        }
+
+        requestAnimationFrame(frame);
+      }
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var el = entry.target;
+          if (el.dataset.done) return;
+          el.dataset.done = '1';
+          if (reduceMotion) setFinal(el);
+          else animate(el);
+          observer.unobserve(el);
+        });
+      }, { threshold: 0.4 });
+
+      els.forEach(function (el) {
+        /* Snapshot editable number before zeroing for animation */
+        el.setAttribute('data-target', String(parseTarget(el)));
+        if (reduceMotion) setFinal(el);
+        else {
+          getAnimEl(el).textContent = '0';
+          observer.observe(el);
+        }
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initCountUps);
+    } else {
+      initCountUps();
+    }
+  })();
+</script>
+
+{% endblock body %}

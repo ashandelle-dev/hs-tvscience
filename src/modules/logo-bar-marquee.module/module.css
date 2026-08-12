@@ -1,0 +1,58 @@
+/* The bar runs edge to edge, so the DnD section hosting it has to give up its
+   1240px row cap and side padding. */
+.dnd-section:has(.logo-bar-marquee) {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.dnd-section:has(.logo-bar-marquee) > .row-fluid {
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.dnd-section:has(.logo-bar-marquee) .dnd-column {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.logo-bar-marquee {
+  background: #16242F;
+  overflow: hidden;
+  padding: 28px 0;
+}
+
+.logo-bar-marquee__track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: logo-bar-marquee 45s linear infinite;
+}
+
+.logo-bar-marquee__group {
+  display: flex;
+  align-items: center;
+  gap: 160px;
+  padding: 0 80px;
+  flex-shrink: 0;
+}
+
+.logo-bar-marquee__group img {
+  display: block;
+  height: 28px;
+  width: auto;
+  max-width: 130px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+@keyframes logo-bar-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-33.333%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-bar-marquee__track {
+    animation: none;
+  }
+}

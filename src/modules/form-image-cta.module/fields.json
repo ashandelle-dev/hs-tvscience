@@ -1,5 +1,14 @@
 [
   {
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "type": "text",
+    "tab": "CONTENT",
+    "allow_new_line": false,
+    "default": "",
+    "inline_help_text": "Optional small label above the heading (e.g. Get started today)."
+  },
+  {
     "name": "heading",
     "label": "Heading",
     "type": "group",

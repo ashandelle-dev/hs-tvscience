@@ -1,0 +1,141 @@
+/* ==========================================================================
+   case-study-cards.module
+   ========================================================================== */
+
+.case-study-cards__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  align-items: stretch;
+}
+
+.case-study-cards__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 42px;
+  padding: 32px 24px;
+  text-align: center;
+  border-right: 1px solid var(--csc-divider, #d9e2eb);
+}
+
+.case-study-cards__card:last-child {
+  border-right: none;
+}
+
+.case-study-cards__logo-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 240px;
+  max-width: 100%;
+  height: 150px;
+  border-radius: 16px;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.case-study-cards__logo-box img {
+  display: block;
+  max-width: 100%;
+  max-height: 64px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.case-study-cards__body {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+  color: #1f252b;
+}
+
+.case-study-cards__body p {
+  margin: 0;
+  font: inherit;
+  color: inherit;
+}
+
+.case-study-cards__stats {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 0;
+  width: 100%;
+}
+
+.case-study-cards__stat {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  padding: 4px 12px;
+  min-width: 0;
+}
+
+.case-study-cards__stat + .case-study-cards__stat {
+  border-left: 1px solid var(--csc-divider, #d9e2eb);
+}
+
+.case-study-cards__stat-value {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+  color: #1f252b;
+}
+
+.case-study-cards__stat-caption {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+  color: #1f252b;
+  white-space: pre-line;
+}
+
+.case-study-cards__cta {
+  margin-top: auto;
+}
+
+.case-study-cards__cta .hs-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 !important;
+  padding: 16px 32px !important;
+  border: 2px solid #198960 !important;
+  border-radius: 6px !important;
+  background-color: transparent !important;
+  color: #198960 !important;
+  box-shadow: none !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  line-height: 1.35 !important;
+  letter-spacing: 1.5px !important;
+  text-transform: uppercase;
+}
+
+.case-study-cards__cta a.hs-button:hover,
+.case-study-cards__cta a.hs-button:focus {
+  background-color: #198960 !important;
+  color: #ffffff !important;
+}
+
+@media (max-width: 1023px) {
+  .case-study-cards__grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Stacked cards drop the dividers in the mobile design. */
+  .case-study-cards__card {
+    border-right: none;
+    padding: 32px 0;
+  }
+}

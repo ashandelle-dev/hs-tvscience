@@ -1,0 +1,107 @@
+[
+  {
+    "name": "logos",
+    "label": "Logos",
+    "help_text": "Add, remove, or reorder logos. The marquee clones this list automatically — you only edit once.",
+    "required": false,
+    "locked": false,
+    "occurrence": {
+      "min": 1,
+      "max": 30,
+      "default": 7
+    },
+    "responsive": true,
+    "resizable": true,
+    "show_loading": true,
+    "type": "image",
+    "default": [
+      {
+        "size_type": "exact",
+        "src": "https://tvscientific.com/hubfs/logo-scopely.svg",
+        "alt": "Scopely",
+        "loading": "lazy",
+        "width": 115,
+        "height": 32,
+        "max_width": 115,
+        "max_height": 32
+      },
+      {
+        "size_type": "exact",
+        "src": "https://tvscientific.com/hubfs/Logobar%20(white)/ea-sports-logo-white.svg",
+        "alt": "EA Sports",
+        "loading": "lazy",
+        "width": 33,
+        "height": 32,
+        "max_width": 33,
+        "max_height": 32
+      },
+      {
+        "size_type": "exact",
+        "src": "https://tvscientific.com/hubfs/Logobar%20(white)/nba-logo-white.svg",
+        "alt": "NBA",
+        "loading": "lazy",
+        "width": 51,
+        "height": 32,
+        "max_width": 51,
+        "max_height": 32
+      },
+      {
+        "size_type": "exact",
+        "src": "https://tvscientific.com/hubfs/Logobar%20(white)/weight-watchers-logo-white.svg",
+        "alt": "WeightWatchers",
+        "loading": "lazy",
+        "width": 188,
+        "height": 32,
+        "max_width": 188,
+        "max_height": 32
+      },
+      {
+        "size_type": "exact",
+        "src": "https://tvscientific.com/hubfs/crocs-logo-white.svg",
+        "alt": "Crocs",
+        "loading": "lazy",
+        "width": 131,
+        "height": 32,
+        "max_width": 131,
+        "max_height": 32
+      },
+      {
+        "size_type": "exact",
+        "src": "https://tvscientific.com/hubfs/Logobar%20(white)/staples-logo-white.svg",
+        "alt": "Staples",
+        "loading": "lazy",
+        "width": 141,
+        "height": 32,
+        "max_width": 141,
+        "max_height": 32
+      },
+      {
+        "size_type": "exact",
+        "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/Logobar%20(white)/dream-logo-white.svg",
+        "alt": "dream",
+        "loading": "lazy",
+        "width": 99,
+        "height": 32,
+        "max_width": 99,
+        "max_height": 32
+      }
+    ]
+  },
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "background_color",
+        "label": "Background color",
+        "type": "color",
+        "default": {
+          "color": "#16242F",
+          "opacity": 100
+        }
+      }
+    ]
+  }
+]

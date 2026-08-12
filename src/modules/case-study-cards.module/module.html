@@ -1,0 +1,81 @@
+{% set bg_color      = module.style.background_color.css %}
+{% set bg_image      = module.style.background_image.src %}
+{% set text_color    = module.style.text_color.css %}
+{% set divider_color = module.style.divider_color.css %}
+
+<section
+  class="case-study-cards font-plex py-16 md:py-16"
+  style="
+    {% if bg_color %}background-color: {{ bg_color }};{% endif %}
+    {% if bg_image %}background-image: url('{{ bg_image|escape_url }}'); background-size: cover; background-position: center;{% endif %}
+    {% if text_color %}color: {{ text_color }};{% endif %}
+    {% if divider_color %}--csc-divider: {{ divider_color }};{% endif %}
+    {{ module.style.padding.css }}
+  ">
+
+  <div
+    class="tvsci-container"
+    {% if module.style.container_max_width %}style="max-width: {{ module.style.container_max_width }}px;"{% endif %}>
+
+    <div class="case-study-cards__grid">
+      {% for card in module.cards %}
+        {% set logo_bg = card.logo_background_color.css %}
+        {% set href = card.cta.link.url.href %}
+        {% if card.cta.link.url.type is equalto "EMAIL_ADDRESS" %}
+          {% set href = "mailto:" + href %}
+        {% endif %}
+
+        <article class="case-study-cards__card">
+          <div
+            class="case-study-cards__logo-box"
+            {% if logo_bg %}style="background-color: {{ logo_bg }};"{% endif %}>
+            {% if card.logo.src %}
+              {% set logoLoading = card.logo.loading != 'disabled' ? 'loading="{{ card.logo.loading|escape_attr }}"' : '' %}
+              <img
+                src="{{ card.logo.src|escape_url }}"
+                alt="{{ card.logo.alt|escape_attr }}"
+                {% if card.logo.width %}width="{{ card.logo.width|escape_attr }}"{% endif %}
+                {% if card.logo.height %}height="{{ card.logo.height|escape_attr }}"{% endif %}
+                {{ logoLoading }}>
+            {% endif %}
+          </div>
+
+          {% if card.body_copy %}
+          <div class="case-study-cards__body">{{ card.body_copy }}</div>
+          {% endif %}
+
+          {% if card.stats %}
+          <div class="case-study-cards__stats">
+            {% for stat in card.stats %}
+              <div class="case-study-cards__stat">
+                {% if stat.stat_value %}
+                <p class="case-study-cards__stat-value">{{ stat.stat_value }}</p>
+                {% endif %}
+                {% if stat.stat_caption %}
+                <p class="case-study-cards__stat-caption">{{ stat.stat_caption|replace('\n', '<br>')|safe }}</p>
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+          {% endif %}
+
+          {% if card.cta.text %}
+          <div class="case-study-cards__cta">
+            {% if href %}
+            <a
+              href="{{ href|escape_url }}"
+              class="hs-button hs-button--secondary"
+              {% if card.cta.link.open_in_new_tab %}target="_blank"{% endif %}
+              {% if card.cta.link.rel %}rel="{{ card.cta.link.rel|escape_attr }}"{% endif %}>
+              {{ card.cta.text }}
+            </a>
+            {% else %}
+            <span class="hs-button hs-button--secondary">{{ card.cta.text }}</span>
+            {% endif %}
+          </div>
+          {% endif %}
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>

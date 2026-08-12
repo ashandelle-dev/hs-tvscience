@@ -1,0 +1,135 @@
+{% set bg_color   = module.style.background_color.css %}
+{% set bg_image   = module.style.background_image.src %}
+{% set text_color = module.style.text_color.css %}
+{% set h_size     = module.heading.heading_size %}
+{% set h_size_mob = module.heading.heading_size_mobile %}
+
+{% require_css %}
+<style>
+  {% scope_css %}
+    .customer-story-hero-heading {
+      {% if h_size %}font-size: {{ h_size }}px !important;{% endif %}
+    }
+    @media (max-width: 767px) {
+      .customer-story-hero-heading {
+        {% if h_size_mob %}font-size: {{ h_size_mob }}px !important;{% endif %}
+      }
+    }
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+<section
+  class="customer-story-hero font-plex py-16 md:py-16"
+  style="
+    {% if bg_color %}background-color: {{ bg_color }};{% endif %}
+    {% if bg_image %}background-image: url('{{ bg_image|escape_url }}'); background-size: cover; background-position: center;{% endif %}
+    {% if text_color %}color: {{ text_color }};{% endif %}
+    {{ module.style.padding.css }}
+  ">
+
+  <div
+    class="tvsci-container"
+    {% if module.style.container_max_width %}style="max-width: {{ module.style.container_max_width }}px;"{% endif %}>
+
+    <div class="customer-story-hero__top">
+      <div class="customer-story-hero__copy">
+        {% if module.logo.src %}
+          {% set logoLoading = module.logo.loading != 'disabled' ? 'loading="{{ module.logo.loading|escape_attr }}"' : '' %}
+          <img
+            class="customer-story-hero__logo"
+            src="{{ module.logo.src|escape_url }}"
+            alt="{{ module.logo.alt|escape_attr }}"
+            {% if module.logo.width %}width="{{ module.logo.width|escape_attr }}"{% endif %}
+            {% if module.logo.height %}height="{{ module.logo.height|escape_attr }}"{% endif %}
+            {{ logoLoading }}>
+        {% endif %}
+
+        <div class="customer-story-hero__text">
+          {% if module.heading.value %}
+          <{{ module.heading.header_tag }}
+            class="customer-story-hero-heading font-{{ module.heading.font_weight }} text-tvs-black">
+            {{ module.heading.value|replace('\n', '<br>')|safe }}
+          </{{ module.heading.header_tag }}>
+          {% endif %}
+
+          {% if module.subheading %}
+          <div class="customer-story-hero__lede">{{ module.subheading }}</div>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="customer-story-hero__form-wrap">
+        {% if module.form.form_id %}
+        <div class="customer-story-hero__form-card">
+          <div class="customer-story-hero__form">
+            {% form
+              form_key="customer_story_hero_{{ name }}",
+              form_to_use="{{ module.form.form_id }}",
+              response_response_type="{{ module.form.response_type }}",
+              response_message="{{ module.form.message }}",
+              response_redirect_id="{{ module.form.redirect_id }}",
+              response_redirect_url="{{ module.form.redirect_url }}",
+              gotowebinar_webinar_key="{{ module.form.gotowebinar_webinar_key }}"
+            %}
+          </div>
+        </div>
+        {% elif module.form_placeholder.src %}
+          {% set phLoading = module.form_placeholder.loading != 'disabled' ? 'loading="{{ module.form_placeholder.loading|escape_attr }}"' : '' %}
+          <img
+            class="customer-story-hero__form-placeholder"
+            src="{{ module.form_placeholder.src|escape_url }}"
+            alt="{{ module.form_placeholder.alt|escape_attr }}"
+            {% if module.form_placeholder.width %}width="{{ module.form_placeholder.width|escape_attr }}"{% endif %}
+            {% if module.form_placeholder.height %}height="{{ module.form_placeholder.height|escape_attr }}"{% endif %}
+            {{ phLoading }}>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  {% if module.hero_images %}
+  {% set scroll_on = module.style.image_scroll %}
+  <div
+    class="customer-story-hero__images{% unless scroll_on %} is-static{% endunless %}{% if scroll_on and module.style.image_scroll_direction != 'left' %} is-reverse{% endif %}"
+    {% if scroll_on %}style="--cs-hero-marquee-duration: {{ module.style.image_scroll_duration|default(60) }}s;"{% endif %}>
+    <div class="customer-story-hero__track">
+      {% if scroll_on %}
+        {% for clone in [0, 1, 2] %}
+          <div class="customer-story-hero__group"{% if clone > 0 %} aria-hidden="true"{% endif %}>
+            {% for item in module.hero_images %}
+              {% if item.image.src %}
+                {% set imgLoading = item.image.loading != 'disabled' ? 'loading="{{ item.image.loading|escape_attr }}"' : '' %}
+                <figure class="customer-story-hero__image-cell">
+                  <img
+                    src="{{ item.image.src|escape_url }}"
+                    alt="{% if clone == 0 %}{{ item.image.alt|escape_attr }}{% endif %}"
+                    {% if item.image.width %}width="{{ item.image.width|escape_attr }}"{% endif %}
+                    {% if item.image.height %}height="{{ item.image.height|escape_attr }}"{% endif %}
+                    {{ imgLoading }}>
+                </figure>
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="customer-story-hero__group">
+          {% for item in module.hero_images %}
+            {% if item.image.src %}
+              {% set imgLoading = item.image.loading != 'disabled' ? 'loading="{{ item.image.loading|escape_attr }}"' : '' %}
+              <figure class="customer-story-hero__image-cell">
+                <img
+                  src="{{ item.image.src|escape_url }}"
+                  alt="{{ item.image.alt|escape_attr }}"
+                  {% if item.image.width %}width="{{ item.image.width|escape_attr }}"{% endif %}
+                  {% if item.image.height %}height="{{ item.image.height|escape_attr }}"{% endif %}
+                  {{ imgLoading }}>
+              </figure>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
+</section>

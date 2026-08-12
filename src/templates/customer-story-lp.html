@@ -1,0 +1,544 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Customer Story LP
+-->
+{% extends "../layouts/base.html" %}
+
+{% block header %}
+{% endblock header %}
+
+{% block body %}
+<style>
+  /* Figma lays this page out on a 1440 frame with 64px gutters (1312 content).
+     The theme caps DnD rows at 1240, so widen the rows and the inner container. */
+  .customer-story-lp .dnd-section > .row-fluid {
+    max-width: 1384px;
+  }
+
+  .customer-story-lp .dnd-section .tvsci-container {
+    max-width: 1344px !important;
+  }
+
+  /* Capabilities section — Figma stacks each cell 40px apart, with 8px between
+     the column title and its body copy, and 80px under the section heading. */
+  .customer-story-lp .tvsci-heading {
+    padding-bottom: 80px !important;
+    margin-bottom: 0 !important;
+  }
+
+  .customer-story-lp .tvsci-heading .heading {
+    letter-spacing: -0.04em;
+  }
+
+  /* multi-col gutters are padding-based, which leaves the middle column 8px
+     narrower. Figma wants three equal thirds, so use a real grid gap here. */
+  .customer-story-lp .tvsci-multicol {
+    gap: 24px;
+  }
+
+  .customer-story-lp .tvsci-col {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .customer-story-lp .tvsci-col > img {
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    margin-bottom: 40px !important;
+  }
+
+  .customer-story-lp .tvsci-col .tvsci-col-heading {
+    line-height: 1.2 !important;
+    letter-spacing: -0.04em;
+  }
+
+  /* The theme sizes <p> directly, so the wrapper alone can't set body copy. */
+  .customer-story-lp .tvsci-col .tvsci-lead,
+  .customer-story-lp .tvsci-col .tvsci-lead p {
+    font-size: 24px;
+    line-height: 1.2;
+    letter-spacing: -0.05em;
+    color: #0f2d29;
+  }
+
+  .customer-story-lp .tvsci-col .tvsci-lead {
+    margin-top: 8px !important;
+  }
+
+  .customer-story-lp .tvsci-multicol-link {
+    margin-top: 40px !important;
+    font-size: 16px !important;
+    letter-spacing: 1.5px !important;
+    color: #198960 !important;
+  }
+
+  /* CTA card — Figma pairs a 396px copy column with a 600px device mockup,
+     centred inside a 42px-radius card with 64px padding. */
+  .customer-story-lp .form-image-cta__content {
+    gap: 12px;
+  }
+
+  .customer-story-lp .form-image-cta__content .tvsci-eyebrow {
+    font-family: inherit;
+    font-size: 24px;
+    line-height: 1.2;
+    letter-spacing: -0.04em;
+    text-transform: none;
+    color: #198960;
+  }
+
+  .customer-story-lp .form-image-cta__button {
+    margin-top: 30px;
+  }
+
+  .customer-story-lp .form-image-cta__button .hs-button {
+    min-height: 0 !important;
+    padding: 16px 32px !important;
+    color: #0f2d29 !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    line-height: 1.35 !important;
+    letter-spacing: 1.5px !important;
+  }
+
+  @media (min-width: 994px) {
+    .customer-story-lp .form-image-cta__card {
+      grid-template-columns: minmax(0, 396px) minmax(0, 600px);
+      justify-content: space-between;
+      align-items: center;
+      padding: 64px;
+    }
+
+    /* The module pads the copy column; Figma pads the card instead. */
+    .customer-story-lp .form-image-cta__content {
+      padding: 0 !important;
+    }
+
+    .customer-story-lp .form-image-cta__media {
+      border-radius: 0 !important;
+      height: auto;
+    }
+
+    .customer-story-lp .form-image-cta__img {
+      height: auto;
+      object-fit: contain;
+    }
+  }
+
+  /* ---------- Mobile (Figma 440 frame: 24px gutters, single column) ---------- */
+  @media (max-width: 767px) {
+    .customer-story-lp .dnd-section:not(:has(.customer-story-hero)):not(:has(.logo-bar-marquee)) {
+      padding-left: 24px !important;
+      padding-right: 24px !important;
+    }
+
+    .customer-story-lp .dnd-section:not(:has(.customer-story-hero)):not(:has(.logo-bar-marquee)) .tvsci-container {
+      max-width: none !important;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+
+    /* Cards sit 48px under the logo bar and 112px above the next heading. */
+    .customer-story-lp .dnd-section:has(.case-study-cards) {
+      padding-top: 0 !important;
+    }
+
+    .customer-story-lp .case-study-cards {
+      padding-top: 48px !important;
+      padding-bottom: 48px !important;
+    }
+
+    .customer-story-lp .case-study-cards__grid {
+      gap: 42px;
+    }
+
+    .customer-story-lp .dnd-section:has(.tvsci-multicol) {
+      padding-bottom: 88px !important;
+    }
+
+    /* Capability images crop to the mobile 392x281 cell. */
+    .customer-story-lp .tvsci-col > img {
+      aspect-ratio: 392 / 281;
+      object-fit: cover;
+    }
+
+    .customer-story-lp .form-image-cta__card {
+      padding: 64px 24px;
+    }
+
+    .customer-story-lp .form-image-cta__content {
+      padding: 0 !important;
+    }
+
+    /* The mobile design puts the device mockup below the copy. */
+    .customer-story-lp .form-image-cta__media {
+      order: 0;
+      aspect-ratio: auto;
+      height: auto;
+      margin-top: 36px;
+    }
+
+    .customer-story-lp .form-image-cta__img {
+      height: auto;
+      object-fit: contain;
+    }
+
+    .customer-story-lp .form-image-cta__button {
+      margin-top: 12px;
+    }
+  }
+</style>
+
+<main>
+  {% dnd_area "dnd_area" class="dnd-empty customer-story-lp", label="Drag and Drop Area" %}
+
+    {% dnd_section
+      padding={
+        "default": { "top": "0px", "bottom": "0px" }
+      }
+    %}
+      {% dnd_column offset=0, width=12 %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/tvScientific 2022 Atlas Pro/cli-build/modules/customer-story-hero",
+            offset=0,
+            width=12,
+            logo={
+              "size_type": "exact",
+              "src": "https://www.tvscientific.com/hubfs/tvScientificbyPinterest-Logo-Grayscale.svg",
+              "alt": "tvScientific by Pinterest",
+              "loading": "eager",
+              "width": 246,
+              "height": 62
+            },
+            form={
+              "form_id": "c4186bb5-f67d-4740-9794-67c4609e31eb",
+              "response_type": "inline",
+              "message": "Thanks for submitting the form.",
+              "gotowebinar_webinar_key": null
+            },
+            hero_images=[
+              {
+                "image": {
+                  "size_type": "exact",
+                  "src": "https://tvscientific.com/hubfs/image3-2.png",
+                  "alt": "CTV ad with headphones and countdown",
+                  "loading": "lazy",
+                  "width": 644,
+                  "height": 362
+                }
+              },
+              {
+                "image": {
+                  "size_type": "exact",
+                  "src": "https://tvscientific.com/hubfs/image2-1.png",
+                  "alt": "Man jogging through the city",
+                  "loading": "lazy",
+                  "width": 644,
+                  "height": 362
+                }
+              }
+            ],
+            style={
+              "background_color": { "color": "#ffffff", "opacity": 100 },
+              "background_image": { "size_type": "exact", "src": "", "alt": "", "loading": "lazy", "width": 1920, "height": 1080 },
+              "text_color": { "color": "#1f252b", "opacity": 100 },
+              "padding": {
+                "padding": {
+                  "top": { "value": 64, "units": "px" },
+                  "bottom": { "value": 0, "units": "px" }
+                }
+              },
+              "container_max_width": 1344,
+              "image_scroll": false
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {% dnd_section
+      padding={
+        "default": { "top": "0px", "bottom": "0px" }
+      }
+    %}
+      {% dnd_column offset=0, width=12 %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/tvScientific 2022 Atlas Pro/cli-build/modules/logo-bar-marquee",
+            offset=0,
+            width=12
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {% dnd_section
+      padding={
+        "default": { "top": "64px", "bottom": "0px" }
+      }
+    %}
+      {% dnd_column offset=0, width=12 %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/tvScientific 2022 Atlas Pro/cli-build/modules/case-study-cards",
+            offset=0,
+            width=12
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {% dnd_section
+      padding={
+        "default": {
+          "top": "64px",
+          "bottom": "0px"
+        }
+      }
+    %}
+      {% dnd_column offset=0, width=12 %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/tvScientific 2022 Atlas Pro/cli-build/modules/heading",
+            offset=0,
+            width=12,
+            value="A TV advertising platform that empowers you (and your ads) to perform",
+            header_tag="h2",
+            heading_size=56,
+            heading_size_mobile=32,
+            font_weight="semibold",
+            image={ "src": "" },
+            styles={
+              "alignment": {
+                "horizontal_align": "center"
+              },
+              "text_color": {
+                "color": "#1f252b",
+                "opacity": 100
+              },
+              "padding": {
+                "padding": {
+                  "top": { "value": 0, "units": "px" },
+                  "bottom": { "value": 80, "units": "px" }
+                }
+              }
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {% dnd_section
+      padding={
+        "default": { "top": "0px", "bottom": "128px" }
+      }
+    %}
+      {% dnd_column offset=0, width=12 %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/tvScientific 2022 Atlas Pro/cli-build/modules/multi-col",
+            offset=0,
+            width=12,
+            style={
+              "section_vertical_align": "top",
+              "section_text_align": "left",
+              "column_gap": 24,
+              "container_max_width": 1312,
+              "padding": {
+                "padding": {
+                  "top": { "value": 0, "units": "px" },
+                  "bottom": { "value": 0, "units": "px" }
+                }
+              }
+            },
+            columns=[
+              {
+                "column_image": {
+                  "size_type": "exact",
+                  "src": "https://tvscientific.com/hubfs/Activate.png",
+                  "alt": "Activate — premium inventory targeting",
+                  "loading": "lazy",
+                  "width": 421,
+                  "height": 281
+                },
+                "column_image_position": "above",
+                "column_image_radius": 16,
+                "column_heading": {
+                  "value": "Activate",
+                  "header_tag": "h3",
+                  "heading_size": 32,
+                  "heading_size_mobile": 32,
+                  "font_weight": "semibold"
+                },
+                "column_content": '<p>Access premium inventory that aligns to the brand values you&#39;ve worked hard to uphold.</p>',
+                "column_cta": {
+                  "show": true,
+                  "link": { "url": { "type": "EXTERNAL", "href": "https://www.tvscientific.com/premium-inventory" }, "open_in_new_tab": false, "no_follow": false },
+                  "text": "Learn more",
+                  "button_style": "none"
+                },
+                "column_size_xl": "4",
+                "column_size_lg": "inherit",
+                "column_size_md": "inherit",
+                "column_size_sm": "12",
+                "column_vertical_align": "top",
+                "column_text_align": "left",
+                "column_padding_top": 0,
+                "column_offset_top": 0,
+                "column_offset_left": "0"
+              },
+              {
+                "column_image": {
+                  "size_type": "exact",
+                  "src": "https://tvscientific.com/hubfs/Measure.png",
+                  "alt": "Measure — attribution and validation",
+                  "loading": "lazy",
+                  "width": 421,
+                  "height": 281
+                },
+                "column_image_position": "above",
+                "column_image_radius": 16,
+                "column_heading": {
+                  "value": "Measure",
+                  "header_tag": "h3",
+                  "heading_size": 32,
+                  "heading_size_mobile": 32,
+                  "font_weight": "semibold"
+                },
+                "column_content": "<p>Rely on proprietary attribution and third-party validation to track and improve campaign performance.</p>",
+                "column_cta": {
+                  "show": true,
+                  "link": { "url": { "type": "EXTERNAL", "href": "https://www.tvscientific.com/measurement-and-attribution" }, "open_in_new_tab": false, "no_follow": false },
+                  "text": "Learn more",
+                  "button_style": "none"
+                },
+                "column_size_xl": "4",
+                "column_size_lg": "inherit",
+                "column_size_md": "inherit",
+                "column_size_sm": "12",
+                "column_vertical_align": "top",
+                "column_text_align": "left",
+                "column_padding_top": 0,
+                "column_offset_top": 0,
+                "column_offset_left": "0"
+              },
+              {
+                "column_image": {
+                  "size_type": "exact",
+                  "src": "https://tvscientific.com/hubfs/Optimize.png",
+                  "alt": "Optimize — AI-driven outcomes",
+                  "loading": "lazy",
+                  "width": 421,
+                  "height": 281
+                },
+                "column_image_position": "above",
+                "column_image_radius": 16,
+                "column_heading": {
+                  "value": "Optimize",
+                  "header_tag": "h3",
+                  "heading_size": 32,
+                  "heading_size_mobile": 32,
+                  "font_weight": "semibold"
+                },
+                "column_content": "<p>tvScientific AI analyzes tens of thousands of variables in real time to drive your chosen outcome.</p>",
+                "column_cta": {
+                  "show": true,
+                  "link": { "url": { "type": "EXTERNAL", "href": "https://www.tvscientific.com/tvscientific-ai" }, "open_in_new_tab": false, "no_follow": false },
+                  "text": "Learn more",
+                  "button_style": "none"
+                },
+                "column_size_xl": "4",
+                "column_size_lg": "inherit",
+                "column_size_md": "inherit",
+                "column_size_sm": "12",
+                "column_vertical_align": "top",
+                "column_text_align": "left",
+                "column_padding_top": 0,
+                "column_offset_top": 0,
+                "column_offset_left": "0"
+              }
+            ]
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {% dnd_section
+      padding={
+        "default": { "top": "0px", "bottom": "80px" }
+      }
+    %}
+      {% dnd_column offset=0, width=12 %}
+        {% dnd_row %}
+          {% dnd_module
+            path="/tvScientific 2022 Atlas Pro/cli-build/modules/form-image-cta",
+            offset=0,
+            width=12,
+            eyebrow="Get started today",
+            heading={
+              "value": "See how you can boost lift and ROAS with CTV today",
+              "header_tag": "h2",
+              "heading_size": 32,
+              "heading_size_mobile": 32,
+              "font_weight": "semibold"
+            },
+            body_copy="",
+            cta_type="button",
+            cta={
+              "text": "Request a demo",
+              "link": { "url": { "type": "EXTERNAL", "href": "/contact" }, "open_in_new_tab": false, "no_follow": false },
+              "button_style": "primary"
+            },
+            form={
+              "form_id": "",
+              "response_type": "inline",
+              "message": "Thanks! We'll be in touch shortly.",
+              "gotowebinar_webinar_key": null
+            },
+            media={
+              "size_type": "exact",
+              "src": "https://tvscientific.com/hubfs/offer.png",
+              "alt": "CTV and mobile ad experience",
+              "loading": "lazy",
+              "width": 600,
+              "height": 388
+            },
+            style={
+              "background_color": { "color": "#ffffff", "opacity": 100 },
+              "background_image": { "size_type": "exact", "src": "", "alt": "", "loading": "lazy", "width": 1920, "height": 1080 },
+              "text_color": { "color": null, "opacity": 100 },
+              "padding": {
+                "padding": {
+                  "top": { "value": 0, "units": "px" },
+                  "bottom": { "value": 0, "units": "px" }
+                }
+              },
+              "container_max_width": 1312,
+              "card_background_color": { "color": "#f9fafc", "opacity": 100 },
+              "card_border_radius": 42,
+              "card_content_padding": {
+                "padding": {
+                  "top": { "value": 64, "units": "px" },
+                  "bottom": { "value": 64, "units": "px" },
+                  "left": { "value": 64, "units": "px" },
+                  "right": { "value": 64, "units": "px" }
+                }
+              }
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+  {% end_dnd_area %}
+</main>
+{% endblock body %}

@@ -6,10 +6,10 @@
     "required": false,
     "locked": false,
     "occurrence": {
-      "min": null,
+      "min": 1,
       "max": null,
-      "sorting_label_field": null,
-      "default": null
+      "sorting_label_field": "tab_title",
+      "default": 7
     },
     "children": [
       {
@@ -37,7 +37,9 @@
           "size_type": "auto",
           "src": "",
           "alt": null,
-          "loading": "lazy"
+          "loading": "lazy",
+          "width": 600,
+          "height": 363
         }
       },
       {
@@ -96,6 +98,126 @@
     "group_occurrence_meta": null,
     "type": "group",
     "display_width": null,
-    "default": []
+    "default": [
+      {
+        "tab_title": "LG",
+        "tab_content": "<p>LG drives 1100% increase in revenue in 2024 with tvScientific and turns it into a sustainable long term affiliate channel with tvScientific and CJ.</p>",
+        "tab_content_image": {
+          "size_type": "auto",
+          "src": "https://www.tvscientific.com/hs-fs/hubfs/lg-case-study.webp?width=600",
+          "alt": "LG",
+          "loading": "lazy",
+          "width": 600,
+          "height": 363
+        },
+        "tab_content_stat": [
+          { "tab_stat_text": "57%", "tab_stat_label": "increase in net-new customers" },
+          { "tab_stat_text": "39%", "tab_stat_label": "increase in returning customers" },
+          { "tab_stat_text": "14%", "tab_stat_label": "improvement in CPA" },
+          { "tab_stat_text": "1100%", "tab_stat_label": "revenue growth in 2024" }
+        ]
+      },
+      {
+        "tab_title": "Wildgrain",
+        "tab_content": "<p>Wildgrain wishes every brand would test TV earlier — and drive 150% subscriber growth Year over Year.</p>",
+        "tab_content_image": {
+          "size_type": "auto",
+          "src": "https://www.tvscientific.com/hs-fs/hubfs/wildgrain-case-study.webp?width=600",
+          "alt": "Wildgrain",
+          "loading": "lazy",
+          "width": 600,
+          "height": 363
+        },
+        "tab_content_stat": [
+          { "tab_stat_text": "5% to 7%", "tab_stat_label": "increase during peak periods" },
+          { "tab_stat_text": "2 to 4", "tab_stat_label": "Team expansion" },
+          { "tab_stat_text": "150%", "tab_stat_label": "Year over year" }
+        ]
+      },
+      {
+        "tab_title": "Photobucket",
+        "tab_content": "<p>Photobucket was ready to reintroduce itself to the market, and it needed a campaign that could do more than just get its name back out there.</p>",
+        "tab_content_image": {
+          "size_type": "auto",
+          "src": "https://www.tvscientific.com/hs-fs/hubfs/photobucket-case-study.webp?width=600",
+          "alt": "Photobucket",
+          "loading": "lazy",
+          "width": 600,
+          "height": 363
+        },
+        "tab_content_stat": [
+          { "tab_stat_text": "1,775+", "tab_stat_label": "new paid subscribers (primary KPI)" },
+          { "tab_stat_text": "2%+", "tab_stat_label": "conversion rate" },
+          { "tab_stat_text": "1.1M+", "tab_stat_label": "targeted households reached" },
+          { "tab_stat_text": "25%", "tab_stat_label": "increase in audience engagement" }
+        ]
+      },
+      {
+        "tab_title": "Earnin",
+        "tab_content": "<p>CTV advertising enabled Earnin to increase memberships, while reaching their CPA goals.</p>",
+        "tab_content_image": {
+          "size_type": "auto",
+          "src": "https://www.tvscientific.com/hs-fs/hubfs/2025%20GO%20Page/earnin-image-1x.webp?width=600",
+          "alt": "Earnin",
+          "loading": "lazy",
+          "width": 600,
+          "height": 362
+        },
+        "tab_content_stat": [
+          { "tab_stat_text": "$23.45", "tab_stat_label": "CPA" },
+          { "tab_stat_text": "> 240K", "tab_stat_label": "new customer activations" }
+        ]
+      },
+      {
+        "tab_title": "Wildlife",
+        "tab_content": "<p>Wildlife Studios was looking for a CTV partner that would drive installs and keep customer acquisition costs to $5 CPI.</p>",
+        "tab_content_image": {
+          "size_type": "auto",
+          "src": "https://www.tvscientific.com/hs-fs/hubfs/2025%20GO%20Page/wildlife-image-1x.webp?width=600",
+          "alt": "Wildlife",
+          "loading": "lazy",
+          "width": 600,
+          "height": 364
+        },
+        "tab_content_stat": [
+          { "tab_stat_text": "< $5", "tab_stat_label": "cost-per-install" },
+          { "tab_stat_text": "> 78k", "tab_stat_label": "customer installs" }
+        ]
+      },
+      {
+        "tab_title": "The Y",
+        "tab_content": "<p>The Y boosted membership and recruitment by shifting to OTT advertising, achieving lower costs and increased leads.</p>",
+        "tab_content_image": {
+          "size_type": "auto",
+          "src": "https://www.tvscientific.com/hs-fs/hubfs/2025%20GO%20Page/y-image-1x.png?width=600",
+          "alt": "The Y",
+          "loading": "lazy",
+          "width": 600,
+          "height": 351
+        },
+        "tab_content_stat": [
+          { "tab_stat_text": "17%", "tab_stat_label": "below target CPA" },
+          { "tab_stat_text": "15%", "tab_stat_label": "more page views" },
+          { "tab_stat_text": "3x", "tab_stat_label": "OTT budget" }
+        ]
+      },
+      {
+        "tab_title": "DramaBox",
+        "tab_content": "<p>When tvScientific launched its AI tech, DramaBox was one of the first to test it. Their results accelerated.</p>",
+        "tab_content_image": {
+          "size_type": "auto",
+          "src": "https://www.tvscientific.com/hs-fs/hubfs/2025%20GO%20Page/dramabox-image-1x.webp?width=600",
+          "alt": "DramaBox",
+          "loading": "lazy",
+          "width": 600,
+          "height": 367
+        },
+        "tab_content_stat": [
+          { "tab_stat_text": "2-3x", "tab_stat_label": "ROAS & scaling" },
+          { "tab_stat_text": "10x", "tab_stat_label": "spend" },
+          { "tab_stat_text": "24/7", "tab_stat_label": "optimization" }
+        ]
+      }
+    ]
   }
 ]

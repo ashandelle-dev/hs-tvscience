@@ -51,10 +51,14 @@
 
       <div class="form-image-cta__content" style="{{ module.style.card_content_padding.css }}">
 
+        {% if module.eyebrow %}
+        <p class="tvsci-eyebrow text-tvs-green-accessible !m-0">{{ module.eyebrow }}</p>
+        {% endif %}
+
         {% if module.heading.value %}
         <{{ module.heading.header_tag }}
           class="form-image-cta-heading font-{{ module.heading.font_weight }} text-tvs-black ">
-          {{ module.heading.value }}
+          {{ module.heading.value|replace('\n', '<br>')|safe }}
         </{{ module.heading.header_tag }}>
         {% endif %}
 

@@ -111,6 +111,7 @@
         {% set img_align = talign == 'right' ? 'ml-auto mr-0' : (talign == 'center' ? 'mx-auto' : 'mr-auto ml-0') %}
         <img
           class="block max-w-full h-auto mb-3 {{ img_align }}"
+          {% if col.column_image_radius %}style="border-radius: {{ col.column_image_radius }}px;"{% endif %}
           src="{{ col.column_image.src|escape_url }}"
           alt="{{ col.column_image.alt|escape_attr }}"
           {% if col.column_image.width %}width="{{ col.column_image.width }}"{% endif %}
@@ -123,6 +124,7 @@
           {% if col.column_image.src and col.column_image_position == 'inline' %}
           <img
             class="block shrink-0 !m-0 mx-0 "
+            {% if col.column_image_radius %}style="border-radius: {{ col.column_image_radius }}px;"{% endif %}
             src="{{ col.column_image.src|escape_url }}"
             alt="{{ col.column_image.alt|escape_attr }}"
             {% if col.column_image.width %}width="{{ col.column_image.width }}"{% endif %}

@@ -1,0 +1,211 @@
+[
+  {
+    "name": "cards",
+    "label": "Cards",
+    "type": "group",
+    "tab": "CONTENT",
+    "occurrence": {
+      "min": 1,
+      "max": 6,
+      "default": 3
+    },
+    "children": [
+      {
+        "name": "logo",
+        "label": "Logo",
+        "type": "image",
+        "responsive": true,
+        "resizable": true,
+        "show_loading": true,
+        "default": {
+          "size_type": "exact",
+          "src": "",
+          "alt": "",
+          "loading": "lazy",
+          "width": 130,
+          "height": 40
+        }
+      },
+      {
+        "name": "logo_background_color",
+        "label": "Logo background color",
+        "type": "color",
+        "default": { "color": "#91f2cb", "opacity": 100 }
+      },
+      {
+        "name": "body_copy",
+        "label": "Body",
+        "type": "richtext",
+        "default": ""
+      },
+      {
+        "name": "stats",
+        "label": "Stats",
+        "type": "group",
+        "occurrence": {
+          "min": 0,
+          "max": 4,
+          "default": 0
+        },
+        "children": [
+          {
+            "name": "stat_value",
+            "label": "Value",
+            "type": "text",
+            "allow_new_line": false,
+            "default": "57%"
+          },
+          {
+            "name": "stat_caption",
+            "label": "Caption",
+            "type": "text",
+            "allow_new_line": true,
+            "default": "increase in net-new customers"
+          }
+        ]
+      },
+      {
+        "name": "cta",
+        "label": "Button",
+        "type": "group",
+        "children": [
+          {
+            "name": "text",
+            "label": "Button text",
+            "type": "text",
+            "allow_new_line": false,
+            "default": "Read the story"
+          },
+          {
+            "name": "link",
+            "label": "Link",
+            "type": "link",
+            "supported_types": ["EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION"],
+            "default": {
+              "url": { "type": "EXTERNAL", "href": "" },
+              "open_in_new_tab": false,
+              "no_follow": false
+            }
+          }
+        ]
+      }
+    ],
+    "default": [
+      {
+        "logo": {
+          "size_type": "exact",
+          "src": "https://tvscientific.com/hubfs/lg-2.svg",
+          "alt": "LG",
+          "loading": "lazy",
+          "width": 130,
+          "height": 57
+        },
+        "logo_background_color": { "color": "#91f2cb", "opacity": 100 },
+        "body_copy": "<p>LG uses tvScientific by Pinterest to support ongoing enterprise growth, driving both reach and performance across key product categories.</p>",
+        "stats": [
+          { "stat_value": "57%", "stat_caption": "increase in net-new customers" },
+          { "stat_value": "14%", "stat_caption": "improvement in CPA" },
+          { "stat_value": "1100%", "stat_caption": "revenue growth in 2024" }
+        ],
+        "cta": {
+          "text": "Read the story",
+          "link": { "url": { "type": "EXTERNAL", "href": "https://www.tvscientific.com/customers/lg-pinterest-audiences" }, "open_in_new_tab": false, "no_follow": false }
+        }
+      },
+      {
+        "logo": {
+          "size_type": "exact",
+          "src": "https://tvscientific.com/hubfs/Dell-Logo-1.svg",
+          "alt": "Dell",
+          "loading": "lazy",
+          "width": 130,
+          "height": 40
+        },
+        "logo_background_color": { "color": "#aee4ff", "opacity": 100 },
+        "body_copy": "<p>Dell analyzes thousands of streaming TV ad variables in real-time with tvScientific by Pinterest’s AI to bid only where enterprise ROI is strongest.</p>",
+        "stats": [
+          { "stat_value": "50%", "stat_caption": "ROAS" },
+          { "stat_value": "27%", "stat_caption": "Always-On Incrementality" },
+          { "stat_value": "56%", "stat_caption": "net-new customer acquisition" }
+        ],
+        "cta": {
+          "text": "Read the story",
+          "link": { "url": { "type": "EXTERNAL", "href": "https://www.tvscientific.com/dell" }, "open_in_new_tab": false, "no_follow": false }
+        }
+      },
+      {
+        "logo": {
+          "size_type": "exact",
+          "src": "https://tvscientific.com/hubfs/higherdose-logo-1.svg",
+          "alt": "HigherDOSE",
+          "loading": "lazy",
+          "width": 200,
+          "height": 28
+        },
+        "logo_background_color": { "color": "#d1b2ff", "opacity": 100 },
+        "body_copy": "<p>HigherDOSE uses tvScientific by Pinterest to test whether bolder, more persistent early-stage branding could improve their Performance TV outcomes for site visits.</p>",
+        "stats": [
+          { "stat_value": "14", "stat_caption": "lift in site visits" }
+        ],
+        "cta": {
+          "text": "Read the story",
+          "link": { "url": { "type": "EXTERNAL", "href": "https://www.tvscientific.com/higherdose" }, "open_in_new_tab": false, "no_follow": false }
+        }
+      }
+    ]
+  },
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "background_color",
+        "label": "Section background color",
+        "type": "color",
+        "default": { "color": "#ffffff", "opacity": 100 }
+      },
+      {
+        "name": "background_image",
+        "label": "Section background image",
+        "type": "image",
+        "responsive": true,
+        "resizable": true,
+        "show_loading": true,
+        "default": { "size_type": "exact", "src": "", "alt": "", "loading": "lazy", "width": 1920, "height": 1080 }
+      },
+      {
+        "name": "text_color",
+        "label": "Text color",
+        "type": "color",
+        "default": { "color": "#1f252b", "opacity": 100 }
+      },
+      {
+        "name": "divider_color",
+        "label": "Column divider color",
+        "type": "color",
+        "default": { "color": "#d9e2eb", "opacity": 100 }
+      },
+      {
+        "name": "padding",
+        "label": "Section padding",
+        "type": "spacing",
+        "default": {
+          "padding": {
+            "top": { "value": 64, "units": "px" },
+            "bottom": { "value": 64, "units": "px" }
+          }
+        }
+      },
+      {
+        "name": "container_max_width",
+        "label": "Container max width",
+        "type": "number",
+        "suffix": "px",
+        "min": 0,
+        "default": 1312
+      }
+    ]
+  }
+]

@@ -1,0 +1,485 @@
+/* ==========================================================================
+   customer-story-hero.module
+   ========================================================================== */
+
+/* The hero image marquee bleeds to the viewport edges, so the DnD section that
+   hosts this module has to give up its 1240px row cap and side padding. */
+.dnd-section:has(.customer-story-hero) {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.dnd-section:has(.customer-story-hero) > .row-fluid {
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.dnd-section:has(.customer-story-hero) .dnd-column {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Figma splits the 1312 content row into 779 copy + 147 gap + 386 form. */
+.customer-story-hero__top {
+  display: grid;
+  grid-template-columns: minmax(0, 779fr) minmax(0, 386fr);
+  gap: 11.2%;
+  align-items: start;
+}
+
+.customer-story-hero__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  min-width: 0;
+}
+
+/* Figma Logo instance is 246×62 (hexagon + tvScientific + by Pinterest). */
+.customer-story-hero__logo {
+  display: block;
+  width: 246px;
+  max-width: 100%;
+  height: 62px;
+  object-fit: contain;
+  object-position: left center;
+  /* Theme base styles center images inside modules. */
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+
+.customer-story-hero__text {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.customer-story-hero-heading {
+  margin: 0;
+  letter-spacing: -0.04em;
+  line-height: 1 !important;
+  text-wrap: balance;
+}
+
+.customer-story-hero__lede {
+  margin: 0;
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  color: #1f252b;
+}
+
+.customer-story-hero__lede p {
+  margin: 0;
+  font: inherit;
+  color: inherit;
+}
+
+.customer-story-hero__form-wrap {
+  width: 100%;
+  max-width: 386px;
+  justify-self: end;
+}
+
+.customer-story-hero__form-card {
+  background: #f9fafc;
+  border: none;
+  border-radius: 12px;
+  padding: 28px 24px;
+  box-shadow: none;
+}
+
+.customer-story-hero__form-placeholder {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+/* ---------- HubSpot form (matches Figma grey card + green inputs) ---------- */
+
+.customer-story-hero__form form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+  width: 100%;
+}
+
+.customer-story-hero__form fieldset {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  max-width: none !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0;
+}
+
+.customer-story-hero__form fieldset:has([type="hidden"]) {
+  display: none;
+}
+
+.customer-story-hero__form fieldset.form-columns-1 .hs-form-field {
+  width: 100% !important;
+  float: none !important;
+}
+
+.customer-story-hero__form fieldset.form-columns-2 .hs-form-field {
+  width: calc(50% - 8px) !important;
+  float: none !important;
+}
+
+.customer-story-hero__form .hs-form-field {
+  margin: 0 !important;
+  padding: 0 !important;
+  float: none !important;
+}
+
+.customer-story-hero__form .hs-form-field > label {
+  display: block;
+  margin: 0 0 6px !important;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #1f252b;
+}
+
+.customer-story-hero__form .hs-form-field > label .hs-form-required {
+  color: #e11d48;
+  margin-left: 2px;
+}
+
+.customer-story-hero__form .input {
+  margin: 0 !important;
+  width: 100%;
+}
+
+.customer-story-hero__form .hs-input,
+.customer-story-hero__form input[type="text"],
+.customer-story-hero__form input[type="email"],
+.customer-story-hero__form input[type="tel"],
+.customer-story-hero__form input[type="number"],
+.customer-story-hero__form select,
+.customer-story-hero__form textarea {
+  min-height: 44px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  border: 1.5px solid #23e596 !important;
+  border-radius: 6px !important;
+  background: #ffffff !important;
+  color: #1f252b !important;
+  padding: 10px 12px !important;
+  font-family: inherit !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  line-height: 1.3 !important;
+  box-shadow: none !important;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.customer-story-hero__form textarea {
+  min-height: 88px !important;
+  resize: vertical;
+}
+
+.customer-story-hero__form input:focus,
+.customer-story-hero__form select:focus,
+.customer-story-hero__form textarea:focus {
+  border-color: #198960 !important;
+  box-shadow: 0 0 0 1px #198960 !important;
+}
+
+.customer-story-hero__form input::placeholder,
+.customer-story-hero__form textarea::placeholder {
+  color: #a7b2be;
+  opacity: 1;
+}
+
+.customer-story-hero__form .legal-consent-container,
+.customer-story-hero__form .hs-richtext {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.4;
+  color: #5a6570;
+}
+
+.customer-story-hero__form .legal-consent-container a,
+.customer-story-hero__form .hs-richtext a {
+  color: #198960 !important;
+  text-decoration: underline;
+}
+
+.customer-story-hero__form .hs_submit,
+.customer-story-hero__form .hs_submit .actions {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.customer-story-hero__form .hs-button,
+.customer-story-hero__form input[type="submit"],
+.customer-story-hero__form .hs_submit .hs-button,
+.customer-story-hero__form .hs_submit input[type="submit"] {
+  width: auto !important;
+  min-height: 48px !important;
+  height: auto !important;
+  padding: 14px 28px !important;
+  margin: 0 !important;
+  background-color: #23e596 !important;
+  color: #0f2d29 !important;
+  border: none !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+  font-family: inherit !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  line-height: 1.35 !important;
+  letter-spacing: 1.5px !important;
+  text-transform: uppercase !important;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.customer-story-hero__form .hs-button:hover,
+.customer-story-hero__form input[type="submit"]:hover {
+  opacity: 0.9;
+}
+
+.customer-story-hero__form .hs-error-msgs {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0 0;
+}
+
+.customer-story-hero__form .hs-error-msg {
+  color: #c0392b;
+  font-size: 12px;
+}
+
+.customer-story-hero__form .hs_error_rollup .hs-main-font-element {
+  display: none !important;
+}
+
+@media (max-width: 767px) {
+  .customer-story-hero__form fieldset.form-columns-2 .hs-form-field {
+    width: 100% !important;
+  }
+}
+
+/* ---------- Full-bleed image marquee ---------- */
+
+.customer-story-hero__images {
+  width: 100%;
+  /* Figma spaces the strip 128px from the copy above and 64px from the logo bar. */
+  margin-top: 128px;
+  margin-bottom: 64px;
+  overflow: hidden;
+}
+
+.customer-story-hero__track {
+  display: flex;
+  width: max-content;
+  animation: customer-story-hero-marquee var(--cs-hero-marquee-duration, 60s) linear infinite;
+}
+
+.customer-story-hero__images.is-static {
+  max-width: 1344px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+.customer-story-hero__images.is-static .customer-story-hero__track {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  animation: none;
+}
+
+.customer-story-hero__images.is-static .customer-story-hero__group {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  padding-right: 0;
+  width: 100%;
+  max-width: 100%;
+  flex-shrink: 1;
+}
+
+.customer-story-hero__images.is-static .customer-story-hero__image-cell {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  flex-shrink: 1;
+}
+
+.customer-story-hero__images.is-reverse .customer-story-hero__track {
+  animation-direction: reverse;
+}
+
+.customer-story-hero__group {
+  display: flex;
+  gap: 24px;
+  padding-right: 24px;
+  flex-shrink: 0;
+}
+
+.customer-story-hero__image-cell {
+  margin: 0;
+  flex-shrink: 0;
+  width: clamp(260px, 45vw, 644px);
+  aspect-ratio: 644 / 362;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #f9fafc;
+}
+
+.customer-story-hero__image-cell img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+@keyframes customer-story-hero-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-33.333%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .customer-story-hero__track {
+    animation: none;
+  }
+}
+
+@media (max-width: 1023px) {
+  .customer-story-hero__top {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .customer-story-hero__form-wrap {
+    max-width: 480px;
+    justify-self: start;
+  }
+
+  .customer-story-hero__lede {
+    font-size: 24px;
+  }
+
+  .customer-story-hero__images {
+    margin-top: 48px;
+    margin-bottom: 48px;
+  }
+}
+
+/* Figma ships a dedicated 440px mobile frame: 24px gutters, 40px heading,
+   and a smaller image strip that sits 24px off the copy and the logo bar. */
+@media (max-width: 767px) {
+  /* Figma mobile frame 2592:847 — 24px gutters, 32px top, 246×62 logo. */
+  .customer-story-hero {
+    padding-top: 32px !important;
+    padding-bottom: 0 !important;
+  }
+
+  .customer-story-hero .tvsci-container {
+    max-width: none !important;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+
+  .customer-story-hero__top {
+    gap: 42px;
+  }
+
+  .customer-story-hero__copy {
+    gap: 64px;
+  }
+
+  .customer-story-hero__logo {
+    width: 246px !important;
+    max-width: min(246px, 100%) !important;
+    height: 62px !important;
+    object-fit: contain;
+    object-position: left center;
+  }
+
+  .customer-story-hero__form-wrap {
+    max-width: none;
+  }
+
+  .customer-story-hero-heading {
+    line-height: 1.12 !important;
+    letter-spacing: 0;
+  }
+
+  .customer-story-hero__lede {
+    line-height: 1.1;
+    letter-spacing: 1px;
+  }
+
+  .customer-story-hero__images {
+    margin-top: 48px;
+    margin-bottom: 24px;
+  }
+
+  /*
+   * Figma mobile strip 2592:854 — two fixed 254×143 tiles with a 9px gap
+   * (~518px wide) centered on a 440 frame at x≈-39 so both edges bleed.
+   */
+  .customer-story-hero__images.is-static {
+    width: 100%;
+    max-width: none;
+    padding-left: 0;
+    padding-right: 0;
+    overflow: hidden;
+  }
+
+  .customer-story-hero__images.is-static .customer-story-hero__track {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: none;
+  }
+
+  .customer-story-hero__images.is-static .customer-story-hero__group {
+    display: flex;
+    gap: 9px;
+    width: max-content;
+    max-width: none;
+    flex-shrink: 0;
+    padding-right: 0;
+    margin: 0 auto;
+  }
+
+  .customer-story-hero__images.is-static .customer-story-hero__image-cell {
+    width: 254px;
+    min-width: 254px;
+    max-width: none;
+    height: 143px;
+    aspect-ratio: 254 / 143;
+    flex-shrink: 0;
+    border-radius: 24px;
+  }
+
+  .customer-story-hero__images:not(.is-static) .customer-story-hero__image-cell {
+    width: 254px;
+  }
+
+  .customer-story-hero__images:not(.is-static) .customer-story-hero__group {
+    gap: 9px;
+    padding-right: 9px;
+  }
+}

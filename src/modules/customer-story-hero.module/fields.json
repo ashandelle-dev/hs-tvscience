@@ -1,0 +1,246 @@
+[
+  {
+    "name": "logo",
+    "label": "Logo",
+    "type": "image",
+    "tab": "CONTENT",
+    "responsive": true,
+    "resizable": true,
+    "show_loading": true,
+    "inline_help_text": "Co-branded logo (e.g. tvScientific by Pinterest). Swap per campaign.",
+    "default": {
+      "size_type": "exact",
+      "src": "https://www.tvscientific.com/hubfs/tvScientificbyPinterest-Logo-Grayscale.svg",
+      "alt": "tvScientific by Pinterest",
+      "loading": "eager",
+      "width": 246,
+      "height": 62
+    }
+  },
+  {
+    "name": "heading",
+    "label": "Heading",
+    "type": "group",
+    "tab": "CONTENT",
+    "children": [
+      {
+        "name": "value",
+        "label": "Heading content",
+        "type": "text",
+        "allow_new_line": true,
+        "default": "Be the next brand to grow big with tvScientific by Pinterest"
+      },
+      {
+        "name": "header_tag",
+        "label": "Heading level",
+        "type": "choice",
+        "required": true,
+        "display": "select",
+        "choices": [
+          ["h1", "H1"], ["h2", "H2"], ["h3", "H3"], ["h4", "H4"], ["h5", "H5"], ["h6", "H6"], ["p", "P"]
+        ],
+        "default": "h1"
+      },
+      {
+        "name": "heading_size",
+        "label": "Heading size",
+        "type": "number",
+        "suffix": "px",
+        "inline_help_text": "Set to 0 to use the default size",
+        "default": 72
+      },
+      {
+        "name": "heading_size_mobile",
+        "label": "Heading size (mobile)",
+        "type": "number",
+        "suffix": "px",
+        "inline_help_text": "Set to 0 to use the default size",
+        "default": 40
+      },
+      {
+        "name": "font_weight",
+        "label": "Font weight",
+        "type": "choice",
+        "display": "select",
+        "choices": [["normal", "Normal"], ["semibold", "Semibold"], ["bold", "Bold"]],
+        "default": "semibold"
+      }
+    ]
+  },
+  {
+    "name": "subheading",
+    "label": "Subheading",
+    "type": "richtext",
+    "default": "<p>Leading enterprise brands trust tvScientific by Pinterest to drive real results and measurable performance.</p>"
+  },
+  {
+    "name": "form",
+    "label": "Form",
+    "type": "form",
+    "embed_versions": ["v2", "v4"],
+    "support_all_webinar_types": true,
+    "inline_help_text": "Leave empty to show the placeholder image until a HubSpot form is selected.",
+    "default": {
+      "form_id": "c4186bb5-f67d-4740-9794-67c4609e31eb",
+      "response_type": "inline",
+      "message": "Thanks for submitting the form.",
+      "gotowebinar_webinar_key": null
+    }
+  },
+  {
+    "name": "form_placeholder",
+    "label": "Form placeholder image",
+    "type": "image",
+    "tab": "CONTENT",
+    "responsive": true,
+    "resizable": true,
+    "show_loading": true,
+    "inline_help_text": "Shown when no form is selected. Hidden once a form ID is set.",
+    "default": {
+      "size_type": "exact",
+      "src": "https://www.figma.com/api/mcp/asset/13f01de4-3cb0-4a18-a867-6a451e44c0b6.png",
+      "alt": "Get started form",
+      "loading": "lazy",
+      "width": 386,
+      "height": 492
+    }
+  },
+  {
+    "name": "hero_images",
+    "label": "Hero images",
+    "type": "group",
+    "tab": "CONTENT",
+    "occurrence": {
+      "min": 1,
+      "max": 6,
+      "default": 2
+    },
+    "children": [
+      {
+        "name": "image",
+        "label": "Image",
+        "type": "image",
+        "responsive": true,
+        "resizable": true,
+        "show_loading": true,
+        "default": {
+          "size_type": "exact",
+          "src": "https://tvscientific.com/hubfs/image3-2.png",
+          "alt": "Lifestyle photo",
+          "loading": "lazy",
+          "width": 644,
+          "height": 362
+        }
+      }
+    ],
+    "default": [
+      {
+        "image": {
+          "size_type": "exact",
+          "src": "https://tvscientific.com/hubfs/image3-2.png",
+          "alt": "CTV ad with headphones and countdown",
+          "loading": "lazy",
+          "width": 644,
+          "height": 362
+        }
+      },
+      {
+        "image": {
+          "size_type": "exact",
+          "src": "https://tvscientific.com/hubfs/image2-1.png",
+          "alt": "Man jogging through the city",
+          "loading": "lazy",
+          "width": 644,
+          "height": 362
+        }
+      }
+    ]
+  },
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "background_color",
+        "label": "Section background color",
+        "type": "color",
+        "default": { "color": "#ffffff", "opacity": 100 }
+      },
+      {
+        "name": "background_image",
+        "label": "Section background image",
+        "type": "image",
+        "responsive": true,
+        "resizable": true,
+        "show_loading": true,
+        "default": { "size_type": "exact", "src": "", "alt": "", "loading": "lazy", "width": 1920, "height": 1080 }
+      },
+      {
+        "name": "text_color",
+        "label": "Text color",
+        "type": "color",
+        "default": { "color": "#1f252b", "opacity": 100 }
+      },
+      {
+        "name": "padding",
+        "label": "Section padding",
+        "type": "spacing",
+        "default": {
+          "padding": {
+            "top": { "value": 64, "units": "px" },
+            "bottom": { "value": 0, "units": "px" }
+          }
+        }
+      },
+      {
+        "name": "container_max_width",
+        "label": "Copy/form container max width",
+        "type": "number",
+        "suffix": "px",
+        "min": 0,
+        "default": 1344,
+        "inline_help_text": "Max width for the logo/heading/form row. Set 0 for theme default."
+      },
+      {
+        "name": "image_scroll",
+        "label": "Auto-scroll hero images",
+        "type": "boolean",
+        "display": "toggle",
+        "default": false,
+        "inline_help_text": "Off by default — two static images. Turn on for a full-bleed marquee."
+      },
+      {
+        "name": "image_scroll_direction",
+        "label": "Scroll direction",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["right", "Left to right"],
+          ["left", "Right to left"]
+        ],
+        "default": "right",
+        "visibility": {
+          "controlling_field": "style.image_scroll",
+          "controlling_value_regex": "true",
+          "operator": "EQUAL"
+        }
+      },
+      {
+        "name": "image_scroll_duration",
+        "label": "Scroll duration",
+        "type": "number",
+        "suffix": "s",
+        "min": 10,
+        "max": 240,
+        "default": 60,
+        "visibility": {
+          "controlling_field": "style.image_scroll",
+          "controlling_value_regex": "true",
+          "operator": "EQUAL"
+        }
+      }
+    ]
+  }
+]

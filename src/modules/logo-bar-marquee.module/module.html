@@ -1,0 +1,49 @@
+{# Logo bar — infinite marquee (3 clones of the same logos list) #}
+{% set bg_color = module.style.background_color.css %}
+
+<section class="logo-bar-marquee" aria-label="Customer logos"{% if bg_color %} style="background-color: {{ bg_color }};"{% endif %}>
+  <div class="logo-bar-marquee__track">
+    <div class="logo-bar-marquee__group">
+      {% for logo in module.logos %}
+        {% if logo.src %}
+          {% set loadingAttr = logo.loading != 'disabled' ? 'loading="{{ logo.loading }}"' : '' %}
+          <img
+            src="{{ logo.src }}"
+            alt="{{ logo.alt }}"
+            {% if logo.width %}width="{{ logo.width }}"{% endif %}
+            {% if logo.height %}height="{{ logo.height }}"{% endif %}
+            {{ loadingAttr }}
+          >
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="logo-bar-marquee__group" aria-hidden="true">
+      {% for logo in module.logos %}
+        {% if logo.src %}
+          {% set loadingAttr = logo.loading != 'disabled' ? 'loading="{{ logo.loading }}"' : '' %}
+          <img
+            src="{{ logo.src }}"
+            alt=""
+            {% if logo.width %}width="{{ logo.width }}"{% endif %}
+            {% if logo.height %}height="{{ logo.height }}"{% endif %}
+            {{ loadingAttr }}
+          >
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="logo-bar-marquee__group" aria-hidden="true">
+      {% for logo in module.logos %}
+        {% if logo.src %}
+          {% set loadingAttr = logo.loading != 'disabled' ? 'loading="{{ logo.loading }}"' : '' %}
+          <img
+            src="{{ logo.src }}"
+            alt=""
+            {% if logo.width %}width="{{ logo.width }}"{% endif %}
+            {% if logo.height %}height="{{ logo.height }}"{% endif %}
+            {{ loadingAttr }}
+          >
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
