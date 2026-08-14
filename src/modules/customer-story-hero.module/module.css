@@ -20,12 +20,19 @@
   padding-right: 0 !important;
 }
 
-/* Figma splits the 1312 content row into 779 copy + 147 gap + 386 form. */
+/* Figma: 1440 frame, 64px gutters, 1312 content (779 copy + 147 gap + 386 form). */
+.customer-story-hero .tvsci-container {
+  max-width: 1440px !important;
+  padding-left: 64px !important;
+  padding-right: 64px !important;
+  box-sizing: border-box;
+}
+
 .customer-story-hero__top {
   display: grid;
-  grid-template-columns: minmax(0, 779fr) minmax(0, 386fr);
-  gap: 11.2%;
-  align-items: start;
+  grid-template-columns: minmax(0, 1fr) 386px;
+  gap: clamp(32px, 8vw, 147px);
+  align-items: center;
 }
 
 .customer-story-hero__copy {
@@ -77,9 +84,12 @@
 }
 
 .customer-story-hero__form-wrap {
-  width: 100%;
+  width: 386px;
+  min-width: 386px;
   max-width: 386px;
   justify-self: end;
+  align-self: center;
+  scroll-margin-top: 24px;
 }
 
 .customer-story-hero__form-card {
@@ -127,8 +137,13 @@
   float: none !important;
 }
 
+.customer-story-hero__form fieldset.form-columns-2 {
+  flex-wrap: nowrap;
+}
+
 .customer-story-hero__form fieldset.form-columns-2 .hs-form-field {
   width: calc(50% - 8px) !important;
+  min-width: 0;
   float: none !important;
 }
 
@@ -291,37 +306,41 @@
 }
 
 .customer-story-hero__images.is-static {
-  max-width: 1344px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 16px;
-  padding-right: 16px;
-  box-sizing: border-box;
-  overflow: visible;
+  width: 100%;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+  overflow: hidden;
 }
 
 .customer-story-hero__images.is-static .customer-story-hero__track {
-  display: block;
+  display: flex;
+  justify-content: center;
   width: 100%;
-  max-width: 100%;
+  max-width: none;
   animation: none;
 }
 
+/* Figma 2617:198 — three 644 tiles + 24px gaps = 1980 on a 1440 frame,
+   centered so ~270px clips off each side. Scale with the viewport so
+   the same crop holds on wider screens. */
 .customer-story-hero__images.is-static .customer-story-hero__group {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
+  display: flex;
+  gap: 1.667vw;
+  width: max-content;
+  max-width: none;
+  flex-shrink: 0;
   padding-right: 0;
-  width: 100%;
-  max-width: 100%;
-  flex-shrink: 1;
+  margin: 0 auto;
 }
 
 .customer-story-hero__images.is-static .customer-story-hero__image-cell {
-  width: 100%;
-  max-width: 100%;
-  min-width: 0;
-  flex-shrink: 1;
+  width: 44.722vw;
+  min-width: 44.722vw;
+  max-width: none;
+  flex-shrink: 0;
 }
 
 .customer-story-hero__images.is-reverse .customer-story-hero__track {
@@ -365,16 +384,6 @@
 }
 
 @media (max-width: 1023px) {
-  .customer-story-hero__top {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .customer-story-hero__form-wrap {
-    max-width: 480px;
-    justify-self: start;
-  }
-
   .customer-story-hero__lede {
     font-size: 24px;
   }
@@ -401,6 +410,7 @@
   }
 
   .customer-story-hero__top {
+    grid-template-columns: 1fr;
     gap: 42px;
   }
 
@@ -417,7 +427,10 @@
   }
 
   .customer-story-hero__form-wrap {
+    width: 100%;
+    min-width: 0;
     max-width: none;
+    justify-self: start;
   }
 
   .customer-story-hero-heading {
@@ -436,8 +449,8 @@
   }
 
   /*
-   * Figma mobile strip 2592:854 — two fixed 254×143 tiles with a 9px gap
-   * (~518px wide) centered on a 440 frame at x≈-39 so both edges bleed.
+   * Same 3-up bleed as desktop, scaled to the 440 mobile frame
+   * (tiles ~197px, ~36px clipped on each side).
    */
   .customer-story-hero__images.is-static {
     width: 100%;
@@ -465,11 +478,11 @@
   }
 
   .customer-story-hero__images.is-static .customer-story-hero__image-cell {
-    width: 254px;
-    min-width: 254px;
+    width: 197px;
+    min-width: 197px;
     max-width: none;
-    height: 143px;
-    aspect-ratio: 254 / 143;
+    height: auto;
+    aspect-ratio: 644 / 362;
     flex-shrink: 0;
     border-radius: 24px;
   }

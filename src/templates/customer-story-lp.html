@@ -20,6 +20,12 @@
     max-width: 1344px !important;
   }
 
+  .customer-story-lp .dnd-section .customer-story-hero .tvsci-container {
+    max-width: 1440px !important;
+    padding-left: 64px !important;
+    padding-right: 64px !important;
+  }
+
   /* Capabilities section — Figma stacks each cell 40px apart, with 8px between
      the column title and its body copy, and 80px under the section heading. */
   .customer-story-lp .tvsci-heading {
@@ -129,6 +135,11 @@
 
   /* ---------- Mobile (Figma 440 frame: 24px gutters, single column) ---------- */
   @media (max-width: 767px) {
+    .customer-story-lp .dnd-section .customer-story-hero .tvsci-container {
+      padding-left: 24px !important;
+      padding-right: 24px !important;
+    }
+
     .customer-story-lp .dnd-section:not(:has(.customer-story-hero)):not(:has(.logo-bar-marquee)) {
       padding-left: 24px !important;
       padding-right: 24px !important;
@@ -233,6 +244,16 @@
               {
                 "image": {
                   "size_type": "exact",
+                  "src": "https://tvscientific.com/hubfs/image1-2.png",
+                  "alt": "Vinyl turntable playing Astroworld",
+                  "loading": "lazy",
+                  "width": 644,
+                  "height": 362
+                }
+              },
+              {
+                "image": {
+                  "size_type": "exact",
                   "src": "https://tvscientific.com/hubfs/image2-1.png",
                   "alt": "Man jogging through the city",
                   "loading": "lazy",
@@ -251,7 +272,7 @@
                   "bottom": { "value": 0, "units": "px" }
                 }
               },
-              "container_max_width": 1344,
+              "container_max_width": 1440,
               "image_scroll": false
             }
           %}
@@ -494,7 +515,7 @@
             cta_type="button",
             cta={
               "text": "Request a demo",
-              "link": { "url": { "type": "EXTERNAL", "href": "/contact" }, "open_in_new_tab": false, "no_follow": false },
+              "link": { "url": { "type": "EXTERNAL", "href": "#customer-story-form" }, "open_in_new_tab": false, "no_follow": false },
               "button_style": "primary"
             },
             form={

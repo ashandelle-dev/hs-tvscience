@@ -113,7 +113,7 @@
     "occurrence": {
       "min": 1,
       "max": 6,
-      "default": 2
+      "default": 3
     },
     "children": [
       {
@@ -139,6 +139,16 @@
           "size_type": "exact",
           "src": "https://tvscientific.com/hubfs/image3-2.png",
           "alt": "CTV ad with headphones and countdown",
+          "loading": "lazy",
+          "width": 644,
+          "height": 362
+        }
+      },
+      {
+        "image": {
+          "size_type": "exact",
+          "src": "https://tvscientific.com/hubfs/image1-2.png",
+          "alt": "Vinyl turntable playing Astroworld",
           "loading": "lazy",
           "width": 644,
           "height": 362
@@ -200,7 +210,7 @@
         "type": "number",
         "suffix": "px",
         "min": 0,
-        "default": 1344,
+        "default": 1440,
         "inline_help_text": "Max width for the logo/heading/form row. Set 0 for theme default."
       },
       {
@@ -209,7 +219,7 @@
         "type": "boolean",
         "display": "toggle",
         "default": false,
-        "inline_help_text": "Off by default — two static images. Turn on for a full-bleed marquee."
+        "inline_help_text": "Off by default — three static images. Turn on for a full-bleed marquee."
       },
       {
         "name": "image_scroll_direction",

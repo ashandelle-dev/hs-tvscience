@@ -88,7 +88,7 @@
           {% if cta_href and module.cta.text %}
           <div class="form-image-cta__button">
             <a
-              href="{{ cta_href|escape_url }}"
+              href="{% if cta_href is string_startingwith '#' %}{{ cta_href }}{% else %}{{ cta_href|escape_url }}{% endif %}"
               class="tvsci-button hs-button{% if module.cta.button_style == 'secondary' %} hs-button--secondary{% endif %}"
               {% if module.cta.link.open_in_new_tab %}target="_blank"{% endif %}
               {% if module.cta.link.rel %}rel="{{ module.cta.link.rel|escape_attr }}"{% endif %}>
