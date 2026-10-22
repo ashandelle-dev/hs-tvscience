@@ -1,274 +1,302 @@
-[
-  {
-    "name": "cards",
-    "label": "Cards",
-    "required": false,
-    "locked": false,
-    "occurrence": {
-      "min": null,
-      "max": null,
-      "sorting_label_field": null,
-      "default": 4
-    },
-    "children": [
-      {
-        "name": "heading",
-        "label": "Heading",
-        "required": false,
-        "locked": false,
-        "validation_regex": "",
-        "validation_error_message": "",
-        "allow_new_line": false,
-        "show_emoji_picker": false,
-        "type": "text",
-        "placeholder": "",
-        "inline_help_text": "",
-        "help_text": "",
-        "default": "Creative & production"
-      },
-      {
-        "name": "description",
-        "label": "Description",
-        "required": false,
-        "locked": false,
-        "type": "richtext",
-        "inline_help_text": "",
-        "help_text": "",
-        "default": "<p>Launch high-impact ads quickly. Access top-tier video talent to meet your creative goals.</p>"
-      },
-      {
-        "name": "image",
-        "label": "Image",
-        "required": false,
-        "locked": false,
-        "type": "image",
-        "inline_help_text": "",
-        "help_text": "",
-        "default": {
-          "size_type": "exact",
-          "src": "https://tvscientific.com/hubfs/PartnerPage/Icon-Creative.svg",
-          "alt": "Creative & Production",
-          "loading": "lazy",
-          "width": 52,
-          "height": 52
-        }
-      },
-      {
-        "name": "button",
-        "label": "Button",
-        "required": false,
-        "locked": false,
-        "children": [
-          {
-            "name": "display_as",
-            "label": "Display as",
-            "required": false,
-            "locked": false,
-            "type": "choice",
-            "display": "radio",
-            "choices": [
-              ["button", "Button"],
-              ["linkable_card", "Linkable card"]
-            ],
-            "default": "button",
-            "inline_help_text": "Linkable card makes the entire card clickable without showing a button.",
-            "help_text": ""
-          },
-          {
-            "name": "text",
-            "label": "Text",
-            "required": false,
-            "locked": false,
-            "type": "text",
-            "default": "",
-            "visibility": {
-              "controlling_field": "cards.button.display_as",
-              "controlling_value_regex": "button",
-              "operator": "EQUAL"
-            }
-          },
-          {
-            "name": "link",
-            "label": "Link",
-            "required": false,
-            "locked": false,
-            "supported_types": [
-              "EXTERNAL",
-              "CONTENT",
-              "FILE",
-              "EMAIL_ADDRESS",
-              "BLOG",
-              "CALL_TO_ACTION"
-            ],
-            "type": "link",
-            "inline_help_text": "",
-            "help_text": "",
-            "default": {
-              "url": {
-                "content_id": null,
-                "type": "EXTERNAL",
-                "href": ""
-              },
-              "open_in_new_tab": false,
-              "no_follow": false
-            }
-          }
-        ],
-        "type": "group",
-        "inline_help_text": "",
-        "help_text": "",
-        "default": {}
-      }
-    ],
-    "type": "group",
-    "inline_help_text": "",
-    "help_text": "",
-    "default": [
-      {
-        "heading": "Creative & production",
-        "description": "<p>Launch high-impact ads quickly. Access top-tier video talent to meet your creative goals.</p>",
-        "image": {
-          "size_type": "exact",
-          "src": "https://tvscientific.com/hubfs/PartnerPage/Icon-Creative.svg",
-          "alt": "Creative & Production",
-          "loading": "lazy",
-          "width": 52,
-          "height": 52
-        }
-      },
-      {
-        "heading": "Audience targeting & data solutions",
-        "description": "<p>Reach the right viewers with first-party data and premium audience segments and providers.</p>",
-        "image": {
-          "size_type": "exact",
-          "src": "https://tvscientific.com/hubfs/PartnerPage/Target-dark%20background.svg",
-          "alt": "Audience targeting & data solutions",
-          "loading": "lazy",
-          "width": 52,
-          "height": 52
-        }
-      },
-      {
-        "heading": "Attribution & measurement",
-        "description": "<p>Prove ROI with advanced measurement solutions, performance insights, and cross-channel reporting.</p>",
-        "image": {
-          "size_type": "exact",
-          "src": "https://tvscientific.com/hubfs/PartnerPage/Outcomes-1.svg",
-          "alt": "Attribution & measurement",
-          "loading": "lazy",
-          "width": 52,
-          "height": 52
-        }
-      },
-      {
-        "heading": "Campaign & channel management",
-        "description": "<p>Scale performance across CTV, linear TV and digital with expert strategy, campaign execution, and cross-channel optimization.</p>",
-        "image": {
-          "size_type": "exact",
-          "src": "https://tvscientific.com/hubfs/PartnerPage/Icon-Campaign.svg",
-          "alt": "Campaign & channel management",
-          "loading": "lazy",
-          "width": 52,
-          "height": 52
-        }
-      }
-    ]
+[ {
+  "id" : "cards",
+  "name" : "cards",
+  "label" : "Cards",
+  "help_text" : "",
+  "inline_help_text" : "",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : 4
   },
-  {
-    "name": "styles",
-    "label": "Styles",
-    "children": [
-      {
-        "name": "background_color",
-        "label": "Background color",
-        "required": false,
-        "locked": false,
-        "inline_help_text": "",
-        "help_text": "",
-        "type": "color",
-        "default": null
+  "children" : [ {
+    "id" : "cards.heading",
+    "name" : "heading",
+    "label" : "Heading",
+    "help_text" : "",
+    "inline_help_text" : "",
+    "required" : false,
+    "locked" : false,
+    "validation_error_message" : "",
+    "placeholder" : "",
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Creative & production"
+  }, {
+    "id" : "cards.description",
+    "name" : "description",
+    "label" : "Description",
+    "help_text" : "",
+    "inline_help_text" : "",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "display_width" : null,
+    "default" : "<p>Launch high-impact ads quickly. Access top-tier video talent to meet your creative goals.</p>"
+  }, {
+    "id" : "cards.image",
+    "name" : "image",
+    "label" : "Image",
+    "help_text" : "",
+    "inline_help_text" : "",
+    "required" : false,
+    "locked" : false,
+    "responsive" : false,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "size_type" : "exact",
+      "src" : "https://tvscientific.com/hubfs/PartnerPage/Icon-Creative.svg",
+      "alt" : "Creative & Production",
+      "loading" : "lazy",
+      "width" : 52,
+      "height" : 52
+    }
+  }, {
+    "id" : "cards.button",
+    "name" : "button",
+    "label" : "Button",
+    "help_text" : "",
+    "inline_help_text" : "",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "cards.button.display_as",
+      "name" : "display_as",
+      "label" : "Display as",
+      "help_text" : "",
+      "inline_help_text" : "Linkable card makes the entire card clickable without showing a button.",
+      "required" : false,
+      "locked" : false,
+      "display" : "radio",
+      "choices" : [ [ "button", "Button" ], [ "linkable_card", "Linkable card" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "display_width" : null,
+      "default" : "button"
+    }, {
+      "id" : "cards.button.text",
+      "name" : "text",
+      "label" : "Text",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "cards.button.display_as",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "button",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
       },
-      {
-        "name": "color",
-        "label": "Color ",
-        "required": false,
-        "locked": false,
-        "inline_help_text": "",
-        "help_text": "",
-        "type": "color",
-        "default": null
-      },
-      {
-        "name": "card_heading_size",
-        "label": "Card heading size",
-        "required": false,
-        "locked": false,
-        "type": "choice",
-        "display": "select",
-        "choices": [
-          ["default", "Default"],
-          ["small", "Small"]
-        ],
-        "default": "default",
-        "inline_help_text": "Small uses heading-xs (22px medium).",
-        "help_text": ""
-      },
-      {
-        "name": "card_border_color",
-        "label": "Card border color",
-        "required": false,
-        "locked": false,
-        "type": "color",
-        "inline_help_text": "Leave empty for no border.",
-        "help_text": "",
-        "default": {
-          "color": null,
-          "opacity": 100
-        }
-      },
-      {
-        "name": "border_radius",
-        "label": "Border radius",
-        "required": false,
-        "locked": false,
-        "type": "number",
-        "suffix": "px",
-        "min": 0,
-        "default": null,
-        "inline_help_text": "",
-        "help_text": ""
-      },
-      {
-        "name": "padding",
-        "label": "Padding",
-        "required": false,
-        "locked": false,
-        "type": "spacing",
-        "inline_help_text": "",
-        "help_text": "",
-        "default": {
-          "padding": {
-            "top": {
-              "value": 1,
-              "units": "rem"
-            },
-            "bottom": {
-              "value": 1,
-              "units": "rem"
-            },
-            "left": {
-              "value": 1,
-              "units": "rem"
-            },
-            "right": {
-              "value": 1,
-              "units": "rem"
-            }
-          }
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : ""
+    }, {
+      "id" : "cards.button.link",
+      "name" : "link",
+      "label" : "Link",
+      "help_text" : "",
+      "inline_help_text" : "",
+      "required" : false,
+      "locked" : false,
+      "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION" ],
+      "show_advanced_rel_options" : false,
+      "type" : "link",
+      "display_width" : null,
+      "default" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : { }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "heading" : "Creative & production",
+    "description" : "<p>Launch high-impact ads quickly. Access top-tier video talent to meet your creative goals.</p>",
+    "image" : {
+      "size_type" : "exact",
+      "src" : "https://tvscientific.com/hubfs/PartnerPage/Icon-Creative.svg",
+      "alt" : "Creative & Production",
+      "loading" : "lazy",
+      "width" : 52,
+      "height" : 52
+    }
+  }, {
+    "heading" : "Audience targeting & data solutions",
+    "description" : "<p>Reach the right viewers with first-party data and premium audience segments and providers.</p>",
+    "image" : {
+      "size_type" : "exact",
+      "src" : "https://tvscientific.com/hubfs/PartnerPage/Target-dark%20background.svg",
+      "alt" : "Audience targeting & data solutions",
+      "loading" : "lazy",
+      "width" : 52,
+      "height" : 52
+    }
+  }, {
+    "heading" : "Attribution & measurement",
+    "description" : "<p>Prove ROI with advanced measurement solutions, performance insights, and cross-channel reporting.</p>",
+    "image" : {
+      "size_type" : "exact",
+      "src" : "https://tvscientific.com/hubfs/PartnerPage/Outcomes-1.svg",
+      "alt" : "Attribution & measurement",
+      "loading" : "lazy",
+      "width" : 52,
+      "height" : 52
+    }
+  }, {
+    "heading" : "Campaign & channel management",
+    "description" : "<p>Scale performance across CTV, linear TV and digital with expert strategy, campaign execution, and cross-channel optimization.</p>",
+    "image" : {
+      "size_type" : "exact",
+      "src" : "https://tvscientific.com/hubfs/PartnerPage/Icon-Campaign.svg",
+      "alt" : "Campaign & channel management",
+      "loading" : "lazy",
+      "width" : 52,
+      "height" : 52
+    }
+  } ]
+}, {
+  "id" : "styles",
+  "name" : "styles",
+  "label" : "Styles",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "styles.background_color",
+    "name" : "background_color",
+    "label" : "Background color",
+    "help_text" : "",
+    "inline_help_text" : "",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : null,
+      "opacity" : null,
+      "rgba" : null,
+      "rgb" : null,
+      "hex" : null
+    }
+  }, {
+    "id" : "styles.color",
+    "name" : "color",
+    "label" : "Color ",
+    "help_text" : "",
+    "inline_help_text" : "",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : null,
+      "opacity" : null,
+      "rgba" : null,
+      "rgb" : null,
+      "hex" : null
+    }
+  }, {
+    "id" : "styles.card_heading_size",
+    "name" : "card_heading_size",
+    "label" : "Card heading size",
+    "help_text" : "",
+    "inline_help_text" : "Small uses heading-xs (22px medium).",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "default", "Default" ], [ "small", "Small" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "default"
+  }, {
+    "id" : "styles.card_border_color",
+    "name" : "card_border_color",
+    "label" : "Card border color",
+    "help_text" : "",
+    "inline_help_text" : "Leave empty for no border.",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : null,
+      "opacity" : 100
+    }
+  }, {
+    "id" : "styles.border_radius",
+    "name" : "border_radius",
+    "label" : "Border radius",
+    "help_text" : "",
+    "inline_help_text" : "",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 0,
+    "step" : 1,
+    "suffix" : "px",
+    "type" : "number",
+    "display_width" : null
+  }, {
+    "id" : "styles.padding",
+    "name" : "padding",
+    "label" : "Padding",
+    "help_text" : "",
+    "inline_help_text" : "",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "display_width" : null,
+    "default" : {
+      "padding" : {
+        "top" : {
+          "value" : 1,
+          "units" : "rem"
+        },
+        "bottom" : {
+          "value" : 1,
+          "units" : "rem"
+        },
+        "left" : {
+          "value" : 1,
+          "units" : "rem"
+        },
+        "right" : {
+          "value" : 1,
+          "units" : "rem"
         }
       }
-    ],
-    "type": "group",
-    "tab": "STYLE"
-  }
-]
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+} ]

@@ -1,109 +1,214 @@
-[
-  {
-    "name": "members",
-    "label": "Team Members",
-    "type": "group",
-    "tab": "CONTENT",
-    "occurrence": { "min": 1, "max": 12 },
-    "default": [
-      {
-        "photo": { "size_type": "exact", "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/jason.png", "alt": "Jason Fairchild", "loading": "lazy", "width": 234, "height": 220 },
-        "person_name": "Jason Fairchild",
-        "role": "Co-Founder + CEO",
-        "linkedin": { "url": { "type": "EXTERNAL", "href": "" }, "open_in_new_tab": true, "no_follow": false }
-      },
-      {
-        "photo": { "size_type": "exact", "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/jason.png", "alt": "Team Member", "loading": "lazy", "width": 234, "height": 220 },
-        "person_name": "Team Member",
-        "role": "Title / Role",
-        "linkedin": { "url": { "type": "EXTERNAL", "href": "" }, "open_in_new_tab": true, "no_follow": false }
-      },
-      {
-        "photo": { "size_type": "exact", "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/jason.png", "alt": "Team Member", "loading": "lazy", "width": 234, "height": 220 },
-        "person_name": "Team Member",
-        "role": "Title / Role",
-        "linkedin": { "url": { "type": "EXTERNAL", "href": "" }, "open_in_new_tab": true, "no_follow": false }
-      },
-      {
-        "photo": { "size_type": "exact", "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/jason.png", "alt": "Team Member", "loading": "lazy", "width": 234, "height": 220 },
-        "person_name": "Team Member",
-        "role": "Title / Role",
-        "linkedin": { "url": { "type": "EXTERNAL", "href": "" }, "open_in_new_tab": true, "no_follow": false }
-      }
-    ],
-    "children": [
-      {
-        "name": "photo",
-        "label": "Photo",
-        "type": "image",
-        "responsive": true,
-        "resizable": true,
-        "show_loading": true,
-        "default": {
-          "size_type": "exact",
-          "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/jason.png",
-          "alt": "",
-          "loading": "lazy",
-          "width": 234,
-          "height": 220
-        }
-      },
-      {
-        "name": "person_name",
-        "label": "Name",
-        "type": "text",
-        "allow_new_line": false,
-        "default": "Team Member"
-      },
-      {
-        "name": "role",
-        "label": "Title / Role",
-        "type": "text",
-        "allow_new_line": false,
-        "default": "Title / Role"
-      },
-      {
-        "name": "linkedin",
-        "label": "LinkedIn URL",
-        "type": "link",
-        "supported_types": ["EXTERNAL"],
-        "default": {
-          "url": { "type": "EXTERNAL", "href": "" },
-          "open_in_new_tab": true,
-          "no_follow": false
-        }
-      }
-    ]
+[ {
+  "id" : "members",
+  "name" : "members",
+  "label" : "Team Members",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 1,
+    "max" : 12,
+    "sorting_label_field" : null,
+    "default" : null
   },
-  {
-    "name": "style",
-    "label": "Style",
-    "type": "group",
-    "tab": "STYLE",
-    "children": [
-      {
-        "name": "background_color",
-        "label": "Background color",
-        "type": "color",
-        "default": { "color": null, "opacity": 100 }
+  "children" : [ {
+    "id" : "members.photo",
+    "name" : "photo",
+    "label" : "Photo",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : true,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "size_type" : "exact",
+      "src" : "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/jason.png",
+      "alt" : "",
+      "loading" : "lazy",
+      "width" : 234,
+      "height" : 220
+    }
+  }, {
+    "id" : "members.person_name",
+    "name" : "person_name",
+    "label" : "Name",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Team Member"
+  }, {
+    "id" : "members.role",
+    "name" : "role",
+    "label" : "Title / Role",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Title / Role"
+  }, {
+    "id" : "members.linkedin",
+    "name" : "linkedin",
+    "label" : "LinkedIn URL",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "display_width" : null,
+    "default" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : ""
       },
-      {
-        "name": "background_image",
-        "label": "Background image",
-        "type": "image",
-        "default": { "size_type": "auto", "src": "", "alt": "", "loading": "lazy" }
+      "open_in_new_tab" : true,
+      "no_follow" : false
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "photo" : {
+      "size_type" : "exact",
+      "src" : "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/jason.png",
+      "alt" : "Jason Fairchild",
+      "loading" : "lazy",
+      "width" : 234,
+      "height" : 220
+    },
+    "person_name" : "Jason Fairchild",
+    "role" : "Co-Founder + CEO",
+    "linkedin" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : ""
       },
-      {
-        "name": "padding",
-        "label": "Padding",
-        "type": "spacing",
-        "default": {
-          "padding": {
-            "top": { "value": 120, "units": "px" },
-            "bottom": { "value": 80, "units": "px" }
-          }
+      "open_in_new_tab" : true,
+      "no_follow" : false
+    }
+  }, {
+    "photo" : {
+      "size_type" : "exact",
+      "src" : "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/jason.png",
+      "alt" : "Team Member",
+      "loading" : "lazy",
+      "width" : 234,
+      "height" : 220
+    },
+    "person_name" : "Team Member",
+    "role" : "Title / Role",
+    "linkedin" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : true,
+      "no_follow" : false
+    }
+  }, {
+    "photo" : {
+      "size_type" : "exact",
+      "src" : "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/jason.png",
+      "alt" : "Team Member",
+      "loading" : "lazy",
+      "width" : 234,
+      "height" : 220
+    },
+    "person_name" : "Team Member",
+    "role" : "Title / Role",
+    "linkedin" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : true,
+      "no_follow" : false
+    }
+  }, {
+    "photo" : {
+      "size_type" : "exact",
+      "src" : "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/jason.png",
+      "alt" : "Team Member",
+      "loading" : "lazy",
+      "width" : 234,
+      "height" : 220
+    },
+    "person_name" : "Team Member",
+    "role" : "Title / Role",
+    "linkedin" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : true,
+      "no_follow" : false
+    }
+  } ]
+}, {
+  "id" : "style",
+  "name" : "style",
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "style.background_color",
+    "name" : "background_color",
+    "label" : "Background color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : null,
+      "opacity" : 100
+    }
+  }, {
+    "id" : "style.background_image",
+    "name" : "background_image",
+    "label" : "Background image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : false,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "size_type" : "auto",
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy"
+    }
+  }, {
+    "id" : "style.padding",
+    "name" : "padding",
+    "label" : "Padding",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "display_width" : null,
+    "default" : {
+      "padding" : {
+        "top" : {
+          "value" : 120,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 80,
+          "units" : "px"
         }
       }
-    ]
-  }
-]
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+} ]

@@ -1,13 +1,8 @@
 {
-  "label": "Logo Slider - Auto-scrolling",
-  "css_assets": [],
-  "external_js": [],
-  "global": false,
-  "help_text": "An auto-scrolling logo carousel that pauses on hover",
+  "global" : false,
   "content_types" : [ "LANDING_PAGE", "SITE_PAGE" ],
-  "js_assets": [],
-  "other_assets": [],
-  "smart_type": "NOT_SMART",
-  "tags": ["logos", "carousel", "slider"],
-  "is_available_for_new_content": true
+  "host_template_types" : [ "ANY" ],
+  "module_id" : 199215964215,
+  "label" : "Logo Slider - Auto-scrolling",
+  "is_available_for_new_content" : true
 }

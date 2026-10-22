@@ -47,7 +47,9 @@
 
         <!-- Collections Filter -->
         <div class="filter-group mb-10">
+          {% if featured_partners|length > 0 %}
           <p class="text-sm mb-2 text-[#202223] font-semibold">{{ module.filter_1 }}</p>
+          {% endif %}
           <div class="filter-options space-y-4">
             {% if featured_partners|length > 0 %}
             <label class="flex items-center cursor-pointer group">

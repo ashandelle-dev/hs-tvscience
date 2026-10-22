@@ -1,0 +1,9 @@
+{
+  "global" : false,
+  "content_types" : [ "LANDING_PAGE", "SITE_PAGE" ],
+  "host_template_types" : [ "PAGE" ],
+  "module_id" : 211199564151,
+  "label" : "tvSci Logo Strip",
+  "icon" : "https://f.hubspotusercontent30.net/hubfs/8823337/Logo%20Slider.svg",
+  "is_available_for_new_content" : true
+}

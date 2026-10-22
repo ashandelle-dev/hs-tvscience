@@ -1,14 +1,8 @@
 {
-  "label": "Quote Carousel 2",
-  "css_assets": [],
-  "external_js": [],
-  "global": false,
-  "help_text": "",
-  "js_assets": [],
-  "other_assets": [],
-  "smart_type": "NOT_SMART",
-  "tags": [],
+  "global" : false,
   "content_types" : [ "LANDING_PAGE", "SITE_PAGE" ],
   "host_template_types" : [ "PAGE" ],
-  "is_available_for_new_content": true
+  "module_id" : 201436024688,
+  "label" : "Quote Carousel 2",
+  "is_available_for_new_content" : true
 }

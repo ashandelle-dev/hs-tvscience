@@ -3,7 +3,7 @@
   "name" : "logo",
   "label" : "Logo",
   "required" : false,
-  "locked" : false,
+  "locked" : true,
   "children" : [ {
     "id" : "2e437009-4c5d-ab71-5e15-512097e59e01",
     "name" : "image",
@@ -14,6 +14,7 @@
     "resizable" : true,
     "show_loading" : false,
     "type" : "image",
+    "display_width" : null,
     "default" : {
       "size_type" : "exact",
       "src" : "https://www-tvscientific-com.sandbox.hs-sites.com/hs-fs/hubfs/tvScientificbyPinterest-Logo-Black-Red.png?width=152&height=38&name=tvScientificbyPinterest-Logo-Black-Red.png",
@@ -31,6 +32,7 @@
     "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
     "show_advanced_rel_options" : false,
     "type" : "link",
+    "display_width" : null,
     "default" : {
       "url" : {
         "type" : "EXTERNAL",
@@ -43,13 +45,15 @@
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
-  "type" : "group"
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
 }, {
   "id" : "5c1370a4-4bfe-58d8-c0c8-92dd887f1d01",
   "name" : "social",
   "label" : "Social Networks",
   "required" : false,
-  "locked" : false,
+  "locked" : true,
   "occurrence" : {
     "min" : null,
     "max" : null,
@@ -64,6 +68,7 @@
     "locked" : false,
     "allow_new_line" : false,
     "type" : "text",
+    "display_width" : null,
     "default" : "#"
   }, {
     "id" : "4e4b9706-c623-80cc-2de2-b61a93e92e01",
@@ -73,6 +78,7 @@
     "locked" : false,
     "icon_set" : "fontawesome-5.0.10",
     "type" : "icon",
+    "display_width" : null,
     "default" : {
       "name" : "twitter",
       "unicode" : "f099",
@@ -81,23 +87,37 @@
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
+  "display_width" : null,
   "default" : [ {
     "link" : "https://twitter.com/tvscientific",
-    "icon" : { "name" : "twitter", "unicode" : "f099", "type" : "REGULAR" }
+    "icon" : {
+      "name" : "twitter",
+      "unicode" : "f099",
+      "type" : "REGULAR"
+    }
   }, {
     "link" : "https://www.facebook.com/tvscientific",
-    "icon" : { "name" : "facebook-f", "unicode" : "f39e", "type" : "REGULAR" }
+    "icon" : {
+      "name" : "facebook-f",
+      "unicode" : "f39e",
+      "type" : "REGULAR"
+    }
   }, {
     "link" : "https://www.linkedin.com/company/tvscientific",
-    "icon" : { "name" : "linkedin-in", "unicode" : "f0e1", "type" : "REGULAR" }
+    "icon" : {
+      "name" : "linkedin-in",
+      "unicode" : "f0e1",
+      "type" : "REGULAR"
+    }
   } ]
 }, {
   "id" : "8f90be15-968c-b641-2654-a22583fd5f01",
   "name" : "groups",
   "label" : "Link Columns",
   "required" : false,
-  "locked" : false,
+  "locked" : true,
   "occurrence" : {
     "min" : null,
     "max" : 5,
@@ -112,8 +132,8 @@
     "locked" : false,
     "placeholder" : "Product",
     "allow_new_line" : false,
-    "show_emoji_picker" : false,
     "type" : "text",
+    "display_width" : null,
     "default" : "Product"
   }, {
     "id" : "b04cb084-a47a-1ae0-4cfa-b358b8d7bb01",
@@ -122,56 +142,154 @@
     "required" : false,
     "locked" : false,
     "type" : "simplemenu",
+    "display_width" : null,
     "default" : [ ]
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
+  "group_occurrence_meta" : null,
   "type" : "group",
+  "display_width" : null,
   "default" : [ {
     "title" : "Product",
-    "menu" : [
-      { "linkLabel" : "Product Overview", "linkUrl" : "/platform", "type" : "URL_LINK", "children" : [ ] },
-      { "linkLabel" : "CTV Advertising", "linkUrl" : "/ctv-advertising", "type" : "URL_LINK", "children" : [ ] },
-      { "linkLabel" : "Targeting", "linkUrl" : "/targeting", "type" : "URL_LINK", "children" : [ ] },
-      { "linkLabel" : "Creative", "linkUrl" : "/creative", "type" : "URL_LINK", "children" : [ ] },
-      { "linkLabel" : "Measurement & Attribution", "linkUrl" : "/measurement-attribution", "type" : "URL_LINK", "children" : [ ] },
-      { "linkLabel" : "Reporting", "linkUrl" : "/reporting", "type" : "URL_LINK", "children" : [ ] }
-    ]
+    "menu" : [ {
+      "linkLabel" : "Product Overview",
+      "linkUrl" : "/platform",
+      "type" : "URL_LINK",
+      "children" : [ ]
+    }, {
+      "linkLabel" : "CTV Advertising",
+      "linkUrl" : "/ctv-advertising",
+      "type" : "URL_LINK",
+      "children" : [ ]
+    }, {
+      "linkLabel" : "Targeting",
+      "linkUrl" : "/targeting",
+      "type" : "URL_LINK",
+      "children" : [ ]
+    }, {
+      "linkLabel" : "Creative",
+      "linkUrl" : "/creative",
+      "type" : "URL_LINK",
+      "children" : [ ]
+    }, {
+      "linkLabel" : "Measurement & Attribution",
+      "linkUrl" : "/measurement-attribution",
+      "type" : "URL_LINK",
+      "children" : [ ]
+    }, {
+      "linkLabel" : "Reporting",
+      "linkUrl" : "/reporting",
+      "type" : "URL_LINK",
+      "children" : [ ]
+    } ]
   }, {
     "title" : "Solutions",
-    "menu" : [
-      { "linkLabel" : "Retail", "linkUrl" : "/retail", "type" : "URL_LINK", "children" : [ ] },
-      { "linkLabel" : "Mobile Games", "linkUrl" : "/mobile-games", "type" : "URL_LINK", "children" : [ ] },
-      { "linkLabel" : "Fintech", "linkUrl" : "/fintech", "type" : "URL_LINK", "children" : [ ] },
-      { "linkLabel" : "Insurance", "linkUrl" : "/insurance", "type" : "URL_LINK", "children" : [ ] },
-      { "linkLabel" : "Hotels & Hospitalities", "linkUrl" : "/hotels-hospitality", "type" : "URL_LINK", "children" : [ ] }
-    ]
+    "menu" : [ {
+      "linkLabel" : "Retail",
+      "linkUrl" : "/retail",
+      "type" : "URL_LINK",
+      "children" : [ ]
+    }, {
+      "linkLabel" : "Mobile Games",
+      "linkUrl" : "/mobile-games",
+      "type" : "URL_LINK",
+      "children" : [ ]
+    }, {
+      "linkLabel" : "Fintech",
+      "linkUrl" : "/fintech",
+      "type" : "URL_LINK",
+      "children" : [ ]
+    }, {
+      "linkLabel" : "Insurance",
+      "linkUrl" : "/insurance",
+      "type" : "URL_LINK",
+      "children" : [ ]
+    }, {
+      "linkLabel" : "Hotels & Hospitalities",
+      "linkUrl" : "/hotels-hospitality",
+      "type" : "URL_LINK",
+      "children" : [ ]
+    } ]
   }, {
     "title" : "Resources",
-    "menu" : [
-      { "linkLabel" : "Resource Center", "linkUrl" : "/resources", "type" : "URL_LINK", "children" : [ ] },
-      { "linkLabel" : "Blog", "linkUrl" : "/blog", "type" : "URL_LINK", "children" : [ ] },
-      { "linkLabel" : "In the News", "linkUrl" : "/news", "type" : "URL_LINK", "children" : [ ] },
-      { "linkLabel" : "White Papers & Reports", "linkUrl" : "/white-papers", "type" : "URL_LINK", "children" : [ ] },
-      { "linkLabel" : "Events", "linkUrl" : "/events", "type" : "URL_LINK", "children" : [ ] }
-    ]
+    "menu" : [ {
+      "linkLabel" : "Resource Center",
+      "linkUrl" : "/resources",
+      "type" : "URL_LINK",
+      "children" : [ ]
+    }, {
+      "linkLabel" : "Blog",
+      "linkUrl" : "/blog",
+      "type" : "URL_LINK",
+      "children" : [ ]
+    }, {
+      "linkLabel" : "In the News",
+      "linkUrl" : "/news",
+      "type" : "URL_LINK",
+      "children" : [ ]
+    }, {
+      "linkLabel" : "White Papers & Reports",
+      "linkUrl" : "/white-papers",
+      "type" : "URL_LINK",
+      "children" : [ ]
+    }, {
+      "linkLabel" : "Events",
+      "linkUrl" : "/events",
+      "type" : "URL_LINK",
+      "children" : [ ]
+    } ]
   }, {
     "title" : "Legal",
-    "menu" : [
-      { "linkLabel" : "Publisher Terms & Conditions", "linkUrl" : "/publisher-terms", "type" : "URL_LINK", "children" : [ ] },
-      { "linkLabel" : "Master Platform Agreement", "linkUrl" : "/master-platform-agreement", "type" : "URL_LINK", "children" : [ ] },
-      { "linkLabel" : "Privacy Policy", "linkUrl" : "/privacy-policy", "type" : "URL_LINK", "children" : [ ] },
-      { "linkLabel" : "Services Policy", "linkUrl" : "/services-policy", "type" : "URL_LINK", "children" : [ ] },
-      { "linkLabel" : "Third Party Data Addendum", "linkUrl" : "/third-party-data-addendum", "type" : "URL_LINK", "children" : [ ] },
-      { "linkLabel" : "Data Processing Addendum", "linkUrl" : "/data-processing-addendum", "type" : "URL_LINK", "children" : [ ] }
-    ]
+    "menu" : [ {
+      "linkLabel" : "Publisher Terms & Conditions",
+      "linkUrl" : "/publisher-terms",
+      "type" : "URL_LINK",
+      "children" : [ ]
+    }, {
+      "linkLabel" : "Master Platform Agreement",
+      "linkUrl" : "/master-platform-agreement",
+      "type" : "URL_LINK",
+      "children" : [ ]
+    }, {
+      "linkLabel" : "Privacy Policy",
+      "linkUrl" : "/privacy-policy",
+      "type" : "URL_LINK",
+      "children" : [ ]
+    }, {
+      "linkLabel" : "Services Policy",
+      "linkUrl" : "/services-policy",
+      "type" : "URL_LINK",
+      "children" : [ ]
+    }, {
+      "linkLabel" : "Third Party Data Addendum",
+      "linkUrl" : "/third-party-data-addendum",
+      "type" : "URL_LINK",
+      "children" : [ ]
+    }, {
+      "linkLabel" : "Data Processing Addendum",
+      "linkUrl" : "/data-processing-addendum",
+      "type" : "URL_LINK",
+      "children" : [ ]
+    } ]
   }, {
     "title" : "About",
-    "menu" : [
-      { "linkLabel" : "About Us", "linkUrl" : "/about", "type" : "URL_LINK", "children" : [ ] },
-      { "linkLabel" : "Careers", "linkUrl" : "/careers", "type" : "URL_LINK", "children" : [ ] },
-      { "linkLabel" : "Customers", "linkUrl" : "/customers", "type" : "URL_LINK", "children" : [ ] }
-    ]
+    "menu" : [ {
+      "linkLabel" : "About Us",
+      "linkUrl" : "/about",
+      "type" : "URL_LINK",
+      "children" : [ ]
+    }, {
+      "linkLabel" : "Careers",
+      "linkUrl" : "/careers",
+      "type" : "URL_LINK",
+      "children" : [ ]
+    }, {
+      "linkLabel" : "Customers",
+      "linkUrl" : "/customers",
+      "type" : "URL_LINK",
+      "children" : [ ]
+    } ]
   } ]
 }, {
   "id" : "93df71bc-b5f1-d1a1-be25-8fe1c2410f01",
@@ -179,8 +297,9 @@
   "label" : "Contact (address + email)",
   "help_text" : "Renders below the About column. Use a richtext block with address and email.",
   "required" : false,
-  "locked" : false,
+  "locked" : true,
   "type" : "richtext",
+  "display_width" : null,
   "default" : "<p>1720 South Catalina Ave, #210<br>Redondo Beach, CA 90277</p><p><a href=\"mailto:hello@tvscientific.com\">hello@tvscientific.com</a></p>"
 }, {
   "id" : "c4e7a912-3a8d-4f6b-9c2e-1f0a4b6d8e01",
@@ -188,9 +307,10 @@
   "label" : "Show disclaimer text",
   "help_text" : "Toggle the disclaimer text on the left of the bottom row. The bottom row (and divider) still renders if a copyright is shown.",
   "required" : false,
-  "locked" : false,
+  "locked" : true,
   "display" : "toggle",
   "type" : "boolean",
+  "display_width" : null,
   "default" : true
 }, {
   "id" : "c4e7a912-3a8d-4f6b-9c2e-1f0a4b6d8e02",
@@ -198,13 +318,17 @@
   "label" : "Disclaimer",
   "help_text" : "Small print rendered on the left of the bottom row, below the divider.",
   "required" : false,
-  "locked" : false,
+  "locked" : true,
   "visibility" : {
     "controlling_field" : "show_disclaimer",
+    "controlling_field_path" : null,
     "controlling_value_regex" : "true",
-    "operator" : "EQUAL"
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
   },
   "type" : "richtext",
+  "display_width" : null,
   "default" : "<p>Disclaimer: All data for illustrative purposes.</p>"
 }, {
   "id" : "c4e7a912-3a8d-4f6b-9c2e-1f0a4b6d8e03",
@@ -212,9 +336,10 @@
   "label" : "Show copyright",
   "help_text" : "Toggle the copyright text on the right of the bottom row.",
   "required" : false,
-  "locked" : false,
+  "locked" : true,
   "display" : "toggle",
   "type" : "boolean",
+  "display_width" : null,
   "default" : true
 }, {
   "id" : "c4e7a912-3a8d-4f6b-9c2e-1f0a4b6d8e04",
@@ -222,23 +347,24 @@
   "label" : "Copyright",
   "help_text" : "Right-aligned copyright line on the bottom row. Use {{ year }} (with double braces) to insert the current year automatically.",
   "required" : false,
-  "locked" : false,
+  "locked" : true,
   "visibility" : {
     "controlling_field" : "show_copyright",
+    "controlling_field_path" : null,
     "controlling_value_regex" : "true",
-    "operator" : "EQUAL"
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
   },
   "type" : "richtext",
+  "display_width" : null,
   "default" : "<p>&copy; {{ year }} tvScientific | All rights reserved</p>"
 }, {
   "id" : "a1b2c3d4-e5f6-1234-5678-9abcdef00001",
   "name" : "style",
   "label" : "Style",
   "required" : false,
-  "locked" : false,
-  "tab" : "STYLE",
-  "expanded" : true,
-  "type" : "group",
+  "locked" : true,
   "children" : [ {
     "id" : "a1b2c3d4-e5f6-1234-5678-9abcdef00002",
     "name" : "background_color",
@@ -246,7 +372,11 @@
     "required" : false,
     "locked" : false,
     "type" : "color",
-    "default" : { "color" : "#FFFFFF", "opacity" : 100 }
+    "display_width" : null,
+    "default" : {
+      "color" : "#FFFFFF",
+      "opacity" : 100
+    }
   }, {
     "id" : "a1b2c3d4-e5f6-1234-5678-9abcdef00003",
     "name" : "background_image",
@@ -258,6 +388,7 @@
     "resizable" : true,
     "show_loading" : false,
     "type" : "image",
+    "display_width" : null,
     "default" : {
       "size_type" : "auto",
       "src" : "https://tvscientific.com/hubfs/footer-bg.png",
@@ -271,7 +402,11 @@
     "required" : false,
     "locked" : false,
     "type" : "color",
-    "default" : { "color" : "#1F252B", "opacity" : 100 }
+    "display_width" : null,
+    "default" : {
+      "color" : "#1F252B",
+      "opacity" : 100
+    }
   }, {
     "id" : "a1b2c3d4-e5f6-1234-5678-9abcdef00005",
     "name" : "heading_color",
@@ -279,7 +414,11 @@
     "required" : false,
     "locked" : false,
     "type" : "color",
-    "default" : { "color" : "#198960", "opacity" : 100 }
+    "display_width" : null,
+    "default" : {
+      "color" : "#198960",
+      "opacity" : 100
+    }
   }, {
     "id" : "a1b2c3d4-e5f6-1234-5678-9abcdef00006",
     "name" : "divider_color",
@@ -287,7 +426,11 @@
     "required" : false,
     "locked" : false,
     "type" : "color",
-    "default" : { "color" : "#D9E2EB", "opacity" : 100 }
+    "display_width" : null,
+    "default" : {
+      "color" : "#D9E2EB",
+      "opacity" : 100
+    }
   }, {
     "id" : "a1b2c3d4-e5f6-1234-5678-9abcdef00007",
     "name" : "padding",
@@ -295,13 +438,31 @@
     "required" : false,
     "locked" : false,
     "type" : "spacing",
+    "display_width" : null,
     "default" : {
       "padding" : {
-        "top" :    { "value" : 64, "units" : "px" },
-        "bottom" : { "value" : 64, "units" : "px" },
-        "left" :   { "value" : 0,  "units" : "px" },
-        "right" :  { "value" : 0,  "units" : "px" }
+        "top" : {
+          "value" : 64,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 64,
+          "units" : "px"
+        },
+        "left" : {
+          "value" : 0,
+          "units" : "px"
+        },
+        "right" : {
+          "value" : 0,
+          "units" : "px"
+        }
       }
     }
-  } ]
+  } ],
+  "tab" : "STYLE",
+  "expanded" : true,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
 } ]

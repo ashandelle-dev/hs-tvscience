@@ -1,241 +1,361 @@
-[
-  {
-    "name": "eyebrow",
-    "label": "Eyebrow",
-    "type": "text",
-    "tab": "CONTENT",
-    "allow_new_line": false,
-    "default": "",
-    "inline_help_text": "Optional small label above the heading (e.g. Get started today)."
+[ {
+  "id" : "eyebrow",
+  "name" : "eyebrow",
+  "label" : "Eyebrow",
+  "inline_help_text" : "Optional small label above the heading (e.g. Get started today).",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : ""
+}, {
+  "id" : "heading",
+  "name" : "heading",
+  "label" : "Heading",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "heading.value",
+    "name" : "value",
+    "label" : "Heading content",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : true,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Most tools create ads.\nWe turn your ads into outcomes."
+  }, {
+    "id" : "heading.header_tag",
+    "name" : "header_tag",
+    "label" : "Heading level",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "h1", "H1" ], [ "h2", "H2" ], [ "h3", "H3" ], [ "h4", "H4" ], [ "h5", "H5" ], [ "h6", "H6" ], [ "p", "P" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "h2"
+  }, {
+    "id" : "heading.heading_size",
+    "name" : "heading_size",
+    "label" : "Heading size",
+    "inline_help_text" : "Set to 0 to use the default size",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "step" : 1,
+    "suffix" : "px",
+    "type" : "number",
+    "display_width" : null,
+    "default" : 36
+  }, {
+    "id" : "heading.heading_size_mobile",
+    "name" : "heading_size_mobile",
+    "label" : "Heading size (mobile)",
+    "inline_help_text" : "Set to 0 to use the default size",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "step" : 1,
+    "suffix" : "px",
+    "type" : "number",
+    "display_width" : null,
+    "default" : 28
+  }, {
+    "id" : "heading.font_weight",
+    "name" : "font_weight",
+    "label" : "Font weight",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "normal", "Normal" ], [ "semibold", "Semibold" ], [ "bold", "Bold" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "bold"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "body_copy",
+  "name" : "body_copy",
+  "label" : "Body",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "display_width" : null,
+  "default" : "<p>Interested? Share your email to learn more.</p>"
+}, {
+  "id" : "cta_type",
+  "name" : "cta_type",
+  "label" : "Call-to-action type",
+  "inline_help_text" : "Choose between an inline HubSpot form or a linked button.",
+  "required" : true,
+  "locked" : false,
+  "display" : "radio",
+  "choices" : [ [ "form", "Inline form" ], [ "button", "Button" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "display_width" : null,
+  "default" : "form"
+}, {
+  "id" : "cta",
+  "name" : "cta",
+  "label" : "Button",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "cta_type",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "button",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
   },
-  {
-    "name": "heading",
-    "label": "Heading",
-    "type": "group",
-    "tab": "CONTENT",
-    "children": [
-      {
-        "name": "value",
-        "label": "Heading content",
-        "type": "text",
-        "allow_new_line": true,
-        "default": "Most tools create ads.\nWe turn your ads into outcomes."
+  "children" : [ {
+    "id" : "cta.text",
+    "name" : "text",
+    "label" : "Button text",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Learn more"
+  }, {
+    "id" : "cta.link",
+    "name" : "link",
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION", "PHONE_NUMBER" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "display_width" : null,
+    "default" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "/contact"
       },
-      {
-        "name": "header_tag",
-        "label": "Heading level",
-        "type": "choice",
-        "required": true,
-        "display": "select",
-        "choices": [
-          ["h1", "H1"], ["h2", "H2"], ["h3", "H3"], ["h4", "H4"], ["h5", "H5"], ["h6", "H6"], ["p", "P"]
-        ],
-        "default": "h2"
-      },
-      {
-        "name": "heading_size",
-        "label": "Heading size",
-        "type": "number",
-        "suffix": "px",
-        "inline_help_text": "Set to 0 to use the default size",
-        "default": 36
-      },
-      {
-        "name": "heading_size_mobile",
-        "label": "Heading size (mobile)",
-        "type": "number",
-        "suffix": "px",
-        "inline_help_text": "Set to 0 to use the default size",
-        "default": 28
-      },
-      {
-        "name": "font_weight",
-        "label": "Font weight",
-        "type": "choice",
-        "display": "select",
-        "choices": [["normal", "Normal"], ["semibold", "Semibold"], ["bold", "Bold"]],
-        "default": "bold"
-      }
-    ]
-  },
-
-  {
-    "name": "body_copy",
-    "label": "Body",
-    "type": "richtext",
-    "default": "<p>Interested? Share your email to learn more.</p>"
-  },
-
-  {
-    "name": "cta_type",
-    "label": "Call-to-action type",
-    "type": "choice",
-    "required": true,
-    "display": "radio",
-    "choices": [
-      ["form", "Inline form"],
-      ["button", "Button"]
-    ],
-    "default": "form",
-    "inline_help_text": "Choose between an inline HubSpot form or a linked button."
-  },
-
-  {
-    "name": "cta",
-    "label": "Button",
-    "type": "group",
-    "tab": "CONTENT",
-    "visibility": {
-      "controlling_field": "cta_type",
-      "controlling_value_regex": "button",
-      "operator": "EQUAL"
-    },
-    "children": [
-      {
-        "name": "text",
-        "label": "Button text",
-        "type": "text",
-        "allow_new_line": false,
-        "default": "Learn more"
-      },
-      {
-        "name": "link",
-        "label": "Link",
-        "type": "link",
-        "supported_types": ["EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION", "PHONE_NUMBER"],
-        "default": {
-          "url": { "type": "EXTERNAL", "href": "/contact" },
-          "open_in_new_tab": false,
-          "no_follow": false
-        }
-      },
-      {
-        "name": "button_style",
-        "label": "Button style",
-        "type": "choice",
-        "display": "select",
-        "choices": [
-          ["primary", "Primary"],
-          ["secondary", "Secondary / Outline"]
-        ],
-        "default": "primary"
-      }
-    ]
-  },
-
-  {
-    "name": "form",
-    "label": "Form",
-    "type": "form",
-    "embed_versions": ["v2", "v4"],
-    "support_all_webinar_types": true,
-    "inline_help_text": "Use a single-field form (e.g. Business Email) plus submit — extra fields will stack below the input.",
-    "visibility": {
-      "controlling_field": "cta_type",
-      "controlling_value_regex": "form",
-      "operator": "EQUAL"
-    },
-    "default": {
-      "form_id": "",
-      "response_type": "inline",
-      "message": "Thanks! We'll be in touch shortly.",
-      "gotowebinar_webinar_key": null
+      "open_in_new_tab" : false,
+      "no_follow" : false
     }
+  }, {
+    "id" : "cta.button_style",
+    "name" : "button_style",
+    "label" : "Button style",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary / Outline" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "primary"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "form",
+  "name" : "form",
+  "label" : "Form",
+  "inline_help_text" : "Use a single-field form (e.g. Business Email) plus submit — extra fields will stack below the input.",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "cta_type",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "form",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
   },
-
-  {
-    "name": "media",
-    "label": "Image",
-    "type": "image",
-    "tab": "CONTENT",
-    "responsive": true,
-    "resizable": true,
-    "show_loading": true,
-    "default": {
-      "size_type": "exact",
-      "src": "https://tvscientific.com/hubfs/covertion%20rate-1.png",
-      "alt": "Woman watching TV with conversion rate trending up",
-      "loading": "lazy",
-      "width": 546,
-      "height": 395
-    }
-  },
-
-  {
-    "name": "style",
-    "label": "Style",
-    "type": "group",
-    "tab": "STYLE",
-    "children": [
-      {
-        "name": "background_color",
-        "label": "Section background color",
-        "type": "color",
-        "default": { "color": "#ffffff", "opacity": 100 }
-      },
-      {
-        "name": "background_image",
-        "label": "Section background image",
-        "type": "image",
-        "responsive": true,
-        "resizable": true,
-        "show_loading": true,
-        "default": { "size_type": "exact", "src": "", "alt": "", "loading": "lazy", "width": 1920, "height": 1080 }
-      },
-      {
-        "name": "text_color",
-        "label": "Text color",
-        "type": "color",
-        "default": { "color": null, "opacity": 100 }
-      },
-      {
-        "name": "padding",
-        "label": "Section padding",
-        "type": "spacing",
-        "default": {
-          "padding": {
-            "top": { "value": 80, "units": "px" },
-            "bottom": { "value": 80, "units": "px" }
-          }
-        }
-      },
-      {
-        "name": "container_max_width",
-        "label": "Container max width",
-        "type": "number",
-        "suffix": "px",
-        "min": 0,
-        "inline_help_text": "Override the default 1072px container width. Set to 0 to use the theme default.",
-        "default": 1200
-      },
-      {
-        "name": "card_background_color",
-        "label": "Card background color",
-        "type": "color",
-        "default": { "color": "#f3fff6", "opacity": 100 }
-      },
-      {
-        "name": "card_border_radius",
-        "label": "Card border radius",
-        "type": "number",
-        "suffix": "px",
-        "min": 0,
-        "max": 48,
-        "default": 20
-      },
-      {
-        "name": "card_content_padding",
-        "label": "Card content padding",
-        "type": "spacing",
-        "default": {
-          "padding": {
-            "top": { "value": 70, "units": "px" },
-            "bottom": { "value": 70, "units": "px" },
-            "left": { "value": 70, "units": "px" },
-            "right": { "value": 70, "units": "px" }
-          }
-        }
-      }
-    ]
+  "embed_versions" : [ "v2", "v4" ],
+  "support_all_webinar_types" : true,
+  "type" : "form",
+  "display_width" : null,
+  "default" : {
+    "form_id" : "",
+    "response_type" : "inline",
+    "message" : "Thanks! We'll be in touch shortly.",
+    "gotowebinar_webinar_key" : null
   }
-]
+}, {
+  "id" : "media",
+  "name" : "media",
+  "label" : "Image",
+  "required" : false,
+  "locked" : false,
+  "responsive" : true,
+  "resizable" : true,
+  "show_loading" : true,
+  "type" : "image",
+  "display_width" : null,
+  "default" : {
+    "size_type" : "exact",
+    "src" : "https://tvscientific.com/hubfs/covertion%20rate-1.png",
+    "alt" : "Woman watching TV with conversion rate trending up",
+    "loading" : "lazy",
+    "width" : 546,
+    "height" : 395
+  }
+}, {
+  "id" : "style",
+  "name" : "style",
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "style.background_color",
+    "name" : "background_color",
+    "label" : "Section background color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#ffffff",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "style.background_image",
+    "name" : "background_image",
+    "label" : "Section background image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : true,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "size_type" : "exact",
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy",
+      "width" : 1920,
+      "height" : 1080
+    }
+  }, {
+    "id" : "style.text_color",
+    "name" : "text_color",
+    "label" : "Text color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : null,
+      "opacity" : 100
+    }
+  }, {
+    "id" : "style.padding",
+    "name" : "padding",
+    "label" : "Section padding",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "display_width" : null,
+    "default" : {
+      "padding" : {
+        "top" : {
+          "value" : 80,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 80,
+          "units" : "px"
+        }
+      }
+    }
+  }, {
+    "id" : "style.container_max_width",
+    "name" : "container_max_width",
+    "label" : "Container max width",
+    "inline_help_text" : "Override the default 1072px container width. Set to 0 to use the theme default.",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 0,
+    "step" : 1,
+    "suffix" : "px",
+    "type" : "number",
+    "display_width" : null,
+    "default" : 1200
+  }, {
+    "id" : "style.card_background_color",
+    "name" : "card_background_color",
+    "label" : "Card background color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#f3fff6",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "style.card_border_radius",
+    "name" : "card_border_radius",
+    "label" : "Card border radius",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 0,
+    "max" : 48,
+    "step" : 1,
+    "suffix" : "px",
+    "type" : "number",
+    "display_width" : null,
+    "default" : 20
+  }, {
+    "id" : "style.card_content_padding",
+    "name" : "card_content_padding",
+    "label" : "Card content padding",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "display_width" : null,
+    "default" : {
+      "padding" : {
+        "top" : {
+          "value" : 70,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 70,
+          "units" : "px"
+        },
+        "left" : {
+          "value" : 70,
+          "units" : "px"
+        },
+        "right" : {
+          "value" : 70,
+          "units" : "px"
+        }
+      }
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+} ]

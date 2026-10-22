@@ -7,8 +7,8 @@
   "responsive" : true,
   "resizable" : true,
   "show_loading" : false,
-  "display_width" : null,
   "type" : "image",
+  "display_width" : null,
   "default" : {
     "size_type" : "auto",
     "src" : "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/single-card-placeholder.jpg",
@@ -31,8 +31,8 @@
     "label" : "Border Color",
     "required" : false,
     "locked" : false,
-    "display_width" : null,
     "type" : "color",
+    "display_width" : null,
     "default" : {
       "color" : null,
       "opacity" : null
@@ -44,15 +44,15 @@
     "required" : false,
     "locked" : false,
     "display" : "toggle",
-    "display_width" : null,
     "type" : "boolean",
+    "display_width" : null,
     "default" : false
   } ],
   "tab" : "STYLE",
   "expanded" : false,
   "group_occurrence_meta" : null,
-  "display_width" : null,
   "type" : "group",
+  "display_width" : null,
   "default" : {
     "border_color" : {
       "color" : null,
@@ -66,6 +66,6 @@
   "label" : "Card Content",
   "required" : false,
   "locked" : false,
-  "display_width" : null,
-  "type" : "richtext"
+  "type" : "richtext",
+  "display_width" : null
 } ]

@@ -1,211 +1,337 @@
-[
-  {
-    "name": "cards",
-    "label": "Cards",
-    "type": "group",
-    "tab": "CONTENT",
-    "occurrence": {
-      "min": 1,
-      "max": 6,
-      "default": 3
-    },
-    "children": [
-      {
-        "name": "logo",
-        "label": "Logo",
-        "type": "image",
-        "responsive": true,
-        "resizable": true,
-        "show_loading": true,
-        "default": {
-          "size_type": "exact",
-          "src": "",
-          "alt": "",
-          "loading": "lazy",
-          "width": 130,
-          "height": 40
-        }
-      },
-      {
-        "name": "logo_background_color",
-        "label": "Logo background color",
-        "type": "color",
-        "default": { "color": "#91f2cb", "opacity": 100 }
-      },
-      {
-        "name": "body_copy",
-        "label": "Body",
-        "type": "richtext",
-        "default": ""
-      },
-      {
-        "name": "stats",
-        "label": "Stats",
-        "type": "group",
-        "occurrence": {
-          "min": 0,
-          "max": 4,
-          "default": 0
-        },
-        "children": [
-          {
-            "name": "stat_value",
-            "label": "Value",
-            "type": "text",
-            "allow_new_line": false,
-            "default": "57%"
-          },
-          {
-            "name": "stat_caption",
-            "label": "Caption",
-            "type": "text",
-            "allow_new_line": true,
-            "default": "increase in net-new customers"
-          }
-        ]
-      },
-      {
-        "name": "cta",
-        "label": "Button",
-        "type": "group",
-        "children": [
-          {
-            "name": "text",
-            "label": "Button text",
-            "type": "text",
-            "allow_new_line": false,
-            "default": "Read the story"
-          },
-          {
-            "name": "link",
-            "label": "Link",
-            "type": "link",
-            "supported_types": ["EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION"],
-            "default": {
-              "url": { "type": "EXTERNAL", "href": "" },
-              "open_in_new_tab": false,
-              "no_follow": false
-            }
-          }
-        ]
-      }
-    ],
-    "default": [
-      {
-        "logo": {
-          "size_type": "exact",
-          "src": "https://tvscientific.com/hubfs/lg-2.svg",
-          "alt": "LG",
-          "loading": "lazy",
-          "width": 130,
-          "height": 57
-        },
-        "logo_background_color": { "color": "#91f2cb", "opacity": 100 },
-        "body_copy": "<p>LG uses tvScientific by Pinterest to support ongoing enterprise growth, driving both reach and performance across key product categories.</p>",
-        "stats": [
-          { "stat_value": "57%", "stat_caption": "increase in net-new customers" },
-          { "stat_value": "14%", "stat_caption": "improvement in CPA" },
-          { "stat_value": "1100%", "stat_caption": "revenue growth in 2024" }
-        ],
-        "cta": {
-          "text": "Read the story",
-          "link": { "url": { "type": "EXTERNAL", "href": "https://www.tvscientific.com/customers/lg-pinterest-audiences" }, "open_in_new_tab": false, "no_follow": false }
-        }
-      },
-      {
-        "logo": {
-          "size_type": "exact",
-          "src": "https://tvscientific.com/hubfs/Dell-Logo-1.svg",
-          "alt": "Dell",
-          "loading": "lazy",
-          "width": 130,
-          "height": 40
-        },
-        "logo_background_color": { "color": "#aee4ff", "opacity": 100 },
-        "body_copy": "<p>Dell analyzes thousands of streaming TV ad variables in real-time with tvScientific by Pinterest’s AI to bid only where enterprise ROI is strongest.</p>",
-        "stats": [
-          { "stat_value": "50%", "stat_caption": "ROAS" },
-          { "stat_value": "27%", "stat_caption": "Always-On Incrementality" },
-          { "stat_value": "56%", "stat_caption": "net-new customer acquisition" }
-        ],
-        "cta": {
-          "text": "Read the story",
-          "link": { "url": { "type": "EXTERNAL", "href": "https://www.tvscientific.com/dell" }, "open_in_new_tab": false, "no_follow": false }
-        }
-      },
-      {
-        "logo": {
-          "size_type": "exact",
-          "src": "https://tvscientific.com/hubfs/higherdose-logo-1.svg",
-          "alt": "HigherDOSE",
-          "loading": "lazy",
-          "width": 200,
-          "height": 28
-        },
-        "logo_background_color": { "color": "#d1b2ff", "opacity": 100 },
-        "body_copy": "<p>HigherDOSE uses tvScientific by Pinterest to test whether bolder, more persistent early-stage branding could improve their Performance TV outcomes for site visits.</p>",
-        "stats": [
-          { "stat_value": "14", "stat_caption": "lift in site visits" }
-        ],
-        "cta": {
-          "text": "Read the story",
-          "link": { "url": { "type": "EXTERNAL", "href": "https://www.tvscientific.com/higherdose" }, "open_in_new_tab": false, "no_follow": false }
-        }
-      }
-    ]
+[ {
+  "id" : "cards",
+  "name" : "cards",
+  "label" : "Cards",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 1,
+    "max" : 6,
+    "sorting_label_field" : null,
+    "default" : 3
   },
-  {
-    "name": "style",
-    "label": "Style",
-    "type": "group",
-    "tab": "STYLE",
-    "children": [
-      {
-        "name": "background_color",
-        "label": "Section background color",
-        "type": "color",
-        "default": { "color": "#ffffff", "opacity": 100 }
-      },
-      {
-        "name": "background_image",
-        "label": "Section background image",
-        "type": "image",
-        "responsive": true,
-        "resizable": true,
-        "show_loading": true,
-        "default": { "size_type": "exact", "src": "", "alt": "", "loading": "lazy", "width": 1920, "height": 1080 }
-      },
-      {
-        "name": "text_color",
-        "label": "Text color",
-        "type": "color",
-        "default": { "color": "#1f252b", "opacity": 100 }
-      },
-      {
-        "name": "divider_color",
-        "label": "Column divider color",
-        "type": "color",
-        "default": { "color": "#d9e2eb", "opacity": 100 }
-      },
-      {
-        "name": "padding",
-        "label": "Section padding",
-        "type": "spacing",
-        "default": {
-          "padding": {
-            "top": { "value": 64, "units": "px" },
-            "bottom": { "value": 64, "units": "px" }
-          }
-        }
-      },
-      {
-        "name": "container_max_width",
-        "label": "Container max width",
-        "type": "number",
-        "suffix": "px",
-        "min": 0,
-        "default": 1312
+  "children" : [ {
+    "id" : "cards.logo",
+    "name" : "logo",
+    "label" : "Logo",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : true,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "size_type" : "exact",
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy",
+      "width" : 130,
+      "height" : 40
+    }
+  }, {
+    "id" : "cards.logo_background_color",
+    "name" : "logo_background_color",
+    "label" : "Logo background color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#91f2cb",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "cards.body_copy",
+    "name" : "body_copy",
+    "label" : "Body",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "display_width" : null,
+    "default" : ""
+  }, {
+    "id" : "cards.stats",
+    "name" : "stats",
+    "label" : "Stats",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : 0,
+      "max" : 4,
+      "sorting_label_field" : null,
+      "default" : 0
+    },
+    "children" : [ {
+      "id" : "cards.stats.stat_value",
+      "name" : "stat_value",
+      "label" : "Value",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : "57%"
+    }, {
+      "id" : "cards.stats.stat_caption",
+      "name" : "stat_caption",
+      "label" : "Caption",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : true,
+      "type" : "text",
+      "display_width" : null,
+      "default" : "increase in net-new customers"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null
+  }, {
+    "id" : "cards.cta",
+    "name" : "cta",
+    "label" : "Button",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "cards.cta.text",
+      "name" : "text",
+      "label" : "Button text",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : "Read the story"
+    }, {
+      "id" : "cards.cta.link",
+      "name" : "link",
+      "label" : "Link",
+      "required" : false,
+      "locked" : false,
+      "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION" ],
+      "show_advanced_rel_options" : false,
+      "type" : "link",
+      "display_width" : null,
+      "default" : {
+        "url" : {
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
       }
-    ]
-  }
-]
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "logo" : {
+      "size_type" : "exact",
+      "src" : "https://tvscientific.com/hubfs/lg-2.svg",
+      "alt" : "LG",
+      "loading" : "lazy",
+      "width" : 130,
+      "height" : 57
+    },
+    "logo_background_color" : {
+      "color" : "#91f2cb",
+      "opacity" : 100
+    },
+    "body_copy" : "<p>LG uses tvScientific by Pinterest to support ongoing enterprise growth, driving both reach and performance across key product categories.</p>",
+    "stats" : [ {
+      "stat_value" : "57%",
+      "stat_caption" : "increase in net-new customers"
+    }, {
+      "stat_value" : "14%",
+      "stat_caption" : "improvement in CPA"
+    }, {
+      "stat_value" : "1100%",
+      "stat_caption" : "revenue growth in 2024"
+    } ],
+    "cta" : {
+      "text" : "Read the story",
+      "link" : {
+        "url" : {
+          "type" : "EXTERNAL",
+          "href" : "https://www.tvscientific.com/customers/lg-pinterest-audiences"
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    }
+  }, {
+    "logo" : {
+      "size_type" : "exact",
+      "src" : "https://tvscientific.com/hubfs/Dell-Logo-1.svg",
+      "alt" : "Dell",
+      "loading" : "lazy",
+      "width" : 130,
+      "height" : 40
+    },
+    "logo_background_color" : {
+      "color" : "#aee4ff",
+      "opacity" : 100
+    },
+    "body_copy" : "<p>Dell analyzes thousands of streaming TV ad variables in real-time with tvScientific by Pinterest’s AI to bid only where enterprise ROI is strongest.</p>",
+    "stats" : [ {
+      "stat_value" : "50%",
+      "stat_caption" : "ROAS"
+    }, {
+      "stat_value" : "27%",
+      "stat_caption" : "Always-On Incrementality"
+    }, {
+      "stat_value" : "56%",
+      "stat_caption" : "net-new customer acquisition"
+    } ],
+    "cta" : {
+      "text" : "Read the story",
+      "link" : {
+        "url" : {
+          "type" : "EXTERNAL",
+          "href" : "https://www.tvscientific.com/dell"
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    }
+  }, {
+    "logo" : {
+      "size_type" : "exact",
+      "src" : "https://tvscientific.com/hubfs/higherdose-logo-1.svg",
+      "alt" : "HigherDOSE",
+      "loading" : "lazy",
+      "width" : 200,
+      "height" : 28
+    },
+    "logo_background_color" : {
+      "color" : "#d1b2ff",
+      "opacity" : 100
+    },
+    "body_copy" : "<p>HigherDOSE uses tvScientific by Pinterest to test whether bolder, more persistent early-stage branding could improve their Performance TV outcomes for site visits.</p>",
+    "stats" : [ {
+      "stat_value" : "14",
+      "stat_caption" : "lift in site visits"
+    } ],
+    "cta" : {
+      "text" : "Read the story",
+      "link" : {
+        "url" : {
+          "type" : "EXTERNAL",
+          "href" : "https://www.tvscientific.com/higherdose"
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    }
+  } ]
+}, {
+  "id" : "style",
+  "name" : "style",
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "style.background_color",
+    "name" : "background_color",
+    "label" : "Section background color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#ffffff",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "style.background_image",
+    "name" : "background_image",
+    "label" : "Section background image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : true,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "size_type" : "exact",
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy",
+      "width" : 1920,
+      "height" : 1080
+    }
+  }, {
+    "id" : "style.text_color",
+    "name" : "text_color",
+    "label" : "Text color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#1f252b",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "style.divider_color",
+    "name" : "divider_color",
+    "label" : "Column divider color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#d9e2eb",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "style.padding",
+    "name" : "padding",
+    "label" : "Section padding",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "display_width" : null,
+    "default" : {
+      "padding" : {
+        "top" : {
+          "value" : 64,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 64,
+          "units" : "px"
+        }
+      }
+    }
+  }, {
+    "id" : "style.container_max_width",
+    "name" : "container_max_width",
+    "label" : "Container max width",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 0,
+    "step" : 1,
+    "suffix" : "px",
+    "type" : "number",
+    "display_width" : null,
+    "default" : 1312
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+} ]

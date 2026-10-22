@@ -1,137 +1,182 @@
-[
-  {
-    "name": "percentage",
-    "label": "Percentage",
-    "type": "number",
-    "default": 90,
-    "min": 0,
-    "max": 100,
-    "step": 1,
-    "suffix": "%",
-    "help_text": "The percentage to display and fill the bar"
-  },
-  {
-    "name": "styles",
-    "label": "Styles",
-    "type": "group",
-    "tab": "STYLE",
-    "children": [
-      {
-        "name": "background_color",
-        "label": "Background Color",
-        "type": "color",
-        "default": {
-          "color": "#e8f5ec",
-          "opacity": 0
+[ {
+  "id" : "percentage",
+  "name" : "percentage",
+  "label" : "Percentage",
+  "help_text" : "The percentage to display and fill the bar",
+  "required" : false,
+  "locked" : false,
+  "display" : "text",
+  "min" : 0,
+  "max" : 100,
+  "step" : 1,
+  "suffix" : "%",
+  "type" : "number",
+  "display_width" : null,
+  "default" : 90
+}, {
+  "id" : "styles",
+  "name" : "styles",
+  "label" : "Styles",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "styles.background_color",
+    "name" : "background_color",
+    "label" : "Background Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#e8f5ec",
+      "opacity" : 0
+    }
+  }, {
+    "id" : "styles.text_color",
+    "name" : "text_color",
+    "label" : "Text Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#1a2e28",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "styles.bar_color",
+    "name" : "bar_color",
+    "label" : "Progress Bar Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#438663",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "styles.bar_background_color",
+    "name" : "bar_background_color",
+    "label" : "Bar Track Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#DDF9E8",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "styles.border_field",
+    "name" : "border_field",
+    "label" : "Border field",
+    "help_text" : "",
+    "inline_help_text" : "",
+    "required" : false,
+    "locked" : false,
+    "allow_custom_border_sides" : true,
+    "type" : "border",
+    "display_width" : null,
+    "default" : { }
+  }, {
+    "id" : "styles.padding",
+    "name" : "padding",
+    "label" : "Padding",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "display_width" : null,
+    "default" : {
+      "padding" : {
+        "top" : {
+          "value" : 0,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 0,
+          "units" : "px"
+        },
+        "left" : {
+          "value" : 0,
+          "units" : "px"
+        },
+        "right" : {
+          "value" : 0,
+          "units" : "px"
         }
-      },
-      {
-        "name": "text_color",
-        "label": "Text Color",
-        "type": "color",
-        "default": {
-          "color": "#1a2e28",
-          "opacity": 100
-        }
-      },
-      {
-        "name": "bar_color",
-        "label": "Progress Bar Color",
-        "type": "color",
-        "default": {
-          "color": "#438663",
-          "opacity": 100
-        }
-      },
-      {
-        "name": "bar_background_color",
-        "label": "Bar Track Color",
-        "type": "color",
-        "default": {
-          "color": "#DDF9E8",
-          "opacity": 100
-        }
-      },
-      {
-      "name": "border_field",
-      "label": "Border field",
-      "required": false,
-      "locked": false,
-      "inline_help_text": "",
-      "help_text": "",
-      "type": "border",
-      "allow_custom_border_sides": true
-      },
-      {
-        "name": "padding",
-        "label": "Padding",
-        "type": "spacing",
-        "default": {
-          "padding": {
-            "top": {
-              "value": 0,
-              "units": "px"
-            },
-            "bottom": {
-              "value": 0,
-              "units": "px"
-            },
-            "left": {
-              "value": 0,
-              "units": "px"
-            },
-            "right": {
-              "value": 0,
-              "units": "px"
-            }
-          }
-        }
-      },
-      {
-        "name": "font_size",
-        "label": "Percentage Font Size",
-        "type": "number",
-        "default": 96,
-        "min": 24,
-        "max": 200,
-        "suffix": "px"
-      },
-      {
-        "name": "bar_height",
-        "label": "Bar Height",
-        "type": "number",
-        "default": 16,
-        "min": 4,
-        "max": 40,
-        "suffix": "px"
-      },
-{
-    "name": "bar_border_radius",
-    "label": "Bar Border Radius",
-    "type": "number",
-    "default": 8,
-    "min": 0,
-    "max": 20,
-    "suffix": "px"
-  },
-  {
-    "name": "bar_position",
-    "label": "Bar Position",
-    "required": true,
-    "type": "choice",
-    "display": "select",
-    "default": "bottom",
-    "choices": [
-      ["bottom", "Below Number"],
-      ["top", "Above Number"]
-    ]
-  },
-  {
-    "name": "animate",
-    "label": "Animate on scroll",
-    "type": "boolean",
-    "default": true
-  }
-    ]
-  }
-]
+      }
+    }
+  }, {
+    "id" : "styles.font_size",
+    "name" : "font_size",
+    "label" : "Percentage Font Size",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 24,
+    "max" : 200,
+    "step" : 1,
+    "suffix" : "px",
+    "type" : "number",
+    "display_width" : null,
+    "default" : 96
+  }, {
+    "id" : "styles.bar_height",
+    "name" : "bar_height",
+    "label" : "Bar Height",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 4,
+    "max" : 40,
+    "step" : 1,
+    "suffix" : "px",
+    "type" : "number",
+    "display_width" : null,
+    "default" : 16
+  }, {
+    "id" : "styles.bar_border_radius",
+    "name" : "bar_border_radius",
+    "label" : "Bar Border Radius",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 0,
+    "max" : 20,
+    "step" : 1,
+    "suffix" : "px",
+    "type" : "number",
+    "display_width" : null,
+    "default" : 8
+  }, {
+    "id" : "styles.bar_position",
+    "name" : "bar_position",
+    "label" : "Bar Position",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "bottom", "Below Number" ], [ "top", "Above Number" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "bottom"
+  }, {
+    "id" : "styles.animate",
+    "name" : "animate",
+    "label" : "Animate on scroll",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : true
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+} ]

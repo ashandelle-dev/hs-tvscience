@@ -1,196 +1,328 @@
-[
-  {
-    "name": "heading",
-    "label": "Section heading",
-    "type": "group",
-    "tab": "CONTENT",
-    "children": [
-      {
-        "name": "value",
-        "label": "Heading content",
-        "type": "text",
-        "allow_new_line": false,
-        "default": "Performance TV Advertising Resources"
-      },
-      {
-        "name": "header_tag",
-        "label": "Heading level",
-        "type": "choice",
-        "required": true,
-        "display": "select",
-        "choices": [
-          ["h1", "H1"], ["h2", "H2"], ["h3", "H3"], ["h4", "H4"], ["h5", "H5"], ["h6", "H6"], ["p", "P"]
-        ],
-        "default": "h2"
-      },
-      {
-        "name": "heading_size",
-        "label": "Heading Size",
-        "type": "number",
-        "suffix": "px",
-        "inline_help_text": "Set to 0 to use the default size",
-        "default": 36
-      },
-      {
-        "name": "heading_size_mobile",
-        "label": "Heading Size Mobile",
-        "type": "number",
-        "suffix": "px",
-        "inline_help_text": "Set to 0 to use the default size",
-        "default": 28
-      },
-      {
-        "name": "font_weight",
-        "label": "Font Weight",
-        "type": "choice",
-        "display": "select",
-        "choices": [["normal", "Normal"], ["semibold", "Semibold"], ["bold", "Bold"]],
-        "default": "semibold"
-      },
-      {
-        "name": "alignment",
-        "label": "Alignment",
-        "type": "choice",
-        "display": "select",
-        "choices": [["left", "Left"], ["center", "Center"], ["right", "Right"]],
-        "default": "center"
-      }
-    ]
+[ {
+  "id" : "heading",
+  "name" : "heading",
+  "label" : "Section heading",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "heading.value",
+    "name" : "value",
+    "label" : "Heading content",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Performance TV Advertising Resources"
+  }, {
+    "id" : "heading.header_tag",
+    "name" : "header_tag",
+    "label" : "Heading level",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "h1", "H1" ], [ "h2", "H2" ], [ "h3", "H3" ], [ "h4", "H4" ], [ "h5", "H5" ], [ "h6", "H6" ], [ "p", "P" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "h2"
+  }, {
+    "id" : "heading.heading_size",
+    "name" : "heading_size",
+    "label" : "Heading Size",
+    "inline_help_text" : "Set to 0 to use the default size",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "step" : 1,
+    "suffix" : "px",
+    "type" : "number",
+    "display_width" : null,
+    "default" : 36
+  }, {
+    "id" : "heading.heading_size_mobile",
+    "name" : "heading_size_mobile",
+    "label" : "Heading Size Mobile",
+    "inline_help_text" : "Set to 0 to use the default size",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "step" : 1,
+    "suffix" : "px",
+    "type" : "number",
+    "display_width" : null,
+    "default" : 28
+  }, {
+    "id" : "heading.font_weight",
+    "name" : "font_weight",
+    "label" : "Font Weight",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "normal", "Normal" ], [ "semibold", "Semibold" ], [ "bold", "Bold" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "semibold"
+  }, {
+    "id" : "heading.alignment",
+    "name" : "alignment",
+    "label" : "Alignment",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "left", "Left" ], [ "center", "Center" ], [ "right", "Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "center"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "cards",
+  "name" : "cards",
+  "label" : "Resource cards",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 1,
+    "max" : 24,
+    "sorting_label_field" : "cards.title",
+    "default" : 3
   },
-
-  {
-    "name": "cards",
-    "label": "Resource cards",
-    "type": "group",
-    "tab": "CONTENT",
-    "occurrence": {
-      "min": 1,
-      "max": 24,
-      "default": 3,
-      "sorting_label_field": "cards.title"
+  "children" : [ {
+    "id" : "cards.image",
+    "name" : "image",
+    "label" : "Image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "size_type" : "auto",
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy",
+      "width" : 0,
+      "height" : 0
+    }
+  }, {
+    "id" : "cards.eyebrow",
+    "name" : "eyebrow",
+    "label" : "Label",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Report"
+  }, {
+    "id" : "cards.title",
+    "name" : "title",
+    "label" : "Heading",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : true,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Card heading"
+  }, {
+    "id" : "cards.cta",
+    "name" : "cta",
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "cards.cta.link",
+      "name" : "link",
+      "label" : "Link",
+      "required" : false,
+      "locked" : false,
+      "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION" ],
+      "show_advanced_rel_options" : false,
+      "type" : "link",
+      "display_width" : null,
+      "default" : {
+        "url" : {
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    }, {
+      "id" : "cards.cta.text",
+      "name" : "text",
+      "label" : "Link text",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : "Read more"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "image" : {
+      "size_type" : "auto",
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy",
+      "width" : 0,
+      "height" : 0
     },
-    "children": [
-      {
-        "name": "image",
-        "label": "Image",
-        "type": "image",
-        "responsive": true,
-        "resizable": true,
-        "default": {
-          "size_type": "auto",
-          "src": "",
-          "alt": "",
-          "loading": "lazy",
-          "width": 0,
-          "height": 0
+    "eyebrow" : "Report",
+    "title" : "The State of Performance TV in 2026",
+    "cta" : {
+      "link" : {
+        "url" : {
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "text" : "Read more"
+    }
+  }, {
+    "image" : {
+      "size_type" : "auto",
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy",
+      "width" : 0,
+      "height" : 0
+    },
+    "eyebrow" : "Guide",
+    "title" : "Evaluation Guide for TV Advertising Platforms",
+    "cta" : {
+      "link" : {
+        "url" : {
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "text" : "Read more"
+    }
+  }, {
+    "image" : {
+      "size_type" : "auto",
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy",
+      "width" : 0,
+      "height" : 0
+    },
+    "eyebrow" : "Report",
+    "title" : "2026 Performance TV Playbook",
+    "cta" : {
+      "link" : {
+        "url" : {
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "text" : "Read more"
+    }
+  } ]
+}, {
+  "id" : "style",
+  "name" : "style",
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "style.background_color",
+    "name" : "background_color",
+    "label" : "Background color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : null,
+      "opacity" : 100
+    }
+  }, {
+    "id" : "style.background_image",
+    "name" : "background_image",
+    "label" : "Background image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : false,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "size_type" : "auto",
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy"
+    }
+  }, {
+    "id" : "style.text_color",
+    "name" : "text_color",
+    "label" : "Heading color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : null,
+      "opacity" : 100
+    }
+  }, {
+    "id" : "style.padding",
+    "name" : "padding",
+    "label" : "Padding",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "display_width" : null,
+    "default" : {
+      "padding" : {
+        "top" : {
+          "value" : 120,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 80,
+          "units" : "px"
         }
-      },
-      {
-        "name": "eyebrow",
-        "label": "Label",
-        "type": "text",
-        "allow_new_line": false,
-        "default": "Report"
-      },
-      {
-        "name": "title",
-        "label": "Heading",
-        "type": "text",
-        "allow_new_line": true,
-        "default": "Card heading"
-      },
-      {
-        "name": "cta",
-        "label": "Link",
-        "type": "group",
-        "children": [
-          {
-            "name": "link",
-            "label": "Link",
-            "type": "link",
-            "supported_types": ["EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION"],
-            "default": {
-              "url": { "type": "EXTERNAL", "href": "" },
-              "open_in_new_tab": false,
-              "no_follow": false
-            }
-          },
-          {
-            "name": "text",
-            "label": "Link text",
-            "type": "text",
-            "allow_new_line": false,
-            "default": "Read more"
-          }
-        ]
       }
-    ],
-    "default": [
-      {
-        "image": { "size_type": "auto", "src": "", "alt": "", "loading": "lazy", "width": 0, "height": 0 },
-        "eyebrow": "Report",
-        "title": "The State of Performance TV in 2026",
-        "cta": {
-          "link": { "url": { "type": "EXTERNAL", "href": "" }, "open_in_new_tab": false, "no_follow": false },
-          "text": "Read more"
-        }
-      },
-      {
-        "image": { "size_type": "auto", "src": "", "alt": "", "loading": "lazy", "width": 0, "height": 0 },
-        "eyebrow": "Guide",
-        "title": "Evaluation Guide for TV Advertising Platforms",
-        "cta": {
-          "link": { "url": { "type": "EXTERNAL", "href": "" }, "open_in_new_tab": false, "no_follow": false },
-          "text": "Read more"
-        }
-      },
-      {
-        "image": { "size_type": "auto", "src": "", "alt": "", "loading": "lazy", "width": 0, "height": 0 },
-        "eyebrow": "Report",
-        "title": "2026 Performance TV Playbook",
-        "cta": {
-          "link": { "url": { "type": "EXTERNAL", "href": "" }, "open_in_new_tab": false, "no_follow": false },
-          "text": "Read more"
-        }
-      }
-    ]
-  },
-
-  {
-    "name": "style",
-    "label": "Style",
-    "type": "group",
-    "tab": "STYLE",
-    "children": [
-      {
-        "name": "background_color",
-        "label": "Background color",
-        "type": "color",
-        "default": { "color": null, "opacity": 100 }
-      },
-      {
-        "name": "background_image",
-        "label": "Background image",
-        "type": "image",
-        "default": { "size_type": "auto", "src": "", "alt": "", "loading": "lazy" }
-      },
-      {
-        "name": "text_color",
-        "label": "Heading color",
-        "type": "color",
-        "default": { "color": null, "opacity": 100 }
-      },
-      {
-        "name": "padding",
-        "label": "Padding",
-        "type": "spacing",
-        "default": {
-          "padding": {
-            "top": { "value": 120, "units": "px" },
-            "bottom": { "value": 80, "units": "px" }
-          }
-        }
-      }
-    ]
-  }
-]
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+} ]

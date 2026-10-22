@@ -1,14 +1,9 @@
 {
-  "label": "Video Hero",
-  "css_assets": [],
-  "external_js": [],
-  "global": false,
-  "help_text": "A hero section with video background, customizable title, optional image, and optional email signup form.",
-  "content_types": ["LANDING_PAGE", "SITE_PAGE", "BLOG_POST", "BLOG_LISTING"],
-  "js_assets": [],
-  "other_assets": [],
-  "smart_type": "NOT_SMART",
-  "tags": ["hero", "video", "form"],
-  "is_available_for_new_content": true,
-  "icon": "../images/module-icons/video-hero.svg"
+  "global" : false,
+  "content_types" : [ "LANDING_PAGE", "SITE_PAGE", "BLOG_LISTING", "BLOG_POST" ],
+  "host_template_types" : [ "ANY" ],
+  "module_id" : 202316165487,
+  "label" : "Video Hero",
+  "icon" : "../../../../tvScientific%202022%20Atlas%20Pro/cli-build/modules/images/module-icons/video-hero.svg",
+  "is_available_for_new_content" : true
 }

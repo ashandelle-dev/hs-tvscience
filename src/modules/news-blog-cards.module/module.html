@@ -22,9 +22,9 @@
         <a href="{{ out_link }}" target="_blank" rel="noopener" class="absolute inset-0 z-10" aria-label="{{ content.name | escape_attr }}"></a>
         {% endunless %}
 
-        <div class="h-[151px] border-b border-[#d1d5d8] overflow-hidden flex-shrink-0 flex items-center justify-center bg-white p-4">
+        <div class="h-[151px] border-b border-[#d1d5d8] overflow-hidden flex-shrink-0 flex items-center justify-center bg-white p-0">
           <img
-            class="max-h-full max-w-full object-contain"
+            class="h-full w-full object-cover"
             src="{{ content.featured_image if content.featured_image else 'https://tvscientific.com/hubfs/tvsci-pintrest-featured.png' }}"
             alt="{{ content.name | escape_attr }}"
             loading="lazy">

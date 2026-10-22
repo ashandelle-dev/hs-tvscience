@@ -1,87 +1,91 @@
-[
-  {
-    "type": "hubdbtable",
-    "id": "0c7fabce-fcb5-4640-a038-bff44c77408c",
-    "label": "HubDB table",
-    "name": "hubdb_table",
-    "default": 136413080
+[ {
+  "id" : "0c7fabce-fcb5-4640-a038-bff44c77408c",
+  "name" : "hubdb_table",
+  "label" : "HubDB table",
+  "required" : false,
+  "locked" : false,
+  "type" : "hubdbtable",
+  "display_width" : null,
+  "default" : 136413080
+}, {
+  "id" : "show_card_description",
+  "name" : "show_card_description",
+  "label" : "Show card description",
+  "help_text" : "",
+  "inline_help_text" : "",
+  "required" : false,
+  "locked" : false,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "display_width" : null,
+  "default" : false
+}, {
+  "id" : "show_full_logo",
+  "name" : "show_full_logo",
+  "label" : "Show full logo",
+  "help_text" : "",
+  "inline_help_text" : "",
+  "required" : false,
+  "locked" : false,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "display_width" : null,
+  "default" : false
+}, {
+  "id" : "filters",
+  "name" : "filters",
+  "label" : "Filters",
+  "help_text" : "",
+  "inline_help_text" : "",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : 6
   },
-  {
-    "name": "show_card_description",
-    "label": "Show card description",
-    "required": false,
-    "locked": false,
-    "type": "boolean",
-    "inline_help_text": "",
-    "help_text": "",
-    "default": false
-  },
-  {
-  "name": "show_full_logo",
-  "label": "Show full logo",
-  "required": false,
-  "locked": false,
-  "type": "boolean",
-  "inline_help_text": "",
-  "help_text": "",
-  "default": false },
-  {
-    "name": "filters",
-    "label": "Filters",
-    "required": false,
-    "locked": false,
-    "occurrence": {
-      "min": null,
-      "max": null,
-      "sorting_label_field": null,
-      "default": 6
-    },
-    "children": [
-      {
-        "name": "label_",
-        "label": "Label",
-        "required": false,
-        "locked": false,
-        "type": "text",
-        "default": null
-      },
-      {
-        "name": "value",
-        "label": "Value",
-        "required": false,
-        "locked": false,
-        "type": "text",
-        "default": null
-      }
-    ],
-    "type": "group",
-    "inline_help_text": "",
-    "help_text": "",
-    "default": [
-      {
-        "label_": "MMPs",
-        "value": "mmps"
-      },
-      {
-        "label_": "Affiliate Networks",
-        "value": "affiliate_networks"
-      },
-      {
-        "label_": "Conversion Tracking",
-        "value": "conversion_tracking"
-      },
-      {
-        "label_": "Measurement & Analytics",
-        "value": "measurement_analytics"
-      },
-      {
-        "label_": "Audience Integrations",
-        "value": "audience_integrations"
-      },
-      {
-        "label_": "Linear",
-        "value": "linear"
-      }
-    ]
-  }
-]
+  "children" : [ {
+    "id" : "filters.label_",
+    "name" : "label_",
+    "label" : "Label",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null
+  }, {
+    "id" : "filters.value",
+    "name" : "value",
+    "label" : "Value",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "label_" : "MMPs",
+    "value" : "mmps"
+  }, {
+    "label_" : "Affiliate Networks",
+    "value" : "affiliate_networks"
+  }, {
+    "label_" : "Conversion Tracking",
+    "value" : "conversion_tracking"
+  }, {
+    "label_" : "Measurement & Analytics",
+    "value" : "measurement_analytics"
+  }, {
+    "label_" : "Audience Integrations",
+    "value" : "audience_integrations"
+  }, {
+    "label_" : "Linear",
+    "value" : "linear"
+  } ]
+} ]

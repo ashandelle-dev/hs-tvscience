@@ -1,75 +1,81 @@
-[
-  {
-    "name": "background_image",
-    "label": "Background Image",
-    "required": false,
-    "locked": false,
-    "inline_help_text": "",
-    "help_text": "",
-    "responsive": true,
-    "resizable": true,
-    "show_loading": false,
-    "type": "image",
-    "default": {
-      "size_type": "exact",
-      "src": "https://www.tvscientific.com/hubfs/illustration-bg-green-left.webp",
-      "alt": null,
-      "loading": "disabled"
-    }
-  },
-  {
-    "name": "image",
-    "label": "Image",
-    "required": false,
-    "locked": false,
-    "inline_help_text": "",
-    "help_text": "",
-    "responsive": true,
-    "resizable": true,
-    "show_loading": false,
-    "type": "image",
-    "default": {
-      "size_type": "exact",
-      "src": "https://www.tvscientific.com/hs-fs/hubfs/non-skippable-full-screen.webp?width=756&height=330&name=non-skippable-full-screen.webp",
-      "alt": null,
-      "loading": "disabled"
-    }
-  },
-  {
-    "name": "styles",
-    "label": "Styles",
-    "children": [
-      {
-        "name": "padding",
-        "label": "Padding",
-        "required": false,
-        "locked": false,
-        "type": "spacing",
-        "inline_help_text": "",
-        "help_text": "",
-        "default": {
-          "padding": {
-            "top": {
-              "value": 40,
-              "units": "px"
-            },
-            "bottom": {
-              "value": 40,
-              "units": "px"
-            },
-            "left": {
-              "value": 40,
-              "units": "px"
-            },
-            "right": {
-              "value": 40,
-              "units": "px"
-            }
-          }
+[ {
+  "id" : "background_image",
+  "name" : "background_image",
+  "label" : "Background Image",
+  "help_text" : "",
+  "inline_help_text" : "",
+  "required" : false,
+  "locked" : false,
+  "responsive" : true,
+  "resizable" : true,
+  "show_loading" : false,
+  "type" : "image",
+  "display_width" : null,
+  "default" : {
+    "size_type" : "exact",
+    "src" : "https://www.tvscientific.com/hubfs/illustration-bg-green-left.webp",
+    "alt" : null,
+    "loading" : "disabled"
+  }
+}, {
+  "id" : "image",
+  "name" : "image",
+  "label" : "Image",
+  "help_text" : "",
+  "inline_help_text" : "",
+  "required" : false,
+  "locked" : false,
+  "responsive" : true,
+  "resizable" : true,
+  "show_loading" : false,
+  "type" : "image",
+  "display_width" : null,
+  "default" : {
+    "size_type" : "exact",
+    "src" : "https://www.tvscientific.com/hs-fs/hubfs/non-skippable-full-screen.webp?width=756&height=330&name=non-skippable-full-screen.webp",
+    "alt" : null,
+    "loading" : "disabled"
+  }
+}, {
+  "id" : "styles",
+  "name" : "styles",
+  "label" : "Styles",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "styles.padding",
+    "name" : "padding",
+    "label" : "Padding",
+    "help_text" : "",
+    "inline_help_text" : "",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "display_width" : null,
+    "default" : {
+      "padding" : {
+        "top" : {
+          "value" : 40,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 40,
+          "units" : "px"
+        },
+        "left" : {
+          "value" : 40,
+          "units" : "px"
+        },
+        "right" : {
+          "value" : 40,
+          "units" : "px"
         }
       }
-    ],
-    "type": "group",
-    "tab": "STYLE"
-  }
-]
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+} ]

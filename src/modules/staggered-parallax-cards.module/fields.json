@@ -1,293 +1,423 @@
-[
-  {
-    "name": "show_header",
-    "label": "Show heading above cards",
-    "type": "boolean",
-    "display": "toggle",
-    "default": false
+[ {
+  "id" : "show_header",
+  "name" : "show_header",
+  "label" : "Show heading above cards",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "display_width" : null,
+  "default" : false
+}, {
+  "id" : "eyebrow",
+  "name" : "eyebrow",
+  "label" : "Eyebrow",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "show_header",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "true",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
   },
-
-  {
-    "name": "eyebrow",
-    "label": "Eyebrow",
-    "type": "text",
-    "allow_new_line": false,
-    "visibility": {
-      "controlling_field": "show_header",
-      "controlling_value_regex": "true",
-      "operator": "EQUAL"
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : ""
+}, {
+  "id" : "heading",
+  "name" : "heading",
+  "label" : "Heading",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "show_header",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "true",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "children" : [ {
+    "id" : "heading.value",
+    "name" : "value",
+    "label" : "Heading content",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  }, {
+    "id" : "heading.header_tag",
+    "name" : "header_tag",
+    "label" : "Heading level",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "h1", "H1" ], [ "h2", "H2" ], [ "h3", "H3" ], [ "h4", "H4" ], [ "h5", "H5" ], [ "h6", "H6" ], [ "p", "P" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "h2"
+  }, {
+    "id" : "heading.heading_size",
+    "name" : "heading_size",
+    "label" : "Heading Size",
+    "inline_help_text" : "Set to 0 to use the default size",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "step" : 1,
+    "suffix" : "px",
+    "type" : "number",
+    "display_width" : null,
+    "default" : 48
+  }, {
+    "id" : "heading.heading_size_mobile",
+    "name" : "heading_size_mobile",
+    "label" : "Heading Size Mobile",
+    "inline_help_text" : "Set to 0 to use the default size",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "step" : 1,
+    "suffix" : "px",
+    "type" : "number",
+    "display_width" : null,
+    "default" : 36
+  }, {
+    "id" : "heading.font_weight",
+    "name" : "font_weight",
+    "label" : "Font Weight",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "normal", "Normal" ], [ "semibold", "Semibold" ], [ "bold", "Bold" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "semibold"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "body_copy",
+  "name" : "body_copy",
+  "label" : "Body",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "show_header",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "true",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "type" : "richtext",
+  "display_width" : null,
+  "default" : ""
+}, {
+  "id" : "cards",
+  "name" : "cards",
+  "label" : "Cards",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 2,
+    "max" : 6,
+    "sorting_label_field" : "cards.image.alt",
+    "default" : 4
+  },
+  "children" : [ {
+    "id" : "cards.image",
+    "name" : "image",
+    "label" : "Image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : true,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "size_type" : "exact",
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy",
+      "width" : 560,
+      "height" : 780
+    }
+  }, {
+    "id" : "cards.vertical_offset",
+    "name" : "vertical_offset",
+    "label" : "Vertical offset",
+    "inline_help_text" : "Static top stagger — matches Figma card positions.",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 0,
+    "max" : 120,
+    "step" : 1,
+    "suffix" : "px",
+    "type" : "number",
+    "display_width" : null,
+    "default" : 0
+  }, {
+    "id" : "cards.parallax_direction",
+    "name" : "parallax_direction",
+    "label" : "Parallax direction",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "up", "Rise on scroll" ], [ "down", "Drift down on scroll" ], [ "none", "No motion" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "up"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "image" : {
+      "size_type" : "exact",
+      "src" : "https://tvscientific.com/hubfs/Creative%20libraries.png",
+      "alt" : "Creative Library — search and score creative assets",
+      "loading" : "lazy",
+      "width" : 560,
+      "height" : 780
     },
-    "default": ""
-  },
-
-  {
-    "name": "heading",
-    "label": "Heading",
-    "type": "group",
-    "tab": "CONTENT",
-    "visibility": {
-      "controlling_field": "show_header",
-      "controlling_value_regex": "true",
-      "operator": "EQUAL"
+    "vertical_offset" : 35,
+    "parallax_direction" : "up"
+  }, {
+    "image" : {
+      "size_type" : "exact",
+      "src" : "https://tvscientific.com/hubfs/Recommendations.png",
+      "alt" : "Recommendations — AI-powered creative suggestions",
+      "loading" : "lazy",
+      "width" : 560,
+      "height" : 780
     },
-    "children": [
-      {
-        "name": "value",
-        "label": "Heading content",
-        "type": "text",
-        "allow_new_line": false,
-        "default": ""
-      },
-      {
-        "name": "header_tag",
-        "label": "Heading level",
-        "type": "choice",
-        "required": true,
-        "display": "select",
-        "choices": [
-          ["h1", "H1"], ["h2", "H2"], ["h3", "H3"], ["h4", "H4"], ["h5", "H5"], ["h6", "H6"], ["p", "P"]
-        ],
-        "default": "h2"
-      },
-      {
-        "name": "heading_size",
-        "label": "Heading Size",
-        "type": "number",
-        "suffix": "px",
-        "inline_help_text": "Set to 0 to use the default size",
-        "default": 48
-      },
-      {
-        "name": "heading_size_mobile",
-        "label": "Heading Size Mobile",
-        "type": "number",
-        "suffix": "px",
-        "inline_help_text": "Set to 0 to use the default size",
-        "default": 36
-      },
-      {
-        "name": "font_weight",
-        "label": "Font Weight",
-        "type": "choice",
-        "display": "select",
-        "choices": [["normal", "Normal"], ["semibold", "Semibold"], ["bold", "Bold"]],
-        "default": "semibold"
-      }
-    ]
-  },
-
-  {
-    "name": "body_copy",
-    "label": "Body",
-    "type": "richtext",
-    "visibility": {
-      "controlling_field": "show_header",
-      "controlling_value_regex": "true",
-      "operator": "EQUAL"
+    "vertical_offset" : 48,
+    "parallax_direction" : "down"
+  }, {
+    "image" : {
+      "size_type" : "exact",
+      "src" : "https://tvscientific.com/hubfs/Technician%20checklist.png",
+      "alt" : "Technical Checklist — 17 of 17 passed",
+      "loading" : "lazy",
+      "width" : 560,
+      "height" : 780
     },
-    "default": ""
-  },
-
-  {
-    "name": "cards",
-    "label": "Cards",
-    "type": "group",
-    "tab": "CONTENT",
-    "occurrence": { "min": 2, "max": 6, "default": 4, "sorting_label_field": "cards.image.alt" },
-    "children": [
-      {
-        "name": "image",
-        "label": "Image",
-        "type": "image",
-        "responsive": true,
-        "resizable": true,
-        "show_loading": true,
-        "default": { "size_type": "exact", "src": "", "alt": "", "loading": "lazy", "width": 560, "height": 780 }
-      },
-      {
-        "name": "vertical_offset",
-        "label": "Vertical offset",
-        "type": "number",
-        "suffix": "px",
-        "min": 0,
-        "max": 120,
-        "inline_help_text": "Static top stagger — matches Figma card positions.",
-        "default": 0
-      },
-      {
-        "name": "parallax_direction",
-        "label": "Parallax direction",
-        "type": "choice",
-        "display": "select",
-        "choices": [
-          ["up", "Rise on scroll"],
-          ["down", "Drift down on scroll"],
-          ["none", "No motion"]
-        ],
-        "default": "up"
-      }
-    ],
-    "default": [
-      {
-        "image": {
-          "size_type": "exact",
-          "src": "https://tvscientific.com/hubfs/Creative%20libraries.png",
-          "alt": "Creative Library — search and score creative assets",
-          "loading": "lazy",
-          "width": 560,
-          "height": 780
+    "vertical_offset" : 63,
+    "parallax_direction" : "up"
+  }, {
+    "image" : {
+      "size_type" : "exact",
+      "src" : "https://tvscientific.com/hubfs/Scorecard.png",
+      "alt" : "Full scorecard — summary, audio, and branding scores",
+      "loading" : "lazy",
+      "width" : 560,
+      "height" : 780
+    },
+    "vertical_offset" : 0,
+    "parallax_direction" : "down"
+  } ]
+}, {
+  "id" : "style",
+  "name" : "style",
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "style.parallax",
+    "name" : "parallax",
+    "label" : "Parallax motion",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "style.parallax.enabled",
+      "name" : "enabled",
+      "label" : "Enable scroll parallax",
+      "required" : false,
+      "locked" : false,
+      "display" : "toggle",
+      "type" : "boolean",
+      "display_width" : null,
+      "default" : true
+    }, {
+      "id" : "style.parallax.rise_offset",
+      "name" : "rise_offset",
+      "label" : "Rise amount (px)",
+      "inline_help_text" : "How far \"rise\" cards translate upward at full scroll progress.",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "min" : 0,
+      "max" : 400,
+      "step" : 1,
+      "suffix" : "px",
+      "type" : "number",
+      "display_width" : null,
+      "default" : 90
+    }, {
+      "id" : "style.parallax.drift_percent",
+      "name" : "drift_percent",
+      "label" : "Drift amount (%)",
+      "inline_help_text" : "How far \"drift down\" cards move at full scroll progress.",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "min" : 0,
+      "max" : 50,
+      "step" : 1,
+      "suffix" : "%",
+      "type" : "number",
+      "display_width" : null,
+      "default" : 5
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null
+  }, {
+    "id" : "style.mobile",
+    "name" : "mobile",
+    "label" : "Mobile layout",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "style.mobile.layout",
+      "name" : "layout",
+      "label" : "Mobile layout",
+      "inline_help_text" : "How cards collapse on screens <= 993px wide.",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "stack", "Stack — single column" ], [ "two-col", "2×2 grid" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "display_width" : null,
+      "default" : "two-col"
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null
+  }, {
+    "id" : "style.container_max_width",
+    "name" : "container_max_width",
+    "label" : "Container max width",
+    "inline_help_text" : "Override the default 1072px container width. Set to 0 to use the theme default.",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 0,
+    "step" : 1,
+    "suffix" : "px",
+    "type" : "number",
+    "display_width" : null,
+    "default" : 1200
+  }, {
+    "id" : "style.card_radius",
+    "name" : "card_radius",
+    "label" : "Card corner radius",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 0,
+    "max" : 40,
+    "step" : 1,
+    "suffix" : "px",
+    "type" : "number",
+    "display_width" : null,
+    "default" : 20
+  }, {
+    "id" : "style.background_color",
+    "name" : "background_color",
+    "label" : "Background color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : null,
+      "opacity" : 100
+    }
+  }, {
+    "id" : "style.background_image",
+    "name" : "background_image",
+    "label" : "Background image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : true,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "size_type" : "exact",
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy",
+      "width" : 1920,
+      "height" : 1080
+    }
+  }, {
+    "id" : "style.text_color",
+    "name" : "text_color",
+    "label" : "Text color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : null,
+      "opacity" : 100
+    }
+  }, {
+    "id" : "style.padding",
+    "name" : "padding",
+    "label" : "Padding",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "display_width" : null,
+    "default" : {
+      "padding" : {
+        "top" : {
+          "value" : 64,
+          "units" : "px"
         },
-        "vertical_offset": 35,
-        "parallax_direction": "up"
-      },
-      {
-        "image": {
-          "size_type": "exact",
-          "src": "https://tvscientific.com/hubfs/Recommendations.png",
-          "alt": "Recommendations — AI-powered creative suggestions",
-          "loading": "lazy",
-          "width": 560,
-          "height": 780
-        },
-        "vertical_offset": 48,
-        "parallax_direction": "down"
-      },
-      {
-        "image": {
-          "size_type": "exact",
-          "src": "https://tvscientific.com/hubfs/Technician%20checklist.png",
-          "alt": "Technical Checklist — 17 of 17 passed",
-          "loading": "lazy",
-          "width": 560,
-          "height": 780
-        },
-        "vertical_offset": 63,
-        "parallax_direction": "up"
-      },
-      {
-        "image": {
-          "size_type": "exact",
-          "src": "https://tvscientific.com/hubfs/Scorecard.png",
-          "alt": "Full scorecard — summary, audio, and branding scores",
-          "loading": "lazy",
-          "width": 560,
-          "height": 780
-        },
-        "vertical_offset": 0,
-        "parallax_direction": "down"
-      }
-    ]
-  },
-
-  {
-    "name": "style",
-    "label": "Style",
-    "type": "group",
-    "tab": "STYLE",
-    "children": [
-      {
-        "name": "parallax",
-        "label": "Parallax motion",
-        "type": "group",
-        "children": [
-          {
-            "name": "enabled",
-            "label": "Enable scroll parallax",
-            "type": "boolean",
-            "display": "toggle",
-            "default": true
-          },
-          {
-            "name": "rise_offset",
-            "label": "Rise amount (px)",
-            "type": "number",
-            "suffix": "px",
-            "min": 0,
-            "max": 400,
-            "inline_help_text": "How far \"rise\" cards translate upward at full scroll progress.",
-            "default": 90
-          },
-          {
-            "name": "drift_percent",
-            "label": "Drift amount (%)",
-            "type": "number",
-            "suffix": "%",
-            "min": 0,
-            "max": 50,
-            "inline_help_text": "How far \"drift down\" cards move at full scroll progress.",
-            "default": 5
-          }
-        ]
-      },
-      {
-        "name": "mobile",
-        "label": "Mobile layout",
-        "type": "group",
-        "children": [
-          {
-            "name": "layout",
-            "label": "Mobile layout",
-            "type": "choice",
-            "display": "select",
-            "choices": [
-              ["stack", "Stack — single column"],
-              ["two-col", "2×2 grid"]
-            ],
-            "inline_help_text": "How cards collapse on screens <= 993px wide.",
-            "default": "two-col"
-          }
-        ]
-      },
-      {
-        "name": "container_max_width",
-        "label": "Container max width",
-        "type": "number",
-        "suffix": "px",
-        "min": 0,
-        "inline_help_text": "Override the default 1072px container width. Set to 0 to use the theme default.",
-        "default": 1200
-      },
-      {
-        "name": "card_radius",
-        "label": "Card corner radius",
-        "type": "number",
-        "suffix": "px",
-        "min": 0,
-        "max": 40,
-        "default": 20
-      },
-      {
-        "name": "background_color",
-        "label": "Background color",
-        "type": "color",
-        "default": { "color": null, "opacity": 100 }
-      },
-      {
-        "name": "background_image",
-        "label": "Background image",
-        "type": "image",
-        "responsive": true,
-        "resizable": true,
-        "show_loading": true,
-        "default": { "size_type": "exact", "src": "", "alt": "", "loading": "lazy", "width": 1920, "height": 1080 }
-      },
-      {
-        "name": "text_color",
-        "label": "Text color",
-        "type": "color",
-        "default": { "color": null, "opacity": 100 }
-      },
-      {
-        "name": "padding",
-        "label": "Padding",
-        "type": "spacing",
-        "default": {
-          "padding": {
-            "top": { "value": 64, "units": "px" },
-            "bottom": { "value": 64, "units": "px" }
-          }
+        "bottom" : {
+          "value" : 64,
+          "units" : "px"
         }
       }
-    ]
-  }
-]
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+} ]

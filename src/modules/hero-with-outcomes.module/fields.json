@@ -1,249 +1,390 @@
-[
-  {
-    "name": "heading",
-    "label": "Heading",
-    "type": "group",
-    "tab": "CONTENT",
-    "children": [
-      {
-        "name": "value",
-        "label": "Heading content",
-        "type": "text",
-        "allow_new_line": false,
-        "default": "TV That Drives Outcomes"
-      },
-      {
-        "name": "header_tag",
-        "label": "Heading level",
-        "type": "choice",
-        "required": true,
-        "display": "select",
-        "choices": [
-          ["h1", "H1"], ["h2", "H2"], ["h3", "H3"], ["h4", "H4"], ["h5", "H5"], ["h6", "H6"], ["p", "P"]
-        ],
-        "default": "h1"
-      },
-      {
-        "name": "heading_size",
-        "label": "Heading Size",
-        "type": "number",
-        "suffix": "px",
-        "inline_help_text": "Set to 0 to use the default size",
-        "default": 80
-      },
-      {
-        "name": "heading_size_mobile",
-        "label": "Heading Size Mobile",
-        "type": "number",
-        "suffix": "px",
-        "inline_help_text": "Set to 0 to use the default size",
-        "default": 44
-      },
-      {
-        "name": "font_weight",
-        "label": "Font Weight",
-        "type": "choice",
-        "display": "select",
-        "choices": [["normal", "Normal"], ["semibold", "Semibold"], ["bold", "Bold"]],
-        "default": "bold"
-      }
-    ]
+[ {
+  "id" : "heading",
+  "name" : "heading",
+  "label" : "Heading",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "heading.value",
+    "name" : "value",
+    "label" : "Heading content",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "TV That Drives Outcomes"
+  }, {
+    "id" : "heading.header_tag",
+    "name" : "header_tag",
+    "label" : "Heading level",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "h1", "H1" ], [ "h2", "H2" ], [ "h3", "H3" ], [ "h4", "H4" ], [ "h5", "H5" ], [ "h6", "H6" ], [ "p", "P" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "h1"
+  }, {
+    "id" : "heading.heading_size",
+    "name" : "heading_size",
+    "label" : "Heading Size",
+    "inline_help_text" : "Set to 0 to use the default size",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "step" : 1,
+    "suffix" : "px",
+    "type" : "number",
+    "display_width" : null,
+    "default" : 80
+  }, {
+    "id" : "heading.heading_size_mobile",
+    "name" : "heading_size_mobile",
+    "label" : "Heading Size Mobile",
+    "inline_help_text" : "Set to 0 to use the default size",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "step" : 1,
+    "suffix" : "px",
+    "type" : "number",
+    "display_width" : null,
+    "default" : 44
+  }, {
+    "id" : "heading.font_weight",
+    "name" : "font_weight",
+    "label" : "Font Weight",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "normal", "Normal" ], [ "semibold", "Semibold" ], [ "bold", "Bold" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "bold"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "body_copy",
+  "name" : "body_copy",
+  "label" : "Body",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "display_width" : null,
+  "default" : "<p>Premium inventory. AI-powered optimization. Radical transparency.</p>"
+}, {
+  "id" : "outcomes_label",
+  "name" : "outcomes_label",
+  "label" : "Outcomes label",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Drive any outcome:"
+}, {
+  "id" : "outcomes",
+  "name" : "outcomes",
+  "label" : "Outcome chips",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 0,
+    "max" : 12,
+    "sorting_label_field" : "outcomes.text",
+    "default" : 3
   },
-
-  {
-    "name": "body_copy",
-    "label": "Body",
-    "type": "richtext",
-    "default": "<p>Premium inventory. AI-powered optimization. Radical transparency.</p>"
-  },
-
-  {
-    "name": "outcomes_label",
-    "label": "Outcomes label",
-    "type": "text",
-    "allow_new_line": false,
-    "default": "Drive any outcome:"
-  },
-
-  {
-    "name": "outcomes",
-    "label": "Outcome chips",
-    "type": "group",
-    "tab": "CONTENT",
-    "occurrence": { "min": 0, "max": 12, "default": 3, "sorting_label_field": "outcomes.text" },
-    "children": [
-      {
-        "name": "icon",
-        "label": "Icon",
-        "type": "image",
-        "responsive": true,
-        "resizable": false,
-        "default": {
-          "size_type": "exact",
-          "src": "",
-          "alt": "",
-          "loading": "lazy",
-          "width": 17,
-          "height": 17
-        }
-      },
-      {
-        "name": "text",
-        "label": "Label",
-        "type": "text",
-        "allow_new_line": false,
-        "default": "Traffic"
-      },
-      {
-        "name": "border_color",
-        "label": "Border color",
-        "type": "color",
-        "default": { "color": "#FFE6A0", "opacity": 100 }
-      }
-    ],
-    "default": [
-      {
-        "icon": { "size_type": "exact", "src": "", "alt": "", "loading": "lazy", "width": 17, "height": 17 },
-        "text": "Traffic",
-        "border_color": { "color": "#FFE6A0", "opacity": 100 }
-      },
-      {
-        "icon": { "size_type": "exact", "src": "", "alt": "", "loading": "lazy", "width": 17, "height": 17 },
-        "text": "Installs",
-        "border_color": { "color": "#FDBFAA", "opacity": 100 }
-      },
-      {
-        "icon": { "size_type": "exact", "src": "", "alt": "", "loading": "lazy", "width": 17, "height": 17 },
-        "text": "Sales",
-        "border_color": { "color": "#FDBFAA", "opacity": 100 }
-      }
-    ]
-  },
-
-  {
-    "name": "outcomes_suffix",
-    "label": "Outcomes suffix",
-    "type": "text",
-    "allow_new_line": false,
-    "default": "and more."
-  },
-
-  {
-    "name": "cta_type",
-    "label": "Call-to-action type",
-    "type": "choice",
-    "required": true,
-    "display": "radio",
-    "choices": [
-      ["button", "Button"],
-      ["form", "Inline form"]
-    ],
-    "default": "button",
-    "inline_help_text": "Choose between a single linked button or an inline HubSpot form (assumes one visible field)."
-  },
-
-  {
-    "name": "cta",
-    "label": "Button",
-    "type": "group",
-    "tab": "CONTENT",
-    "visibility": {
-      "controlling_field": "cta_type",
-      "controlling_value_regex": "button",
-      "operator": "EQUAL"
+  "children" : [ {
+    "id" : "outcomes.icon",
+    "name" : "icon",
+    "label" : "Icon",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : false,
+    "show_loading" : false,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "size_type" : "exact",
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy",
+      "width" : 17,
+      "height" : 17
+    }
+  }, {
+    "id" : "outcomes.text",
+    "name" : "text",
+    "label" : "Label",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Traffic"
+  }, {
+    "id" : "outcomes.border_color",
+    "name" : "border_color",
+    "label" : "Border color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#FFE6A0",
+      "opacity" : 100
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "icon" : {
+      "size_type" : "exact",
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy",
+      "width" : 17,
+      "height" : 17
     },
-    "children": [
-      {
-        "name": "link",
-        "label": "Link",
-        "type": "link",
-        "supported_types": ["EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION"],
-        "default": {
-          "url": { "type": "EXTERNAL", "href": "/contact" },
-          "open_in_new_tab": false,
-          "no_follow": false
-        }
-      },
-      {
-        "name": "text",
-        "label": "Button text",
-        "type": "text",
-        "allow_new_line": false,
-        "default": "Request a demo"
-      }
-    ]
-  },
-
-  {
-    "name": "form",
-    "label": "Inline form",
-    "type": "group",
-    "tab": "CONTENT",
-    "visibility": {
-      "controlling_field": "cta_type",
-      "controlling_value_regex": "form",
-      "operator": "EQUAL"
+    "text" : "Traffic",
+    "border_color" : {
+      "color" : "#FFE6A0",
+      "opacity" : 100
+    }
+  }, {
+    "icon" : {
+      "size_type" : "exact",
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy",
+      "width" : 17,
+      "height" : 17
     },
-    "children": [
-      {
-        "name": "form",
-        "label": "Form",
-        "type": "form",
-        "embed_versions": ["v2", "v4"],
-        "support_all_webinar_types": true,
-        "inline_help_text": "Pick a HubSpot form. The form should have one visible field (e.g. Email) plus the submit button — additional fields will stack and break the inline layout.",
-        "default": {
-          "form_id": "",
-          "response_type": "inline",
-          "message": "Thanks! We'll be in touch shortly.",
-          "redirect_id": null,
-          "redirect_url": ""
-        }
-      },
-      {
-        "name": "sfdc_campaign",
-        "label": "Salesforce campaign",
-        "type": "salesforcecampaign",
-        "required": false
-      }
-    ]
+    "text" : "Installs",
+    "border_color" : {
+      "color" : "#FDBFAA",
+      "opacity" : 100
+    }
+  }, {
+    "icon" : {
+      "size_type" : "exact",
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy",
+      "width" : 17,
+      "height" : 17
+    },
+    "text" : "Sales",
+    "border_color" : {
+      "color" : "#FDBFAA",
+      "opacity" : 100
+    }
+  } ]
+}, {
+  "id" : "outcomes_suffix",
+  "name" : "outcomes_suffix",
+  "label" : "Outcomes suffix",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "and more."
+}, {
+  "id" : "cta_type",
+  "name" : "cta_type",
+  "label" : "Call-to-action type",
+  "inline_help_text" : "Choose between a single linked button or an inline HubSpot form (assumes one visible field).",
+  "required" : true,
+  "locked" : false,
+  "display" : "radio",
+  "choices" : [ [ "button", "Button" ], [ "form", "Inline form" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "display_width" : null,
+  "default" : "button"
+}, {
+  "id" : "cta",
+  "name" : "cta",
+  "label" : "Button",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "cta_type",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "button",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
   },
-
-  {
-    "name": "style",
-    "label": "Style",
-    "type": "group",
-    "tab": "STYLE",
-    "children": [
-      {
-        "name": "background_color",
-        "label": "Background color",
-        "type": "color",
-        "default": { "color": null, "opacity": 100 }
+  "children" : [ {
+    "id" : "cta.link",
+    "name" : "link",
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "display_width" : null,
+    "default" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "/contact"
       },
-      {
-        "name": "background_image",
-        "label": "Background image",
-        "type": "image",
-        "default": { "size_type": "auto", "src": "", "alt": "", "loading": "lazy" }
-      },
-      {
-        "name": "text_color",
-        "label": "Text color",
-        "type": "color",
-        "default": { "color": null, "opacity": 100 }
-      },
-      {
-        "name": "padding",
-        "label": "Padding",
-        "type": "spacing",
-        "default": {
-          "padding": {
-            "top": { "value": 160, "units": "px" },
-            "bottom": { "value": 48, "units": "px" }
-          }
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }, {
+    "id" : "cta.text",
+    "name" : "text",
+    "label" : "Button text",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Request a demo"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "form",
+  "name" : "form",
+  "label" : "Inline form",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "cta_type",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "form",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "children" : [ {
+    "id" : "form.form",
+    "name" : "form",
+    "label" : "Form",
+    "inline_help_text" : "Pick a HubSpot form. The form should have one visible field (e.g. Email) plus the submit button — additional fields will stack and break the inline layout.",
+    "required" : false,
+    "locked" : false,
+    "embed_versions" : [ "v2", "v4" ],
+    "support_all_webinar_types" : true,
+    "type" : "form",
+    "display_width" : null,
+    "default" : {
+      "form_id" : "",
+      "response_type" : "inline",
+      "message" : "Thanks! We'll be in touch shortly.",
+      "redirect_id" : null,
+      "redirect_url" : ""
+    }
+  }, {
+    "id" : "form.sfdc_campaign",
+    "name" : "sfdc_campaign",
+    "label" : "Salesforce campaign",
+    "required" : false,
+    "locked" : false,
+    "type" : "salesforcecampaign",
+    "display_width" : null
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "style",
+  "name" : "style",
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "style.background_color",
+    "name" : "background_color",
+    "label" : "Background color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : null,
+      "opacity" : 100
+    }
+  }, {
+    "id" : "style.background_image",
+    "name" : "background_image",
+    "label" : "Background image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : false,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "size_type" : "auto",
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy"
+    }
+  }, {
+    "id" : "style.text_color",
+    "name" : "text_color",
+    "label" : "Text color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : null,
+      "opacity" : 100
+    }
+  }, {
+    "id" : "style.padding",
+    "name" : "padding",
+    "label" : "Padding",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "display_width" : null,
+    "default" : {
+      "padding" : {
+        "top" : {
+          "value" : 160,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 48,
+          "units" : "px"
         }
       }
-    ]
-  }
-]
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+} ]

@@ -1,345 +1,567 @@
-[
-  {
-    "name": "heading",
-    "label": "Heading",
-    "type": "group",
-    "tab": "CONTENT",
-    "children": [
-      {
-        "name": "value",
-        "label": "Heading content",
-        "type": "text",
-        "allow_new_line": false,
-        "default": "The tvScientific difference"
-      },
-      {
-        "name": "header_tag",
-        "label": "Heading level",
-        "type": "choice",
-        "required": true,
-        "display": "select",
-        "choices": [
-          ["h1", "H1"], ["h2", "H2"], ["h3", "H3"], ["h4", "H4"], ["h5", "H5"], ["h6", "H6"], ["p", "P"]
-        ],
-        "default": "h2"
-      },
-      {
-        "name": "heading_size",
-        "label": "Heading Size",
-        "type": "number",
-        "suffix": "px",
-        "inline_help_text": "Set to 0 to use the default size",
-        "default": 32
-      },
-      {
-        "name": "heading_size_mobile",
-        "label": "Heading Size Mobile",
-        "type": "number",
-        "suffix": "px",
-        "inline_help_text": "Set to 0 to use the default size",
-        "default": 28
-      },
-      {
-        "name": "font_weight",
-        "label": "Font Weight",
-        "type": "choice",
-        "display": "select",
-        "choices": [["normal", "Normal"], ["semibold", "Semibold"], ["bold", "Bold"]],
-        "default": "bold"
-      }
-    ]
-  },
-
-  {
-    "name": "subheading",
-    "label": "Subheading",
-    "type": "richtext",
-    "default": "<p>The most effective performance CTV platform purpose built to deliver outcomes.</p>"
-  },
-
-  {
-    "name": "left_image",
-    "label": "Left side image (dashboard / product screenshot)",
-    "type": "image",
-    "responsive": true,
-    "resizable": true,
-    "inline_help_text": "Composited dashboard screenshot. Default points to the production HubFS asset.",
-    "default": {
-      "size_type": "auto",
-      "src": "https://tvscientific.com/hubfs/product%20dashboards.png",
-      "alt": "tvScientific product dashboards",
-      "loading": "lazy",
-      "width": 0,
-      "height": 0
-    }
-  },
-  {
-    "name": "image_cover",
-    "label": "Cover image",
-    "type": "boolean",
-    "display": "toggle",
-    "default": true,
-    "inline_help_text": "On crops the image to fill the column. Off keeps its natural height."
-  },
-  {
-    "name": "image_align",
-    "label": "Image alignment",
-    "type": "choice",
-    "display": "select",
-    "choices": [
-      ["start", "Top"],
-      ["center", "Center"],
-      ["end", "Bottom"]
-    ],
-    "default": "center",
-    "visibility": {
-      "controlling_field": "image_cover",
-      "controlling_value_regex": "false",
-      "operator": "EQUAL"
-    },
-    "inline_help_text": "Vertical position of the image when cover is off."
-  },
-
-  {
-    "name": "features",
-    "label": "Features",
-    "type": "group",
-    "tab": "CONTENT",
-    "occurrence": {
-      "min": 1,
-      "max": 8,
-      "sorting_label_field": "heading_value",
-      "default": 4
-    },
-    "children": [
-      {
-        "name": "icon",
-        "label": "Icon",
-        "type": "image",
-        "responsive": false,
-        "resizable": true,
-        "default": {
-          "size_type": "exact",
-          "src": "",
-          "alt": "",
-          "loading": "lazy",
-          "width": 29,
-          "height": 29
-        }
-      },
-      {
-        "name": "heading_value",
-        "label": "Feature heading",
-        "type": "text",
-        "allow_new_line": false,
-        "default": "Feature heading"
-      },
-      {
-        "name": "heading_size",
-        "label": "Heading size",
-        "type": "number",
-        "suffix": "px",
-        "min": 0,
-        "inline_help_text": "Set to 0 to use the default (22px).",
-        "default": 22
-      },
-      {
-        "name": "line_height",
-        "label": "Line height",
-        "type": "number",
-        "suffix": "px",
-        "min": 0,
-        "inline_help_text": "Set to 0 to use the default.",
-        "default": 0
-      },
-      {
-        "name": "letter_spacing",
-        "label": "Letter spacing",
-        "type": "number",
-        "suffix": "px",
-        "inline_help_text": "Use a negative value to tighten tracking. 0 matches Figma’s 0%.",
-        "default": 0
-      },
-      {
-        "name": "font_weight",
-        "label": "Font weight",
-        "type": "choice",
-        "display": "select",
-        "choices": [
-          ["medium", "Medium"],
-          ["normal", "Normal"],
-          ["semibold", "Semibold"],
-          ["bold", "Bold"]
-        ],
-        "default": "medium"
-      },
-      {
-        "name": "body_copy",
-        "label": "Feature description",
-        "type": "richtext",
-        "default": "<p>Short description of this feature.</p>"
-      },
-      {
-        "name": "column_width",
-        "label": "Feature width",
-        "type": "choice",
-        "display": "select",
-        "choices": [
-          ["6", "6 columns"],
-          ["12", "12 columns"]
-        ],
-        "default": "6"
-      },
-      {
-        "name": "cta",
-        "label": "CTA",
-        "type": "group",
-        "children": [
-          {
-            "name": "show",
-            "label": "Show button",
-            "type": "boolean",
-            "display": "toggle",
-            "default": false
-          },
-          {
-            "name": "text",
-            "label": "Button text",
-            "type": "text",
-            "default": "Learn more",
-            "visibility": {
-              "controlling_field": "features.cta.show",
-              "controlling_value_regex": "true",
-              "operator": "EQUAL"
-            }
-          },
-          {
-            "name": "link",
-            "label": "Button link",
-            "type": "link",
-            "supported_types": ["EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "PHONE_NUMBER"],
-            "default": {
-              "url": { "type": "EXTERNAL", "href": "" },
-              "open_in_new_tab": false,
-              "no_follow": false
-            },
-            "visibility": {
-              "controlling_field": "features.cta.show",
-              "controlling_value_regex": "true",
-              "operator": "EQUAL"
-            }
-          },
-          {
-            "name": "button_style",
-            "label": "Button style",
-            "type": "choice",
-            "display": "select",
-            "choices": [["primary", "Primary"], ["secondary", "Secondary / Outline"], ["none", "None (text link)"]],
-            "default": "primary",
-            "visibility": {
-              "controlling_field": "features.cta.show",
-              "controlling_value_regex": "true",
-              "operator": "EQUAL"
-            }
-          }
-        ]
-      }
-    ],
-    "default": [
-      {
-        "icon": { "size_type": "exact", "src": "", "alt": "Target icon", "loading": "lazy", "width": 29, "height": 29 },
-        "heading_value": "Results Delivered",
-        "heading_size": 22,
-        "line_height": 0,
-        "letter_spacing": 0,
-        "font_weight": "medium",
-        "column_width": "6",
-        "body_copy": "<p>The best activation, measurement, and optimization technology to deliver desired outcomes.</p>",
-        "cta": { "show": false, "text": "Learn more", "link": { "url": { "type": "EXTERNAL", "href": "" }, "open_in_new_tab": false, "no_follow": false }, "button_style": "primary" }
-      },
-      {
-        "icon": { "size_type": "exact", "src": "", "alt": "Checkbox icon", "loading": "lazy", "width": 29, "height": 29 },
-        "heading_value": "Total control",
-        "heading_size": 22,
-        "line_height": 0,
-        "letter_spacing": 0,
-        "font_weight": "medium",
-        "column_width": "6",
-        "body_copy": "<p>We&rsquo;ll recommend optimal inventory, but you control where to activate, # of days, audiences to leverage, etc.</p>",
-        "cta": { "show": false, "text": "Learn more", "link": { "url": { "type": "EXTERNAL", "href": "" }, "open_in_new_tab": false, "no_follow": false }, "button_style": "primary" }
-      },
-      {
-        "icon": { "size_type": "exact", "src": "", "alt": "Bar chart icon", "loading": "lazy", "width": 29, "height": 29 },
-        "heading_value": "Radical transparency",
-        "heading_size": 22,
-        "line_height": 0,
-        "letter_spacing": 0,
-        "font_weight": "medium",
-        "column_width": "6",
-        "body_copy": "<p>360&deg; views in real-time into your ad campaign&rsquo;s performance, targeting, attribution, all with dashboards.</p>",
-        "cta": { "show": false, "text": "Learn more", "link": { "url": { "type": "EXTERNAL", "href": "" }, "open_in_new_tab": false, "no_follow": false }, "button_style": "primary" }
-      },
-      {
-        "icon": { "size_type": "exact", "src": "", "alt": "Unified UI icon", "loading": "lazy", "width": 29, "height": 29 },
-        "heading_value": "Unified UI",
-        "heading_size": 22,
-        "line_height": 0,
-        "letter_spacing": 0,
-        "font_weight": "medium",
-        "column_width": "6",
-        "body_copy": "<p>A user interface that&rsquo;s as simple to use as paid search and social media with familiar controls and levers.</p>",
-        "cta": { "show": false, "text": "Learn more", "link": { "url": { "type": "EXTERNAL", "href": "" }, "open_in_new_tab": false, "no_follow": false }, "button_style": "primary" }
-      }
-    ]
-  },
-
-  {
-    "name": "style",
-    "label": "Style",
-    "type": "group",
-    "tab": "STYLE",
-    "children": [
-      {
-        "name": "background_color",
-        "label": "Section background color",
-        "type": "color",
-        "default": { "color": "#FFFFFF", "opacity": 100 }
-      },
-      {
-        "name": "background_image",
-        "label": "Section background image",
-        "type": "image",
-        "default": { "size_type": "auto", "src": "", "alt": "", "loading": "lazy" }
-      },
-      {
-        "name": "text_color",
-        "label": "Text color",
-        "type": "color",
-        "default": { "color": null, "opacity": 100 }
-      },
-      {
-        "name": "card_background_color",
-        "label": "Inner card background color",
-        "type": "color",
-        "default": { "color": "#F9FAFC", "opacity": 100 }
-      },
-      {
-        "name": "card_border_color",
-        "label": "Inner card border color",
-        "type": "color",
-        "default": { "color": "#D9E2EB", "opacity": 100 }
-      },
-      {
-        "name": "padding",
-        "label": "Section padding",
-        "type": "spacing",
-        "default": {
-          "padding": {
-            "top": { "value": 64, "units": "px" },
-            "bottom": { "value": 32, "units": "px" }
-          }
-        }
-      }
-    ]
+[ {
+  "id" : "heading",
+  "name" : "heading",
+  "label" : "Heading",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "heading.value",
+    "name" : "value",
+    "label" : "Heading content",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "The tvScientific difference"
+  }, {
+    "id" : "heading.header_tag",
+    "name" : "header_tag",
+    "label" : "Heading level",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "h1", "H1" ], [ "h2", "H2" ], [ "h3", "H3" ], [ "h4", "H4" ], [ "h5", "H5" ], [ "h6", "H6" ], [ "p", "P" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "h2"
+  }, {
+    "id" : "heading.heading_size",
+    "name" : "heading_size",
+    "label" : "Heading Size",
+    "inline_help_text" : "Set to 0 to use the default size",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "step" : 1,
+    "suffix" : "px",
+    "type" : "number",
+    "display_width" : null,
+    "default" : 32
+  }, {
+    "id" : "heading.heading_size_mobile",
+    "name" : "heading_size_mobile",
+    "label" : "Heading Size Mobile",
+    "inline_help_text" : "Set to 0 to use the default size",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "step" : 1,
+    "suffix" : "px",
+    "type" : "number",
+    "display_width" : null,
+    "default" : 28
+  }, {
+    "id" : "heading.font_weight",
+    "name" : "font_weight",
+    "label" : "Font Weight",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "normal", "Normal" ], [ "semibold", "Semibold" ], [ "bold", "Bold" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "bold"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "subheading",
+  "name" : "subheading",
+  "label" : "Subheading",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "display_width" : null,
+  "default" : "<p>The most effective performance CTV platform purpose built to deliver outcomes.</p>"
+}, {
+  "id" : "left_image",
+  "name" : "left_image",
+  "label" : "Left side image (dashboard / product screenshot)",
+  "inline_help_text" : "Composited dashboard screenshot. Default points to the production HubFS asset.",
+  "required" : false,
+  "locked" : false,
+  "responsive" : true,
+  "resizable" : true,
+  "show_loading" : false,
+  "type" : "image",
+  "display_width" : null,
+  "default" : {
+    "size_type" : "auto",
+    "src" : "https://tvscientific.com/hubfs/product%20dashboards.png",
+    "alt" : "tvScientific product dashboards",
+    "loading" : "lazy",
+    "width" : 0,
+    "height" : 0
   }
-]
+}, {
+  "id" : "image_cover",
+  "name" : "image_cover",
+  "label" : "Cover image",
+  "inline_help_text" : "On crops the image to fill the column. Off keeps its natural height.",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "display_width" : null,
+  "default" : true
+}, {
+  "id" : "image_align",
+  "name" : "image_align",
+  "label" : "Image alignment",
+  "inline_help_text" : "Vertical position of the image when cover is off.",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "image_cover",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "false",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "display" : "select",
+  "choices" : [ [ "start", "Top" ], [ "center", "Center" ], [ "end", "Bottom" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "display_width" : null,
+  "default" : "center"
+}, {
+  "id" : "features",
+  "name" : "features",
+  "label" : "Features",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 1,
+    "max" : 8,
+    "sorting_label_field" : "heading_value",
+    "default" : 4
+  },
+  "children" : [ {
+    "id" : "features.icon",
+    "name" : "icon",
+    "label" : "Icon",
+    "required" : false,
+    "locked" : false,
+    "responsive" : false,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "size_type" : "exact",
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy",
+      "width" : 29,
+      "height" : 29
+    }
+  }, {
+    "id" : "features.heading_value",
+    "name" : "heading_value",
+    "label" : "Feature heading",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Feature heading"
+  }, {
+    "id" : "features.heading_size",
+    "name" : "heading_size",
+    "label" : "Heading size",
+    "inline_help_text" : "Set to 0 to use the default (22px).",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 0,
+    "step" : 1,
+    "suffix" : "px",
+    "type" : "number",
+    "display_width" : null,
+    "default" : 22
+  }, {
+    "id" : "features.line_height",
+    "name" : "line_height",
+    "label" : "Line height",
+    "inline_help_text" : "Set to 0 to use the default.",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 0,
+    "step" : 1,
+    "suffix" : "px",
+    "type" : "number",
+    "display_width" : null,
+    "default" : 0
+  }, {
+    "id" : "features.letter_spacing",
+    "name" : "letter_spacing",
+    "label" : "Letter spacing",
+    "inline_help_text" : "Use a negative value to tighten tracking. 0 matches Figma’s 0%.",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "step" : 1,
+    "suffix" : "px",
+    "type" : "number",
+    "display_width" : null,
+    "default" : 0
+  }, {
+    "id" : "features.font_weight",
+    "name" : "font_weight",
+    "label" : "Font weight",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "medium", "Medium" ], [ "normal", "Normal" ], [ "semibold", "Semibold" ], [ "bold", "Bold" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "medium"
+  }, {
+    "id" : "features.body_copy",
+    "name" : "body_copy",
+    "label" : "Feature description",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "display_width" : null,
+    "default" : "<p>Short description of this feature.</p>"
+  }, {
+    "id" : "features.column_width",
+    "name" : "column_width",
+    "label" : "Feature width",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "6", "6 columns" ], [ "12", "12 columns" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "6"
+  }, {
+    "id" : "features.cta",
+    "name" : "cta",
+    "label" : "CTA",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "features.cta.show",
+      "name" : "show",
+      "label" : "Show button",
+      "required" : false,
+      "locked" : false,
+      "display" : "toggle",
+      "type" : "boolean",
+      "display_width" : null,
+      "default" : false
+    }, {
+      "id" : "features.cta.text",
+      "name" : "text",
+      "label" : "Button text",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "features.cta.show",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : "Learn more"
+    }, {
+      "id" : "features.cta.link",
+      "name" : "link",
+      "label" : "Button link",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "features.cta.show",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "PHONE_NUMBER" ],
+      "show_advanced_rel_options" : false,
+      "type" : "link",
+      "display_width" : null,
+      "default" : {
+        "url" : {
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    }, {
+      "id" : "features.cta.button_style",
+      "name" : "button_style",
+      "label" : "Button style",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "features.cta.show",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "select",
+      "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary / Outline" ], [ "none", "None (text link)" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "display_width" : null,
+      "default" : "primary"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "icon" : {
+      "size_type" : "exact",
+      "src" : "",
+      "alt" : "Target icon",
+      "loading" : "lazy",
+      "width" : 29,
+      "height" : 29
+    },
+    "heading_value" : "Results Delivered",
+    "heading_size" : 22,
+    "line_height" : 0,
+    "letter_spacing" : 0,
+    "font_weight" : "medium",
+    "column_width" : "6",
+    "body_copy" : "<p>The best activation, measurement, and optimization technology to deliver desired outcomes.</p>",
+    "cta" : {
+      "show" : false,
+      "text" : "Learn more",
+      "link" : {
+        "url" : {
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "button_style" : "primary"
+    }
+  }, {
+    "icon" : {
+      "size_type" : "exact",
+      "src" : "",
+      "alt" : "Checkbox icon",
+      "loading" : "lazy",
+      "width" : 29,
+      "height" : 29
+    },
+    "heading_value" : "Total control",
+    "heading_size" : 22,
+    "line_height" : 0,
+    "letter_spacing" : 0,
+    "font_weight" : "medium",
+    "column_width" : "6",
+    "body_copy" : "<p>We&rsquo;ll recommend optimal inventory, but you control where to activate, # of days, audiences to leverage, etc.</p>",
+    "cta" : {
+      "show" : false,
+      "text" : "Learn more",
+      "link" : {
+        "url" : {
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "button_style" : "primary"
+    }
+  }, {
+    "icon" : {
+      "size_type" : "exact",
+      "src" : "",
+      "alt" : "Bar chart icon",
+      "loading" : "lazy",
+      "width" : 29,
+      "height" : 29
+    },
+    "heading_value" : "Radical transparency",
+    "heading_size" : 22,
+    "line_height" : 0,
+    "letter_spacing" : 0,
+    "font_weight" : "medium",
+    "column_width" : "6",
+    "body_copy" : "<p>360&deg; views in real-time into your ad campaign&rsquo;s performance, targeting, attribution, all with dashboards.</p>",
+    "cta" : {
+      "show" : false,
+      "text" : "Learn more",
+      "link" : {
+        "url" : {
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "button_style" : "primary"
+    }
+  }, {
+    "icon" : {
+      "size_type" : "exact",
+      "src" : "",
+      "alt" : "Unified UI icon",
+      "loading" : "lazy",
+      "width" : 29,
+      "height" : 29
+    },
+    "heading_value" : "Unified UI",
+    "heading_size" : 22,
+    "line_height" : 0,
+    "letter_spacing" : 0,
+    "font_weight" : "medium",
+    "column_width" : "6",
+    "body_copy" : "<p>A user interface that&rsquo;s as simple to use as paid search and social media with familiar controls and levers.</p>",
+    "cta" : {
+      "show" : false,
+      "text" : "Learn more",
+      "link" : {
+        "url" : {
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "button_style" : "primary"
+    }
+  } ]
+}, {
+  "id" : "style",
+  "name" : "style",
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "style.background_color",
+    "name" : "background_color",
+    "label" : "Section background color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#FFFFFF",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "style.background_image",
+    "name" : "background_image",
+    "label" : "Section background image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : false,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "size_type" : "auto",
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy"
+    }
+  }, {
+    "id" : "style.text_color",
+    "name" : "text_color",
+    "label" : "Text color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : null,
+      "opacity" : 100
+    }
+  }, {
+    "id" : "style.card_background_color",
+    "name" : "card_background_color",
+    "label" : "Inner card background color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#F9FAFC",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "style.card_border_color",
+    "name" : "card_border_color",
+    "label" : "Inner card border color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#D9E2EB",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "style.padding",
+    "name" : "padding",
+    "label" : "Section padding",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "display_width" : null,
+    "default" : {
+      "padding" : {
+        "top" : {
+          "value" : 64,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 32,
+          "units" : "px"
+        }
+      }
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+} ]

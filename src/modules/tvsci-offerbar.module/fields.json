@@ -1,166 +1,255 @@
-[
-  {
-    "name": "eyebrow",
-    "label": "Eyebrow",
-    "type": "text",
-    "tab": "CONTENT",
-    "allow_new_line": false,
-    "default": "Get Started Today"
-  },
-
-  {
-    "name": "heading",
-    "label": "Heading",
-    "type": "group",
-    "tab": "CONTENT",
-    "children": [
-      {
-        "name": "value",
-        "label": "Heading content",
-        "type": "text",
-        "allow_new_line": true,
-        "default": "See how you can boost lift and ROAS with CTV"
+[ {
+  "id" : "eyebrow",
+  "name" : "eyebrow",
+  "label" : "Eyebrow",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Get Started Today"
+}, {
+  "id" : "heading",
+  "name" : "heading",
+  "label" : "Heading",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "heading.value",
+    "name" : "value",
+    "label" : "Heading content",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : true,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "See how you can boost lift and ROAS with CTV"
+  }, {
+    "id" : "heading.header_tag",
+    "name" : "header_tag",
+    "label" : "Heading level",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "h1", "H1" ], [ "h2", "H2" ], [ "h3", "H3" ], [ "h4", "H4" ], [ "h5", "H5" ], [ "h6", "H6" ], [ "p", "P" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "h2"
+  }, {
+    "id" : "heading.heading_size",
+    "name" : "heading_size",
+    "label" : "Heading Size",
+    "inline_help_text" : "Set to 0 to use the default size",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "step" : 1,
+    "suffix" : "px",
+    "type" : "number",
+    "display_width" : null,
+    "default" : 36
+  }, {
+    "id" : "heading.heading_size_mobile",
+    "name" : "heading_size_mobile",
+    "label" : "Heading Size Mobile",
+    "inline_help_text" : "Set to 0 to use the default size",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "step" : 1,
+    "suffix" : "px",
+    "type" : "number",
+    "display_width" : null,
+    "default" : 28
+  }, {
+    "id" : "heading.font_weight",
+    "name" : "font_weight",
+    "label" : "Font Weight",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "normal", "Normal" ], [ "semibold", "Semibold" ], [ "bold", "Bold" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "bold"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "description",
+  "name" : "description",
+  "label" : "Description",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "display_width" : null,
+  "default" : ""
+}, {
+  "id" : "cta",
+  "name" : "cta",
+  "label" : "Button",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "cta.link",
+    "name" : "link",
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "display_width" : null,
+    "default" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "/contact"
       },
-      {
-        "name": "header_tag",
-        "label": "Heading level",
-        "type": "choice",
-        "required": true,
-        "display": "select",
-        "choices": [
-          ["h1", "H1"], ["h2", "H2"], ["h3", "H3"], ["h4", "H4"], ["h5", "H5"], ["h6", "H6"], ["p", "P"]
-        ],
-        "default": "h2"
-      },
-      {
-        "name": "heading_size",
-        "label": "Heading Size",
-        "type": "number",
-        "suffix": "px",
-        "inline_help_text": "Set to 0 to use the default size",
-        "default": 36
-      },
-      {
-        "name": "heading_size_mobile",
-        "label": "Heading Size Mobile",
-        "type": "number",
-        "suffix": "px",
-        "inline_help_text": "Set to 0 to use the default size",
-        "default": 28
-      },
-      {
-        "name": "font_weight",
-        "label": "Font Weight",
-        "type": "choice",
-        "display": "select",
-        "choices": [["normal", "Normal"], ["semibold", "Semibold"], ["bold", "Bold"]],
-        "default": "bold"
-      }
-    ]
-  },
-
-  {
-    "name": "description",
-    "label": "Description",
-    "type": "richtext",
-    "tab": "CONTENT",
-    "default": ""
-  },
-
-  {
-    "name": "cta",
-    "label": "Button",
-    "type": "group",
-    "tab": "CONTENT",
-    "children": [
-      {
-        "name": "link",
-        "label": "Link",
-        "type": "link",
-        "supported_types": ["EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION"],
-        "default": {
-          "url": { "type": "EXTERNAL", "href": "/contact" },
-          "open_in_new_tab": false,
-          "no_follow": false
-        }
-      },
-      {
-        "name": "text",
-        "label": "Button text",
-        "type": "text",
-        "allow_new_line": false,
-        "default": "Request a demo"
-      }
-    ]
-  },
-
-  {
-    "name": "media",
-    "label": "Right-side image",
-    "type": "image",
-    "tab": "CONTENT",
-    "responsive": true,
-    "resizable": true,
-    "inline_help_text": "Decorative illustration shown on the right side of the offer bar (e.g. TV/laptop chart). Hidden on mobile.",
-    "default": {
-      "size_type": "exact",
-      "src": "https://tvscientific.com/hubfs/graphs.png",
-      "alt": "TV and laptop showing rising performance graphs",
-      "loading": "lazy",
-      "width": 357,
-      "height": 223
+      "open_in_new_tab" : false,
+      "no_follow" : false
     }
-  },
-
-  {
-    "name": "style",
-    "label": "Style",
-    "type": "group",
-    "tab": "STYLE",
-    "children": [
-      {
-        "name": "card_background_color",
-        "label": "Card background color",
-        "type": "color",
-        "inline_help_text": "Background color of the rounded offer bar card. Defaults to tvs-green-pastel.",
-        "default": { "color": "#F3FFF6", "opacity": 100 }
-      },
-      {
-        "name": "eyebrow_color",
-        "label": "Eyebrow text color",
-        "type": "color",
-        "default": { "color": "#198960", "opacity": 100 }
-      },
-      {
-        "name": "heading_color",
-        "label": "Heading text color",
-        "type": "color",
-        "default": { "color": "#1F252B", "opacity": 100 }
-      },
-      {
-        "name": "background_color",
-        "label": "Section background color",
-        "type": "color",
-        "inline_help_text": "Background color of the outer section behind the card.",
-        "default": { "color": null, "opacity": 100 }
-      },
-      {
-        "name": "background_image",
-        "label": "Section background image",
-        "type": "image",
-        "default": { "size_type": "auto", "src": "", "alt": "", "loading": "lazy" }
-      },
-      {
-        "name": "padding",
-        "label": "Section padding",
-        "type": "spacing",
-        "default": {
-          "padding": {
-            "top": { "value": 64, "units": "px" },
-            "bottom": { "value": 64, "units": "px" }
-          }
+  }, {
+    "id" : "cta.text",
+    "name" : "text",
+    "label" : "Button text",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Request a demo"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "media",
+  "name" : "media",
+  "label" : "Right-side image",
+  "inline_help_text" : "Decorative illustration shown on the right side of the offer bar (e.g. TV/laptop chart). Hidden on mobile.",
+  "required" : false,
+  "locked" : false,
+  "responsive" : true,
+  "resizable" : true,
+  "show_loading" : false,
+  "type" : "image",
+  "display_width" : null,
+  "default" : {
+    "size_type" : "exact",
+    "src" : "https://tvscientific.com/hubfs/graphs.png",
+    "alt" : "TV and laptop showing rising performance graphs",
+    "loading" : "lazy",
+    "width" : 357,
+    "height" : 223
+  }
+}, {
+  "id" : "style",
+  "name" : "style",
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "style.card_background_color",
+    "name" : "card_background_color",
+    "label" : "Card background color",
+    "inline_help_text" : "Background color of the rounded offer bar card. Defaults to tvs-green-pastel.",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#F3FFF6",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "style.eyebrow_color",
+    "name" : "eyebrow_color",
+    "label" : "Eyebrow text color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#198960",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "style.heading_color",
+    "name" : "heading_color",
+    "label" : "Heading text color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#1F252B",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "style.background_color",
+    "name" : "background_color",
+    "label" : "Section background color",
+    "inline_help_text" : "Background color of the outer section behind the card.",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : null,
+      "opacity" : 100
+    }
+  }, {
+    "id" : "style.background_image",
+    "name" : "background_image",
+    "label" : "Section background image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : false,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "size_type" : "auto",
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy"
+    }
+  }, {
+    "id" : "style.padding",
+    "name" : "padding",
+    "label" : "Section padding",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "display_width" : null,
+    "default" : {
+      "padding" : {
+        "top" : {
+          "value" : 64,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 64,
+          "units" : "px"
         }
       }
-    ]
-  }
-]
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+} ]

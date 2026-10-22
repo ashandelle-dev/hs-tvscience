@@ -1,386 +1,589 @@
-[
-  {
-    "name": "show_header",
-    "label": "Show heading above grid",
-    "type": "boolean",
-    "display": "toggle",
-    "default": false
+[ {
+  "id" : "show_header",
+  "name" : "show_header",
+  "label" : "Show heading above grid",
+  "required" : false,
+  "locked" : false,
+  "display" : "toggle",
+  "type" : "boolean",
+  "display_width" : null,
+  "default" : false
+}, {
+  "id" : "eyebrow",
+  "name" : "eyebrow",
+  "label" : "Eyebrow",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "show_header",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "true",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
   },
-
-  {
-    "name": "eyebrow",
-    "label": "Eyebrow",
-    "type": "text",
-    "allow_new_line": false,
-    "visibility": {
-      "controlling_field": "show_header",
-      "controlling_value_regex": "true",
-      "operator": "EQUAL"
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Performance at scale"
+}, {
+  "id" : "heading",
+  "name" : "heading",
+  "label" : "Heading",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "show_header",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "true",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "children" : [ {
+    "id" : "heading.value",
+    "name" : "value",
+    "label" : "Heading content",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "See every outcome that matters"
+  }, {
+    "id" : "heading.header_tag",
+    "name" : "header_tag",
+    "label" : "Heading level",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "h1", "H1" ], [ "h2", "H2" ], [ "h3", "H3" ], [ "h4", "H4" ], [ "h5", "H5" ], [ "h6", "H6" ], [ "p", "P" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "h2"
+  }, {
+    "id" : "heading.heading_size",
+    "name" : "heading_size",
+    "label" : "Heading Size",
+    "inline_help_text" : "Set to 0 to use the default size",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "step" : 1,
+    "suffix" : "px",
+    "type" : "number",
+    "display_width" : null,
+    "default" : 48
+  }, {
+    "id" : "heading.heading_size_mobile",
+    "name" : "heading_size_mobile",
+    "label" : "Heading Size Mobile",
+    "inline_help_text" : "Set to 0 to use the default size",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "step" : 1,
+    "suffix" : "px",
+    "type" : "number",
+    "display_width" : null,
+    "default" : 36
+  }, {
+    "id" : "heading.font_weight",
+    "name" : "font_weight",
+    "label" : "Font Weight",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "normal", "Normal" ], [ "semibold", "Semibold" ], [ "bold", "Bold" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "semibold"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "body_copy",
+  "name" : "body_copy",
+  "label" : "Body",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "show_header",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "true",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "type" : "richtext",
+  "display_width" : null,
+  "default" : "<p>Every campaign, every household, every outcome — measured.</p>"
+}, {
+  "id" : "left_cards",
+  "name" : "left_cards",
+  "label" : "Left column cards",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 1,
+    "max" : 6,
+    "sorting_label_field" : "left_cards.overlay_heading",
+    "default" : 3
+  },
+  "children" : [ {
+    "id" : "left_cards.image",
+    "name" : "image",
+    "label" : "Image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : true,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "size_type" : "exact",
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy",
+      "width" : 800,
+      "height" : 600
+    }
+  }, {
+    "id" : "left_cards.aspect_ratio",
+    "name" : "aspect_ratio",
+    "label" : "Card aspect ratio",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "16/9", "16:9 (wide)" ], [ "4/3", "4:3" ], [ "1/1", "1:1 (square)" ], [ "3/4", "3:4 (tall)" ], [ "auto", "Use image natural size" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "4/3"
+  }, {
+    "id" : "left_cards.overlay_heading",
+    "name" : "overlay_heading",
+    "label" : "Overlay label (optional)",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  }, {
+    "id" : "left_cards.overlay_value",
+    "name" : "overlay_value",
+    "label" : "Overlay value (optional)",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  }, {
+    "id" : "left_cards.overlay_delta",
+    "name" : "overlay_delta",
+    "label" : "Overlay delta badge (optional)",
+    "inline_help_text" : "E.g. \"▴ 1.2%\". Displays a small pill next to the value.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "image" : {
+      "size_type" : "exact",
+      "src" : "https://tvscientific.com/hubfs/convertion-rate.png",
+      "alt" : "Conversion rate: 6%, up 1.2%",
+      "loading" : "lazy",
+      "width" : 800,
+      "height" : 600
     },
-    "default": "Performance at scale"
-  },
-
-  {
-    "name": "heading",
-    "label": "Heading",
-    "type": "group",
-    "tab": "CONTENT",
-    "visibility": {
-      "controlling_field": "show_header",
-      "controlling_value_regex": "true",
-      "operator": "EQUAL"
+    "aspect_ratio" : "auto",
+    "overlay_heading" : "",
+    "overlay_value" : "",
+    "overlay_delta" : ""
+  }, {
+    "image" : {
+      "size_type" : "exact",
+      "src" : "https://tvscientific.com/hubfs/retargeting.png",
+      "alt" : "Retargeting toggle on a phone",
+      "loading" : "lazy",
+      "width" : 800,
+      "height" : 600
     },
-    "children": [
-      {
-        "name": "value",
-        "label": "Heading content",
-        "type": "text",
-        "allow_new_line": false,
-        "default": "See every outcome that matters"
-      },
-      {
-        "name": "header_tag",
-        "label": "Heading level",
-        "type": "choice",
-        "required": true,
-        "display": "select",
-        "choices": [
-          ["h1", "H1"], ["h2", "H2"], ["h3", "H3"], ["h4", "H4"], ["h5", "H5"], ["h6", "H6"], ["p", "P"]
-        ],
-        "default": "h2"
-      },
-      {
-        "name": "heading_size",
-        "label": "Heading Size",
-        "type": "number",
-        "suffix": "px",
-        "inline_help_text": "Set to 0 to use the default size",
-        "default": 48
-      },
-      {
-        "name": "heading_size_mobile",
-        "label": "Heading Size Mobile",
-        "type": "number",
-        "suffix": "px",
-        "inline_help_text": "Set to 0 to use the default size",
-        "default": 36
-      },
-      {
-        "name": "font_weight",
-        "label": "Font Weight",
-        "type": "choice",
-        "display": "select",
-        "choices": [["normal", "Normal"], ["semibold", "Semibold"], ["bold", "Bold"]],
-        "default": "semibold"
-      }
-    ]
-  },
-
-  {
-    "name": "body_copy",
-    "label": "Body",
-    "type": "richtext",
-    "visibility": {
-      "controlling_field": "show_header",
-      "controlling_value_regex": "true",
-      "operator": "EQUAL"
+    "aspect_ratio" : "auto",
+    "overlay_heading" : "",
+    "overlay_value" : "",
+    "overlay_delta" : ""
+  }, {
+    "image" : {
+      "size_type" : "exact",
+      "src" : "https://tvscientific.com/hubfs/app-downloads.png",
+      "alt" : "App downloads trending up",
+      "loading" : "lazy",
+      "width" : 800,
+      "height" : 600
     },
-    "default": "<p>Every campaign, every household, every outcome — measured.</p>"
+    "aspect_ratio" : "auto",
+    "overlay_heading" : "",
+    "overlay_value" : "",
+    "overlay_delta" : ""
+  } ]
+}, {
+  "id" : "center_card",
+  "name" : "center_card",
+  "label" : "Center column card",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "center_card.image",
+    "name" : "image",
+    "label" : "Image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : true,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "size_type" : "exact",
+      "src" : "https://tvscientific.com/hubfs/purchase.png",
+      "alt" : "Purchase Complete — Audience Detail",
+      "loading" : "lazy",
+      "width" : 960,
+      "height" : 1200
+    }
+  }, {
+    "id" : "center_card.aspect_ratio",
+    "name" : "aspect_ratio",
+    "label" : "Card aspect ratio",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "16/9", "16:9 (wide)" ], [ "4/3", "4:3" ], [ "1/1", "1:1 (square)" ], [ "3/4", "3:4 (tall)" ], [ "auto", "Use image natural size" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "auto"
+  }, {
+    "id" : "center_card.overlay_heading",
+    "name" : "overlay_heading",
+    "label" : "Overlay label (optional)",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  }, {
+    "id" : "center_card.overlay_value",
+    "name" : "overlay_value",
+    "label" : "Overlay subtext (optional)",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  }, {
+    "id" : "center_card.overlay_delta",
+    "name" : "overlay_delta",
+    "label" : "Overlay delta badge (optional)",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "right_cards",
+  "name" : "right_cards",
+  "label" : "Right column cards",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 1,
+    "max" : 6,
+    "sorting_label_field" : "right_cards.overlay_heading",
+    "default" : 2
   },
-
-  {
-    "name": "left_cards",
-    "label": "Left column cards",
-    "type": "group",
-    "tab": "CONTENT",
-    "occurrence": { "min": 1, "max": 6, "default": 3, "sorting_label_field": "left_cards.overlay_heading" },
-    "children": [
-      {
-        "name": "image",
-        "label": "Image",
-        "type": "image",
-        "responsive": true,
-        "resizable": true,
-        "show_loading": true,
-        "default": { "size_type": "exact", "src": "", "alt": "", "loading": "lazy", "width": 800, "height": 600 }
-      },
-      {
-        "name": "aspect_ratio",
-        "label": "Card aspect ratio",
-        "type": "choice",
-        "display": "select",
-        "choices": [
-          ["16/9", "16:9 (wide)"],
-          ["4/3", "4:3"],
-          ["1/1", "1:1 (square)"],
-          ["3/4", "3:4 (tall)"],
-          ["auto", "Use image natural size"]
-        ],
-        "default": "4/3"
-      },
-      {
-        "name": "overlay_heading",
-        "label": "Overlay label (optional)",
-        "type": "text",
-        "allow_new_line": false,
-        "default": ""
-      },
-      {
-        "name": "overlay_value",
-        "label": "Overlay value (optional)",
-        "type": "text",
-        "allow_new_line": false,
-        "default": ""
-      },
-      {
-        "name": "overlay_delta",
-        "label": "Overlay delta badge (optional)",
-        "type": "text",
-        "allow_new_line": false,
-        "inline_help_text": "E.g. \"▴ 1.2%\". Displays a small pill next to the value.",
-        "default": ""
-      }
-    ],
-    "default": [
-      {
-        "image": { "size_type": "exact", "src": "https://tvscientific.com/hubfs/convertion-rate.png", "alt": "Conversion rate: 6%, up 1.2%", "loading": "lazy", "width": 800, "height": 600 },
-        "aspect_ratio": "auto",
-        "overlay_heading": "",
-        "overlay_value": "",
-        "overlay_delta": ""
-      },
-      {
-        "image": { "size_type": "exact", "src": "https://tvscientific.com/hubfs/retargeting.png", "alt": "Retargeting toggle on a phone", "loading": "lazy", "width": 800, "height": 600 },
-        "aspect_ratio": "auto",
-        "overlay_heading": "",
-        "overlay_value": "",
-        "overlay_delta": ""
-      },
-      {
-        "image": { "size_type": "exact", "src": "https://tvscientific.com/hubfs/app-downloads.png", "alt": "App downloads trending up", "loading": "lazy", "width": 800, "height": 600 },
-        "aspect_ratio": "auto",
-        "overlay_heading": "",
-        "overlay_value": "",
-        "overlay_delta": ""
-      }
-    ]
-  },
-
-  {
-    "name": "center_card",
-    "label": "Center column card",
-    "type": "group",
-    "tab": "CONTENT",
-    "children": [
-      {
-        "name": "image",
-        "label": "Image",
-        "type": "image",
-        "responsive": true,
-        "resizable": true,
-        "show_loading": true,
-        "default": { "size_type": "exact", "src": "https://tvscientific.com/hubfs/purchase.png", "alt": "Purchase Complete — Audience Detail", "loading": "lazy", "width": 960, "height": 1200 }
-      },
-      {
-        "name": "aspect_ratio",
-        "label": "Card aspect ratio",
-        "type": "choice",
-        "display": "select",
-        "choices": [
-          ["16/9", "16:9 (wide)"],
-          ["4/3", "4:3"],
-          ["1/1", "1:1 (square)"],
-          ["3/4", "3:4 (tall)"],
-          ["auto", "Use image natural size"]
-        ],
-        "default": "auto"
-      },
-      {
-        "name": "overlay_heading",
-        "label": "Overlay label (optional)",
-        "type": "text",
-        "allow_new_line": false,
-        "default": ""
-      },
-      {
-        "name": "overlay_value",
-        "label": "Overlay subtext (optional)",
-        "type": "text",
-        "allow_new_line": false,
-        "default": ""
-      },
-      {
-        "name": "overlay_delta",
-        "label": "Overlay delta badge (optional)",
-        "type": "text",
-        "allow_new_line": false,
-        "default": ""
-      }
-    ]
-  },
-
-  {
-    "name": "right_cards",
-    "label": "Right column cards",
-    "type": "group",
-    "tab": "CONTENT",
-    "occurrence": { "min": 1, "max": 6, "default": 2, "sorting_label_field": "right_cards.overlay_heading" },
-    "children": [
-      {
-        "name": "image",
-        "label": "Image",
-        "type": "image",
-        "responsive": true,
-        "resizable": true,
-        "show_loading": true,
-        "default": { "size_type": "exact", "src": "", "alt": "", "loading": "lazy", "width": 800, "height": 600 }
-      },
-      {
-        "name": "aspect_ratio",
-        "label": "Card aspect ratio",
-        "type": "choice",
-        "display": "select",
-        "choices": [
-          ["16/9", "16:9 (wide)"],
-          ["4/3", "4:3"],
-          ["1/1", "1:1 (square)"],
-          ["3/4", "3:4 (tall)"],
-          ["auto", "Use image natural size"]
-        ],
-        "default": "3/4"
-      },
-      {
-        "name": "overlay_heading",
-        "label": "Overlay label (optional)",
-        "type": "text",
-        "allow_new_line": false,
-        "default": ""
-      },
-      {
-        "name": "overlay_value",
-        "label": "Overlay value (optional)",
-        "type": "text",
-        "allow_new_line": false,
-        "default": ""
-      },
-      {
-        "name": "overlay_delta",
-        "label": "Overlay delta badge (optional)",
-        "type": "text",
-        "allow_new_line": false,
-        "default": ""
-      }
-    ],
-    "default": [
-      {
-        "image": { "size_type": "exact", "src": "https://tvscientific.com/hubfs/household-reach.png", "alt": "Household reach: 36.7M", "loading": "lazy", "width": 800, "height": 600 },
-        "aspect_ratio": "auto",
-        "overlay_heading": "",
-        "overlay_value": "",
-        "overlay_delta": ""
-      },
-      {
-        "image": { "size_type": "exact", "src": "https://tvscientific.com/hubfs/inventory.png", "alt": "Inventory units: 120, up 12.89%", "loading": "lazy", "width": 800, "height": 600 },
-        "aspect_ratio": "auto",
-        "overlay_heading": "",
-        "overlay_value": "",
-        "overlay_delta": ""
-      }
-    ]
-  },
-
-  {
-    "name": "style",
-    "label": "Style",
-    "type": "group",
-    "tab": "STYLE",
-    "children": [
-      {
-        "name": "parallax",
-        "label": "Parallax motion",
-        "type": "group",
-        "children": [
-          {
-            "name": "enabled",
-            "label": "Enable scroll parallax",
-            "type": "boolean",
-            "display": "toggle",
-            "default": true
-          },
-          {
-            "name": "side_offset",
-            "label": "Left / right rise (px)",
-            "type": "number",
-            "suffix": "px",
-            "min": 0,
-            "max": 400,
-            "inline_help_text": "How far side columns translate upward at full scroll progress.",
-            "default": 90
-          },
-          {
-            "name": "center_drift",
-            "label": "Center drift (%)",
-            "type": "number",
-            "suffix": "%",
-            "min": 0,
-            "max": 50,
-            "inline_help_text": "How far the center column drifts downward at full scroll progress.",
-            "default": 5
-          }
-        ]
-      },
-      {
-        "name": "mobile",
-        "label": "Mobile layout",
-        "type": "group",
-        "children": [
-          {
-            "name": "layout",
-            "label": "Mobile layout",
-            "type": "choice",
-            "display": "select",
-            "choices": [
-              ["stack", "Stack — single column, all cards"],
-              ["two-col", "2 columns — half the height"],
-              ["center-only", "Center only — hide side cards"]
-            ],
-            "inline_help_text": "How the grid collapses on screens <= 768px wide.",
-            "default": "two-col"
-          }
-        ]
-      },
-      {
-        "name": "background_color",
-        "label": "Background color",
-        "type": "color",
-        "default": { "color": null, "opacity": 100 }
-      },
-      {
-        "name": "background_image",
-        "label": "Background image",
-        "type": "image",
-        "responsive": true,
-        "resizable": true,
-        "show_loading": true,
-        "default": { "size_type": "exact", "src": "", "alt": "", "loading": "lazy", "width": 1920, "height": 1080 }
-      },
-      {
-        "name": "text_color",
-        "label": "Text color",
-        "type": "color",
-        "default": { "color": null, "opacity": 100 }
-      },
-      {
-        "name": "padding",
-        "label": "Padding",
-        "type": "spacing",
-        "default": {
-          "padding": {
-            "top": { "value": 64, "units": "px" },
-            "bottom": { "value": 64, "units": "px" }
-          }
+  "children" : [ {
+    "id" : "right_cards.image",
+    "name" : "image",
+    "label" : "Image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : true,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "size_type" : "exact",
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy",
+      "width" : 800,
+      "height" : 600
+    }
+  }, {
+    "id" : "right_cards.aspect_ratio",
+    "name" : "aspect_ratio",
+    "label" : "Card aspect ratio",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "16/9", "16:9 (wide)" ], [ "4/3", "4:3" ], [ "1/1", "1:1 (square)" ], [ "3/4", "3:4 (tall)" ], [ "auto", "Use image natural size" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "3/4"
+  }, {
+    "id" : "right_cards.overlay_heading",
+    "name" : "overlay_heading",
+    "label" : "Overlay label (optional)",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  }, {
+    "id" : "right_cards.overlay_value",
+    "name" : "overlay_value",
+    "label" : "Overlay value (optional)",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  }, {
+    "id" : "right_cards.overlay_delta",
+    "name" : "overlay_delta",
+    "label" : "Overlay delta badge (optional)",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "image" : {
+      "size_type" : "exact",
+      "src" : "https://tvscientific.com/hubfs/household-reach.png",
+      "alt" : "Household reach: 36.7M",
+      "loading" : "lazy",
+      "width" : 800,
+      "height" : 600
+    },
+    "aspect_ratio" : "auto",
+    "overlay_heading" : "",
+    "overlay_value" : "",
+    "overlay_delta" : ""
+  }, {
+    "image" : {
+      "size_type" : "exact",
+      "src" : "https://tvscientific.com/hubfs/inventory.png",
+      "alt" : "Inventory units: 120, up 12.89%",
+      "loading" : "lazy",
+      "width" : 800,
+      "height" : 600
+    },
+    "aspect_ratio" : "auto",
+    "overlay_heading" : "",
+    "overlay_value" : "",
+    "overlay_delta" : ""
+  } ]
+}, {
+  "id" : "style",
+  "name" : "style",
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "style.parallax",
+    "name" : "parallax",
+    "label" : "Parallax motion",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "style.parallax.enabled",
+      "name" : "enabled",
+      "label" : "Enable scroll parallax",
+      "required" : false,
+      "locked" : false,
+      "display" : "toggle",
+      "type" : "boolean",
+      "display_width" : null,
+      "default" : true
+    }, {
+      "id" : "style.parallax.side_offset",
+      "name" : "side_offset",
+      "label" : "Left / right rise (px)",
+      "inline_help_text" : "How far side columns translate upward at full scroll progress.",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "min" : 0,
+      "max" : 400,
+      "step" : 1,
+      "suffix" : "px",
+      "type" : "number",
+      "display_width" : null,
+      "default" : 90
+    }, {
+      "id" : "style.parallax.center_drift",
+      "name" : "center_drift",
+      "label" : "Center drift (%)",
+      "inline_help_text" : "How far the center column drifts downward at full scroll progress.",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "min" : 0,
+      "max" : 50,
+      "step" : 1,
+      "suffix" : "%",
+      "type" : "number",
+      "display_width" : null,
+      "default" : 5
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null
+  }, {
+    "id" : "style.mobile",
+    "name" : "mobile",
+    "label" : "Mobile layout",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "style.mobile.layout",
+      "name" : "layout",
+      "label" : "Mobile layout",
+      "inline_help_text" : "How the grid collapses on screens <= 768px wide.",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "stack", "Stack — single column, all cards" ], [ "two-col", "2 columns — half the height" ], [ "center-only", "Center only — hide side cards" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "display_width" : null,
+      "default" : "two-col"
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null
+  }, {
+    "id" : "style.background_color",
+    "name" : "background_color",
+    "label" : "Background color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : null,
+      "opacity" : 100
+    }
+  }, {
+    "id" : "style.background_image",
+    "name" : "background_image",
+    "label" : "Background image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : true,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "size_type" : "exact",
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy",
+      "width" : 1920,
+      "height" : 1080
+    }
+  }, {
+    "id" : "style.text_color",
+    "name" : "text_color",
+    "label" : "Text color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : null,
+      "opacity" : 100
+    }
+  }, {
+    "id" : "style.padding",
+    "name" : "padding",
+    "label" : "Padding",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "display_width" : null,
+    "default" : {
+      "padding" : {
+        "top" : {
+          "value" : 64,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 64,
+          "units" : "px"
         }
       }
-    ]
-  }
-]
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+} ]

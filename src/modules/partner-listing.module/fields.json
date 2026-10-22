@@ -1,67 +1,82 @@
-[
-  {
-    "type": "hubdbtable",
-    "id": "0c7fabce-fcb5-4640-a038-bff44c77408c",
-    "label": "HubDB table",
-    "name": "hubdb_table",
-    "default": 136413080
-  },
-  {
-    "name": "filter_1",
-    "label": "Filter 1",
-    "required": false,
-    "locked": false,
-    "type": "text",
-    "default": "Programs"
-  },
-  {
-    "name": "filter_2",
-    "label": "Filter 2",
-    "required": false,
-    "locked": false,
-    "type": "text",
-    "default": "Categories"
-  },
-  {
-    "name": "filter_3",
-    "label": "Filter 3",
-    "required": false,
-    "locked": false,
-    "type": "text",
-    "default": "Capabilities"
-  },
-  {
-    "name": "featured_heading",
-    "label": "Featured section heading",
-    "required": false,
-    "locked": false,
-    "type": "text",
-    "default": "Featured Certified Measurement Partners"
-  },
-  {
-    "name": "all_partners_heading",
-    "label": "All partners section heading",
-    "required": false,
-    "locked": false,
-    "type": "text",
-    "default": "All Partners"
-  },
-  {
-    "name": "show_card_description",
-    "label": "Show card description",
-    "required": false,
-    "locked": false,
-    "type": "boolean",
-    "inline_help_text": "",
-    "help_text": "",
-    "default": false
-  },
-  {
-    "name": "description",
-    "label": "Description",
-    "required": false,
-    "locked": false,
-    "type": "text",
-    "default": "<p>These partners are independent organizations we’ve selected for their expertise and shared commitment to drive performance for your TV campaigns. While we facilitate these connections, each partner manages their own services, and tvScientific is not responsible for client outcomes.</p>"
-  }
-]
+[ {
+  "id" : "0c7fabce-fcb5-4640-a038-bff44c77408c",
+  "name" : "hubdb_table",
+  "label" : "HubDB table",
+  "required" : false,
+  "locked" : false,
+  "type" : "hubdbtable",
+  "display_width" : null,
+  "default" : 136413080
+}, {
+  "id" : "filter_1",
+  "name" : "filter_1",
+  "label" : "Filter 1",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Programs"
+}, {
+  "id" : "filter_2",
+  "name" : "filter_2",
+  "label" : "Filter 2",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Categories"
+}, {
+  "id" : "filter_3",
+  "name" : "filter_3",
+  "label" : "Filter 3",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Capabilities"
+}, {
+  "id" : "featured_heading",
+  "name" : "featured_heading",
+  "label" : "Featured section heading",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Featured Certified Measurement Partners"
+}, {
+  "id" : "all_partners_heading",
+  "name" : "all_partners_heading",
+  "label" : "All partners section heading",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "All Partners"
+}, {
+  "id" : "show_card_description",
+  "name" : "show_card_description",
+  "label" : "Show card description",
+  "help_text" : "",
+  "inline_help_text" : "",
+  "required" : false,
+  "locked" : false,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "display_width" : null,
+  "default" : false
+}, {
+  "id" : "description",
+  "name" : "description",
+  "label" : "Description",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "<p>These partners are independent organizations we’ve selected for their expertise and shared commitment to drive performance for your TV campaigns. While we facilitate these connections, each partner manages their own services, and tvScientific is not responsible for client outcomes.</p>"
+} ]

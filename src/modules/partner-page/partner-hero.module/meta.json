@@ -1,13 +1,8 @@
 {
-  "label": "Partner: Hero",
-  "css_assets": [],
-  "external_js": [],
-  "global": false,
-  "help_text": "",
-  "content_types": [ "LANDING_PAGE", "SITE_PAGE" ],
-  "js_assets": [],
-  "other_assets": [],
-  "smart_type": "NOT_SMART",
-  "tags": [],
-  "is_available_for_new_content": false
+  "global" : false,
+  "content_types" : [ "LANDING_PAGE", "SITE_PAGE" ],
+  "host_template_types" : [ "ANY" ],
+  "module_id" : 197624080943,
+  "label" : "Partner: Hero",
+  "is_available_for_new_content" : false
 }

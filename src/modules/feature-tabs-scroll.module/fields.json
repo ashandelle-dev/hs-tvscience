@@ -1,236 +1,420 @@
-[
-  {
-    "name": "heading",
-    "label": "Heading",
-    "type": "group",
-    "tab": "CONTENT",
-    "children": [
-      {
-        "name": "value",
-        "label": "Heading content",
-        "type": "text",
-        "allow_new_line": false,
-        "default": "Finally — a TV advertising platform that empowers you (and your ads) to perform"
-      },
-      {
-        "name": "header_tag",
-        "label": "Heading level",
-        "type": "choice",
-        "required": true,
-        "display": "select",
-        "choices": [["h1", "H1"], ["h2", "H2"], ["h3", "H3"], ["h4", "H4"], ["h5", "H5"], ["h6", "H6"], ["p", "P"]],
-        "default": "h2"
-      },
-      {
-        "name": "heading_size",
-        "label": "Heading Size",
-        "type": "number",
-        "suffix": "px",
-        "inline_help_text": "Set to 0 to use the default size",
-        "default": 32
-      },
-      {
-        "name": "heading_size_mobile",
-        "label": "Heading Size Mobile",
-        "type": "number",
-        "suffix": "px",
-        "inline_help_text": "Set to 0 to use the default size",
-        "default": 26
-      },
-      {
-        "name": "font_weight",
-        "label": "Font Weight",
-        "type": "choice",
-        "display": "select",
-        "choices": [["normal", "Normal"], ["medium", "Medium"], ["semibold", "Semibold"], ["bold", "Bold"]],
-        "default": "medium"
-      },
-      {
-        "name": "max_width",
-        "label": "Heading max-width (px)",
-        "type": "number",
-        "suffix": "px",
-        "inline_help_text": "Caps the heading text wrap so it forms a tighter block. Set to 0 for full width.",
-        "default": 600
-      }
-    ]
+[ {
+  "id" : "heading",
+  "name" : "heading",
+  "label" : "Heading",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "heading.value",
+    "name" : "value",
+    "label" : "Heading content",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Finally — a TV advertising platform that empowers you (and your ads) to perform"
+  }, {
+    "id" : "heading.header_tag",
+    "name" : "header_tag",
+    "label" : "Heading level",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "h1", "H1" ], [ "h2", "H2" ], [ "h3", "H3" ], [ "h4", "H4" ], [ "h5", "H5" ], [ "h6", "H6" ], [ "p", "P" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "h2"
+  }, {
+    "id" : "heading.heading_size",
+    "name" : "heading_size",
+    "label" : "Heading Size",
+    "inline_help_text" : "Set to 0 to use the default size",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "step" : 1,
+    "suffix" : "px",
+    "type" : "number",
+    "display_width" : null,
+    "default" : 32
+  }, {
+    "id" : "heading.heading_size_mobile",
+    "name" : "heading_size_mobile",
+    "label" : "Heading Size Mobile",
+    "inline_help_text" : "Set to 0 to use the default size",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "step" : 1,
+    "suffix" : "px",
+    "type" : "number",
+    "display_width" : null,
+    "default" : 26
+  }, {
+    "id" : "heading.font_weight",
+    "name" : "font_weight",
+    "label" : "Font Weight",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "normal", "Normal" ], [ "medium", "Medium" ], [ "semibold", "Semibold" ], [ "bold", "Bold" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "medium"
+  }, {
+    "id" : "heading.max_width",
+    "name" : "max_width",
+    "label" : "Heading max-width (px)",
+    "inline_help_text" : "Caps the heading text wrap so it forms a tighter block. Set to 0 for full width.",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "step" : 1,
+    "suffix" : "px",
+    "type" : "number",
+    "display_width" : null,
+    "default" : 600
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "tabs",
+  "name" : "tabs",
+  "label" : "Tabs / Pillars",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 2,
+    "max" : 5,
+    "sorting_label_field" : "tabs.tab_label",
+    "default" : 3
   },
-
-  {
-    "name": "tabs",
-    "label": "Tabs / Pillars",
-    "type": "group",
-    "tab": "CONTENT",
-    "occurrence": {
-      "min": 2,
-      "max": 5,
-      "default": 3,
-      "sorting_label_field": "tabs.tab_label"
+  "children" : [ {
+    "id" : "tabs.tab_label",
+    "name" : "tab_label",
+    "label" : "Tab label",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Scalability"
+  }, {
+    "id" : "tabs.tab_icon",
+    "name" : "tab_icon",
+    "label" : "Tab icon (shown when active, ~35×35)",
+    "required" : false,
+    "locked" : false,
+    "responsive" : false,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "size_type" : "exact",
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy",
+      "width" : 35,
+      "height" : 35
+    }
+  }, {
+    "id" : "tabs.tab_image",
+    "name" : "tab_image",
+    "label" : "Right-side composite image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "size_type" : "auto",
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy",
+      "width" : 0,
+      "height" : 0
+    }
+  }, {
+    "id" : "tabs.body_copy",
+    "name" : "body_copy",
+    "label" : "Body copy",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "display_width" : null,
+    "default" : "<p>Spend your ad dollars more effectively, optimize in real time, and jump quickly on new opportunities.</p>"
+  }, {
+    "id" : "tabs.cta",
+    "name" : "cta",
+    "label" : "Button",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "tabs.cta.show",
+      "name" : "show",
+      "label" : "Show button",
+      "required" : false,
+      "locked" : false,
+      "display" : "toggle",
+      "type" : "boolean",
+      "display_width" : null,
+      "default" : true
+    }, {
+      "id" : "tabs.cta.link",
+      "name" : "link",
+      "label" : "Link",
+      "required" : false,
+      "locked" : false,
+      "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION" ],
+      "show_advanced_rel_options" : false,
+      "type" : "link",
+      "display_width" : null,
+      "default" : {
+        "url" : {
+          "type" : "EXTERNAL",
+          "href" : "/contact"
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    }, {
+      "id" : "tabs.cta.text",
+      "name" : "text",
+      "label" : "Button text",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : "Learn more"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "tab_label" : "Scalability",
+    "tab_icon" : {
+      "size_type" : "exact",
+      "src" : "https://tvscientific.com/hubfs/Performance%20marketers.svg",
+      "alt" : "Scalability icon",
+      "loading" : "lazy",
+      "width" : 35,
+      "height" : 35
     },
-    "children": [
-      {
-        "name": "tab_label",
-        "label": "Tab label",
-        "type": "text",
-        "allow_new_line": false,
-        "default": "Scalability"
+    "tab_image" : {
+      "size_type" : "auto",
+      "src" : "https://tvscientific.com/hubfs/ScalabilityImage.png",
+      "alt" : "Scalability dashboard composite",
+      "loading" : "lazy",
+      "width" : 0,
+      "height" : 0
+    },
+    "body_copy" : "<p>Spend your ad dollars more effectively, optimize in real time, and jump quickly on new opportunities.</p>",
+    "cta" : {
+      "show" : true,
+      "link" : {
+        "url" : {
+          "type" : "EXTERNAL",
+          "href" : "/contact"
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
       },
-      {
-        "name": "tab_icon",
-        "label": "Tab icon (shown when active, ~35×35)",
-        "type": "image",
-        "responsive": false,
-        "resizable": true,
-        "default": {
-          "size_type": "exact",
-          "src": "",
-          "alt": "",
-          "loading": "lazy",
-          "width": 35,
-          "height": 35
+      "text" : "Learn more"
+    }
+  }, {
+    "tab_label" : "Measurement",
+    "tab_icon" : {
+      "size_type" : "exact",
+      "src" : "https://tvscientific.com/hubfs/Optimization.svg",
+      "alt" : "Measurement icon",
+      "loading" : "lazy",
+      "width" : 35,
+      "height" : 35
+    },
+    "tab_image" : {
+      "size_type" : "auto",
+      "src" : "https://tvscientific.com/hubfs/MeasurementImage.png",
+      "alt" : "Measurement dashboard composite",
+      "loading" : "lazy",
+      "width" : 0,
+      "height" : 0
+    },
+    "body_copy" : "<p>Advertising is about business outcomes, not impressions. Generate lift across your media mix, make real-time optimizations faster than you.</p>",
+    "cta" : {
+      "show" : true,
+      "link" : {
+        "url" : {
+          "type" : "EXTERNAL",
+          "href" : "/contact"
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "text" : "Learn more"
+    }
+  }, {
+    "tab_label" : "Brand Safety",
+    "tab_icon" : {
+      "size_type" : "exact",
+      "src" : "https://tvscientific.com/hubfs/Shield.svg",
+      "alt" : "Brand Safety icon",
+      "loading" : "lazy",
+      "width" : 35,
+      "height" : 35
+    },
+    "tab_image" : {
+      "size_type" : "auto",
+      "src" : "https://tvscientific.com/hubfs/BrandSafetyImage.png",
+      "alt" : "Brand Safety dashboard composite",
+      "loading" : "lazy",
+      "width" : 0,
+      "height" : 0
+    },
+    "body_copy" : "<p>Ensure the inventory you can access aligns to the brand values you've worked hard to uphold.</p>",
+    "cta" : {
+      "show" : true,
+      "link" : {
+        "url" : {
+          "type" : "EXTERNAL",
+          "href" : "/contact"
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "text" : "Learn more"
+    }
+  } ]
+}, {
+  "id" : "behavior",
+  "name" : "behavior",
+  "label" : "Scroll behavior",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "behavior.pin_enabled",
+    "name" : "pin_enabled",
+    "label" : "Pin to viewport on desktop",
+    "inline_help_text" : "When on, the section sticks while user scrolls through each state. Disable for in-flow click-to-switch behavior.",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : true
+  }, {
+    "id" : "behavior.scroll_distance_per_tab",
+    "name" : "scroll_distance_per_tab",
+    "label" : "Scroll distance per tab (vh)",
+    "inline_help_text" : "How many viewport heights of scrolling each tab takes. 100 = 1 full screen of scrolling per tab. Lower = faster transitions.",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 50,
+    "max" : 200,
+    "step" : 1,
+    "suffix" : "vh",
+    "type" : "number",
+    "display_width" : null,
+    "default" : 100
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "style",
+  "name" : "style",
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "style.background_color",
+    "name" : "background_color",
+    "label" : "Background color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#FFFFFF",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "style.background_image",
+    "name" : "background_image",
+    "label" : "Background image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : false,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "size_type" : "auto",
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy"
+    }
+  }, {
+    "id" : "style.text_color",
+    "name" : "text_color",
+    "label" : "Text color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : null,
+      "opacity" : 100
+    }
+  }, {
+    "id" : "style.padding",
+    "name" : "padding",
+    "label" : "Padding",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "display_width" : null,
+    "default" : {
+      "padding" : {
+        "top" : {
+          "value" : 80,
+          "units" : "px"
+        },
+        "bottom" : {
+          "value" : 80,
+          "units" : "px"
         }
-      },
-      {
-        "name": "tab_image",
-        "label": "Right-side composite image",
-        "type": "image",
-        "responsive": true,
-        "resizable": true,
-        "default": {
-          "size_type": "auto",
-          "src": "",
-          "alt": "",
-          "loading": "lazy",
-          "width": 0,
-          "height": 0
-        }
-      },
-      {
-        "name": "body_copy",
-        "label": "Body copy",
-        "type": "richtext",
-        "default": "<p>Spend your ad dollars more effectively, optimize in real time, and jump quickly on new opportunities.</p>"
-      },
-      {
-        "name": "cta",
-        "label": "Button",
-        "type": "group",
-        "children": [
-          {
-            "name": "show",
-            "label": "Show button",
-            "type": "boolean",
-            "display": "toggle",
-            "default": true
-          },
-          {
-            "name": "link",
-            "label": "Link",
-            "type": "link",
-            "supported_types": ["EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION"],
-            "default": {
-              "url": { "type": "EXTERNAL", "href": "/contact" },
-              "open_in_new_tab": false,
-              "no_follow": false
-            }
-          },
-          {
-            "name": "text",
-            "label": "Button text",
-            "type": "text",
-            "allow_new_line": false,
-            "default": "Learn more"
-          }
-        ]
       }
-    ],
-    "default": [
-      {
-        "tab_label": "Scalability",
-        "tab_icon": { "size_type": "exact", "src": "https://tvscientific.com/hubfs/Performance%20marketers.svg", "alt": "Scalability icon", "loading": "lazy", "width": 35, "height": 35 },
-        "tab_image": { "size_type": "auto", "src": "https://tvscientific.com/hubfs/ScalabilityImage.png", "alt": "Scalability dashboard composite", "loading": "lazy", "width": 0, "height": 0 },
-        "body_copy": "<p>Spend your ad dollars more effectively, optimize in real time, and jump quickly on new opportunities.</p>",
-        "cta": { "show": true, "link": { "url": { "type": "EXTERNAL", "href": "/contact" }, "open_in_new_tab": false, "no_follow": false }, "text": "Learn more" }
-      },
-      {
-        "tab_label": "Measurement",
-        "tab_icon": { "size_type": "exact", "src": "https://tvscientific.com/hubfs/Optimization.svg", "alt": "Measurement icon", "loading": "lazy", "width": 35, "height": 35 },
-        "tab_image": { "size_type": "auto", "src": "https://tvscientific.com/hubfs/MeasurementImage.png", "alt": "Measurement dashboard composite", "loading": "lazy", "width": 0, "height": 0 },
-        "body_copy": "<p>Advertising is about business outcomes, not impressions. Generate lift across your media mix, make real-time optimizations faster than you.</p>",
-        "cta": { "show": true, "link": { "url": { "type": "EXTERNAL", "href": "/contact" }, "open_in_new_tab": false, "no_follow": false }, "text": "Learn more" }
-      },
-      {
-        "tab_label": "Brand Safety",
-        "tab_icon": { "size_type": "exact", "src": "https://tvscientific.com/hubfs/Shield.svg", "alt": "Brand Safety icon", "loading": "lazy", "width": 35, "height": 35 },
-        "tab_image": { "size_type": "auto", "src": "https://tvscientific.com/hubfs/BrandSafetyImage.png", "alt": "Brand Safety dashboard composite", "loading": "lazy", "width": 0, "height": 0 },
-        "body_copy": "<p>Ensure the inventory you can access aligns to the brand values you've worked hard to uphold.</p>",
-        "cta": { "show": true, "link": { "url": { "type": "EXTERNAL", "href": "/contact" }, "open_in_new_tab": false, "no_follow": false }, "text": "Learn more" }
-      }
-    ]
-  },
-
-  {
-    "name": "behavior",
-    "label": "Scroll behavior",
-    "type": "group",
-    "tab": "CONTENT",
-    "children": [
-      {
-        "name": "pin_enabled",
-        "label": "Pin to viewport on desktop",
-        "type": "boolean",
-        "display": "toggle",
-        "inline_help_text": "When on, the section sticks while user scrolls through each state. Disable for in-flow click-to-switch behavior.",
-        "default": true
-      },
-      {
-        "name": "scroll_distance_per_tab",
-        "label": "Scroll distance per tab (vh)",
-        "type": "number",
-        "suffix": "vh",
-        "min": 50,
-        "max": 200,
-        "inline_help_text": "How many viewport heights of scrolling each tab takes. 100 = 1 full screen of scrolling per tab. Lower = faster transitions.",
-        "default": 100
-      }
-    ]
-  },
-
-  {
-    "name": "style",
-    "label": "Style",
-    "type": "group",
-    "tab": "STYLE",
-    "children": [
-      {
-        "name": "background_color",
-        "label": "Background color",
-        "type": "color",
-        "default": { "color": "#FFFFFF", "opacity": 100 }
-      },
-      {
-        "name": "background_image",
-        "label": "Background image",
-        "type": "image",
-        "default": { "size_type": "auto", "src": "", "alt": "", "loading": "lazy" }
-      },
-      {
-        "name": "text_color",
-        "label": "Text color",
-        "type": "color",
-        "default": { "color": null, "opacity": 100 }
-      },
-      {
-        "name": "padding",
-        "label": "Padding",
-        "type": "spacing",
-        "default": {
-          "padding": {
-            "top":    { "value": 80, "units": "px" },
-            "bottom": { "value": 80, "units": "px" }
-          }
-        }
-      }
-    ]
-  }
-]
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+} ]

@@ -1,12 +1,7 @@
 {
-  "label": "",
-  "css_assets": [],
-  "external_js": [],
-  "global": false,
-  "help_text": "",
-  "content_types": [],
-  "js_assets": [],
-  "other_assets": [],
-  "smart_type": "NOT_SMART",
-  "tags": []
+  "global" : false,
+  "content_types" : [ ],
+  "host_template_types" : [ "ANY" ],
+  "module_id" : 206906213964,
+  "is_available_for_new_content" : true
 }

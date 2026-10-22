@@ -1,128 +1,186 @@
-[
-  {
-    "id": "video_group",
-    "name": "video_group",
-    "label": "Video Background",
-    "type": "group",
-    "children": [
-      {
-        "id": "video_url",
-        "name": "video_url",
-        "label": "Video URL",
-        "type": "text",
-        "default": "https://www.tvscientific.com/hubfs/State%20of%20Performance%20TV/videos/tvGrid_background.mp4",
-        "required": true
-      }
-    ]
-  },
-  {
-    "id": "content_group",
-    "name": "content_group",
-    "label": "Content",
-    "type": "group",
-    "children": [
-      {
-        "id": "title_text",
-        "name": "title_text",
-        "label": "Title Text",
-        "type": "text",
-        "default": "The State of Performance TV",
-        "required": true
-      },
-      {
-        "id": "title_highlight",
-        "name": "title_highlight",
-        "label": "Highlighted Text (appears in green)",
-        "type": "text",
-        "default": "in 2026",
-        "required": false
-      },
-      {
-        "id": "hero_image",
-        "name": "hero_image",
-        "label": "Hero Image",
-        "type": "image",
-        "default": {
-          "src": "https://tvscientific.com/hubfs/State%20of%20Performance%20TV/images/graph.png",
-          "alt": "Performance TV Chart",
-          "width": 347,
-          "height": 308
-        },
-        "required": false
-      },
-      {
-        "id": "show_image",
-        "name": "show_image",
-        "label": "Show Image",
-        "type": "boolean",
-        "default": true
-      }
-    ]
-  },
-  {
-    "id": "form_group",
-    "name": "form_group",
-    "label": "Form Settings",
-    "type": "group",
-    "children": [
-      {
-        "id": "show_form",
-        "name": "show_form",
-        "label": "Show Form",
-        "type": "boolean",
-        "default": false
-      },
-      {
-        "id": "form_heading",
-        "name": "form_heading",
-        "label": "Form Heading",
-        "type": "text",
-        "default": "Sign up below to get the full report.",
-        "required": false,
-        "visibility": {
-          "controlling_field_path": "form_group.show_form",
-          "controlling_value_regex": "true",
-          "operator": "EQUAL"
-        }
-      },
-      {
-        "id": "form_placeholder",
-        "name": "form_placeholder",
-        "label": "Email Placeholder Text",
-        "type": "text",
-        "default": "Business Email",
-        "required": false,
-        "visibility": {
-          "controlling_field_path": "form_group.show_form",
-          "controlling_value_regex": "true",
-          "operator": "EQUAL"
-        }
-      },
-      {
-        "id": "form_button_text",
-        "name": "form_button_text",
-        "label": "Button Text",
-        "type": "text",
-        "default": "SUBMIT",
-        "required": false,
-        "visibility": {
-          "controlling_field_path": "form_group.show_form",
-          "controlling_value_regex": "true",
-          "operator": "EQUAL"
-        }
-      },
-      {
-        "id": "hubspot_form",
-        "name": "hubspot_form",
-        "label": "HubSpot Form",
-        "type": "form",
-        "required": false,
-        "visibility": {
-          "controlling_field_path": "form_group.show_form",
-          "controlling_value_regex": "true",
-          "operator": "EQUAL"
-        }
-      }
-    ]
-  }
-]
+[ {
+  "id" : "video_group",
+  "name" : "video_group",
+  "label" : "Video Background",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "video_url",
+    "name" : "video_url",
+    "label" : "Video URL",
+    "required" : true,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "https://www.tvscientific.com/hubfs/State%20of%20Performance%20TV/videos/tvGrid_background.mp4"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "content_group",
+  "name" : "content_group",
+  "label" : "Content",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "title_text",
+    "name" : "title_text",
+    "label" : "Title Text",
+    "required" : true,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "The State of Performance TV"
+  }, {
+    "id" : "title_highlight",
+    "name" : "title_highlight",
+    "label" : "Highlighted Text (appears in green)",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "in 2026"
+  }, {
+    "id" : "hero_image",
+    "name" : "hero_image",
+    "label" : "Hero Image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : false,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "src" : "https://tvscientific.com/hubfs/State%20of%20Performance%20TV/images/graph.png",
+      "alt" : "Performance TV Chart",
+      "width" : 347,
+      "height" : 308
+    }
+  }, {
+    "id" : "show_image",
+    "name" : "show_image",
+    "label" : "Show Image",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : true
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "form_group",
+  "name" : "form_group",
+  "label" : "Form Settings",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "show_form",
+    "name" : "show_form",
+    "label" : "Show Form",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : false
+  }, {
+    "id" : "form_heading",
+    "name" : "form_heading",
+    "label" : "Form Heading",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "form_group.show_form",
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Sign up below to get the full report."
+  }, {
+    "id" : "form_placeholder",
+    "name" : "form_placeholder",
+    "label" : "Email Placeholder Text",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "form_group.show_form",
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Business Email"
+  }, {
+    "id" : "form_button_text",
+    "name" : "form_button_text",
+    "label" : "Button Text",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "form_group.show_form",
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "SUBMIT"
+  }, {
+    "id" : "hubspot_form",
+    "name" : "hubspot_form",
+    "label" : "HubSpot Form",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "form_group.show_form",
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "form",
+    "display_width" : null,
+    "default" : {
+      "form_id" : null,
+      "redirect_url" : null,
+      "redirect_id" : null,
+      "gotowebinar_webinar_key" : null,
+      "form_type" : null,
+      "follow_up_type_simple" : null,
+      "webinar_id" : null,
+      "webinar_source" : null,
+      "response_type" : "inline",
+      "message" : "Thanks for submitting the form."
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+} ]

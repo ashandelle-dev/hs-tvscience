@@ -1,66 +1,103 @@
-[
-  {
-    "name": "category_label",
-    "label": "Category Label",
-    "type": "text",
-    "default": "Streaming"
+[ {
+  "id" : "category_label",
+  "name" : "category_label",
+  "label" : "Category Label",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Streaming"
+}, {
+  "id" : "inventory_link",
+  "name" : "inventory_link",
+  "label" : "View Inventory Link",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "inventory_link.text",
+    "name" : "text",
+    "label" : "Link Text",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "VIEW FULL INVENTORY"
+  }, {
+    "id" : "inventory_link.url",
+    "name" : "url",
+    "label" : "Link URL",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+    "type" : "url",
+    "display_width" : null,
+    "default" : {
+      "href" : "#"
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "logos",
+  "name" : "logos",
+  "label" : "Logos",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 1,
+    "max" : 20,
+    "sorting_label_field" : null,
+    "default" : 8
   },
-  {
-    "name": "inventory_link",
-    "label": "View Inventory Link",
-    "type": "group",
-    "children": [
-      {
-        "name": "text",
-        "label": "Link Text",
-        "type": "text",
-        "default": "VIEW FULL INVENTORY"
-      },
-      {
-        "name": "url",
-        "label": "Link URL",
-        "type": "url",
-        "default": {
-          "href": "#"
-        }
-      }
-    ]
-  },
-  {
-    "name": "logos",
-    "label": "Logos",
-    "type": "group",
-    "occurrence": {
-      "min": 1,
-      "max": 20,
-      "default": 8
-    },
-    "children": [
-      {
-        "name": "logo",
-        "label": "Logo Image",
-        "type": "image",
-        "default": {
-          "src": "https://tvscientific.com/hubfs/logos/Disney%2B%20Grey-dark-blue%201.png",
-          "alt": "Partner Logo"
-        }
-      }
-    ]
-  },
-  {
-    "name": "scroll_speed",
-    "label": "Scroll Speed (seconds)",
-    "type": "number",
-    "default": 30
-  },
-  {
-    "name": "scroll_direction",
-    "label": "Scroll Direction",
-    "type": "choice",
-    "choices": [
-      ["left", "Left"],
-      ["right", "Right"]
-    ],
-    "default": "left"
-  }
-]
+  "children" : [ {
+    "id" : "logos.logo",
+    "name" : "logo",
+    "label" : "Logo Image",
+    "required" : false,
+    "locked" : false,
+    "responsive" : false,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "src" : "https://tvscientific.com/hubfs/logos/Disney%2B%20Grey-dark-blue%201.png",
+      "alt" : "Partner Logo"
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "scroll_speed",
+  "name" : "scroll_speed",
+  "label" : "Scroll Speed (seconds)",
+  "required" : false,
+  "locked" : false,
+  "display" : "text",
+  "step" : 1,
+  "type" : "number",
+  "display_width" : null,
+  "default" : 30
+}, {
+  "id" : "scroll_direction",
+  "name" : "scroll_direction",
+  "label" : "Scroll Direction",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "left", "Left" ], [ "right", "Right" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "display_width" : null,
+  "default" : "left"
+} ]

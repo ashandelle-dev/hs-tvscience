@@ -1,55 +1,62 @@
-[
-  {
-    "name": "left_logo",
-    "label": "Left Logo",
-    "required": false,
-    "locked": false,
-    "inline_help_text": "",
-    "help_text": "",
-    "responsive": true,
-    "resizable": true,
-    "show_loading": false,
-    "type": "image",
-    "default": {
-      "size_type": "auto",
-      "src": "",
-      "alt": null,
-      "loading": "disabled"
-    }
-  },
-  {
-    "name": "right_logo",
-    "label": "Right Logo",
-    "required": false,
-    "locked": false,
-    "inline_help_text": "",
-    "help_text": "",
-    "responsive": true,
-    "resizable": true,
-    "show_loading": false,
-    "type": "image",
-    "default": {
-      "size_type": "auto",
-      "src": "",
-      "alt": null,
-      "loading": "disabled"
-    }
-  },
-  {
-    "name": "styles",
-    "label": "Styles",
-    "children": [
-      {
-        "name": "spacing",
-        "label": "Spacing",
-        "required": false,
-        "locked": false,
-        "type": "spacing",
-        "inline_help_text": "",
-        "help_text": ""
-      }
-    ],
-    "type": "group",
-    "tab": "STYLE"
+[ {
+  "id" : "left_logo",
+  "name" : "left_logo",
+  "label" : "Left Logo",
+  "help_text" : "",
+  "inline_help_text" : "",
+  "required" : false,
+  "locked" : false,
+  "responsive" : true,
+  "resizable" : true,
+  "show_loading" : false,
+  "type" : "image",
+  "display_width" : null,
+  "default" : {
+    "size_type" : "auto",
+    "src" : "",
+    "alt" : null,
+    "loading" : "disabled"
   }
-]
+}, {
+  "id" : "right_logo",
+  "name" : "right_logo",
+  "label" : "Right Logo",
+  "help_text" : "",
+  "inline_help_text" : "",
+  "required" : false,
+  "locked" : false,
+  "responsive" : true,
+  "resizable" : true,
+  "show_loading" : false,
+  "type" : "image",
+  "display_width" : null,
+  "default" : {
+    "size_type" : "auto",
+    "src" : "",
+    "alt" : null,
+    "loading" : "disabled"
+  }
+}, {
+  "id" : "styles",
+  "name" : "styles",
+  "label" : "Styles",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "styles.spacing",
+    "name" : "spacing",
+    "label" : "Spacing",
+    "help_text" : "",
+    "inline_help_text" : "",
+    "required" : false,
+    "locked" : false,
+    "type" : "spacing",
+    "display_width" : null,
+    "default" : { }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+} ]
