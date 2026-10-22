@@ -73,6 +73,32 @@
       "height": 0
     }
   },
+  {
+    "name": "image_cover",
+    "label": "Cover image",
+    "type": "boolean",
+    "display": "toggle",
+    "default": true,
+    "inline_help_text": "On crops the image to fill the column. Off keeps its natural height."
+  },
+  {
+    "name": "image_align",
+    "label": "Image alignment",
+    "type": "choice",
+    "display": "select",
+    "choices": [
+      ["start", "Top"],
+      ["center", "Center"],
+      ["end", "Bottom"]
+    ],
+    "default": "center",
+    "visibility": {
+      "controlling_field": "image_cover",
+      "controlling_value_regex": "false",
+      "operator": "EQUAL"
+    },
+    "inline_help_text": "Vertical position of the image when cover is off."
+  },
 
   {
     "name": "features",
@@ -109,32 +135,160 @@
         "default": "Feature heading"
       },
       {
+        "name": "heading_size",
+        "label": "Heading size",
+        "type": "number",
+        "suffix": "px",
+        "min": 0,
+        "inline_help_text": "Set to 0 to use the default (22px).",
+        "default": 22
+      },
+      {
+        "name": "line_height",
+        "label": "Line height",
+        "type": "number",
+        "suffix": "px",
+        "min": 0,
+        "inline_help_text": "Set to 0 to use the default.",
+        "default": 0
+      },
+      {
+        "name": "letter_spacing",
+        "label": "Letter spacing",
+        "type": "number",
+        "suffix": "px",
+        "inline_help_text": "Use a negative value to tighten tracking. 0 matches Figma’s 0%.",
+        "default": 0
+      },
+      {
+        "name": "font_weight",
+        "label": "Font weight",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["medium", "Medium"],
+          ["normal", "Normal"],
+          ["semibold", "Semibold"],
+          ["bold", "Bold"]
+        ],
+        "default": "medium"
+      },
+      {
         "name": "body_copy",
         "label": "Feature description",
         "type": "richtext",
         "default": "<p>Short description of this feature.</p>"
+      },
+      {
+        "name": "column_width",
+        "label": "Feature width",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["6", "6 columns"],
+          ["12", "12 columns"]
+        ],
+        "default": "6"
+      },
+      {
+        "name": "cta",
+        "label": "CTA",
+        "type": "group",
+        "children": [
+          {
+            "name": "show",
+            "label": "Show button",
+            "type": "boolean",
+            "display": "toggle",
+            "default": false
+          },
+          {
+            "name": "text",
+            "label": "Button text",
+            "type": "text",
+            "default": "Learn more",
+            "visibility": {
+              "controlling_field": "features.cta.show",
+              "controlling_value_regex": "true",
+              "operator": "EQUAL"
+            }
+          },
+          {
+            "name": "link",
+            "label": "Button link",
+            "type": "link",
+            "supported_types": ["EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "PHONE_NUMBER"],
+            "default": {
+              "url": { "type": "EXTERNAL", "href": "" },
+              "open_in_new_tab": false,
+              "no_follow": false
+            },
+            "visibility": {
+              "controlling_field": "features.cta.show",
+              "controlling_value_regex": "true",
+              "operator": "EQUAL"
+            }
+          },
+          {
+            "name": "button_style",
+            "label": "Button style",
+            "type": "choice",
+            "display": "select",
+            "choices": [["primary", "Primary"], ["secondary", "Secondary / Outline"], ["none", "None (text link)"]],
+            "default": "primary",
+            "visibility": {
+              "controlling_field": "features.cta.show",
+              "controlling_value_regex": "true",
+              "operator": "EQUAL"
+            }
+          }
+        ]
       }
     ],
     "default": [
       {
         "icon": { "size_type": "exact", "src": "", "alt": "Target icon", "loading": "lazy", "width": 29, "height": 29 },
         "heading_value": "Results Delivered",
-        "body_copy": "<p>The best activation, measurement, and optimization technology to deliver desired outcomes.</p>"
+        "heading_size": 22,
+        "line_height": 0,
+        "letter_spacing": 0,
+        "font_weight": "medium",
+        "column_width": "6",
+        "body_copy": "<p>The best activation, measurement, and optimization technology to deliver desired outcomes.</p>",
+        "cta": { "show": false, "text": "Learn more", "link": { "url": { "type": "EXTERNAL", "href": "" }, "open_in_new_tab": false, "no_follow": false }, "button_style": "primary" }
       },
       {
         "icon": { "size_type": "exact", "src": "", "alt": "Checkbox icon", "loading": "lazy", "width": 29, "height": 29 },
         "heading_value": "Total control",
-        "body_copy": "<p>We&rsquo;ll recommend optimal inventory, but you control where to activate, # of days, audiences to leverage, etc.</p>"
+        "heading_size": 22,
+        "line_height": 0,
+        "letter_spacing": 0,
+        "font_weight": "medium",
+        "column_width": "6",
+        "body_copy": "<p>We&rsquo;ll recommend optimal inventory, but you control where to activate, # of days, audiences to leverage, etc.</p>",
+        "cta": { "show": false, "text": "Learn more", "link": { "url": { "type": "EXTERNAL", "href": "" }, "open_in_new_tab": false, "no_follow": false }, "button_style": "primary" }
       },
       {
         "icon": { "size_type": "exact", "src": "", "alt": "Bar chart icon", "loading": "lazy", "width": 29, "height": 29 },
         "heading_value": "Radical transparency",
-        "body_copy": "<p>360&deg; views in real-time into your ad campaign&rsquo;s performance, targeting, attribution, all with dashboards.</p>"
+        "heading_size": 22,
+        "line_height": 0,
+        "letter_spacing": 0,
+        "font_weight": "medium",
+        "column_width": "6",
+        "body_copy": "<p>360&deg; views in real-time into your ad campaign&rsquo;s performance, targeting, attribution, all with dashboards.</p>",
+        "cta": { "show": false, "text": "Learn more", "link": { "url": { "type": "EXTERNAL", "href": "" }, "open_in_new_tab": false, "no_follow": false }, "button_style": "primary" }
       },
       {
         "icon": { "size_type": "exact", "src": "", "alt": "Unified UI icon", "loading": "lazy", "width": 29, "height": 29 },
         "heading_value": "Unified UI",
-        "body_copy": "<p>A user interface that&rsquo;s as simple to use as paid search and social media with familiar controls and levers.</p>"
+        "heading_size": 22,
+        "line_height": 0,
+        "letter_spacing": 0,
+        "font_weight": "medium",
+        "column_width": "6",
+        "body_copy": "<p>A user interface that&rsquo;s as simple to use as paid search and social media with familiar controls and levers.</p>",
+        "cta": { "show": false, "text": "Learn more", "link": { "url": { "type": "EXTERNAL", "href": "" }, "open_in_new_tab": false, "no_follow": false }, "button_style": "primary" }
       }
     ]
   },

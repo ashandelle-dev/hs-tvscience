@@ -18,41 +18,37 @@
     {% endif %}
 
     .tvsci-twocf__feature-heading {
-      font-size: 22px !important;
-      line-height: 1.45;
-      letter-spacing: 0.01em;
+      font-size: var(--twocf-feature-heading, 22px) !important;
+      line-height: var(--twocf-feature-leading, 1.45) !important;
+      letter-spacing: var(--twocf-feature-tracking, 0px) !important;
+      font-weight: var(--twocf-feature-weight, 500) !important;
     }
 
-    .tvsci-twocf__icon-placeholder {
-      width: 29px;
-      height: 29px;
-      border-radius: 6px;
-      background: rgba(25, 137, 96, 0.12);
+    @media (min-width: 1024px) {
+      .tvsci-twocf__features {
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+      }
+      .tvsci-twocf__feature--6 { grid-column: span 6; }
+      .tvsci-twocf__feature--12 { grid-column: span 12; }
     }
 
     /* Cap media height when stacked (single-column layout below md). */
     @media (max-width: 767px) {
-      .tvsci-twocf__media { max-height: 400px; }
+      .tvsci-twocf__media:not(.is-natural) { max-height: 400px; }
+      /* Match the text column's p-6 so the image doesn't hit the card border. */
+      .tvsci-twocf__media {
+        padding: 1.5rem 1.5rem 1.5rem !important;
+      }
     }
 
-    .tvsci-twocf__image-placeholder {
-      width: 100%;
-      height: 100%;
-      min-height: 320px;
-      background: repeating-linear-gradient(
-        45deg,
-        rgba(217, 226, 235, 0.18) 0 12px,
-        rgba(217, 226, 235, 0.34) 12px 24px
-      );
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #77858c;
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 12px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+    .tvsci-twocf__media.is-natural {
+      height: auto;
+      overflow: visible;
     }
+    .tvsci-twocf__media.is-align-start { align-self: start; }
+    .tvsci-twocf__media.is-align-center { align-self: center; }
+    .tvsci-twocf__media.is-align-end { align-self: end; }
+
   {% end_scope_css %}
 </style>
 {% end_require_css %}
@@ -84,24 +80,22 @@
            padding (matches Figma ~52px gutter from card edge) but NO
            top/bottom padding so the image bleeds vertically via
            object-cover + overflow-hidden. #}
-        <div class="tvsci-twocf__media relative overflow-hidden md:col-span-5 pl-0 pb-6 md:pb-0 md:pl-12 lg:pl-12">
-          {% if module.left_image.src %}
-            <img
-              class="block w-full h-full object-cover object-left-top"
-              src="{{ module.left_image.src|escape_url }}"
-              alt="{{ module.left_image.alt|escape_attr }}"
-              {% if module.left_image.loading != 'disabled' %}loading="{{ module.left_image.loading|escape_attr }}"{% endif %}
-              {% if module.left_image.width %}width="{{ module.left_image.width|escape_attr }}"{% endif %}
-              {% if module.left_image.height %}height="{{ module.left_image.height|escape_attr }}"{% endif %}>
-          {% else %}
-            <div class="tvsci-twocf__image-placeholder">Upload dashboard image</div>
-          {% endif %}
+        {% if module.left_image.src %}
+        <div class="tvsci-twocf__media relative md:col-span-5 pl-0 pb-6 md:pb-0 md:pl-12 lg:pl-12{% if module.image_cover == false %} is-natural is-align-{{ module.image_align|default('center') }}{% else %} overflow-hidden{% endif %}">
+          <img
+            class="block w-full{% if module.image_cover == false %} h-auto{% else %} h-full object-cover object-left-top{% endif %}"
+            src="{{ module.left_image.src|escape_url }}"
+            alt="{{ module.left_image.alt|escape_attr }}"
+            {% if module.left_image.loading != 'disabled' %}loading="{{ module.left_image.loading|escape_attr }}"{% endif %}
+            {% if module.left_image.width %}width="{{ module.left_image.width|escape_attr }}"{% endif %}
+            {% if module.left_image.height %}height="{{ module.left_image.height|escape_attr }}"{% endif %}>
         </div>
+        {% endif %}
 
         {# ---- Right: heading + features ---------------------------------
            Spans 7 of 12 cols at md+. All padding lives here so content
            breathes while the image stays flush left. #}
-        <div class="tvsci-twocf__content md:col-span-7 p-6 md:p-10 lg:p-12 lg:py-16">
+        <div class="tvsci-twocf__content {% if module.left_image.src %}md:col-span-7{% else %}md:col-span-12{% endif %} p-6 md:p-10 lg:p-12 lg:py-16">
 
           {# Heading + subheading with green left-border accent #}
           {% if module.heading.value or module.subheading %}
@@ -121,10 +115,9 @@
 
           {# Features grid #}
           {% if module.features|length %}
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-10">
+          <div class="tvsci-twocf__features grid grid-cols-1 gap-x-8 gap-y-10">
             {% for feature in module.features %}
-              <div class="tvsci-twocf__feature">
-                {# Icon (or styled placeholder when src is empty) #}
+              <div class="tvsci-twocf__feature tvsci-twocf__feature--{{ feature.column_width|default('6') }}">
                 {% if feature.icon.src %}
                   <img
                     class="block mb-3 mx-0"
@@ -133,12 +126,17 @@
                     width="{{ feature.icon.width|default(29)|escape_attr }}"
                     height="{{ feature.icon.height|default(29)|escape_attr }}"
                     {% if feature.icon.loading != 'disabled' %}loading="{{ feature.icon.loading|escape_attr }}"{% endif %}>
-                {% else %}
-                  <div class="tvsci-twocf__icon-placeholder mb-3" aria-hidden="true"></div>
                 {% endif %}
 
                 {% if feature.heading_value %}
-                <h3 class="tvsci-twocf__feature-heading font-medium text-tvs-black !m-0 mb-1">
+                <h3
+                  class="tvsci-twocf__feature-heading text-tvs-black !m-0 mb-1"
+                  style="
+                    {% if feature.heading_size %}--twocf-feature-heading: {{ feature.heading_size }}px;{% endif %}
+                    {% if feature.line_height %}--twocf-feature-leading: {{ feature.line_height }}px;{% endif %}
+                    --twocf-feature-tracking: {{ feature.letter_spacing|default(0) }}px;
+                    --twocf-feature-weight: {% if feature.font_weight == 'bold' %}700{% elif feature.font_weight == 'semibold' %}600{% elif feature.font_weight == 'normal' %}400{% else %}500{% endif %};
+                  ">
                   {{ feature.heading_value }}
                 </h3>
                 {% endif %}
@@ -147,6 +145,34 @@
                 <div class="tvsci-lead text-tvs-grey !m-0" style="font-size: 16px;">
                   {{ feature.body_copy }}
                 </div>
+                {% endif %}
+
+                {% if feature.cta.show %}
+                  {% set cta_href = feature.cta.link.url.href %}
+                  {% if feature.cta.link.url.type is equalto "EMAIL_ADDRESS" %}
+                    {% set cta_href = "mailto:" + cta_href %}
+                  {% elif feature.cta.link.url.type is equalto "PHONE_NUMBER" %}
+                    {% set cta_href = "tel:" + cta_href %}
+                  {% endif %}
+                  {% if cta_href and feature.cta.text %}
+                    {% if feature.cta.button_style == 'none' %}
+                    <a
+                      href="{{ cta_href }}"
+                      {% if feature.cta.link.open_in_new_tab %}target="_blank"{% endif %}
+                      {% if feature.cta.link.rel %}rel="{{ feature.cta.link.rel|escape_attr }}"{% endif %}
+                      class="tvsci-twocf__link inline-block mt-4">
+                      {{ feature.cta.text }}
+                    </a>
+                    {% else %}
+                    <a
+                      href="{{ cta_href }}"
+                      {% if feature.cta.link.open_in_new_tab %}target="_blank"{% endif %}
+                      {% if feature.cta.link.rel %}rel="{{ feature.cta.link.rel|escape_attr }}"{% endif %}
+                      class="hs-button mt-4{% if feature.cta.button_style == 'secondary' %} hs-button--secondary{% endif %}">
+                      {{ feature.cta.text }}
+                    </a>
+                    {% endif %}
+                  {% endif %}
                 {% endif %}
               </div>
             {% endfor %}

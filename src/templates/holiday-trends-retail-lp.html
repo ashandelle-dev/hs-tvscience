@@ -6,6 +6,10 @@
 -->
 {% extends "../layouts/base.html" %}
 
+{% block header %}
+  {% global_partial path="../partials/min-header.html" %}
+{% endblock header %}
+
 {% block body %}
 
 {#
@@ -459,7 +463,7 @@
 
   <!-- ===== HERO — Figma 472:147 (~644 copy / ~557 media) ===== -->
   <section id="htrlp-hero" class="htrlp-hero-fade bg-white">
-    <div class="max-w-[1312px] mx-auto px-4 pt-16 md:pt-[100px] pb-10">
+    <div class="max-w-[1312px] mx-auto px-4 pt-16 md:pt-[50px] pb-10">
       <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,7fr)_minmax(0,6fr)] gap-10 lg:gap-16 xl:gap-24 items-center">
         <div class="flex flex-col gap-8 md:gap-10 items-start min-w-0">
           <div class="htrlp-type-h1 w-full">

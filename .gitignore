@@ -20,3 +20,6 @@ package-lock.json
 
 # HubSpot config file
 hubspot.config.yml
+
+# HubSpot link folder
+.hs
