@@ -1,0 +1,402 @@
+[
+  {
+    "name": "eyebrow",
+    "label": "Eyebrow (optional)",
+    "type": "text",
+    "allow_new_line": false,
+    "default": ""
+  },
+  {
+    "name": "heading",
+    "label": "Heading",
+    "type": "group",
+    "children": [
+      {
+        "name": "value",
+        "label": "Text",
+        "type": "text",
+        "allow_new_line": false,
+        "default": "Robust Reporting to Improve Performance"
+      },
+      {
+        "name": "header_tag",
+        "label": "Tag",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          [
+            "h2",
+            "H2"
+          ],
+          [
+            "h3",
+            "H3"
+          ],
+          [
+            "p",
+            "Paragraph"
+          ]
+        ],
+        "default": "h2"
+      },
+      {
+        "name": "weight",
+        "label": "Weight",
+        "type": "choice",
+        "display": "radio",
+        "choices": [
+          [
+            "heavy",
+            "Heavy (product pages)"
+          ],
+          [
+            "medium",
+            "Bold (solutions pages)"
+          ]
+        ],
+        "default": "heavy"
+      }
+    ]
+  },
+  {
+    "name": "body_copy",
+    "label": "Body copy",
+    "type": "richtext",
+    "enabled_features": [
+      "bold",
+      "italic",
+      "link",
+      "nonbreaking_space"
+    ],
+    "default": "<p>Go beyond reach with advanced reporting that measures outcomes driven from your CTV ads. Easily see a comprehensive picture of the return on your investment and the halo effect CTV campaigns can provide across all of your digital channels.</p>"
+  },
+  {
+    "name": "stats",
+    "label": "Stats (optional)",
+    "type": "group",
+    "occurrence": {
+      "min": 0,
+      "max": 4,
+      "sorting_label_field": "stats.value",
+      "default": 0
+    },
+    "children": [
+      {
+        "name": "value",
+        "label": "Value",
+        "type": "text",
+        "allow_new_line": false,
+        "default": "6.4"
+      },
+      {
+        "name": "stat_label",
+        "label": "Label",
+        "type": "text",
+        "allow_new_line": false,
+        "default": "ROAS"
+      }
+    ],
+    "default": []
+  },
+  {
+    "name": "cta",
+    "label": "Button",
+    "type": "group",
+    "children": [
+      {
+        "name": "style",
+        "label": "Style",
+        "type": "choice",
+        "display": "radio",
+        "choices": [
+          [
+            "button",
+            "Button"
+          ],
+          [
+            "link",
+            "Text link with arrow"
+          ],
+          [
+            "none",
+            "Hidden"
+          ]
+        ],
+        "default": "none"
+      },
+      {
+        "name": "text",
+        "label": "Text",
+        "type": "text",
+        "allow_new_line": false,
+        "default": "Learn More"
+      },
+      {
+        "name": "link",
+        "label": "Link",
+        "type": "link",
+        "supported_types": [
+          "EXTERNAL",
+          "CONTENT",
+          "FILE",
+          "EMAIL_ADDRESS",
+          "BLOG"
+        ],
+        "default": {
+          "url": {
+            "content_id": null,
+            "type": "EXTERNAL",
+            "href": ""
+          },
+          "open_in_new_tab": false,
+          "no_follow": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "features",
+    "label": "Feature list (optional)",
+    "type": "group",
+    "occurrence": {
+      "min": 0,
+      "max": 6,
+      "sorting_label_field": "features.title",
+      "default": 0
+    },
+    "children": [
+      {
+        "name": "title",
+        "label": "Title",
+        "type": "text",
+        "allow_new_line": false,
+        "default": ""
+      },
+      {
+        "name": "body_copy",
+        "label": "Text",
+        "type": "richtext",
+        "enabled_features": [
+          "bold",
+          "italic",
+          "link",
+          "nonbreaking_space"
+        ],
+        "default": "<p>Feature description.</p>"
+      }
+    ],
+    "default": []
+  },
+  {
+    "name": "image",
+    "label": "Image",
+    "type": "image",
+    "responsive": true,
+    "resizable": true,
+    "show_loading": true,
+    "default": {
+      "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/Campaign%20Dashboard%20-%20Reports.webp",
+      "alt": "tvScientific campaign performance dashboard",
+      "width": 1774,
+      "height": 1134,
+      "size_type": "exact",
+      "loading": "lazy"
+    }
+  },
+  {
+    "name": "lottie",
+    "label": "Lottie JSON URL (optional, replaces the image)",
+    "type": "text",
+    "allow_new_line": false,
+    "default": ""
+  },
+  {
+    "name": "lottie_label",
+    "label": "Animation description (for screen readers)",
+    "type": "text",
+    "allow_new_line": false,
+    "default": ""
+  },
+  {
+    "name": "image_side",
+    "label": "Image side",
+    "type": "choice",
+    "display": "radio",
+    "choices": [
+      [
+        "right",
+        "Right"
+      ],
+      [
+        "left",
+        "Left"
+      ]
+    ],
+    "default": "right"
+  },
+  {
+    "name": "treatment",
+    "label": "Treatment",
+    "type": "choice",
+    "display": "select",
+    "choices": [
+      [
+        "plain",
+        "Plain image"
+      ],
+      [
+        "panel",
+        "Image on a Grey 050 panel"
+      ],
+      [
+        "panel_bleed",
+        "Image on a Grey 050 panel, flush to the bottom edge (cards that are open at the bottom)"
+      ],
+      [
+        "framed",
+        "Whole row on a Grey 050 panel, image in a dark rounded frame"
+      ],
+      [
+        "card",
+        "Whole row in one bordered Grey 050 card, image filling its half (cropped)"
+      ]
+    ],
+    "default": "panel"
+  },
+  {
+    "name": "scroll_image",
+    "label": "Scroll a tall image inside its frame as the page scrolls (framed treatment)",
+    "type": "boolean",
+    "display": "toggle",
+    "default": false
+  },
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "spacing_top",
+        "label": "Space above",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          [
+            "0",
+            "None"
+          ],
+          [
+            "32",
+            "32px"
+          ],
+          [
+            "48",
+            "48px"
+          ],
+          [
+            "64",
+            "64px"
+          ],
+          [
+            "80",
+            "80px"
+          ],
+          [
+            "96",
+            "96px"
+          ],
+          [
+            "112",
+            "112px"
+          ],
+          [
+            "120",
+            "120px"
+          ],
+          [
+            "128",
+            "128px"
+          ]
+        ],
+        "default": "96"
+      },
+      {
+        "name": "spacing_bottom",
+        "label": "Space below",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          [
+            "0",
+            "None"
+          ],
+          [
+            "32",
+            "32px"
+          ],
+          [
+            "48",
+            "48px"
+          ],
+          [
+            "64",
+            "64px"
+          ],
+          [
+            "80",
+            "80px"
+          ],
+          [
+            "96",
+            "96px"
+          ],
+          [
+            "112",
+            "112px"
+          ],
+          [
+            "120",
+            "120px"
+          ],
+          [
+            "128",
+            "128px"
+          ]
+        ],
+        "default": "0"
+      },
+      {
+        "name": "copy_width",
+        "label": "Text width",
+        "type": "choice",
+        "display": "radio",
+        "choices": [
+          [
+            "narrow",
+            "Narrow (440px)"
+          ],
+          [
+            "wide",
+            "Wide (499px)"
+          ]
+        ],
+        "default": "narrow"
+      },
+      {
+        "name": "divider",
+        "label": "Divider line below",
+        "type": "boolean",
+        "display": "toggle",
+        "default": false
+      },
+      {
+        "name": "animate_image",
+        "label": "Fade the image up when it scrolls into view",
+        "type": "boolean",
+        "display": "toggle",
+        "default": false
+      }
+    ]
+  }
+]

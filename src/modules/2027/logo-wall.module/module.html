@@ -1,0 +1,83 @@
+{% set pt = { "0": "pt-0", "32": "pt-8", "48": "pt-12", "64": "pt-12 md:pt-16", "80": "pt-12 md:pt-20", "96": "pt-16 md:pt-24", "112": "pt-16 md:pt-28", "120": "pt-16 md:pt-30", "128": "pt-16 md:pt-32" } %}
+{% set pb = { "0": "pb-0", "32": "pb-8", "48": "pb-12", "64": "pb-12 md:pb-16", "80": "pb-12 md:pb-20", "96": "pb-16 md:pb-24", "112": "pb-16 md:pb-28", "120": "pb-16 md:pb-30", "128": "pb-16 md:pb-32" } %}
+
+{% macro logo_img(item, classes) %}
+  <img src="{{ item.logo.src }}" alt="{{ item.logo.alt }}"
+    {% if item.logo.width %}width="{{ item.logo.width }}"{% endif %} {% if item.logo.height %}height="{{ item.logo.height }}"{% endif %}
+    class="{{ classes }}" loading="lazy">
+{% endmacro %}
+
+{% macro link_attrs(link) -%}
+  href="{% if link.url.type == "EMAIL_ADDRESS" %}mailto:{% endif %}{{ link.url.href }}"
+  {%- if link.open_in_new_tab %} target="_blank"{% endif -%}
+  {%- if link.open_in_new_tab or link.no_follow %} rel="{% if link.open_in_new_tab %}noopener{% endif %}{% if link.no_follow %} nofollow{% endif %}"{% endif -%}
+{%- endmacro %}
+
+{% set mono = "brightness-0" if module.monochrome else "" %}
+
+<section class="{{ pt[module.style.spacing_top] }} {{ pb[module.style.spacing_bottom] }}">
+  {% if module.variant == "marquee" %}
+    <div class="flex flex-col gap-12">
+      {% for row in module.rows %}
+        <div>
+          <div class="wrap max-w-feature">
+            <div class="flex items-center justify-between gap-6 lg:px-16">
+              {% if row.row_label %}<p class="m-0 rounded-pill bg-grey-050 px-4 py-2 text-caption font-bold text-black">{{ row.row_label }}</p>{% endif %}
+              {% if loop.first and module.more_link.text %}
+                <a {{ link_attrs(module.more_link.link) }} class="text-link text-link--arrow text-caption">{{ module.more_link.text }}</a>
+              {% endif %}
+            </div>
+          </div>
+          <div class="marquee mt-6 overflow-hidden">
+            <div class="marquee__track flex w-max items-center motion-reduce:w-full {% if row.direction == "right" %}marquee__track--reverse{% endif %}"
+              style="--marquee-duration: {{ row.logos|length * (4 if row.logos|length >= 10 else 8) }}s">
+              {# Short rows repeat their logos so each half of the track is wider than the screen (no gap mid-loop) #}
+              {% set copies = [1, 2] if row.logos|length >= 10 else [1, 2, 3, 4] %}
+              {% for copy in copies %}
+                <ul class="m-0 flex list-none items-center gap-16 p-0 pr-16 motion-reduce:w-full motion-reduce:flex-wrap motion-reduce:justify-center motion-reduce:gap-y-6 motion-reduce:pr-0 {% if copy > 1 %}motion-reduce:hidden{% endif %}" {% if copy > 1 %}aria-hidden="true"{% endif %}>
+                  {% for item in row.logos %}
+                    {% if item.logo.src %}<li class="flex h-12 shrink-0 items-center">{{ logo_img(item, "h-8 w-auto " ~ mono) }}</li>{% endif %}
+                  {% endfor %}
+                </ul>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+  {% elif module.variant == "row" %}
+    <div class="wrap max-w-feature text-center">
+      {% if module.heading %}
+        <{{ module.header_tag }} class="m-0 text-body-relaxed font-bold text-black">{{ module.heading|replace("\n", " <br class='hidden md:inline'>") }}</{{ module.header_tag }}>
+      {% endif %}
+      {# More than six logos: slightly smaller logos and gaps so up to ~9 still fit one desktop row #}
+      {% set dense = module.logos|length > 6 %}
+      <ul class="m-0 mt-8 flex list-none flex-wrap items-center justify-center gap-y-8 p-0 {% if dense %}gap-x-10{% else %}gap-x-16{% endif %}">
+        {% for item in module.logos %}
+          {% if item.logo.src %}<li class="flex h-12 items-center">{{ logo_img(item, "w-auto " ~ ("h-8" if dense else "h-9")) }}</li>{% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  {% else %}
+    <div class="wrap max-w-wide">
+      {# A white panel has no visible edge, so it sits closer to the section above and to its logos #}
+      {% set white = module.style.background == "white" %}
+      <div class="rounded-32 {% if white %}bg-white pt-12 md:pt-16{% else %}bg-grey-050 pt-16 md:pt-24{% endif %} px-4 pb-12 text-center md:pb-16">
+        {% if module.heading %}
+          <{{ module.header_tag }} class="mx-auto my-0 max-w-2xl text-heading-sm font-bold leading-heading text-black md:text-heading-xl">
+            {{ module.heading|replace("\n", " <br class='hidden md:inline'>") }}
+          </{{ module.header_tag }}>
+        {% endif %}
+
+        <ul class="mx-auto mt-12 flex max-w-logos list-none flex-wrap justify-center gap-y-6 p-0 {% if white %}md:mt-20{% else %}md:mt-24{% endif %}">
+          {% for item in module.logos %}
+            {% if item.logo.src %}
+              <li class="flex h-12 w-1/2 items-center justify-center md:w-1/4">{{ logo_img(item, "max-h-12 w-auto") }}</li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  {% endif %}
+</section>

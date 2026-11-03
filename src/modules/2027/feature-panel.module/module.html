@@ -1,0 +1,146 @@
+{% macro link_attrs(link) -%}
+  href="{% if link.url.type == "EMAIL_ADDRESS" %}mailto:{% endif %}{{ link.url.href }}"
+  {%- if link.open_in_new_tab %} target="_blank"{% endif -%}
+  {%- if link.open_in_new_tab or link.no_follow %} rel="{% if link.open_in_new_tab %}noopener{% endif %}{% if link.no_follow %} nofollow{% endif %}"{% endif -%}
+{%- endmacro %}
+
+{% macro img_tag(img, classes) %}
+  <img src="{{ img.src }}" alt="{{ img.alt }}"
+    {% if img.width %}width="{{ img.width }}"{% endif %} {% if img.height %}height="{{ img.height }}"{% endif %}
+    {% if img.loading != "disabled" %}loading="{{ img.loading or "lazy" }}"{% endif %}
+    class="{{ classes }}">
+{% endmacro %}
+
+{% set pt = { "0": "pt-0", "32": "pt-8", "48": "pt-12", "64": "pt-12 md:pt-16", "80": "pt-12 md:pt-20", "96": "pt-16 md:pt-24", "112": "pt-16 md:pt-28", "120": "pt-16 md:pt-30", "128": "pt-16 md:pt-32" } %}
+{% set pb = { "0": "pb-0", "32": "pb-8", "48": "pb-12", "64": "pb-12 md:pb-16", "80": "pb-12 md:pb-20", "96": "pb-16 md:pb-24", "112": "pb-16 md:pb-28", "120": "pb-16 md:pb-30", "128": "pb-16 md:pb-32" } %}
+{% set cols = { "2": "sm:grid-cols-2", "3": "sm:grid-cols-2 lg:grid-cols-3", "4": "sm:grid-cols-2 lg:grid-cols-4" } %}
+{% set card = module.item_style == "card" %}
+{% set centered = module.align == "center" %}
+{% set staggered = module.motion == "staggered" %}
+{# Stagger: 35 / 48 / 63 / 0px down, alternating up / down drift #}
+{% set offsets = ["lg:mt-9", "lg:mt-12", "lg:mt-16", ""] %}
+
+{% set lines = "/tvScientific 2022 Atlas Pro/cli-build/images/2027/brain-trust-lines-" %}
+
+<section class="{% if module.layout == "diagram" %}bg-black{% endif %} {{ pt[module.style.spacing_top] }} {{ pb[module.style.spacing_bottom] }}">
+  {% if module.layout == "diagram" %}
+    <div class="wrap max-w-diagram">
+      {% if module.heading.value or module.subheading %}
+        <div class="mx-auto max-w-3xl text-center">
+          {% if module.eyebrow %}<p class="m-0 mb-4 text-body-lg font-medium text-white">{{ module.eyebrow }}</p>{% endif %}
+          {% if module.heading.value %}
+            <{{ module.heading.header_tag }} class="m-0 text-balance text-heading-sm font-bold text-white md:text-heading-lg">{{ module.heading.value }}</{{ module.heading.header_tag }}>
+          {% endif %}
+          {% if module.subheading %}<div class="rte mt-6 text-body-relaxed text-grey-100">{{ module.subheading }}</div>{% endif %}
+        </div>
+      {% endif %}
+
+      <div class="mt-12 hidden pb-1 lg:block" aria-hidden="true">
+        <img src="{{ get_asset_url(lines ~ "top.svg") }}" alt="" width="925" height="127" class="mx-auto block h-auto w-diagram-top">
+      </div>
+
+      <ul class="m-0 mt-12 grid list-none gap-8 p-0 lg:mt-6 lg:grid-cols-3 lg:gap-16">
+        {% for f in module.features %}
+          <li class="flex flex-col gap-8 rounded-32 border-2 border-dotted border-grey-200 p-6">
+            {% if f.image.src %}{{ img_tag(f.image, "block h-auto max-w-full self-start") }}{% endif %}
+            <div>
+              {% if f.heading_value %}<h3 class="m-0 text-card-title font-medium text-white">{{ f.heading_value }}</h3>{% endif %}
+              {% if f.body_copy %}<div class="rte rte--diagram mt-6 text-nav leading-body text-white">{{ f.body_copy }}</div>{% endif %}
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+
+      {% if module.diagram_pill %}
+        <div class="relative mt-8 flex justify-center lg:mt-6 lg:block">
+          <img src="{{ get_asset_url(lines ~ "bottom.svg") }}" alt="" width="935" height="74" aria-hidden="true" class="mx-auto hidden h-auto w-diagram-bottom lg:block">
+          <p class="m-0 rounded-pill bg-grey-350 px-6 py-3 text-title font-bold leading-none text-white lg:absolute lg:bottom-0 lg:left-1/2 lg:-translate-x-1/2 lg:translate-y-1/2">{{ module.diagram_pill }}</p>
+        </div>
+      {% endif %}
+    </div>
+
+  {% elif module.layout == "grid" %}
+    <div class="wrap max-w-feature">
+      <div class="lg:px-16">
+        {% if module.eyebrow or module.heading.value or module.subheading %}
+          <div class="{% if centered %}mx-auto max-w-3xl text-center{% else %}max-w-3xl{% endif %}">
+            {% if module.eyebrow %}<p class="m-0 mb-4 text-body-lg font-medium text-black">{{ module.eyebrow }}</p>{% endif %}
+            {% if module.heading.value %}
+              <{{ module.heading.header_tag }} class="m-0 text-balance text-heading-sm font-bold text-black md:text-heading-lg">{{ module.heading.value }}</{{ module.heading.header_tag }}>
+            {% endif %}
+            {% if module.subheading %}
+              <div class="rte mt-6 text-body-relaxed text-grey-350">{{ module.subheading }}</div>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        {% if module.features %}
+          <ul class="m-0 grid list-none gap-8 p-0 {{ cols[module.columns] }} {% if staggered %}grid-cols-2 items-start{% endif %} {% if module.eyebrow or module.heading.value or module.subheading %}mt-12 md:mt-16{% endif %}"
+            {% if staggered %}data-parallax-grid{% endif %}>
+            {% for f in module.features %}
+              <li class="flex flex-col {% if card %}rounded-20 bg-grey-050 p-8{% endif %} {% if staggered %}{{ offsets[loop.index0 % 4] }} will-change-transform{% endif %}"
+                {% if staggered %}data-parallax-dir="{{ "up" if loop.index0 % 2 == 0 else "down" }}"{% endif %}>
+                {% if f.image.src %}
+                  {% if module.image_frame == "dark" %}
+                    {# Images made for a dark background sit in a Green 800 frame #}
+                    <div class="mb-6 flex items-center justify-center rounded-20 bg-tvgreen-800 p-6">{{ img_tag(f.image, "block h-auto max-w-full") }}</div>
+                  {% else %}
+                    {{ img_tag(f.image, "mb-6 block w-full rounded-20 " ~ ("aspect-square h-auto object-cover" if module.image_crop == "square" else "h-auto")) }}
+                  {% endif %}
+                {% endif %}
+                {% if f.icon.src %}
+                  {{ img_tag(f.icon, "mb-6 block h-12 w-auto self-start") }}
+                {% endif %}
+                {% if f.heading_value %}<h3 class="m-0 text-title font-bold text-black">{{ f.heading_value }}</h3>{% endif %}
+                {% if f.body_copy %}<div class="rte mt-3 text-body text-grey-350">{{ f.body_copy }}</div>{% endif %}
+                {% if f.link.text %}
+                  <div class="mt-auto pt-6"><a {{ link_attrs(f.link.link) }} class="text-link text-link--arrow">{{ f.link.text }}</a></div>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+    </div>
+
+  {% else %}
+    <div class="wrap max-w-wide">
+      <div class="grid gap-10 xl:items-center xl:gap-16 {% if module.left_image.src %}xl:grid-cols-panel{% endif %}">
+
+        {% if module.left_image.src %}
+          <div class="rounded-32 bg-grey-050 px-6 py-6 md:px-10 md:py-8">
+            {{ img_tag(module.left_image, "mx-auto block h-auto w-full") }}
+          </div>
+        {% endif %}
+
+        <div>
+          {% if module.eyebrow %}<p class="m-0 mb-3 text-body-lg font-medium text-black">{{ module.eyebrow }}</p>{% endif %}
+          {% if module.heading.value %}
+            <{{ module.heading.header_tag }} class="m-0 text-heading-sm font-bold leading-heading text-black">{{ module.heading.value }}</{{ module.heading.header_tag }}>
+          {% endif %}
+          {% if module.subheading %}
+            <div class="mt-3 max-w-copy text-body text-black [&_p]:m-0">{{ module.subheading }}</div>
+          {% endif %}
+
+          {% if module.features %}
+            <div class="mt-12 grid gap-x-9 gap-y-10 sm:grid-cols-2 md:mt-20 md:gap-y-24">
+              {% for f in module.features %}
+                <div>
+                  {% if f.icon.src %}{{ img_tag(f.icon, "mb-4 block h-10 w-auto") }}{% endif %}
+                  {% if f.heading_value %}<h3 class="m-0 text-title font-bold text-black">{{ f.heading_value }}</h3>{% endif %}
+                  {% if f.body_copy %}<div class="mt-2 text-body text-black [&_p]:m-0">{{ f.body_copy }}</div>{% endif %}
+                  {% if f.link.text %}<div class="mt-4"><a {{ link_attrs(f.link.link) }} class="text-link text-link--arrow">{{ f.link.text }}</a></div>{% endif %}
+                </div>
+              {% endfor %}
+            </div>
+          {% endif %}
+
+          {% if module.disclaimer %}
+            <p class="m-0 mt-16 text-fine text-black">{{ module.disclaimer }}</p>
+          {% endif %}
+        </div>
+
+      </div>
+    </div>
+  {% endif %}
+</section>

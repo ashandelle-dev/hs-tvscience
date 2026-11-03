@@ -1,0 +1,28 @@
+<!--
+  templateType: membership_login_page
+  isAvailableForNewContent: true
+  label: System - Membership login (2027)
+-->
+{% extends "../../../layouts/2027/base.html" %}
+
+{% block body %}
+<main id="main-content">
+  <section class="bg-grey-050 py-16 md:py-24">
+    <div class="wrap">
+      <div class="mx-auto max-w-copy">
+        <p class="m-0 mb-4 text-body-relaxed font-bold text-black">Private content</p>
+        <h1 class="m-0 text-balance text-heading-sm font-heavy text-black md:text-heading-hero">Sign in to view this page</h1>
+        <p class="m-0 mt-6 text-body-relaxed text-grey-350">This page is only available to people who have been given access.</p>
+        <div class="system-card mt-10 rounded-32 bg-white p-8 md:p-10">
+          {% member_login "my_login"
+            email_label="Email",
+            password_label="Password",
+            remember_me_label="Stay signed in",
+            reset_password_text="Forgot your password?",
+            submit_button_text="Sign in" %}
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock body %}

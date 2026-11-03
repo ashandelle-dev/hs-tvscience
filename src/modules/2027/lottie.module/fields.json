@@ -1,0 +1,135 @@
+[
+  {
+    "name": "source",
+    "label": "Lottie JSON URL",
+    "type": "text",
+    "allow_new_line": false,
+    "default": "https://tvscientific.com/hubfs/Homepage-Lottie-Pinterest.json"
+  },
+  {
+    "name": "loop",
+    "label": "Loop",
+    "type": "boolean",
+    "display": "toggle",
+    "default": true
+  },
+  {
+    "name": "activate_in_view",
+    "label": "Play when scrolled into view",
+    "type": "boolean",
+    "display": "toggle",
+    "default": true
+  },
+  {
+    "name": "aria_label",
+    "label": "Accessible description",
+    "type": "text",
+    "allow_new_line": false,
+    "default": "Animated tvScientific dashboard showing attributed revenue rising over time"
+  },
+  {
+    "name": "caption",
+    "label": "Caption / disclaimer",
+    "type": "text",
+    "allow_new_line": false,
+    "default": "Disclaimer: All data for illustrative purposes."
+  },
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "spacing_top",
+        "label": "Space above",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          [
+            "0",
+            "None"
+          ],
+          [
+            "32",
+            "32px"
+          ],
+          [
+            "48",
+            "48px"
+          ],
+          [
+            "64",
+            "64px"
+          ],
+          [
+            "80",
+            "80px"
+          ],
+          [
+            "96",
+            "96px"
+          ],
+          [
+            "112",
+            "112px"
+          ],
+          [
+            "120",
+            "120px"
+          ],
+          [
+            "128",
+            "128px"
+          ]
+        ],
+        "default": "0"
+      },
+      {
+        "name": "spacing_bottom",
+        "label": "Space below",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          [
+            "0",
+            "None"
+          ],
+          [
+            "32",
+            "32px"
+          ],
+          [
+            "48",
+            "48px"
+          ],
+          [
+            "64",
+            "64px"
+          ],
+          [
+            "80",
+            "80px"
+          ],
+          [
+            "96",
+            "96px"
+          ],
+          [
+            "112",
+            "112px"
+          ],
+          [
+            "120",
+            "120px"
+          ],
+          [
+            "128",
+            "128px"
+          ]
+        ],
+        "default": "128"
+      }
+    ]
+  }
+]

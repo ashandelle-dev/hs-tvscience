@@ -1,0 +1,429 @@
+[
+  {
+    "name": "logo",
+    "label": "Customer logo",
+    "type": "image",
+    "responsive": true,
+    "resizable": true,
+    "show_loading": true,
+    "default": {
+      "src": "",
+      "alt": "",
+      "width": 0,
+      "height": 0,
+      "size_type": "auto",
+      "loading": "lazy"
+    }
+  },
+  {
+    "name": "stats_heading",
+    "label": "Stats heading",
+    "type": "text",
+    "allow_new_line": false,
+    "default": "Results"
+  },
+  {
+    "name": "stats",
+    "label": "Headline stats",
+    "type": "group",
+    "occurrence": {
+      "min": 0,
+      "max": 6,
+      "sorting_label_field": "stats.value",
+      "default": 3
+    },
+    "children": [
+      {
+        "name": "value",
+        "label": "Value",
+        "type": "text",
+        "allow_new_line": false,
+        "default": "6.4"
+      },
+      {
+        "name": "stat_label",
+        "label": "Label",
+        "type": "text",
+        "allow_new_line": false,
+        "default": "ROAS"
+      }
+    ],
+    "default": [
+      {
+        "value": "6.4",
+        "stat_label": "ROAS"
+      },
+      {
+        "value": "$25",
+        "stat_label": "CPM"
+      },
+      {
+        "value": "45 Day",
+        "stat_label": "Attribution"
+      }
+    ]
+  },
+  {
+    "name": "cta",
+    "label": "Button",
+    "type": "group",
+    "children": [
+      {
+        "name": "text",
+        "label": "Text",
+        "type": "text",
+        "allow_new_line": false,
+        "default": "Request a Demo"
+      },
+      {
+        "name": "link",
+        "label": "Link",
+        "type": "link",
+        "supported_types": [
+          "EXTERNAL",
+          "CONTENT",
+          "FILE",
+          "EMAIL_ADDRESS",
+          "BLOG"
+        ],
+        "default": {
+          "url": {
+            "content_id": null,
+            "type": "EXTERNAL",
+            "href": "/contact"
+          },
+          "open_in_new_tab": false,
+          "no_follow": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "sections",
+    "label": "Story sections",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": 40,
+      "sorting_label_field": "sections.heading",
+      "default": 3
+    },
+    "help_text": "Leave the heading empty to continue the section above (e.g. text after an icon list).",
+    "children": [
+      {
+        "name": "level",
+        "label": "Heading level",
+        "type": "choice",
+        "display": "radio",
+        "choices": [
+          [
+            "section",
+            "Section (H2)"
+          ],
+          [
+            "subsection",
+            "Subsection (H3)"
+          ]
+        ],
+        "default": "section"
+      },
+      {
+        "name": "number",
+        "label": "Number / label above the heading",
+        "type": "text",
+        "allow_new_line": false,
+        "default": "01"
+      },
+      {
+        "name": "heading",
+        "label": "Heading",
+        "type": "text",
+        "allow_new_line": false,
+        "default": "Campaign Objectives"
+      },
+      {
+        "name": "body_copy",
+        "label": "Text",
+        "type": "richtext",
+        "enabled_features": [
+          "block",
+          "bold",
+          "italic",
+          "link",
+          "lists",
+          "superscript",
+          "nonbreaking_space"
+        ],
+        "default": "<p>Story text.</p>"
+      },
+      {
+        "name": "items_layout",
+        "label": "Icon items layout",
+        "type": "choice",
+        "display": "radio",
+        "choices": [
+          [
+            "list",
+            "List"
+          ],
+          [
+            "grid",
+            "Cards, two columns"
+          ]
+        ],
+        "default": "list"
+      },
+      {
+        "name": "items",
+        "label": "Icon items",
+        "type": "group",
+        "occurrence": {
+          "min": 0,
+          "max": 8,
+          "default": 0
+        },
+        "children": [
+          {
+            "name": "icon",
+            "label": "Icon (optional)",
+            "type": "image",
+            "responsive": true,
+            "resizable": true,
+            "show_loading": true,
+            "default": {
+              "src": "",
+              "alt": "",
+              "width": 0,
+              "height": 0,
+              "size_type": "auto",
+              "loading": "lazy"
+            }
+          },
+          {
+            "name": "item_text",
+            "label": "Text",
+            "type": "richtext",
+            "enabled_features": [
+              "bold",
+              "italic",
+              "link",
+              "nonbreaking_space"
+            ],
+            "default": ""
+          }
+        ],
+        "default": []
+      },
+      {
+        "name": "image",
+        "label": "Image (optional)",
+        "type": "image",
+        "responsive": true,
+        "resizable": true,
+        "show_loading": true,
+        "default": {
+          "src": "",
+          "alt": "",
+          "width": 0,
+          "height": 0,
+          "size_type": "auto",
+          "loading": "lazy"
+        }
+      },
+      {
+        "name": "quote",
+        "label": "Quote (optional)",
+        "type": "group",
+        "children": [
+          {
+            "name": "quote_text",
+            "label": "Quote",
+            "type": "text",
+            "allow_new_line": true,
+            "default": ""
+          },
+          {
+            "name": "author_name",
+            "label": "Name",
+            "type": "text",
+            "allow_new_line": false,
+            "default": ""
+          },
+          {
+            "name": "author_title",
+            "label": "Title",
+            "type": "text",
+            "allow_new_line": false,
+            "default": ""
+          },
+          {
+            "name": "author_photo",
+            "label": "Photo",
+            "type": "image",
+            "responsive": true,
+            "resizable": true,
+            "show_loading": true,
+            "default": {
+              "src": "",
+              "alt": "",
+              "width": 0,
+              "height": 0,
+              "size_type": "auto",
+              "loading": "lazy"
+            }
+          }
+        ]
+      },
+      {
+        "name": "cta",
+        "label": "Button (optional, e.g. Download the PDF)",
+        "type": "group",
+        "children": [
+          {
+            "name": "text",
+            "label": "Text",
+            "type": "text",
+            "allow_new_line": false,
+            "default": ""
+          },
+          {
+            "name": "link",
+            "label": "Link",
+            "type": "link",
+            "supported_types": [
+              "EXTERNAL",
+              "CONTENT",
+              "FILE",
+              "EMAIL_ADDRESS",
+              "BLOG"
+            ],
+            "default": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": ""
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            }
+          }
+        ]
+      }
+    ],
+    "default": [
+      {
+        "number": "01",
+        "heading": "Campaign Objectives",
+        "body_copy": "<p>Story text.</p>"
+      },
+      {
+        "number": "02",
+        "heading": "Solution",
+        "body_copy": "<p>Story text.</p>"
+      },
+      {
+        "number": "03",
+        "heading": "Results",
+        "body_copy": "<p>Story text.</p>"
+      }
+    ]
+  },
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "spacing_top",
+        "label": "Space above",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          [
+            "0",
+            "None"
+          ],
+          [
+            "32",
+            "32px"
+          ],
+          [
+            "48",
+            "48px"
+          ],
+          [
+            "64",
+            "64px"
+          ],
+          [
+            "80",
+            "80px"
+          ],
+          [
+            "96",
+            "96px"
+          ],
+          [
+            "112",
+            "112px"
+          ],
+          [
+            "120",
+            "120px"
+          ],
+          [
+            "128",
+            "128px"
+          ]
+        ],
+        "default": "96"
+      },
+      {
+        "name": "spacing_bottom",
+        "label": "Space below",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          [
+            "0",
+            "None"
+          ],
+          [
+            "32",
+            "32px"
+          ],
+          [
+            "48",
+            "48px"
+          ],
+          [
+            "64",
+            "64px"
+          ],
+          [
+            "80",
+            "80px"
+          ],
+          [
+            "96",
+            "96px"
+          ],
+          [
+            "112",
+            "112px"
+          ],
+          [
+            "120",
+            "120px"
+          ],
+          [
+            "128",
+            "128px"
+          ]
+        ],
+        "default": "128"
+      }
+    ]
+  }
+]

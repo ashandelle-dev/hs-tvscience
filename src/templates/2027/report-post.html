@@ -1,0 +1,25 @@
+<!--
+  templateType: blog_post
+  isAvailableForNewContent: true
+  label: Report Post (2027)
+-->
+{% extends "../../layouts/2027/base.html" %}
+
+{% block body %}
+{% text "summary" label="Summary", export_to_template_context=True %}
+{% text "title_link" label="Title Link", export_to_template_context=True %}
+{% image "card_image" label="Card Image (report cover)", export_to_template_context=True %}
+{% choice "layout" label="Layout (not used by the 2027 template)", choices=[["layout-a","Layout A"],["layout-b","Layout B"]], multiple="False", display="radio", export_to_template_context=True %}
+{% choice "gated" label="Gated Post (hide the body after #break until the form is submitted)", choices=[["yes","Yes"],["no","No"]], multiple="False", display="radio", export_to_template_context=True %}
+
+{% set kind = "report" %}
+{% set eyebrow = "Report" %}
+{% set summary = content.widgets.summary.body.value if content.widgets.summary.body.value else content.meta_description|striptags %}
+{% set meta_line = "" %}
+{% set hero = content.widgets.card_image.body if content.widgets.card_image.body.src else {"src": content.featured_image, "alt": content.featured_image_alt_text} %}
+{% set back_label = "All reports" %}
+{% set more_heading = "More reports" %}
+{% set has_form = content.widgets.gated_form.body.form.form_id %}
+{% set gated = has_form and content.widgets.gated.body.value == "yes" and not contact.hs_object_id %}
+{% include "./blog-post-layout.html" %}
+{% endblock body %}

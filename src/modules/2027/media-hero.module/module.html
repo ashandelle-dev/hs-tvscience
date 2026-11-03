@@ -1,0 +1,64 @@
+{% macro link_attrs(link) -%}
+  href="{% if link.url.type == "EMAIL_ADDRESS" %}mailto:{% endif %}{{ link.url.href }}"
+  {%- if link.open_in_new_tab %} target="_blank"{% endif -%}
+  {%- if link.open_in_new_tab or link.no_follow %} rel="{% if link.open_in_new_tab %}noopener{% endif %}{% if link.no_follow %} nofollow{% endif %}"{% endif -%}
+{%- endmacro %}
+
+{% set pt = { "0": "pt-0", "32": "pt-8", "48": "pt-12", "64": "pt-12 md:pt-16", "80": "pt-12 md:pt-20", "96": "pt-16 md:pt-24", "112": "pt-16 md:pt-28", "120": "pt-16 md:pt-30", "128": "pt-16 md:pt-32" } %}
+{% set pb = { "0": "pb-0", "32": "pb-8", "48": "pb-12", "64": "pb-12 md:pb-16", "80": "pb-12 md:pb-20", "96": "pb-16 md:pb-24", "112": "pb-16 md:pb-28", "120": "pb-16 md:pb-30", "128": "pb-16 md:pb-32" } %}
+{% set photo = module.image_style == "photo" %}
+{% set contained = module.image_style == "contained" or module.lottie %}
+{% set centered = module.layout == "centered" %}
+{% set has_media = module.lottie or module.image.src %}
+{% if module.lottie %}{{ require_js("https://unpkg.com/@lottiefiles/lottie-player@2.0.12/dist/lottie-player.js") }}{% endif %}
+
+<section {% if module.anchor %}id="{{ module.anchor }}"{% endif %} class="overflow-hidden {% if module.style.background == "white" %}bg-white{% else %}bg-grey-050{% endif %} {{ pt[module.style.spacing_top] }} {{ pb[module.style.spacing_bottom] }}">
+  <div class="wrap max-w-feature {% if not centered %}lg:grid lg:grid-cols-2 lg:items-center{% endif %}">
+
+    <div class="{% if centered %}mx-auto flex max-w-3xl flex-col items-center py-16 text-center lg:py-24{% else %}py-16 lg:py-24 lg:pl-16{% endif %}">
+      {% if module.logo.src %}
+        <img src="{{ module.logo.src }}" alt="{{ module.logo.alt }}" {% if module.logo.width %}width="{{ module.logo.width }}" height="{{ module.logo.height }}"{% endif %}
+          class="mb-8 block h-auto max-h-10 w-auto" loading="eager">
+      {% endif %}
+      {% if module.eyebrow %}
+        <p class="m-0 mb-4 text-body-relaxed font-bold text-black">{{ module.eyebrow }}</p>
+      {% endif %}
+      {% if module.heading.value %}
+        <{{ module.heading.header_tag }} class="m-0 text-balance text-heading-sm font-heavy text-black md:text-heading-hero {% if not centered %}max-w-hero-copy{% endif %}">{{ module.heading.value }}</{{ module.heading.header_tag }}>
+      {% endif %}
+      {% if module.body_copy %}
+        <div class="rte mt-8 text-body-relaxed text-grey-350 {% if centered %}max-w-copy{% else %}max-w-hero-body{% endif %}">{{ module.body_copy }}</div>
+      {% endif %}
+      {% if module.form.form_id %}
+        <div class="form-2027 mt-10 w-full {% if centered %}form-2027--center max-w-copy text-left{% else %}max-w-hero-body{% endif %}">
+          {% form form_to_use="{{ module.form.form_id }}"
+            response_response_type="{{ module.form.response_type }}"
+            response_message="{{ module.form.message }}"
+            response_redirect_id="{{ module.form.redirect_id }}"
+            response_redirect_url="{{ module.form.redirect_url }}"
+            gotowebinar_webinar_key="{{ module.form.gotowebinar_webinar_key }}"
+            sfdc_campaign="{{ module.sfdc_campaign }}" %}
+        </div>
+      {% elif module.cta.text %}
+        <div class="mt-10"><a {{ link_attrs(module.cta.link) }} class="btn">{{ module.cta.text }}</a></div>
+      {% endif %}
+    </div>
+
+    {% if has_media %}
+      <div class="{% if centered %}pb-16 lg:pb-24{% elif contained %}pb-16 lg:py-24{% elif photo %}lg:self-stretch{% else %}lg:self-end lg:pt-24{% endif %}">
+        {% if module.lottie %}
+          {# Product animations are portrait cards: cap the width so the hero stays compact #}
+          <lottie-player class="mx-auto block w-full max-w-sm" src="{{ module.lottie }}" background="transparent" speed="1" autoplay loop
+            aria-label="{{ module.lottie_label }}"></lottie-player>
+        {% else %}
+          <img src="{{ module.image.src }}" alt="{{ module.image.alt }}"
+            {% if module.image.width %}width="{{ module.image.width }}"{% endif %} {% if module.image.height %}height="{{ module.image.height }}"{% endif %}
+            {% if module.image.loading != "disabled" %}loading="{{ module.image.loading }}"{% endif %}
+            class="block
+              {% if contained %}mx-auto h-auto w-auto max-h-hero-contained{% elif photo %}w-full object-cover lg:max-w-none aspect-hero-photo lg:w-hero-photo{% else %}w-full object-cover lg:max-w-none aspect-hero-media object-top lg:w-hero-media{% endif %}">
+        {% endif %}
+      </div>
+    {% endif %}
+
+  </div>
+</section>

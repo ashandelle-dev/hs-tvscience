@@ -1,0 +1,27 @@
+<!--
+  templateType: error_page
+  isAvailableForNewContent: true
+  label: System - 500 error (2027)
+-->
+{% extends "../../../layouts/2027/base.html" %}
+{% import "../blog-macros.html" as blog %}
+
+{% block body %}
+<main id="main-content">
+  <section class="bg-grey-050 py-16 md:py-24">
+    <div class="wrap">
+      <div class="mx-auto max-w-copy">
+        <p class="m-0 mb-4 text-body-relaxed font-bold text-black">500</p>
+        <h1 class="m-0 text-balance text-heading-sm font-heavy text-black md:text-heading-hero">Something went wrong</h1>
+        <p class="m-0 mt-6 text-body-relaxed text-grey-350">We’re having trouble loading this page. Please try again in a moment.</p>
+        <div class="mt-10 flex flex-wrap gap-3">
+          <a href="/" class="btn btn--lg">Go to the homepage</a>
+          <a href="/contact" class="btn btn--lg btn--secondary">Contact us</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+{% endblock body %}

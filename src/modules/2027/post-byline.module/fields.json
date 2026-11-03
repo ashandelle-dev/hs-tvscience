@@ -1,0 +1,93 @@
+[
+  {
+    "name": "byline_heading",
+    "label": "Heading (optional)",
+    "type": "text",
+    "allow_new_line": false,
+    "default": ""
+  },
+  {
+    "name": "author",
+    "label": "Authors",
+    "type": "group",
+    "occurrence": {
+      "min": 0,
+      "max": 6,
+      "sorting_label_field": "author.name_title_company",
+      "default": 0
+    },
+    "children": [
+      {
+        "name": "image",
+        "label": "Photo",
+        "type": "image",
+        "responsive": true,
+        "resizable": true,
+        "show_loading": true,
+        "default": {
+          "src": "",
+          "alt": "",
+          "width": 0,
+          "height": 0,
+          "size_type": "auto",
+          "loading": "lazy"
+        }
+      },
+      {
+        "name": "name_title_company",
+        "label": "Name, title and company",
+        "type": "richtext",
+        "enabled_features": [
+          "bold",
+          "italic",
+          "link",
+          "nonbreaking_space"
+        ],
+        "default": "<p>Name</p><p>Title, Company</p>"
+      }
+    ],
+    "default": []
+  },
+  {
+    "name": "speaker",
+    "label": "Speakers",
+    "type": "group",
+    "occurrence": {
+      "min": 0,
+      "max": 8,
+      "sorting_label_field": "speaker.name_title_company",
+      "default": 0
+    },
+    "children": [
+      {
+        "name": "image",
+        "label": "Photo",
+        "type": "image",
+        "responsive": true,
+        "resizable": true,
+        "show_loading": true,
+        "default": {
+          "src": "",
+          "alt": "",
+          "width": 0,
+          "height": 0,
+          "size_type": "auto",
+          "loading": "lazy"
+        }
+      },
+      {
+        "name": "name_title_company",
+        "label": "Name, title and company",
+        "type": "richtext",
+        "enabled_features": [
+          "bold",
+          "italic",
+          "link",
+          "nonbreaking_space"
+        ],
+        "default": "<p>Name</p><p>Title, Company</p>"
+      }
+    ],
+    "default": []
+  }
+]

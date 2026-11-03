@@ -1,0 +1,236 @@
+[
+  {
+    "name": "mode",
+    "label": "Listing",
+    "type": "choice",
+    "display": "radio",
+    "choices": [
+      [
+        "integrations",
+        "Integrations (one category filter)"
+      ],
+      [
+        "partners",
+        "Partners (programs, categories, capabilities)"
+      ]
+    ],
+    "default": "integrations"
+  },
+  {
+    "name": "hubdb_table",
+    "label": "HubDB table",
+    "type": "hubdbtable",
+    "default": 136413080
+  },
+  {
+    "name": "heading",
+    "label": "Heading (optional)",
+    "type": "text",
+    "allow_new_line": false,
+    "default": ""
+  },
+  {
+    "name": "intro",
+    "label": "Intro (optional)",
+    "type": "richtext",
+    "enabled_features": [
+      "bold",
+      "italic",
+      "link",
+      "nonbreaking_space"
+    ],
+    "default": ""
+  },
+  {
+    "name": "anchor",
+    "label": "Anchor ID (optional, for #links)",
+    "type": "text",
+    "allow_new_line": false,
+    "default": ""
+  },
+  {
+    "name": "featured_heading",
+    "label": "Featured heading",
+    "type": "text",
+    "allow_new_line": false,
+    "default": "Featured Integrations"
+  },
+  {
+    "name": "all_heading",
+    "label": "All heading",
+    "type": "text",
+    "allow_new_line": false,
+    "default": "All Integrations"
+  },
+  {
+    "name": "show_card_description",
+    "label": "Show descriptions on cards",
+    "type": "boolean",
+    "display": "toggle",
+    "default": true
+  },
+  {
+    "name": "filters",
+    "label": "Filters (integrations listing)",
+    "type": "group",
+    "occurrence": {
+      "min": 0,
+      "max": 20,
+      "sorting_label_field": "filters.label_",
+      "default": 6
+    },
+    "help_text": "Value must match the integration_categories option name in HubDB. Filters with no integrations are hidden.",
+    "children": [
+      {
+        "name": "label_",
+        "label": "Label",
+        "type": "text",
+        "allow_new_line": false,
+        "default": ""
+      },
+      {
+        "name": "value",
+        "label": "Value",
+        "type": "text",
+        "allow_new_line": false,
+        "default": ""
+      }
+    ],
+    "default": [
+      {
+        "label_": "MMPs",
+        "value": "mmps"
+      },
+      {
+        "label_": "Affiliate Networks",
+        "value": "affiliate_networks"
+      },
+      {
+        "label_": "Conversion Tracking",
+        "value": "conversion_tracking"
+      },
+      {
+        "label_": "Measurement & Analytics",
+        "value": "measurement_analytics"
+      },
+      {
+        "label_": "Audience Integrations",
+        "value": "audience_integrations"
+      },
+      {
+        "label_": "Linear",
+        "value": "linear"
+      }
+    ]
+  },
+  {
+    "name": "footnote",
+    "label": "Footnote under the grid (optional)",
+    "type": "richtext",
+    "enabled_features": [
+      "bold",
+      "italic",
+      "link",
+      "nonbreaking_space"
+    ],
+    "default": ""
+  },
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "spacing_top",
+        "label": "Space above",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          [
+            "0",
+            "None"
+          ],
+          [
+            "32",
+            "32px"
+          ],
+          [
+            "48",
+            "48px"
+          ],
+          [
+            "64",
+            "64px"
+          ],
+          [
+            "80",
+            "80px"
+          ],
+          [
+            "96",
+            "96px"
+          ],
+          [
+            "112",
+            "112px"
+          ],
+          [
+            "120",
+            "120px"
+          ],
+          [
+            "128",
+            "128px"
+          ]
+        ],
+        "default": "0"
+      },
+      {
+        "name": "spacing_bottom",
+        "label": "Space below",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          [
+            "0",
+            "None"
+          ],
+          [
+            "32",
+            "32px"
+          ],
+          [
+            "48",
+            "48px"
+          ],
+          [
+            "64",
+            "64px"
+          ],
+          [
+            "80",
+            "80px"
+          ],
+          [
+            "96",
+            "96px"
+          ],
+          [
+            "112",
+            "112px"
+          ],
+          [
+            "120",
+            "120px"
+          ],
+          [
+            "128",
+            "128px"
+          ]
+        ],
+        "default": "96"
+      }
+    ]
+  }
+]

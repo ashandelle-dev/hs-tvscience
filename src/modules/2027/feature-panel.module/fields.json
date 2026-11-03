@@ -1,0 +1,431 @@
+[
+  {
+    "name": "layout",
+    "label": "Layout",
+    "type": "choice",
+    "display": "radio",
+    "choices": [
+      [
+        "panel",
+        "Image panel beside the features (homepage)"
+      ],
+      [
+        "grid",
+        "Heading on top, features in columns"
+      ],
+      [
+        "diagram",
+        "Dark diagram: three connected columns (Patents Brain Trust)"
+      ]
+    ],
+    "default": "panel"
+  },
+  {
+    "name": "diagram_pill",
+    "label": "Pill on the bottom connector (diagram layout)",
+    "type": "text",
+    "allow_new_line": false,
+    "default": ""
+  },
+  {
+    "name": "left_image",
+    "label": "Image (panel layout)",
+    "type": "image",
+    "responsive": true,
+    "resizable": true,
+    "show_loading": true,
+    "default": {
+      "src": "https://tvscientific.com/hubfs/product%20dashboards.png",
+      "alt": "tvScientific dashboards showing campaign metrics, cost per conversion and path to purchase",
+      "width": 0,
+      "height": 0,
+      "size_type": "auto",
+      "loading": "lazy"
+    },
+    "help_text": "Shown on a Grey 050 panel."
+  },
+  {
+    "name": "eyebrow",
+    "label": "Eyebrow (optional)",
+    "type": "text",
+    "allow_new_line": false,
+    "default": ""
+  },
+  {
+    "name": "heading",
+    "label": "Heading",
+    "type": "group",
+    "children": [
+      {
+        "name": "value",
+        "label": "Text",
+        "type": "text",
+        "allow_new_line": false,
+        "default": "The tvScientific by Pinterest difference"
+      },
+      {
+        "name": "header_tag",
+        "label": "Tag",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          [
+            "h2",
+            "H2"
+          ],
+          [
+            "h3",
+            "H3"
+          ],
+          [
+            "p",
+            "Paragraph"
+          ]
+        ],
+        "default": "h2"
+      }
+    ]
+  },
+  {
+    "name": "subheading",
+    "label": "Subheading",
+    "type": "richtext",
+    "enabled_features": [
+      "bold",
+      "italic",
+      "link",
+      "nonbreaking_space"
+    ],
+    "default": "<p>The most effective performance CTV platform purpose built to deliver outcomes</p>"
+  },
+  {
+    "name": "align",
+    "label": "Heading alignment (grid layout)",
+    "type": "choice",
+    "display": "radio",
+    "choices": [
+      [
+        "left",
+        "Left"
+      ],
+      [
+        "center",
+        "Center"
+      ]
+    ],
+    "default": "left"
+  },
+  {
+    "name": "columns",
+    "label": "Columns (grid layout)",
+    "type": "choice",
+    "display": "radio",
+    "choices": [
+      [
+        "2",
+        "2"
+      ],
+      [
+        "3",
+        "3"
+      ],
+      [
+        "4",
+        "4"
+      ]
+    ],
+    "default": "4"
+  },
+  {
+    "name": "item_style",
+    "label": "Feature style",
+    "type": "choice",
+    "display": "radio",
+    "choices": [
+      [
+        "plain",
+        "Plain"
+      ],
+      [
+        "card",
+        "Grey 050 card"
+      ]
+    ],
+    "default": "plain"
+  },
+  {
+    "name": "image_crop",
+    "label": "Feature image crop",
+    "type": "choice",
+    "display": "radio",
+    "choices": [
+      [
+        "none",
+        "As is"
+      ],
+      [
+        "square",
+        "Square (team photos)"
+      ]
+    ],
+    "default": "none"
+  },
+  {
+    "name": "motion",
+    "label": "Motion (grid layout)",
+    "type": "choice",
+    "display": "radio",
+    "choices": [
+      [
+        "none",
+        "None"
+      ],
+      [
+        "staggered",
+        "Staggered cards with parallax scroll (desktop)"
+      ]
+    ],
+    "default": "none"
+  },
+  {
+    "name": "image_frame",
+    "label": "Feature images",
+    "type": "choice",
+    "display": "radio",
+    "choices": [
+      [
+        "none",
+        "As is"
+      ],
+      [
+        "dark",
+        "On a dark Green 800 frame (images made for dark backgrounds)"
+      ]
+    ],
+    "default": "none"
+  },
+  {
+    "name": "features",
+    "label": "Features",
+    "type": "group",
+    "occurrence": {
+      "min": 0,
+      "max": 12,
+      "sorting_label_field": "features.heading_value",
+      "default": 4
+    },
+    "children": [
+      {
+        "name": "icon",
+        "label": "Icon (optional, decorative)",
+        "type": "image",
+        "responsive": true,
+        "resizable": true,
+        "show_loading": true,
+        "default": {
+          "src": "",
+          "alt": "",
+          "width": 0,
+          "height": 0,
+          "size_type": "auto",
+          "loading": "lazy"
+        },
+        "help_text": "Small icon above the title. Leave alt text empty."
+      },
+      {
+        "name": "image",
+        "label": "Image (optional)",
+        "type": "image",
+        "responsive": true,
+        "resizable": true,
+        "show_loading": true,
+        "default": {
+          "src": "",
+          "alt": "",
+          "width": 0,
+          "height": 0,
+          "size_type": "auto",
+          "loading": "lazy"
+        },
+        "help_text": "Full-width image at the top of the feature."
+      },
+      {
+        "name": "heading_value",
+        "label": "Title",
+        "type": "text",
+        "allow_new_line": false,
+        "default": "Feature"
+      },
+      {
+        "name": "body_copy",
+        "label": "Body",
+        "type": "richtext",
+        "enabled_features": [
+          "bold",
+          "italic",
+          "link",
+          "nonbreaking_space"
+        ],
+        "default": "<p>Feature description.</p>"
+      },
+      {
+        "name": "link",
+        "label": "Link (optional)",
+        "type": "group",
+        "children": [
+          {
+            "name": "text",
+            "label": "Text",
+            "type": "text",
+            "allow_new_line": false,
+            "default": ""
+          },
+          {
+            "name": "link",
+            "label": "Link",
+            "type": "link",
+            "supported_types": [
+              "EXTERNAL",
+              "CONTENT",
+              "FILE",
+              "EMAIL_ADDRESS",
+              "BLOG"
+            ],
+            "default": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": ""
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            }
+          }
+        ]
+      }
+    ],
+    "default": [
+      {
+        "heading_value": "Results delivered",
+        "body_copy": "<p>The best activation, measurement, and optimization technology to deliver desired outcomes</p>"
+      },
+      {
+        "heading_value": "Total control",
+        "body_copy": "<p>We’ll recommend optimal inventory, but you control where to activate, # of days, audiences to leverage, etc.</p>"
+      },
+      {
+        "heading_value": "Radical transparency",
+        "body_copy": "<p>360° views in real-time into your ad campaign’s performance, targeting, attribution, all with dashboards</p>"
+      },
+      {
+        "heading_value": "Unified UI",
+        "body_copy": "<p>A user interface that’s as simple to use as paid search and social media with familiar controls and levers</p>"
+      }
+    ]
+  },
+  {
+    "name": "disclaimer",
+    "label": "Disclaimer",
+    "type": "text",
+    "allow_new_line": false,
+    "default": "Disclaimer: All data for illustrative purposes."
+  },
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "spacing_top",
+        "label": "Space above",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          [
+            "0",
+            "None"
+          ],
+          [
+            "32",
+            "32px"
+          ],
+          [
+            "48",
+            "48px"
+          ],
+          [
+            "64",
+            "64px"
+          ],
+          [
+            "80",
+            "80px"
+          ],
+          [
+            "96",
+            "96px"
+          ],
+          [
+            "112",
+            "112px"
+          ],
+          [
+            "120",
+            "120px"
+          ],
+          [
+            "128",
+            "128px"
+          ]
+        ],
+        "default": "0"
+      },
+      {
+        "name": "spacing_bottom",
+        "label": "Space below",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          [
+            "0",
+            "None"
+          ],
+          [
+            "32",
+            "32px"
+          ],
+          [
+            "48",
+            "48px"
+          ],
+          [
+            "64",
+            "64px"
+          ],
+          [
+            "80",
+            "80px"
+          ],
+          [
+            "96",
+            "96px"
+          ],
+          [
+            "112",
+            "112px"
+          ],
+          [
+            "120",
+            "120px"
+          ],
+          [
+            "128",
+            "128px"
+          ]
+        ],
+        "default": "96"
+      }
+    ]
+  }
+]

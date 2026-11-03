@@ -1,0 +1,216 @@
+[
+  {
+    "name": "eyebrow",
+    "label": "Eyebrow / number",
+    "type": "text",
+    "allow_new_line": false,
+    "default": "Get started today"
+  },
+  {
+    "name": "heading",
+    "label": "Heading",
+    "type": "text",
+    "allow_new_line": false,
+    "default": "See how you can boost lift and ROAS with CTV"
+  },
+  {
+    "name": "header_tag",
+    "label": "Heading tag",
+    "type": "choice",
+    "display": "select",
+    "choices": [
+      [
+        "h2",
+        "H2"
+      ],
+      [
+        "h3",
+        "H3"
+      ],
+      [
+        "p",
+        "Paragraph"
+      ]
+    ],
+    "default": "h2"
+  },
+  {
+    "name": "body_copy",
+    "label": "Body copy (optional)",
+    "type": "richtext",
+    "enabled_features": [
+      "bold",
+      "italic",
+      "link",
+      "nonbreaking_space"
+    ],
+    "default": ""
+  },
+  {
+    "name": "cta",
+    "label": "Button",
+    "type": "group",
+    "children": [
+      {
+        "name": "text",
+        "label": "Text",
+        "type": "text",
+        "allow_new_line": false,
+        "default": "Request a Demo"
+      },
+      {
+        "name": "link",
+        "label": "Link",
+        "type": "link",
+        "supported_types": [
+          "EXTERNAL",
+          "CONTENT",
+          "FILE",
+          "EMAIL_ADDRESS",
+          "BLOG"
+        ],
+        "default": {
+          "url": {
+            "content_id": null,
+            "type": "EXTERNAL",
+            "href": "https://www.tvscientific.com/contact"
+          },
+          "open_in_new_tab": false,
+          "no_follow": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "size",
+    "label": "Size",
+    "type": "choice",
+    "display": "radio",
+    "choices": [
+      [
+        "display",
+        "Closing CTA: Heavy display heading, centered"
+      ],
+      [
+        "section",
+        "Section heading: Bold 44"
+      ]
+    ],
+    "default": "display"
+  },
+  {
+    "name": "align",
+    "label": "Alignment (section heading)",
+    "type": "choice",
+    "display": "radio",
+    "choices": [
+      [
+        "left",
+        "Left"
+      ],
+      [
+        "center",
+        "Center"
+      ]
+    ],
+    "default": "left"
+  },
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "spacing_top",
+        "label": "Space above",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          [
+            "0",
+            "None"
+          ],
+          [
+            "32",
+            "32px"
+          ],
+          [
+            "48",
+            "48px"
+          ],
+          [
+            "64",
+            "64px"
+          ],
+          [
+            "80",
+            "80px"
+          ],
+          [
+            "96",
+            "96px"
+          ],
+          [
+            "112",
+            "112px"
+          ],
+          [
+            "120",
+            "120px"
+          ],
+          [
+            "128",
+            "128px"
+          ]
+        ],
+        "default": "120"
+      },
+      {
+        "name": "spacing_bottom",
+        "label": "Space below",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          [
+            "0",
+            "None"
+          ],
+          [
+            "32",
+            "32px"
+          ],
+          [
+            "48",
+            "48px"
+          ],
+          [
+            "64",
+            "64px"
+          ],
+          [
+            "80",
+            "80px"
+          ],
+          [
+            "96",
+            "96px"
+          ],
+          [
+            "112",
+            "112px"
+          ],
+          [
+            "120",
+            "120px"
+          ],
+          [
+            "128",
+            "128px"
+          ]
+        ],
+        "default": "64"
+      }
+    ]
+  }
+]

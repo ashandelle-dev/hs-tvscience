@@ -1,0 +1,27 @@
+<!--
+  templateType: search_results_page
+  isAvailableForNewContent: true
+  label: System - Search results (2027)
+-->
+{% extends "../../../layouts/2027/base.html" %}
+
+{% block body %}
+<main id="main-content">
+  <section class="bg-grey-050 py-16 md:py-24">
+    <div class="wrap max-w-feature lg:px-16">
+      <p class="m-0 mb-4 text-body-relaxed font-bold text-black">Search</p>
+      <h1 class="m-0 text-balance text-heading-sm font-heavy text-black md:text-heading-hero">Search results</h1>
+      <div class="search-2027 mt-10 max-w-copy">
+        {% module "site_search" path="@hubspot/search_input", label="Search", placeholder="Search tvScientific", include_search_button=true %}
+      </div>
+    </div>
+  </section>
+  <section class="py-16 md:py-24">
+    <div class="wrap max-w-feature lg:px-16">
+      <div class="search-results-2027 max-w-copy">
+        {% module "search_results" path="@hubspot/search_results", label="Search results" %}
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock body %}
