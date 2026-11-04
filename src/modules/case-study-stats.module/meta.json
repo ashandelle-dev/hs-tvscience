@@ -4,5 +4,5 @@
   "host_template_types" : [ "PAGE" ],
   "module_id" : 118554461061,
   "label" : "Case Study Stats",
-  "is_available_for_new_content" : false
+  "is_available_for_new_content" : true
 }

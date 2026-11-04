@@ -54,6 +54,13 @@
     "default": "full"
   },
   {
+    "name": "rounded",
+    "label": "Rounded corners",
+    "type": "boolean",
+    "display": "toggle",
+    "default": false
+  },
+  {
     "name": "caption",
     "label": "Caption (optional)",
     "type": "text",

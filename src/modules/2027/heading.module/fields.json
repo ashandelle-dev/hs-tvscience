@@ -1,0 +1,208 @@
+[
+  {
+    "name": "eyebrow",
+    "label": "Eyebrow (optional)",
+    "type": "text",
+    "default": ""
+  },
+  {
+    "name": "heading",
+    "label": "Heading",
+    "type": "text",
+    "default": "Add a heading"
+  },
+  {
+    "name": "header_tag",
+    "label": "Heading tag",
+    "type": "choice",
+    "display": "radio",
+    "choices": [
+      [
+        "h1",
+        "H1"
+      ],
+      [
+        "h2",
+        "H2"
+      ],
+      [
+        "h3",
+        "H3"
+      ],
+      [
+        "h4",
+        "H4"
+      ]
+    ],
+    "default": "h2"
+  },
+  {
+    "name": "size",
+    "label": "Size",
+    "type": "choice",
+    "display": "select",
+    "choices": [
+      [
+        "display",
+        "Display"
+      ],
+      [
+        "xl",
+        "Extra large"
+      ],
+      [
+        "lg",
+        "Large"
+      ],
+      [
+        "md",
+        "Medium"
+      ],
+      [
+        "sm",
+        "Small"
+      ]
+    ],
+    "default": "md"
+  },
+  {
+    "name": "weight",
+    "label": "Weight",
+    "type": "choice",
+    "display": "radio",
+    "choices": [
+      [
+        "heavy",
+        "Heavy"
+      ],
+      [
+        "bold",
+        "Bold"
+      ],
+      [
+        "medium",
+        "Medium"
+      ]
+    ],
+    "default": "bold"
+  },
+  {
+    "name": "align",
+    "label": "Alignment",
+    "type": "choice",
+    "display": "radio",
+    "choices": [
+      [
+        "left",
+        "Left"
+      ],
+      [
+        "center",
+        "Center"
+      ],
+      [
+        "right",
+        "Right"
+      ]
+    ],
+    "default": "left"
+  },
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "spacing_top",
+        "label": "Space above",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          [
+            "0",
+            "None"
+          ],
+          [
+            "32",
+            "32px"
+          ],
+          [
+            "48",
+            "48px"
+          ],
+          [
+            "64",
+            "64px"
+          ],
+          [
+            "80",
+            "80px"
+          ],
+          [
+            "96",
+            "96px"
+          ],
+          [
+            "112",
+            "112px"
+          ],
+          [
+            "120",
+            "120px"
+          ],
+          [
+            "128",
+            "128px"
+          ]
+        ],
+        "default": "0"
+      },
+      {
+        "name": "spacing_bottom",
+        "label": "Space below",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          [
+            "0",
+            "None"
+          ],
+          [
+            "32",
+            "32px"
+          ],
+          [
+            "48",
+            "48px"
+          ],
+          [
+            "64",
+            "64px"
+          ],
+          [
+            "80",
+            "80px"
+          ],
+          [
+            "96",
+            "96px"
+          ],
+          [
+            "112",
+            "112px"
+          ],
+          [
+            "120",
+            "120px"
+          ],
+          [
+            "128",
+            "128px"
+          ]
+        ],
+        "default": "0"
+      }
+    ]
+  }
+]

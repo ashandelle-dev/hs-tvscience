@@ -12,7 +12,7 @@
       {% endif %}
       <img src="{{ module.image.src }}" alt="{{ module.image.alt }}"
         {% if module.image.width %}width="{{ module.image.width }}" height="{{ module.image.height }}"{% endif %}
-        class="block h-auto w-full" loading="{{ module.image.loading or "lazy" }}">
+        class="block h-auto w-full {% if module.rounded %}rounded-20{% endif %}" loading="{{ module.image.loading or "lazy" }}">
     </picture>
     {% if module.caption %}<figcaption class="wrap mt-3 text-fine text-grey-200">{{ module.caption }}</figcaption>{% endif %}
   </figure>
