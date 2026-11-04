@@ -119,14 +119,6 @@
         "default": null
       },
       {
-        "name": "lottie_placement",
-        "label": "Lottie placement",
-        "type": "choice",
-        "display": "select",
-        "choices": [["card", "On the card"], ["up_left", "Up and left of the card (badge overhangs the top)"]],
-        "default": "card"
-      },
-      {
         "name": "badge",
         "label": "Overlay badge",
         "type": "group",
@@ -264,14 +256,6 @@
         "default": null
       },
       {
-        "name": "lottie_placement",
-        "label": "Lottie placement",
-        "type": "choice",
-        "display": "select",
-        "choices": [["card", "On the card"], ["up_left", "Up and left of the card (badge overhangs the top)"]],
-        "default": "card"
-      },
-      {
         "name": "badge",
         "label": "Overlay badge",
         "type": "group",
@@ -384,8 +368,7 @@
           "position": "top-right"
         },
         "lottie": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/2027-reskin/lottie/hero-top-left-v2.json",
-        "lottie_hold_frame": 90,
-        "lottie_placement": "up_left"
+        "lottie_hold_frame": 90
       },
       {
         "image": {
@@ -447,14 +430,6 @@
         "display": "text",
         "inline_help_text": "Frame shown until the animation starts, for animations whose first frame is empty. It plays on from this frame. Reduced-motion visitors stay on it.",
         "default": null
-      },
-      {
-        "name": "lottie_placement",
-        "label": "Lottie placement",
-        "type": "choice",
-        "display": "select",
-        "choices": [["card", "On the card"], ["up_left", "Up and left of the card (badge overhangs the top)"]],
-        "default": "card"
       },
       {
         "name": "badge",

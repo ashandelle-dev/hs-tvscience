@@ -61,7 +61,7 @@
         class="block aspect-video w-full rounded-20 object-cover md:rounded-32">
     {% endif %}
     {% if c.lottie %}
-      <lottie-player class="pointer-events-none absolute {% if c.lottie_placement == "up_left" %}left-hero-lottie-x top-hero-lottie-y{% else %}inset-0{% endif %} h-full w-full {% if not show_badge_mobile %}hidden md:block{% endif %}"
+      <lottie-player class="pointer-events-none absolute inset-0 h-full w-full {% if not show_badge_mobile %}hidden md:block{% endif %}"
         src="{{ c.lottie }}" background="transparent" speed="1" loop data-hero-lottie {% if c.lottie_hold_frame %}data-hold-frame="{{ c.lottie_hold_frame }}"{% endif %}
         {% if c.badge.title %}role="img" aria-label="{{ c.badge.title }}{% if c.badge.subtitle %}: {{ c.badge.subtitle }}{% endif %}"{% else %}aria-hidden="true"{% endif %}></lottie-player>
     {% else %}

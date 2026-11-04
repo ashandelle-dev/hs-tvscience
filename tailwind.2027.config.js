@@ -103,8 +103,6 @@ module.exports = {
             },
             inset: {
                 "frame-bleed": "-2.25%", // scrolling image bleeds off the frame's left edge
-                "hero-lottie-x": "-9.5%", // hero Lottie shifted left of its card
-                "hero-lottie-y": "-17%", // hero Lottie shifted above its card
             },
             spacing: {
                 30: "7.5rem",
