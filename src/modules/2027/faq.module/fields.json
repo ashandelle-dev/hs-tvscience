@@ -1,0 +1,139 @@
+[
+  {
+    "name": "entries",
+    "label": "Questions",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": 30,
+      "sorting_label_field": "entries.title",
+      "default": 3
+    },
+    "children": [
+      {
+        "name": "title",
+        "label": "Question",
+        "type": "text",
+        "default": "Add a question"
+      },
+      {
+        "name": "description",
+        "label": "Answer",
+        "type": "richtext",
+        "default": "<p>Add the answer.</p>"
+      }
+    ],
+    "default": [
+      {
+        "title": "Add a question",
+        "description": "<p>Add the answer.</p>"
+      },
+      {
+        "title": "Add a question",
+        "description": "<p>Add the answer.</p>"
+      },
+      {
+        "title": "Add a question",
+        "description": "<p>Add the answer.</p>"
+      }
+    ]
+  },
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "spacing_top",
+        "label": "Space above",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          [
+            "0",
+            "None"
+          ],
+          [
+            "32",
+            "32px"
+          ],
+          [
+            "48",
+            "48px"
+          ],
+          [
+            "64",
+            "64px"
+          ],
+          [
+            "80",
+            "80px"
+          ],
+          [
+            "96",
+            "96px"
+          ],
+          [
+            "112",
+            "112px"
+          ],
+          [
+            "120",
+            "120px"
+          ],
+          [
+            "128",
+            "128px"
+          ]
+        ],
+        "default": "0"
+      },
+      {
+        "name": "spacing_bottom",
+        "label": "Space below",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          [
+            "0",
+            "None"
+          ],
+          [
+            "32",
+            "32px"
+          ],
+          [
+            "48",
+            "48px"
+          ],
+          [
+            "64",
+            "64px"
+          ],
+          [
+            "80",
+            "80px"
+          ],
+          [
+            "96",
+            "96px"
+          ],
+          [
+            "112",
+            "112px"
+          ],
+          [
+            "120",
+            "120px"
+          ],
+          [
+            "128",
+            "128px"
+          ]
+        ],
+        "default": "64"
+      }
+    ]
+  }
+]
