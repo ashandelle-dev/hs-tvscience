@@ -38,6 +38,22 @@
     @apply mx-auto w-full max-w-site px-4 md:px-8 xl:px-0;
 }
 
+/* Columns added in the page editor. Single-column rows stay full width. */
+.row-fluid:not(:has(> .span12)) {
+    @apply mx-auto grid w-full max-w-site gap-7 px-4 md:grid-cols-12 md:px-8 xl:px-0;
+}
+.row-fluid > .span1 { @apply md:col-span-1; }
+.row-fluid > .span2 { @apply md:col-span-2; }
+.row-fluid > .span3 { @apply md:col-span-3; }
+.row-fluid > .span4 { @apply md:col-span-4; }
+.row-fluid > .span5 { @apply md:col-span-5; }
+.row-fluid > .span6 { @apply md:col-span-6; }
+.row-fluid > .span7 { @apply md:col-span-7; }
+.row-fluid > .span8 { @apply md:col-span-8; }
+.row-fluid > .span9 { @apply md:col-span-9; }
+.row-fluid > .span10 { @apply md:col-span-10; }
+.row-fluid > .span11 { @apply md:col-span-11; }
+
 /* Primary button. .hs-button covers HubSpot form submit buttons. */
 .btn,
 .tvs-2027 .hs-button {

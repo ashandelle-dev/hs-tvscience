@@ -4,7 +4,7 @@
 
 {% if module.image.src %}
 <section class="{{ pt[module.style.spacing_top] }} {{ pb[module.style.spacing_bottom] }}">
-  <figure class="m-0 {{ widths[module.width] }}">
+  <figure class="{% if module.width == "full" %}m-0{% else %}my-0 {{ widths[module.width] }}{% endif %}">
     <picture>
       {% if module.mobile_image.src %}
         <source media="(max-width: 767px)" srcset="{{ module.mobile_image.src }}"
