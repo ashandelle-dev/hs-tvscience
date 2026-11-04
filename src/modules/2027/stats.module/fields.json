@@ -1,0 +1,193 @@
+[
+  {
+    "name": "stats",
+    "label": "Stats",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": 8,
+      "sorting_label_field": "stats.title",
+      "default": 3
+    },
+    "children": [
+      {
+        "name": "title",
+        "label": "Title (optional)",
+        "type": "text",
+        "default": "Total Growth"
+      },
+      {
+        "name": "number",
+        "label": "Number",
+        "type": "text",
+        "default": "100%"
+      },
+      {
+        "name": "stat_label",
+        "label": "Label",
+        "type": "text",
+        "default": "Add a label"
+      },
+      {
+        "name": "icon",
+        "label": "Icon (optional)",
+        "type": "image",
+        "responsive": true,
+        "resizable": true,
+        "show_loading": true,
+        "default": {
+          "src": "",
+          "alt": "",
+          "width": 0,
+          "height": 0,
+          "size_type": "auto",
+          "loading": "lazy"
+        }
+      }
+    ],
+    "default": [
+      {
+        "title": "",
+        "number": "100%",
+        "stat_label": "Add a label",
+        "icon": {
+          "src": "",
+          "alt": ""
+        }
+      },
+      {
+        "title": "",
+        "number": "100%",
+        "stat_label": "Add a label",
+        "icon": {
+          "src": "",
+          "alt": ""
+        }
+      },
+      {
+        "title": "",
+        "number": "100%",
+        "stat_label": "Add a label",
+        "icon": {
+          "src": "",
+          "alt": ""
+        }
+      }
+    ]
+  },
+  {
+    "name": "layout",
+    "label": "Layout",
+    "type": "choice",
+    "display": "radio",
+    "choices": [
+      [
+        "row",
+        "Row"
+      ],
+      [
+        "stack",
+        "Stacked card"
+      ]
+    ],
+    "default": "row"
+  },
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "spacing_top",
+        "label": "Space above",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          [
+            "0",
+            "None"
+          ],
+          [
+            "32",
+            "32px"
+          ],
+          [
+            "48",
+            "48px"
+          ],
+          [
+            "64",
+            "64px"
+          ],
+          [
+            "80",
+            "80px"
+          ],
+          [
+            "96",
+            "96px"
+          ],
+          [
+            "112",
+            "112px"
+          ],
+          [
+            "120",
+            "120px"
+          ],
+          [
+            "128",
+            "128px"
+          ]
+        ],
+        "default": "0"
+      },
+      {
+        "name": "spacing_bottom",
+        "label": "Space below",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          [
+            "0",
+            "None"
+          ],
+          [
+            "32",
+            "32px"
+          ],
+          [
+            "48",
+            "48px"
+          ],
+          [
+            "64",
+            "64px"
+          ],
+          [
+            "80",
+            "80px"
+          ],
+          [
+            "96",
+            "96px"
+          ],
+          [
+            "112",
+            "112px"
+          ],
+          [
+            "120",
+            "120px"
+          ],
+          [
+            "128",
+            "128px"
+          ]
+        ],
+        "default": "64"
+      }
+    ]
+  }
+]

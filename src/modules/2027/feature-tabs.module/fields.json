@@ -1,0 +1,354 @@
+[
+  {
+    "name": "heading",
+    "label": "Heading",
+    "type": "group",
+    "children": [
+      {
+        "name": "value",
+        "label": "Text",
+        "type": "text",
+        "allow_new_line": false,
+        "default": "Finally — a TV advertising platform that empowers you (and your ads) to perform"
+      },
+      {
+        "name": "header_tag",
+        "label": "Tag",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          [
+            "h2",
+            "H2"
+          ],
+          [
+            "h3",
+            "H3"
+          ],
+          [
+            "p",
+            "Paragraph"
+          ]
+        ],
+        "default": "h2"
+      }
+    ]
+  },
+  {
+    "name": "intro",
+    "label": "Intro (optional)",
+    "type": "richtext",
+    "enabled_features": [
+      "bold",
+      "italic",
+      "link",
+      "nonbreaking_space"
+    ],
+    "default": ""
+  },
+  {
+    "name": "variant",
+    "label": "Layout",
+    "type": "choice",
+    "display": "radio",
+    "choices": [
+      [
+        "large",
+        "Large tab labels, centered heading (homepage)"
+      ],
+      [
+        "compact",
+        "Compact list of tabs beside a framed image"
+      ]
+    ],
+    "default": "large"
+  },
+  {
+    "name": "tabs",
+    "label": "Tabs",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": 6,
+      "sorting_label_field": "tabs.tab_label",
+      "default": 3
+    },
+    "children": [
+      {
+        "name": "tab_label",
+        "label": "Label",
+        "type": "text",
+        "allow_new_line": false,
+        "default": "Tab"
+      },
+      {
+        "name": "tab_image",
+        "label": "Image",
+        "type": "image",
+        "responsive": true,
+        "resizable": true,
+        "show_loading": true,
+        "default": {
+          "src": "",
+          "alt": "",
+          "width": 0,
+          "height": 0,
+          "size_type": "auto",
+          "loading": "lazy"
+        }
+      },
+      {
+        "name": "body_copy",
+        "label": "Body",
+        "type": "richtext",
+        "enabled_features": [
+          "bold",
+          "italic",
+          "link",
+          "nonbreaking_space"
+        ],
+        "default": "<p>Tab description.</p>"
+      },
+      {
+        "name": "cta",
+        "label": "Button",
+        "type": "group",
+        "children": [
+          {
+            "name": "show",
+            "label": "Show button",
+            "type": "boolean",
+            "display": "toggle",
+            "default": true
+          },
+          {
+            "name": "text",
+            "label": "Text",
+            "type": "text",
+            "allow_new_line": false,
+            "default": "Learn More"
+          },
+          {
+            "name": "link",
+            "label": "Link",
+            "type": "link",
+            "supported_types": [
+              "EXTERNAL",
+              "CONTENT",
+              "FILE",
+              "EMAIL_ADDRESS",
+              "BLOG"
+            ],
+            "default": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": ""
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            }
+          }
+        ]
+      }
+    ],
+    "default": [
+      {
+        "tab_label": "Activate",
+        "tab_image": {
+          "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/Activate2-1.webp",
+          "alt": "Activate dashboard",
+          "width": 1186,
+          "height": 673,
+          "size_type": "exact",
+          "loading": "lazy"
+        },
+        "body_copy": "<p>Access premium inventory that aligns to the brand values you've worked hard to uphold.</p>",
+        "cta": {
+          "show": true,
+          "text": "Learn More",
+          "link": {
+            "url": {
+              "content_id": null,
+              "type": "EXTERNAL",
+              "href": "https://www.tvscientific.com/premium-inventory"
+            },
+            "open_in_new_tab": false,
+            "no_follow": false
+          }
+        }
+      },
+      {
+        "tab_label": "Measure",
+        "tab_image": {
+          "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/Measure-1.webp",
+          "alt": "Measure dashboard",
+          "width": 1187,
+          "height": 672,
+          "size_type": "exact",
+          "loading": "lazy"
+        },
+        "body_copy": "<p>Rely on proprietary attribution and third-party validation to track and improve campaign performance.</p>",
+        "cta": {
+          "show": true,
+          "text": "Learn More",
+          "link": {
+            "url": {
+              "content_id": null,
+              "type": "EXTERNAL",
+              "href": "https://www.tvscientific.com/measurement-and-attribution"
+            },
+            "open_in_new_tab": false,
+            "no_follow": false
+          }
+        }
+      },
+      {
+        "tab_label": "Optimize",
+        "tab_image": {
+          "src": "",
+          "alt": "",
+          "width": 0,
+          "height": 0,
+          "size_type": "auto",
+          "loading": "lazy"
+        },
+        "body_copy": "<p>tvScientific AI analyzes tens of thousands of variables in real time to drive your chosen outcome.</p>",
+        "cta": {
+          "show": true,
+          "text": "Learn More",
+          "link": {
+            "url": {
+              "content_id": null,
+              "type": "EXTERNAL",
+              "href": "https://www.tvscientific.com/tvscientific-ai"
+            },
+            "open_in_new_tab": false,
+            "no_follow": false
+          }
+        }
+      }
+    ]
+  },
+  {
+    "name": "behavior",
+    "label": "Scroll behavior",
+    "type": "group",
+    "children": [
+      {
+        "name": "pin_enabled",
+        "label": "Pin while scrolling through tabs (desktop)",
+        "type": "boolean",
+        "display": "toggle",
+        "default": true
+      },
+      {
+        "name": "scroll_distance_per_tab",
+        "label": "Scroll distance per tab (% of screen height)",
+        "type": "number",
+        "min": 50,
+        "max": 200,
+        "step": 10,
+        "default": 100
+      }
+    ]
+  },
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "spacing_top",
+        "label": "Space above",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          [
+            "0",
+            "None"
+          ],
+          [
+            "32",
+            "32px"
+          ],
+          [
+            "48",
+            "48px"
+          ],
+          [
+            "64",
+            "64px"
+          ],
+          [
+            "80",
+            "80px"
+          ],
+          [
+            "96",
+            "96px"
+          ],
+          [
+            "112",
+            "112px"
+          ],
+          [
+            "120",
+            "120px"
+          ],
+          [
+            "128",
+            "128px"
+          ]
+        ],
+        "default": "64"
+      },
+      {
+        "name": "spacing_bottom",
+        "label": "Space below",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          [
+            "0",
+            "None"
+          ],
+          [
+            "32",
+            "32px"
+          ],
+          [
+            "48",
+            "48px"
+          ],
+          [
+            "64",
+            "64px"
+          ],
+          [
+            "80",
+            "80px"
+          ],
+          [
+            "96",
+            "96px"
+          ],
+          [
+            "112",
+            "112px"
+          ],
+          [
+            "120",
+            "120px"
+          ],
+          [
+            "128",
+            "128px"
+          ]
+        ],
+        "default": "128"
+      }
+    ]
+  }
+]

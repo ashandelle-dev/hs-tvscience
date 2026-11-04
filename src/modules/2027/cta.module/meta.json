@@ -1,0 +1,21 @@
+{
+  "label": "CTA / Section Heading",
+  "host_template_types": [
+    "PAGE",
+    "BLOG_POST",
+    "BLOG_LISTING"
+  ],
+  "content_types": [
+    "SITE_PAGE",
+    "LANDING_PAGE",
+    "BLOG_POST",
+    "BLOG_LISTING"
+  ],
+  "is_available_for_new_content": true,
+  "global": false,
+  "smart_type": "NOT_SMART",
+  "icon": "fontawesome-5.0.10:bullhorn:REGULAR",
+  "categories": [
+    "design"
+  ]
+}

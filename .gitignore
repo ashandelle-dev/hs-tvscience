@@ -23,3 +23,6 @@ hubspot.config.yml
 
 # HubSpot link folder
 .hs
+
+# Local Figma exports and cutover notes
+.figma-ref

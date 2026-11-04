@@ -1,0 +1,314 @@
+[
+  {
+    "name": "eyebrow",
+    "label": "Eyebrow (optional)",
+    "type": "text",
+    "allow_new_line": false,
+    "default": ""
+  },
+  {
+    "name": "heading",
+    "label": "Heading",
+    "type": "group",
+    "children": [
+      {
+        "name": "value",
+        "label": "Text",
+        "type": "text",
+        "allow_new_line": false,
+        "default": "Real-Time Reporting Dashboard + Google Analytics"
+      },
+      {
+        "name": "header_tag",
+        "label": "Tag",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          [
+            "h1",
+            "H1"
+          ],
+          [
+            "h2",
+            "H2"
+          ],
+          [
+            "p",
+            "Paragraph"
+          ]
+        ],
+        "default": "h1"
+      }
+    ]
+  },
+  {
+    "name": "body_copy",
+    "label": "Body copy",
+    "type": "richtext",
+    "enabled_features": [
+      "bold",
+      "italic",
+      "link",
+      "nonbreaking_space"
+    ],
+    "default": "<p>tvScientific’s dashboard directly integrates into Google Analytics to give you a comprehensive view of traffic and conversions from CTV advertising campaigns.</p>"
+  },
+  {
+    "name": "cta",
+    "label": "Button",
+    "type": "group",
+    "children": [
+      {
+        "name": "text",
+        "label": "Text",
+        "type": "text",
+        "allow_new_line": false,
+        "default": "Request a Demo"
+      },
+      {
+        "name": "link",
+        "label": "Link",
+        "type": "link",
+        "supported_types": [
+          "EXTERNAL",
+          "CONTENT",
+          "FILE",
+          "EMAIL_ADDRESS",
+          "BLOG"
+        ],
+        "default": {
+          "url": {
+            "content_id": null,
+            "type": "EXTERNAL",
+            "href": "https://www.tvscientific.com/contact"
+          },
+          "open_in_new_tab": false,
+          "no_follow": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "form",
+    "label": "Form (optional, replaces the button)",
+    "type": "form",
+    "help_text": "Leave empty to show the button instead.",
+    "default": {
+      "response_type": "inline",
+      "message": "Thanks for submitting the form."
+    }
+  },
+  {
+    "name": "sfdc_campaign",
+    "label": "Salesforce campaign ID (optional)",
+    "type": "text",
+    "allow_new_line": false,
+    "default": ""
+  },
+  {
+    "name": "logo",
+    "label": "Customer logo above the heading (optional, case studies)",
+    "type": "image",
+    "responsive": true,
+    "resizable": true,
+    "show_loading": true,
+    "default": {
+      "src": "",
+      "alt": "",
+      "width": 0,
+      "height": 0,
+      "size_type": "auto",
+      "loading": "lazy"
+    }
+  },
+  {
+    "name": "image",
+    "label": "Image",
+    "type": "image",
+    "responsive": true,
+    "resizable": true,
+    "show_loading": true,
+    "default": {
+      "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/Hero%20-%20Measurements-1.webp",
+      "alt": "tvScientific site traffic dashboard with Google Analytics",
+      "width": 801,
+      "height": 745,
+      "size_type": "exact",
+      "loading": "lazy"
+    }
+  },
+  {
+    "name": "lottie",
+    "label": "Lottie JSON URL (optional, replaces the image)",
+    "type": "text",
+    "allow_new_line": false,
+    "default": ""
+  },
+  {
+    "name": "lottie_label",
+    "label": "Animation description (for screen readers)",
+    "type": "text",
+    "allow_new_line": false,
+    "default": ""
+  },
+  {
+    "name": "image_style",
+    "label": "Image style",
+    "type": "choice",
+    "display": "radio",
+    "choices": [
+      [
+        "dashboard",
+        "Dashboard: inset from the top, bleeds off the right edge"
+      ],
+      [
+        "photo",
+        "Photo: full height, flush right"
+      ],
+      [
+        "contained",
+        "Contained: whole image, vertically centered"
+      ]
+    ],
+    "default": "dashboard"
+  },
+  {
+    "name": "layout",
+    "label": "Layout",
+    "type": "choice",
+    "display": "radio",
+    "choices": [
+      [
+        "split",
+        "Text left, image right"
+      ],
+      [
+        "centered",
+        "Centered text (image below, if any)"
+      ]
+    ],
+    "default": "split"
+  },
+  {
+    "name": "anchor",
+    "label": "Anchor ID (optional, for #links)",
+    "type": "text",
+    "allow_new_line": false,
+    "default": ""
+  },
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "spacing_top",
+        "label": "Space above",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          [
+            "0",
+            "None"
+          ],
+          [
+            "32",
+            "32px"
+          ],
+          [
+            "48",
+            "48px"
+          ],
+          [
+            "64",
+            "64px"
+          ],
+          [
+            "80",
+            "80px"
+          ],
+          [
+            "96",
+            "96px"
+          ],
+          [
+            "112",
+            "112px"
+          ],
+          [
+            "120",
+            "120px"
+          ],
+          [
+            "128",
+            "128px"
+          ]
+        ],
+        "default": "0"
+      },
+      {
+        "name": "spacing_bottom",
+        "label": "Space below",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          [
+            "0",
+            "None"
+          ],
+          [
+            "32",
+            "32px"
+          ],
+          [
+            "48",
+            "48px"
+          ],
+          [
+            "64",
+            "64px"
+          ],
+          [
+            "80",
+            "80px"
+          ],
+          [
+            "96",
+            "96px"
+          ],
+          [
+            "112",
+            "112px"
+          ],
+          [
+            "120",
+            "120px"
+          ],
+          [
+            "128",
+            "128px"
+          ]
+        ],
+        "default": "0"
+      },
+      {
+        "name": "background",
+        "label": "Background",
+        "type": "choice",
+        "display": "radio",
+        "choices": [
+          [
+            "grey",
+            "Grey 050"
+          ],
+          [
+            "white",
+            "White (images below read as part of the hero)"
+          ]
+        ],
+        "default": "grey"
+      }
+    ]
+  }
+]

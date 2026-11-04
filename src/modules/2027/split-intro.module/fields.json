@@ -1,0 +1,301 @@
+[
+  {
+    "name": "left",
+    "label": "Left column",
+    "type": "group",
+    "children": [
+      {
+        "name": "icon",
+        "label": "Icon (optional)",
+        "type": "image",
+        "responsive": true,
+        "resizable": true,
+        "show_loading": true,
+        "default": {
+          "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/Icons/tvScientific-check-icon.svg",
+          "alt": "",
+          "width": 88,
+          "height": 101,
+          "size_type": "exact",
+          "loading": "lazy"
+        },
+        "help_text": "Decorative: leave alt text empty unless the icon adds meaning."
+      },
+      {
+        "name": "heading",
+        "label": "Heading",
+        "type": "text",
+        "allow_new_line": true,
+        "default": "Guaranteed\nOutcomes"
+      },
+      {
+        "name": "heading_size",
+        "label": "Heading size",
+        "type": "choice",
+        "display": "radio",
+        "choices": [
+          [
+            "lg",
+            "Large (44px)"
+          ],
+          [
+            "sm",
+            "Small (32px)"
+          ]
+        ],
+        "default": "lg"
+      },
+      {
+        "name": "header_tag",
+        "label": "Heading tag",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          [
+            "h2",
+            "H2"
+          ],
+          [
+            "h3",
+            "H3"
+          ],
+          [
+            "p",
+            "Paragraph"
+          ]
+        ],
+        "default": "h2"
+      },
+      {
+        "name": "body_copy",
+        "label": "Text under the heading (optional)",
+        "type": "richtext",
+        "enabled_features": [
+          "bold",
+          "italic",
+          "link",
+          "nonbreaking_space"
+        ],
+        "default": ""
+      }
+    ]
+  },
+  {
+    "name": "right",
+    "label": "Right column",
+    "type": "group",
+    "children": [
+      {
+        "name": "heading",
+        "label": "Heading (optional)",
+        "type": "text",
+        "allow_new_line": false,
+        "default": "TV ads, meet guaranteed outcomes."
+      },
+      {
+        "name": "header_tag",
+        "label": "Heading tag",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          [
+            "h2",
+            "H2"
+          ],
+          [
+            "h3",
+            "H3"
+          ],
+          [
+            "p",
+            "Paragraph"
+          ]
+        ],
+        "default": "h3"
+      },
+      {
+        "name": "body_copy",
+        "label": "Body copy",
+        "type": "richtext",
+        "enabled_features": [
+          "bold",
+          "italic",
+          "link",
+          "nonbreaking_space"
+        ],
+        "default": "<p>With tvScientific, you decide what outcome matters most for your business — sales, installs, and more — and only pay when you get results.</p><p>Can your search and social campaigns do that?</p>"
+      },
+      {
+        "name": "cta",
+        "label": "Button",
+        "type": "group",
+        "children": [
+          {
+            "name": "style",
+            "label": "Style",
+            "type": "choice",
+            "display": "radio",
+            "choices": [
+              [
+                "button",
+                "Button"
+              ],
+              [
+                "link",
+                "Text link with arrow"
+              ],
+              [
+                "none",
+                "Hidden"
+              ]
+            ],
+            "default": "button"
+          },
+          {
+            "name": "text",
+            "label": "Text",
+            "type": "text",
+            "allow_new_line": false,
+            "default": "Learn More"
+          },
+          {
+            "name": "link",
+            "label": "Link",
+            "type": "link",
+            "supported_types": [
+              "EXTERNAL",
+              "CONTENT",
+              "FILE",
+              "EMAIL_ADDRESS",
+              "BLOG"
+            ],
+            "default": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": "https://www.tvscientific.com/contact"
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "vertical_align",
+    "label": "Vertical alignment",
+    "type": "choice",
+    "display": "radio",
+    "choices": [
+      [
+        "center",
+        "Center"
+      ],
+      [
+        "start",
+        "Top"
+      ]
+    ],
+    "default": "center"
+  },
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "spacing_top",
+        "label": "Space above",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          [
+            "0",
+            "None"
+          ],
+          [
+            "32",
+            "32px"
+          ],
+          [
+            "48",
+            "48px"
+          ],
+          [
+            "64",
+            "64px"
+          ],
+          [
+            "80",
+            "80px"
+          ],
+          [
+            "96",
+            "96px"
+          ],
+          [
+            "112",
+            "112px"
+          ],
+          [
+            "120",
+            "120px"
+          ],
+          [
+            "128",
+            "128px"
+          ]
+        ],
+        "default": "64"
+      },
+      {
+        "name": "spacing_bottom",
+        "label": "Space below",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          [
+            "0",
+            "None"
+          ],
+          [
+            "32",
+            "32px"
+          ],
+          [
+            "48",
+            "48px"
+          ],
+          [
+            "64",
+            "64px"
+          ],
+          [
+            "80",
+            "80px"
+          ],
+          [
+            "96",
+            "96px"
+          ],
+          [
+            "112",
+            "112px"
+          ],
+          [
+            "120",
+            "120px"
+          ],
+          [
+            "128",
+            "128px"
+          ]
+        ],
+        "default": "80"
+      }
+    ]
+  }
+]

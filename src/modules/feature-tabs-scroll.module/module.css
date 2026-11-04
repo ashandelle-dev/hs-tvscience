@@ -76,7 +76,7 @@
 .ftscroll-label {
   display: flex;
   align-items: center;
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: 'Pin Sans', sans-serif;
   font-weight: 600;
   font-size: 48px;
   line-height: 1.2;
@@ -87,7 +87,7 @@
 }
 
 .ftscroll-label[data-active="true"] {
-  color: #31373d;
+  color: #494943;
 }
 
 .ftscroll-label-icon {

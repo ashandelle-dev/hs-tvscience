@@ -1,0 +1,24 @@
+<!--
+  templateType: email_subscription_preferences_page
+  isAvailableForNewContent: true
+  label: System - Email subscription preferences (2027)
+-->
+{% extends "../../../layouts/2027/base.html" %}
+
+{% block body %}
+<main id="main-content">
+  <section class="bg-grey-050 py-16 md:py-24">
+    <div class="wrap">
+      <div class="mx-auto max-w-copy">
+        <p class="m-0 mb-4 text-body-relaxed font-bold text-black">Email preferences</p>
+        <h1 class="m-0 text-balance text-heading-sm font-heavy text-black md:text-heading-hero">Manage your subscriptions</h1>
+        <p class="m-0 mt-6 text-body-relaxed text-grey-350">Choose the emails you want to get from tvScientific by Pinterest.</p>
+        <div class="system-card mt-10 rounded-32 bg-white p-8 md:p-10">
+          {% module "subscription_preferences" path="@hubspot/email_subscriptions", label="Subscription preferences",
+            button_text="Update preferences" %}
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock body %}

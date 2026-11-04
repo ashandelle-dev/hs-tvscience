@@ -4,7 +4,7 @@
 {% set select_blog = blog_by_id(module.card_blog) %}
 {% set blog_title = select_blog.public_title %}
 <div class="flex flex-wrap items-stretch card-swiper relative ">  
-  <div class="swiper-wrapper h-full border-[#C0E7D8] flex items-stretch">
+  <div class="swiper-wrapper h-full border-tvs-grey-light flex items-stretch">
    
   {% if module.card_tag.slug or module.card_blog %}
 
@@ -37,7 +37,7 @@
 
       {% set href=card_tag.absolute_url %}
 
-    <div class="border-t py-6 swiper-slide border-[#C0E7D8] w-full" >
+    <div class="border-t py-6 swiper-slide border-tvs-grey-light w-full" >
       <div style="background-color: {{card_bg_color}};" class="rounded-lg w-11/12 h-full relative group">
         <a href="{{ href }}" class="absolute top-0 left-0 w-full h-full z-10"></a>
         <div>
@@ -78,7 +78,7 @@
       {% if card.cta.link.url.type is equalto "EMAIL_ADDRESS" %}
         {% set href = "mailto:" + href %}
       {% endif %}
-    <div class="border-t py-6 swiper-slide border-[#C0E7D8] w-full " >
+    <div class="border-t py-6 swiper-slide border-tvs-grey-light w-full " >
       <div style="background-color: {{ card.background_color.color }}" class="rounded-lg w-11/12 h-full">
         <div>
           {% if card.texture.src %}
@@ -112,8 +112,8 @@
   {% if module.final_card.show_final_card %}
     
   
-  <div class="border-t py-6 swiper-slide border-[#C0E7D8] w-full">
-    <div class="rounded-lg w-11/12 h-full" style="background-color: {% if module.final_card.bg_color.color %} {{ module.final_card.bg_color.color }} {% else %} #1C4633 {% endif %}">
+  <div class="border-t py-6 swiper-slide border-tvs-grey-light w-full">
+    <div class="rounded-lg w-11/12 h-full" style="background-color: {% if module.final_card.bg_color.color %} {{ module.final_card.bg_color.color }} {% else %} #0D422F {% endif %}">
         <div class="mb-6">
         {% if module.final_card.texture.src %}
           {% set sizeAttrs = 'width="{{ module.final_card.texture.width }}" height="{{ module.final_card.texture.height }}"' %}
@@ -132,10 +132,10 @@
         <a href="{% if module.final_card.link.url.href %} {{module.final_card.link.url.href}} {% else %} {{ blog_tag_url("default", module.card_tag.slug) }} {%endif%}"
         class="flex relative items-center group hover:no-underline">
             <div>
-              <p class="m-0 font-plex-mono tracking-widest text-[#009061] uppercase text-[14px]">{% if module.final_card.text %} {{ module.final_card.text }} {% else %} {{ cta_text }} {% endif %}</p>
+              <p class="m-0 font-plex-mono tracking-widest text-primary uppercase text-[14px]">{% if module.final_card.text %} {{ module.final_card.text }} {% else %} {{ cta_text }} {% endif %}</p>
             </div>
             <div class="w-4 text-center group-hover:translate-x-0.5 duration-200 transition-transform">
-              <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7 5L10 8L7 11" stroke="#009061" stroke-width="1.5"></path></svg>
+              <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7 5L10 8L7 11" stroke="#19845D" stroke-width="1.5"></path></svg>
             </div>
           </a>
         </div>

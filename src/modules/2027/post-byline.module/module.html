@@ -1,0 +1,18 @@
+{% set people = module.author if module.author else module.speaker %}
+{% if people %}
+  <div>
+    {% if module.byline_heading %}
+      <p class="m-0 mb-4 text-caption font-bold text-grey-350">{{ module.byline_heading }}</p>
+    {% endif %}
+    <ul class="m-0 flex list-none flex-col gap-4 p-0">
+      {% for person in people %}
+        <li class="flex items-center gap-4">
+          {% if person.image.src %}
+            <img src="{{ person.image.src }}" alt="" class="block h-14 w-14 shrink-0 rounded-full object-cover" loading="lazy">
+          {% endif %}
+          <div class="rte rte--byline text-body-sm text-grey-350">{{ person.name_title_company }}</div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}

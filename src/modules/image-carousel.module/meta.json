@@ -4,5 +4,5 @@
   "host_template_types" : [ "PAGE", "BLOG_LISTING", "BLOG_POST" ],
   "module_id" : 189481493173,
   "label" : "Image Carousel",
-  "is_available_for_new_content" : true
+  "is_available_for_new_content" : false
 }

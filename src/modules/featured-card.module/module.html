@@ -6,7 +6,7 @@
 	{% set href = "mailto:" + href %}
 {% endif %}
 
-<div class="relative overflow-hidden rounded-[8px] py-[100px] group border border-[#0FBF84] w-full md:w-1/2 hover:shadow-[0_0_16px_rgba(0,0,0,0.2)]">
+<div class="relative overflow-hidden rounded-[8px] py-[100px] group border border-tvs-green-accessible w-full md:w-1/2 hover:shadow-[0_0_16px_rgba(0,0,0,0.2)]">
   <a href="{{ href }}"
 	{% if item.link.url.open_in_new_tab %}target="_blank"{% endif %}
 	{% if item.link.url.rel %}rel="{{ card.link.url.rel }}"{% endif %} class="absolute w-full h-full inset-0 z-10" ></a>

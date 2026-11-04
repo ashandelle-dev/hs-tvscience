@@ -1,0 +1,188 @@
+[
+  {
+    "name": "feature_heading",
+    "label": "First column heading (for screen readers)",
+    "type": "text",
+    "default": "Feature"
+  },
+  {
+    "name": "left_logo",
+    "label": "Left logo",
+    "type": "image",
+    "responsive": true,
+    "resizable": true,
+    "show_loading": true,
+    "default": {
+      "src": "https://tvscientific.com/hubfs/tvsci-logo-black.svg",
+      "alt": "tvScientific by Pinterest",
+      "width": 0,
+      "height": 0,
+      "size_type": "auto",
+      "loading": "lazy"
+    }
+  },
+  {
+    "name": "right_logo",
+    "label": "Right logo",
+    "type": "image",
+    "responsive": true,
+    "resizable": true,
+    "show_loading": true,
+    "default": {
+      "src": "",
+      "alt": "",
+      "width": 0,
+      "height": 0,
+      "size_type": "auto",
+      "loading": "lazy"
+    }
+  },
+  {
+    "name": "features",
+    "label": "Rows",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": 30,
+      "sorting_label_field": "features.feature_text",
+      "default": 3
+    },
+    "children": [
+      {
+        "name": "feature_text",
+        "label": "Feature",
+        "type": "text",
+        "default": "Feature"
+      },
+      {
+        "name": "left_status",
+        "label": "Left has it",
+        "type": "boolean",
+        "display": "toggle",
+        "default": true
+      },
+      {
+        "name": "right_status",
+        "label": "Right has it",
+        "type": "boolean",
+        "display": "toggle",
+        "default": false
+      }
+    ],
+    "default": [
+      {
+        "feature_text": "Feature one",
+        "left_status": true,
+        "right_status": true
+      },
+      {
+        "feature_text": "Feature two",
+        "left_status": true,
+        "right_status": false
+      },
+      {
+        "feature_text": "Feature three",
+        "left_status": true,
+        "right_status": false
+      }
+    ]
+  },
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "spacing_top",
+        "label": "Space above",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          [
+            "0",
+            "None"
+          ],
+          [
+            "32",
+            "32px"
+          ],
+          [
+            "48",
+            "48px"
+          ],
+          [
+            "64",
+            "64px"
+          ],
+          [
+            "80",
+            "80px"
+          ],
+          [
+            "96",
+            "96px"
+          ],
+          [
+            "112",
+            "112px"
+          ],
+          [
+            "120",
+            "120px"
+          ],
+          [
+            "128",
+            "128px"
+          ]
+        ],
+        "default": "0"
+      },
+      {
+        "name": "spacing_bottom",
+        "label": "Space below",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          [
+            "0",
+            "None"
+          ],
+          [
+            "32",
+            "32px"
+          ],
+          [
+            "48",
+            "48px"
+          ],
+          [
+            "64",
+            "64px"
+          ],
+          [
+            "80",
+            "80px"
+          ],
+          [
+            "96",
+            "96px"
+          ],
+          [
+            "112",
+            "112px"
+          ],
+          [
+            "120",
+            "120px"
+          ],
+          [
+            "128",
+            "128px"
+          ]
+        ],
+        "default": "64"
+      }
+    ]
+  }
+]

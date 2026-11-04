@@ -1,0 +1,133 @@
+{% macro link_attrs(link) -%}
+  href="{% if link.url.type == "EMAIL_ADDRESS" %}mailto:{% endif %}{{ link.url.href }}"
+  {%- if link.open_in_new_tab %} target="_blank"{% endif -%}
+  {%- if link.open_in_new_tab or link.no_follow %} rel="{% if link.open_in_new_tab %}noopener{% endif %}{% if link.no_follow %} nofollow{% endif %}"{% endif -%}
+{%- endmacro %}
+
+{% macro panel_body(tab) %}
+  {% if tab.tab_image.src %}
+    <img src="{{ tab.tab_image.src }}" alt="{{ tab.tab_image.alt }}"
+      {% if tab.tab_image.width %}width="{{ tab.tab_image.width }}"{% endif %} {% if tab.tab_image.height %}height="{{ tab.tab_image.height }}"{% endif %}
+      class="block h-auto w-full" loading="lazy">
+  {% endif %}
+  {% if tab.body_copy %}
+    <div class="mt-8 text-body text-black [&_p]:m-0">{{ tab.body_copy }}</div>
+  {% endif %}
+  {% if tab.cta.show and tab.cta.text %}
+    <div class="mt-6"><a {{ link_attrs(tab.cta.link) }} class="btn">{{ tab.cta.text }}</a></div>
+  {% endif %}
+{% endmacro %}
+
+{% macro compact_panel(tab) %}
+  {% if tab.tab_image.src %}
+    <div class="overflow-hidden rounded-20 bg-grey-050 p-6 md:p-8">
+      <img src="{{ tab.tab_image.src }}" alt="{{ tab.tab_image.alt }}"
+        {% if tab.tab_image.width %}width="{{ tab.tab_image.width }}"{% endif %} {% if tab.tab_image.height %}height="{{ tab.tab_image.height }}"{% endif %}
+        class="block h-auto w-full" loading="lazy">
+    </div>
+  {% endif %}
+  {% if tab.body_copy %}
+    <div class="rte mt-6 text-body-relaxed text-grey-350">{{ tab.body_copy }}</div>
+  {% endif %}
+  {% if tab.cta.show and tab.cta.text %}
+    <div class="mt-6"><a {{ link_attrs(tab.cta.link) }} class="btn">{{ tab.cta.text }}</a></div>
+  {% endif %}
+{% endmacro %}
+
+{% set pt = { "0": "pt-0", "32": "pt-8", "48": "pt-12", "64": "pt-12 md:pt-16", "80": "pt-12 md:pt-20", "96": "pt-16 md:pt-24", "112": "pt-16 md:pt-28", "120": "pt-16 md:pt-30", "128": "pt-16 md:pt-32" } %}
+{% set pb = { "0": "pb-0", "32": "pb-8", "48": "pb-12", "64": "pb-12 md:pb-16", "80": "pb-12 md:pb-20", "96": "pb-16 md:pb-24", "112": "pb-16 md:pb-28", "120": "pb-16 md:pb-30", "128": "pb-16 md:pb-32" } %}
+{% set pin = module.behavior.pin_enabled and module.tabs|length > 1 %}
+{% set compact = module.variant == "compact" %}
+
+<section class="{{ pt[module.style.spacing_top] }} {{ pb[module.style.spacing_bottom] }}" data-feature-tabs data-pin="{{ pin }}">
+  {% macro heading(h) %}
+    {% if h.value %}
+      <{{ h.header_tag }} class="mx-auto my-0 max-w-xl text-center text-heading-sm font-bold text-black">{{ h.value }}</{{ h.header_tag }}>
+    {% endif %}
+  {% endmacro %}
+
+  {% if compact %}
+  <div class="relative hidden lg:block" data-tabs-track data-distance="{{ module.behavior.scroll_distance_per_tab }}">
+    <div class="{% if pin %}sticky top-0 pt-16{% endif %}">
+      <div class="wrap max-w-feature">
+        <div class="px-16">
+          {% if module.heading.value %}
+            <{{ module.heading.header_tag }} class="m-0 max-w-3xl text-balance text-heading-lg font-bold text-black">{{ module.heading.value }}</{{ module.heading.header_tag }}>
+          {% endif %}
+          {% if module.intro %}<div class="rte mt-6 max-w-copy text-body-relaxed text-grey-350">{{ module.intro }}</div>{% endif %}
+          <div class="mt-16 grid grid-cols-media items-start gap-16">
+            <div class="flex flex-col" role="tablist" aria-label="{{ module.heading.value|striptags }}">
+              {% for tab in module.tabs %}
+                <button type="button" role="tab" id="{{ name }}-tab-{{ loop.index }}" aria-controls="{{ name }}-panel-{{ loop.index }}"
+                  aria-selected="{% if loop.first %}true{% else %}false{% endif %}" tabindex="{% if loop.first %}0{% else %}-1{% endif %}"
+                  class="cursor-pointer border-0 border-l-4 border-solid border-grey-100 bg-transparent py-4 pl-6 pr-0 text-left text-title font-bold text-grey-250 transition-colors duration-200 hover:text-black aria-selected:border-tvgreen-600 aria-selected:text-black"
+                  data-tab-index="{{ loop.index0 }}">{{ tab.tab_label }}</button>
+              {% endfor %}
+            </div>
+            <div>
+              {% for tab in module.tabs %}
+                <div role="tabpanel" id="{{ name }}-panel-{{ loop.index }}" aria-labelledby="{{ name }}-tab-{{ loop.index }}" {% if not loop.first %}hidden{% endif %}>
+                  {{ compact_panel(tab) }}
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% else %}
+  {# Desktop: pinned and vertically centred; the track's height (set in module.js) gives the scroll distance #}
+  <div class="relative hidden lg:block" data-tabs-track data-distance="{{ module.behavior.scroll_distance_per_tab }}">
+    <div class="{% if pin %}sticky top-0 flex h-screen flex-col justify-center{% else %}pt-16{% endif %}">
+      <div class="wrap max-w-content">
+        {{ heading(module.heading) }}
+        <div class="mt-20 grid grid-cols-tabs pl-9">
+          <div class="flex flex-col items-start gap-6" role="tablist" aria-label="{{ module.heading.value|striptags }}">
+            {% for tab in module.tabs %}
+              <button type="button" role="tab" id="{{ name }}-tab-{{ loop.index }}" aria-controls="{{ name }}-panel-{{ loop.index }}"
+                aria-selected="{% if loop.first %}true{% else %}false{% endif %}" tabindex="{% if loop.first %}0{% else %}-1{% endif %}"
+                class="cursor-pointer border-0 bg-transparent p-0 text-left text-heading-lg font-bold leading-none text-grey-200 transition-colors duration-200 hover:text-grey-350 aria-selected:text-black"
+                data-tab-index="{{ loop.index0 }}">{{ tab.tab_label }}</button>
+            {% endfor %}
+          </div>
+          <div>
+            {% for tab in module.tabs %}
+              <div role="tabpanel" id="{{ name }}-panel-{{ loop.index }}" aria-labelledby="{{ name }}-tab-{{ loop.index }}" {% if not loop.first %}hidden{% endif %}>
+                {{ panel_body(tab) }}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% endif %}
+
+  {# Mobile / tablet: stacked #}
+  {% if compact %}
+    <div class="wrap lg:hidden">
+      {% if module.heading.value %}<{{ module.heading.header_tag }} class="m-0 text-heading-sm font-bold text-black">{{ module.heading.value }}</{{ module.heading.header_tag }}>{% endif %}
+      {% if module.intro %}<div class="rte mt-4 text-body-relaxed text-grey-350">{{ module.intro }}</div>{% endif %}
+    </div>
+    <div class="wrap mt-10 flex flex-col gap-12 lg:hidden">
+      {% for tab in module.tabs %}
+        <div>
+          <h3 class="m-0 mb-4 text-title font-bold text-black">{{ tab.tab_label }}</h3>
+          {{ compact_panel(tab) }}
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+  <div class="wrap lg:hidden">{{ heading(module.heading) }}</div>
+  <div class="wrap mt-12 flex flex-col gap-16 lg:hidden">
+    {% for tab in module.tabs %}
+      <div>
+        <h3 class="m-0 mb-6 text-heading-sm font-bold text-black">{{ tab.tab_label }}</h3>
+        {{ panel_body(tab) }}
+      </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+</section>

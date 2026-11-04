@@ -6,7 +6,7 @@
 
 {% for content in contents %}
 <div class="w-full">
-  <div class="border-t border-[#009061] relative h-full py-6">
+  <div class="border-t border-primary relative h-full py-6">
     <p class="mb-1 uppercase text-[#1E4D83]">{{ content.publish_date | datetimeformat('%b %e, %Y') }}</p>
     <a href="{{ content.absolute_url }}">
       <h2 class="!text-[22px] !leading-[32px] tracking[.22px] font-medium">{{ content.name }}</h2>

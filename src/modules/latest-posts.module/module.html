@@ -5,7 +5,7 @@
 
 {% for latest_post in latest_posts %}
 <div class="w-11/12 md:w-7/12 lg:w-1/3 lg:px-3 mb-6 lg:mb-0">
-<div class="rounded-lg overflow-hidden border border-[#009061] relative h-full">
+<div class="rounded-lg overflow-hidden border border-primary relative h-full">
   <div class="h-[220px]">
    
     <img class="w-full h-full object-cover" src="{{latest_post.post_list_summary_featured_image}}" alt="{{ latest_post.name }} thumbnail graphic" >
@@ -13,10 +13,10 @@
   </div>
   <div  class="p-6 bg-white relative">
     <div class="mb-3">
-      <p class="m-0 text-[16px] uppercase text-[#009061] font-medium tracking-widest">Blog</p>
+      <p class="m-0 text-[16px] uppercase text-primary font-medium tracking-widest">Blog</p>
     </div>
     <div class="mb-12">
-      <p class="text-[18px] md:text-[22px] font-plex font-light text-[#31373D] tracking-wide max-lines max-lines-2">
+      <p class="text-[18px] md:text-[22px] font-plex font-light text-tvs-grey tracking-wide max-lines max-lines-2">
       {{ latest_post.name }} 
       </p>
     </div>
@@ -27,11 +27,11 @@
       <a href="{{latest_post.absolute_url}}"
       class="flex relative items-center group hover:no-underline">
         <div>
-          <p class="m-0 text-[14px] font-plex-mono tracking-widest text-[#009061] uppercase ">Read more</p>
+          <p class="m-0 text-[14px] font-plex-mono tracking-widest text-primary uppercase ">Read more</p>
         </div>
         <div class="w-4 text-center group-hover:translate-x-0.5 duration-200 transition-transform">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M7 5L10 8L7 11" stroke="#009061" stroke-width="1.5"/>
+            <path d="M7 5L10 8L7 11" stroke="#19845D" stroke-width="1.5"/>
           </svg>    
         </div>
       </a>

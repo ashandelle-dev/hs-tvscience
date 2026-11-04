@@ -4,5 +4,5 @@
   "host_template_types" : [ "PAGE" ],
   "module_id" : 201692649651,
   "label" : "Quote with Video Background",
-  "is_available_for_new_content" : true
+  "is_available_for_new_content" : false
 }

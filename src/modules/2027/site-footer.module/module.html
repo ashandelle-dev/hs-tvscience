@@ -1,0 +1,62 @@
+{% macro link_attrs(link) -%}
+  href="{% if link.url.type == "EMAIL_ADDRESS" %}mailto:{% endif %}{{ link.url.href }}"
+  {%- if link.open_in_new_tab %} target="_blank"{% endif -%}
+  {%- if link.open_in_new_tab or link.no_follow %} rel="{% if link.open_in_new_tab %}noopener{% endif %}{% if link.no_follow %} nofollow{% endif %}"{% endif -%}
+{%- endmacro %}
+
+<footer class="bg-white pb-12 pt-16 text-body-sm font-medium text-grey-350">
+  <div class="wrap">
+
+    {# Logo + social #}
+    <div class="flex items-center justify-between border-0 border-b-stroke-s border-solid border-grey-100 pb-8">
+      {% if module.logo.image.src %}
+        <a {{ link_attrs(module.logo.link) }} class="shrink-0">
+          <img src="{{ module.logo.image.src }}" alt="{{ module.logo.image.alt }}"
+            width="{{ module.logo.image.width }}" height="{{ module.logo.image.height }}"
+            class="block h-auto w-logo" loading="lazy">
+        </a>
+      {% endif %}
+
+      {% if module.social %}
+        <ul class="m-0 flex list-none items-center gap-3 p-0">
+          {% for s in module.social %}
+            <li>
+              <a {{ link_attrs(s.link) }} class="flex size-6 items-center justify-center text-black hover:text-tvgreen-600 [&_svg]:size-5 [&_svg]:fill-current"
+                aria-label="{{ s.icon.name|replace('-in', '')|replace('-f', '')|capitalize }}">
+                {% icon name="{{ s.icon.name }}", style="{{ s.icon.type }}", unicode="{{ s.icon.unicode }}", purpose="decorative" %}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+
+    {# Link columns — contact details sit under the last column #}
+    <div class="grid grid-cols-2 gap-x-8 gap-y-12 pb-8 pt-16 md:grid-cols-3 lg:grid-cols-5">
+      {% for group in module.groups %}
+        <div>
+          <p class="mb-5 font-bold text-black">{{ group.title }}</p>
+          <ul class="m-0 flex list-none flex-col gap-5 p-0">
+            {% for l in group.links %}
+              <li><a {{ link_attrs(l.link) }} class="text-grey-350 no-underline hover:text-black hover:underline">{{ l.text }}</a></li>
+            {% endfor %}
+          </ul>
+
+          {% if loop.last and (module.contact_title or module.contact) %}
+            {% if module.contact_title %}
+              <p class="mb-4 mt-14 font-bold text-black">{{ module.contact_title }}</p>
+            {% endif %}
+            <div class="[&_a:hover]:underline [&_a]:text-grey-350 [&_a]:no-underline [&_p+p]:mt-4 [&_p]:m-0">{{ module.contact }}</div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+
+    {# Bottom bar #}
+    <div class="flex flex-col gap-2 border-0 border-t-stroke-s border-solid border-grey-100 pt-12 text-caption md:flex-row md:justify-between">
+      {% if module.disclaimer %}<p class="m-0">{{ module.disclaimer }}</p>{% endif %}
+      {% if module.copyright %}<p class="m-0">{{ module.copyright|replace("{year}", local_dt|datetimeformat("%Y")) }}</p>{% endif %}
+    </div>
+
+  </div>
+</footer>

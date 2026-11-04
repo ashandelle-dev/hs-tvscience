@@ -1,0 +1,484 @@
+[
+  {
+    "name": "eyebrow",
+    "label": "Eyebrow (optional)",
+    "type": "text",
+    "allow_new_line": false,
+    "default": ""
+  },
+  {
+    "name": "heading",
+    "label": "Heading",
+    "type": "text",
+    "allow_new_line": false,
+    "default": "Performance TV Advertising Resources"
+  },
+  {
+    "name": "header_tag",
+    "label": "Heading tag",
+    "type": "choice",
+    "display": "select",
+    "choices": [
+      [
+        "h2",
+        "H2"
+      ],
+      [
+        "h3",
+        "H3"
+      ],
+      [
+        "p",
+        "Paragraph"
+      ]
+    ],
+    "default": "h2"
+  },
+  {
+    "name": "align",
+    "label": "Heading alignment",
+    "type": "choice",
+    "display": "radio",
+    "choices": [
+      [
+        "center",
+        "Center"
+      ],
+      [
+        "left",
+        "Left"
+      ]
+    ],
+    "default": "center"
+  },
+  {
+    "name": "source",
+    "label": "Cards",
+    "type": "choice",
+    "display": "radio",
+    "choices": [
+      [
+        "manual",
+        "Pick cards by hand"
+      ],
+      [
+        "tag",
+        "Latest blog posts with a tag"
+      ],
+      [
+        "author",
+        "Latest blog posts by an author"
+      ]
+    ],
+    "default": "manual"
+  },
+  {
+    "name": "blog",
+    "label": "Blog posts (when Cards = latest posts)",
+    "type": "group",
+    "children": [
+      {
+        "name": "tag",
+        "label": "Tag slug",
+        "type": "text",
+        "allow_new_line": false,
+        "default": "blog"
+      },
+      {
+        "name": "author",
+        "label": "Author slug (posts by an author)",
+        "type": "text",
+        "allow_new_line": false,
+        "default": ""
+      },
+      {
+        "name": "count",
+        "label": "Number of posts",
+        "type": "number",
+        "min": 1,
+        "max": 200,
+        "default": 3
+      },
+      {
+        "name": "page_size",
+        "label": "Show this many, then a Show more button (0 = all)",
+        "type": "number",
+        "min": 0,
+        "max": 48,
+        "default": 0
+      },
+      {
+        "name": "show_date",
+        "label": "Show the publish date instead of the eyebrow",
+        "type": "boolean",
+        "display": "toggle",
+        "default": false
+      },
+      {
+        "name": "eyebrow",
+        "label": "Eyebrow on each card",
+        "type": "text",
+        "allow_new_line": false,
+        "default": "Blog"
+      },
+      {
+        "name": "cta_text",
+        "label": "Link text",
+        "type": "text",
+        "allow_new_line": false,
+        "default": "Read More"
+      }
+    ]
+  },
+  {
+    "name": "cards",
+    "label": "Cards",
+    "type": "group",
+    "occurrence": {
+      "min": 0,
+      "max": 9,
+      "sorting_label_field": "cards.title",
+      "default": 3
+    },
+    "children": [
+      {
+        "name": "image",
+        "label": "Image",
+        "type": "image",
+        "responsive": true,
+        "resizable": true,
+        "show_loading": true,
+        "default": {
+          "src": "",
+          "alt": "",
+          "width": 0,
+          "height": 0,
+          "size_type": "auto",
+          "loading": "lazy"
+        },
+        "help_text": "Cropped to 328 × 171 unless Image shape = natural."
+      },
+      {
+        "name": "logo",
+        "label": "Logo (stacked layout, replaces the eyebrow)",
+        "type": "image",
+        "responsive": true,
+        "resizable": true,
+        "show_loading": true,
+        "default": {
+          "src": "",
+          "alt": "",
+          "width": 0,
+          "height": 0,
+          "size_type": "auto",
+          "loading": "lazy"
+        }
+      },
+      {
+        "name": "eyebrow",
+        "label": "Eyebrow",
+        "type": "text",
+        "allow_new_line": false,
+        "default": "Report"
+      },
+      {
+        "name": "title",
+        "label": "Title",
+        "type": "text",
+        "allow_new_line": false,
+        "default": "Resource title"
+      },
+      {
+        "name": "description",
+        "label": "Description (optional)",
+        "type": "richtext",
+        "enabled_features": [
+          "bold",
+          "italic",
+          "link",
+          "nonbreaking_space"
+        ],
+        "default": ""
+      },
+      {
+        "name": "cta",
+        "label": "Button",
+        "type": "group",
+        "children": [
+          {
+            "name": "text",
+            "label": "Text",
+            "type": "text",
+            "allow_new_line": false,
+            "default": "Read More"
+          },
+          {
+            "name": "link",
+            "label": "Link",
+            "type": "link",
+            "supported_types": [
+              "EXTERNAL",
+              "CONTENT",
+              "FILE",
+              "EMAIL_ADDRESS",
+              "BLOG"
+            ],
+            "default": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": ""
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            }
+          }
+        ]
+      }
+    ],
+    "default": [
+      {
+        "eyebrow": "Report",
+        "title": "2026 Consumer Trends Report",
+        "image": {
+          "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/Consumer%20Trends%20cover.jpg",
+          "alt": "2026 Consumer Trends Report cover",
+          "width": 2400,
+          "height": 1256,
+          "size_type": "exact",
+          "loading": "lazy"
+        },
+        "cta": {
+          "text": "Read More",
+          "link": {
+            "url": {
+              "content_id": null,
+              "type": "EXTERNAL",
+              "href": "https://www.tvscientific.com/2026-consumer-trends-report"
+            },
+            "open_in_new_tab": false,
+            "no_follow": false
+          }
+        }
+      },
+      {
+        "eyebrow": "Report",
+        "title": "The 2026 State of Performance TV",
+        "image": {
+          "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/SOPTV%20hero-1.webp",
+          "alt": "The 2026 State of Performance TV cover",
+          "width": 1800,
+          "height": 942,
+          "size_type": "exact",
+          "loading": "lazy"
+        },
+        "cta": {
+          "text": "Read More",
+          "link": {
+            "url": {
+              "content_id": null,
+              "type": "EXTERNAL",
+              "href": "https://www.tvscientific.com/state-of-performance-tv-2026"
+            },
+            "open_in_new_tab": true,
+            "no_follow": false
+          }
+        }
+      },
+      {
+        "eyebrow": "Guide",
+        "title": "The Performance Marketing Media Mix Guide",
+        "image": {
+          "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/Marketing%20Mix%20cover-1.jpg",
+          "alt": "The Performance Marketing Media Mix Guide cover",
+          "width": 1200,
+          "height": 628,
+          "size_type": "exact",
+          "loading": "lazy"
+        },
+        "cta": {
+          "text": "Read More",
+          "link": {
+            "url": {
+              "content_id": null,
+              "type": "EXTERNAL",
+              "href": "https://www.tvscientific.com/resources/reports/2026-d2c-performance-marketing-media-mix-guide"
+            },
+            "open_in_new_tab": false,
+            "no_follow": false
+          }
+        }
+      }
+    ]
+  },
+  {
+    "name": "layout",
+    "label": "Layout",
+    "type": "choice",
+    "display": "radio",
+    "choices": [
+      [
+        "grid",
+        "Grid of cards"
+      ],
+      [
+        "stacked",
+        "Stacked wide cards, image left"
+      ]
+    ],
+    "default": "grid"
+  },
+  {
+    "name": "columns",
+    "label": "Columns",
+    "type": "choice",
+    "display": "radio",
+    "choices": [
+      [
+        "2",
+        "2"
+      ],
+      [
+        "3",
+        "3"
+      ],
+      [
+        "4",
+        "4"
+      ]
+    ],
+    "default": "3"
+  },
+  {
+    "name": "image_ratio",
+    "label": "Image shape",
+    "type": "choice",
+    "display": "radio",
+    "choices": [
+      [
+        "card",
+        "Card crop (328 × 171)"
+      ],
+      [
+        "natural",
+        "Natural (no crop)"
+      ]
+    ],
+    "default": "card"
+  },
+  {
+    "name": "background",
+    "label": "Background",
+    "type": "choice",
+    "display": "radio",
+    "choices": [
+      [
+        "grey",
+        "Grey 050 band, white cards"
+      ],
+      [
+        "white",
+        "White, Grey 050 cards"
+      ]
+    ],
+    "default": "grey"
+  },
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "spacing_top",
+        "label": "Space above",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          [
+            "0",
+            "None"
+          ],
+          [
+            "32",
+            "32px"
+          ],
+          [
+            "48",
+            "48px"
+          ],
+          [
+            "64",
+            "64px"
+          ],
+          [
+            "80",
+            "80px"
+          ],
+          [
+            "96",
+            "96px"
+          ],
+          [
+            "112",
+            "112px"
+          ],
+          [
+            "120",
+            "120px"
+          ],
+          [
+            "128",
+            "128px"
+          ]
+        ],
+        "default": "112"
+      },
+      {
+        "name": "spacing_bottom",
+        "label": "Space below",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          [
+            "0",
+            "None"
+          ],
+          [
+            "32",
+            "32px"
+          ],
+          [
+            "48",
+            "48px"
+          ],
+          [
+            "64",
+            "64px"
+          ],
+          [
+            "80",
+            "80px"
+          ],
+          [
+            "96",
+            "96px"
+          ],
+          [
+            "112",
+            "112px"
+          ],
+          [
+            "120",
+            "120px"
+          ],
+          [
+            "128",
+            "128px"
+          ]
+        ],
+        "default": "112"
+      }
+    ]
+  }
+]

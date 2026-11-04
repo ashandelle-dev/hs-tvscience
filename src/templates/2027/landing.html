@@ -1,0 +1,17 @@
+<!--
+    templateType: page
+    label: 2027 Landing Page (staging)
+    isAvailableForNewContent: true
+-->
+{% extends "../../layouts/2027/base.html" %}
+
+{% block header %}
+  {% module "site_header_minimal" path="../../modules/2027/site-header", label="Header (minimal)", minimal=true %}
+{% endblock header %}
+
+{% block body %}
+<main id="main-content">
+  {% dnd_area "dnd_area" label="Main content" %}
+  {% end_dnd_area %}
+</main>
+{% endblock body %}

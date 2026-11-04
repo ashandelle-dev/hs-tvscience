@@ -4,5 +4,5 @@
   "host_template_types" : [ "PAGE", "BLOG_LISTING", "BLOG_POST" ],
   "module_id" : 195732953900,
   "label" : "2/3/4 Column Grid",
-  "is_available_for_new_content" : true
+  "is_available_for_new_content" : false
 }

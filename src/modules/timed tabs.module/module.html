@@ -19,7 +19,7 @@
   }
 
   .tab-selector.active {
-    color: #1F252B;
+    color: #000000;
   }
 
   .button-container {
@@ -41,9 +41,9 @@
 {%end_require_css%}
 
 <div class="timed-tabs flex flex-col md:flex-row items-stretch gap-10">
-  <div class="tab-headers w-full md:w-1/2 flex flex-col pl-6 border-l border-[#23E596]">
+  <div class="tab-headers w-full md:w-1/2 flex flex-col pl-6 border-l border-tvs-green">
     {% for item in module.tab %}
-      <h3 data-target="tab-{{loop.index}}" class="tab-selector hover:cursor-pointer hover:text-[#198960] text-5xl {%if loop.index == 1%}active{% endif %}">
+      <h3 data-target="tab-{{loop.index}}" class="tab-selector hover:cursor-pointer hover:text-tvs-green-accessible text-5xl {%if loop.index == 1%}active{% endif %}">
         {{item.tab_title}}
       </h3>
     {% endfor %}
@@ -72,10 +72,10 @@
 
             {% for stat in item.tab_content_stat %}
             <div>
-              <div class="text-2xl text-[#0F1C2D] font-medium stat-text">
+              <div class="text-2xl text-tvs-black font-medium stat-text">
                {{ stat.tab_stat_text }}
               </div>
-              <div class="text-xs text-[#198960] stat-label">
+              <div class="text-xs text-tvs-green-accessible stat-label">
                 {{ stat.tab_stat_label }}
               </div>
             </div>

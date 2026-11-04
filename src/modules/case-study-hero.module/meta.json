@@ -4,5 +4,5 @@
   "host_template_types" : [ "PAGE" ],
   "module_id" : 118559900189,
   "label" : "Case Study Hero",
-  "is_available_for_new_content" : true
+  "is_available_for_new_content" : false
 }

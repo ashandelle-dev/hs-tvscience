@@ -47,9 +47,9 @@
           <img class="m-0" src="{{ module.logo.src }}" alt="{{ module.logo.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
         {% endif %}
       </div>
-      <div class="h-1 w-full {% if !custom_color %}bg-[#0FBF84] {% endif %} mb-6" {% if custom_color %}style="background-color: {{ module.styles.text_color.css }};"{% endif %}></div>
+      <div class="h-1 w-full {% if !custom_color %}bg-tvs-green-accessible {% endif %} mb-6" {% if custom_color %}style="background-color: {{ module.styles.text_color.css }};"{% endif %}></div>
       <div class="mb-6">
-        <p class="mb-3 text-[24px] leading-normal italic {% if custom_color %} text-inherit {% else %} text-[#1C4633] {% endif %}">
+        <p class="mb-3 text-[24px] leading-normal italic {% if custom_color %} text-inherit {% else %} text-primary-darker {% endif %}">
           {{ module.qs_quote }}
         </p>
       </div>
@@ -93,7 +93,7 @@
         {% endif %}
         </div>
         <div>
-          <div class="border-l-4 {% if !custom_color %} border-[#0FBF84] {% endif %} md:pl-10 md:ml-10" {% if custom_color %}style="border-color: {{ module.styles.text_color.css }};"{% endif %}>
+          <div class="border-l-4 {% if !custom_color %} border-tvs-green-accessible {% endif %} md:pl-10 md:ml-10" {% if custom_color %}style="border-color: {{ module.styles.text_color.css }};"{% endif %}>
             <div>
               <p class="content-body {% if module.text_size == 0 %} text-[24px] md:text-[32px] lg:text-[36px] {% endif %} font-bricolage-grotesque mb-3 leading-tight {% if custom_color %} text-inherit {% else %} text-primary-darker {% endif %}">
                 {{ module.qs_quote }}

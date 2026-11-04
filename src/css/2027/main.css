@@ -1,0 +1,335 @@
+@config "../../../tailwind.2027.config.js";
+
+@tailwind base;
+
+@layer base {
+    html {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+        @apply bg-white font-sans text-body font-normal text-black;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        @apply m-0 text-black;
+    }
+
+        h1 { @apply text-display-sm font-heavy md:text-display-md lg:text-display; }
+    h2 { @apply text-heading-sm font-bold md:text-heading-lg; }
+    h3 { @apply text-heading-sm font-bold; }
+    h4 { @apply text-title font-bold; }
+    h5, h6 { @apply text-body font-bold; }
+
+    a { @apply text-tvgreen-600; }
+
+    summary { @apply list-none; }
+    summary::-webkit-details-marker { @apply hidden; }
+}
+
+@tailwind components;
+
+/* Not in @layer components: Tailwind purges layered classes missing from templates, and these are also used by
+   HubSpot-generated markup and classes typed into rich text. */
+
+/* Site container */
+.wrap {
+    @apply mx-auto w-full max-w-site px-4 md:px-8 xl:px-0;
+}
+
+/* Columns added in the page editor. Single-column rows stay full width. */
+.row-fluid:not(:has(> .span12)) {
+    @apply mx-auto grid w-full max-w-site gap-7 px-4 md:grid-cols-12 md:px-8 xl:px-0;
+}
+.row-fluid > .span1 { @apply md:col-span-1; }
+.row-fluid > .span2 { @apply md:col-span-2; }
+.row-fluid > .span3 { @apply md:col-span-3; }
+.row-fluid > .span4 { @apply md:col-span-4; }
+.row-fluid > .span5 { @apply md:col-span-5; }
+.row-fluid > .span6 { @apply md:col-span-6; }
+.row-fluid > .span7 { @apply md:col-span-7; }
+.row-fluid > .span8 { @apply md:col-span-8; }
+.row-fluid > .span9 { @apply md:col-span-9; }
+.row-fluid > .span10 { @apply md:col-span-10; }
+.row-fluid > .span11 { @apply md:col-span-11; }
+
+/* Primary button. .hs-button covers HubSpot form submit buttons. */
+.btn,
+.tvs-2027 .hs-button {
+    @apply inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-button border-0 bg-tvgreen-600 px-3
+        font-sans text-button font-medium normal-case text-white no-underline
+        transition-colors duration-150
+        hover:bg-tvgreen-800 hover:text-white hover:no-underline
+        focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tvgreen-600;
+}
+
+.btn--lg {
+    @apply h-12 px-5 text-nav;
+}
+
+.btn--secondary {
+    @apply bg-grey-100 text-black hover:bg-grey-200 hover:text-black;
+}
+
+/* Text link CTA ("Learn More →"): Pin Sans Medium, tvGreen/600. */
+.text-link {
+    @apply inline-flex items-center gap-1 text-body font-medium text-tvgreen-600 no-underline hover:underline;
+}
+
+.text-link--arrow::after {
+    content: "→";
+}
+
+/* Rich text fields rendered inside 2027 modules (body copy, feature text, footnotes).
+   :where() keeps the reset at zero specificity so the sibling spacing below wins. */
+.rte {
+    & :where(p, ul, ol, h3, h4) { @apply m-0; }
+    & > * + * { @apply mt-4; }
+    & ul { @apply list-disc pl-5; }
+    & ol { @apply list-decimal pl-5; }
+    & li + li { @apply mt-2; }
+    & a { @apply text-tvgreen-600 underline hover:text-tvgreen-800; }
+    & strong, & b { @apply font-bold; }
+    & h3, & h4 { @apply text-body-relaxed font-bold text-black; }
+}
+
+/* Bold runs in black, e.g. the figure that leads a case study result ("+7.19x Lift in site visits"). */
+.rte--strong {
+    & strong, & b { @apply text-black; }
+}
+
+/* Checklist variant: green check marks instead of bullets (e.g. "Customized algorithm for your brand"). */
+.rte--checks {
+    & ul { @apply list-none pl-0; }
+    & li { @apply relative pl-8; }
+    & li::before {
+        content: "✓";
+        @apply absolute left-0 top-0 font-bold text-tvgreen-600;
+    }
+}
+
+/* Dark diagram columns (Feature Panel "diagram"): Heading 4 = label pill, rule = divider. */
+.rte--diagram {
+    & > * + * { @apply mt-3; }
+    & h4 { @apply inline-flex rounded-pill bg-grey-350 px-3 py-1 text-label font-normal text-white; }
+    & p { @apply text-white; }
+    & > hr { @apply mb-0 mt-4 border-0 border-t border-solid border-grey-200; }
+    & > hr + * { @apply mt-6; }
+}
+
+/* HubSpot forms inside .form-2027. Rooted at ".form-2027 .hs-form" (plus "fieldset[class]") to out-rank the CSS
+   HubSpot injects per form, which loads later and wins ties. Fields with a placeholder hide their label visually. */
+.form-2027 .hs-form {
+    @apply m-0;
+    & fieldset { @apply m-0 max-w-none border-0 p-0; }
+    & fieldset.form-columns-2 { @apply grid gap-x-4 sm:grid-cols-2; }
+    & fieldset.form-columns-3 { @apply grid gap-x-4 sm:grid-cols-3; }
+    & fieldset[class] .hs-form-field { @apply float-none mb-4 w-full; }
+    & fieldset[class] .input { @apply m-0; }
+    & .hs-form-field > label { @apply mb-2 block text-caption font-medium text-black; }
+    & .hs-form-field:has(.hs-input[placeholder]:not([placeholder=""])) > label { @apply sr-only; }
+    /* Dropdowns whose first option is a placeholder ("Partner Type") — same treatment */
+    & .hs-form-field:has(select.hs-input option[value=""]) > label { @apply sr-only; }
+    & fieldset[class] select.hs-input:has(option[value=""]:checked) { @apply text-grey-200; }
+    & .hs-form-required { @apply ml-0.5 text-alert; }
+    & .hs-field-desc { @apply mb-2 text-label text-grey-250; }
+
+    & fieldset[class] .hs-input:not([type="checkbox"]):not([type="radio"]) {
+        @apply block h-12 w-full max-w-none appearance-none rounded-xl border border-solid border-grey-100 bg-white px-4 font-sans text-body text-black
+            shadow-none transition-colors duration-150 placeholder:text-grey-200 hover:border-grey-200
+            focus:border-tvgreen-600 focus:outline-none focus:ring-4 focus:ring-tvgreen-050;
+    }
+    & fieldset[class] textarea.hs-input:not([type="checkbox"]):not([type="radio"]) { @apply h-32 py-3; }
+    & fieldset[class] select.hs-input:not([type="checkbox"]):not([type="radio"]) { @apply pr-10; }
+    & fieldset[class] .hs-input.invalid.error:not([type="checkbox"]):not([type="radio"]) { @apply border-alert; }
+
+    & .inputs-list { @apply m-0 list-none p-0; }
+    & .hs-form-booleancheckbox-display,
+    & .hs-form-checkbox-display,
+    & .hs-form-radio-display { @apply flex items-start gap-3 text-caption text-grey-350; }
+    & input[type="checkbox"], & input[type="radio"] { @apply mt-0.5 h-4 w-4 shrink-0 accent-tvgreen-600; }
+
+    & .hs-error-msgs { @apply m-0 mt-2 list-none p-0; }
+    & .hs-error-msg,
+    & .hs_error_rollup label { @apply text-label font-medium text-alert; }
+    & .hs_error_rollup { @apply mb-4; }
+
+    & .legal-consent-container { @apply mb-4 text-label text-grey-250; }
+    & .legal-consent-container p { @apply m-0 mb-2; }
+    & .legal-consent-container a { @apply text-grey-350 underline; }
+
+    & .hs_submit { @apply mt-2; }
+    & .hs-button { @apply h-12 w-full px-6 text-nav sm:w-auto; }
+}
+
+.form-2027 .submitted-message { @apply rounded-20 bg-white p-6 text-body text-black; }
+
+/* Centered forms (centered hero): full-width submit */
+.form-2027--center .hs-form .hs-button { @apply sm:w-full; }
+
+/* Integrations Listing filter pills (aria-pressed marks the active filter). */
+.integration-filter {
+    @apply cursor-pointer whitespace-nowrap rounded-pill border border-solid border-grey-100 bg-white px-4 py-2 text-left font-sans text-caption font-medium text-black
+        transition-colors duration-150 hover:border-black
+        focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tvgreen-600;
+}
+.integration-filter[aria-pressed="true"] { @apply border-black bg-black text-white; }
+
+/* Logo marquee (Logo Wall "marquee"): the track holds the logo list twice, so -50% loops seamlessly.
+   Duration comes from --marquee-duration (set per row from the logo count). Pauses on hover; off for
+   reduced motion. */
+.marquee__track { animation: marquee var(--marquee-duration, 40s) linear infinite; }
+.marquee__track--reverse { animation-direction: reverse; }
+.marquee:hover .marquee__track { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+    .marquee__track { animation: none; }
+}
+@keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+/* Fade-up on scroll (Media Split "Fade the image up"; class added by module.js). */
+.fade-up { opacity: 0; transform: translateY(2.5rem); }
+.fade-up.is-visible { animation: fade-up 400ms ease-in forwards; }
+@keyframes fade-up {
+    from { opacity: 0; transform: translateY(2.5rem); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Basic flow for HubSpot rich text modules (preflight strips margins and list styles). */
+.hs_cos_wrapper_type_rich_text {
+    & p, & ul, & ol { @apply mb-4 last:mb-0; }
+    & ul { @apply list-disc pl-6; }
+    & ol { @apply list-decimal pl-6; }
+    & a { @apply underline; }
+}
+
+/* Blog post bodies (inside .rte): overrides inline font sizes, families and colours saved in older posts. */
+.rte--post {
+    & :is(p, ul, ol, blockquote, figure, table, pre, hr, iframe, video, .hs-embed-wrapper) { @apply mb-6 mt-0 last:mb-0; }
+    & li + li { @apply mt-2; }
+    & li > :is(ul, ol) { @apply mb-0 mt-2; }
+    & :is(h1, h2) { @apply mb-4 mt-12 text-heading-sm font-bold text-black first:mt-0; } /* a body H1 reads as an H2 */
+    & h3 { @apply mb-3 mt-10 text-card-title font-bold text-black first:mt-0; }
+    & :is(h4, h5, h6) { @apply mb-3 mt-8 text-body-lg font-bold text-black; }
+    & strong, & b { @apply font-bold text-black; }
+    & a { @apply text-tvgreen-600 underline hover:text-tvgreen-800; }
+    & img { @apply h-auto max-w-full rounded-20; }
+    & figcaption, & .wp-caption-text { @apply mt-2 text-caption text-grey-350; }
+    & blockquote { @apply border-0 border-l-stroke-l border-solid border-tvgreen-600 pl-6 text-body-lg text-black; }
+    & hr { @apply border-0 border-t border-solid border-grey-100; }
+    & table { @apply w-full border-collapse text-body-sm; }
+    & :is(th, td) { @apply border border-solid border-grey-100 p-3 text-left align-top; }
+    & th { @apply bg-grey-050 font-bold text-black; }
+    & iframe { @apply max-w-full rounded-20; }
+    & iframe:is([src*="youtube"], [src*="vimeo"], [src*="hubspotvideo"], [src*="wistia"]) { @apply aspect-video h-auto w-full; }
+    /* Inline styles */
+    & [style]:not(a) { font-family: inherit !important; color: inherit !important; line-height: inherit !important; }
+    & :is(span, strong, b, em, i, font, a)[style] { font-size: inherit !important; }
+    & :is(p, li)[style] { font-size: inherit !important; }
+    & h2[style] { @apply !text-heading-sm; }
+    & h3[style] { @apply !text-card-title; }
+    & :is(h2, h3, h4)[style], & :is(h2, h3, h4) [style] { color: theme("colors.black") !important; }
+}
+@media (min-width: theme("screens.md")) {
+    .rte--post :is(h1, h2), .rte--post :is(h1, h2)[style] { @apply !text-heading-md; }
+}
+
+/* Byline people (post-byline module): first line = name. */
+.rte--byline {
+    & > * + * { @apply mt-1; }
+    & > :first-child { @apply font-bold text-black; }
+    & [style] { font-size: inherit !important; color: inherit !important; }
+}
+
+/* HubSpot system pages: built-in modules render their own form markup, so fields and buttons are styled generically. */
+.system-card {
+    & :is(h1, h2, h3) { @apply m-0 mb-4 text-card-title font-bold text-black; }
+    & h4 { @apply m-0 mb-2 text-body-lg font-bold text-black; }
+    & p { @apply m-0 mb-4 text-body-relaxed text-grey-350; }
+    & a { @apply text-tvgreen-600 underline hover:text-tvgreen-800; }
+    & label { @apply mb-2 block text-caption font-medium text-black; }
+    & :is(input[type="text"], input[type="email"], input[type="password"], input[type="search"], select, textarea) {
+        @apply mb-4 block h-12 w-full max-w-none appearance-none rounded-xl border border-solid border-grey-100 bg-white px-4 font-sans text-body text-black
+            shadow-none transition-colors duration-150 placeholder:text-grey-200 hover:border-grey-200
+            focus:border-tvgreen-600 focus:outline-none focus:ring-4 focus:ring-tvgreen-050;
+    }
+    & textarea { @apply h-32 py-3; }
+    & :is(input[type="checkbox"], input[type="radio"]) { @apply mr-2 h-4 w-4 shrink-0 align-middle accent-tvgreen-600; }
+    & :is(input[type="submit"], button[type="submit"], button:not([type])) {
+        @apply mt-2 inline-flex h-12 w-full cursor-pointer items-center justify-center rounded-button border-0 bg-tvgreen-600 px-6
+            font-sans text-nav font-medium normal-case text-white transition-colors duration-150 hover:bg-tvgreen-800 sm:w-auto;
+    }
+    & :is(.hs-error-msg, .error, .hs-error-msgs label) { @apply text-label font-medium text-alert; }
+    & ul { @apply m-0 list-none p-0; }
+    /* Email subscription preferences: one row per subscription type */
+    & .item { @apply border-0 border-b border-solid border-grey-100 py-4 last:border-b-0; }
+    & .checkbox-row { @apply flex items-center; }
+    & .fakelabel, & .item .description { @apply text-body-sm text-grey-350; }
+}
+
+/* HubSpot search results (@hubspot/search_results) on the 2027 search page. */
+.search-results-2027 {
+    & .hs-search-results__listing { @apply m-0 list-none p-0; }
+    & .hs-search-results__listing > li { @apply border-0 border-b border-solid border-grey-100 py-8 first:pt-0; }
+    & .hs-search-results__title { @apply text-card-title font-bold text-black no-underline hover:text-tvgreen-600 hover:no-underline; }
+    & .hs-search-results__description { @apply m-0 mt-3 text-body-relaxed text-grey-350; }
+    & .hs-search-highlight { @apply font-bold text-black; }
+    & .hs-search-results__featured-image img { @apply mb-4 block h-auto max-w-48 rounded-20; }
+    & .hs-search-results__pagination { @apply mt-12 flex flex-wrap justify-between gap-4; }
+    & .hs-search-results__pagination a { @apply inline-flex items-center rounded-pill border border-solid border-grey-100 bg-white px-4 py-2 text-caption font-medium text-black no-underline hover:border-black hover:no-underline; }
+    & .hs-search__no-results { @apply text-body text-grey-350; }
+}
+
+/* Blog post sidebar: HubSpot outputs a wrapper div even when a module renders nothing (no byline, no form) —
+   hide those so they don't add an empty gap to the flex column. */
+.post-aside > .hs_cos_wrapper:not(:has(*)) { display: none; }
+
+/* Small outlined pills: share links, post tags. */
+.share-link {
+    @apply inline-flex items-center rounded-pill border border-solid border-grey-100 bg-white px-3 py-1.5 text-caption font-medium text-black
+        no-underline transition-colors duration-150 hover:border-black hover:no-underline;
+}
+
+/* "On this page" menu beside blog posts. */
+.jump-link {
+    @apply block border-0 border-l-stroke-s border-solid border-grey-100 pl-3 text-body-sm text-grey-350 no-underline
+        transition-colors duration-150 hover:text-black hover:no-underline;
+}
+.jump-link[aria-current] { @apply border-tvgreen-600 font-medium text-black; }
+
+/* Blog listing pagination. */
+.page-link {
+    @apply flex h-10 min-w-10 items-center justify-center rounded-button border border-solid border-grey-100 px-3 text-caption font-medium
+        text-black no-underline transition-colors duration-150 hover:border-black hover:no-underline;
+}
+.page-link--current { @apply border-black bg-black text-white hover:text-white; }
+
+/* Author filter on the blog listing (links styled like the listing filter pills). */
+.integration-filter[aria-current] { @apply border-black bg-black text-white; }
+.author-filter summary::-webkit-details-marker { display: none; }
+.author-filter[open] summary svg { @apply rotate-180; }
+
+/* HubSpot search input (@hubspot/search_input) on the blog listing. */
+.search-2027 {
+    & .hs-search-field { @apply relative; }
+    & .hs-search-field__bar form { @apply relative flex; }
+    & .hs-search-field__bar label { @apply sr-only; }
+    & .hs-search-field__input {
+        @apply h-12 w-full rounded-button border border-solid border-grey-100 bg-white py-0 pl-4 pr-12 font-sans text-body text-black
+            placeholder:text-grey-350 focus:border-tvgreen-600 focus:outline-none focus:ring-2 focus:ring-tvgreen-050;
+    }
+    & .hs-search-field__bar form > button {
+        @apply absolute inset-y-0 right-0 flex w-12 cursor-pointer items-center justify-center rounded-r-button border-0 bg-transparent p-0 text-black;
+    }
+    & .hs-search-field__bar form > button svg { @apply h-4 w-4 fill-current; }
+    & .hs-search-field__suggestions {
+        @apply absolute inset-x-0 top-full z-20 m-0 mt-2 list-none overflow-hidden rounded-button border border-solid border-grey-100 bg-white p-0;
+    }
+    & .hs-search-field__suggestions:empty { @apply hidden; }
+    & .hs-search-field__suggestions li a { @apply block px-4 py-2 text-body-sm text-black no-underline hover:bg-grey-050; }
+}
+
+@tailwind utilities;

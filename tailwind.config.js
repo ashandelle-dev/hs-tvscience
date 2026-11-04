@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 const colors = require("tailwindcss/colors");
+const { colors: tokens, fontFamily: tokenFonts } = require("./tailwind.2027.config.js").theme;
 module.exports = {
     content: [
         "./src/index.js",
@@ -11,12 +12,15 @@ module.exports = {
         "./src/sections/**/*.html",
         "./src/system/**/*.html",
         "./src/macros/**/*.html",
+        "!./src/layouts/2027/**",
+        "!./src/partials/2027/**",
+        "!./src/templates/2027/**",
 
     ],
     theme: {
         fontFamily: {
-            plex: ["'IBM Plex Sans'", "san-serif"],
-            "plex-mono": ["'IBM Plex Mono'", "monospace"],
+            plex: tokenFonts.sans,
+            "plex-mono": tokenFonts.sans,
             rubik: ["'Rubik'", "sans-serif"],
             "bricolage-grotesque": ["'BricolageGrotesque'", "sans-serif"],
         },
@@ -31,22 +35,22 @@ module.exports = {
                 },
             },
             colors: {
-                "primary": "#009061",
-                "primary-darker": "#1C4633",
-                "primary-dark": "#1F252B",
+                "primary": tokens.tvgreen[600],
+                "primary-darker": tokens.tvgreen[800],
+                "primary-dark": tokens.black,
                 "black": "#000000",
                 // tvScientific 2025 Brand Colors
                 "tvs": {
-                    "green": "#23E596",
-                    "green-accessible": "#198960",
-                    "green-dark": "#0F2D29",
-                    "green-light": "#91F2CB",
-                    "green-pastel": "#F3FFF6",
-                    "black": "#1F252B",
-                    "grey": "#46515B",
-                    "grey-accessible": "#46515B",
-                    "grey-light": "#D9E2EB",
-                    "grey-pastel": "#F9FAFC",
+                    "green": tokens.tvgreen.DEFAULT,
+                    "green-accessible": tokens.tvgreen[600],
+                    "green-dark": tokens.tvgreen[800],
+                    "green-light": tokens.tvgreen[200],
+                    "green-pastel": tokens.grey["050"],
+                    "black": tokens.black,
+                    "grey": tokens.grey[350],
+                    "grey-accessible": tokens.grey[350],
+                    "grey-light": tokens.grey[100],
+                    "grey-pastel": tokens.grey["050"],
                     "yellow": "#FFCD40",
                     "yellow-light": "#FFE6A0",
                     "white": "#FFFFFF",
@@ -70,7 +74,9 @@ module.exports = {
     plugins: [
 
     ],
+    // Old colour classes still stored in page content
     safelist: [
+        ...require("./tailwind.legacy-safelist.json"),
         'text-primary',
         'text-primary-dark',
         'font-plex',

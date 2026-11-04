@@ -4,7 +4,7 @@
   
 .swiper-pagination .swiper-pagination-bullet {
   background: transparent;
-  border: 2px solid #009061;
+  border: 2px solid #19845D;
   width: 20px;
   height:20px;
   opacity:1;
@@ -18,7 +18,7 @@
 .swiper-pagination .swiper-pagination-bullet-active {
   width: 28px;
   height:28px;
-  border: 2px solid #0FBF84;
+  border: 2px solid #19845D;
   background-image: url("https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/Icons/pagination-dot-texture.png");
   background-size: cover;
   background-position: center;

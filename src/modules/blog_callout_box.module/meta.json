@@ -4,5 +4,5 @@
   "host_template_types" : [ "PAGE", "BLOG_LISTING", "BLOG_POST" ],
   "module_id" : 198427671673,
   "label" : "Callout Box",
-  "is_available_for_new_content" : true
+  "is_available_for_new_content" : false
 }

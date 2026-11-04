@@ -1,0 +1,11 @@
+{% set pt = { "0": "pt-0", "32": "pt-8", "48": "pt-12", "64": "pt-12 md:pt-16", "80": "pt-12 md:pt-20", "96": "pt-16 md:pt-24", "112": "pt-16 md:pt-28", "120": "pt-16 md:pt-30", "128": "pt-16 md:pt-32" } %}
+{% set pb = { "0": "pb-0", "32": "pb-8", "48": "pb-12", "64": "pb-12 md:pb-16", "80": "pb-12 md:pb-20", "96": "pb-16 md:pb-24", "112": "pb-16 md:pb-28", "120": "pb-16 md:pb-30", "128": "pb-16 md:pb-32" } %}
+{% set sizes = { "display": "text-display-sm md:text-display-md", "xl": "text-heading-sm md:text-heading-hero", "lg": "text-heading-sm md:text-heading-xl", "md": "text-heading-sm md:text-heading-md", "sm": "text-title md:text-heading-sm" } %}
+{% set weights = { "heavy": "font-heavy", "bold": "font-bold", "medium": "font-medium" } %}
+{% set aligns = { "left": "text-left", "center": "text-center", "right": "text-right" } %}
+{% if module.heading %}
+<div class="wrap {{ aligns[module.align] }} {{ pt[module.style.spacing_top] }} {{ pb[module.style.spacing_bottom] }}">
+  {% if module.eyebrow %}<p class="m-0 mb-4 text-body-lg font-medium text-black">{{ module.eyebrow }}</p>{% endif %}
+  <{{ module.header_tag }} class="m-0 text-black {{ sizes[module.size] }} {{ weights[module.weight] }}">{{ module.heading }}</{{ module.header_tag }}>
+</div>
+{% endif %}

@@ -1,0 +1,142 @@
+{% set pt = { "0": "pt-0", "32": "pt-8", "48": "pt-12", "64": "pt-12 md:pt-16", "80": "pt-12 md:pt-20", "96": "pt-16 md:pt-24", "112": "pt-16 md:pt-28", "120": "pt-16 md:pt-30", "128": "pt-16 md:pt-32" } %}
+{% set pb = { "0": "pb-0", "32": "pb-8", "48": "pb-12", "64": "pb-12 md:pb-16", "80": "pb-12 md:pb-20", "96": "pb-16 md:pb-24", "112": "pb-16 md:pb-28", "120": "pb-16 md:pb-30", "128": "pb-16 md:pb-32" } %}
+{% set band = module.layout == "band" %}
+{% set split = module.layout == "split" %}
+
+{% macro img_attrs(img) -%}
+  src="{{ img.src }}" alt="{{ img.alt }}" {% if img.width %}width="{{ img.width }}"{% endif %} {% if img.height %}height="{{ img.height }}"{% endif %} loading="lazy"
+{%- endmacro %}
+
+{% macro quote_html(text) -%}
+  {{ text|replace("\n", " <br class='hidden md:inline'>") }}
+{%- endmacro %}
+
+{% macro attribution(name, title, classes, photo) %}
+  {% if name or title %}
+    <figcaption class="text-black {{ classes }} {% if photo and photo.src %}flex items-center gap-4{% endif %}">
+      {% if photo and photo.src %}<img {{ img_attrs(photo) }} class="block aspect-square w-14 shrink-0 rounded-full object-cover">{% endif %}
+      <div>
+        {% if name %}<p class="m-0 font-bold">{{ name }}</p>{% endif %}
+        {% if title %}<p class="m-0">{{ title }}</p>{% endif %}
+      </div>
+    </figcaption>
+  {% endif %}
+{% endmacro %}
+
+{# One split-layout slide: logo, quote, headshot + attribution #}
+{% macro split_slide(s) %}
+  <figure class="m-0">
+    {% if s.logo.src %}<img {{ img_attrs(s.logo) }} class="mb-8 block h-auto max-h-12 w-auto">{% endif %}
+    {% if s.quote %}
+      <blockquote class="m-0 text-body-lg font-medium text-black md:text-title">{{ quote_html(s.quote) }}</blockquote>
+    {% endif %}
+    {{ attribution(s.name, s.title, "mt-8 text-body", s.photo) }}
+  </figure>
+{% endmacro %}
+
+{% macro controls(count, classes) %}
+  <div class="flex items-center gap-3 {{ classes }}">
+    <button type="button" class="flex h-10 w-10 items-center justify-center rounded-pill border border-grey-200 bg-transparent text-black hover:border-black" data-prev aria-label="Previous quote">
+      <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button type="button" class="flex h-10 w-10 items-center justify-center rounded-pill border border-grey-200 bg-transparent text-black hover:border-black" data-next aria-label="Next quote">
+      <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m6 3 5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <p class="m-0 ml-2 text-caption text-grey-350" aria-live="polite" data-status>1 / {{ count }}</p>
+  </div>
+{% endmacro %}
+
+{# Slides stacked in one grid cell (band keeps the tallest slide's height); module.js switches them #}
+{% macro carousel(slides, is_split) %}
+  <div data-quote-carousel role="region" aria-roledescription="carousel" aria-label="Customer quotes">
+    <div class="grid">
+      {% for s in slides %}
+        <div class="col-start-1 row-start-1 transition-opacity duration-300 {% if not loop.first %}invisible opacity-0{% endif %}"
+          data-slide role="group" aria-roledescription="slide" aria-label="{{ loop.index }} of {{ slides|length }}"
+          {% if not loop.first %}aria-hidden="true" inert{% endif %}>
+          {% if is_split %}{{ split_slide(s) }}{% else %}{{ band_slide(s, true) }}{% endif %}
+        </div>
+      {% endfor %}
+    </div>
+    {% if is_split %}
+      {{ controls(slides|length, "mt-10") }}
+    {% else %}
+      <div class="mt-10 lg:grid lg:grid-cols-band lg:gap-20">{{ controls(slides|length, "lg:col-start-2") }}</div>
+    {% endif %}
+  </div>
+{% endmacro %}
+
+{# One band slide. carousel = keep the photo column even when the slide has no photo. #}
+{% macro band_slide(s, carousel) %}
+  {% set framed = carousel and not s.photo.src %}
+  <figure class="m-0 grid gap-10 lg:items-center {% if s.photo.src or carousel %}lg:grid-cols-band lg:gap-20{% else %}max-w-content{% endif %}">
+    {% if s.photo.src %}
+      <img {{ img_attrs(s.photo) }} class="block aspect-square w-40 rounded-full object-cover lg:w-full">
+    {% elif framed %}
+      <div class="flex aspect-square w-40 items-center justify-center rounded-full bg-white lg:w-full">
+        {% if s.logo.src %}<img {{ img_attrs(s.logo) }} class="block h-auto max-h-16 w-1/2 object-contain">{% endif %}
+      </div>
+    {% endif %}
+    <div>
+      {% if s.logo.src and not framed %}
+        <img {{ img_attrs(s.logo) }} class="mb-7 block h-auto max-h-11 w-auto">
+      {% endif %}
+      {% if s.quote %}
+        {# Long quotes (a paragraph rather than a line) step down from Quote 36 to Title 22 so they stay readable #}
+        <blockquote class="m-0 font-medium text-black {% if s.quote|length > 280 %}text-body-lg md:text-title{% else %}text-balance text-heading-sm md:text-quote-lg{% endif %}">{{ quote_html(s.quote) }}</blockquote>
+      {% endif %}
+      {{ attribution(s.name, s.title, "mt-10 text-body-relaxed") }}
+    </div>
+  </figure>
+{% endmacro %}
+
+{% macro link_attrs(link) -%}
+  href="{% if link.url.type == "EMAIL_ADDRESS" %}mailto:{% endif %}{{ link.url.href }}"
+  {%- if link.open_in_new_tab %} target="_blank"{% endif -%}
+  {%- if link.open_in_new_tab or link.no_follow %} rel="{% if link.open_in_new_tab %}noopener{% endif %}{% if link.no_follow %} nofollow{% endif %}"{% endif -%}
+{%- endmacro %}
+
+{% set slides = [{"photo": module.testimonial_image, "logo": module.logo, "quote": module.quote.value, "name": module.author_name, "title": module.author_title}] %}
+{% for q in module.more_quotes %}
+  {% do slides.append({"photo": q.photo, "logo": q.logo, "quote": q.quote_text, "name": q.author_name, "title": q.author_title}) %}
+{% endfor %}
+
+<section class="{% if band or split %}bg-grey-050{% endif %} {{ pt[module.style.spacing_top] }} {{ pb[module.style.spacing_bottom] }}">
+  <div class="wrap {% if split %}max-w-feature{% elif not band %}max-w-content{% endif %}">
+    {% if split %}
+      <div class="grid gap-12 lg:grid-cols-2 lg:gap-20 lg:pl-16">
+        <div>
+          {% if module.intro.eyebrow %}<p class="m-0 mb-4 text-body-lg font-medium text-black">{{ module.intro.eyebrow }}</p>{% endif %}
+          {% if module.intro.heading %}
+            <{{ module.intro.header_tag }} class="m-0 max-w-md text-balance text-heading-sm font-bold text-black md:text-heading-md">{{ module.intro.heading }}</{{ module.intro.header_tag }}>
+          {% endif %}
+          {% if module.intro.cta.text %}
+            <div class="mt-8"><a {{ link_attrs(module.intro.cta.link) }} class="btn">{{ module.intro.cta.text }}</a></div>
+          {% endif %}
+        </div>
+        <div>
+          {% if slides|length > 1 %}{{ carousel(slides, true) }}{% else %}{{ split_slide(slides[0]) }}{% endif %}
+        </div>
+      </div>
+
+    {% elif band %}
+      {% if slides|length > 1 %}{{ carousel(slides, false) }}{% else %}{{ band_slide(slides[0], false) }}{% endif %}
+
+    {% else %}
+      <figure class="m-0 grid gap-10 lg:grid-cols-quote lg:items-center lg:gap-0">
+        {% if module.testimonial_image.src %}
+          <div class="lg:pr-20"><img {{ img_attrs(module.testimonial_image) }} class="block h-auto w-full"></div>
+        {% endif %}
+        <div>
+          {% if module.logo.src %}
+            <img {{ img_attrs(module.logo) }} class="block h-auto">
+          {% endif %}
+          {% if module.quote.value %}
+            <blockquote class="m-0 mt-14 font-medium text-black text-quote">{{ quote_html(module.quote.value) }}</blockquote>
+          {% endif %}
+          {{ attribution(module.author_name, module.author_title, "mt-16 text-body-lg", module.author_photo) }}
+        </div>
+      </figure>
+    {% endif %}
+  </div>
+</section>

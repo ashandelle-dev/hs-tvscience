@@ -1,0 +1,167 @@
+<!--
+  templateType: none
+  isAvailableForNewContent: false
+-->
+{% import "./blog-macros.html" as blog %}
+{# "On this page" shows whenever the post has 2+ anchors / H2s, unless the post sets Jump Menu = No #}
+{% set jump = content.widgets.jump_menu.body.value != "No" %}
+{% set out_link = content.widgets.title_link.body.value if kind == "article" else "" %}
+{% set pub_logo = content.widgets.publication_logo.body if kind == "article" else {} %}
+
+<main id="main-content">
+  <article>
+
+    {# 1. Hero — same markup as Media Hero (split, contained image) #}
+    <section class="overflow-hidden bg-grey-050">
+      <div class="wrap max-w-feature {% if hero.src %}lg:grid lg:grid-cols-2 lg:items-center{% endif %}">
+        <div class="py-16 lg:py-24 lg:pl-16">
+          <div class="mb-8">{{ blog.back_link(group.absolute_url, back_label) }}</div>
+          {% if pub_logo.src %}
+            <img src="{{ pub_logo.src }}" alt="{{ pub_logo.alt }}" class="mb-8 block h-auto max-h-10 w-auto" loading="eager">
+          {% endif %}
+          {% if eyebrow %}<p class="m-0 mb-4 text-body-relaxed font-bold text-black">{{ eyebrow }}</p>{% endif %}
+          <h1 class="m-0 max-w-hero-copy text-balance text-heading-sm font-heavy text-black md:text-heading-hero">{{ content.name }}</h1>
+          {% if summary %}
+            <p class="m-0 mt-8 max-w-hero-body text-body-relaxed text-grey-350">{{ summary }}</p>
+          {% endif %}
+          {% if meta_line %}
+            <p class="m-0 mt-8 text-caption font-medium text-grey-350">{{ meta_line }}</p>
+          {% endif %}
+          {% if out_link %}
+            <div class="mt-10"><a href="{{ out_link }}" target="_blank" rel="noopener" class="btn">Read the full article</a></div>
+          {% elif has_form %}
+            <div class="mt-10 lg:hidden"><a href="#post-form" class="btn">{{ "Register" if kind == "webinar" else "Get the report" }}</a></div>
+          {% endif %}
+        </div>
+        {% if hero.src %}
+          <div class="pb-16 lg:py-24">
+            <img src="{{ hero.src }}" alt="{{ hero.alt }}" class="mx-auto block h-auto max-h-hero-contained w-auto rounded-20" loading="eager">
+          </div>
+        {% endif %}
+      </div>
+    </section>
+
+    {# 2. Body — same grid as Case Study Story: sticky card left, story right #}
+    <section class="py-16 md:py-24">
+      <div class="wrap max-w-feature">
+        <div class="lg:grid lg:grid-cols-story lg:items-start lg:gap-20 lg:px-16">
+
+          <aside class="post-aside flex flex-col gap-6 lg:sticky lg:top-8">
+            {% if kind == "report" %}
+              {% module "gated_form" path="../../modules/2027/form-card", label="Report form", form_anchor_id="post-form", title="Get the report" %}
+            {% elif kind == "webinar" %}
+              {% module "gated_form" path="../../modules/2027/form-card", label="Webinar form", form_anchor_id="post-form", title="" %}
+            {% endif %}
+            <div class="post-aside flex flex-col gap-8 rounded-32 bg-grey-050 p-8">
+              {% if kind == "webinar" %}
+                {% module "module_16932768549893" path="../../modules/2027/post-byline", label="Speakers", byline_heading="Speakers" %}
+              {% else %}
+                {% module "module_16958355586771" path="../../modules/2027/post-byline", label="Author Byline", byline_heading="Written by" %}
+              {% endif %}
+              {% if jump %}
+                <nav class="hidden lg:block" aria-label="On this page" data-jump-menu>
+                  <p class="m-0 mb-4 text-caption font-bold text-grey-350">On this page</p>
+                  <ul class="m-0 flex list-none flex-col gap-3 p-0" data-jump-list></ul>
+                </nav>
+              {% endif %}
+              {{ blog.share_links(content.absolute_url, content.name) }}
+            </div>
+          </aside>
+
+          <div class="mt-16 min-w-0 lg:mt-0">
+            <div class="rte rte--post max-w-copy text-body-relaxed text-grey-350" data-post-body {% if kind == "report" and gated %}data-gated-body{% endif %}>
+              {{ content.post_body }}
+            </div>
+            {% if content.tag_list %}
+              <ul class="m-0 mt-12 flex max-w-copy list-none flex-wrap gap-2 border-0 border-t border-solid border-grey-100 p-0 pt-8">
+                {% for tag in content.tag_list %}
+                  <li><a href="{{ blog_tag_url(group.id, tag.slug) }}" class="share-link">{{ tag.name }}</a></li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </article>
+
+  {# 3. More from this blog (same first tag when the post has one), then the closing CTA #}
+  {% set first_tag = content.tag_list|first %}
+  {% set related = blog_recent_tag_posts(group.id, first_tag.slug, 4) if first_tag and kind == "article" else blog_recent_posts(group.id, 4) %}
+  {% if related|length > 1 %}
+    <section class="bg-grey-050 py-16 md:py-24">
+      <div class="wrap max-w-feature lg:px-16">
+        <div class="mb-10 flex flex-wrap items-end justify-between gap-4">
+          <h2 class="m-0 text-heading-sm font-bold text-black md:text-heading-md">{{ more_heading }}</h2>
+          <a href="{{ group.absolute_url }}" class="text-link--arrow inline-flex items-center gap-1 text-meta font-medium text-tvgreen-600 no-underline hover:underline">{{ back_label }}</a>
+        </div>
+        {{ blog.more_posts(related, content.absolute_url, 3, kind) }}
+      </div>
+    </section>
+  {% endif %}
+
+  {% module "cta_2027" path="../../modules/2027/cta", label="Closing CTA" %}
+</main>
+
+<script>
+  /* "On this page": links to the post's HubSpot anchors (Insert > Anchor), else its H2s; hidden when < 2. */
+  (function () {
+    var nav = document.querySelector("[data-jump-menu]");
+    var holder = document.querySelector("[data-post-body]");
+    if (!nav || !holder) return;
+    var list = nav.querySelector("[data-jump-list]");
+    var targets = [];
+    var anchors = holder.querySelectorAll("a[data-hs-anchor]");
+    if (anchors.length) {
+      Array.prototype.forEach.call(anchors, function (a) {
+        var next = a.nextElementSibling;
+        if (a.id && next && next.textContent.trim()) targets.push({ id: a.id, text: next.textContent.trim(), el: a });
+      });
+    } else {
+      Array.prototype.forEach.call(holder.querySelectorAll("h2"), function (h, i) {
+        if (!h.textContent.trim()) return;
+        if (!h.id) h.id = "section-" + (i + 1);
+        targets.push({ id: h.id, text: h.textContent.trim(), el: h });
+      });
+    }
+    if (targets.length < 2) { nav.parentNode.removeChild(nav); return; }
+    targets.forEach(function (t) {
+      var li = document.createElement("li");
+      var a = document.createElement("a");
+      a.href = "#" + t.id;
+      a.className = "jump-link";
+      a.textContent = t.text;
+      li.appendChild(a);
+      list.appendChild(li);
+      t.link = a;
+    });
+    function update() {
+      var current = targets[0];
+      targets.forEach(function (t) { if (t.el.getBoundingClientRect().top <= 120) current = t; });
+      targets.forEach(function (t) {
+        if (t === current) t.link.setAttribute("aria-current", "true");
+        else t.link.removeAttribute("aria-current");
+      });
+    }
+    window.addEventListener("scroll", update, { passive: true });
+    update();
+  })();
+
+  /* Gated reports: hide everything after #break until the form is submitted (new and legacy form events). */
+  (function () {
+    var holder = document.querySelector("[data-gated-body]");
+    var body = holder && (holder.querySelector("#hs_cos_wrapper_post_body") || holder);
+    var brk = body && body.querySelector("#break");
+    if (!brk) return;
+    var node = brk;
+    while (node.parentElement && node.parentElement !== body) node = node.parentElement;
+    var hidden = [];
+    for (var n = node.nextElementSibling; n; n = n.nextElementSibling) { n.hidden = true; hidden.push(n); }
+    function reveal() { hidden.forEach(function (el) { el.hidden = false; }); }
+    window.addEventListener("hs-form-event:on-submission:success", reveal);
+    window.addEventListener("message", function (e) {
+      if (e.data && e.data.type === "hsFormCallback" && e.data.eventName === "onFormSubmitted") reveal();
+    });
+  })();
+</script>

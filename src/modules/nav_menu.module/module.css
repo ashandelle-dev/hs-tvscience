@@ -26,20 +26,20 @@ nav.nav_v3 { background: #fff !important; }
 nav.nav_v3 a:focus { outline: none; box-shadow: none; }
 nav.nav_v3 a:focus:not(:focus-visible) { outline: none; box-shadow: none; }
 nav.nav_v3 a:focus-visible {
-  outline: 2px solid #1F252B;
+  outline: 2px solid #000000;
   outline-offset: 2px;
   border-radius: 2px;
 }
 
 .nav-v3 .menu-item > div > a {
-  font-family: 'IBM Plex Sans', sans-serif !important;
-  color: #1F252B !important;
+  font-family: 'Pin Sans', sans-serif !important;
+  color: #000000 !important;
 }
 .nav-v3 .menu-item:hover > div > a,
-.nav-v3 .menu-item > div > a:hover { color: #198960 !important; }
-.nav-v3 .child-dropdown p[class*="text-[#1C4633]"] { color: #1F252B; }
+.nav-v3 .menu-item > div > a:hover { color: #19845D !important; }
+.nav-v3 .child-dropdown p[class*="text-primary-darker"] { color: #000000; }
 .nav-v3 .menu-item svg,
-.nav-v3 .menu-item svg path { stroke: #1F252B !important; }
+.nav-v3 .menu-item svg path { stroke: #000000 !important; }
 
 @media (min-width: 1024px) {
   .nav-v3 ul { justify-content: flex-start; gap: 1rem; }
@@ -57,7 +57,7 @@ nav.nav_v3 a:focus-visible {
   .nav-v3 .child-dropdown {
     top: 55px;
     box-shadow: none !important;
-    border: 1px solid #D9E2EB;
+    border: 1px solid #E5E5E0;
   }
 
   .nav-v3 .child-dropdown a {
@@ -65,5 +65,5 @@ nav.nav_v3 a:focus-visible {
     padding-top: 8px !important;
     padding-bottom: 8px !important;
   }
-  .nav-v3 .child-dropdown a:hover { background-color: #F3FFF6; }
+  .nav-v3 .child-dropdown a:hover { background-color: #F6F6F3; }
 }

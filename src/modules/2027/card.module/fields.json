@@ -1,0 +1,80 @@
+[
+  {
+    "name": "image",
+    "label": "Image (optional)",
+    "type": "image",
+    "responsive": true,
+    "resizable": true,
+    "show_loading": true,
+    "default": {
+      "src": "",
+      "alt": "",
+      "width": 0,
+      "height": 0,
+      "size_type": "auto",
+      "loading": "lazy"
+    }
+  },
+  {
+    "name": "eyebrow",
+    "label": "Eyebrow (optional)",
+    "type": "text",
+    "default": ""
+  },
+  {
+    "name": "title",
+    "label": "Title",
+    "type": "text",
+    "default": "Card title"
+  },
+  {
+    "name": "description",
+    "label": "Description (optional)",
+    "type": "richtext",
+    "default": ""
+  },
+  {
+    "name": "link_text",
+    "label": "Link text (optional)",
+    "type": "text",
+    "default": "Read More"
+  },
+  {
+    "name": "link",
+    "label": "Link",
+    "type": "link",
+    "supported_types": [
+      "EXTERNAL",
+      "CONTENT",
+      "FILE",
+      "EMAIL_ADDRESS",
+      "BLOG"
+    ],
+    "default": {
+      "url": {
+        "content_id": null,
+        "type": "EXTERNAL",
+        "href": ""
+      },
+      "open_in_new_tab": false,
+      "no_follow": false
+    }
+  },
+  {
+    "name": "background",
+    "label": "Background",
+    "type": "choice",
+    "display": "radio",
+    "choices": [
+      [
+        "white",
+        "White with border"
+      ],
+      [
+        "grey",
+        "Grey 050"
+      ]
+    ],
+    "default": "white"
+  }
+]

@@ -1,0 +1,168 @@
+[
+  {
+    "name": "image",
+    "label": "Image",
+    "type": "image",
+    "responsive": true,
+    "resizable": true,
+    "show_loading": true,
+    "default": {
+      "src": "",
+      "alt": "",
+      "width": 0,
+      "height": 0,
+      "size_type": "auto",
+      "loading": "lazy"
+    }
+  },
+  {
+    "name": "mobile_image",
+    "label": "Mobile image (optional, under 768px wide)",
+    "type": "image",
+    "responsive": true,
+    "resizable": true,
+    "show_loading": true,
+    "default": {
+      "src": "",
+      "alt": "",
+      "width": 0,
+      "height": 0,
+      "size_type": "auto",
+      "loading": "lazy"
+    },
+    "help_text": "e.g. a tall version of a wide diagram. Uses the main image's alt text."
+  },
+  {
+    "name": "width",
+    "label": "Width",
+    "type": "choice",
+    "display": "radio",
+    "choices": [
+      [
+        "full",
+        "Full width"
+      ],
+      [
+        "site",
+        "Site container"
+      ],
+      [
+        "content",
+        "Content width"
+      ]
+    ],
+    "default": "full"
+  },
+  {
+    "name": "rounded",
+    "label": "Rounded corners",
+    "type": "boolean",
+    "display": "toggle",
+    "default": false
+  },
+  {
+    "name": "caption",
+    "label": "Caption (optional)",
+    "type": "text",
+    "allow_new_line": false,
+    "default": ""
+  },
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "spacing_top",
+        "label": "Space above",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          [
+            "0",
+            "None"
+          ],
+          [
+            "32",
+            "32px"
+          ],
+          [
+            "48",
+            "48px"
+          ],
+          [
+            "64",
+            "64px"
+          ],
+          [
+            "80",
+            "80px"
+          ],
+          [
+            "96",
+            "96px"
+          ],
+          [
+            "112",
+            "112px"
+          ],
+          [
+            "120",
+            "120px"
+          ],
+          [
+            "128",
+            "128px"
+          ]
+        ],
+        "default": "64"
+      },
+      {
+        "name": "spacing_bottom",
+        "label": "Space below",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          [
+            "0",
+            "None"
+          ],
+          [
+            "32",
+            "32px"
+          ],
+          [
+            "48",
+            "48px"
+          ],
+          [
+            "64",
+            "64px"
+          ],
+          [
+            "80",
+            "80px"
+          ],
+          [
+            "96",
+            "96px"
+          ],
+          [
+            "112",
+            "112px"
+          ],
+          [
+            "120",
+            "120px"
+          ],
+          [
+            "128",
+            "128px"
+          ]
+        ],
+        "default": "64"
+      }
+    ]
+  }
+]

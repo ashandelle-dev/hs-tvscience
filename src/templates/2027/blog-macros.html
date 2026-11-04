@@ -1,0 +1,87 @@
+<!--
+  templateType: none
+  isAvailableForNewContent: false
+-->
+{% macro post_card(post, kind) %}
+  {% set out_link = post.widgets.title_link.body.value if post.widgets.title_link else "" %}
+  {% set pub_logo = post.widgets.publication_logo.body.src if post.widgets.publication_logo else "" %}
+  {% set thumb = post.widgets.card_image.body.src if post.widgets.card_image and post.widgets.card_image.body.src else post.featured_image %}
+  {% set when = post.widgets.event_date.body.value if post.widgets.event_date and post.widgets.event_date.body.value else post.publish_date|datetimeformat("%b %e, %Y") %}
+  <li>
+    <a href="{{ out_link if out_link else post.absolute_url }}" {% if out_link %}target="_blank" rel="noopener"{% endif %}
+      class="group flex h-full flex-col overflow-hidden rounded-20 border border-solid border-grey-100 bg-white no-underline transition-colors duration-200 hover:border-tvgreen-600">
+      {% if pub_logo %}
+        <span class="flex aspect-card items-center justify-center bg-grey-050 p-8">
+          <img src="{{ pub_logo }}" alt="" class="block h-auto max-h-full w-auto max-w-full object-contain" loading="lazy">
+        </span>
+      {% elif thumb %}
+        <img src="{{ thumb }}" alt="" class="block aspect-card w-full object-cover" loading="lazy">
+      {% endif %}
+      <span class="flex flex-1 flex-col px-5 pb-8 pt-4">
+        {% if kind != "report" %}<span class="text-meta font-medium text-grey-200">{{ when }}</span>{% endif %}
+        <span class="mt-4 text-title font-medium text-black">{{ post.name }}</span>
+        <span class="text-link--arrow mt-auto inline-flex items-center gap-1 pt-8 text-meta font-medium text-tvgreen-600 group-hover:underline">
+          {% if kind == "webinar" %}Watch now{% elif out_link %}Read the article{% else %}Read now{% endif %}
+        </span>
+      </span>
+    </a>
+  </li>
+{% endmacro %}
+
+{% macro back_link(href, text) %}
+  <a href="{{ href }}" class="inline-flex items-center gap-2 text-caption font-medium text-tvgreen-600 no-underline hover:underline">
+    <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M7.5 2.5 4 6l3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    {{ text }}
+  </a>
+{% endmacro %}
+
+{# Share links (no third-party scripts): LinkedIn, X, Facebook, email #}
+{% macro share_links(url, title) %}
+  {% set u = url|urlencode %}
+  {% set t = title|urlencode %}
+  <div>
+    <p class="m-0 mb-3 text-caption font-bold text-grey-350">Share</p>
+    <ul class="m-0 flex list-none flex-wrap gap-2 p-0">
+      <li><a class="share-link" href="https://www.linkedin.com/sharing/share-offsite/?url={{ u }}" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a class="share-link" href="https://twitter.com/intent/tweet?url={{ u }}&amp;text={{ t }}" target="_blank" rel="noopener">X</a></li>
+      <li><a class="share-link" href="https://www.facebook.com/sharer/sharer.php?u={{ u }}" target="_blank" rel="noopener">Facebook</a></li>
+      <li><a class="share-link" href="mailto:?subject={{ t }}&amp;body={{ u }}">Email</a></li>
+    </ul>
+  </div>
+{% endmacro %}
+
+{# "More posts" row: up to `count` recent posts from the same blog (same first tag when the post has one), skipping
+   the current post. #}
+{% macro more_posts(posts, current_url, count, kind) %}
+  {% set shown = [] %}
+  <ul class="m-0 grid list-none gap-7 p-0 md:grid-cols-3">
+    {% for p in posts %}
+      {% if p.absolute_url != current_url and shown|length < count %}
+        {% do shown.append(p) %}
+        {{ post_card(p, kind) }}
+      {% endif %}
+    {% endfor %}
+  </ul>
+{% endmacro %}
+
+{# Numbered pagination: first, current ±1, last, with ellipses; previous / next arrows. #}
+{% macro pagination(total, current) %}
+  {% if total > 1 %}
+    {% set page = current if current > 0 else 1 %}
+    <nav class="mt-16 flex flex-wrap items-center justify-center gap-2" aria-label="Pagination">
+      {% if page > 1 %}
+        <a href="{{ blog_page_link(page - 1) }}" class="page-link" aria-label="Previous page">&larr;</a>
+      {% endif %}
+      {% for n in range(1, total + 1) %}
+        {% if n == 1 or n == total or (n >= page - 1 and n <= page + 1) %}
+          <a href="{{ blog_page_link(n) }}" class="page-link {% if n == page %}page-link--current{% endif %}" {% if n == page %}aria-current="page"{% endif %}>{{ n }}</a>
+        {% elif n == page - 2 or n == page + 2 %}
+          <span class="px-1 text-caption text-grey-350" aria-hidden="true">…</span>
+        {% endif %}
+      {% endfor %}
+      {% if page < total %}
+        <a href="{{ blog_page_link(page + 1) }}" class="page-link" aria-label="Next page">&rarr;</a>
+      {% endif %}
+    </nav>
+  {% endif %}
+{% endmacro %}

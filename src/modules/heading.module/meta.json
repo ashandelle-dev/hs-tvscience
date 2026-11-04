@@ -6,5 +6,5 @@
   "module_id" : 196256640821,
   "label" : "tvSci Heading",
   "icon" : "../../../../mV0_d-web-default-modules_hubspot/img/icon/high-header.svg",
-  "is_available_for_new_content" : true
+  "is_available_for_new_content" : false
 }

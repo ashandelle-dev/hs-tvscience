@@ -4,5 +4,5 @@
   "host_template_types" : [ "PAGE" ],
   "module_id" : 125693963935,
   "label" : "Multiuse CTA",
-  "is_available_for_new_content" : true
+  "is_available_for_new_content" : false
 }

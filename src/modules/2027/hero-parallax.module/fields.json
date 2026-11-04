@@ -1,0 +1,687 @@
+[
+  {
+    "name": "heading",
+    "label": "Heading",
+    "type": "group",
+    "children": [
+      {
+        "name": "value",
+        "label": "Text",
+        "type": "text",
+        "allow_new_line": false,
+        "default": "TV that drives outcomes"
+      },
+      {
+        "name": "header_tag",
+        "label": "Tag",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          [
+            "h1",
+            "H1"
+          ],
+          [
+            "h2",
+            "H2"
+          ],
+          [
+            "p",
+            "Paragraph"
+          ]
+        ],
+        "default": "h1"
+      }
+    ]
+  },
+  {
+    "name": "body_copy",
+    "label": "Body copy",
+    "type": "richtext",
+    "enabled_features": [
+      "bold",
+      "italic",
+      "link",
+      "nonbreaking_space"
+    ],
+    "default": "<p>Premium inventory, AI-powered optimization. Radical transparency.<br>Drive any outcome: traffic, installs, sales, and more.</p>"
+  },
+  {
+    "name": "cta",
+    "label": "Button",
+    "type": "group",
+    "children": [
+      {
+        "name": "text",
+        "label": "Text",
+        "type": "text",
+        "allow_new_line": false,
+        "default": "Request a Demo"
+      },
+      {
+        "name": "link",
+        "label": "Link",
+        "type": "link",
+        "supported_types": [
+          "EXTERNAL",
+          "CONTENT",
+          "FILE",
+          "EMAIL_ADDRESS",
+          "BLOG"
+        ],
+        "default": {
+          "url": {
+            "content_id": null,
+            "type": "EXTERNAL",
+            "href": "https://www.tvscientific.com/contact"
+          },
+          "open_in_new_tab": false,
+          "no_follow": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "center_card",
+    "label": "Center image",
+    "type": "group",
+    "children": [
+      {
+        "name": "image",
+        "label": "Image",
+        "type": "image",
+        "responsive": true,
+        "resizable": true,
+        "show_loading": true,
+        "help_text": "Cropped to 16:9.",
+        "default": {
+          "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/2027-reskin/home/hero-center-2.jpg",
+          "alt": "Two friends laughing and taking a selfie on a green couch",
+          "width": 1376,
+          "height": 774,
+          "size_type": "exact",
+          "loading": "lazy"
+        }
+      },
+      {
+        "name": "lottie",
+        "label": "Lottie JSON URL (optional, plays over the image and replaces the badge)",
+        "type": "text",
+        "inline_help_text": "The animation is sized to the card (transparent background). The badge title below is still used as its screen-reader label.",
+        "default": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/2027-reskin/lottie/hero-center-v2.json"
+      },
+      {
+        "name": "lottie_hold_frame",
+        "label": "Lottie hold frame (optional)",
+        "type": "number",
+        "display": "text",
+        "inline_help_text": "Frame shown until the animation starts, for animations whose first frame is empty. It plays on from this frame. Reduced-motion visitors stay on it.",
+        "default": null
+      },
+      {
+        "name": "badge",
+        "label": "Overlay badge",
+        "type": "group",
+        "expanded": false,
+        "help_text": "Leave the title empty for no badge.",
+        "children": [
+          {
+            "name": "title",
+            "label": "Title",
+            "type": "text",
+            "allow_new_line": false,
+            "default": "Purchase Complete"
+          },
+          {
+            "name": "subtitle",
+            "label": "Subtitle",
+            "type": "text",
+            "allow_new_line": false,
+            "default": "Attributed"
+          },
+          {
+            "name": "icon",
+            "label": "Icon",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              [
+                "none",
+                "None"
+              ],
+              [
+                "chart",
+                "Line chart"
+              ],
+              [
+                "bars",
+                "Bar chart"
+              ],
+              [
+                "check",
+                "Check"
+              ]
+            ],
+            "default": "check"
+          },
+          {
+            "name": "layout",
+            "label": "Layout",
+            "type": "choice",
+            "display": "radio",
+            "choices": [
+              [
+                "inline",
+                "Icon beside text"
+              ],
+              [
+                "stacked",
+                "Icon above text"
+              ]
+            ],
+            "default": "inline"
+          },
+          {
+            "name": "position",
+            "label": "Position",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              [
+                "top-left",
+                "Top left"
+              ],
+              [
+                "top-right",
+                "Top right"
+              ],
+              [
+                "bottom-left",
+                "Bottom left"
+              ],
+              [
+                "bottom-right",
+                "Bottom right"
+              ],
+              [
+                "bottom-right-outside",
+                "Bottom right, overhanging the card"
+              ]
+            ],
+            "default": "bottom-right-outside"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "left_cards",
+    "label": "Left images",
+    "type": "group",
+    "occurrence": {
+      "min": 0,
+      "max": 2,
+      "sorting_label_field": "left_cards.image",
+      "default": 2
+    },
+    "children": [
+      {
+        "name": "image",
+        "label": "Image",
+        "type": "image",
+        "responsive": true,
+        "resizable": true,
+        "show_loading": true,
+        "help_text": "Cropped to 16:9.",
+        "default": {
+          "src": "",
+          "alt": "",
+          "size_type": "exact",
+          "loading": "lazy"
+        }
+      },
+      {
+        "name": "lottie",
+        "label": "Lottie JSON URL (optional, plays over the image and replaces the badge)",
+        "type": "text",
+        "inline_help_text": "The animation is sized to the card (transparent background). The badge title below is still used as its screen-reader label.",
+        "default": ""
+      },
+      {
+        "name": "lottie_hold_frame",
+        "label": "Lottie hold frame (optional)",
+        "type": "number",
+        "display": "text",
+        "inline_help_text": "Frame shown until the animation starts, for animations whose first frame is empty. It plays on from this frame. Reduced-motion visitors stay on it.",
+        "default": null
+      },
+      {
+        "name": "badge",
+        "label": "Overlay badge",
+        "type": "group",
+        "expanded": false,
+        "help_text": "Leave the title empty for no badge.",
+        "children": [
+          {
+            "name": "title",
+            "label": "Title",
+            "type": "text",
+            "allow_new_line": false,
+            "default": ""
+          },
+          {
+            "name": "subtitle",
+            "label": "Subtitle",
+            "type": "text",
+            "allow_new_line": false,
+            "default": ""
+          },
+          {
+            "name": "icon",
+            "label": "Icon",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              [
+                "none",
+                "None"
+              ],
+              [
+                "chart",
+                "Line chart"
+              ],
+              [
+                "bars",
+                "Bar chart"
+              ],
+              [
+                "check",
+                "Check"
+              ]
+            ],
+            "default": "none"
+          },
+          {
+            "name": "layout",
+            "label": "Layout",
+            "type": "choice",
+            "display": "radio",
+            "choices": [
+              [
+                "inline",
+                "Icon beside text"
+              ],
+              [
+                "stacked",
+                "Icon above text"
+              ]
+            ],
+            "default": "inline"
+          },
+          {
+            "name": "position",
+            "label": "Position",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              [
+                "top-left",
+                "Top left"
+              ],
+              [
+                "top-right",
+                "Top right"
+              ],
+              [
+                "bottom-left",
+                "Bottom left"
+              ],
+              [
+                "bottom-right",
+                "Bottom right"
+              ],
+              [
+                "bottom-right-outside",
+                "Bottom right, overhanging the card"
+              ]
+            ],
+            "default": "bottom-left"
+          }
+        ]
+      }
+    ],
+    "default": [
+      {
+        "image": {
+          "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/2027-reskin/home/hero-card-runner.jpg",
+          "alt": "TV ad: a runner crossing zigzag street markings, seen from above",
+          "width": 840,
+          "height": 472,
+          "size_type": "exact",
+          "loading": "lazy"
+        },
+        "badge": {
+          "title": "Conversion Rate",
+          "subtitle": "",
+          "icon": "chart",
+          "layout": "stacked",
+          "position": "top-right"
+        },
+        "lottie": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/2027-reskin/lottie/hero-top-left-v2.json",
+        "lottie_hold_frame": 90
+      },
+      {
+        "image": {
+          "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/2027-reskin/home/hero-card-matcha.jpg",
+          "alt": "Shoppable TV ad with QR code: an iced matcha latte, paused with a Resume button",
+          "width": 840,
+          "height": 472,
+          "size_type": "exact",
+          "loading": "lazy"
+        },
+        "badge": {
+          "title": "",
+          "subtitle": "",
+          "icon": "none",
+          "layout": "inline",
+          "position": "bottom-left"
+        },
+        "lottie": ""
+      }
+    ]
+  },
+  {
+    "name": "right_cards",
+    "label": "Right images",
+    "type": "group",
+    "occurrence": {
+      "min": 0,
+      "max": 2,
+      "sorting_label_field": "right_cards.image",
+      "default": 2
+    },
+    "children": [
+      {
+        "name": "image",
+        "label": "Image",
+        "type": "image",
+        "responsive": true,
+        "resizable": true,
+        "show_loading": true,
+        "help_text": "Cropped to 16:9.",
+        "default": {
+          "src": "",
+          "alt": "",
+          "size_type": "exact",
+          "loading": "lazy"
+        }
+      },
+      {
+        "name": "lottie",
+        "label": "Lottie JSON URL (optional, plays over the image and replaces the badge)",
+        "type": "text",
+        "inline_help_text": "The animation is sized to the card (transparent background). The badge title below is still used as its screen-reader label.",
+        "default": ""
+      },
+      {
+        "name": "lottie_hold_frame",
+        "label": "Lottie hold frame (optional)",
+        "type": "number",
+        "display": "text",
+        "inline_help_text": "Frame shown until the animation starts, for animations whose first frame is empty. It plays on from this frame. Reduced-motion visitors stay on it.",
+        "default": null
+      },
+      {
+        "name": "badge",
+        "label": "Overlay badge",
+        "type": "group",
+        "expanded": false,
+        "help_text": "Leave the title empty for no badge.",
+        "children": [
+          {
+            "name": "title",
+            "label": "Title",
+            "type": "text",
+            "allow_new_line": false,
+            "default": ""
+          },
+          {
+            "name": "subtitle",
+            "label": "Subtitle",
+            "type": "text",
+            "allow_new_line": false,
+            "default": ""
+          },
+          {
+            "name": "icon",
+            "label": "Icon",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              [
+                "none",
+                "None"
+              ],
+              [
+                "chart",
+                "Line chart"
+              ],
+              [
+                "bars",
+                "Bar chart"
+              ],
+              [
+                "check",
+                "Check"
+              ]
+            ],
+            "default": "none"
+          },
+          {
+            "name": "layout",
+            "label": "Layout",
+            "type": "choice",
+            "display": "radio",
+            "choices": [
+              [
+                "inline",
+                "Icon beside text"
+              ],
+              [
+                "stacked",
+                "Icon above text"
+              ]
+            ],
+            "default": "inline"
+          },
+          {
+            "name": "position",
+            "label": "Position",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              [
+                "top-left",
+                "Top left"
+              ],
+              [
+                "top-right",
+                "Top right"
+              ],
+              [
+                "bottom-left",
+                "Bottom left"
+              ],
+              [
+                "bottom-right",
+                "Bottom right"
+              ],
+              [
+                "bottom-right-outside",
+                "Bottom right, overhanging the card"
+              ]
+            ],
+            "default": "bottom-left"
+          }
+        ]
+      }
+    ],
+    "default": [
+      {
+        "image": {
+          "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/2027-reskin/home/hero-card-car.jpg",
+          "alt": "TV ad: rain-speckled green car headlight",
+          "width": 840,
+          "height": 472,
+          "size_type": "exact",
+          "loading": "lazy"
+        },
+        "badge": {
+          "title": "App Downloads",
+          "subtitle": "",
+          "icon": "bars",
+          "layout": "inline",
+          "position": "bottom-left"
+        },
+        "lottie": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/2027-reskin/lottie/hero-top-right-v2.json"
+      },
+      {
+        "image": {
+          "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/2027-reskin/home/hero-card-bag.jpg",
+          "alt": "TV ad: a green handbag held against a dark green background",
+          "width": 840,
+          "height": 472,
+          "size_type": "exact",
+          "loading": "lazy"
+        },
+        "badge": {
+          "title": "CTV Optimization",
+          "subtitle": "",
+          "icon": "none",
+          "layout": "inline",
+          "position": "bottom-left"
+        },
+        "lottie": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/2027-reskin/lottie/hero-bottom-right.json"
+      }
+    ]
+  },
+  {
+    "name": "form",
+    "label": "Form (optional, replaces the button; puts the copy left and the form right)",
+    "type": "form",
+    "default": {
+      "response_type": "inline",
+      "message": "Thanks for submitting the form."
+    }
+  },
+  {
+    "name": "sfdc_campaign",
+    "label": "Salesforce campaign ID (optional)",
+    "type": "text",
+    "default": ""
+  },
+  {
+    "name": "anchor",
+    "label": "Anchor ID (optional, for #links)",
+    "type": "text",
+    "default": ""
+  },
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "spacing_top",
+        "label": "Space above",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          [
+            "none",
+            "None"
+          ],
+          [
+            "sm",
+            "Small (32px)"
+          ],
+          [
+            "md",
+            "Medium (64px)"
+          ],
+          [
+            "lg",
+            "Large (96px)"
+          ],
+          [
+            "xl",
+            "Extra large (128px)"
+          ]
+        ],
+        "default": "md"
+      },
+      {
+        "name": "spacing_bottom",
+        "label": "Space below",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          [
+            "none",
+            "None"
+          ],
+          [
+            "sm",
+            "Small (32px)"
+          ],
+          [
+            "md",
+            "Medium (64px)"
+          ],
+          [
+            "lg",
+            "Large (96px)"
+          ],
+          [
+            "xl",
+            "Extra large (128px)"
+          ]
+        ],
+        "default": "md"
+      },
+      {
+        "name": "parallax",
+        "label": "Parallax",
+        "type": "group",
+        "children": [
+          {
+            "name": "enabled",
+            "label": "Enable parallax",
+            "type": "boolean",
+            "display": "toggle",
+            "default": true
+          },
+          {
+            "name": "side_offset",
+            "label": "Side columns travel (px)",
+            "type": "number",
+            "min": 0,
+            "max": 300,
+            "step": 10,
+            "default": 90
+          },
+          {
+            "name": "center_drift",
+            "label": "Center image travel (%)",
+            "type": "number",
+            "min": 0,
+            "max": 30,
+            "step": 1,
+            "default": 5
+          }
+        ]
+      }
+    ]
+  }
+]

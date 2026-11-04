@@ -1,0 +1,24 @@
+{% macro link_attrs(link) -%}
+  href="{% if link.url.type == "EMAIL_ADDRESS" %}mailto:{% endif %}{{ link.url.href }}"
+  {%- if link.open_in_new_tab %} target="_blank"{% endif -%}
+  {%- if link.open_in_new_tab or link.no_follow %} rel="{% if link.open_in_new_tab %}noopener{% endif %}{% if link.no_follow %} nofollow{% endif %}"{% endif -%}
+{%- endmacro %}
+
+{% set grey = module.background == "grey" %}
+{% set tag = "a" if module.link.url.href else "div" %}
+<{{ tag }} {% if module.link.url.href %}{{ link_attrs(module.link) }}{% endif %}
+  class="group flex h-full flex-col overflow-hidden rounded-20 no-underline {% if grey %}bg-grey-050{% else %}border border-solid border-grey-100 bg-white {% if module.link.url.href %}transition-colors duration-200 hover:border-tvgreen-600{% endif %}{% endif %}">
+  {% if module.image.src %}
+    <img src="{{ module.image.src }}" alt="{{ module.image.alt }}"
+      {% if module.image.width %}width="{{ module.image.width }}" height="{{ module.image.height }}"{% endif %}
+      class="block aspect-card w-full object-cover" loading="{{ module.image.loading or "lazy" }}">
+  {% endif %}
+  <div class="flex flex-1 flex-col px-5 pb-8 pt-4">
+    {% if module.eyebrow %}<p class="m-0 mb-4 text-meta font-medium text-grey-200">{{ module.eyebrow }}</p>{% endif %}
+    {% if module.title %}<p class="m-0 text-card-title font-medium text-black">{{ module.title }}</p>{% endif %}
+    {% if module.description %}<div class="rte mt-3 text-body text-grey-350">{{ module.description }}</div>{% endif %}
+    {% if module.link_text and module.link.url.href %}
+      <span class="text-link--arrow mt-auto inline-flex items-center gap-1 pt-8 text-meta font-medium text-tvgreen-600 group-hover:underline">{{ module.link_text }}</span>
+    {% endif %}
+  </div>
+</{{ tag }}>

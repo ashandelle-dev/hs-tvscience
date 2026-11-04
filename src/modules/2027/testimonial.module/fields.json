@@ -1,0 +1,342 @@
+[
+  {
+    "name": "testimonial_image",
+    "label": "Image",
+    "type": "image",
+    "responsive": true,
+    "resizable": true,
+    "show_loading": true,
+    "default": {
+      "src": "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/Testimonials%20img.webp",
+      "alt": "Earnin app showing cost per conversion falling",
+      "width": 815,
+      "height": 693,
+      "size_type": "exact",
+      "loading": "lazy"
+    }
+  },
+  {
+    "name": "logo",
+    "label": "Company logo",
+    "type": "image",
+    "responsive": true,
+    "resizable": true,
+    "show_loading": true,
+    "default": {
+      "src": "https://tvscientific.com/hubfs/logo-earnin.svg",
+      "alt": "Earnin",
+      "width": 99,
+      "height": 38,
+      "size_type": "exact",
+      "loading": "lazy"
+    }
+  },
+  {
+    "name": "quote",
+    "label": "Quote",
+    "type": "group",
+    "children": [
+      {
+        "name": "value",
+        "label": "Text",
+        "type": "text",
+        "allow_new_line": true,
+        "default": "\"We turned off CTV for a couple of days and saw a decrease in performance. That prompted us to quickly devote 18% of our media spend on CTV with tvScientific.\""
+      }
+    ]
+  },
+  {
+    "name": "author_name",
+    "label": "Name",
+    "type": "text",
+    "allow_new_line": false,
+    "default": "Brittanie Williams"
+  },
+  {
+    "name": "author_title",
+    "label": "Title",
+    "type": "text",
+    "allow_new_line": false,
+    "default": "Chief Marketing Officer, Earnin"
+  },
+  {
+    "name": "author_photo",
+    "label": "Small headshot beside the name (large image layout)",
+    "type": "image",
+    "responsive": true,
+    "resizable": true,
+    "show_loading": true,
+    "default": {
+      "src": "",
+      "alt": "",
+      "width": 0,
+      "height": 0,
+      "size_type": "auto",
+      "loading": "lazy"
+    }
+  },
+  {
+    "name": "layout",
+    "label": "Layout",
+    "type": "choice",
+    "display": "radio",
+    "choices": [
+      [
+        "feature",
+        "Large image + quote (homepage)"
+      ],
+      [
+        "band",
+        "Grey band, round photo (solutions)"
+      ],
+      [
+        "split",
+        "Grey band: heading + button left, quote right (image = small headshot)"
+      ]
+    ],
+    "default": "feature"
+  },
+  {
+    "name": "intro",
+    "label": "Left column (split layout)",
+    "type": "group",
+    "children": [
+      {
+        "name": "eyebrow",
+        "label": "Eyebrow / number",
+        "type": "text",
+        "allow_new_line": false,
+        "default": ""
+      },
+      {
+        "name": "heading",
+        "label": "Heading",
+        "type": "text",
+        "allow_new_line": false,
+        "default": ""
+      },
+      {
+        "name": "header_tag",
+        "label": "Heading tag",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          [
+            "h2",
+            "H2"
+          ],
+          [
+            "h3",
+            "H3"
+          ],
+          [
+            "p",
+            "Paragraph"
+          ]
+        ],
+        "default": "h2"
+      },
+      {
+        "name": "cta",
+        "label": "Button",
+        "type": "group",
+        "children": [
+          {
+            "name": "text",
+            "label": "Text",
+            "type": "text",
+            "allow_new_line": false,
+            "default": ""
+          },
+          {
+            "name": "link",
+            "label": "Link",
+            "type": "link",
+            "supported_types": [
+              "EXTERNAL",
+              "CONTENT",
+              "FILE",
+              "EMAIL_ADDRESS",
+              "BLOG"
+            ],
+            "default": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": ""
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "more_quotes",
+    "label": "More quotes (carousel)",
+    "type": "group",
+    "help_text": "Grey band and split layouts. Each extra quote becomes a slide after the one above, with previous / next controls.",
+    "occurrence": {
+      "min": 0,
+      "max": 6,
+      "sorting_label_field": "more_quotes.author_name",
+      "default": 0
+    },
+    "children": [
+      {
+        "name": "photo",
+        "label": "Photo (optional)",
+        "type": "image",
+        "responsive": true,
+        "resizable": true,
+        "show_loading": true,
+        "default": {
+          "src": "",
+          "alt": "",
+          "width": 0,
+          "height": 0,
+          "size_type": "auto",
+          "loading": "lazy"
+        }
+      },
+      {
+        "name": "logo",
+        "label": "Company logo",
+        "type": "image",
+        "responsive": true,
+        "resizable": true,
+        "show_loading": true,
+        "default": {
+          "src": "",
+          "alt": "",
+          "width": 0,
+          "height": 0,
+          "size_type": "auto",
+          "loading": "lazy"
+        }
+      },
+      {
+        "name": "quote_text",
+        "label": "Quote",
+        "type": "text",
+        "allow_new_line": true,
+        "default": ""
+      },
+      {
+        "name": "author_name",
+        "label": "Name",
+        "type": "text",
+        "allow_new_line": false,
+        "default": ""
+      },
+      {
+        "name": "author_title",
+        "label": "Title",
+        "type": "text",
+        "allow_new_line": false,
+        "default": ""
+      }
+    ],
+    "default": []
+  },
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "spacing_top",
+        "label": "Space above",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          [
+            "0",
+            "None"
+          ],
+          [
+            "32",
+            "32px"
+          ],
+          [
+            "48",
+            "48px"
+          ],
+          [
+            "64",
+            "64px"
+          ],
+          [
+            "80",
+            "80px"
+          ],
+          [
+            "96",
+            "96px"
+          ],
+          [
+            "112",
+            "112px"
+          ],
+          [
+            "120",
+            "120px"
+          ],
+          [
+            "128",
+            "128px"
+          ]
+        ],
+        "default": "112"
+      },
+      {
+        "name": "spacing_bottom",
+        "label": "Space below",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          [
+            "0",
+            "None"
+          ],
+          [
+            "32",
+            "32px"
+          ],
+          [
+            "48",
+            "48px"
+          ],
+          [
+            "64",
+            "64px"
+          ],
+          [
+            "80",
+            "80px"
+          ],
+          [
+            "96",
+            "96px"
+          ],
+          [
+            "112",
+            "112px"
+          ],
+          [
+            "120",
+            "120px"
+          ],
+          [
+            "128",
+            "128px"
+          ]
+        ],
+        "default": "96"
+      }
+    ]
+  }
+]

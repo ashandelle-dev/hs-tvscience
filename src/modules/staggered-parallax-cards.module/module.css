@@ -15,7 +15,7 @@
   margin: 0;
   will-change: transform;
   aspect-ratio: 280 / 390;
-  background-color: #f9fafc; /* tvs-grey-pastel fallback */
+  background-color: #F6F6F3; /* tvs-grey-pastel fallback */
 }
 
 .staggered-parallax-cards__img {

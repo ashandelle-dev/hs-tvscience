@@ -1,0 +1,103 @@
+{% macro link_attrs(link) -%}
+  href="{% if link.url.type == "EMAIL_ADDRESS" %}mailto:{% endif %}{{ link.url.href }}"
+  {%- if link.open_in_new_tab %} target="_blank"{% endif -%}
+  {%- if link.open_in_new_tab or link.no_follow %} rel="{% if link.open_in_new_tab %}noopener{% endif %}{% if link.no_follow %} nofollow{% endif %}"{% endif -%}
+{%- endmacro %}
+
+{% set pt = { "0": "pt-0", "32": "pt-8", "48": "pt-12", "64": "pt-12 md:pt-16", "80": "pt-12 md:pt-20", "96": "pt-16 md:pt-24", "112": "pt-16 md:pt-28", "120": "pt-16 md:pt-30", "128": "pt-16 md:pt-32" } %}
+{% set pb = { "0": "pb-0", "32": "pb-8", "48": "pb-12", "64": "pb-12 md:pb-16", "80": "pb-12 md:pb-20", "96": "pb-16 md:pb-24", "112": "pb-16 md:pb-28", "120": "pb-16 md:pb-30", "128": "pb-16 md:pb-32" } %}
+
+<section class="{{ pt[module.style.spacing_top] }} {{ pb[module.style.spacing_bottom] }}">
+  <div class="wrap max-w-feature">
+    <div class="lg:grid lg:grid-cols-story lg:items-start lg:gap-20 lg:px-16">
+
+      <aside class="rounded-32 bg-grey-050 p-8 lg:sticky lg:top-8">
+        {% if module.logo.src %}
+          <img src="{{ module.logo.src }}" alt="{{ module.logo.alt }}" {% if module.logo.width %}width="{{ module.logo.width }}" height="{{ module.logo.height }}"{% endif %}
+            class="mb-8 block h-auto max-h-10 w-auto" loading="lazy">
+        {% endif %}
+        {% if module.stats_heading %}<p class="m-0 text-body-relaxed font-bold text-black">{{ module.stats_heading }}</p>{% endif %}
+        {% if module.stats %}
+          <dl class="m-0 mt-2">
+            {% for s in module.stats %}
+              <div class="flex flex-col-reverse border-0 border-b border-solid border-grey-100 py-5 last:border-b-0">
+                <dt class="mt-1 text-body-sm text-grey-350">{{ s.stat_label }}</dt>
+                <dd class="m-0 text-heading-sm font-bold text-black">{{ s.value }}</dd>
+              </div>
+            {% endfor %}
+          </dl>
+        {% endif %}
+        {% if module.cta.text %}
+          <a {{ link_attrs(module.cta.link) }} class="btn btn--lg mt-6 w-full">{{ module.cta.text }}</a>
+        {% endif %}
+      </aside>
+
+      <div class="mt-16 lg:mt-0">
+        {% for sec in module.sections %}
+          {% set sub = sec.level == "subsection" %}
+          <div class="{% if not loop.first %}{% if not sec.heading %}mt-8{% elif sub %}mt-10 md:mt-12{% else %}mt-16 md:mt-24{% endif %}{% endif %}">
+            {% if sec.number and sec.heading %}
+              <p class="m-0 {% if sub %}mb-2 text-body-sm font-bold text-tvgreen-600{% else %}mb-4 text-body-lg font-medium text-black{% endif %}">{{ sec.number }}</p>
+            {% endif %}
+            {% if sec.heading %}
+              {% if sub %}
+                <h3 class="m-0 text-card-title font-bold text-black">{{ sec.heading }}</h3>
+              {% else %}
+                <h2 class="m-0 text-heading-sm font-bold text-black md:text-heading-lg">{{ sec.heading }}</h2>
+              {% endif %}
+            {% endif %}
+            {% if sec.body_copy %}
+              <div class="rte {% if sec.heading %}{% if sub %}mt-4{% else %}mt-6{% endif %}{% endif %} max-w-copy text-body-relaxed text-grey-350">{{ sec.body_copy }}</div>
+            {% endif %}
+
+            {% if sec.items %}
+              {% set grid = sec.items_layout == "grid" %}
+              <ul class="m-0 list-none p-0 {% if sec.heading or sec.body_copy %}mt-8{% endif %} {% if grid %}grid gap-4 md:grid-cols-2{% endif %}">
+                {% for it in sec.items %}
+                  {% if grid %}
+                    <li class="rounded-20 border border-solid border-grey-100 p-6">
+                      {% if it.icon.src %}<img src="{{ it.icon.src }}" alt="" class="mb-4 block h-10 w-10 object-contain" loading="lazy">{% endif %}
+                      <div class="rte text-body text-grey-350 rte--strong">{{ it.item_text }}</div>
+                    </li>
+                  {% else %}
+                    <li class="flex items-start gap-4 border-0 border-b border-solid border-grey-100 py-4 first:pt-0 last:border-b-0 last:pb-0">
+                      {% if it.icon.src %}<img src="{{ it.icon.src }}" alt="" class="block h-8 w-8 shrink-0 object-contain" loading="lazy">{% endif %}
+                      <div class="rte pt-1 text-body-relaxed text-grey-350 rte--strong">{{ it.item_text }}</div>
+                    </li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            {% endif %}
+
+            {% if sec.image.src %}
+              <img src="{{ sec.image.src }}" alt="{{ sec.image.alt }}" {% if sec.image.width %}width="{{ sec.image.width }}" height="{{ sec.image.height }}"{% endif %}
+                class="mt-8 block h-auto w-full rounded-20" loading="lazy">
+            {% endif %}
+
+            {% if sec.quote.quote_text %}
+              <figure class="m-0 mt-8 rounded-20 bg-grey-050 p-8">
+                <blockquote class="m-0 text-body-lg font-medium text-black">“{{ sec.quote.quote_text }}”</blockquote>
+                {% if sec.quote.author_name %}
+                  <figcaption class="mt-6 flex items-center gap-4">
+                    {% if sec.quote.author_photo.src %}
+                      <img src="{{ sec.quote.author_photo.src }}" alt="" class="block h-12 w-12 shrink-0 rounded-full object-cover" loading="lazy">
+                    {% endif %}
+                    <span class="text-body-sm text-grey-350">
+                      <span class="block font-bold text-black">{{ sec.quote.author_name }}</span>
+                      {{ sec.quote.author_title }}
+                    </span>
+                  </figcaption>
+                {% endif %}
+              </figure>
+            {% endif %}
+
+            {% if sec.cta.text %}
+              <a {{ link_attrs(sec.cta.link) }} class="btn btn--secondary mt-8">{{ sec.cta.text }}</a>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+</section>

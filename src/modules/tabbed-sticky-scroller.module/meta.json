@@ -5,5 +5,5 @@
   "host_template_types" : [ "ANY" ],
   "module_id" : 190857105045,
   "label" : "Tabbed Sticky Scroller",
-  "is_available_for_new_content" : true
+  "is_available_for_new_content" : false
 }

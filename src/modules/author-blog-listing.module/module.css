@@ -27,7 +27,7 @@
   min-width: 2.5rem;
   height: 2.5rem;
   padding: 0 0.75rem;
-  color: #009061;
+  color: #19845D;
   text-decoration: none;
   border: 1px solid transparent;
   border-radius: 0.25rem;
@@ -40,20 +40,20 @@
 
 .blog-pagination__link:hover {
   background-color: #f0f9f6;
-  border-color: #009061;
+  border-color: #19845D;
   text-decoration: none;
 }
 
 .blog-pagination__link--active {
-  background-color: #009061;
+  background-color: #19845D;
   color: #ffffff;
-  border-color: #009061;
+  border-color: #19845D;
   cursor: default;
 }
 
 .blog-pagination__link--active:hover {
-  background-color: #009061;
-  border-color: #009061;
+  background-color: #19845D;
+  border-color: #19845D;
 }
 
 .blog-pagination__ellipsis {
@@ -88,7 +88,7 @@
   font-size: 0.875rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #009061;
+  color: #19845D;
   margin-bottom: 0.5rem;
 }
 
@@ -110,7 +110,7 @@
   justify-content: center;
   width: 2rem;
   height: 2rem;
-  color: #009061;
+  color: #19845D;
   text-decoration: none;
   transition: color 0.2s ease;
 }
@@ -121,7 +121,7 @@
 
 .blog-index__author h2 {
   margin-top: 2rem;
-  color: #1C4633;
+  color: #0D422F;
 }
 
 /* Responsive adjustments */

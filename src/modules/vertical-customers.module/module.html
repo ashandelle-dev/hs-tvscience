@@ -81,13 +81,13 @@ justify-end
 {% endif %}">
   <div class="relative w-full md:w-10/12 lg:w-10/12">
     
-      <div class="w-1 hidden md:!block md:!visible md:w-2 h-full bg-[#C0E7D8] absolute top-0 bottom-0 overflow-hidden translate-y-10 scroll-spine {% if module.column_reverse %}
+      <div class="w-1 hidden md:!block md:!visible md:w-2 h-full bg-tvs-grey-light absolute top-0 bottom-0 overflow-hidden translate-y-10 scroll-spine {% if module.column_reverse %}
       left-0 md:left-auto md:right-0
       {% else %}
       left-0
       {% endif %}" id="scroll-spine">
         
-      <div class="w-full h-[100px] bg-[#009061]  top-0 vertical-marker absolute transition-all duration-300 ease-in-out vertical-marker " id="vertical-marker"></div>
+      <div class="w-full h-[100px] bg-primary  top-0 vertical-marker absolute transition-all duration-300 ease-in-out vertical-marker " id="vertical-marker"></div>
         
     </div>
     {% for item in module.rows %}
@@ -97,7 +97,7 @@ justify-end
     {% endif %}
 
     <div class="mb-[200px] md:mb-[250px] last:mb-0 vr-item relative ">
-      <div class="absolute hidden md:!block md:!visible top-0 w-3 h-3 md:w-4 md:h-4 rounded-full bg-[#009061] translate-y-8 {% if module.column_reverse %}
+      <div class="absolute hidden md:!block md:!visible top-0 w-3 h-3 md:w-4 md:h-4 rounded-full bg-primary translate-y-8 {% if module.column_reverse %}
       left-0 md:left-auto -translate-x-1 md:right-0 md:translate-x-1 
       {% else %}
       left-0 -translate-x-1 
@@ -134,18 +134,18 @@ justify-end
             {% endif %}
               </div>
               
-              <p class="text-[#009061] text-[14px] m-0 font-plex font-bold">
+              <p class="text-primary text-[14px] m-0 font-plex font-bold">
                 FEATURED
               </p>
 
-              <p class="text-[36px] text-[#1C4633] font-medium ">{{ item.title }}</p>
-              <p class="text-[18px] text-[#1C4633] ">{{ item.paragraph }}</p>
-              <div class="flex mb-12 py-6 border-t border-b border-[#C0E7D8] ">
+              <p class="text-[36px] text-primary-darker font-medium ">{{ item.title }}</p>
+              <p class="text-[18px] text-primary-darker ">{{ item.paragraph }}</p>
+              <div class="flex mb-12 py-6 border-t border-b border-tvs-grey-light ">
                 {% for col in item.columns %}
                 <div class="w-1/3">
                   <div>
-                    <p class="m-0 text-[20px] md:text-[16px] lg:text-[24px] font-semibold text-[#1C4633]">{{col.number}}</p>
-                    <p class="m-0 text-[10px] text-[#009061]">{{col.detail}}</p>
+                    <p class="m-0 text-[20px] md:text-[16px] lg:text-[24px] font-semibold text-primary-darker">{{col.number}}</p>
+                    <p class="m-0 text-[10px] text-primary">{{col.detail}}</p>
                   </div>
                 </div>
                 {% endfor  %}

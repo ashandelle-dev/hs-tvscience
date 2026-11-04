@@ -7,17 +7,17 @@
 
  {% set link_el = '<div class="flex relative items-center">
   <div>
-    <p class="m-0 text-[14px] font-plex-mono tracking-widest text-[#009061] uppercase ">{{ module.card_cta.text }}</p>
+    <p class="m-0 text-[14px] font-plex-mono tracking-widest text-primary uppercase ">{{ module.card_cta.text }}</p>
   </div>
   <div class="w-4 text-center group-hover:translate-x-0.5 duration-200 transition-transform">
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M7 5L10 8L7 11" stroke="#009061" stroke-width="1.5"/>
+      <path d="M7 5L10 8L7 11" stroke="#19845D" stroke-width="1.5"/>
     </svg>    
   </div>
  </div>'
  %}
 
-<div class="rounded-lg overflow-hidden border relative hover:shadow-lg transition-shadow duration-200" style="border-color: {% if module.style.border_color %}{{ module.style.border_color.hex }}{% else %}#009061{% endif %};">
+<div class="rounded-lg overflow-hidden border relative hover:shadow-lg transition-shadow duration-200" style="border-color: {% if module.style.border_color %}{{ module.style.border_color.hex }}{% else %}#19845D{% endif %};">
 <a href="{{ href }}"
 {% if module.card_cta.link.open_in_new_tab %}target="_blank"{% endif %}
 {% if module.card_btn.link.rel %}rel="{{ module.card_cta.link.rel }}"{% endif %} class="flex {% if module.style.thumbnail_on_bottom == 'true' %}flex-col-reverse{% else %}flex-col{% endif %} group hover:no-underline">

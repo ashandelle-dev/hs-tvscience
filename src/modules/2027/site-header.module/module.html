@@ -1,0 +1,168 @@
+{% macro is_current(link) -%}
+  {%- set path = request.path or "/" -%}
+  {%- set href = link.url.href or "" -%}
+  {%- if href and href != "/" and (href == path or href ~ "/" == path or path ~ "/" == href or path is string_startingwith (href ~ "/")) -%}1{%- endif -%}
+{%- endmacro %}
+
+{% macro link_attrs(link) -%}
+  href="{% if link.url.type == "EMAIL_ADDRESS" %}mailto:{% endif %}{{ link.url.href }}"
+  {%- if link.open_in_new_tab %} target="_blank"{% endif -%}
+  {%- if link.open_in_new_tab or link.no_follow %} rel="{% if link.open_in_new_tab %}noopener{% endif %}{% if link.no_follow %} nofollow{% endif %}"{% endif -%}
+{%- endmacro %}
+
+{% macro chevron(classes) -%}
+  <svg class="{{ classes }}" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+{%- endmacro %}
+
+{% macro dropdown_link(d, wrap=false) %}
+  {% set on = is_current(d.link)|trim == "1" %}
+  <a {{ link_attrs(d.link) }} {% if on %}aria-current="page"{% endif %}
+    class="flex items-center gap-3 {% if not wrap %}whitespace-nowrap{% endif %} rounded-lg px-3 py-2 text-caption font-bold no-underline {% if on %}bg-grey-100 text-black{% else %}text-black hover:bg-grey-050{% endif %}">
+    {% if d.icon.src %}
+      <img src="{{ d.icon.src }}" alt="" width="16" height="16" class="size-4 shrink-0" loading="lazy">
+    {% endif %}
+    <span>{{ d.title }}</span>
+  </a>
+{% endmacro %}
+
+{% macro dropdown_label(text) %}
+  <p class="mb-3 px-3 text-label text-grey-200">{{ text }}</p>
+{% endmacro %}
+
+<header class="group/header relative z-50 bg-white" data-site-header>
+  <div class="wrap flex h-header-sm items-center lg:h-header">
+
+    {# Logo #}
+    {% if module.logo.image.src %}
+      <a {{ link_attrs(module.logo.link) }} class="shrink-0">
+        <img src="{{ module.logo.image.src }}" alt="{{ module.logo.image.alt }}"
+          width="{{ module.logo.image.width }}" height="{{ module.logo.image.height }}"
+          class="block h-auto w-logo-sm lg:w-logo" loading="eager">
+      </a>
+    {% endif %}
+
+    {% if module.minimal %}
+      {# Landing pages keep visitors on the page: the button jumps to the hero form (#get-started) #}
+      {% if module.minimal_button == "contact" and module.cta.text %}
+        <a {{ link_attrs(module.cta.link) }} class="btn ml-auto">{{ module.cta.text }}</a>
+      {% elif module.minimal_button != "none" and module.cta.text %}
+        <a href="#get-started" class="btn ml-auto">{{ module.cta.text }}</a>
+      {% endif %}
+    {% else %}
+    {# Desktop navigation #}
+    <nav class="ml-6 hidden lg:block" aria-label="Main">
+      <ul class="m-0 flex list-none items-center p-0">
+        {% for item in module.menu_item %}
+          {% set has_dropdown = item.dropdown|length > 0 %}
+          {% set hits = [] %}
+          {% for d in item.dropdown %}{% if is_current(d.link)|trim == "1" %}{% do hits.append(1) %}{% endif %}{% endfor %}
+          {% if not has_dropdown and is_current(item.link)|trim == "1" %}{% do hits.append(1) %}{% endif %}
+          {% set item_on = hits|length > 0 %}
+          <li class="group/item relative" {% if has_dropdown %}data-nav-item{% endif %}>
+            {% if has_dropdown %}
+              <button type="button"
+                class="flex h-9 cursor-pointer items-center gap-1.5 rounded-lg px-2.5 text-nav font-medium hover:bg-grey-050 group-data-[open]/item:bg-grey-100 text-black"
+                aria-expanded="false" aria-controls="site-nav-{{ loop.index }}" data-nav-trigger>
+                {{ item.title }}
+                {{ chevron("transition-transform duration-150 group-data-[open]/item:rotate-180") }}
+              </button>
+
+              <div id="site-nav-{{ loop.index }}" class="absolute left-0 top-full hidden pt-3 group-data-[open]/item:block">
+                <div class="w-max rounded-xl bg-white p-5 shadow-floating">
+                  {% if item.has_blog %}
+                    {# Fixed columns: long link names wrap so the post titles get the width #}
+                    <div class="flex gap-5">
+                      <div class="w-64">
+                        {{ dropdown_label(item.dropdown_label if item.dropdown_label else item.title) }}
+                        {% for d in item.dropdown %}{{ dropdown_link(d, true) }}{% endfor %}
+                      </div>
+                      <div class="w-nav-posts border-l border-grey-100 pl-5">
+                        {{ dropdown_label("Latest") }}
+                        {% for post in blog_recent_posts("default", 3) %}
+                          <a href="{{ post.absolute_url }}" class="flex items-start gap-3 rounded-lg p-3 no-underline hover:bg-grey-050">
+                            {% if post.featured_image %}
+                              <img src="{{ post.featured_image }}" alt="{{ post.featured_image_alt_text }}" width="96" height="54" class="aspect-video w-24 shrink-0 rounded-lg object-cover" loading="lazy">
+                            {% endif %}
+                            <span class="text-caption font-medium text-black">{{ post.name }}</span>
+                          </a>
+                        {% endfor %}
+                      </div>
+                    </div>
+                  {% else %}
+                    {{ dropdown_label(item.dropdown_label if item.dropdown_label else item.title) }}
+                    <div class="grid {% if item.as_rows %}grid-cols-2 gap-x-8{% endif %}">
+                      {% for d in item.dropdown %}{{ dropdown_link(d) }}{% endfor %}
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+            {% else %}
+              <a {{ link_attrs(item.link) }} {% if item_on %}aria-current="page"{% endif %} class="flex h-9 items-center rounded-lg px-2.5 text-nav font-medium no-underline hover:bg-grey-050 text-black">
+                {{ item.title }}
+              </a>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+    {# Desktop actions: Login sits inline with the demo button #}
+    <div class="ml-auto hidden items-center gap-5 lg:flex">
+      {% if module.login.text %}
+        <a {{ link_attrs(module.login.link) }} class="text-nav font-medium text-black no-underline hover:underline">{{ module.login.text }}</a>
+      {% endif %}
+      {% if module.cta.text %}
+        <a {{ link_attrs(module.cta.link) }} class="btn">{{ module.cta.text }}</a>
+      {% endif %}
+    </div>
+
+    {# Mobile menu toggle #}
+    <button type="button" class="ml-auto inline-flex size-10 cursor-pointer items-center justify-center rounded-lg text-black hover:bg-grey-050 lg:hidden"
+      aria-controls="site-nav-mobile" aria-expanded="false" data-menu-toggle>
+      <span class="sr-only">Menu</span>
+      <svg class="group-data-[menu-open]/header:hidden" width="22" height="16" viewBox="0 0 22 16" fill="none" aria-hidden="true"><path d="M1 1h20M1 8h20M1 15h20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <svg class="hidden group-data-[menu-open]/header:block" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M2 2l14 14M16 2L2 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    {% endif %}
+  </div>
+
+  {% if not module.minimal %}
+
+  {# Mobile menu panel (bottom padding = header height so the last items clear the viewport) #}
+  <div id="site-nav-mobile" class="absolute inset-x-0 top-full hidden h-dvh overflow-y-auto border-t border-grey-100 bg-white pb-header-sm group-data-[menu-open]/header:block lg:!hidden">
+    <nav class="wrap py-4" aria-label="Main">
+      <ul class="m-0 list-none divide-y divide-grey-100 p-0">
+        {% for item in module.menu_item %}
+          {% set hits = [] %}
+          {% for d in item.dropdown %}{% if is_current(d.link)|trim == "1" %}{% do hits.append(1) %}{% endif %}{% endfor %}
+          {% if not item.dropdown and is_current(item.link)|trim == "1" %}{% do hits.append(1) %}{% endif %}
+          <li>
+            {% if item.dropdown|length > 0 %}
+              <details class="group/acc">
+                <summary class="flex cursor-pointer items-center justify-between py-4 text-body font-medium text-black">
+                  {{ item.title }}
+                  {{ chevron("transition-transform duration-150 group-open/acc:rotate-180") }}
+                </summary>
+                <div class="-mx-3 flex flex-col pb-4">
+                  {% for d in item.dropdown %}{{ dropdown_link(d) }}{% endfor %}
+                </div>
+              </details>
+            {% else %}
+              <a {{ link_attrs(item.link) }} {% if hits %}aria-current="page"{% endif %} class="block py-4 text-body font-medium no-underline text-black">{{ item.title }}</a>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+
+      <div class="mt-6 flex flex-col gap-3">
+        {% if module.cta.text %}
+          <a {{ link_attrs(module.cta.link) }} class="btn btn--lg w-full">{{ module.cta.text }}</a>
+        {% endif %}
+        {% if module.login.text %}
+          <a {{ link_attrs(module.login.link) }} class="btn btn--lg btn--secondary w-full">{{ module.login.text }}</a>
+        {% endif %}
+      </div>
+    </nav>
+  </div>
+  {% endif %}
+</header>

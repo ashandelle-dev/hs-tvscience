@@ -1,0 +1,47 @@
+{% macro link_attrs(link) -%}
+  href="{% if link.url.type == "EMAIL_ADDRESS" %}mailto:{% endif %}{{ link.url.href }}"
+  {%- if link.open_in_new_tab %} target="_blank"{% endif -%}
+  {%- if link.open_in_new_tab or link.no_follow %} rel="{% if link.open_in_new_tab %}noopener{% endif %}{% if link.no_follow %} nofollow{% endif %}"{% endif -%}
+{%- endmacro %}
+
+{% set pt = { "0": "pt-0", "32": "pt-8", "48": "pt-12", "64": "pt-12 md:pt-16", "80": "pt-12 md:pt-20", "96": "pt-16 md:pt-24", "112": "pt-16 md:pt-28", "120": "pt-16 md:pt-30", "128": "pt-16 md:pt-32" } %}
+{% set pb = { "0": "pb-0", "32": "pb-8", "48": "pb-12", "64": "pb-12 md:pb-16", "80": "pb-12 md:pb-20", "96": "pb-16 md:pb-24", "112": "pb-16 md:pb-28", "120": "pb-16 md:pb-30", "128": "pb-16 md:pb-32" } %}
+
+{% set display = module.size != "section" %}
+{% set centered = display or module.align == "center" %}
+
+<section class="{{ pt[module.style.spacing_top] }} {{ pb[module.style.spacing_bottom] }}">
+  {% if display %}
+    <div class="wrap flex flex-col items-center text-center">
+      {% if module.eyebrow %}
+        <p class="m-0 text-body-lg font-medium leading-compact text-black">{{ module.eyebrow }}</p>
+      {% endif %}
+      {% if module.heading %}
+        <{{ module.header_tag }} class="mx-auto mb-0 mt-3 max-w-3xl text-heading-xl font-heavy text-black md:text-display-sm">{{ module.heading }}</{{ module.header_tag }}>
+      {% endif %}
+      {% if module.body_copy %}
+        <div class="rte mt-6 max-w-copy text-body-relaxed text-grey-350">{{ module.body_copy }}</div>
+      {% endif %}
+      {% if module.cta.text %}
+        <div class="mt-10 md:mt-16"><a {{ link_attrs(module.cta.link) }} class="btn">{{ module.cta.text }}</a></div>
+      {% endif %}
+    </div>
+  {% else %}
+    <div class="wrap max-w-feature">
+      <div class="lg:px-16 {% if centered %}flex flex-col items-center text-center{% endif %}">
+        {% if module.eyebrow %}
+          <p class="m-0 mb-4 text-body-lg font-medium text-black">{{ module.eyebrow }}</p>
+        {% endif %}
+        {% if module.heading %}
+          <{{ module.header_tag }} class="m-0 max-w-3xl text-balance text-heading-sm font-bold text-black md:text-heading-lg">{{ module.heading }}</{{ module.header_tag }}>
+        {% endif %}
+        {% if module.body_copy %}
+          <div class="rte mt-6 max-w-copy text-body-relaxed text-grey-350">{{ module.body_copy }}</div>
+        {% endif %}
+        {% if module.cta.text %}
+          <div class="mt-8"><a {{ link_attrs(module.cta.link) }} class="btn">{{ module.cta.text }}</a></div>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+</section>

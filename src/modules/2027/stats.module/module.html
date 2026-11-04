@@ -1,0 +1,19 @@
+{% set pt = { "0": "pt-0", "32": "pt-8", "48": "pt-12", "64": "pt-12 md:pt-16", "80": "pt-12 md:pt-20", "96": "pt-16 md:pt-24", "112": "pt-16 md:pt-28", "120": "pt-16 md:pt-30", "128": "pt-16 md:pt-32" } %}
+{% set pb = { "0": "pb-0", "32": "pb-8", "48": "pb-12", "64": "pb-12 md:pb-16", "80": "pb-12 md:pb-20", "96": "pb-16 md:pb-24", "112": "pb-16 md:pb-28", "120": "pb-16 md:pb-30", "128": "pb-16 md:pb-32" } %}
+{% set stack = module.layout == "stack" %}
+<section class="{{ pt[module.style.spacing_top] }} {{ pb[module.style.spacing_bottom] }}">
+  <div class="wrap">
+    <ul class="m-0 grid list-none gap-7 p-0 {% if stack %}rounded-20 border border-solid border-grey-100 bg-white p-6{% else %}md:grid-cols-2 lg:grid-cols-3{% endif %}">
+      {% for stat in module.stats %}
+        <li class="flex items-start gap-4 {% if not stack %}rounded-20 bg-grey-050 p-6{% endif %}">
+          {% if stat.icon.src %}<img src="{{ stat.icon.src }}" alt="{{ stat.icon.alt }}" class="block size-12 shrink-0 object-contain" loading="lazy">{% endif %}
+          <div>
+            {% if stat.title %}<p class="m-0 mb-2 text-caption font-medium text-grey-200">{{ stat.title }}</p>{% endif %}
+            <p class="m-0 text-heading-sm font-bold text-black md:text-heading-md">{{ stat.number }}</p>
+            {% if stat.stat_label %}<p class="m-0 mt-2 text-body text-grey-350">{{ stat.stat_label }}</p>{% endif %}
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

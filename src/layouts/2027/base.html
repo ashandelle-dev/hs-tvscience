@@ -1,0 +1,67 @@
+<!--
+  templateType: "none"
+  isAvailableForNewContent: false
+-->
+<!doctype html>
+<html lang="{{ html_lang }}" {{ html_lang_dir }}>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ page_meta.html_title }}</title>
+    {% if brand_settings.favicon.src %}<link rel="shortcut icon" href="{{ brand_settings.favicon.src }}" />{% endif %}
+    <meta name="description" content="{{ page_meta.meta_description }}">
+
+    {% set pin_sans = [
+      { "file": "Pin-Sans-Regular",        "weight": 400, "style": "normal" },
+      { "file": "Pin-Sans-Regular-Italic", "weight": 400, "style": "italic" },
+      { "file": "Pin-Sans-Medium",         "weight": 500, "style": "normal" },
+      { "file": "Pin-Sans-Medium-Italic",  "weight": 500, "style": "italic" },
+      { "file": "Pin-Sans-Bold",           "weight": 700, "style": "normal" },
+      { "file": "Pin-Sans-Bold-Italic",    "weight": 700, "style": "italic" },
+      { "file": "Pin-Sans-Heavy",          "weight": 900, "style": "normal" },
+      { "file": "Pin-Sans-Heavy-Italic",   "weight": 900, "style": "italic" }
+    ] %}
+    <link rel="preload" href="{{ get_asset_url('../../fonts/pin-sans/Pin-Sans-Regular.woff2') }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ get_asset_url('../../fonts/pin-sans/Pin-Sans-Heavy.woff2') }}" as="font" type="font/woff2" crossorigin>
+    <style>
+      {% for f in pin_sans %}
+      @font-face {
+        font-family: 'Pin Sans';
+        src: url('{{ get_asset_url("../../fonts/pin-sans/" ~ f.file ~ ".woff2") }}') format('woff2'),
+             url('{{ get_asset_url("../../fonts/pin-sans/" ~ f.file ~ ".woff") }}') format('woff');
+        font-weight: {{ f.weight }};
+        font-style: {{ f.style }};
+        font-display: swap;
+      }
+      {% endfor %}
+      #iframe-chat-widget { display: none; }
+    </style>
+
+    {{ require_css(get_asset_url("../../css/2027/site.css")) }}
+    {{ require_js(get_asset_url("../../js/2027/site.js"), "footer") }}
+    {{ standard_header_includes }}
+    {# Site share image for pages without their own featured image (system pages, blog listings) #}
+    {% if not content.featured_image %}
+      {% set og_image = "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/2027-reskin/tvscientific-opengraph-2027.png" %}
+      <meta property="og:image" content="{{ og_image }}">
+      <meta property="og:image:width" content="1200">
+      <meta property="og:image:height" content="630">
+      <meta property="og:image:alt" content="tvScientific by Pinterest">
+      <meta name="twitter:image" content="{{ og_image }}">
+    {% endif %}
+  </head>
+  <body class="tvs-2027">
+    <div class="body-wrapper {{ builtin_body_classes }}">
+      {% block header %}
+        {% global_partial path="../../partials/2027/header.html" %}
+      {% endblock header %}
+
+      {% block body %}
+      {% endblock body %}
+
+      {% block footer %}
+        {% global_partial path="../../partials/2027/footer.html" %}
+      {% endblock footer %}
+    </div>
+    {{ standard_footer_includes }}
+  </body>
+</html>

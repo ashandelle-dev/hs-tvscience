@@ -123,13 +123,13 @@
     border: 2px solid #23E596 !important;
     border-radius: 8px !important;
     background: #fff !important;
-    color: #0F2D29 !important;
+    color: #0D422F !important;
     padding: 10px 16px !important;
     font-size: 16px;
 }
 
 .hero-outcomes-form input::placeholder {
-    color: #0F2D29;
+    color: #0D422F;
     opacity: 0.7;
 }
 
@@ -140,7 +140,7 @@
     padding: 10px 32px !important;
     margin: 0 !important;
     background-color: #23E596 !important;
-    color: #0F2D29 !important;
+    color: #0D422F !important;
     border-color: #23E596 !important;
     font-size: 16px !important;
     font-weight: 500 !important;
@@ -151,7 +151,7 @@
 .hero-outcomes-form .hs-button:hover,
 .hero-outcomes-form input[type="submit"]:hover {
     background-color: #23E596 !important;
-    color: #0F2D29 !important;
+    color: #0D422F !important;
     border-color: #23E596 !important;
     opacity: 0.9;
 }

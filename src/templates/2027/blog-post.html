@@ -1,0 +1,28 @@
+<!--
+  templateType: blog_post
+  isAvailableForNewContent: true
+  label: Blog Post (2027)
+-->
+{% extends "../../layouts/2027/base.html" %}
+
+{% block body %}
+{% text "title_link" label="Title Link (News: link to the original article)", export_to_template_context=True %}
+{% image "publication_logo" label="Publication Logo (News)", export_to_template_context=True %}
+{% text "event_date" label="Event Date", export_to_template_context=True %}
+{% image "hero_image" label="Hero Image", export_to_template_context=True %}
+{% image "card_image" label="Card Image", export_to_template_context=True %}
+{% choice "jump_menu" label="Enable Jump Menu", value="No", choices="Yes, No", export_to_template_context=True %}
+{% choice "layout" label="Layout (not used by the 2027 template)", choices=[["layout-a","Layout A"],["layout-b","Layout B"]], multiple="False", display="radio", export_to_template_context=True %}
+
+{% set kind = "article" %}
+{% set eyebrow = group.public_title %}
+{% set summary = content.meta_description|striptags %}
+{% set when = content.widgets.event_date.body.value if content.widgets.event_date.body.value else content.publish_date|datetimeformat("%b %e, %Y") %}
+{% set minutes = ((content.post_body|striptags|wordcount) / 200)|round(0, "ceil")|int %}
+{% set meta_line = when ~ (" · " ~ minutes ~ " min read" if minutes > 1 and not content.widgets.title_link.body.value else "") %}
+{% set hero = content.widgets.hero_image.body if content.widgets.hero_image.body.src else {"src": content.featured_image, "alt": content.featured_image_alt_text} %}
+{% set back_label = "All " ~ group.public_title|lower %}
+{% set more_heading = "Similar posts" %}
+{% set has_form = false %}
+{% include "./blog-post-layout.html" %}
+{% endblock body %}

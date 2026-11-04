@@ -4,5 +4,5 @@
   "host_template_types" : [ "PAGE" ],
   "module_id" : 115006961959,
   "label" : "Quote Carousel",
-  "is_available_for_new_content" : true
+  "is_available_for_new_content" : false
 }

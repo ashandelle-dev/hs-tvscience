@@ -1,0 +1,121 @@
+{% macro link_attrs(link) -%}
+  href="{% if link.url.type == "EMAIL_ADDRESS" %}mailto:{% endif %}{{ link.url.href }}"
+  {%- if link.open_in_new_tab %} target="_blank"{% endif -%}
+  {%- if link.open_in_new_tab or link.no_follow %} rel="{% if link.open_in_new_tab %}noopener{% endif %}{% if link.no_follow %} nofollow{% endif %}"{% endif -%}
+{%- endmacro %}
+
+{% macro media(m, img_classes) %}
+  {% if m.lottie %}
+    <lottie-player class="block w-full" src="{{ m.lottie }}" background="transparent" speed="1" autoplay loop aria-label="{{ m.lottie_label }}"></lottie-player>
+  {% else %}
+    {{ image_tag(m.image, img_classes, m.style.animate_image) }}
+  {% endif %}
+{% endmacro %}
+
+{% macro image_tag(img, classes, fade) %}
+  <img src="{{ img.src }}" alt="{{ img.alt }}" {% if fade %}data-fade-up{% endif %}
+    {% if img.width %}width="{{ img.width }}"{% endif %} {% if img.height %}height="{{ img.height }}"{% endif %}
+    {% if img.loading != "disabled" %}loading="{{ img.loading }}"{% endif %}
+    class="{{ classes }}">
+{% endmacro %}
+
+{% set pt = { "0": "pt-0", "32": "pt-8", "48": "pt-12", "64": "pt-12 md:pt-16", "80": "pt-12 md:pt-20", "96": "pt-16 md:pt-24", "112": "pt-16 md:pt-28", "120": "pt-16 md:pt-30", "128": "pt-16 md:pt-32" } %}
+{% set pb = { "0": "pb-0", "32": "pb-8", "48": "pb-12", "64": "pb-12 md:pb-16", "80": "pb-12 md:pb-20", "96": "pb-16 md:pb-24", "112": "pb-16 md:pb-28", "120": "pb-16 md:pb-30", "128": "pb-16 md:pb-32" } %}
+{% set framed = module.treatment == "framed" %}
+{% set left = module.image_side == "left" %}
+{% set has_media = module.lottie or module.image.src %}
+{% if module.lottie %}{{ require_js("https://unpkg.com/@lottiefiles/lottie-player@2.0.12/dist/lottie-player.js") }}{% endif %}
+
+{% macro copy(m) %}
+  <div class="{% if m.style.copy_width == "wide" %}max-w-feature-copy-wide{% else %}max-w-feature-copy{% endif %}">
+    {% if m.eyebrow %}
+      <p class="m-0 mb-4 text-body-relaxed font-bold text-black">{{ m.eyebrow }}</p>
+    {% endif %}
+    {% if m.heading.value %}
+      <{{ m.heading.header_tag }} class="m-0 text-balance text-heading-sm text-black md:text-heading-feature
+        {# "medium" is the stored value of the Bold option #}
+        {% if m.heading.weight == "medium" %}font-bold{% else %}font-heavy{% endif %}">{{ m.heading.value }}</{{ m.heading.header_tag }}>
+    {% endif %}
+    {% if m.body_copy %}
+      <div class="rte mt-6 text-body-relaxed text-grey-350">{{ m.body_copy }}</div>
+    {% endif %}
+    {% if m.features %}
+      <dl class="m-0 mt-8 grid gap-x-8 gap-y-6 {% if m.style.copy_width == "wide" and m.treatment != "framed" %}sm:grid-cols-2{% endif %}">
+        {% for f in m.features %}
+          <div>
+            {% if f.title %}<dt class="text-body-relaxed font-bold text-black">{{ f.title }}</dt>{% endif %}
+            <dd class="rte m-0 mt-1 text-body text-grey-350">{{ f.body_copy }}</dd>
+          </div>
+        {% endfor %}
+      </dl>
+    {% endif %}
+    {% if m.stats %}
+      <dl class="m-0 mt-8 flex gap-12 border-y border-grey-100 py-6">
+        {% for s in m.stats %}
+          <div class="flex flex-col-reverse">
+            <dt class="text-label text-grey-350">{{ s.stat_label }}</dt>
+            <dd class="m-0 text-title font-bold text-black">{{ s.value }}</dd>
+          </div>
+        {% endfor %}
+      </dl>
+    {% endif %}
+    {% if m.cta.style != "none" and m.cta.text %}
+      <div class="mt-6">
+        <a {{ link_attrs(m.cta.link) }} class="{% if m.cta.style == "button" %}btn{% else %}text-link text-link--arrow{% endif %}">{{ m.cta.text }}</a>
+      </div>
+    {% endif %}
+  </div>
+{% endmacro %}
+
+<section class="{{ pt[module.style.spacing_top] }} {{ pb[module.style.spacing_bottom] }}">
+  <div class="wrap max-w-feature">
+    <div class="{% if module.style.divider %}border-0 border-b border-solid border-grey-100 pb-16 md:pb-24{% endif %}">
+    {% if framed %}
+      <div class="grid gap-10 rounded-44 bg-grey-050 p-6 md:p-12 lg:grid-cols-media-panel lg:items-center lg:gap-20">
+        {% if has_media %}
+          {% if module.scroll_image and module.image.src %}
+            {# Tall image slides top → bottom inside the frame as the section scrolls through the viewport (module.js) #}
+            <div class="relative aspect-media-frame overflow-hidden rounded-2xl bg-tvgreen-800" data-scroll-frame>
+              {{ image_tag(module.image, "absolute left-frame-bleed top-0 block h-auto w-frame-img will-change-transform") }}
+            </div>
+          {% elif module.lottie %}
+            <div class="overflow-hidden rounded-2xl bg-white">{{ media(module, "") }}</div>
+          {% else %}
+            <div class="overflow-hidden rounded-2xl bg-tvgreen-800">
+              {{ image_tag(module.image, "block aspect-media-frame h-full w-full object-cover") }}
+            </div>
+          {% endif %}
+        {% endif %}
+        {{ copy(module) }}
+      </div>
+    {% elif module.treatment == "card" %}
+      {# Whole row in one Grey 050 card; the image fills its half edge to edge and is cropped to the card height
+         (Partners "Certified partners. Proven success." — the badge collage runs past the top and bottom). #}
+      <div class="grid overflow-hidden rounded-32 border border-solid border-grey-100 bg-grey-050 lg:min-h-media-card {% if left %}lg:grid-cols-media-card-reverse{% else %}lg:grid-cols-media-card{% endif %}">
+        <div class="flex items-center p-8 md:p-12 lg:py-24 lg:pl-16 {% if left %}lg:order-2{% endif %}">{{ copy(module) }}</div>
+        {% if has_media %}
+          <div class="relative h-80 md:h-96 lg:h-auto {% if left %}lg:order-1{% endif %}">
+            {{ media(module, "absolute inset-0 block h-full w-full object-cover") }}
+          </div>
+        {% endif %}
+      </div>
+    {% else %}
+      <div class="grid items-center gap-10 {% if left %}lg:grid-cols-media-reverse{% else %}lg:grid-cols-media{% endif %}">
+        <div class="lg:pl-16 {% if left %}lg:order-2{% endif %}">{{ copy(module) }}</div>
+        {% if has_media %}
+          <div class="{% if left %}lg:order-1{% endif %}">
+            {% if module.treatment == "panel" %}
+              <div class="overflow-hidden rounded-20 bg-grey-050 p-6 md:p-8">{{ media(module, "block h-auto w-full") }}</div>
+            {% elif module.treatment == "panel_bleed" %}
+              {# Product cards that are open at the bottom: no padding below, so the card meets the panel edge #}
+              <div class="overflow-hidden rounded-20 bg-grey-050 px-6 pt-6 md:px-8 md:pt-8">{{ media(module, "block h-auto w-full") }}</div>
+            {% else %}
+              <div class="mx-auto max-w-xl">{{ media(module, "block h-auto w-full") }}</div>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+    </div>
+  </div>
+</section>

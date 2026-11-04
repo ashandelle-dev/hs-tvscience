@@ -1,0 +1,144 @@
+{% macro link_attrs(link) -%}
+  href="{% if link.url.type == "EMAIL_ADDRESS" %}mailto:{% endif %}{{ link.url.href }}"
+  {%- if link.open_in_new_tab %} target="_blank"{% endif -%}
+  {%- if link.open_in_new_tab or link.no_follow %} rel="{% if link.open_in_new_tab %}noopener{% endif %}{% if link.no_follow %} nofollow{% endif %}"{% endif -%}
+{%- endmacro %}
+
+{% macro badge_icon(name) %}
+  {% if name == "chart" %}
+    <svg class="block shrink-0" width="98" height="40" viewBox="0 0 98 40" fill="none" aria-hidden="true">
+      <path class="text-tvgreen" transform="translate(3 0)" d="M0.75 38.75L16.3578 22.9341C18.3156 20.9502 21.5177 20.9502 23.4755 22.9341L29.6911 29.2326C31.649 31.2165 34.851 31.2165 36.8089 29.2326L55.9411 9.84521C57.899 7.86126 61.101 7.86127 63.0589 9.84521L68.8578 15.7215C70.8156 17.7054 74.0177 17.7054 75.9755 15.7215L90.75 0.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <path transform="translate(0 25.25)" d="M0.75 0.75H1.75M96.75 0.75H95.75M5.75 0.75H7.75M11.75 0.75H13.75M17.75 0.75H19.75M23.75 0.75H25.75M29.75 0.75H31.75M35.75 0.75H37.75M41.75 0.75H43.75M47.75 0.75H49.75M53.75 0.75H55.75M59.75 0.75H61.75M65.75 0.75H67.75M71.75 0.75H73.75M77.75 0.75H79.75M83.75 0.75H85.75M89.75 0.75H91.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+  {% elif name == "bars" %}
+    <svg class="block shrink-0 text-tvgreen" width="32" height="23" viewBox="0 0 32 22.86" fill="currentColor" aria-hidden="true">
+      <rect x="0" y="12.41" width="9.22" height="10.45" rx="1.306"/><rect x="11.39" y="5.88" width="9.22" height="16.98" rx="1.306"/><rect x="22.78" y="0" width="9.22" height="22.86" rx="1.306"/>
+    </svg>
+  {% elif name == "check" %}
+    <svg class="block shrink-0 md:-mt-1" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M18.7071 8.70711L17.2929 7.29289L10 14.5858L6.70711 11.2929L5.29289 12.7071L10 17.4142L18.7071 8.70711Z"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z"/>
+    </svg>
+  {% endif %}
+{% endmacro %}
+
+{% macro badge(b, show_mobile) %}
+  {% if b.title %}
+    {% set positions = {
+      "top-left": "left-3 top-3 md:left-6 md:top-6",
+      "top-right": "right-3 top-3 md:right-6 md:top-6",
+      "bottom-left": "bottom-3 left-3 md:bottom-6 md:left-6",
+      "bottom-right": "bottom-3 right-3 md:bottom-6 md:right-6",
+      "bottom-right-outside": "bottom-3 right-3 md:-right-20 md:bottom-6"
+    } %}
+    {% if b.layout == "stacked" %}
+      {% set shape = "flex-col items-center gap-0.5 px-5 pb-7 pt-6 text-center" %}
+    {% elif b.subtitle %}
+      {% set shape = "items-center gap-2 px-4 py-3 md:items-start md:gap-3 md:py-9 md:pl-9 md:pr-12" %}
+    {% else %}
+      {% set shape = "items-center gap-2.5 p-4" %}
+    {% endif %}
+    <div class="absolute z-10 {% if show_mobile %}flex{% else %}hidden md:flex{% endif %} {{ positions[b.position] }} rounded-20 bg-white text-black shadow-floating {{ shape }}">
+      {{ badge_icon(b.icon) }}
+      {% if b.subtitle %}
+        <div class="flex flex-col gap-2">
+          <span class="text-badge font-bold md:text-badge-lg">{{ b.title }}</span>
+          <span class="text-badge-sm font-medium text-grey-200">{{ b.subtitle }}</span>
+        </div>
+      {% else %}
+        <span class="text-badge font-bold {% if b.layout == "stacked" %}max-w-20{% endif %}">{{ b.title }}</span>
+      {% endif %}
+    </div>
+  {% endif %}
+{% endmacro %}
+
+{% macro card(c, show_badge_mobile) %}
+  <figure class="relative m-0">
+    {% if c.image.src %}
+      <img src="{{ c.image.src }}" alt="{{ c.image.alt }}"
+        {% if c.image.width %}width="{{ c.image.width }}"{% endif %} {% if c.image.height %}height="{{ c.image.height }}"{% endif %}
+        {% if c.image.loading != "disabled" %}loading="{{ c.image.loading }}"{% endif %}
+        class="block aspect-video w-full rounded-20 object-cover md:rounded-32">
+    {% endif %}
+    {% if c.lottie %}
+      <lottie-player class="pointer-events-none absolute inset-0 h-full w-full {% if not show_badge_mobile %}hidden md:block{% endif %}"
+        src="{{ c.lottie }}" background="transparent" speed="1" loop data-hero-lottie {% if c.lottie_hold_frame %}data-hold-frame="{{ c.lottie_hold_frame }}"{% endif %}
+        {% if c.badge.title %}role="img" aria-label="{{ c.badge.title }}{% if c.badge.subtitle %}: {{ c.badge.subtitle }}{% endif %}"{% else %}aria-hidden="true"{% endif %}></lottie-player>
+    {% else %}
+      {{ badge(c.badge, show_badge_mobile) }}
+    {% endif %}
+  </figure>
+{% endmacro %}
+
+{% set space_top = { "none": "pt-0", "sm": "pt-8", "md": "pt-16", "lg": "pt-24", "xl": "pt-32" } %}
+{% set space_bottom = { "none": "pb-0", "sm": "pb-8", "md": "pb-16", "lg": "pb-24", "xl": "pb-32" } %}
+
+{% set has_form = module.form.form_id %}
+{% set lotties = [] %}
+{% for c in [module.center_card] + module.left_cards + module.right_cards %}{% if c.lottie %}{% do lotties.append(1) %}{% endif %}{% endfor %}
+{% if lotties %}{{ require_js("https://unpkg.com/@lottiefiles/lottie-player@2.0.12/dist/lottie-player.js") }}{% endif %}
+
+<section {% if module.anchor %}id="{{ module.anchor }}"{% endif %} class="overflow-hidden {{ space_top[module.style.spacing_top] }} {{ space_bottom[module.style.spacing_bottom] }}"
+  data-hero-parallax
+  data-parallax-enabled="{{ module.style.parallax.enabled }}"
+  data-side-offset="{{ module.style.parallax.side_offset }}"
+  data-center-drift="{{ module.style.parallax.center_drift }}">
+
+  {% if has_form %}
+  {# Heading + copy left, form right #}
+  <div class="wrap lg:grid lg:grid-cols-2 lg:items-start lg:gap-16">
+    <div class="lg:pt-8">
+      {% if module.heading.value %}
+        <{{ module.heading.header_tag }} class="m-0 text-balance text-heading-xl font-heavy text-black md:text-display-sm">{{ module.heading.value }}</{{ module.heading.header_tag }}>
+      {% endif %}
+      {% if module.body_copy %}
+        <div class="rte mt-8 max-w-copy text-body-lg text-grey-350">{{ module.body_copy }}</div>
+      {% endif %}
+    </div>
+    <div class="form-2027 mt-10 rounded-32 bg-grey-050 p-6 md:p-10 lg:mt-0">
+      {% form form_to_use="{{ module.form.form_id }}"
+        response_response_type="{{ module.form.response_type }}"
+        response_message="{{ module.form.message }}"
+        response_redirect_id="{{ module.form.redirect_id }}"
+        response_redirect_url="{{ module.form.redirect_url }}"
+        gotowebinar_webinar_key="{{ module.form.gotowebinar_webinar_key }}"
+        sfdc_campaign="{{ module.sfdc_campaign }}" %}
+    </div>
+  </div>
+  {% else %}
+  {# Heading, copy, CTA #}
+  <div class="wrap flex flex-col items-center text-center">
+    {% if module.heading.value %}
+      <{{ module.heading.header_tag }} class="m-0 max-w-3xl text-display-sm font-heavy text-black md:text-display-md lg:text-display">{{ module.heading.value }}</{{ module.heading.header_tag }}>
+    {% endif %}
+
+    {% if module.body_copy %}
+      <div class="mt-8 max-w-2xl text-body-lg font-medium leading-compact md:mt-16 [&_p]:m-0">{{ module.body_copy }}</div>
+    {% endif %}
+
+    {% if module.cta.text %}
+      <a {{ link_attrs(module.cta.link) }} class="btn mt-8 md:mt-11">{{ module.cta.text }}</a>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  {# Image grid (with a form the copy column is short, so the grid sits further down) #}
+  <div class="{% if has_form %}mt-12 md:mt-20{% else %}mt-10 md:mt-11{% endif %} px-4 md:px-0" data-hero-grid>
+    <div class="grid grid-cols-2 gap-4 md:relative md:left-1/2 md:w-hero md:-translate-x-1/2 md:grid-cols-hero md:gap-6">
+
+      {# z-10: the badge on this card overhangs into the right column, which is painted later #}
+      <div class="relative z-10 col-span-2 md:order-2 md:col-span-1 md:mt-11" data-parallax="center">
+        {{ card(module.center_card, true) }}
+      </div>
+
+      <div class="flex flex-col gap-4 md:order-1 md:gap-6" data-parallax="side">
+        {% for c in module.left_cards %}{{ card(c, false) }}{% endfor %}
+      </div>
+
+      <div class="flex flex-col gap-4 md:order-3 md:gap-6" data-parallax="side">
+        {% for c in module.right_cards %}{{ card(c, false) }}{% endfor %}
+      </div>
+
+    </div>
+  </div>
+</section>

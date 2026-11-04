@@ -1,0 +1,144 @@
+{% set pt = { "0": "pt-0", "32": "pt-8", "48": "pt-12", "64": "pt-12 md:pt-16", "80": "pt-12 md:pt-20", "96": "pt-16 md:pt-24", "112": "pt-16 md:pt-28", "120": "pt-16 md:pt-30", "128": "pt-16 md:pt-32" } %}
+{% set pb = { "0": "pb-0", "32": "pb-8", "48": "pb-12", "64": "pb-12 md:pb-16", "80": "pb-12 md:pb-20", "96": "pb-16 md:pb-24", "112": "pb-16 md:pb-28", "120": "pb-16 md:pb-30", "128": "pb-16 md:pb-32" } %}
+{% set partners_mode = module.mode == "partners" %}
+
+{% set rows = hubdb_table_rows(module.hubdb_table, "orderBy=name") %}
+{% set featured = [] %}
+{% set regular = [] %}
+{% set used = {"categories": [], "partner_categories": [], "capabilities": [], "collections": []} %}
+{% for p in rows %}
+  {% if partners_mode %}
+    {% for c in p.partner_categories %}{% if c.name not in used.partner_categories %}{% do used.partner_categories.append(c.name) %}{% endif %}{% endfor %}
+    {% for c in p.capabilities %}{% if c.name not in used.capabilities %}{% do used.capabilities.append(c.name) %}{% endif %}{% endfor %}
+    {% if p.collections and p.collections.name and p.collections.name not in used.collections %}{% do used.collections.append(p.collections.name) %}{% endif %}
+    {% if p.partner %}{% do featured.append(p) %}{% else %}{% do regular.append(p) %}{% endif %}
+  {% elif p.integration_categories|length > 0 %}
+    {% for c in p.integration_categories %}{% if c.name not in used.categories %}{% do used.categories.append(c.name) %}{% endif %}{% endfor %}
+    {% if p.featured %}{% do featured.append(p) %}{% else %}{% do regular.append(p) %}{% endif %}
+  {% endif %}
+{% endfor %}
+
+{% macro csv(items) -%}{% for c in items %}{{ c.name }}{% if not loop.last %},{% endif %}{% endfor %}{%- endmacro %}
+
+{% macro card(p, is_featured) %}
+  {% set tag = "a" if p.url else "div" %}
+  {% set logo = p.logo_full.url if partners_mode and p.logo_full.url else "" %}
+  <li data-integration
+    {% if partners_mode %}
+      data-programs="{% if p.partner %}certified{% endif %}{% if p.collections and p.collections.name %},{{ p.collections.name }}{% endif %}"
+      data-partner_categories="{{ csv(p.partner_categories) }}" data-capabilities="{{ csv(p.capabilities) }}"
+    {% else %}
+      data-categories="{{ csv(p.integration_categories) }}"
+    {% endif %}>
+    <{{ tag }} {% if tag == "a" %}href="{{ p.url }}" target="_blank" rel="noopener noreferrer"{% endif %}
+      class="flex h-full flex-col rounded-20 border border-solid border-grey-100 bg-white p-6 no-underline {% if tag == "a" %}transition-colors duration-200 hover:border-tvgreen-600{% endif %}">
+      {% if logo %}
+        <div class="mb-5 flex h-10 items-center">
+          <img src="{{ logo }}" alt="" width="{{ p.logo_full.width }}" height="{{ p.logo_full.height }}" class="block h-auto max-h-10 w-auto max-w-40 object-contain" loading="lazy">
+        </div>
+        <h3 class="m-0 text-body-lg font-bold text-black">{{ p.name }}</h3>
+      {% else %}
+        <div class="flex items-center gap-4">
+          <span class="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-grey-050">
+            {% if p.image.url %}
+              <img src="{{ p.image.url }}" alt="" width="{{ p.image.width }}" height="{{ p.image.height }}" class="block h-8 w-8 object-contain" loading="lazy">
+            {% endif %}
+          </span>
+          <h3 class="m-0 text-body-lg font-bold text-black">{{ p.name }}</h3>
+        </div>
+      {% endif %}
+      {% if module.show_card_description and p.description %}
+        <div class="rte mt-4 text-body-sm text-grey-350">{{ p.description }}</div>
+      {% endif %}
+      {% set first = p.partner_categories if partners_mode else p.integration_categories %}
+      {% if first or p.capabilities or (partners_mode and is_featured) %}
+        <ul class="m-0 mt-auto flex list-none flex-wrap gap-2 p-0 pt-5">
+          {% if partners_mode and is_featured %}
+            <li class="inline-flex items-center gap-1 rounded-pill bg-tvgreen-050 px-3 py-1 text-label font-bold text-tvgreen-800">
+              <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="m2.5 6.2 2.3 2.3 4.7-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Certified
+            </li>
+          {% endif %}
+          {% for c in first %}<li class="rounded-pill bg-grey-050 px-3 py-1 text-label font-medium text-grey-350">{{ c.label }}</li>{% endfor %}
+          {% for c in p.capabilities %}<li class="rounded-pill bg-grey-050 px-3 py-1 text-label font-medium text-grey-350">{{ c.label }}</li>{% endfor %}
+        </ul>
+      {% endif %}
+    </{{ tag }}>
+  </li>
+{% endmacro %}
+
+{% macro filter_group(label, group, options, single) %}
+  {% if options %}
+    <div class="mb-8 last:mb-0" data-filter-group="{{ group }}" {% if single %}data-single{% endif %}>
+      <p class="m-0 mb-4 text-caption font-bold text-black" id="{{ name }}-{{ group }}">{{ label }}</p>
+      <div class="flex flex-wrap gap-2 lg:flex-col lg:items-start" role="group" aria-labelledby="{{ name }}-{{ group }}">
+        {% for o in options %}
+          <button type="button" class="integration-filter" data-filter="{{ o.value }}" aria-pressed="{% if o.pressed %}true{% else %}false{% endif %}">{{ o.label }}</button>
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+{% endmacro %}
+
+<section {% if module.anchor %}id="{{ module.anchor }}"{% endif %} class="scroll-mt-8 {{ pt[module.style.spacing_top] }} {{ pb[module.style.spacing_bottom] }}" data-integrations>
+  <div class="wrap max-w-feature">
+    <div class="lg:px-16">
+      {% if module.heading %}
+        <h2 class="m-0 text-heading-sm font-bold text-black md:text-heading-lg">{{ module.heading }}</h2>
+      {% endif %}
+      {% if module.intro %}<div class="rte mt-6 max-w-copy text-body-relaxed text-grey-350">{{ module.intro }}</div>{% endif %}
+    </div>
+
+    <div class="flex flex-col gap-10 lg:flex-row lg:gap-12 lg:px-16 {% if module.heading or module.intro %}mt-12{% endif %}">
+      <div class="lg:sticky lg:top-8 lg:w-64 lg:shrink-0 lg:self-start">
+        {% if partners_mode %}
+          {% set programs = [] %}
+          {% if featured %}{% do programs.append({"value": "certified", "label": "Certified Measurement Partner"}) %}{% endif %}
+          {% for o in hubdb_table_column(module.hubdb_table, "collections").options %}
+            {% if o.name in used.collections %}{% do programs.append({"value": o.name, "label": o.label}) %}{% endif %}
+          {% endfor %}
+          {% set cats = [] %}
+          {% for o in hubdb_table_column(module.hubdb_table, "partner_categories").options %}
+            {% if o.name in used.partner_categories %}{% do cats.append({"value": o.name, "label": o.label}) %}{% endif %}
+          {% endfor %}
+          {% set caps = [] %}
+          {% for o in hubdb_table_column(module.hubdb_table, "capabilities").options %}
+            {% if o.name in used.capabilities %}{% do caps.append({"value": o.name, "label": o.label}) %}{% endif %}
+          {% endfor %}
+          {{ filter_group("Programs", "programs", programs, false) }}
+          {{ filter_group("Categories", "partner_categories", cats, false) }}
+          {{ filter_group("Capabilities", "capabilities", caps, false) }}
+          <button type="button" class="mt-6 cursor-pointer border-0 bg-transparent p-0 font-sans text-caption font-medium text-tvgreen-600 hover:underline" data-clear hidden>Clear filters</button>
+        {% else %}
+          {% set opts = [{"value": "all", "label": "All", "pressed": true}] %}
+          {% for f in module.filters %}
+            {% if f.value in used.categories %}{% do opts.append({"value": f.value, "label": f.label_}) %}{% endif %}
+          {% endfor %}
+          {{ filter_group("Filter by category", "categories", opts, true) }}
+        {% endif %}
+      </div>
+
+      <div class="min-w-0 flex-1">
+        {% if featured %}
+          <div class="mb-16" data-integration-section>
+            <h3 class="m-0 mb-6 text-card-title font-bold text-black">{{ module.featured_heading or "Featured Integrations" }}</h3>
+            <ul class="m-0 grid list-none gap-5 p-0 md:grid-cols-2 xl:grid-cols-3">
+              {% for p in featured %}{{ card(p, true) }}{% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+        <div data-integration-section>
+          <h3 class="m-0 mb-6 text-card-title font-bold text-black">{{ module.all_heading or "All Integrations" }}</h3>
+          <ul class="m-0 grid list-none gap-5 p-0 md:grid-cols-2 xl:grid-cols-3">
+            {% for p in regular %}{{ card(p, false) }}{% endfor %}
+          </ul>
+        </div>
+        <p class="m-0 py-12 text-center text-body text-grey-350" data-no-results hidden>No {{ "partners" if partners_mode else "integrations" }} match these filters.</p>
+        <p class="sr-only" aria-live="polite" data-filter-status></p>
+        {% if module.footnote %}
+          <div class="rte mt-10 border-0 border-t border-solid border-grey-100 pt-8 text-label text-grey-250">{{ module.footnote }}</div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>

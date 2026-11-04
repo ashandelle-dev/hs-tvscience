@@ -1,0 +1,861 @@
+[
+  {
+    "name": "logo",
+    "label": "Logo",
+    "type": "group",
+    "children": [
+      {
+        "name": "image",
+        "label": "Logo image",
+        "type": "image",
+        "responsive": true,
+        "resizable": true,
+        "show_loading": false,
+        "default": {
+          "src": "https://www.tvscientific.com/hubfs/tvSci%20by%20Pin%20Dark.svg",
+          "alt": "tvScientific by Pinterest",
+          "width": 155,
+          "height": 38,
+          "size_type": "exact",
+          "loading": "lazy"
+        }
+      },
+      {
+        "name": "link",
+        "label": "Logo link",
+        "type": "link",
+        "supported_types": [
+          "EXTERNAL",
+          "CONTENT",
+          "FILE",
+          "EMAIL_ADDRESS",
+          "BLOG"
+        ],
+        "default": {
+          "url": {
+            "content_id": null,
+            "type": "EXTERNAL",
+            "href": "/"
+          },
+          "open_in_new_tab": false,
+          "no_follow": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "menu_item",
+    "label": "Menu items",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": 8,
+      "sorting_label_field": "menu_item.title",
+      "default": 5
+    },
+    "children": [
+      {
+        "name": "title",
+        "label": "Title",
+        "type": "text",
+        "allow_new_line": false,
+        "default": "Menu item"
+      },
+      {
+        "name": "link",
+        "label": "Link (used when there is no dropdown)",
+        "type": "link",
+        "supported_types": [
+          "EXTERNAL",
+          "CONTENT",
+          "FILE",
+          "EMAIL_ADDRESS",
+          "BLOG"
+        ],
+        "default": {
+          "url": {
+            "content_id": null,
+            "type": "EXTERNAL",
+            "href": ""
+          },
+          "open_in_new_tab": false,
+          "no_follow": false
+        }
+      },
+      {
+        "name": "dropdown_label",
+        "label": "Dropdown label",
+        "type": "text",
+        "allow_new_line": false,
+        "default": ""
+      },
+      {
+        "name": "as_rows",
+        "label": "Two-column dropdown",
+        "type": "boolean",
+        "display": "toggle",
+        "default": false
+      },
+      {
+        "name": "large_dropdown",
+        "label": "Wide dropdown",
+        "type": "boolean",
+        "display": "toggle",
+        "default": false
+      },
+      {
+        "name": "has_blog",
+        "label": "Show latest blog posts",
+        "type": "boolean",
+        "display": "toggle",
+        "default": false
+      },
+      {
+        "name": "dropdown",
+        "label": "Dropdown links",
+        "type": "group",
+        "occurrence": {
+          "min": 0,
+          "max": 20,
+          "sorting_label_field": "menu_item.dropdown.title",
+          "default": 0
+        },
+        "children": [
+          {
+            "name": "title",
+            "label": "Title",
+            "type": "text",
+            "allow_new_line": false,
+            "default": "Link"
+          },
+          {
+            "name": "link",
+            "label": "Link",
+            "type": "link",
+            "supported_types": [
+              "EXTERNAL",
+              "CONTENT",
+              "FILE",
+              "EMAIL_ADDRESS",
+              "BLOG"
+            ],
+            "default": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": ""
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            }
+          },
+          {
+            "name": "icon",
+            "label": "Icon (16×16)",
+            "type": "image",
+            "responsive": false,
+            "resizable": false,
+            "show_loading": false,
+            "default": {
+              "src": "",
+              "alt": "",
+              "size_type": "auto",
+              "loading": "lazy"
+            }
+          }
+        ],
+        "default": []
+      }
+    ],
+    "default": [
+      {
+        "title": "Platform",
+        "link": {
+          "url": {
+            "content_id": null,
+            "type": "EXTERNAL",
+            "href": "/ctv-advertising"
+          },
+          "open_in_new_tab": false,
+          "no_follow": false
+        },
+        "dropdown_label": "Platform",
+        "as_rows": true,
+        "large_dropdown": true,
+        "has_blog": false,
+        "dropdown": [
+          {
+            "title": "tvScientific AI",
+            "link": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": "/tvscientific-ai"
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            },
+            "icon": {
+              "src": "https://www.tvscientific.com/hubfs/TVSci%20Ai-2.svg",
+              "alt": "",
+              "width": 16,
+              "height": 16,
+              "size_type": "exact",
+              "loading": "lazy"
+            }
+          },
+          {
+            "title": "CTV Advertising",
+            "link": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": "/ctv-advertising"
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            },
+            "icon": {
+              "src": "https://www.tvscientific.com/hubfs/CTV%20Advertising-1.svg",
+              "alt": "",
+              "width": 16,
+              "height": 16,
+              "size_type": "exact",
+              "loading": "lazy"
+            }
+          },
+          {
+            "title": "Inventory",
+            "link": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": "/premium-inventory"
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            },
+            "icon": {
+              "src": "https://www.tvscientific.com/hubfs/Inventory-2.svg",
+              "alt": "",
+              "width": 16,
+              "height": 16,
+              "size_type": "exact",
+              "loading": "lazy"
+            }
+          },
+          {
+            "title": "Targeting",
+            "link": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": "/targeting"
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            },
+            "icon": {
+              "src": "https://www.tvscientific.com/hubfs/Targeting-2.svg",
+              "alt": "",
+              "width": 16,
+              "height": 16,
+              "size_type": "exact",
+              "loading": "lazy"
+            }
+          },
+          {
+            "title": "Creative",
+            "link": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": "/tvscientific-platform/creative"
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            },
+            "icon": {
+              "src": "https://www.tvscientific.com/hubfs/Creative-1.svg",
+              "alt": "",
+              "width": 16,
+              "height": 16,
+              "size_type": "exact",
+              "loading": "lazy"
+            }
+          },
+          {
+            "title": "Measurement & Attribution",
+            "link": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": "/measurement-and-attribution"
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            },
+            "icon": {
+              "src": "https://www.tvscientific.com/hubfs/Measurement%20%26%20Attribution-1.svg",
+              "alt": "",
+              "width": 16,
+              "height": 16,
+              "size_type": "exact",
+              "loading": "lazy"
+            }
+          },
+          {
+            "title": "Reporting",
+            "link": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": "/tvscientific-platform/reporting"
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            },
+            "icon": {
+              "src": "https://www.tvscientific.com/hubfs/Reporting-1.svg",
+              "alt": "",
+              "width": 16,
+              "height": 16,
+              "size_type": "exact",
+              "loading": "lazy"
+            }
+          },
+          {
+            "title": "Patents",
+            "link": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": "/patents"
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            },
+            "icon": {
+              "src": "https://www.tvscientific.com/hubfs/Patents-3.svg",
+              "alt": "",
+              "width": 16,
+              "height": 16,
+              "size_type": "exact",
+              "loading": "lazy"
+            }
+          },
+          {
+            "title": "Integrations",
+            "link": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": "/integrations"
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            },
+            "icon": {
+              "src": "https://www.tvscientific.com/hubfs/Integrations-2.svg",
+              "alt": "",
+              "width": 16,
+              "height": 16,
+              "size_type": "exact",
+              "loading": "lazy"
+            }
+          },
+          {
+            "title": "Creative Advisor",
+            "link": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": "/creative-advisor"
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            },
+            "icon": {
+              "src": "https://www.tvscientific.com/hubfs/Creative%20Advisor-3.svg",
+              "alt": "",
+              "width": 16,
+              "height": 16,
+              "size_type": "exact",
+              "loading": "lazy"
+            }
+          }
+        ]
+      },
+      {
+        "title": "Solutions",
+        "link": {
+          "url": {
+            "content_id": null,
+            "type": "EXTERNAL",
+            "href": ""
+          },
+          "open_in_new_tab": false,
+          "no_follow": false
+        },
+        "dropdown_label": "Industries",
+        "as_rows": false,
+        "large_dropdown": false,
+        "has_blog": false,
+        "dropdown": [
+          {
+            "title": "Retail",
+            "link": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": "/industries/ctv-advertising-retail"
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            },
+            "icon": {
+              "src": "https://www.tvscientific.com/hubfs/ecommerce.svg",
+              "alt": "",
+              "width": 16,
+              "height": 16,
+              "size_type": "exact",
+              "loading": "lazy"
+            }
+          },
+          {
+            "title": "Mobile Games",
+            "link": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": "/industries/ctv-advertising-mobile-games"
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            },
+            "icon": {
+              "src": "https://www.tvscientific.com/hubfs/icon-mobile-games.svg",
+              "alt": "",
+              "width": 16,
+              "height": 16,
+              "size_type": "exact",
+              "loading": "lazy"
+            }
+          },
+          {
+            "title": "Fintech",
+            "link": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": "/industries/ctv-advertising-fintech"
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            },
+            "icon": {
+              "src": "https://www.tvscientific.com/hubfs/icon-fintech.svg",
+              "alt": "",
+              "width": 16,
+              "height": 16,
+              "size_type": "exact",
+              "loading": "lazy"
+            }
+          },
+          {
+            "title": "Insurance",
+            "link": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": "/industries/ctv-advertising-insurance"
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            },
+            "icon": {
+              "src": "https://www.tvscientific.com/hubfs/Vector.svg",
+              "alt": "",
+              "width": 16,
+              "height": 16,
+              "size_type": "exact",
+              "loading": "lazy"
+            }
+          },
+          {
+            "title": "Travel and Hospitality",
+            "link": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": "/industries/ctv-advertising-hotels-tourism"
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            },
+            "icon": {
+              "src": "https://www.tvscientific.com/hubfs/Vector-1.svg",
+              "alt": "",
+              "width": 16,
+              "height": 16,
+              "size_type": "exact",
+              "loading": "lazy"
+            }
+          }
+        ]
+      },
+      {
+        "title": "Customers",
+        "link": {
+          "url": {
+            "content_id": null,
+            "type": "EXTERNAL",
+            "href": "/customers"
+          },
+          "open_in_new_tab": false,
+          "no_follow": false
+        },
+        "dropdown_label": "",
+        "as_rows": false,
+        "large_dropdown": false,
+        "has_blog": false,
+        "dropdown": []
+      },
+      {
+        "title": "Resources",
+        "link": {
+          "url": {
+            "content_id": null,
+            "type": "EXTERNAL",
+            "href": "/insight"
+          },
+          "open_in_new_tab": false,
+          "no_follow": false
+        },
+        "dropdown_label": "Resources",
+        "as_rows": false,
+        "large_dropdown": true,
+        "has_blog": true,
+        "dropdown": [
+          {
+            "title": "Blog",
+            "link": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": "/insight"
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            },
+            "icon": {
+              "src": "https://www.tvscientific.com/hs-fs/hubfs/blog-icon.png?width=28&amp;height=29&amp;name=blog-icon.png",
+              "alt": "",
+              "width": 16,
+              "height": 16,
+              "size_type": "exact",
+              "loading": "lazy"
+            }
+          },
+          {
+            "title": "Reports",
+            "link": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": "/resources/reports"
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            },
+            "icon": {
+              "src": "https://www.tvscientific.com/hs-fs/hubfs/whitepapers-reports-icon.png?width=35&amp;height=27&amp;name=whitepapers-reports-icon.png",
+              "alt": "",
+              "width": 16,
+              "height": 16,
+              "size_type": "exact",
+              "loading": "lazy"
+            }
+          },
+          {
+            "title": "Webinars",
+            "link": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": "/resources/webinars"
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            },
+            "icon": {
+              "src": "https://www.tvscientific.com/hs-fs/hubfs/events-icon.png?width=29&amp;height=33&amp;name=events-icon.png",
+              "alt": "",
+              "width": 16,
+              "height": 16,
+              "size_type": "exact",
+              "loading": "lazy"
+            }
+          },
+          {
+            "title": "Inside Performance Advertising",
+            "link": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": "/inside-performance-advertising"
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            },
+            "icon": {
+              "src": "https://www.tvscientific.com/hubfs/icon-newsletter.svg",
+              "alt": "",
+              "width": 16,
+              "height": 16,
+              "size_type": "exact",
+              "loading": "lazy"
+            }
+          },
+          {
+            "title": "Ad Break Newsletter",
+            "link": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": "/theadbreak"
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            },
+            "icon": {
+              "src": "https://www.tvscientific.com/hs-fs/hubfs/news-icon.png?width=32&amp;height=30&amp;name=news-icon.png",
+              "alt": "",
+              "width": 16,
+              "height": 16,
+              "size_type": "exact",
+              "loading": "lazy"
+            }
+          },
+          {
+            "title": "The 2026 Holiday & Seasonal Shopping Trends Report",
+            "link": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": "/2026-holiday-seasonal-shopping-report"
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            },
+            "icon": {
+              "src": "https://www.tvscientific.com/hubfs/SOPTV%20icon-1.svg",
+              "alt": "",
+              "width": 16,
+              "height": 16,
+              "size_type": "exact",
+              "loading": "lazy"
+            }
+          }
+        ]
+      },
+      {
+        "title": "About",
+        "link": {
+          "url": {
+            "content_id": null,
+            "type": "EXTERNAL",
+            "href": "/about-us"
+          },
+          "open_in_new_tab": false,
+          "no_follow": false
+        },
+        "dropdown_label": "About",
+        "as_rows": false,
+        "large_dropdown": false,
+        "has_blog": false,
+        "dropdown": [
+          {
+            "title": "About Us",
+            "link": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": "/about-us"
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            },
+            "icon": {
+              "src": "https://www.tvscientific.com/hubfs/icon-about.svg",
+              "alt": "",
+              "width": 16,
+              "height": 16,
+              "size_type": "exact",
+              "loading": "lazy"
+            }
+          },
+          {
+            "title": "Careers",
+            "link": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": "https://www.pinterestcareers.com/departments/tvscientific/"
+              },
+              "open_in_new_tab": true,
+              "no_follow": false
+            },
+            "icon": {
+              "src": "https://www.tvscientific.com/hubfs/icon-careers.svg",
+              "alt": "",
+              "width": 16,
+              "height": 16,
+              "size_type": "exact",
+              "loading": "lazy"
+            }
+          },
+          {
+            "title": "Press",
+            "link": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": "/press"
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            },
+            "icon": {
+              "src": "https://www.tvscientific.com/hubfs/icon-press.svg",
+              "alt": "",
+              "width": 16,
+              "height": 16,
+              "size_type": "exact",
+              "loading": "lazy"
+            }
+          },
+          {
+            "title": "Partners",
+            "link": {
+              "url": {
+                "content_id": null,
+                "type": "EXTERNAL",
+                "href": "/partners"
+              },
+              "open_in_new_tab": false,
+              "no_follow": false
+            },
+            "icon": {
+              "src": "https://www.tvscientific.com/hubfs/Partners.svg",
+              "alt": "",
+              "width": 16,
+              "height": 16,
+              "size_type": "exact",
+              "loading": "lazy"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "login",
+    "label": "Login link",
+    "type": "group",
+    "children": [
+      {
+        "name": "text",
+        "label": "Text",
+        "type": "text",
+        "allow_new_line": false,
+        "default": "Login"
+      },
+      {
+        "name": "link",
+        "label": "Link",
+        "type": "link",
+        "supported_types": [
+          "EXTERNAL",
+          "CONTENT",
+          "FILE",
+          "EMAIL_ADDRESS",
+          "BLOG"
+        ],
+        "default": {
+          "url": {
+            "content_id": null,
+            "type": "EXTERNAL",
+            "href": "https://tvscientific.app/"
+          },
+          "open_in_new_tab": false,
+          "no_follow": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "cta",
+    "label": "Button",
+    "type": "group",
+    "children": [
+      {
+        "name": "text",
+        "label": "Text",
+        "type": "text",
+        "allow_new_line": false,
+        "default": "Request a Demo"
+      },
+      {
+        "name": "link",
+        "label": "Link",
+        "type": "link",
+        "supported_types": [
+          "EXTERNAL",
+          "CONTENT",
+          "FILE",
+          "EMAIL_ADDRESS",
+          "BLOG"
+        ],
+        "default": {
+          "url": {
+            "content_id": null,
+            "type": "EXTERNAL",
+            "href": "/contact"
+          },
+          "open_in_new_tab": false,
+          "no_follow": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "minimal",
+    "label": "Minimal header (logo + demo button only)",
+    "type": "boolean",
+    "display": "toggle",
+    "default": false,
+    "help_text": "Used by the 2027 Landing Page template for paid-traffic pages."
+  },
+  {
+    "name": "minimal_button",
+    "label": "Minimal header button",
+    "type": "choice",
+    "display": "select",
+    "choices": [
+      [
+        "jump",
+        "Jump to the page's form"
+      ],
+      [
+        "contact",
+        "Go to the button's link"
+      ],
+      [
+        "none",
+        "No button"
+      ]
+    ],
+    "default": "jump"
+  }
+]

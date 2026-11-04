@@ -1,0 +1,238 @@
+[
+  {
+    "name": "rows",
+    "label": "Case studies",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": 40,
+      "sorting_label_field": "rows.title",
+      "default": 1
+    },
+    "children": [
+      {
+        "name": "title",
+        "label": "Title",
+        "type": "text",
+        "allow_new_line": false,
+        "default": "Customer Case Study: Brand"
+      },
+      {
+        "name": "paragraph",
+        "label": "Summary",
+        "type": "text",
+        "allow_new_line": true,
+        "default": ""
+      },
+      {
+        "name": "logo",
+        "label": "Logo",
+        "type": "image",
+        "responsive": true,
+        "resizable": true,
+        "show_loading": true,
+        "default": {
+          "src": "",
+          "alt": "",
+          "width": 0,
+          "height": 0,
+          "size_type": "auto",
+          "loading": "lazy"
+        }
+      },
+      {
+        "name": "image",
+        "label": "Image",
+        "type": "image",
+        "responsive": true,
+        "resizable": true,
+        "show_loading": true,
+        "default": {
+          "src": "",
+          "alt": "",
+          "width": 0,
+          "height": 0,
+          "size_type": "auto",
+          "loading": "lazy"
+        }
+      },
+      {
+        "name": "item_video",
+        "label": "Video (optional, replaces the image)",
+        "type": "videoplayer",
+        "default": {
+          "player_id": null
+        }
+      },
+      {
+        "name": "columns",
+        "label": "Stats",
+        "type": "group",
+        "occurrence": {
+          "min": 0,
+          "max": 4,
+          "sorting_label_field": "rows.columns.number",
+          "default": 0
+        },
+        "children": [
+          {
+            "name": "number",
+            "label": "Value",
+            "type": "text",
+            "allow_new_line": false,
+            "default": ""
+          },
+          {
+            "name": "detail",
+            "label": "Label",
+            "type": "text",
+            "allow_new_line": false,
+            "default": ""
+          }
+        ],
+        "default": []
+      },
+      {
+        "name": "link",
+        "label": "Case study link",
+        "type": "link",
+        "supported_types": [
+          "EXTERNAL",
+          "CONTENT",
+          "FILE",
+          "EMAIL_ADDRESS",
+          "BLOG"
+        ],
+        "default": {
+          "url": {
+            "content_id": null,
+            "type": "EXTERNAL",
+            "href": ""
+          },
+          "open_in_new_tab": false,
+          "no_follow": false
+        }
+      },
+      {
+        "name": "anchor_name",
+        "label": "Anchor ID (for /customers#name links)",
+        "type": "text",
+        "allow_new_line": false,
+        "default": ""
+      },
+      {
+        "name": "cta_text",
+        "label": "Button text",
+        "type": "text",
+        "allow_new_line": false,
+        "default": "See Full Case Study"
+      }
+    ],
+    "default": [
+      {
+        "title": "Customer Case Study: Brand",
+        "paragraph": "",
+        "columns": [],
+        "cta_text": "See Full Case Study"
+      }
+    ]
+  },
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "spacing_top",
+        "label": "Space above",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          [
+            "0",
+            "None"
+          ],
+          [
+            "32",
+            "32px"
+          ],
+          [
+            "48",
+            "48px"
+          ],
+          [
+            "64",
+            "64px"
+          ],
+          [
+            "80",
+            "80px"
+          ],
+          [
+            "96",
+            "96px"
+          ],
+          [
+            "112",
+            "112px"
+          ],
+          [
+            "120",
+            "120px"
+          ],
+          [
+            "128",
+            "128px"
+          ]
+        ],
+        "default": "96"
+      },
+      {
+        "name": "spacing_bottom",
+        "label": "Space below",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          [
+            "0",
+            "None"
+          ],
+          [
+            "32",
+            "32px"
+          ],
+          [
+            "48",
+            "48px"
+          ],
+          [
+            "64",
+            "64px"
+          ],
+          [
+            "80",
+            "80px"
+          ],
+          [
+            "96",
+            "96px"
+          ],
+          [
+            "112",
+            "112px"
+          ],
+          [
+            "120",
+            "120px"
+          ],
+          [
+            "128",
+            "128px"
+          ]
+        ],
+        "default": "128"
+      }
+    ]
+  }
+]

@@ -1,0 +1,111 @@
+<!--
+    templateType: page
+    label: 2027 Partners (HubDB dynamic)
+    isAvailableForNewContent: true
+-->
+{% extends "../../layouts/2027/base.html" %}
+
+{% block body %}
+{% choice "view" label="Preview Level", value="level0", choices="[[\"level0\", \"/partners\"], [\"level1\", \"/partners/{partner}\"]]", export_to_template_context=True, required=true %}
+
+{% if is_in_editor %}
+  {% set level = 1 if widget_data.view.value == "level1" else 0 %}
+{% else %}
+  {% set level = dynamic_page_route_level %}
+{% endif %}
+
+<main id="main-content">
+{% if level == 0 %}
+
+  {% dnd_area "dnd_area" label="Main content" %}
+  {% end_dnd_area %}
+
+{% else %}
+
+  {% if is_in_editor %}
+    {# Editor preview: the first partner with a detail page #}
+    {% set partner = hubdb_table_rows(136413080, "main_content__not_null=")|first %}
+    {% if not partner %}{% set partner = hubdb_table_rows(136413080)|first %}{% endif %}
+  {% else %}
+    {% set partner = dynamic_page_hubdb_row %}
+  {% endif %}
+  {# The main content's first H1 becomes the page H1 in the hero; the rest of it follows below #}
+  {% set main = partner.main_content|regex_replace("<(?:p|h[1-6])>(?:\\s|&nbsp;|<br\\s*/?>|</?span[^>]*>)*</(?:p|h[1-6])>", "") %}
+  {% set has_h1 = "<h1" in main %}
+  {% set title = main|regex_replace("(?s)^.*?<h1[^>]*>(.*?)</h1>.*$", "$1")|striptags|trim if has_h1 else partner.name %}
+  {% set story = main|regex_replace("(?s)^\\s*<h1[^>]*>.*?</h1>", "") if has_h1 else main %}
+
+  <article>
+    {# Hero — Media Hero split markup, text only #}
+    <section class="overflow-hidden bg-grey-050">
+      <div class="wrap max-w-feature">
+        <div class="py-16 lg:py-24 lg:pl-16">
+          <a href="/partners" class="mb-8 inline-flex items-center gap-2 text-caption font-medium text-tvgreen-600 no-underline hover:underline">
+            <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M7.5 2.5 4 6l3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            All partners
+          </a>
+          {% if partner.logo_full.url %}
+            <img src="{{ partner.logo_full.url }}" alt="{{ partner.name }}" class="mb-8 block h-auto max-h-10 w-auto" loading="eager">
+          {% endif %}
+          {% if partner.intro|striptags|replace("&nbsp;", " ")|trim %}
+            <p class="m-0 mb-4 max-w-hero-body text-body-relaxed font-bold text-black">{{ partner.intro|striptags|replace("&nbsp;", " ")|trim }}</p>
+          {% endif %}
+          <h1 class="m-0 max-w-hero-copy text-balance text-heading-sm font-heavy text-black md:text-heading-hero">{{ title }}</h1>
+        </div>
+      </div>
+    </section>
+
+    {# Body — the rest of the main content in one centered column #}
+    {% if story|striptags|trim %}
+      <section class="py-16 md:py-24">
+        <div class="wrap">
+          <div class="rte rte--post mx-auto max-w-copy text-body-relaxed text-grey-350">{{ story }}</div>
+        </div>
+      </section>
+    {% endif %}
+  </article>
+
+  {# More partners — same categories first. Cards open the partner's page when it has one, else their website. #}
+  {% set related = [] %}
+  {% set others = [] %}
+  {% for p in hubdb_table_rows(136413080, "orderBy=name") %}
+    {% if p.hs_id != partner.hs_id %}
+      {% set shared = [] %}
+      {% for c in p.integration_categories %}{% for mine in partner.integration_categories %}{% if c.name == mine.name %}{% do shared.append(c) %}{% endif %}{% endfor %}{% endfor %}
+      {% if shared %}{% do related.append(p) %}{% else %}{% do others.append(p) %}{% endif %}
+    {% endif %}
+  {% endfor %}
+  {% set more = (related + others)[:4] %}
+  {% if more %}
+    <section class="bg-grey-050 py-16 md:py-24">
+      <div class="wrap max-w-feature lg:px-16">
+        <div class="mb-10 flex flex-wrap items-end justify-between gap-4">
+          <h2 class="m-0 text-heading-sm font-bold text-black md:text-heading-md">More partners</h2>
+          <a href="/partners" class="text-link--arrow inline-flex items-center gap-1 text-meta font-medium text-tvgreen-600 no-underline hover:underline">All partners</a>
+        </div>
+        <ul class="m-0 grid list-none gap-5 p-0 md:grid-cols-2 xl:grid-cols-4">
+          {% for p in more %}
+            {% set own_page = p.main_content and p.hs_path %}
+            <li>
+              <a href="{{ "/partners/" ~ p.hs_path if own_page else p.url }}" {% if not own_page %}target="_blank" rel="noopener noreferrer"{% endif %}
+                class="flex h-full flex-col rounded-20 border border-solid border-grey-100 bg-white p-6 no-underline transition-colors duration-200 hover:border-tvgreen-600">
+                <span class="mb-5 flex h-10 items-center">
+                  {% if p.logo_full.url %}<img src="{{ p.logo_full.url }}" alt="" class="block h-auto max-h-10 w-auto max-w-40 object-contain" loading="lazy">{% endif %}
+                </span>
+                <span class="text-body-lg font-bold text-black">{{ p.name }}</span>
+                {% if p.description %}<span class="mt-3 text-body-sm text-grey-350">{{ p.description|striptags|truncate(120) }}</span>{% endif %}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </section>
+  {% endif %}
+
+  {# Partner form + closing CTA, shared by every partner page #}
+  {% dnd_area "dnd_area_single" label="Below every partner page" %}
+  {% end_dnd_area %}
+
+{% endif %}
+</main>
+{% endblock body %}

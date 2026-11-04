@@ -53,7 +53,7 @@
   padding: 8px 32px !important;
   margin: 0 !important;
   background-color: #23E596 !important;
-  color: #1F252B !important;
+  color: #000000 !important;
   border: none !important;
   border-radius: 6px !important;
   box-shadow: none !important;
@@ -69,20 +69,20 @@
 
 .form-image-cta__button .hs-button:hover {
   background-color: #23E596 !important;
-  color: #1F252B !important;
+  color: #000000 !important;
   border: none !important;
   opacity: 0.9;
 }
 
 .form-image-cta__button .hs-button--secondary {
   background-color: transparent !important;
-  color: #1F252B !important;
+  color: #000000 !important;
   border: 2px solid #23E596 !important;
 }
 
 .form-image-cta__button .hs-button--secondary:hover {
   background-color: transparent !important;
-  color: #1F252B !important;
+  color: #000000 !important;
   border-color: #23E596 !important;
   opacity: 0.9;
 }
@@ -154,7 +154,7 @@
   border: 2px solid #23E596 !important;
   border-radius: 8px !important;
   background: #fff !important;
-  color: #1F252B !important;
+  color: #000000 !important;
   padding: 10px 13px !important;
   font-size: 15px;
 }
@@ -184,7 +184,7 @@
   padding: 8px 32px !important;
   margin: 0 !important;
   background-color: #23E596 !important;
-  color: #1F252B !important;
+  color: #000000 !important;
   border: none !important;
   border-radius: 6px !important;
   box-shadow: none !important;
@@ -203,7 +203,7 @@
 .form-image-cta-form .hs_submit .hs-button:hover,
 .form-image-cta-form .hs_submit input[type="submit"]:hover {
   background-color: #23E596 !important;
-  color: #1F252B !important;
+  color: #000000 !important;
   border: none !important;
   opacity: 0.9;
 }

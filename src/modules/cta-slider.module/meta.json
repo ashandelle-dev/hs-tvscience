@@ -11,5 +11,5 @@
   "host_template_types" : [ "ANY" ],
   "module_id" : 199345349808,
   "label" : "CTA Slider",
-  "is_available_for_new_content" : true
+  "is_available_for_new_content" : false
 }

@@ -78,7 +78,7 @@
     height: 48px;
     border: 2px solid #71E09D;
     border-radius: 8px;
-    color: #1C4633;
+    color: #0D422F;
   }
 
   .hs-search-field__bar button {
@@ -99,7 +99,7 @@
   }
 
   .hs-search-field__bar button:hover {
-    background-color: #198960;
+    background-color: #19845D;
   }
 
   .hs-search-field__bar:after,
@@ -112,15 +112,15 @@
     padding-left: 16px;
     border-left: 3px solid #71E09D;
     font-weight: 500;
-    color: #31373D;
+    color: #494943;
     text-decoration: none;
     transition: all 0.2s ease;
   }
 
   .author-filter-sidebar a:hover,
   .author-filter-sidebar a.active {
-    border-left-color: #198960;
-    color: #198960;
+    border-left-color: #19845D;
+    color: #19845D;
   }
 </style>
 
@@ -134,17 +134,17 @@
           class="flex relative items-center hover:no-underline group">
           <div class="w-4 text-center group-hover:-translate-x-0.5 duration-200 transition-transform">
             <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M9.55957 5L6.55957 8L9.55957 11" stroke="#009061" stroke-width="1.5"/>
+              <path d="M9.55957 5L6.55957 8L9.55957 11" stroke="#19845D" stroke-width="1.5"/>
             </svg>
           </div>
           <div class="px-3">
-            <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-[#009061]">Back to Resources</p>
+            <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-primary">Back to Resources</p>
           </div>
         </a>
       </div>
       <div class="content-wrapper !px-0">
         <div class="flex md:justify-between justify-start md:items-center gap-6 md:flex-row flex-col">
-          <h1 class="text-[#1C4633] mb-0">
+          <h1 class="text-primary-darker mb-0">
             {% if request.query_dict.term %}
               Searching for "{{ request.query_dict.term }}"
             {% else %}
@@ -165,7 +165,7 @@
     {# Search Results listing with sidebar #}
     <div class="flex md:flex-row flex-col gap-8 mb-12">
       {# Left sidebar - Author filter #}
-      <aside class="md:w-64 w-full flex-shrink-0 border-t border-[#C0E7D8] pt-6">
+      <aside class="md:w-64 w-full flex-shrink-0 border-t border-tvs-grey-light pt-6">
         <div class="author-filter-sidebar">
           <details>
             <summary>Filter by author</summary>

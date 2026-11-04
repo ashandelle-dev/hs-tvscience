@@ -4,5 +4,5 @@
   "host_template_types" : [ "PAGE" ],
   "module_id" : 129894281233,
   "label" : "Latest News Posts",
-  "is_available_for_new_content" : true
+  "is_available_for_new_content" : false
 }

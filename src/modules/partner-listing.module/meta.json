@@ -4,5 +4,5 @@
   "host_template_types" : [ "ANY" ],
   "module_id" : 197629529447,
   "label" : "Partner Listing with Filters",
-  "is_available_for_new_content" : true
+  "is_available_for_new_content" : false
 }

@@ -1,0 +1,111 @@
+<!--
+  templateType: blog_listing
+  isAvailableForNewContent: true
+  label: Blog Listing (2027)
+-->
+{% extends "../../layouts/2027/base.html" %}
+{% import "./blog-macros.html" as blog %}
+
+{% block body %}
+{% set lead = group.description %}
+{% if group.public_title == "Webinars" %}
+  {% set kind = "webinar" %}
+  {% set lead = "Live and on-demand sessions on Performance TV advertising." %}
+{% elif group.public_title == "Reports" %}
+  {% set kind = "report" %}
+  {% set lead = "Research, guides and playbooks on Performance TV, from consumer trends to seasonal shopping." %}
+{% else %}
+  {% set kind = "article" %}
+{% endif %}
+
+{% set authors = [] %}
+{% if kind == "article" %}
+  {% for a in blog_authors(group.id, 250) %}
+    {% if a.slug != "tvscientific" %}{% do authors.append(a) %}{% endif %}
+  {% endfor %}
+{% endif %}
+{% set with_filter = authors|length > 1 %}
+
+<main id="main-content">
+  <header class="bg-grey-050">
+    <div class="wrap max-w-feature py-12 md:py-20 lg:px-16">
+      {% if blog_author or tag %}
+        {{ blog.back_link(group.absolute_url, "All " ~ group.public_title|lower) }}
+      {% else %}
+        {{ blog.back_link("/resources", "Resources") }}
+      {% endif %}
+
+      <div class="mt-8 lg:flex lg:items-end lg:justify-between lg:gap-16">
+        <div class="flex items-center gap-6">
+          {% if blog_author and blog_author.avatar %}
+            <img src="{{ blog_author.avatar }}" alt="" class="block h-20 w-20 shrink-0 rounded-full object-cover md:h-24 md:w-24">
+          {% endif %}
+          <div>
+            {% if blog_author %}
+              <p class="m-0 text-body-relaxed font-bold text-black">Author</p>
+              <h1 class="m-0 mt-2 text-heading-sm font-heavy text-black md:text-heading-hero">{{ blog_author.display_name }}</h1>
+            {% elif tag %}
+              <p class="m-0 text-body-relaxed font-bold text-black">{{ group.public_title }}</p>
+              <h1 class="m-0 mt-2 text-heading-sm font-heavy capitalize text-black md:text-heading-hero">{{ tag|replace("-", " ") }}</h1>
+            {% else %}
+              <h1 class="m-0 text-heading-sm font-heavy text-black md:text-heading-hero">{{ group.public_title }}</h1>
+            {% endif %}
+          </div>
+        </div>
+        {% if kind == "article" and not blog_author %}
+          <div class="search-2027 mt-8 w-full lg:mt-0 lg:max-w-sm">
+            {% module "search_2027" path="@hubspot/search_input", label="Search", placeholder="Search", include_search_button=true %}
+          </div>
+        {% endif %}
+      </div>
+
+      {% if blog_author and blog_author.bio %}
+        <p class="m-0 mt-6 max-w-copy text-body-relaxed text-grey-350">{{ blog_author.bio }}</p>
+      {% elif not blog_author and not tag and lead %}
+        <p class="m-0 mt-6 max-w-copy text-body-relaxed text-grey-350">{{ lead }}</p>
+      {% endif %}
+    </div>
+  </header>
+
+  <section class="wrap max-w-feature py-12 md:py-20 lg:px-16">
+    <div class="{% if with_filter %}lg:flex lg:items-start lg:gap-12{% endif %}">
+
+      {% if with_filter %}
+        <aside class="mb-10 lg:sticky lg:top-8 lg:mb-0 lg:w-56 lg:shrink-0">
+          <details class="author-filter" {% if blog_author %}open{% endif %}>
+            <summary class="flex cursor-pointer list-none items-center justify-between rounded-button bg-grey-050 px-4 py-3 text-caption font-bold text-black">
+              Filter by author
+              <svg class="h-3 w-3 transition-transform duration-200" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="m2.5 4.5 3.5 3.5 3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </summary>
+            <ul class="m-0 mt-4 flex list-none flex-wrap gap-2 p-0 lg:flex-col lg:items-start">
+              <li><a href="{{ group.absolute_url }}" class="integration-filter no-underline" {% if not blog_author %}aria-current="page"{% endif %}>All authors</a></li>
+              {% for a in authors %}
+                <li>
+                  <a href="{{ blog_author_url(group.id, a.slug) }}" class="integration-filter no-underline"
+                    {% if blog_author and blog_author.slug == a.slug %}aria-current="page"{% endif %}>{{ a.display_name }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </details>
+        </aside>
+      {% endif %}
+
+      <div class="min-w-0 flex-1">
+        {% if contents %}
+          <ul class="m-0 grid list-none gap-7 p-0 md:grid-cols-2 {% if with_filter %}xl:grid-cols-3{% else %}lg:grid-cols-3{% endif %}">
+            {% for post in contents %}
+              {{ blog.post_card(post, kind) }}
+            {% endfor %}
+          </ul>
+          {{ blog.pagination(contents.total_page_count, current_page_num) }}
+        {% else %}
+          <p class="m-0 py-12 text-center text-body text-grey-350">No posts here yet.</p>
+        {% endif %}
+      </div>
+
+    </div>
+  </section>
+
+  {% module "cta_2027" path="../../modules/2027/cta", label="Closing CTA" %}
+</main>
+{% endblock body %}

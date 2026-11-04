@@ -1,0 +1,21 @@
+{
+  "label": "Site Header",
+  "global": false,
+  "host_template_types": [
+    "PAGE",
+    "BLOG_POST",
+    "BLOG_LISTING"
+  ],
+  "content_types": [
+    "SITE_PAGE",
+    "LANDING_PAGE",
+    "BLOG_POST",
+    "BLOG_LISTING"
+  ],
+  "is_available_for_new_content": false,
+  "smart_type": "NOT_SMART",
+  "icon": "fontawesome-5.0.10:bars:REGULAR",
+  "categories": [
+    "design"
+  ]
+}

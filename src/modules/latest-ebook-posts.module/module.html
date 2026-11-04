@@ -5,15 +5,15 @@
 {% set contents = blog_recent_posts(130734470151, "blog", 6) %}
 
 <div class="flex flex-wrap items-stretch latest-posts-swiper relative ">
-  <div class="swiper-wrapper h-full border-[#C0E7D8] -mx-3 flex items-stretch">
+  <div class="swiper-wrapper h-full border-tvs-grey-light -mx-3 flex items-stretch">
   {% for featured in featured_posts %}
-    <div class="swiper-slide px-3 h-full border-t border-[#C0E7D8] py-6">
-      <div class="rounded-lg border h-full border-[#009061] overflow-hidden relative group">
+    <div class="swiper-slide px-3 h-full border-t border-tvs-grey-light py-6">
+      <div class="rounded-lg border h-full border-primary overflow-hidden relative group">
         {% set out_link = featured.widgets.title_link.body.value %}
         {% set link = out_link ? out_link : featured.absolute_url %}
 
         <a href="{{ link }}" class="absolute top-0 left-0 w-full h-full z-10"></a>
-        <div class="h-[275px] bg-[#1c4633]" style="background: url({{ featured.featured_image }}) no-repeat top center / cover;">
+        <div class="h-[275px] bg-primary-darker" style="background: url({{ featured.featured_image }}) no-repeat top center / cover;">
           <!--<img class="w-full" src="{{ content.featured_image }}" alt="" {{ loadingAttr }} >-->
         </div>
         <div class=" p-6">
@@ -23,10 +23,10 @@
           <a href="{{ link }}"
            class="flex relative items-center hover:no-underline">
             <div>
-              <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-[#009061]">Read more</p>
+              <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-primary">Read more</p>
             </div>
             <div class="w-4 text-center group-hover:translate-x-0.5 duration-200 transition-transform">
-              <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7 5L10 8L7 11" stroke="#009061" stroke-width="1.5"></path></svg>
+              <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7 5L10 8L7 11" stroke="#19845D" stroke-width="1.5"></path></svg>
             </div>
           </a>
         </div>
@@ -39,10 +39,10 @@
 
   {% unless "Featured" in content.topic_list|map('name') %}
 
-    <div class="swiper-slide px-3 h-full border-t border-[#C0E7D8] py-6">
-      <div class="rounded-lg border h-full border-[#009061] overflow-hidden relative group">
+    <div class="swiper-slide px-3 h-full border-t border-tvs-grey-light py-6">
+      <div class="rounded-lg border h-full border-primary overflow-hidden relative group">
         <a href="{{ link }}" class="absolute top-0 left-0 w-full h-full z-10"></a>
-        <div class="h-[275px] bg-[#1c4633]" style="background: url({{ content.featured_image }}) no-repeat top center / cover;">
+        <div class="h-[275px] bg-primary-darker" style="background: url({{ content.featured_image }}) no-repeat top center / cover;">
           <!--<img class="w-full" src="{{ content.featured_image }}" alt="" {{ loadingAttr }} >-->
 
         </div>
@@ -53,10 +53,10 @@
           <a href="{{ link }}"
            class="flex relative items-center hover:no-underline">
             <div>
-              <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-[#009061]">Read more</p>
+              <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-primary">Read more</p>
             </div>
             <div class="w-4 text-center group-hover:translate-x-0.5 duration-200 transition-transform">
-              <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7 5L10 8L7 11" stroke="#009061" stroke-width="1.5"></path></svg>
+              <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7 5L10 8L7 11" stroke="#19845D" stroke-width="1.5"></path></svg>
             </div>
           </a>
         </div>
@@ -64,8 +64,8 @@
     </div>
     {% endunless %}
   {% endfor %}
-    <div class="swiper-slide px-3 py-6 border-t border-[#C0E7D8] h-full">
-      <div class="rounded-lg w-11/12 bg-[#1C4633] h-full">
+    <div class="swiper-slide px-3 py-6 border-t border-tvs-grey-light h-full">
+      <div class="rounded-lg w-11/12 bg-primary-darker h-full">
         <div class="mb-6">
           <img class="w-full" src="https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/card-texture-green.png" alt="Read all ebooks card">
         </div>
@@ -75,10 +75,10 @@
           {% if card.cta.link.open_in_new_tab %}target="_blank"{% endif %}
           {% if card.cta.link.rel %}rel="{{ card.cta.link.rel }}"{% endif %} class="flex relative items-center group hover:no-underline">
             <div>
-              <p class="m-0 font-plex-mono tracking-widest text-[#009061] uppercase text-[14px]">View more</p>
+              <p class="m-0 font-plex-mono tracking-widest text-primary uppercase text-[14px]">View more</p>
             </div>
             <div class="w-4 text-center group-hover:translate-x-0.5 duration-200 transition-transform">
-              <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7 5L10 8L7 11" stroke="#009061" stroke-width="1.5"></path></svg>
+              <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7 5L10 8L7 11" stroke="#19845D" stroke-width="1.5"></path></svg>
             </div>
           </a>
         </div>

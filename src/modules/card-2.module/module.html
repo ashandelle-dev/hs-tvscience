@@ -21,7 +21,7 @@
         {% endif %}
     }
     .card-heading--small {
-        font-family: var(--font-plex, "IBM Plex Sans", sans-serif);
+        font-family: var(--font-plex, 'Pin Sans', sans-serif);
         font-size: 22px;
         font-weight: 500;
         line-height: 1.38;
@@ -90,7 +90,7 @@
 
         {% if item.button.display_as != 'linkable_card' and item.button.text %}
         <a
-        class="bg-transparent text-[#23e596] font-bold tracking-[1.5px] text-sm"
+        class="bg-transparent text-tvs-green font-bold tracking-[1.5px] text-sm"
         {% if item.button.link.url.type is equalto "CALL_TO_ACTION"  %}
             href="{{ href }}" {# The href here is not escaped as it is not editable and functions as a JavaScript call to the associated CTA #}
         {% else %}
