@@ -4,5 +4,5 @@
   "host_template_types" : [ "ANY" ],
   "module_id" : 200940991371,
   "label" : "Author Blog Listing",
-  "is_available_for_new_content" : true
+  "is_available_for_new_content" : false
 }

@@ -13,13 +13,13 @@
 .filter-button.active, .filter-button:hover, .filter-button:focus {
   background-color: #F5FEF7;
   border-color: #23E596;
-  color: #0F2D29;
+  color: #0D422F;
 }
 
 /* Mobile filter improvements */
 @media (max-width: 1023px) {
   .partner-filters {
-    border-bottom: 2px solid #D9E2EB;
+    border-bottom: 2px solid #E5E5E0;
     padding-bottom: 1.5rem;
     margin-bottom: 1.5rem;
   }

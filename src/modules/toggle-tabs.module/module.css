@@ -1,5 +1,5 @@
 .vmc-row {
-border-color: #0FBF84;
+border-color: #19845D;
 }
 @media only screen and (min-width: 768px) {
   .vmc-row {
@@ -7,7 +7,7 @@ border-color: #0FBF84;
     }
     
     .vmc-row.active {
-    border-color: #0FBF84;
+    border-color: #19845D;
     }
 
     .vmc-row .vmc-row-description {

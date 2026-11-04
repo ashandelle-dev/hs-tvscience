@@ -1,5 +1,5 @@
 <!-- module html  -->
-{% set main_items_classes = "text-[16px] text-[#1C4633] m-0 group-hover/main:text-[#0fbf84] hover:no-underline block py-3 lg:py-10 font-medium" %}
+{% set main_items_classes = "text-[16px] text-primary-darker m-0 group-hover/main:text-tvs-green-accessible hover:no-underline block py-3 lg:py-10 font-medium" %}
 
   {% macro dropdown_menu_item(dropdown) %}
                
@@ -16,7 +16,7 @@
       <img src="{{ dropdown.icon.src }}" alt="{{ dropdown.icon.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
     {% endif %}
     </div>
-    <p class="m-0 w-full text-[14px] text-[#1C4633] px-3 font-semibold">
+    <p class="m-0 w-full text-[14px] text-primary-darker px-3 font-semibold">
       {{dropdown.title}}
     </p>
   
@@ -55,13 +55,13 @@
         <div class="pl-1 pr-2 hidden lg:!block lg:!visible">
         
           <svg class="group-hover/main:rotate-180 origin-center transition-transform duration-200" width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M11 7.70752L8 10.7075L5 7.70752" stroke="#31373D" stroke-width="1.5"/>
+            <path d="M11 7.70752L8 10.7075L5 7.70752" stroke="#494943" stroke-width="1.5"/>
             </svg>
             
         </div>
         <div class="px-6 lg:hidden sub-menu-caret duration-200 transition-transform origin-center">
           <svg width="6" height="11" viewBox="0 0 6 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0.768463 1.22314L4.27551 4.72993C4.66606 5.12045 4.66607 5.75363 4.27553 6.14417L0.768462 9.65124" stroke="#1C4633" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M0.768463 1.22314L4.27551 4.72993C4.66606 5.12045 4.66607 5.75363 4.27553 6.14417L0.768462 9.65124" stroke="#0D422F" stroke-width="1.5" stroke-linecap="round"/>
             </svg>            
         </div>
         
@@ -109,7 +109,7 @@
                   
                 </div >
                 <div class="w-full px-3">
-                  <p class="text-[12px] text-[#727383] group-hover:text-[#1C4633] m-0">{{rp.name}}</p>
+                  <p class="text-[12px] text-[#727383] group-hover:text-primary-darker m-0">{{rp.name}}</p>
                   
                 </div>
                 

@@ -836,5 +836,26 @@
     "display": "toggle",
     "default": false,
     "help_text": "Used by the 2027 Landing Page template for paid-traffic pages."
+  },
+  {
+    "name": "minimal_button",
+    "label": "Minimal header button",
+    "type": "choice",
+    "display": "select",
+    "choices": [
+      [
+        "jump",
+        "Jump to the page's form"
+      ],
+      [
+        "contact",
+        "Go to the button's link"
+      ],
+      [
+        "none",
+        "No button"
+      ]
+    ],
+    "default": "jump"
   }
 ]

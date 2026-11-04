@@ -38,7 +38,7 @@
           <img class="{% if module.round_headshot %} rounded-full {% endif %}" src="{{ module.headshot.src }}" alt="{{ module.headshot.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
         {% endif %}
         </div>
-        <div class="w-3/4 md:w-11/12 border-l-4 {% if !custom_color %} border-[#0FBF84] {% endif %} pl-5 md:pl-10 ml-5 md:ml-10" {% if custom_color %}style="border-color: {{ module.styles.text_color.css }};"{% endif %}>
+        <div class="w-3/4 md:w-11/12 border-l-4 {% if !custom_color %} border-tvs-green-accessible {% endif %} pl-5 md:pl-10 ml-5 md:ml-10" {% if custom_color %}style="border-color: {{ module.styles.text_color.css }};"{% endif %}>
             <div>
               <p class="content-body {% if module.styles.font_size == 0 %} heading-m {% endif %} mb-3 leading-tight" style="{% if module.quote.quote_text_color%}color: {{module.quote.quote_text_color.css}};{% endif %}">
                 {{ module.quote.qs_quote }}

@@ -5,5 +5,5 @@
   "module_id" : 202316165487,
   "label" : "Video Hero",
   "icon" : "../../../../tvScientific%202022%20Atlas%20Pro/cli-build/modules/images/module-icons/video-hero.svg",
-  "is_available_for_new_content" : true
+  "is_available_for_new_content" : false
 }

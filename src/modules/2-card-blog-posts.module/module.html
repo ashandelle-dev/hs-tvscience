@@ -2,7 +2,7 @@
 {% set contents = blog_recent_tag_posts("default", "blog", 2) %}
 
 <div class="flex flex-wrap items-stretch relative ">
-  <div class="h-full border-[#C0E7D8] -mx-3 flex flex-wrap lg:flex-nowrap items-stretch">
+  <div class="h-full border-tvs-grey-light -mx-3 flex flex-wrap lg:flex-nowrap items-stretch">
 	{% for content in contents %}
     <div class="px-3 py-3 lg:py-0 h-full">
       <div class="rounded-2xl min-h-[280px] bg-[#F8F8F8] h-full flex overflow-hidden relative">
@@ -17,7 +17,7 @@
           <a href="{{ content.absolute_url }}"
            class="flex relative items-center hover:no-underline mt-auto">
             <div>
-              <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-[#009061]">Read now<span><svg class="inline" width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7 5L10 8L7 11" stroke="#009061" stroke-width="1.5"></path></svg></span></p>
+              <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-primary">Read now<span><svg class="inline" width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7 5L10 8L7 11" stroke="#19845D" stroke-width="1.5"></path></svg></span></p>
             </div>
             <div class="w-4 text-center group-hover:translate-x-0.5 duration-200 transition-transform">
               

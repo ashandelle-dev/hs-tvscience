@@ -1,0 +1,250 @@
+@config "../../../tailwind.2027-legacy.config.js";
+
+@tailwind base;
+@tailwind utilities;
+
+/* 2027 header and footer on pages that still load the old theme CSS. Old pages keep their own reset, so the parts of
+   preflight the header and footer rely on are repeated here, scoped so they can't reach page content. */
+.tvs-2027 {
+    @apply bg-white font-sans text-body font-normal text-black;
+    letter-spacing: normal;
+
+    & *,
+    & ::before,
+    & ::after {
+        box-sizing: border-box;
+        border-width: 0;
+        border-style: solid;
+        border-color: theme("colors.grey.100");
+    }
+
+    /* Some old pages style bare nav and footer elements inline */
+    & nav {
+        position: static !important;
+    }
+
+    & nav,
+    & header,
+    & footer {
+        width: auto;
+        min-height: 0;
+        padding: 0;
+        background-image: none;
+    }
+
+    & a,
+    & a:hover,
+    & a:focus {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    & button {
+        margin: 0;
+        padding: 0;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
+        color: inherit;
+        font: inherit;
+        letter-spacing: inherit;
+        text-transform: none;
+    }
+
+    & ul,
+    & ol {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    & li {
+        margin: 0;
+    }
+
+    & p,
+    & h1,
+    & h2,
+    & h3,
+    & h4,
+    & h5,
+    & h6 {
+        margin: 0;
+        color: inherit;
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+        letter-spacing: inherit;
+        line-height: inherit;
+        text-transform: none;
+    }
+
+    & img,
+    & svg {
+        display: block;
+        max-width: 100%;
+        margin: 0;
+    }
+
+    & img {
+        height: auto;
+    }
+
+    & summary {
+        list-style: none;
+    }
+
+    & summary::-webkit-details-marker {
+        display: none;
+    }
+
+    & .wrap {
+        @apply mx-auto w-full max-w-site px-4 md:px-8 xl:px-0;
+    }
+
+    & .btn {
+        @apply inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-button border-0 bg-tvgreen-600 px-4
+            font-sans text-button font-medium normal-case text-white no-underline transition-colors duration-150;
+    }
+
+    & .btn:hover {
+        @apply bg-tvgreen-800 text-white no-underline;
+    }
+
+    & .btn--lg {
+        @apply h-12 px-5 text-nav;
+    }
+
+    & .btn--secondary {
+        @apply bg-grey-100 text-black;
+    }
+
+    & .btn--secondary:hover {
+        @apply bg-grey-200 text-black;
+    }
+
+    & .text-link--arrow::after {
+        content: "→";
+    }
+
+    & .page-link {
+        @apply flex h-10 min-w-10 items-center justify-center rounded-button border border-solid border-grey-100 px-3 text-caption font-medium
+            text-black no-underline transition-colors duration-150;
+    }
+
+    & .page-link:hover {
+        @apply border-black no-underline;
+    }
+
+    & .page-link--current,
+    & .page-link--current:hover {
+        @apply border-black bg-black text-white;
+    }
+}
+
+/* News listing hero */
+.hs-blog-id-130279678010 .dnd_area-row-0-padding {
+    background-color: theme("colors.grey.050");
+}
+
+.hs-blog-id-130279678010 .dnd_area-row-0-padding::before,
+.hs-blog-id-130279678010 .dnd_area-row-0-padding::after {
+    display: none;
+}
+
+/* Old page content */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+select,
+textarea,
+button {
+    font-family: theme("fontFamily.sans");
+}
+
+.hs-button,
+.button,
+.cta-button,
+.button-primary {
+    border-radius: theme("borderRadius.button");
+    font-family: theme("fontFamily.sans");
+    letter-spacing: normal;
+    text-transform: none;
+}
+
+.hs-button:not(.hs-button--secondary, .hs-button--outline, .campaign-button),
+.button-primary {
+    border-color: theme("colors.tvgreen.600");
+    background-color: theme("colors.tvgreen.600");
+    color: theme("colors.white");
+}
+
+.hs-button:not(.hs-button--secondary, .hs-button--outline, .campaign-button):hover,
+.button-primary:hover {
+    border-color: theme("colors.tvgreen.800");
+    background-color: theme("colors.tvgreen.800");
+    color: theme("colors.white");
+}
+
+/* Legal and policy page text. Listed by page ID because their templates also serve pages with white text on dark sections.
+   The important rule only replaces the grey values stored inline in these pages. */
+:is(
+        .hs-content-id-55210168163,
+        .hs-content-id-55210916406,
+        .hs-content-id-55216152068,
+        .hs-content-id-100073425987,
+        .hs-content-id-103444966529,
+        .hs-content-id-104654553446,
+        .hs-content-id-105445460305,
+        .hs-content-id-126450047923,
+        .hs-content-id-190099853922,
+        .hs-content-id-200899520837,
+        .hs-content-id-210769570403,
+        .hs-content-id-210769646390,
+        .hs-content-id-217303177118
+    )
+    main {
+    color: theme("colors.black");
+
+    & :is(h1, h2, h3, h4, h5, h6, th, td) {
+        color: theme("colors.black");
+    }
+
+    & :is([style*="#47505d" i], [style*="#666666"]):not(a, a *) {
+        color: theme("colors.black") !important;
+    }
+}
+
+/* HubSpot Tools menu sits outside the page wrapper. Atlas centres every image with margin: auto, which pushes its rows right. */
+body > :not(.body-wrapper) :is(img, svg) {
+    margin: 0;
+}
+
+/* Meet tvScientific landing page */
+.hs-content-id-200975341221 main {
+    color: theme("colors.black");
+
+    & :is(h1, h2, h3, h4, h5, h6, p, li, label) {
+        color: theme("colors.black");
+    }
+
+    & .hs-button {
+        border-color: theme("colors.tvgreen.600") !important;
+        border-radius: theme("borderRadius.button") !important;
+        background: theme("colors.tvgreen.600") !important;
+        color: theme("colors.white") !important;
+        font-family: theme("fontFamily.sans") !important;
+        letter-spacing: normal !important;
+        text-transform: none !important;
+    }
+
+    & .hs-button:hover {
+        border-color: theme("colors.tvgreen.800") !important;
+        background: theme("colors.tvgreen.800") !important;
+    }
+}

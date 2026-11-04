@@ -4,17 +4,17 @@
 <div id="vertical-info" class="flex flex-wrap justify-between">
   <div class="w-full md:w-5/12 lg:w-2/5 ">
     <div class="md:sticky top-[166px]">
-    <h2 class="text-[#009061] text-[32px] leading-[40px] lg:!text-[36px] lg:!leading-[48px]  lg:!text-[48px] lg:!leading-[60px] font-medium">{{ module.vi_header }}
+    <h2 class="text-primary text-[32px] leading-[40px] lg:!text-[36px] lg:!leading-[48px]  lg:!text-[48px] lg:!leading-[60px] font-medium">{{ module.vi_header }}
     </h2>
   </div>
   </div>
   <div class="w-full md:w-1/2 lg:w-6/12">
     <div class="relative">
-      <div class="absolute left top-0 w-4 h-4 rounded-full bg-[#009061] -translate-x-1 -translate-y-1 z-10"></div>
-      <div class="absolute left bottom-0 w-4 h-4 rounded-full bg-[#009061] -translate-x-1 z-10 translate-y-1"></div>
-        <div class="w-2 h-full bg-[#C0E7D8]  absolute left-0 top-0 bottom-0 overflow-hidden" id="scroll-spine">
+      <div class="absolute left top-0 w-4 h-4 rounded-full bg-primary -translate-x-1 -translate-y-1 z-10"></div>
+      <div class="absolute left bottom-0 w-4 h-4 rounded-full bg-primary -translate-x-1 z-10 translate-y-1"></div>
+        <div class="w-2 h-full bg-tvs-grey-light  absolute left-0 top-0 bottom-0 overflow-hidden" id="scroll-spine">
           
-        <div class="w-full h-[150px] bg-[#009061]  top-0 vertical-marker absolute transition-all duration-500 ease-in-out" id="vertical-marker"></div>
+        <div class="w-full h-[150px] bg-primary  top-0 vertical-marker absolute transition-all duration-500 ease-in-out" id="vertical-marker"></div>
           
       </div>
       {% for item in module.vi_rows %}
@@ -40,20 +40,20 @@
         {% endif %}
         <div class="mb-6 relative">
           {% if !loop.first && !loop.last  %}
-            <div class="absolute left top-2 w-4 h-4 rounded-full bg-[#009061] -translate-x-1 "></div>
+            <div class="absolute left top-2 w-4 h-4 rounded-full bg-primary -translate-x-1 "></div>
           {% endif %}
-          <p class="text-[24px] text-[#009061] font-medium pl-6 lg:pl-12">{{ item.header }}</p>
-          <p class="text-[16px] text-[#1C4633] pl-6 lg:pl-12">{{ item.paragraph }}</p>
+          <p class="text-[24px] text-primary font-medium pl-6 lg:pl-12">{{ item.header }}</p>
+          <p class="text-[16px] text-primary-darker pl-6 lg:pl-12">{{ item.paragraph }}</p>
         </div>
         <a href="{{href}}" {% if item.cta.link.open_in_new_tab %}target="_blank"{% endif %}
         {% if item.cta.link.rel %}rel="{{ item.cta.link.rel }}"{% endif %}
         class="flex relative items-center group hover:no-underline pl-6 lg:pl-12">
           <div>
-            <p class="m-0 text-[16px] font-plex-mono tracking-widest text-[#009061] uppercase ">{{ item.cta.text }}</p>
+            <p class="m-0 text-[16px] font-plex-mono tracking-widest text-primary uppercase ">{{ item.cta.text }}</p>
           </div>
           <div class="w-4 text-center group-hover:translate-x-0.5 duration-200 transition-transform">
             <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M7 5L10 8L7 11" stroke="#009061" stroke-width="1.5"/>
+              <path d="M7 5L10 8L7 11" stroke="#19845D" stroke-width="1.5"/>
             </svg>    
           </div>
         </a>

@@ -2,35 +2,4 @@
   templateType: global_partial
   label: Minimal Header
 -->
-<nav class="min-header bg-white main-nav relative z-40 py-5">
-  <div class="min-header__inner max-w-[1312px] mx-auto px-4 relative">
-    {% module "header_logo" path="@hubspot/logo", link="/", label="Header logo", img={src="https://www.tvscientific.com/hubfs/tvSci%20by%20Pin%20Dark.svg", width=159, height=39, override_inherited_src=true, alt="tvScientific by Pinterest" } %}
-  </div>
-</nav>
-<style>
-  .min-header,
-  .min-header__inner,
-  .min-header .hs_cos_wrapper,
-  .min-header .hs-logo,
-  .min-header a {
-    text-align: left !important;
-  }
-
-  .min-header .hs_cos_wrapper,
-  .min-header .hs-logo,
-  .min-header a,
-  .min-header .hs-image-widget,
-  .min-header img {
-    display: block;
-    margin-left: 0 !important;
-    margin-right: auto !important;
-    margin-inline: 0 auto !important;
-  }
-
-  .min-header .hs-image-widget,
-  .min-header img {
-    width: 159px !important;
-    max-width: 159px !important;
-    height: 39px !important;
-  }
-</style>
+<div class="tvs-2027">{% module "site_header_minimal" path="../modules/2027/site-header", label="Header (minimal)", minimal=true, minimal_button="none" %}</div>

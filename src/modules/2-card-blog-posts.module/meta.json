@@ -4,5 +4,5 @@
   "host_template_types" : [ "PAGE" ],
   "module_id" : 193550847757,
   "label" : "2 Card Blog Posts",
-  "is_available_for_new_content" : true
+  "is_available_for_new_content" : false
 }

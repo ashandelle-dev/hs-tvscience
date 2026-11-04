@@ -59,7 +59,7 @@
                 data-filter-type="collection"
                 data-filter-value="featured_partner"
               >
-              <span class="text-sm text-[#202223] group-hover:text-[#198960] select-none leading-none">Certified Measurement Partner</span>
+              <span class="text-sm text-[#202223] group-hover:text-tvs-green-accessible select-none leading-none">Certified Measurement Partner</span>
             </label>
             {% endif %}
             {% for option in collections_filters.options %}
@@ -71,7 +71,7 @@
                 data-filter-type="collection"
                 data-filter-value="{{ option.name }}"
               >
-              <span class="text-sm text-[#202223] group-hover:text-[#198960] select-none leading-none">{{ option.label }}</span>
+              <span class="text-sm text-[#202223] group-hover:text-tvs-green-accessible select-none leading-none">{{ option.label }}</span>
             </label>
             {% endif %}
             {% endfor %}
@@ -91,7 +91,7 @@
                 data-filter-type="category"
                 data-filter-value="{{ option.name }}"
               >
-              <span class="text-sm text-[#202223] group-hover:text-[#198960] select-none leading-none">{{ option.label }}</span>
+              <span class="text-sm text-[#202223] group-hover:text-tvs-green-accessible select-none leading-none">{{ option.label }}</span>
             </label>
             {% endif %}
             {% endfor %}
@@ -99,7 +99,7 @@
         </div>
 
         <!-- Capabilities Filter -->
-        <div class="filter-group mb-6 border-b border-[#D9E2EB] pb-6 lg:border-b-0">
+        <div class="filter-group mb-6 border-b border-tvs-grey-light pb-6 lg:border-b-0">
           <p class="text-sm mb-2 text-[#202223] font-semibold">{{ module.filter_3 }}</p>
           <div class="filter-options space-y-4">
             {% for option in capabilities_filters.options %}
@@ -111,7 +111,7 @@
                 data-filter-type="capability"
                 data-filter-value="{{ option.name }}"
               >
-              <span class="text-sm text-[#202223] group-hover:text-[#198960] select-none leading-none">{{ option.label }}</span>
+              <span class="text-sm text-[#202223] group-hover:text-tvs-green-accessible select-none leading-none">{{ option.label }}</span>
             </label>
             {% endif %}
             {% endfor %}
@@ -119,10 +119,10 @@
         </div>
 
         <!-- Clear Filters Button -->
-        <button style="background: none; border: none; cursor: pointer;" class="p-0  border-none clear-filters hidden text-[#198960] hover:text-[#198960] font-medium flex items-center">
+        <button style="background: none; border: none; cursor: pointer;" class="p-0  border-none clear-filters hidden text-tvs-green-accessible hover:text-tvs-green-accessible font-medium flex items-center">
             <svg class="mr-2 inline-block" width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <line x1="12.8141" y1="13.7618" x2="1.22827" y2="2.17605" stroke="#198960" stroke-width="2" stroke-linecap="round"/>
-                <line x1="1" y1="13.8239" x2="12.5858" y2="2.23816" stroke="#198960" stroke-width="2" stroke-linecap="round"/>
+                <line x1="12.8141" y1="13.7618" x2="1.22827" y2="2.17605" stroke="#19845D" stroke-width="2" stroke-linecap="round"/>
+                <line x1="1" y1="13.8239" x2="12.5858" y2="2.23816" stroke="#19845D" stroke-width="2" stroke-linecap="round"/>
             </svg>
 
           Clear Filters
@@ -135,7 +135,7 @@
         {% if featured_partners %}
         <div class="featured-section mb-12">
           {% if module.featured_heading %}
-          <h2 class="text-2xl font-bold text-[#1F252B] mb-6">{{ module.featured_heading }}</h2>
+          <h2 class="text-2xl font-bold text-tvs-black mb-6">{{ module.featured_heading }}</h2>
           {% endif %}
           <div class="partner-grid grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-6">
             {% for partner in featured_partners %}
@@ -145,7 +145,7 @@
               target="_blank"
               rel="noopener noreferrer"
               {% endif %}
-              class="flex flex-col partner-card partner bg-white rounded-lg shadow-sm border border-gray-200 p-4 lg:p-6 hover:shadow-md transition-shadow no-underline hover:no-underline hover:border-[#23E596]"
+              class="flex flex-col partner-card partner bg-white rounded-lg shadow-sm border border-gray-200 p-4 lg:p-6 hover:shadow-md transition-shadow no-underline hover:no-underline hover:border-tvs-green"
               data-collections="{% for col in partner.collections %}{{ col.name }}{% if not loop.last %},{% endif %}{% endfor %}"
               data-categories="{% for cat in partner.partner_categories %}{{ cat.name }}{% if not loop.last %},{% endif %}{% endfor %}"
               data-capabilities="{% for cap in partner.capabilities %}{{ cap.name }}{% if not loop.last %},{% endif %}{% endfor %}"
@@ -166,7 +166,7 @@
                 {% endif %}
               </div>
 
-              <h3 class="partner-name text-base text-[#1F252B] font-bold mb-3">
+              <h3 class="partner-name text-base text-tvs-black font-bold mb-3">
                 {{ partner.name }}
               </h3>
 
@@ -178,12 +178,12 @@
 
               <div class="partner-tags flex flex-wrap gap-2 mt-4">
                 {% for category in partner.partner_categories %}
-                <span class="category-tag p-1 text-[#1F252B] text-xs rounded border-[#D9E2EB] border">
+                <span class="category-tag p-1 text-tvs-black text-xs rounded border-tvs-grey-light border">
                   {{ category.label }}
                 </span>
                 {% endfor %}
                 {% for capability in partner.capabilities %}
-                <span class="capability-tag p-1 text-[#1F252B] text-xs rounded border-[#D9E2EB] border">
+                <span class="capability-tag p-1 text-tvs-black text-xs rounded border-tvs-grey-light border">
                   {{ capability.label }}
                 </span>
                 {% endfor %}
@@ -205,7 +205,7 @@
 
         <div class="all-partners-section">
           {% if module.all_partners_heading %}
-          <h2 class="text-2xl font-bold text-[#1F252B] mb-6">{{ module.all_partners_heading }}</h2>
+          <h2 class="text-2xl font-bold text-tvs-black mb-6">{{ module.all_partners_heading }}</h2>
           {% endif %}
           <div class="partner-grid grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-6">
             {% for partner in regular_partners %}
@@ -215,7 +215,7 @@
               target="_blank"
               rel="noopener noreferrer"
               {% endif %}
-              class="flex flex-col partner-card bg-white rounded-lg shadow-sm border border-gray-200 p-4 lg:p-6 hover:shadow-md transition-shadow no-underline hover:no-underline hover:border-[#23E596]"
+              class="flex flex-col partner-card bg-white rounded-lg shadow-sm border border-gray-200 p-4 lg:p-6 hover:shadow-md transition-shadow no-underline hover:no-underline hover:border-tvs-green"
               data-collections="{% for col in partner.collections %}{{ col.name }}{% if not loop.last %},{% endif %}{% endfor %}"
               data-categories="{% for cat in partner.partner_categories %}{{ cat.name }}{% if not loop.last %},{% endif %}{% endfor %}"
               data-capabilities="{% for cap in partner.capabilities %}{{ cap.name }}{% if not loop.last %},{% endif %}{% endfor %}"
@@ -236,7 +236,7 @@
                 {% endif %}
               </div>
 
-              <h3 class="partner-name text-base text-[#1F252B] font-bold mb-3">
+              <h3 class="partner-name text-base text-tvs-black font-bold mb-3">
                 {{ partner.name }}
               </h3>
 
@@ -248,12 +248,12 @@
 
               <div class="partner-tags flex flex-wrap gap-2 mt-4">
                 {% for category in partner.partner_categories %}
-                <span class="category-tag p-1 text-[#1F252B] text-xs rounded border-[#D9E2EB] border">
+                <span class="category-tag p-1 text-tvs-black text-xs rounded border-tvs-grey-light border">
                   {{ category.label }}
                 </span>
                 {% endfor %}
                 {% for capability in partner.capabilities %}
-                <span class="capability-tag p-1 text-[#1F252B] text-xs rounded border-[#D9E2EB] border">
+                <span class="capability-tag p-1 text-tvs-black text-xs rounded border-tvs-grey-light border">
                   {{ capability.label }}
                 </span>
                 {% endfor %}
@@ -269,7 +269,7 @@
           <p class="text-gray-500 text-lg">No partners found matching your filters.</p>
         </div>
 
-        <div class="description text-gray-600 text-sm border-t border-[#D9E2EB] pt-8 mt-8">
+        <div class="description text-gray-600 text-sm border-t border-tvs-grey-light pt-8 mt-8">
           {{ module.description }}
         </div>
       </main>

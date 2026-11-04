@@ -16,5 +16,5 @@
   "module_id" : 123770959428,
   "label" : "Search",
   "icon" : "../../../../tvScientific%202022%20Atlas%20Pro/cli-build/modules/img/icon/edited-search-1.svg",
-  "is_available_for_new_content" : true
+  "is_available_for_new_content" : false
 }

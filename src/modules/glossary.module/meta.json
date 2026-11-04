@@ -5,5 +5,5 @@
   "host_template_types" : [ "PAGE" ],
   "module_id" : 125127489932,
   "label" : "Glossary",
-  "is_available_for_new_content" : true
+  "is_available_for_new_content" : false
 }

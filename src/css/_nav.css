@@ -34,7 +34,7 @@ body.mobile-open {
 
     &:hover,&.active.current {
       &:before {
-        @apply visible scale-x-100 bg-[#009061]
+        @apply visible scale-x-100 bg-primary
       }
     }
   

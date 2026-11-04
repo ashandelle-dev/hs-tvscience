@@ -35,7 +35,7 @@
     padding: 0;
   }
   .blog-post_title {
-    color: #1c4633;
+    color: #0D422F;
   }
 </style>
 <main class="body-container-wrapper container">
@@ -166,24 +166,24 @@
     margin: 0;
   }
   .jump-menu a {
-    color: #132430;
+    color: #000000;
     font-size: 18px;
     font-weight: 400;
-    border-left: 2px solid #198960;
+    border-left: 2px solid #19845D;
 
     padding-left: 0.75rem;
     flex-grow: 1;
     margin-bottom: 1.25rem;
   }
   .jump-menu a.current {
-    color: #198960;
+    color: #19845D;
     font-weight: 700;
-    border-left: 2px solid #0F2D29;
+    border-left: 2px solid #0D422F;
   }
 
   .cta-button {
     background-color: #23E596;
-    color: #0F2D29 !important;
+    color: #0D422F !important;
     text-decoration: none;
     font-family: IBM Plex Sans;
     padding: 8px 17px;
@@ -205,7 +205,7 @@
   }
 
   .blog-post__body h3, .blog-post__body h3 span {
-    color: #1C4633 !important;
+    color: #0D422F !important;
     font-size: 36px !important;
   }
 
@@ -230,7 +230,7 @@
   }
 
   .reading-progressbar::-webkit-progress-bar {
-    background-color: #D9E2EB;
+    background-color: #E5E5E0;
   }
 
   .reading-progressbar::-webkit-progress-value {
@@ -253,7 +253,7 @@
         position: absolute;
         width: 16px; /* Size of the dot */
         height: 16px;
-        background-color: #198960; /* Color of the dot */
+        background-color: #19845D; /* Color of the dot */
         border-radius: 50%;
         top: 0; /* Center vertically */
         transform: translateX(-50%);
@@ -267,7 +267,7 @@
   <section class="py-20" style="background: url('{{ content.featured_image }}') no-repeat center center/cover;">
   {% endif %}
     <div class="max-w-[800px] mx-auto text-center">
-      <span class="inline-block text-2xl text-[#198960] font-light mb-4">Ebook</span>
+      <span class="inline-block text-2xl text-tvs-green-accessible font-light mb-4">Ebook</span>
       <h1 class="text-white text-center">{{ content.name }}</h1>
       {% if content.widgets.summary.body.value %}
       <p class="text-white text-center text-2xl">{{content.widgets.summary.body.value}}</p>
@@ -298,8 +298,8 @@
         </div>
         {% endif %}
         {% if content.widgets.left_cta.body.value == 'Yes' %}
-        <div class="mb-5 pt-5 border-t border-[#C0E7D8]">
-           <p class="left-cta-title text-[22px] text-[#0F2D29]">See how you can boost lift and ROAS with CTV</p>
+        <div class="mb-5 pt-5 border-t border-tvs-grey-light">
+           <p class="left-cta-title text-[22px] text-tvs-green-dark">See how you can boost lift and ROAS with CTV</p>
            <a class="cta-button button-primary" href="">Request a Demo</a>
          </div>
          {% endif %}

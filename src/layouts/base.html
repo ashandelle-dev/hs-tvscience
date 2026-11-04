@@ -13,6 +13,28 @@
     {{ require_css(get_asset_url("../css/styles.css")) }}
     {{ require_css(get_asset_url('../../css/main.css')) }}
     {{ require_css(get_asset_url('../css/fonts.css')) }}
+    {% set pin_sans = [
+      { "file": "Pin-Sans-Regular",        "weight": 400, "style": "normal" },
+      { "file": "Pin-Sans-Regular-Italic", "weight": 400, "style": "italic" },
+      { "file": "Pin-Sans-Medium",         "weight": 500, "style": "normal" },
+      { "file": "Pin-Sans-Medium-Italic",  "weight": 500, "style": "italic" },
+      { "file": "Pin-Sans-Bold",           "weight": 700, "style": "normal" },
+      { "file": "Pin-Sans-Bold-Italic",    "weight": 700, "style": "italic" },
+      { "file": "Pin-Sans-Heavy",          "weight": 900, "style": "normal" },
+      { "file": "Pin-Sans-Heavy-Italic",   "weight": 900, "style": "italic" }
+    ] %}
+    <style>
+      {% for f in pin_sans %}
+      @font-face {
+        font-family: 'Pin Sans';
+        src: url('{{ get_asset_url("../fonts/pin-sans/" ~ f.file ~ ".woff2") }}') format('woff2'),
+             url('{{ get_asset_url("../fonts/pin-sans/" ~ f.file ~ ".woff") }}') format('woff');
+        font-weight: {{ f.weight }};
+        font-style: {{ f.style }};
+        font-display: swap;
+      }
+      {% endfor %}
+    </style>
 
 	{# This will include the responsive css only if the option has been checked in the theme settings #}
 	{% if theme.typography.if_mobile_typography %}
@@ -27,7 +49,17 @@
     {{ require_js(get_asset_url("../js/cli-main.js")) }}
 	{{ require_js(get_asset_url('../../js/main.js'))  }}
 	{{ require_js(get_asset_url('../../js/helper.js')) }}
+    {{ require_js(get_asset_url("../js/2027/site.js"), "footer") }}
+    {{ require_css(get_asset_url("../css/2027/legacy.css")) }}
     {{ standard_header_includes }}
+    {% if not content.featured_image %}
+      {% set og_image = "https://8975772.fs1.hubspotusercontent-na1.net/hubfs/8975772/2027-reskin/tvscientific-opengraph-2027.png" %}
+      <meta property="og:image" content="{{ og_image }}">
+      <meta property="og:image:width" content="1200">
+      <meta property="og:image:height" content="630">
+      <meta property="og:image:alt" content="tvScientific by Pinterest">
+      <meta name="twitter:image" content="{{ og_image }}">
+    {% endif %}
     <!-- Hide chat -->
     <style>
        #iframe-chat-widget {
@@ -39,7 +71,13 @@
     <div class="body-wrapper {{ builtin_body_classes }}">
       {% block header %}
         {% boolean "minimal_header" label='Minimal Header', value=False, no_wrapper=True, export_to_template_context=True %}
-        {% global_partial path='../partials/header.html' %}
+        <div class="tvs-2027">
+          {% if widget_data.minimal_header.value %}
+            {% module "site_header_minimal" path="../modules/2027/site-header", label="Header (minimal)", minimal=true, minimal_button="contact" %}
+          {% else %}
+            {% global_partial path='../partials/2027/header.html' %}
+          {% endif %}
+        </div>
 
       {% endblock header %}
 
@@ -47,7 +85,7 @@
       {% endblock body %}
 
       {% block footer %}
-        {% global_partial path='../partials/footer.html' %}
+        <div class="tvs-2027">{% global_partial path='../partials/2027/footer.html' %}</div>
       {% endblock footer %}
     </div>
     {{ standard_footer_includes }}

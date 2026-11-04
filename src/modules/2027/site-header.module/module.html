@@ -43,7 +43,11 @@
 
     {% if module.minimal %}
       {# Landing pages keep visitors on the page: the button jumps to the hero form (#get-started) #}
-      {% if module.cta.text %}<a href="#get-started" class="btn ml-auto">{{ module.cta.text }}</a>{% endif %}
+      {% if module.minimal_button == "contact" and module.cta.text %}
+        <a {{ link_attrs(module.cta.link) }} class="btn ml-auto">{{ module.cta.text }}</a>
+      {% elif module.minimal_button != "none" and module.cta.text %}
+        <a href="#get-started" class="btn ml-auto">{{ module.cta.text }}</a>
+      {% endif %}
     {% else %}
     {# Desktop navigation #}
     <nav class="ml-6 hidden lg:block" aria-label="Main">

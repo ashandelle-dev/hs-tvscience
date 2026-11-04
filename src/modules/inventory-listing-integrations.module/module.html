@@ -15,7 +15,7 @@
           <div class="filter-options flex flex-wrap gap-3">
             <div class="w-full">
               <button
-                class="type-filter rounded-md filter-button px-3 py-1 text-sm border-2 border-[#10b981] bg-[#10b981] text-white cursor-pointer hover:border-[#10b981] hover:bg-[#10b981] hover:text-white transition-all active"
+                class="type-filter rounded-md filter-button px-3 py-1 text-sm border-2 border-tvs-green-accessible bg-tvs-green-accessible text-white cursor-pointer hover:border-tvs-green-accessible hover:bg-tvs-green-accessible hover:text-white transition-all active"
                 data-filter-type="all"
               >
                 All
@@ -24,7 +24,7 @@
 
             <div class="w-full">
               <button
-                class="type-filter rounded-md filter-button px-3 py-1 text-sm border-2 border-[#D9E2EB] bg-white text-[#0F2D29] cursor-pointer hover:border-[#10b981] hover:bg-[#10b981] hover:text-white transition-all"
+                class="type-filter rounded-md filter-button px-3 py-1 text-sm border-2 border-tvs-grey-light bg-white text-tvs-green-dark cursor-pointer hover:border-tvs-green-accessible hover:bg-tvs-green-accessible hover:text-white transition-all"
                 data-filter-type="publishers"
               >
                 Publishers
@@ -32,7 +32,7 @@
             </div>
             <div class="w-full">
               <button
-                class="type-filter rounded-md filter-button px-3 py-1 text-sm border-2 border-[#D9E2EB] bg-white text-[#0F2D29] cursor-pointer hover:border-[#10b981] hover:bg-[#10b981] hover:text-white transition-all"
+                class="type-filter rounded-md filter-button px-3 py-1 text-sm border-2 border-tvs-grey-light bg-white text-tvs-green-dark cursor-pointer hover:border-tvs-green-accessible hover:bg-tvs-green-accessible hover:text-white transition-all"
                 data-filter-type="channels"
               >
                 Channels and Platforms
@@ -62,15 +62,15 @@
                     class="w-full h-full object-contain"
                   >
                   {% else %}
-                  <span class="text-lg font-bold text-[#1F252B]">{{ publisher.name|truncate(1, True, '') }}</span>
+                  <span class="text-lg font-bold text-tvs-black">{{ publisher.name|truncate(1, True, '') }}</span>
                   {% endif %}
                 </div>
-                <h4 class="text-base text-[#1F252B] font-bold mb-0">
+                <h4 class="text-base text-tvs-black font-bold mb-0">
                   {{ publisher.name }}
                 </h4>
               </div>
               <div class="partner-tags flex flex-wrap gap-2 mt-4">
-                <span class="category-tag py-1 px-2 font-semibold text-xs rounded bg-[#DBE2EA] border border-[#DBE2EA] text-[#20252B]">
+                <span class="category-tag py-1 px-2 font-semibold text-xs rounded bg-tvs-grey-light border border-tvs-grey-light text-[#20252B]">
                   Publisher
                 </span>
               </div>
@@ -92,15 +92,15 @@
                     class="w-full h-full object-contain"
                   >
                   {% else %}
-                  <span class="text-lg font-bold text-[#1F252B]">{{ channel.name|truncate(1, True, '') }}</span>
+                  <span class="text-lg font-bold text-tvs-black">{{ channel.name|truncate(1, True, '') }}</span>
                   {% endif %}
                 </div>
-                <h4 class="text-base text-[#1F252B] font-bold mb-0">
+                <h4 class="text-base text-tvs-black font-bold mb-0">
                   {{ channel.name }}
                 </h4>
               </div>
               <div class="partner-tags flex flex-wrap gap-2 mt-4">
-                <span class="category-tag py-1 px-2 font-semibold text-xs rounded bg-transparent border border-[#DBE2EA] text-[#20252B]">
+                <span class="category-tag py-1 px-2 font-semibold text-xs rounded bg-transparent border border-tvs-grey-light text-[#20252B]">
                   Publisher: {{ (channel.publisher|first).name }}
                 </span>
               </div>
@@ -113,7 +113,7 @@
 
           <!-- Load More Button -->
           <div class="load-more-container text-center mt-8">
-            <button class="load-more-btn py-1 px-2 font-semibold text-xs rounded bg-transparent border border-[#DBE2EA] text-[#20252B] cursor-pointer hover:bg-[#DBE2EA] transition-all">
+            <button class="load-more-btn py-1 px-2 font-semibold text-xs rounded bg-transparent border border-tvs-grey-light text-[#20252B] cursor-pointer hover:bg-tvs-grey-light transition-all">
               Load More
             </button>
           </div>

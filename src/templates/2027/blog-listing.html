@@ -7,10 +7,13 @@
 {% import "./blog-macros.html" as blog %}
 
 {% block body %}
+{% set lead = group.description %}
 {% if group.public_title == "Webinars" %}
   {% set kind = "webinar" %}
+  {% set lead = "Live and on-demand sessions on Performance TV advertising." %}
 {% elif group.public_title == "Reports" %}
   {% set kind = "report" %}
+  {% set lead = "Research, guides and playbooks on Performance TV, from consumer trends to seasonal shopping." %}
 {% else %}
   {% set kind = "article" %}
 {% endif %}
@@ -51,15 +54,15 @@
         </div>
         {% if kind == "article" and not blog_author %}
           <div class="search-2027 mt-8 w-full lg:mt-0 lg:max-w-sm">
-            {% module "search_2027" path="@hubspot/search_input", label="Search", placeholder="Search {{ group.public_title|lower }}", include_search_button=true %}
+            {% module "search_2027" path="@hubspot/search_input", label="Search", placeholder="Search", include_search_button=true %}
           </div>
         {% endif %}
       </div>
 
       {% if blog_author and blog_author.bio %}
         <p class="m-0 mt-6 max-w-copy text-body-relaxed text-grey-350">{{ blog_author.bio }}</p>
-      {% elif not blog_author and not tag and group.description %}
-        <p class="m-0 mt-6 max-w-copy text-body-relaxed text-grey-350">{{ group.description }}</p>
+      {% elif not blog_author and not tag and lead %}
+        <p class="m-0 mt-6 max-w-copy text-body-relaxed text-grey-350">{{ lead }}</p>
       {% endif %}
     </div>
   </header>

@@ -26,7 +26,7 @@
 
           <div class="blog-header__author">
             <span class="blog-header__preheader">AUTHOR</span>
-            <h1 class="text-[#1C4633]">{{ blog_author.display_name }}</h1>
+            <h1 class="text-primary-darker">{{ blog_author.display_name }}</h1>
             {% if blog_author.bio %}
             <p class="blog-header__author-bio">{{ blog_author.bio }}</p>
             {% endif %}
@@ -83,12 +83,12 @@
       <div class="py-12">
         <div class="relative">
           <div class="absolute -left-3 top-0 -translate-y-[6px]">
-            <div class="w-[12px] h-[12px] rounded-full bg-[#C0E7D8]"></div>
+            <div class="w-[12px] h-[12px] rounded-full bg-tvs-grey-light"></div>
           </div>
           <div class="absolute -right-3 top-0 -translate-y-[6px]">
-            <div class="w-[12px] h-[12px]  rounded-full bg-[#C0E7D8]"></div>
+            <div class="w-[12px] h-[12px]  rounded-full bg-tvs-grey-light"></div>
           </div>
-          <hr class="border-[#C0E7D8]">
+          <hr class="border-tvs-grey-light">
         </div>
 
       </div>
@@ -128,11 +128,11 @@
           class="flex relative items-center hover:no-underline group">
           <div class="w-4 text-center group-hover:-translate-x-0.5 duration-200 transition-transform">
             <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M9.55957 5L6.55957 8L9.55957 11" stroke="#009061" stroke-width="1.5"/>
+              <path d="M9.55957 5L6.55957 8L9.55957 11" stroke="#19845D" stroke-width="1.5"/>
               </svg>
           </div>
           <div class="px-3">
-            <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-[#009061]">Back to Press</p>
+            <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-primary">Back to Press</p>
           </div>
         </a>
         {% else %}
@@ -140,17 +140,17 @@
           class="flex relative items-center hover:no-underline group">
           <div class="w-4 text-center group-hover:-translate-x-0.5 duration-200 transition-transform">
             <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M9.55957 5L6.55957 8L9.55957 11" stroke="#009061" stroke-width="1.5"/>
+              <path d="M9.55957 5L6.55957 8L9.55957 11" stroke="#19845D" stroke-width="1.5"/>
               </svg>
           </div>
           <div class="px-3">
-            <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-[#009061]">Back to Resources</p>
+            <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-primary">Back to Resources</p>
           </div>
         </a>
         {% endif %}
       </div>
       <div class="">
-        <h1 class="text-[#1C4633] capitalize">{{ "All" if blog.public_title != "Blog" and blog.public_title != "Webinars" }}
+        <h1 class="text-primary-darker capitalize">{{ "All" if blog.public_title != "Blog" and blog.public_title != "Webinars" }}
           {% if tag_id %}
             {{ tag_id }}
           {% elif %}
@@ -168,12 +168,12 @@
     <div class="py-12">
       <div class="relative">
         <div class="absolute -left-3 top-0 -translate-y-[6px]">
-          <div class="w-[12px] h-[12px] rounded-full bg-[#C0E7D8]"></div>
+          <div class="w-[12px] h-[12px] rounded-full bg-tvs-grey-light"></div>
         </div>
         <div class="absolute -right-3 top-0 -translate-y-[6px]">
-          <div class="w-[12px] h-[12px]  rounded-full bg-[#C0E7D8]"></div>
+          <div class="w-[12px] h-[12px]  rounded-full bg-tvs-grey-light"></div>
         </div>
-        <hr class="border-[#C0E7D8]">
+        <hr class="border-tvs-grey-light">
       </div>
 
     </div>
@@ -189,11 +189,11 @@
           class="flex relative items-center hover:no-underline group">
           <div class="w-4 text-center group-hover:-translate-x-0.5 duration-200 transition-transform">
             <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M9.55957 5L6.55957 8L9.55957 11" stroke="#009061" stroke-width="1.5"/>
+              <path d="M9.55957 5L6.55957 8L9.55957 11" stroke="#19845D" stroke-width="1.5"/>
               </svg>
           </div>
           <div class="px-3">
-            <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-[#009061]">Back to Press</p>
+            <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-primary">Back to Press</p>
           </div>
         </a>
 
@@ -202,18 +202,18 @@
           class="flex relative items-center hover:no-underline group">
           <div class="w-4 text-center group-hover:-translate-x-0.5 duration-200 transition-transform">
             <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M9.55957 5L6.55957 8L9.55957 11" stroke="#009061" stroke-width="1.5"/>
+              <path d="M9.55957 5L6.55957 8L9.55957 11" stroke="#19845D" stroke-width="1.5"/>
               </svg>
           </div>
           <div class="px-3">
-            <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-[#009061]">Back to Resources</p>
+            <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-primary">Back to Resources</p>
           </div>
         </a>
         {% endif %}
       </div>
       <div class="content-wrapper">
         <div class="">
-          <h1 class="text-[#1C4633]">{{"All" if group.public_title != "Blog" and group.public_title != "Webinars" }} {{ group.public_title }}</h1>
+          <h1 class="text-primary-darker">{{"All" if group.public_title != "Blog" and group.public_title != "Webinars" }} {{ group.public_title }}</h1>
           {% if theme.blog.header_image.src %}
           <div class="blog-header__image">
             {{ render_image(theme.blog.header_image) }}
@@ -226,12 +226,12 @@
     <div class="py-12">
       <div class="relative">
         <div class="absolute -left-3 top-0 -translate-y-[6px]">
-          <div class="w-[12px] h-[12px] rounded-full bg-[#C0E7D8]"></div>
+          <div class="w-[12px] h-[12px] rounded-full bg-tvs-grey-light"></div>
         </div>
         <div class="absolute -right-3 top-0 -translate-y-[6px]">
-          <div class="w-[12px] h-[12px]  rounded-full bg-[#C0E7D8]"></div>
+          <div class="w-[12px] h-[12px]  rounded-full bg-tvs-grey-light"></div>
         </div>
-        <hr class="border-[#C0E7D8]">
+        <hr class="border-tvs-grey-light">
       </div>
 
     </div>
@@ -243,7 +243,7 @@
 
         {% for content in contents %}
         <div class="w-full">
-          <div class="border-t border-[#009061] relative h-full py-6">
+          <div class="border-t border-primary relative h-full py-6">
             <p class="mb-1 uppercase text-[#1E4D83]">{{ content.publish_date | datetimeformat('%b %e, %Y') }}</p>
             <a href="{{ content.absolute_url }}">
               <h2 class="!text-[22px] !leading-[32px] tracking[.22px] font-medium">{{ content.name }}</h2>
@@ -263,7 +263,7 @@
         {% set out_link = content.widgets.title_link.body.value %}
         {# On the blog listing page, the first post will be featured above older posts #}
         <article class="h-full">
-          <div class="rounded-lg border h-full border-[#009061] overflow-hidden relative group">
+          <div class="rounded-lg border h-full border-primary overflow-hidden relative group">
             {% unless out_link %}
             <a href="{{ content.absolute_url }}" class="absolute top-0 left-0 w-full h-full z-10"></a>
             {% else %}
@@ -286,16 +286,16 @@
             <div class=" p-6">
 
               {% if tag != "reports" or group.public_title not "Reports"  %}
-              <p class="mb-3 uppercase text-[#009061] font-medium ">{{ content.publish_date | datetimeformat('%b %e, %Y') }}</p>
+              <p class="mb-3 uppercase text-primary font-medium ">{{ content.publish_date | datetimeformat('%b %e, %Y') }}</p>
               {% endif  %}
-              <h2 class="!text-[22px] !leading-[28px] mb-6 font-medium text-[#31373D]">{{ content.name }}</h2>
+              <h2 class="!text-[22px] !leading-[28px] mb-6 font-medium text-tvs-grey">{{ content.name }}</h2>
               {% unless out_link %}
               <a href="{{ content.absolute_url }}" class="flex absolute bottom-3 left-0 px-6 items-center hover:no-underline">
               {% else %}
               <a href="{{ out_link }}" class="flex absolute bottom-3 left-0 px-6 items-center hover:no-underline" target="_blank">
               {% endunless %}
                 <div>
-                  <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-[#009061]">
+                  <p class="m-0 font-plex-mono tracking-widest uppercase text-[14px] text-primary">
                     {% if group.public_title == "Webinars" %}
                     Watch now
                     {% else %}
@@ -304,7 +304,7 @@
                   </p>
                 </div>
                 <div class="w-4 text-center group-hover:translate-x-0.5 duration-200 transition-transform">
-                  <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7 5L10 8L7 11" stroke="#009061" stroke-width="1.5"></path></svg>
+                  <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7 5L10 8L7 11" stroke="#19845D" stroke-width="1.5"></path></svg>
                 </div>
               </a>
             </div>

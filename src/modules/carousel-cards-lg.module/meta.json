@@ -4,5 +4,5 @@
   "host_template_types" : [ "PAGE", "BLOG_POST" ],
   "module_id" : 123748103282,
   "label" : "Carousel Cards Large",
-  "is_available_for_new_content" : true
+  "is_available_for_new_content" : false
 }

@@ -17,5 +17,5 @@
   "module_id" : 124039909994,
   "label" : "Form",
   "icon" : "../../../../tvScientific%202022%20Atlas%20Pro/cli-build/modules/img/icon/form-module-icon.svg",
-  "is_available_for_new_content" : true
+  "is_available_for_new_content" : false
 }

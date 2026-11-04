@@ -41,11 +41,11 @@
 
       // Update active button styles
       filterButtons.forEach(btn => {
-        btn.classList.remove('active', 'border-[#10b981]', 'bg-[#10b981]', 'text-white');
-        btn.classList.add('border-[#D9E2EB]', 'bg-white', 'text-[#0F2D29]');
+        btn.classList.remove('active', 'border-tvs-green-accessible', 'bg-tvs-green-accessible', 'text-white');
+        btn.classList.add('border-tvs-grey-light', 'bg-white', 'text-tvs-green-dark');
       });
-      clickedButton.classList.add('active', 'border-[#10b981]', 'bg-[#10b981]', 'text-white');
-      clickedButton.classList.remove('border-[#D9E2EB]', 'bg-white', 'text-[#0F2D29]');
+      clickedButton.classList.add('active', 'border-tvs-green-accessible', 'bg-tvs-green-accessible', 'text-white');
+      clickedButton.classList.remove('border-tvs-grey-light', 'bg-white', 'text-tvs-green-dark');
 
       applyVisibility();
     }

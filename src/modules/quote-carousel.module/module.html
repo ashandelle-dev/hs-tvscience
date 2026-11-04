@@ -22,11 +22,11 @@
             <img class="m-0" src="{{ item.logo.src }}" alt="{{ item.logo.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
           {% endif %}
         </div>
-        <div class="h-1 w-3/4 bg-[#0FBF84] mb-6"></div>
+        <div class="h-1 w-3/4 bg-tvs-green-accessible mb-6"></div>
         <div class="mb-6">
           <p class="mb-3 text-[24px] leading-normal italic {% if module.text_dark %}
           
-            text-[#1C4633]
+            text-primary-darker
             {% else %}
             text-white 
               
@@ -49,10 +49,10 @@
           </div>
           <div class="w-2/3 px-6">
 
-            <p class="font-bold text-[#0FBF84] m-0">
+            <p class="font-bold text-tvs-green-accessible m-0">
               {{ item.qs_name }}
               </p>
-              <p class="m-0 text-[#0FBF84]">
+              <p class="m-0 text-tvs-green-accessible">
               {{ item.qs_title }}
               </p>
           </div>
@@ -89,12 +89,12 @@
             <div class="border-l-4 {% if module.light %}
               border-white
               {% else %}
-                border-[#0FBF84]
+                border-tvs-green-accessible
             {% endif %} px-6 lg:px-12">
               <div>
                 <p class="content-body mb-3 text-[24px] md:text-[32px] lg:text-[36px] leading-normal italic {% if module.text_dark %}
           
-                  text-[#1C4633]
+                  text-primary-darker
                   {% else %}
                   text-white 
                     
@@ -105,10 +105,10 @@
               <div class="content-author flex flex-wrap lg:flex-nowrap relative">
                 <div class="w-full sm:w-6/12 mb-6 sm:mb-0">
                   
-                  <p class="font-bold text-[#0FBF84] m-0">
+                  <p class="font-bold text-tvs-green-accessible m-0">
                   {{ item.qs_name }}
                   </p>
-                  <p class="m-0 text-[#0FBF84]">
+                  <p class="m-0 text-tvs-green-accessible">
                   {{ item.qs_title }}
                   </p>
                 </div>

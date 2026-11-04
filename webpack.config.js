@@ -9,9 +9,10 @@ module.exports = {
     entry: {
         main: "./src/index.js",
         "2027": "./src/index-2027.js",
+        "2027-legacy": "./src/index-2027-legacy.js",
     },
     output: {
-        filename: ({ chunk }) => (chunk.name === "main" ? "js/cli-main.js" : `js/${chunk.name}/site.js`),
+        filename: ({ chunk }) => ({ main: "js/cli-main.js", "2027": "js/2027/site.js", "2027-legacy": "js/2027/legacy.js" })[chunk.name],
         clean: true,
     },
     module: {
@@ -38,7 +39,7 @@ module.exports = {
             ],
         }),
         new MiniCssExtractPlugin({
-            filename: ({ chunk }) => (chunk.name === "main" ? "css/styles.css" : `css/${chunk.name}/site.css`),
+            filename: ({ chunk }) => ({ main: "css/styles.css", "2027": "css/2027/site.css", "2027-legacy": "css/2027/legacy.css" })[chunk.name],
         }),
     ],
 };

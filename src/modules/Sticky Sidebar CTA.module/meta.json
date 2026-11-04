@@ -26,5 +26,5 @@
   } ],
   "label" : "Sticky Sidebar CTA",
   "icon" : "https://www.kalungi.com/hubfs/Atlas/Module%20Logos/Share.svg",
-  "is_available_for_new_content" : true
+  "is_available_for_new_content" : false
 }
